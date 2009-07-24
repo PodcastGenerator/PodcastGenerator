@@ -1,0 +1,261 @@
+body{
+	margin:0;
+	margin-top:20px;
+	margin-bottom:20px;
+	background-image: url(../img/back.png);
+	background-position:top;
+	background-repeat:repeat-x;
+}
+
+
+.admin_hints {
+	color: #555;
+	font-size:0.8em;
+	padding:0;
+	margin:0;
+	border:0;
+	text-align:right;
+}
+
+
+.container {
+	width:780px;
+	margin: 0 auto 0;
+	text-align:left;
+	border:1px solid #555;
+	font-family: "Trebuchet MS", verdana, arial, sans-serif;
+	background-color:#ffffff;
+}
+
+
+.sfondo {
+	background-color:#ffffff;
+	background-repeat: no-repeat;
+	padding-top:20px;
+}
+
+
+.episode_image {
+	float:left;
+	margin-bottom:30px;
+	margin-right:5px;
+}
+
+.episode_imgdesc {
+	list-style:none;
+	text-decoration:none;
+	margin:0;
+	padding:0;
+	margin-top:15px;
+}
+
+.episode_imgdesc li {
+	padding-left:10px;
+	line-height:1.2em;
+}	
+
+
+
+.header {
+	border: 2px solid #f1eee6;
+	background-image: url(../img/header_back.png);
+	background-position:top;
+	background-repeat:repeat-x;
+	background-color: #7e8aa4;
+	margin:0px;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:15px;
+}
+
+.headermenu {
+	margin:0px;
+	margin-left:15px;
+	margin-right:15px;
+	margin-bottom:15px;
+	text-align:left;
+	background-color: #f1eee6;
+}
+
+.headermenutext {
+	color:#555;
+	font-size:0.9em;
+	padding:0;
+	padding-left:10px;
+	padding-right:10px;
+	margin:0;
+}
+
+.headermenutext a:link, .headermenutext a:visited, .headermenutext a:active {
+	text-decoration: none;
+	color:#555;
+	font-size:0.9em;
+	padding:0;
+	margin:0;
+}
+
+.headermenutext a:hover {
+	text-decoration: none;
+	color: #cc3300;
+}
+
+.headertitle {
+	color:#fff;
+	font-size:2em;
+	padding:20px;
+}
+
+
+.headermenutextdx {
+	float:right;
+	text-align:right;
+	border:0;
+}
+
+
+
+.footer {
+	clear:both;
+	width:90%;
+	margin: 0 auto 0;
+	font-size:0.8em;
+	border-top: 1px solid #555;
+	padding-top:8px;
+	padding-bottom:10px;
+	text-align: left;
+}
+
+
+.episode {
+	clear:both;
+	font-size:1em;
+	padding:0;
+	margin:0;
+	border-top: 1px solid #f1f0f0;
+	margin-top:5px;
+	padding-bottom:20px;
+	text-align: left;
+}
+
+.episode_title {
+	color: #cc3300;
+	padding:0;
+	padding-bottom:0.2em;
+	padding-top:0.8em;
+	margin:0;
+}
+
+.episode_info {
+	color: #555;
+	font-size:0.8em;
+	padding:0;
+	margin:0;
+}
+
+.episode_date {
+	padding:0;
+	margin:0;
+}
+
+.episode_download {
+	color: #555;
+	font-size:0.8em;
+	padding:0;
+	margin:0;
+}
+
+.episode_keywords {
+	color: #000;
+	font-size:0.9em;
+}
+
+.main {
+	margin: 0 auto 0;
+	width:720px;
+	font-size:0.9em;
+	padding-bottom:15px;
+	padding-top:5px;
+}
+
+
+
+.imgdx {
+	float:right;
+	padding-top:25px;
+	padding-left:25px;
+	padding-bottom:25px;
+}
+
+.alternative{
+	display:none;
+}
+
+
+a:link, a:active, a:visited {
+	text-decoration:none;
+	color:#cc3300;
+}
+
+a:hover {
+	color:#e67817;
+} 
+
+.footerdx {
+	float:right;
+	text-align:right;
+	border:0;
+}
+
+
+.rightbox {
+	margin-right:0;
+	margin-left:25px;
+	margin-bottom:30px;
+	padding-top:5px;
+	padding-bottom:12px;
+	padding-left:10px;
+	padding-right:5px;
+	background-color: #f1eee6;
+	background-image: url(../img/angle.gif);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+	font-size:0.9em;
+	border-left:1px solid #c4c1c1;
+	border-top:2px solid #c4c1c1;
+}
+
+
+.rightcolumn {
+	float:right;
+	width:200px;
+}
+
+.leftcolumn {
+	float:left;
+	width:500px;
+}
+
+
+.topseparator {
+	clear:both;
+	font-size:1em;
+	padding:0;
+	margin:0;
+	margin-top:0px;
+	padding-bottom:20px;
+	border-top: 1px solid #f1f0f0;
+	text-align: left;
+}
+
+.site_desc {
+	color: #555;
+	font-size:0.9em;
+	margin-bottom:20px;
+}
+
+.site_welcome {
+	margin:0;
+	color: #000;
+	padding:0;
+}
+

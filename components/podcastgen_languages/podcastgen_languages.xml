@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PodcastGenerator>
+
+	<language>
+		<id>ca</id>
+		<description>Català</description>
+	</language>
+
+<language>
+	<id>cy</id>
+	<description>Cymraeg</description>
+</language>
+
+	<language>
+		<id>de</id>
+		<description>Deutsch</description>
+	</language>
+
+	<language>
+		<id>en</id>
+		<description>English</description>
+	</language>
+	
+	<language>
+		<id>es</id>
+		<description>Español</description>
+	</language>
+	
+	<language>
+		<id>fa</id>
+		<description>فارسی</description>
+	</language>
+	
+	
+	<language>
+		<id>fr</id>
+		<description>Français</description>
+	</language>
+	
+	<language>
+		<id>it</id>
+		<description>Italiano</description>
+	</language>
+	
+	<language>
+		<id>ja</id>
+		<description>日本語</description>
+	</language>
+	
+	<language>
+		<id>pt</id>
+		<description>Português</description>
+	</language>
+
+	<language>
+		<id>th</id>
+		<description>ไทย</description>
+	</language>	
+	
+</PodcastGenerator>
