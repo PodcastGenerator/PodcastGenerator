@@ -30,8 +30,8 @@ $PG_mainbody .= '<p><b>'.$SL_enteruserandpwd.'</b></p>
 
 	<input type="password" id="password" name="password" size="20" maxlength="20"><br />
 
-	<label for="password">'.$SL_pwdconfirm.'</label><br />
-	<input type="password" id="password2" name="password2" size="20" maxlength="20"><br /><br />
+	<label for="password_confirm">'.$SL_pwdconfirm.'</label><br />
+	<input type="password" id="password_confirm" name="password_confirm" size="20" maxlength="20"><br /><br />
 
 	';
 
