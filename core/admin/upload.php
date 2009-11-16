@@ -66,7 +66,7 @@ else {
 			<label for="description">'.$L_shortdesc.'*</label><br />
 			<span class ="admin_hints">'.$L_maxchardesc.'</span><br />
 
-			<input name="description" id="description" type="text" onKeyDown="limitText this.form.description,this.form.countdown,255);" 
+			<input name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
 			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255">
 			<br /><br />
 			<span class ="admin_hints">
