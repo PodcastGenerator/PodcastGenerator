@@ -73,8 +73,8 @@ class getid3_real
 				$ChunkData .= fread($fd, GETID3_FREAD_BUFFER_SIZE - 8);
 				fseek($fd, $thisfile_real_chunks_currentchunk['offset'] + $ChunkSize, SEEK_SET);
 
-			} elseif(($ChunkSize - 8) > 0) {
-                
+			} else {
+
 				$ChunkData .= fread($fd, $ChunkSize - 8);
 
 			}

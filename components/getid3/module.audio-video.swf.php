@@ -18,7 +18,6 @@ class getid3_swf
 {
 
 	function getid3_swf(&$fd, &$ThisFileInfo, $ReturnAllTagData=false) {
-//$start_time = microtime(true);
 		$ThisFileInfo['fileformat']          = 'swf';
 		$ThisFileInfo['video']['dataformat'] = 'swf';
 
@@ -26,6 +25,7 @@ class getid3_swf
 
 		fseek($fd, $ThisFileInfo['avdataoffset'], SEEK_SET);
 
+//echo 'reading '.($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']).' bytes<br>';
 		$SWFfileData = fread($fd, $ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']); // 8 + 2 + 2 + max(9) bytes NOT including Frame_Size RECT data
 
 		$ThisFileInfo['swf']['header']['signature']  = substr($SWFfileData, 0, 3);
@@ -48,25 +48,31 @@ class getid3_swf
 		$ThisFileInfo['swf']['header']['version'] = getid3_lib::LittleEndian2Int(substr($SWFfileData, 3, 1));
 		$ThisFileInfo['swf']['header']['length']  = getid3_lib::LittleEndian2Int(substr($SWFfileData, 4, 4));
 
-//echo __LINE__.'='.number_format(microtime(true) - $start_time, 3).'<br>';
-
+//echo '1<br>';
 		if ($ThisFileInfo['swf']['header']['compressed']) {
 
-			$SWFHead     = substr($SWFfileData, 0, 8);
-			$SWFfileData = substr($SWFfileData, 8);
-			if ($decompressed = @gzuncompress($SWFfileData)) {
+//echo '2<br>';
+//			$foo = substr($SWFfileData, 8, 4096);
+//			echo '['.strlen($foo).']<br>';
+//			$fee = gzuncompress($foo);
+//			echo '('.strlen($fee).')<br>';
+//return false;
+//echo '<br>time: '.time().'<br>';
+//return false;
+			if ($UncompressedFileData = gzuncompress(substr($SWFfileData, 8))) {
 
-				$SWFfileData = $SWFHead.$decompressed;
+//echo '3<br>';
+				$SWFfileData = substr($SWFfileData, 0, 8).$UncompressedFileData;
 
 			} else {
 
-				$ThisFileInfo['error'][] = 'Error decompressing compressed SWF data ('.strlen($SWFfileData).' bytes compressed, should be '.($ThisFileInfo['swf']['header']['length'] - 8).' bytes uncompressed)';
+//echo '4<br>';
+				$ThisFileInfo['error'][] = 'Error decompressing compressed SWF data';
 				return false;
 
 			}
 
 		}
-//echo __LINE__.'='.number_format(microtime(true) - $start_time, 3).'<br>';
 
 		$FrameSizeBitsPerValue = (ord(substr($SWFfileData, 8, 1)) & 0xF8) >> 3;
 		$FrameSizeDataLength   = ceil((5 + (4 * $FrameSizeBitsPerValue)) / 8);
@@ -96,7 +102,6 @@ class getid3_swf
 		if (($ThisFileInfo['swf']['header']['frame_count'] > 0) && ($ThisFileInfo['swf']['header']['frame_rate'] > 0)) {
 			$ThisFileInfo['playtime_seconds'] = $ThisFileInfo['swf']['header']['frame_count'] / $ThisFileInfo['swf']['header']['frame_rate'];
 		}
-//echo __LINE__.'='.number_format(microtime(true) - $start_time, 3).'<br>';
 
 
 		// SWF tags
@@ -105,7 +110,6 @@ class getid3_swf
 		$SWFdataLength = strlen($SWFfileData);
 
 		while ($CurrentOffset < $SWFdataLength) {
-//echo __LINE__.'='.number_format(microtime(true) - $start_time, 3).'<br>';
 
 			$TagIDTagLength = getid3_lib::LittleEndian2Int(substr($SWFfileData, $CurrentOffset, 2));
 			$TagID     = ($TagIDTagLength & 0xFFFC) >> 6;

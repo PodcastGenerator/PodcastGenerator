@@ -76,7 +76,6 @@ class getid3_midi
 			$ThisFileInfo['playtime_seconds'] = 0;
 			$CurrentMicroSecondsPerBeat       = 500000; // 120 beats per minute;  60,000,000 microseconds per minute -> 500,000 microseconds per beat
 			$CurrentBeatsPerMinute            = 120;    // 120 beats per minute;  60,000,000 microseconds per minute -> 500,000 microseconds per beat
-			$MicroSecondsPerQuarterNoteAfter  = array ();
 
 			foreach ($trackdataarray as $tracknumber => $trackdata) {
 
@@ -305,9 +304,8 @@ class getid3_midi
 
 			}
 		}
-		
 
-		if (@$ThisFileInfo['playtime_seconds'] > 0) {
+		if ($ThisFileInfo['playtime_seconds'] > 0) {
 			$ThisFileInfo['bitrate'] = (($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) * 8) / $ThisFileInfo['playtime_seconds'];
 		}
 
