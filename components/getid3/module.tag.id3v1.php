@@ -19,11 +19,6 @@ class getid3_id3v1
 
 	function getid3_id3v1(&$fd, &$ThisFileInfo) {
 
-		if ($ThisFileInfo['filesize'] >= pow(2, 31)) {
-			$ThisFileInfo['warning'][] = 'Unable to check for ID3v1 because file is larger than 2GB';
-			return false;
-		}
-
 		fseek($fd, -256, SEEK_END);
 		$preid3v1 = fread($fd, 128);
 		$id3v1tag = fread($fd, 128);
@@ -65,7 +60,7 @@ class getid3_id3v1
 											$ParsedID3v1['artist'],
 											$ParsedID3v1['album'],
 											$ParsedID3v1['year'],
-											(isset($ParsedID3v1['genre']) ? $this->LookupGenreID($ParsedID3v1['genre']) : false),
+											$this->LookupGenreID(@$ParsedID3v1['genre']),
 											$ParsedID3v1['comment'],
 											@$ParsedID3v1['track']);
 			$ParsedID3v1['padding_valid'] = true;
@@ -101,11 +96,11 @@ class getid3_id3v1
 		return true;
 	}
 
-	static function cutfield($str) {
+	function cutfield($str) {
 		return trim(substr($str, 0, strcspn($str, "\x00")));
 	}
 
-	static function ArrayOfGenres($allowSCMPXextended=false) {
+	function ArrayOfGenres($allowSCMPXextended=false) {
 		static $GenreLookup = array(
 			0    => 'Blues',
 			1    => 'Classic Rock',
@@ -289,15 +284,12 @@ class getid3_id3v1
 		return ($allowSCMPXextended ? $GenreLookupSCMPX : $GenreLookup);
 	}
 
-	static function LookupGenreName($genreid, $allowSCMPXextended=true) {
+	function LookupGenreName($genreid, $allowSCMPXextended=true) {
 		switch ($genreid) {
 			case 'RX':
 			case 'CR':
 				break;
 			default:
-				if (!is_numeric($genreid)) {
-					return false;
-				}
 				$genreid = intval($genreid); // to handle 3 or '3' or '03'
 				break;
 		}
@@ -305,18 +297,21 @@ class getid3_id3v1
 		return (isset($GenreLookup[$genreid]) ? $GenreLookup[$genreid] : false);
 	}
 
-	static function LookupGenreID($genre, $allowSCMPXextended=false) {
+	function LookupGenreID($genre, $allowSCMPXextended=false) {
 		$GenreLookup = getid3_id3v1::ArrayOfGenres($allowSCMPXextended);
 		$LowerCaseNoSpaceSearchTerm = strtolower(str_replace(' ', '', $genre));
 		foreach ($GenreLookup as $key => $value) {
-			if (strtolower(str_replace(' ', '', $value)) == $LowerCaseNoSpaceSearchTerm) {
-				return $key;
+			foreach ($GenreLookup as $key => $value) {
+				if (strtolower(str_replace(' ', '', $value)) == $LowerCaseNoSpaceSearchTerm) {
+					return $key;
+				}
 			}
+			return false;
 		}
-		return false;
+		return (isset($GenreLookup[$genreid]) ? $GenreLookup[$genreid] : false);
 	}
 
-	static function StandardiseID3v1GenreName($OriginalGenre) {
+	function StandardiseID3v1GenreName($OriginalGenre) {
 		if (($GenreID = getid3_id3v1::LookupGenreID($OriginalGenre)) !== false) {
 			return getid3_id3v1::LookupGenreName($GenreID);
 		}

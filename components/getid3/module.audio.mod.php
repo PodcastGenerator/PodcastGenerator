@@ -39,7 +39,7 @@ class getid3_mod
 
 		fseek($fd, $ThisFileInfo['avdataoffset'] + 1080);
 		$FormatID = fread($fd, 4);
-		if (!preg_match('#^(M.K.|[5-9]CHN|[1-3][0-9]CH)$#', $FormatID)) {
+		if (!ereg('^(M.K.|[5-9]CHN|[1-3][0-9]CH)$', $FormatID)) {
 			$ThisFileInfo['error'][] = 'This is not a known type of MOD file';
 			return false;
 		}
@@ -54,7 +54,7 @@ class getid3_mod
 
 		fseek($fd, $ThisFileInfo['avdataoffset']);
 		$FormatID = fread($fd, 15);
-		if (!preg_match('#^Extended Module$#', $FormatID)) {
+		if (!ereg('^Extended Module$', $FormatID)) {
 			$ThisFileInfo['error'][] = 'This is not a known type of XM-MOD file';
 			return false;
 		}
@@ -69,7 +69,7 @@ class getid3_mod
 
 		fseek($fd, $ThisFileInfo['avdataoffset'] + 44);
 		$FormatID = fread($fd, 4);
-		if (!preg_match('#^SCRM$#', $FormatID)) {
+		if (!ereg('^SCRM$', $FormatID)) {
 			$ThisFileInfo['error'][] = 'This is not a ScreamTracker MOD file';
 			return false;
 		}
@@ -84,7 +84,7 @@ class getid3_mod
 
 		fseek($fd, $ThisFileInfo['avdataoffset']);
 		$FormatID = fread($fd, 4);
-		if (!preg_match('#^IMPM$#', $FormatID)) {
+		if (!ereg('^IMPM$', $FormatID)) {
 			$ThisFileInfo['error'][] = 'This is not an ImpulseTracker MOD file';
 			return false;
 		}

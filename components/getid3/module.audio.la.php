@@ -180,7 +180,6 @@ class getid3_la
 							} else {
 								$ThisFileInfo['warning'][] = 'Error parsing RIFF portion of La file: '.implode($dummy['error']);
 							}
-							unset($riff);
 							unset($dummy);
 							fclose($RIFF_fp);
 						}

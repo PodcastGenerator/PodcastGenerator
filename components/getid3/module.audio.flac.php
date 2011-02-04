@@ -37,7 +37,7 @@ class getid3_flac
 	}
 
 
-	static function FLACparseMETAdata(&$fd, &$ThisFileInfo) {
+	function FLACparseMETAdata(&$fd, &$ThisFileInfo) {
 
 		do {
 			$METAdataBlockOffset          = ftell($fd);
@@ -65,46 +65,40 @@ class getid3_flac
 
 			switch ($METAdataBlockTypeText) {
 
-				case 'STREAMINFO':     // 0x00
+				case 'STREAMINFO':
 					if (!getid3_flac::FLACparseSTREAMINFO($ThisFileInfo_flac_METAdataBlockTypeText_raw['block_data'], $ThisFileInfo)) {
 						return false;
 					}
 					break;
 
-				case 'PADDING':        // 0x01
+				case 'PADDING':
 					// ignore
 					break;
 
-				case 'APPLICATION':    // 0x02
+				case 'APPLICATION':
 					if (!getid3_flac::FLACparseAPPLICATION($ThisFileInfo_flac_METAdataBlockTypeText_raw['block_data'], $ThisFileInfo)) {
 						return false;
 					}
 					break;
 
-				case 'SEEKTABLE':      // 0x03
+				case 'SEEKTABLE':
 					if (!getid3_flac::FLACparseSEEKTABLE($ThisFileInfo_flac_METAdataBlockTypeText_raw['block_data'], $ThisFileInfo)) {
 						return false;
 					}
 					break;
 
-				case 'VORBIS_COMMENT': // 0x04
+				case 'VORBIS_COMMENT':
 					$OldOffset = ftell($fd);
 					fseek($fd, 0 - $METAdataBlockLength, SEEK_CUR);
 					getid3_ogg::ParseVorbisCommentsFilepointer($fd, $ThisFileInfo);
 					fseek($fd, $OldOffset, SEEK_SET);
 					break;
 
-				case 'CUESHEET':       // 0x05
+				case 'CUESHEET':
 					if (!getid3_flac::FLACparseCUESHEET($ThisFileInfo_flac_METAdataBlockTypeText_raw['block_data'], $ThisFileInfo)) {
 						return false;
 					}
 					break;
-
-                case 'PICTURE':        // 0x06
-                    if (!getid3_flac::FLACparsePICTURE($ThisFileInfo_flac_METAdataBlockTypeText_raw['block_data'], $ThisFileInfo)) {
-                        return false;
-                    }
-                    break;
 
 				default:
 					$ThisFileInfo['warning'][] = 'Unhandled METADATA_BLOCK_HEADER.BLOCK_TYPE ('.$METAdataBlockType.') at offset '.$METAdataBlockOffset;
@@ -160,7 +154,7 @@ class getid3_flac
 		return true;
 	}
 
-	static function FLACmetaBlockTypeLookup($blocktype) {
+	function FLACmetaBlockTypeLookup($blocktype) {
 		static $FLACmetaBlockTypeLookup = array();
 		if (empty($FLACmetaBlockTypeLookup)) {
 			$FLACmetaBlockTypeLookup[0] = 'STREAMINFO';
@@ -169,12 +163,11 @@ class getid3_flac
 			$FLACmetaBlockTypeLookup[3] = 'SEEKTABLE';
 			$FLACmetaBlockTypeLookup[4] = 'VORBIS_COMMENT';
 			$FLACmetaBlockTypeLookup[5] = 'CUESHEET';
-			$FLACmetaBlockTypeLookup[6] = 'PICTURE';
 		}
 		return (isset($FLACmetaBlockTypeLookup[$blocktype]) ? $FLACmetaBlockTypeLookup[$blocktype] : 'reserved');
 	}
 
-	static function FLACapplicationIDLookup($applicationid) {
+	function FLACapplicationIDLookup($applicationid) {
 		static $FLACapplicationIDLookup = array();
 		if (empty($FLACapplicationIDLookup)) {
 			// http://flac.sourceforge.net/id.html
@@ -184,34 +177,7 @@ class getid3_flac
 		return (isset($FLACapplicationIDLookup[$applicationid]) ? $FLACapplicationIDLookup[$applicationid] : 'reserved');
 	}
 
-    static function FLACpictureTypeLookup($type_id) {
-        static $lookup = array (
-             0 => 'Other',
-             1 => '32x32 pixels \'file icon\' (PNG only)',
-             2 => 'Other file icon',
-             3 => 'Cover (front)',
-             4 => 'Cover (back)',
-             5 => 'Leaflet page',
-             6 => 'Media (e.g. label side of CD)',
-             7 => 'Lead artist/lead performer/soloist',
-             8 => 'Artist/performer',
-             9 => 'Conductor',
-            10 => 'Band/Orchestra',
-            11 => 'Composer',
-            12 => 'Lyricist/text writer',
-            13 => 'Recording Location',
-            14 => 'During recording',
-            15 => 'During performance',
-            16 => 'Movie/video screen capture',
-            17 => 'A bright coloured fish',
-            18 => 'Illustration',
-            19 => 'Band/artist logotype',
-            20 => 'Publisher/Studio logotype',
-        );
-        return (isset($lookup[$type_id]) ? $lookup[$type_id] : 'reserved');
-    }
-
-	static function FLACparseSTREAMINFO($METAdataBlockData, &$ThisFileInfo) {
+	function FLACparseSTREAMINFO($METAdataBlockData, &$ThisFileInfo) {
 		$offset = 0;
 		$ThisFileInfo['flac']['STREAMINFO']['min_block_size']  = getid3_lib::BigEndian2Int(substr($METAdataBlockData, $offset, 2));
 		$offset += 2;
@@ -239,9 +205,7 @@ class getid3_flac
 			$ThisFileInfo['audio']['channels']         = $ThisFileInfo['flac']['STREAMINFO']['channels'];
 			$ThisFileInfo['audio']['bits_per_sample']  = $ThisFileInfo['flac']['STREAMINFO']['bits_per_sample'];
 			$ThisFileInfo['playtime_seconds']          = $ThisFileInfo['flac']['STREAMINFO']['samples_stream'] / $ThisFileInfo['flac']['STREAMINFO']['sample_rate'];
-			if ($ThisFileInfo['playtime_seconds'] > 0) {
-				$ThisFileInfo['audio']['bitrate']      = (($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) * 8) / $ThisFileInfo['playtime_seconds'];
-			}
+			$ThisFileInfo['audio']['bitrate']          = (($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) * 8) / $ThisFileInfo['playtime_seconds'];
 
 		} else {
 
@@ -249,14 +213,11 @@ class getid3_flac
 			return false;
 
 		}
-
-		unset($ThisFileInfo['flac']['STREAMINFO']['raw']);
-
 		return true;
 	}
 
 
-	static function FLACparseAPPLICATION($METAdataBlockData, &$ThisFileInfo) {
+	function FLACparseAPPLICATION($METAdataBlockData, &$ThisFileInfo) {
 		$offset = 0;
 		$ApplicationID = getid3_lib::BigEndian2Int(substr($METAdataBlockData, $offset, 4));
 		$offset += 4;
@@ -264,13 +225,11 @@ class getid3_flac
 		$ThisFileInfo['flac']['APPLICATION'][$ApplicationID]['data'] = substr($METAdataBlockData, $offset);
 		$offset = $METAdataBlockLength;
 
-		unset($ThisFileInfo['flac']['APPLICATION']['raw']);
-
 		return true;
 	}
 
 
-	static function FLACparseSEEKTABLE($METAdataBlockData, &$ThisFileInfo) {
+	function FLACparseSEEKTABLE($METAdataBlockData, &$ThisFileInfo) {
 		$offset = 0;
 		$METAdataBlockLength = strlen($METAdataBlockData);
 		$placeholderpattern = str_repeat("\xFF", 8);
@@ -293,13 +252,10 @@ class getid3_flac
 
 			}
 		}
-
-		unset($ThisFileInfo['flac']['SEEKTABLE']['raw']);
-
 		return true;
 	}
 
-	static function FLACparseCUESHEET($METAdataBlockData, &$ThisFileInfo) {
+	function FLACparseCUESHEET($METAdataBlockData, &$ThisFileInfo) {
 		$offset = 0;
 		$ThisFileInfo['flac']['CUESHEET']['media_catalog_number'] =          trim(substr($METAdataBlockData, $offset, 128), "\0");
 		$offset += 128;
@@ -345,57 +301,9 @@ class getid3_flac
 				$ThisFileInfo['flac']['CUESHEET']['tracks'][$TrackNumber]['indexes'][$IndexNumber] = $IndexSampleOffset;
 			}
 		}
-
-		unset($ThisFileInfo['flac']['CUESHEET']['raw']);
-
 		return true;
 	}
 
-
-    static function FLACparsePICTURE($meta_data_block_data, &$ThisFileInfo) {
-        $picture = &$ThisFileInfo['flac']['PICTURE'][sizeof($ThisFileInfo['flac']['PICTURE']) - 1];
-
-        $offset = 0;
-
-        $picture['typeid'] = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $picture['type'] = getid3_flac::FLACpictureTypeLookup($picture['typeid']);
-        $offset += 4;
-
-        $length = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['mime_type'] = substr($meta_data_block_data, $offset, $length);
-        $offset += $length;
-
-        $length = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['description'] = substr($meta_data_block_data, $offset, $length);
-        $offset += $length;
-
-        $picture['width'] = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['height'] = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['color_depth'] = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['colors_indexed'] = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $length = getid3_lib::BigEndian2Int(substr($meta_data_block_data, $offset, 4));
-        $offset += 4;
-
-        $picture['image_data'] = substr($meta_data_block_data, $offset, $length);
-        $offset += $length;
-        $picture['data_length'] = strlen($picture['image_data']);
-
-        unset($ThisFileInfo['flac']['PICTURE']['raw']);
-
-        return true;
-    }
 }
 
 ?>
