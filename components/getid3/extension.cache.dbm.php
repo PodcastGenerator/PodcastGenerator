@@ -82,7 +82,7 @@ class getID3_cached_dbm extends getID3
 
 		// Check for specific dba driver
 		if (function_exists('dba_handlers')) {  // PHP 4.3.0+
-			if (!in_array('db3', dba_handlers())) {
+			if (!in_array($cache_type, dba_handlers())) {
 				die('PHP is not compiled --with '.$cache_type.' support, required to use DBM style cache.');
 			}
 		}
@@ -99,13 +99,13 @@ class getID3_cached_dbm extends getID3
 		// Create lock file if needed
 		if (!file_exists($lock_filename)) {
 			if (!touch($lock_filename)) {
-				die('failed to create lock file: ' . $lock_filename);
+				die('failed to create lock file: '.$lock_filename);
 			}
 		}
 
 		// Open lock file for writing
 		if (!is_writeable($lock_filename)) {
-			die('lock file: ' . $lock_filename . ' is not writable');
+			die('lock file: '.$lock_filename.' is not writable');
 		}
 		$this->lock = fopen($lock_filename, 'w');
 
@@ -115,7 +115,7 @@ class getID3_cached_dbm extends getID3
 		// Create dbm-file if needed
 		if (!file_exists($dbm_filename)) {
 			if (!touch($dbm_filename)) {
-				die('failed to create dbm file: ' . $dbm_filename);
+				die('failed to create dbm file: '.$dbm_filename);
 			}
 		}
 
@@ -127,7 +127,7 @@ class getID3_cached_dbm extends getID3
 			$this->dba = dba_open($dbm_filename, 'n', $cache_type);
 
 			if (!$this->dba) {
-				die('failed to create dbm file: ' . $dbm_filename);
+				die('failed to create dbm file: '.$dbm_filename);
 			}
 
 			// Insert getID3 version number
@@ -176,13 +176,13 @@ class getID3_cached_dbm extends getID3
 		$this->dba = dba_open($this->dbm_filename, 'n', $this->cache_type);
 
 		if (!$this->dba) {
-			die('failed to clear cache/recreate dbm file: ' . $this->dbm_filename);
+			die('failed to clear cache/recreate dbm file: '.$this->dbm_filename);
 		}
 
 		// Insert getID3 version number
 		dba_insert(GETID3_VERSION, GETID3_VERSION, $this->dba);
 
-		// Reregister shutdown function
+		// Re-register shutdown function
 		register_shutdown_function(array($this, '__destruct'));
 	}
 
@@ -194,7 +194,7 @@ class getID3_cached_dbm extends getID3
 		if (file_exists($filename)) {
 
 			// Calc key     filename::mod_time::size    - should be unique
-			$key = $filename . '::' . filemtime($filename) . '::' . filesize($filename);
+			$key = $filename.'::'.filemtime($filename).'::'.filesize($filename);
 
 			// Loopup key
 			$result = dba_fetch($key, $this->dba);

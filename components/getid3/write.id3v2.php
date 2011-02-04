@@ -40,6 +40,11 @@ class getid3_write_id3v2
 			// Initialize getID3 engine
 			$getID3 = new getID3;
 			$OldThisFileInfo = $getID3->analyze($this->filename);
+			if ($OldThisFileInfo['filesize'] >= pow(2, 31)) {
+				$this->errors[] = 'Unable to write ID3v2 because file is larger than 2GB';
+				fclose($fp_source);
+				return false;
+			}
 			if ($this->merge_existing_data) {
 				// merge with existing data
 				if (!empty($OldThisFileInfo['id3v2'])) {
@@ -81,7 +86,7 @@ class getid3_write_id3v2
 
 				} else {
 
-					if ($tempfilename = tempnam('*', 'getID3')) {
+					if ($tempfilename = tempnam((function_exists('sys_get_temp_dir') ? sys_get_temp_dir() : ini_get('upload_tmp_dir')), 'getID3')) {
 						ob_start();
 						if ($fp_source = fopen($this->filename, 'rb')) {
 							if ($fp_temp = fopen($tempfilename, 'wb')) {
@@ -139,7 +144,6 @@ class getid3_write_id3v2
 	}
 
 	function RemoveID3v2() {
-
 		// File MUST be writeable - CHMOD(646) at least. It's best if the
 		// directory is also writeable, because that method is both faster and less susceptible to errors.
 		if (is_writeable(dirname($this->filename))) {
@@ -150,6 +154,11 @@ class getid3_write_id3v2
 				// Initialize getID3 engine
 				$getID3 = new getID3;
 				$OldThisFileInfo = $getID3->analyze($this->filename);
+				if ($OldThisFileInfo['filesize'] >= pow(2, 31)) {
+					$this->errors[] = 'Unable to remove ID3v2 because file is larger than 2GB';
+					fclose($fp_source);
+					return false;
+				}
 				rewind($fp_source);
 				if ($OldThisFileInfo['avdataoffset'] !== false) {
 					fseek($fp_source, $OldThisFileInfo['avdataoffset'], SEEK_SET);
@@ -179,6 +188,11 @@ class getid3_write_id3v2
 				// Initialize getID3 engine
 				$getID3 = new getID3;
 				$OldThisFileInfo = $getID3->analyze($this->filename);
+				if ($OldThisFileInfo['filesize'] >= pow(2, 31)) {
+					$this->errors[] = 'Unable to remove ID3v2 because file is larger than 2GB';
+					fclose($fp_source);
+					return false;
+				}
 				rewind($fp_source);
 				if ($OldThisFileInfo['avdataoffset'] !== false) {
 					fseek($fp_source, $OldThisFileInfo['avdataoffset'], SEEK_SET);
@@ -1866,15 +1880,15 @@ class getid3_write_id3v2
 		if ($parts = $this->safe_parse_url($url)) {
 			if (($parts['scheme'] != 'http') && ($parts['scheme'] != 'https') && ($parts['scheme'] != 'ftp') && ($parts['scheme'] != 'gopher')) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]]([-.]?[0-9a-z])*\.[a-z]{2,3}$", $parts['host'], $regs) && !IsValidDottedIP($parts['host'])) {
+			} elseif (!preg_match("#^[[:alnum:]]([-.]?[0-9a-z])*\.[a-z]{2,3}#i$", $parts['host'], $regs) && !IsValidDottedIP($parts['host'])) {
 				return false;
-			} elseif (!eregi("^([[:alnum:]-]|[\_])*$", $parts['user'], $regs)) {
+			} elseif (!preg_match("#^([[:alnum:]-]|[\_])*$#i", $parts['user'], $regs)) {
 				return false;
-			} elseif (!eregi("^([[:alnum:]-]|[\_])*$", $parts['pass'], $regs)) {
+			} elseif (!preg_match("#^([[:alnum:]-]|[\_])*$#i", $parts['pass'], $regs)) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]/_\.@~-]*$", $parts['path'], $regs)) {
+			} elseif (!preg_match("#^[[:alnum:]/_\.@~-]*$#i", $parts['path'], $regs)) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]?&=+:;_()%#/,\.-]*$", $parts['query'], $regs)) {
+			} elseif (!preg_match("#^[[:alnum:]?&=+:;_()%#/,\.-]*$#i", $parts['query'], $regs)) {
 				return false;
 			} else {
 				return true;
@@ -1894,6 +1908,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[2]['beats_per_minute']                                 = 'TBP';
 			$ID3v2ShortFrameNameLookup[2]['composer']                                         = 'TCM';
 			$ID3v2ShortFrameNameLookup[2]['genre']                                            = 'TCO';
+			$ID3v2ShortFrameNameLookup[2]['itunescompilation']                                = 'TCP';
 			$ID3v2ShortFrameNameLookup[2]['copyright']                                        = 'TCR';
 			$ID3v2ShortFrameNameLookup[2]['encoded_by']                                       = 'TEN';
 			$ID3v2ShortFrameNameLookup[2]['language']                                         = 'TLA';
@@ -1949,6 +1964,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[3]['synchronised_tempo_codes']                         = 'SYTC';
 			$ID3v2ShortFrameNameLookup[3]['album']                                            = 'TALB';
 			$ID3v2ShortFrameNameLookup[3]['beats_per_minute']                                 = 'TBPM';
+			$ID3v2ShortFrameNameLookup[3]['itunescompilation']                                = 'TCMP';
 			$ID3v2ShortFrameNameLookup[3]['composer']                                         = 'TCOM';
 			$ID3v2ShortFrameNameLookup[3]['genre']                                            = 'TCON';
 			$ID3v2ShortFrameNameLookup[3]['copyright']                                        = 'TCOP';
@@ -1972,7 +1988,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[3]['band']                                             = 'TPE2';
 			$ID3v2ShortFrameNameLookup[3]['conductor']                                        = 'TPE3';
 			$ID3v2ShortFrameNameLookup[3]['remixer']                                          = 'TPE4';
-			$ID3v2ShortFrameNameLookup[3]['part_of_set']                                      = 'TPOS';
+			$ID3v2ShortFrameNameLookup[3]['part_of_a_set']                                    = 'TPOS';
 			$ID3v2ShortFrameNameLookup[3]['publisher']                                        = 'TPUB';
 			$ID3v2ShortFrameNameLookup[3]['tracknumber']                                      = 'TRCK';
 			$ID3v2ShortFrameNameLookup[3]['internet_radio_station_name']                      = 'TRSN';

@@ -29,11 +29,21 @@ class getid3_quicktime
 		$atomcounter = 0;
 
 		while ($offset < $ThisFileInfo['avdataend']) {
+			if ($offset >= pow(2, 31)) {
+				$ThisFileInfo['error'][] = 'Unable to parse atom at offset '.$offset.' because beyond 2GB limit of PHP filesystem functions';
+				break;
+			}
 			fseek($fd, $offset, SEEK_SET);
 			$AtomHeader = fread($fd, 8);
 
 			$atomsize = getid3_lib::BigEndian2Int(substr($AtomHeader, 0, 4));
-			$atomname =               substr($AtomHeader, 4, 4);
+			$atomname = substr($AtomHeader, 4, 4);
+
+			// 64-bit MOV patch by jlegateØktnc*com
+			if ($atomsize == 1) {
+				$atomsize = getid3_lib::BigEndian2Int(fread($fd, 8));
+			}
+
 			$ThisFileInfo['quicktime'][$atomname]['name']   = $atomname;
 			$ThisFileInfo['quicktime'][$atomname]['size']   = $atomsize;
 			$ThisFileInfo['quicktime'][$atomname]['offset'] = $offset;
@@ -105,7 +115,17 @@ class getid3_quicktime
 		if (isset($ThisFileInfo['bitrate']) && !isset($ThisFileInfo['audio']['bitrate']) && !isset($ThisFileInfo['quicktime']['video'])) {
 			$ThisFileInfo['audio']['bitrate'] = $ThisFileInfo['bitrate'];
 		}
-
+		if (@$ThisFileInfo['playtime_seconds'] && !isset($ThisFileInfo['video']['frame_rate']) && !empty($ThisFileInfo['quicktime']['stts_framecount'])) {
+			foreach ($ThisFileInfo['quicktime']['stts_framecount'] as $key => $samples_count) {
+				$samples_per_second = $samples_count / $ThisFileInfo['playtime_seconds'];
+				if ($samples_per_second > 240) {
+					// has to be audio samples
+				} else {
+					$ThisFileInfo['video']['frame_rate'] = $samples_per_second;
+					break;
+				}
+			}
+		}
 		if (($ThisFileInfo['audio']['dataformat'] == 'mp4') && empty($ThisFileInfo['video']['resolution_x'])) {
 			$ThisFileInfo['fileformat'] = 'mp4';
 			$ThisFileInfo['mime_type']  = 'audio/mp4';
@@ -129,12 +149,12 @@ class getid3_quicktime
 	function QuicktimeParseAtom($atomname, $atomsize, $atomdata, &$ThisFileInfo, $baseoffset, &$atomHierarchy, $ParseAllPossibleAtoms) {
 		// http://developer.apple.com/techpubs/quicktime/qtdevdocs/APIREF/INDEX/atomalphaindex.htm
 
+		$atomparent = array_pop($atomHierarchy);
 		array_push($atomHierarchy, $atomname);
 		$atomstructure['hierarchy'] = implode(' ', $atomHierarchy);
 		$atomstructure['name']      = $atomname;
 		$atomstructure['size']      = $atomsize;
 		$atomstructure['offset']    = $baseoffset;
-
 		switch ($atomname) {
 			case 'moov': // MOVie container atom
 			case 'trak': // TRAcK container atom
@@ -146,17 +166,96 @@ class getid3_quicktime
 			case 'minf': // Media INFormation container atom
 			case 'dinf': // Data INFormation container atom
 			case 'udta': // User DaTA container atom
-			case 'stbl': // Sample TaBLe container atom
 			case 'cmov': // Compressed MOVie container atom
 			case 'rmra': // Reference Movie Record Atom
 			case 'rmda': // Reference Movie Descriptor Atom
 			case 'gmhd': // Generic Media info HeaDer atom (seen on QTVR)
+			case 'ilst': // Item LiST container atom
 				$atomstructure['subatoms'] = $this->QuicktimeParseContainerAtom($atomdata, $ThisFileInfo, $baseoffset + 8, $atomHierarchy, $ParseAllPossibleAtoms);
 				break;
 
+			case 'stbl': // Sample TaBLe container atom
+				$atomstructure['subatoms'] = $this->QuicktimeParseContainerAtom($atomdata, $ThisFileInfo, $baseoffset + 8, $atomHierarchy, $ParseAllPossibleAtoms);
+				$isVideo = false;
+				$framerate  = 0;
+				$framecount = 0;
+				foreach ($atomstructure['subatoms'] as $key => $value_array) {
+					if (isset($value_array['sample_description_table'])) {
+						foreach ($value_array['sample_description_table'] as $key2 => $value_array2) {
+							if (isset($value_array2['data_format'])) {
+								switch ($value_array2['data_format']) {
+									case 'avc1':
+									case 'mp4v':
+										// video data
+										$isVideo = true;
+										break;
+									case 'mp4a':
+										// audio data
+										break;
+								}
+							}
+						}
+					} elseif (isset($value_array['time_to_sample_table'])) {
+						foreach ($value_array['time_to_sample_table'] as $key2 => $value_array2) {
+							if (isset($value_array2['sample_count']) && isset($value_array2['sample_duration'])) {
+								$framerate  = round($ThisFileInfo['quicktime']['time_scale'] / $value_array2['sample_duration'], 3);
+								$framecount = $value_array2['sample_count'];
+							}
+						}
+					}
+				}
+				if ($isVideo && $framerate) {
+					$ThisFileInfo['quicktime']['video']['frame_rate'] = $framerate;
+					$ThisFileInfo['video']['frame_rate'] = $ThisFileInfo['quicktime']['video']['frame_rate'];
+				}
+				if ($isVideo && $framecount) {
+					$ThisFileInfo['quicktime']['video']['frame_count'] = $framecount;
+				}
+				break;
 
+
+            case 'aART': // Album ARTist
+			case 'catg': // CaTeGory
+			case 'covr': // COVeR artwork
+			case 'cpil': // ComPILation
+			case 'cprt': // CoPyRighT
+			case 'desc': // DESCription
+			case 'disk': // DISK number
+			case 'egid': // Episode Global ID
+			case 'gnre': // GeNRE
+			case 'keyw': // KEYWord
+			case 'ldes':
+			case 'pcst': // PodCaST
+			case 'pgap': // GAPless Playback
+			case 'purd': // PURchase Date
+			case 'purl': // Podcast URL
+			case 'rati':
+			case 'rndu':
+			case 'rpdu':
+			case 'rtng': // RaTiNG
+			case 'stik':
+			case 'tmpo': // TeMPO (BPM)
+			case 'trkn': // TRacK Number
+			case 'tves': // TV EpiSode
+			case 'tvnn': // TV Network Name
+			case 'tvsh': // TV SHow Name
+			case 'tvsn': // TV SeasoN
+			case 'akID': // iTunes store account type
+			case 'apID':
+			case 'atID':
+			case 'cmID':
+			case 'cnID':
+			case 'geID':
+			case 'plID':
+			case 'sfID': // iTunes store country
+			case '©alb': // ALBum
+			case '©art': // ARTist
+			case '©ART':
+			case '©aut':
+			case '©cmt': // CoMmenT
+			case '©com': // COMposer
 			case '©cpy':
-			case '©day':
+			case '©day': // content created year
 			case '©dir':
 			case '©ed1':
 			case '©ed2':
@@ -167,39 +266,126 @@ class getid3_quicktime
 			case '©ed7':
 			case '©ed8':
 			case '©ed9':
+			case '©enc':
 			case '©fmt':
+			case '©gen': // GENre
+			case '©grp': // GRouPing
+			case '©hst':
 			case '©inf':
+			case '©lyr': // LYRics
+			case '©mak':
+			case '©mod':
+			case '©nam': // full NAMe
+			case '©ope':
+			case '©PRD':
 			case '©prd':
 			case '©prf':
 			case '©req':
 			case '©src':
-			case '©wrt':
-			case '©nam':
-			case '©cmt':
-			case '©wrn':
-			case '©hst':
-			case '©mak':
-			case '©mod':
-			case '©PRD':
 			case '©swr':
-			case '©aut':
-			case '©ART':
-			case '©trk':
-			case '©alb':
-			case '©com':
-			case '©gen':
-			case '©ope':
+			case '©too': // encoder
+			case '©trk': // TRacK
 			case '©url':
-			case '©enc':
-				$atomstructure['data_length'] = getid3_lib::BigEndian2Int(substr($atomdata,  0, 2));
-				$atomstructure['language_id'] = getid3_lib::BigEndian2Int(substr($atomdata,  2, 2));
-				$atomstructure['data']        =                           substr($atomdata,  4);
+			case '©wrn':
+			case '©wrt': // WRiTer
+			case '----': // itunes specific
+				if ($atomparent == 'udta') {
+					// User data atom handler
+					$atomstructure['data_length'] = getid3_lib::BigEndian2Int(substr($atomdata,  0, 2));
+					$atomstructure['language_id'] = getid3_lib::BigEndian2Int(substr($atomdata,  2, 2));
+					$atomstructure['data']        =                           substr($atomdata,  4);
 
-				$atomstructure['language']    = $this->QuicktimeLanguageLookup($atomstructure['language_id']);
-				if (empty($ThisFileInfo['comments']['language']) || (!in_array($atomstructure['language'], $ThisFileInfo['comments']['language']))) {
-					$ThisFileInfo['comments']['language'][] = $atomstructure['language'];
+					$atomstructure['language']    = $this->QuicktimeLanguageLookup($atomstructure['language_id']);
+					if (empty($ThisFileInfo['comments']['language']) || (!in_array($atomstructure['language'], $ThisFileInfo['comments']['language']))) {
+						$ThisFileInfo['comments']['language'][] = $atomstructure['language'];
+					}
+				} else {
+					// Apple item list box atom handler
+					$atomoffset = 0;
+					while ($atomoffset < strlen($atomdata)) {
+						$boxsize = getid3_lib::BigEndian2Int(substr($atomdata, $atomoffset, 4));
+						$boxtype =                           substr($atomdata, $atomoffset + 4, 4);
+						$boxdata =                           substr($atomdata, $atomoffset + 8, $boxsize - 8);
+
+						switch ($boxtype) {
+							case 'mean':
+							case 'name':
+								$atomstructure[$boxtype] = substr($boxdata, 4);
+								break;
+
+							case 'data':
+								$atomstructure['version']   = getid3_lib::BigEndian2Int(substr($boxdata,  0, 1));
+								$atomstructure['flags_raw'] = getid3_lib::BigEndian2Int(substr($boxdata,  1, 3));
+								switch ($atomstructure['flags_raw']) {
+									case 0:  // data flag
+									case 21: // tmpo/cpil flag
+										switch ($atomname) {
+											case 'cpil':
+											case 'pcst':
+											case 'pgap':
+												$atomstructure['data'] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 1));
+												break;
+
+											case 'tmpo':
+												$atomstructure['data'] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 2));
+												break;
+
+											case 'disk':
+											case 'trkn':
+												$num       = getid3_lib::BigEndian2Int(substr($boxdata, 10, 2));
+												$num_total = getid3_lib::BigEndian2Int(substr($boxdata, 12, 2));
+												$atomstructure['data']  = empty($num) ? '' : $num;
+												$atomstructure['data'] .= empty($num_total) ? '' : '/'.$num_total;
+												break;
+
+											case 'gnre':
+												$GenreID = getid3_lib::BigEndian2Int(substr($boxdata, 8, 4));
+												$atomstructure['data']    = getid3_id3v1::LookupGenreName($GenreID - 1);
+												break;
+
+											case 'rtng':
+												$atomstructure[$atomname] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 1));
+												$atomstructure['data']    = $this->QuicktimeContentRatingLookup($atomstructure[$atomname]);
+												break;
+
+											case 'stik':
+												$atomstructure[$atomname] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 1));
+												$atomstructure['data']    = $this->QuicktimeSTIKLookup($atomstructure[$atomname]);
+												break;
+
+											case 'sfID':
+												$atomstructure[$atomname] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 4));
+												$atomstructure['data']    = $this->QuicktimeStoreFrontCodeLookup($atomstructure[$atomname]);
+												break;
+
+											case 'egid':
+											case 'purl':
+												$atomstructure['data'] = substr($boxdata, 8);
+												break;
+
+											default:
+												$atomstructure['data'] = getid3_lib::BigEndian2Int(substr($boxdata, 8, 4));
+										}
+										break;
+
+									case 1:  // text flag
+									case 13: // image flag
+									default:
+										$atomstructure['data'] = substr($boxdata, 8);
+										break;
+
+								}
+								break;
+
+							default:
+								$ThisFileInfo['warning'][] = 'Unknown QuickTime box type: "'.$boxtype.'" at offset '.$baseoffset;
+								$atomstructure['data'] = $atomdata;
+
+						}
+						$atomoffset += $boxsize;
+					}
 				}
-				$this->CopyToAppropriateCommentsSection($atomname, $atomstructure['data'], $ThisFileInfo);
+				$this->CopyToAppropriateCommentsSection($atomname, $atomstructure['data'], $ThisFileInfo, $atomstructure['name']);
 				break;
 
 
@@ -396,9 +582,11 @@ class getid3_quicktime
 							$atomstructure['sample_description_table'][$i]['audio_sample_rate']    = getid3_lib::FixedPoint16_16(substr($atomstructure['sample_description_table'][$i]['data'], 16,  4));
 
 							switch ($atomstructure['sample_description_table'][$i]['data_format']) {
+								case 'avc1':
 								case 'mp4v':
 									$ThisFileInfo['fileformat'] = 'mp4';
-									$ThisFileInfo['error'][] = 'This version ('.GETID3_VERSION.') of getID3() does not fully support MPEG-4 audio/video streams';
+									$ThisFileInfo['video']['fourcc'] = $atomstructure['sample_description_table'][$i]['data_format'];
+									$ThisFileInfo['warning'][] = 'This version ('.GETID3_VERSION.') of getID3() does not fully support MPEG-4 audio/video streams';
 									break;
 
 								case 'qtvr':
@@ -508,44 +696,48 @@ class getid3_quicktime
 
 
 			case 'stts': // Sample Table Time-to-Sample atom
-				//if ($ParseAllPossibleAtoms) {
-					$atomstructure['version']        = getid3_lib::BigEndian2Int(substr($atomdata,  0, 1));
-					$atomstructure['flags_raw']      = getid3_lib::BigEndian2Int(substr($atomdata,  1, 3)); // hardcoded: 0x0000
-					$atomstructure['number_entries'] = getid3_lib::BigEndian2Int(substr($atomdata,  4, 4));
-					$sttsEntriesDataOffset = 8;
-					$FrameRateCalculatorArray = array();
-					for ($i = 0; $i < $atomstructure['number_entries']; $i++) {
-						$atomstructure['time_to_sample_table'][$i]['sample_count']    = getid3_lib::BigEndian2Int(substr($atomdata, $sttsEntriesDataOffset, 4));
-						$sttsEntriesDataOffset += 4;
-						$atomstructure['time_to_sample_table'][$i]['sample_duration'] = getid3_lib::BigEndian2Int(substr($atomdata, $sttsEntriesDataOffset, 4));
-						$sttsEntriesDataOffset += 4;
+				$atomstructure['version']        = getid3_lib::BigEndian2Int(substr($atomdata,  0, 1));
+				$atomstructure['flags_raw']      = getid3_lib::BigEndian2Int(substr($atomdata,  1, 3)); // hardcoded: 0x0000
+				$atomstructure['number_entries'] = getid3_lib::BigEndian2Int(substr($atomdata,  4, 4));
+				$sttsEntriesDataOffset = 8;
+				//$FrameRateCalculatorArray = array();
+				$frames_count = 0;
+				for ($i = 0; $i < $atomstructure['number_entries']; $i++) {
+					$atomstructure['time_to_sample_table'][$i]['sample_count']    = getid3_lib::BigEndian2Int(substr($atomdata, $sttsEntriesDataOffset, 4));
+					$sttsEntriesDataOffset += 4;
+					$atomstructure['time_to_sample_table'][$i]['sample_duration'] = getid3_lib::BigEndian2Int(substr($atomdata, $sttsEntriesDataOffset, 4));
+					$sttsEntriesDataOffset += 4;
 
-						if (!empty($ThisFileInfo['quicktime']['time_scale']) && (@$atomstructure['time_to_sample_table'][$i]['sample_duration'] > 0)) {
-							$stts_new_framerate = $ThisFileInfo['quicktime']['time_scale'] / $atomstructure['time_to_sample_table'][$i]['sample_duration'];
-							if ($stts_new_framerate <= 60) {
-								// some atoms have durations of "1" giving a very large framerate, which probably is not right
-								$ThisFileInfo['video']['frame_rate'] = max(@$ThisFileInfo['video']['frame_rate'], $stts_new_framerate);
-							}
-						}
-						//@$FrameRateCalculatorArray[($ThisFileInfo['quicktime']['time_scale'] / $atomstructure['time_to_sample_table'][$i]['sample_duration'])] += $atomstructure['time_to_sample_table'][$i]['sample_count'];
-					}
-					//$sttsFramesTotal  = 0;
-					//$sttsSecondsTotal = 0;
-					//foreach ($FrameRateCalculatorArray as $frames_per_second => $frame_count) {
-					//	if (($frames_per_second > 60) || ($frames_per_second < 1)) {
-					//		// not video FPS information, probably audio information
-					//		$sttsFramesTotal  = 0;
-					//		$sttsSecondsTotal = 0;
-					//		break;
-					//	}
-					//	$sttsFramesTotal  += $frame_count;
-					//	$sttsSecondsTotal += $frame_count / $frames_per_second;
-					//}
-					//if (($sttsFramesTotal > 0) && ($sttsSecondsTotal > 0)) {
-					//	if (($sttsFramesTotal / $sttsSecondsTotal) > @$ThisFileInfo['video']['frame_rate']) {
-					//		$ThisFileInfo['video']['frame_rate'] = $sttsFramesTotal / $sttsSecondsTotal;
+					$frames_count += $atomstructure['time_to_sample_table'][$i]['sample_count'];
+
+					// THIS SECTION REPLACED WITH CODE IN "stbl" ATOM
+					//if (!empty($ThisFileInfo['quicktime']['time_scale']) && (@$atomstructure['time_to_sample_table'][$i]['sample_duration'] > 0)) {
+					//	$stts_new_framerate = $ThisFileInfo['quicktime']['time_scale'] / $atomstructure['time_to_sample_table'][$i]['sample_duration'];
+					//	if ($stts_new_framerate <= 60) {
+					//		// some atoms have durations of "1" giving a very large framerate, which probably is not right
+					//		$ThisFileInfo['video']['frame_rate'] = max(@$ThisFileInfo['video']['frame_rate'], $stts_new_framerate);
 					//	}
 					//}
+                    //
+					//@$FrameRateCalculatorArray[($ThisFileInfo['quicktime']['time_scale'] / $atomstructure['time_to_sample_table'][$i]['sample_duration'])] += $atomstructure['time_to_sample_table'][$i]['sample_count'];
+				}
+				$ThisFileInfo['quicktime']['stts_framecount'][] = $frames_count;
+				//$sttsFramesTotal  = 0;
+				//$sttsSecondsTotal = 0;
+				//foreach ($FrameRateCalculatorArray as $frames_per_second => $frame_count) {
+				//	if (($frames_per_second > 60) || ($frames_per_second < 1)) {
+				//		// not video FPS information, probably audio information
+				//		$sttsFramesTotal  = 0;
+				//		$sttsSecondsTotal = 0;
+				//		break;
+				//	}
+				//	$sttsFramesTotal  += $frame_count;
+				//	$sttsSecondsTotal += $frame_count / $frames_per_second;
+				//}
+				//if (($sttsFramesTotal > 0) && ($sttsSecondsTotal > 0)) {
+				//	if (($sttsFramesTotal / $sttsSecondsTotal) > @$ThisFileInfo['video']['frame_rate']) {
+				//		$ThisFileInfo['video']['frame_rate'] = $sttsFramesTotal / $sttsSecondsTotal;
+				//	}
 				//}
 				break;
 
@@ -608,6 +800,20 @@ class getid3_quicktime
 					for ($i = 0; $i < $atomstructure['number_entries']; $i++) {
 						$atomstructure['chunk_offset_table'][$i] = getid3_lib::BigEndian2Int(substr($atomdata, $stcoEntriesDataOffset, 4));
 						$stcoEntriesDataOffset += 4;
+					}
+				}
+				break;
+
+
+			case 'co64': // Chunk Offset 64-bit (version of "stco" that supports > 2GB files)
+				if ($ParseAllPossibleAtoms) {
+					$atomstructure['version']        = getid3_lib::BigEndian2Int(substr($atomdata,  0, 1));
+					$atomstructure['flags_raw']      = getid3_lib::BigEndian2Int(substr($atomdata,  1, 3)); // hardcoded: 0x0000
+					$atomstructure['number_entries'] = getid3_lib::BigEndian2Int(substr($atomdata,  4, 4));
+					$stcoEntriesDataOffset = 8;
+					for ($i = 0; $i < $atomstructure['number_entries']; $i++) {
+						$atomstructure['chunk_offset_table'][$i] = getid3_lib::BigEndian2Int(substr($atomdata, $stcoEntriesDataOffset, 8));
+						$stcoEntriesDataOffset += 8;
 					}
 				}
 				break;
@@ -697,6 +903,8 @@ class getid3_quicktime
 					$ThisFileInfo['error'][] = 'Corrupt Quicktime file: mdhd.time_scale == zero';
 					return false;
 				}
+                $ThisFileInfo['quicktime']['time_scale'] = max(@$ThisFileInfo['quicktime']['time_scale'], $atomstructure['time_scale']);
+
 				$atomstructure['creation_time_unix']    = getid3_lib::DateMac2Unix($atomstructure['creation_time']);
 				$atomstructure['modify_time_unix']      = getid3_lib::DateMac2Unix($atomstructure['modify_time']);
 				$atomstructure['playtime_seconds']      = $atomstructure['duration'] / $atomstructure['time_scale'];
@@ -811,7 +1019,7 @@ class getid3_quicktime
 				}
 				$atomstructure['creation_time_unix']        = getid3_lib::DateMac2Unix($atomstructure['creation_time']);
 				$atomstructure['modify_time_unix']          = getid3_lib::DateMac2Unix($atomstructure['modify_time']);
-				$ThisFileInfo['quicktime']['time_scale']    = $atomstructure['time_scale'];
+				$ThisFileInfo['quicktime']['time_scale'] = max(@$ThisFileInfo['quicktime']['time_scale'], $atomstructure['time_scale']);
 				$ThisFileInfo['quicktime']['display_scale'] = $atomstructure['matrix_a'];
 				$ThisFileInfo['playtime_seconds']           = $atomstructure['duration'] / $atomstructure['time_scale'];
 				break;
@@ -834,8 +1042,8 @@ class getid3_quicktime
 				$atomstructure['matrix_b']            = getid3_lib::FixedPoint16_16(substr($atomdata, 44, 4));
 				$atomstructure['matrix_u']            = getid3_lib::FixedPoint16_16(substr($atomdata, 48, 4));
 				$atomstructure['matrix_c']            = getid3_lib::FixedPoint16_16(substr($atomdata, 52, 4));
-				$atomstructure['matrix_v']            = getid3_lib::FixedPoint16_16(substr($atomdata, 56, 4));
-				$atomstructure['matrix_d']            = getid3_lib::FixedPoint16_16(substr($atomdata, 60, 4));
+				$atomstructure['matrix_d']            = getid3_lib::FixedPoint16_16(substr($atomdata, 56, 4));
+				$atomstructure['matrix_v']            = getid3_lib::FixedPoint16_16(substr($atomdata, 60, 4));
 				$atomstructure['matrix_x']            =  getid3_lib::FixedPoint2_30(substr($atomdata, 64, 4));
 				$atomstructure['matrix_y']            =  getid3_lib::FixedPoint2_30(substr($atomdata, 68, 4));
 				$atomstructure['matrix_w']            =  getid3_lib::FixedPoint2_30(substr($atomdata, 72, 4));
@@ -870,6 +1078,7 @@ class getid3_quicktime
 
 			case 'meta': // METAdata atom
 				// http://www.geocities.com/xhelmboyx/quicktime/formats/qti-layout.txt
+				/*
 				$NextTagPosition = strpos($atomdata, '©');
 				while ($NextTagPosition < strlen($atomdata)) {
 					$metaItemSize = getid3_lib::BigEndian2Int(substr($atomdata, $NextTagPosition - 4, 4)) - 4;
@@ -883,6 +1092,10 @@ class getid3_quicktime
 
 					$this->CopyToAppropriateCommentsSection($metaItemKey, $metaItemData, $ThisFileInfo);
 				}
+				*/
+				$atomstructure['version']   = getid3_lib::BigEndian2Int(substr($atomdata,  0, 1));
+				$atomstructure['flags_raw'] = getid3_lib::BigEndian2Int(substr($atomdata,  1, 3));
+				$atomstructure['subatoms']  = $this->QuicktimeParseContainerAtom(substr($atomdata, 4), $ThisFileInfo, $baseoffset + 8, $atomHierarchy, $ParseAllPossibleAtoms);
 				break;
 
 			case 'ftyp': // FileTYPe (?) atom (for MP4 it seems)
@@ -943,12 +1156,20 @@ class getid3_quicktime
 				}
 				break;
 
+
+			// Observed-but-not-handled atom types are just listed here to prevent warnings being generated
 			case 'FXTC': // Something to do with Adobe After Effects (?)
 			case 'PrmA':
 			case 'code':
 			case 'FIEL': // this is NOT "fiel" (Field Ordering) as describe here: http://developer.apple.com/documentation/QuickTime/QTFF/QTFFChap3/chapter_4_section_2.html
-				// Observed-but-not-handled atom types are just listed here
-				// to prevent warnings being generated
+			case 'tapt': // TrackApertureModeDimensionsAID - http://developer.apple.com/documentation/QuickTime/Reference/QT7-1_Update_Reference/Constants/Constants.html
+						// tapt seems to be used to compute the video size [http://www.getid3.org/phpBB3/viewtopic.php?f=4&t=838]
+						// * http://lists.apple.com/archives/quicktime-api/2006/Aug/msg00014.html
+						// * http://handbrake.fr/irclogs/handbrake-dev/handbrake-dev20080128_pg2.html
+			case 'ctts'://  STCompositionOffsetAID             - http://developer.apple.com/documentation/QuickTime/Reference/QTRef_Constants/Reference/reference.html
+			case 'cslg'://  STCompositionShiftLeastGreatestAID - http://developer.apple.com/documentation/QuickTime/Reference/QTRef_Constants/Reference/reference.html
+			case 'sdtp'://  STSampleDependencyAID              - http://developer.apple.com/documentation/QuickTime/Reference/QTRef_Constants/Reference/reference.html
+			case 'stps'://  STPartialSyncSampleAID             - http://developer.apple.com/documentation/QuickTime/Reference/QTRef_Constants/Reference/reference.html
 				$atomstructure['data'] = $atomdata;
 				break;
 
@@ -1235,11 +1456,76 @@ class getid3_quicktime
 		return (isset($QuicktimeColorNameLookup[$colordepthid]) ? $QuicktimeColorNameLookup[$colordepthid] : 'invalid');
 	}
 
-	function CopyToAppropriateCommentsSection($keyname, $data, &$ThisFileInfo) {
+	function QuicktimeSTIKLookup($stik) {
+		static $QuicktimeSTIKLookup = array();
+		if (empty($QuicktimeSTIKLookup)) {
+			$QuicktimeSTIKLookup[0]  = 'Movie';
+			$QuicktimeSTIKLookup[1]  = 'Normal';
+			$QuicktimeSTIKLookup[2]  = 'Audiobook';
+			$QuicktimeSTIKLookup[5]  = 'Whacked Bookmark';
+			$QuicktimeSTIKLookup[6]  = 'Music Video';
+			$QuicktimeSTIKLookup[9]  = 'Short Film';
+			$QuicktimeSTIKLookup[10] = 'TV Show';
+			$QuicktimeSTIKLookup[11] = 'Booklet';
+			$QuicktimeSTIKLookup[14] = 'Ringtone';
+			$QuicktimeSTIKLookup[21] = 'Podcast';
+		}
+		return (isset($QuicktimeSTIKLookup[$stik]) ? $QuicktimeSTIKLookup[$stik] : 'invalid');
+	}
+
+	function QuicktimeContentRatingLookup($rtng) {
+		static $QuicktimeContentRatingLookup = array();
+		if (empty($QuicktimeContentRatingLookup)) {
+			$QuicktimeContentRatingLookup[0]  = 'None';
+			$QuicktimeContentRatingLookup[2]  = 'Clean';
+			$QuicktimeContentRatingLookup[4]  = 'Explicit';
+		}
+		return (isset($QuicktimeContentRatingLookup[$rtng]) ? $QuicktimeContentRatingLookup[$rtng] : 'invalid');
+	}
+
+	function QuicktimeStoreAccountTypeLookup($akid) {
+		static $QuicktimeStoreAccountTypeLookup = array();
+		if (empty($QuicktimeStoreAccountTypeLookup)) {
+			$QuicktimeStoreAccountTypeLookup[0] = 'iTunes';
+			$QuicktimeStoreAccountTypeLookup[1] = 'AOL';
+		}
+		return (isset($QuicktimeStoreAccountTypeLookup[$akid]) ? $QuicktimeStoreAccountTypeLookup[$akid] : 'invalid');
+	}
+
+	function QuicktimeStoreFrontCodeLookup($sfid) {
+		static $QuicktimeStoreFrontCodeLookup = array();
+		if (empty($QuicktimeStoreFrontCodeLookup)) {
+			$QuicktimeStoreFrontCodeLookup[143460] = 'Australia';
+			$QuicktimeStoreFrontCodeLookup[143445] = 'Austria';
+			$QuicktimeStoreFrontCodeLookup[143446] = 'Belgium';
+			$QuicktimeStoreFrontCodeLookup[143455] = 'Canada';
+			$QuicktimeStoreFrontCodeLookup[143458] = 'Denmark';
+			$QuicktimeStoreFrontCodeLookup[143447] = 'Finland';
+			$QuicktimeStoreFrontCodeLookup[143442] = 'France';
+			$QuicktimeStoreFrontCodeLookup[143443] = 'Germany';
+			$QuicktimeStoreFrontCodeLookup[143448] = 'Greece';
+			$QuicktimeStoreFrontCodeLookup[143449] = 'Ireland';
+			$QuicktimeStoreFrontCodeLookup[143450] = 'Italy';
+			$QuicktimeStoreFrontCodeLookup[143462] = 'Japan';
+			$QuicktimeStoreFrontCodeLookup[143451] = 'Luxembourg';
+			$QuicktimeStoreFrontCodeLookup[143452] = 'Netherlands';
+			$QuicktimeStoreFrontCodeLookup[143461] = 'New Zealand';
+			$QuicktimeStoreFrontCodeLookup[143457] = 'Norway';
+			$QuicktimeStoreFrontCodeLookup[143453] = 'Portugal';
+			$QuicktimeStoreFrontCodeLookup[143454] = 'Spain';
+			$QuicktimeStoreFrontCodeLookup[143456] = 'Sweden';
+			$QuicktimeStoreFrontCodeLookup[143459] = 'Switzerland';
+			$QuicktimeStoreFrontCodeLookup[143444] = 'United Kingdom';
+			$QuicktimeStoreFrontCodeLookup[143441] = 'United States';
+		}
+		return (isset($QuicktimeStoreCountryCodeLookup[$sfid]) ? $QuicktimeStoreCountryCodeLookup[$sfid] : 'invalid');
+	}
+
+	function CopyToAppropriateCommentsSection($keyname, $data, &$ThisFileInfo, $boxname='') {
 		static $handyatomtranslatorarray = array();
 		if (empty($handyatomtranslatorarray)) {
 			$handyatomtranslatorarray['©cpy'] = 'copyright';
-			$handyatomtranslatorarray['©day'] = 'creation_date';
+			$handyatomtranslatorarray['©day'] = 'creation_date';    // iTunes 4.0
 			$handyatomtranslatorarray['©dir'] = 'director';
 			$handyatomtranslatorarray['©ed1'] = 'edit1';
 			$handyatomtranslatorarray['©ed2'] = 'edit2';
@@ -1259,8 +1545,8 @@ class getid3_quicktime
 			$handyatomtranslatorarray['©wrt'] = 'writer';
 
 			// http://www.geocities.com/xhelmboyx/quicktime/formats/qtm-layout.txt
-			$handyatomtranslatorarray['©nam'] = 'title';
-			$handyatomtranslatorarray['©cmt'] = 'comment';
+			$handyatomtranslatorarray['©nam'] = 'title';           // iTunes 4.0
+			$handyatomtranslatorarray['©cmt'] = 'comment';         // iTunes 4.0
 			$handyatomtranslatorarray['©wrn'] = 'warning';
 			$handyatomtranslatorarray['©hst'] = 'host_computer';
 			$handyatomtranslatorarray['©mak'] = 'make';
@@ -1270,14 +1556,62 @@ class getid3_quicktime
 			$handyatomtranslatorarray['©aut'] = 'author';
 			$handyatomtranslatorarray['©ART'] = 'artist';
 			$handyatomtranslatorarray['©trk'] = 'track';
-			$handyatomtranslatorarray['©alb'] = 'album';
+			$handyatomtranslatorarray['©alb'] = 'album';           // iTunes 4.0
 			$handyatomtranslatorarray['©com'] = 'comment';
-			$handyatomtranslatorarray['©gen'] = 'genre';
+			$handyatomtranslatorarray['©gen'] = 'genre';           // iTunes 4.0
 			$handyatomtranslatorarray['©ope'] = 'composer';
 			$handyatomtranslatorarray['©url'] = 'url';
 			$handyatomtranslatorarray['©enc'] = 'encoder';
+
+			// http://atomicparsley.sourceforge.net/mpeg-4files.html
+			$handyatomtranslatorarray['©art'] = 'artist';           // iTunes 4.0
+			$handyatomtranslatorarray['aART'] = 'album_artist';
+			$handyatomtranslatorarray['trkn'] = 'track_number';     // iTunes 4.0
+			$handyatomtranslatorarray['disk'] = 'disc_number';      // iTunes 4.0
+			$handyatomtranslatorarray['gnre'] = 'genre';            // iTunes 4.0
+			$handyatomtranslatorarray['©too'] = 'encoder';          // iTunes 4.0
+			$handyatomtranslatorarray['tmpo'] = 'bpm';              // iTunes 4.0
+			$handyatomtranslatorarray['cprt'] = 'copyright';        // iTunes 4.0?
+			$handyatomtranslatorarray['cpil'] = 'compilation';      // iTunes 4.0
+			$handyatomtranslatorarray['covr'] = 'artwork';          // iTunes 4.0
+			$handyatomtranslatorarray['rtng'] = 'rating';           // iTunes 4.0
+			$handyatomtranslatorarray['©grp'] = 'grouping';         // iTunes 4.2
+			$handyatomtranslatorarray['stik'] = 'stik';             // iTunes 4.9
+			$handyatomtranslatorarray['pcst'] = 'podcast';          // iTunes 4.9
+			$handyatomtranslatorarray['catg'] = 'category';         // iTunes 4.9
+			$handyatomtranslatorarray['keyw'] = 'keyword';          // iTunes 4.9
+			$handyatomtranslatorarray['purl'] = 'podcast_url';      // iTunes 4.9
+			$handyatomtranslatorarray['egid'] = 'episode_guid';     // iTunes 4.9
+			$handyatomtranslatorarray['desc'] = 'description';      // iTunes 5.0
+			$handyatomtranslatorarray['©lyr'] = 'lyrics';           // iTunes 5.0
+			$handyatomtranslatorarray['tvnn'] = 'tv_network_name';  // iTunes 6.0
+			$handyatomtranslatorarray['tvsh'] = 'tv_show_name';     // iTunes 6.0
+			$handyatomtranslatorarray['tvsn'] = 'tv_season';        // iTunes 6.0
+			$handyatomtranslatorarray['tves'] = 'tv_episode';       // iTunes 6.0
+			$handyatomtranslatorarray['purd'] = 'purchase_date';    // iTunes 6.0.2
+			$handyatomtranslatorarray['pgap'] = 'gapless_playback'; // iTunes 7.0
+
+			// http://www.geocities.com/xhelmboyx/quicktime/formats/mp4-layout.txt
+
+
+
+			// boxnames:
+			$handyatomtranslatorarray['iTunSMPB']                    = 'iTunSMPB';
+			$handyatomtranslatorarray['iTunNORM']                    = 'iTunNORM';
+			$handyatomtranslatorarray['Encoding Params']             = 'Encoding Params';
+			$handyatomtranslatorarray['replaygain_track_gain']       = 'replaygain_track_gain';
+			$handyatomtranslatorarray['replaygain_track_peak']       = 'replaygain_track_peak';
+			$handyatomtranslatorarray['replaygain_track_minmax']     = 'replaygain_track_minmax';
+			$handyatomtranslatorarray['MusicIP PUID']                = 'MusicIP PUID';
+			$handyatomtranslatorarray['MusicBrainz Artist Id']       = 'MusicBrainz Artist Id';
+			$handyatomtranslatorarray['MusicBrainz Album Id']        = 'MusicBrainz Album Id';
+			$handyatomtranslatorarray['MusicBrainz Album Artist Id'] = 'MusicBrainz Album Artist Id';
+			$handyatomtranslatorarray['MusicBrainz Track Id']        = 'MusicBrainz Track Id';
+			$handyatomtranslatorarray['MusicBrainz Disc Id']         = 'MusicBrainz Disc Id';
 		}
-		if (isset($handyatomtranslatorarray[$keyname])) {
+		if ($boxname && ($boxname != $keyname) && isset($handyatomtranslatorarray[$boxname])) {
+			$ThisFileInfo['quicktime']['comments'][$handyatomtranslatorarray[$boxname]][] = $data;
+		} elseif (isset($handyatomtranslatorarray[$keyname])) {
 			$ThisFileInfo['quicktime']['comments'][$handyatomtranslatorarray[$keyname]][] = $data;
 		}
 

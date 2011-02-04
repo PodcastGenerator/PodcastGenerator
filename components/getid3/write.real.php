@@ -92,7 +92,7 @@ class getid3_write_real
 						$BeforeOffset = $oldChunkInfo['CONT']['offset'];
 						$AfterOffset  = $oldChunkInfo['CONT']['offset'] + $oldChunkInfo['CONT']['length'];
 					}
-					if ($tempfilename = tempnam('*', 'getID3')) {
+					if ($tempfilename = tempnam((function_exists('sys_get_temp_dir') ? sys_get_temp_dir() : ini_get('upload_tmp_dir')), 'getID3')) {
 						ob_start();
 						if ($fp_temp = fopen($tempfilename, 'wb')) {
 
@@ -250,7 +250,7 @@ class getid3_write_real
 
 				$BeforeOffset = $oldChunkInfo['CONT']['offset'];
 				$AfterOffset  = $oldChunkInfo['CONT']['offset'] + $oldChunkInfo['CONT']['length'];
-				if ($tempfilename = tempnam('*', 'getID3')) {
+				if ($tempfilename = tempnam((function_exists('sys_get_temp_dir') ? sys_get_temp_dir() : ini_get('upload_tmp_dir')), 'getID3')) {
 					ob_start();
 					if ($fp_temp = fopen($tempfilename, 'wb')) {
 

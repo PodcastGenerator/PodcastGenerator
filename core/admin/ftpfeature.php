@@ -164,7 +164,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 									$filenamedepured = $file_multimediale[0];
 
 									#enable this to have a very strict filename policy
-									$filenamedepured = ereg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($filenamedepured)))); //very strict... not correct with every language...
+									$filenamedepured = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($filenamedepured)))); //very strict... not correct with every language...
 
 									$filenamedepured = strtolower($filenamedepured);  // lower-case.
 									$filenamedepured = strip_tags($filenamedepured);  // remove HTML tags.

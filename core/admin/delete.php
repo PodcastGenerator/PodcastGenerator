@@ -20,7 +20,7 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 	$file = $_GET['file']; 
 	
-		$file = eregi_replace("/", "", $file); // Replace / in the filename.. avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
+		$file = str_replace("/", "", $file); // Replace / in the filename.. avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
 
 	$ext = $_GET['ext'];
 

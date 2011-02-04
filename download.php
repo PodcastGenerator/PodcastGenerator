@@ -24,7 +24,7 @@ include("$absoluteurl"."core/supported_media.php");
 
 $filename = $_GET['filename'];
 
-$filename = eregi_replace("/", "", $filename); // Replace / in the filename.. avoid downloading of file outside podcastgenerator root directory
+$filename = str_replace("/", "", $filename); // Replace / in the filename.. avoid downloading of file outside podcastgenerator root directory
 
 $filename_path = "$absoluteurl"."$upload_dir$filename"; // absolute path of the filename to download
 
