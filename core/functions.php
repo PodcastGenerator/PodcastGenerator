@@ -36,7 +36,7 @@ function checkFileType ($filetype,$podcast_filetypes,$filemimetypes) {
 
 function renamefilestrict ($filetorename) { // strict rename policy (just characters from a to z and numbers... no accents and other characters). This kind of renaming can have problems with some languages (e.g. oriental)
 
-	$filetorename = ereg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($filetorename))));
+	$filetorename = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($filetorename))));
 
 	return $filetorename;
 

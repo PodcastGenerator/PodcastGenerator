@@ -26,7 +26,7 @@ $texttowrite = htmlspecialchars($texttowrite);
 $texttowrite = depurateContent($texttowrite);
 
 // affiliate link
-$texttowrite .= '<p><a href="http://www.site5.com/in.php?id=22114-39"><img alt="Site 5 hosting" border="0" src="http://www.site5.com/creative/2008/4/120x60-1.gif" /></a></p>';
+//$texttowrite .= '<p>put whatever here</p>';
 
 
 $createtxtbox = fopen("$absoluteurl"."freebox-content.txt",'w'); //create categories file

@@ -76,7 +76,7 @@ else { // if category is set
 		$arr = NULL;
 		$arrid = NULL;
 		$n = 0;
-		$urlforitunes = eregi_replace("http://", "itpc://", $url);
+		$urlforitunes = str_replace("http://", "itpc://", $url);
 
 		foreach($parser->document->category as $singlecategory)
 		{

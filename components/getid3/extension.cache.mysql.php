@@ -128,25 +128,23 @@ class getID3_cached_mysql extends getID3
 			// Short-hands
 			$filetime = filemtime($filename);
 			$filesize = filesize($filename);
-			$filenam2 = mysql_escape_string($filename);
 
 			// Loopup file
-			$this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename`='".$filenam2."') AND (`filesize`='".$filesize."') AND (`filetime`='".$filetime."')", $this->connection);
+			$this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename` = '".mysql_real_escape_string($filename)."') AND (`filesize` = '".mysql_real_escape_string($filesize)."') AND (`filetime` = '".mysql_real_escape_string($filetime)."')", $this->connection);
 			list($result) = @mysql_fetch_array($this->cursor);
 
 			// Hit
 			if ($result) {
-				return unserialize($result);
+				return unserialize(base64_decode($result));
 			}
 		}
 
 		// Miss
-		$result = parent::analyze($filename);
+		$analysis = parent::analyze($filename);
 
 		// Save result
 		if (file_exists($filename)) {
-			$res2 = mysql_escape_string(serialize($result));
-			$this->cursor = mysql_query("INSERT INTO `getid3_cache` (`filename`, `filesize`, `filetime`, `analyzetime`, `value`) VALUES ('".$filenam2."', '".$filesize."', '".$filetime."', '".time()."', '".$res2."')", $this->connection);
+			$this->cursor = mysql_query("INSERT INTO `getid3_cache` (`filename`, `filesize`, `filetime`, `analyzetime`, `value`) VALUES ('".mysql_real_escape_string($filename)."', '".mysql_real_escape_string($filesize)."', '".mysql_real_escape_string($filetime)."', '".mysql_real_escape_string(time())."', '".mysql_real_escape_string(base64_encode(serialize($analysis)))."')", $this->connection);
 		}
 		return $result;
 	}
@@ -154,7 +152,7 @@ class getID3_cached_mysql extends getID3
 
 
 	// private: (re)create sql table
-	function create_table($drop = false) {
+	function create_table($drop=false) {
 
 		$this->cursor = mysql_query("CREATE TABLE IF NOT EXISTS `getid3_cache` (
 			`filename` VARCHAR(255) NOT NULL DEFAULT '',

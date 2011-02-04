@@ -204,7 +204,7 @@ class getid3_write_apetag
 	}
 
 	function CleanAPEtagItemKey($itemkey) {
-		$itemkey = eregi_replace("[^\x20-\x7E]", '', $itemkey);
+		$itemkey = preg_replace("#[^\x20-\x7E]#i", '', $itemkey);
 
 		// http://www.personal.uni-jena.de/~pfk/mpp/sv8/apekey.html
 		switch (strtoupper($itemkey)) {

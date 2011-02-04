@@ -35,7 +35,7 @@ $rem = $_GET['cat']; // the variable passed is the category ID
 
 // create unique and depurated id from the description (use the function here) - the variable should already be in this format, but we perform this function anyway
 
-$id = ereg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($rem))));
+$id = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($rem))));
 
 
 //parse

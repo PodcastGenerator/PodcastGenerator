@@ -14,8 +14,13 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 $PG_mainbody = NULL; //erase variable which contains episodes data
 
+
+
+
 if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 	$file_multimediale = $_GET['name'];
+
+	$file_multimediale = str_replace("/", "", $file_multimediale); // Replace / in the filename.. avoid seeing files outside podcastgenerator root directory
 
 
 	if (file_exists("$absoluteurl"."$upload_dir$file_multimediale")) {

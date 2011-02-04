@@ -18,17 +18,17 @@ if(($theme_file_contents = file_get_contents($theme_path."index.htm")) === FALSE
 }
 
 #Replace URLs
-$theme_file_contents = eregi_replace("href=\"style/", "href=\"".$theme_path."style/", $theme_file_contents); // Replace CSS location
+$theme_file_contents = str_replace("href=\"style/", "href=\"".$theme_path."style/", $theme_file_contents); // Replace CSS location
 
-$theme_file_contents = eregi_replace("src=\"img/", "src=\"".$theme_path."img/", $theme_file_contents); // Replace image location
+$theme_file_contents = str_replace("src=\"img/", "src=\"".$theme_path."img/", $theme_file_contents); // Replace image location
 
-$theme_file_contents = eregi_replace("<param name=movie value=\"", "<param name=movie value=\"".$theme_path, $theme_file_contents); // Replace flash objects IE
+$theme_file_contents = str_replace("<param name=movie value=\"", "<param name=movie value=\"".$theme_path, $theme_file_contents); // Replace flash objects IE
 
-$theme_file_contents = eregi_replace("<embed src=\"", "<embed src=\"".$theme_path, $theme_file_contents); // Replace flash objects embed
+$theme_file_contents = str_replace("<embed src=\"", "<embed src=\"".$theme_path, $theme_file_contents); // Replace flash objects embed
 
 
 
-####### INCLUDE PHP FUNCTIONS SPECIFIED IN THE THEME (funcions.php)
+####### INCLUDE PHP FUNCTIONS SPECIFIED IN THE THEME (functions.php)
 if (file_exists($theme_path."functions.php")) {
 	include ($theme_path."functions.php");
 }	
@@ -87,7 +87,7 @@ if (isset($_GET['p'])) {
 	}
 }
 
-$theme_file_contents = eregi_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
+$theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
 
 ###############################
 # LOAD JAVASCRIPTS IN THE HEADER IF PAGE REQUIRES - REPLACES "-----PG_JSLOAD-----" IN THE HEADER OF THE THEME PAGE
@@ -125,7 +125,7 @@ else {
 
 }
 
-$theme_file_contents = eregi_replace("-----PG_JSLOAD-----", $loadjavascripts, $theme_file_contents); 
+$theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $theme_file_contents); 
 
 ###############################
 ###############################
@@ -134,7 +134,7 @@ $theme_file_contents = eregi_replace("-----PG_JSLOAD-----", $loadjavascripts, $t
 
 # SET RIGHT BOX
 
-$urlforitunes = eregi_replace("http://", "itpc://", $url); 
+$urlforitunes = str_replace("http://", "itpc://", $url); 
 
 $rightboxcontent = '<div class="rightbox">
 
@@ -164,7 +164,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 
 }
 
-$theme_file_contents = eregi_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents); 
+$theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents); 
 
 
 # SET RIGHT OPTIONAL BOX ("freebox")
@@ -173,7 +173,7 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	$freeboxcontent = NULL;
 
-	$theme_file_contents = eregi_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents);
 
 	} elseif($freebox == "yes") {
 
@@ -188,39 +188,39 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 			$freeboxcontent = NULL;
 		}
 
-		$theme_file_contents = eregi_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 
+		$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 
 
 	} else {
 
 		$freeboxcontent = NULL;
 
-		$theme_file_contents = eregi_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 		
+		$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 		
 
 	}
 
 
 	# Othere Theme elements replacing
-	$theme_file_contents = eregi_replace("-----PG_MAINBODY-----", $PG_mainbody, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_MAINBODY-----", $PG_mainbody, $theme_file_contents);
 
-	$theme_file_contents = eregi_replace("-----PG_PAGECHARSET-----", $feed_encoding, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_PAGECHARSET-----", $feed_encoding, $theme_file_contents); 
 
-	$theme_file_contents = eregi_replace("-----PG_PODCASTTITLE-----", $podcast_title, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_PODCASTTITLE-----", $podcast_title, $theme_file_contents);
 
-	$theme_file_contents = eregi_replace("-----PG_PODCASTSUBTITLE-----", $podcast_subtitle, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_PODCASTSUBTITLE-----", $podcast_subtitle, $theme_file_contents);
 
-	$theme_file_contents = eregi_replace("-----PG_PODCASTDESC-----", $podcast_description, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_PODCASTDESC-----", $podcast_description, $theme_file_contents); 
 
-	$theme_file_contents = eregi_replace("-----PG_MENUHOME-----", $L_menu_home, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUHOME-----", $L_menu_home, $theme_file_contents); 
 
-	$theme_file_contents = eregi_replace("-----PG_MENUARCHIVE-----", $L_menu_allpodcasts, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $L_menu_allpodcasts, $theme_file_contents); 
 
-	$theme_file_contents = eregi_replace("-----PG_MENUADMIN-----", $L_menu_admin, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", $L_menu_admin, $theme_file_contents); 
 
 	#FOOTER
 
 	$definefooter = $L_footer_poweredby.' <a href="http://podcastgen.sourceforge.net" title="'.$L_podcast_generator.$L_footer_pgdesc.'">'.$L_podcast_generator.'</a>'.$L_footer_pgdesc;
 
-	$theme_file_contents = eregi_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
 
 
 	#########################
@@ -270,7 +270,7 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 	$metatagstoreplace .= '
 		<link href="'.$url.$feed_dir.'feed.xml" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />'; 
 
-	$theme_file_contents = eregi_replace("-----PG_METATAGS-----", $metatagstoreplace, $theme_file_contents);
+	$theme_file_contents = str_replace("-----PG_METATAGS-----", $metatagstoreplace, $theme_file_contents);
 
 	# END META TAGS DEFINITION
 	#########################

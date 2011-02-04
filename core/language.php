@@ -10,7 +10,14 @@
 
 ## Below I include English translation by default (as I write new versions of Podcast Generator in English, I suppose this language and the associated variables will be always up to date)
 
+########### Security code, avoids cross-site scripting (Register Globals ON)
+if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['scriptlang'])) { exit; } 
+########### End
+// I depurate scriptlang above
+
+
 if (file_exists("language/en.php") AND $scriptlang != "en") {
+	
 	
 	include ("language/en.php");
 
