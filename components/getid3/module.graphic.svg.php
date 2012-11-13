@@ -10,39 +10,91 @@
 // module.graphic.svg.php                                      //
 // module for analyzing SVG Image files                        //
 // dependencies: NONE                                          //
-// author: Bryce Harrington <bryceØbryceharrington*org>        //
 //                                                            ///
 /////////////////////////////////////////////////////////////////
 
 
-class getid3_svg
+class getid3_svg extends getid3_handler
 {
 
 
-	function getid3_svg(&$fd, &$ThisFileInfo) {
-		fseek($fd, $ThisFileInfo['avdataoffset'], SEEK_SET);
+	function Analyze() {
+		$info = &$this->getid3->info;
 
-		// I'm making this up, please modify as appropriate
-		$SVGheader = fread($fd, 32);
-		$ThisFileInfo['svg']['magic']  = substr($SVGheader, 0, 4);
-		if ($ThisFileInfo['svg']['magic'] == 'aBcD') {
+		fseek($this->getid3->fp, $info['avdataoffset'], SEEK_SET);
 
-			$ThisFileInfo['fileformat']                  = 'svg';
-			$ThisFileInfo['video']['dataformat']         = 'svg';
-			$ThisFileInfo['video']['lossless']           = true;
-			$ThisFileInfo['video']['bits_per_sample']    = 24;
-			$ThisFileInfo['video']['pixel_aspect_ratio'] = (float) 1;
+		$SVGheader = fread($this->getid3->fp, 4096);
+		if (preg_match('#\<\?xml([^\>]+)\?\>#i', $SVGheader, $matches)) {
+			$info['svg']['xml']['raw'] = $matches;
+		}
+		if (preg_match('#\<\!DOCTYPE([^\>]+)\>#i', $SVGheader, $matches)) {
+			$info['svg']['doctype']['raw'] = $matches;
+		}
+		if (preg_match('#\<svg([^\>]+)\>#i', $SVGheader, $matches)) {
+			$info['svg']['svg']['raw'] = $matches;
+		}
+		if (isset($info['svg']['svg']['raw'])) {
 
-			$ThisFileInfo['svg']['width']  = getid3_lib::LittleEndian2Int(substr($fileData, 4, 4));
-			$ThisFileInfo['svg']['height'] = getid3_lib::LittleEndian2Int(substr($fileData, 8, 4));
+			$sections_to_fix = array('xml', 'doctype', 'svg');
+			foreach ($sections_to_fix as $section_to_fix) {
+				if (!isset($info['svg'][$section_to_fix])) {
+					continue;
+				}
+				$section_data = array();
+				while (preg_match('/ "([^"]+)"/', $info['svg'][$section_to_fix]['raw'][1], $matches)) {
+					$section_data[] = $matches[1];
+					$info['svg'][$section_to_fix]['raw'][1] = str_replace($matches[0], '', $info['svg'][$section_to_fix]['raw'][1]);
+				}
+				while (preg_match('/([^\s]+)="([^"]+)"/', $info['svg'][$section_to_fix]['raw'][1], $matches)) {
+					$section_data[] = $matches[0];
+					$info['svg'][$section_to_fix]['raw'][1] = str_replace($matches[0], '', $info['svg'][$section_to_fix]['raw'][1]);
+				}
+				$section_data = array_merge($section_data, preg_split('/[\s,]+/', $info['svg'][$section_to_fix]['raw'][1]));
+				foreach ($section_data as $keyvaluepair) {
+					$keyvaluepair = trim($keyvaluepair);
+					if ($keyvaluepair) {
+						$keyvalueexploded = explode('=', $keyvaluepair);
+						$key   = (isset($keyvalueexploded[0]) ? $keyvalueexploded[0] : '');
+						$value = (isset($keyvalueexploded[1]) ? $keyvalueexploded[1] : '');
+						$info['svg'][$section_to_fix]['sections'][$key] = trim($value, '"');
+					}
+				}
+			}
 
-			$ThisFileInfo['video']['resolution_x'] = $ThisFileInfo['svg']['width'];
-			$ThisFileInfo['video']['resolution_y'] = $ThisFileInfo['svg']['height'];
+			$info['fileformat']                  = 'svg';
+			$info['video']['dataformat']         = 'svg';
+			$info['video']['lossless']           = true;
+			//$info['video']['bits_per_sample']    = 24;
+			$info['video']['pixel_aspect_ratio'] = (float) 1;
+
+			if (!empty($info['svg']['svg']['sections']['width'])) {
+				$info['svg']['width']  = intval($info['svg']['svg']['sections']['width']);
+			}
+			if (!empty($info['svg']['svg']['sections']['height'])) {
+				$info['svg']['height'] = intval($info['svg']['svg']['sections']['height']);
+			}
+			if (!empty($info['svg']['svg']['sections']['version'])) {
+				$info['svg']['version'] = $info['svg']['svg']['sections']['version'];
+			}
+			if (!isset($info['svg']['version']) && isset($info['svg']['doctype']['sections'])) {
+				foreach ($info['svg']['doctype']['sections'] as $key => $value) {
+					if (preg_match('#//W3C//DTD SVG ([0-9\.]+)//#i', $key, $matches)) {
+						$info['svg']['version'] = $matches[1];
+						break;
+					}
+				}
+			}
+
+			if (!empty($info['svg']['width'])) {
+				$info['video']['resolution_x'] = $info['svg']['width'];
+			}
+			if (!empty($info['svg']['height'])) {
+				$info['video']['resolution_y'] = $info['svg']['height'];
+			}
 
 			return true;
 		}
-		$ThisFileInfo['error'][] = 'Did not find SVG magic bytes "aBcD" at '.$ThisFileInfo['avdataoffset'];
-		unset($ThisFileInfo['fileformat']);
+		$info['error'][] = 'Did not find expected <svg> tag';
 		return false;
 	}
 
