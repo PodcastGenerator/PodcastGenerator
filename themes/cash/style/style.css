@@ -1,0 +1,147 @@
+/* CSS Document */
+
+/*PAGE LAYOUT*/
+body {
+	background-image: url(../img/bg_body.jpg);
+	background-repeat: repeat-x;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#toppage{
+	width:800px;
+}
+#date{
+	float:left; width:190px; height:39px; border-bottom:solid 1px #999999; border-right:solid 1px #999999;
+}
+#topbar{
+	float:left; 
+	width:608px; 
+	height:40px; 
+	background-image:url(../img/bg_topbar.gif);
+	background-color:#CBC55C;
+	background-repeat:repeat-x;
+	border-right:solid 1px #999999;
+}
+#header{
+	width:800px;
+}
+#content{
+	width:800px;
+}
+#contenttext{
+	float:left; width:608px; 
+	background-color:#F7F7F7; 
+	border-left:solid 1px #999999; border-right:solid 1px #999999; 
+	border-bottom:solid 1px #999999; border-top:dotted 1px #CCCCCC; 
+	min-height:360px;
+}
+#logo{
+	float:left; width:190px; height:110px; background-color:#F7F7F7; border-left:solid 1px #999999;
+}
+#pagetitle{
+	position:relative; float:left; width:608px; height:110px; background-color:#F7F7F7; border-right:solid 1px #999999;
+}
+#title{
+	position:absolute; right:10px; bottom:0px; width:600px;
+}
+#menu{
+	float:left; width:190px; margin:0px;
+}
+#footer{
+	width:590px; padding-right:10px; padding-left:200px;
+}
+
+/*GRAY PANEL*/
+.panel{
+	padding:12px;
+	border:solid 1px #E4E4E4;
+	background-color:#EEEEEE;
+	margin:10px;
+	padding:10px;
+	width:550px;
+	height:160px;
+}
+
+/*TEXT STYLES*/
+.bodytext {
+	font: 0.7em Tahoma, sans-serif;
+	color: #666666;
+}
+.smalltext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+.smallwhitetext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+}
+.smallwhitetext a{
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration:none;
+}
+.smallwhitetext a:hover{
+	text-decoration:underline;
+}
+.smallgraytext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#CCCCCC;
+}
+.smallgraytext a{
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#CCCCCC;
+	text-decoration:none;
+}
+.smallgraytext a:hover{
+	text-decoration:underline;
+}
+.titletext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size:36px;
+	font-weight:bold;
+	color: #CCCCCC;
+}
+.logotext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size:0.8em;
+	font-weight:bold;
+	color: #999999;
+}
+.orangelogotext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size:36px;
+	font-weight:bold;
+	color:#FF9900;
+}
+.orangetitle {
+	font: 0.7em Tahoma, sans-serif;
+	font-size:24px;
+	font-weight:bold;
+	color:#FF9900;
+}
+#linksmenu a{
+	float:right; 
+	width:183px; 
+	height:20px; 
+	background-color:#ABC578; border-left:solid 1px #FFFFFF; border-bottom:solid 1px #FFFFFF;
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration:none;
+	padding-top:5px;
+}
+#linksmenu a:hover{
+	background-color:#514F1C;
+}
