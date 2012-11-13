@@ -19,6 +19,7 @@ class getid3_write_id3v2
 {
 	var $filename;
 	var $tag_data;
+	var $fread_buffer_size           = 32768;    // read buffer size in bytes
 	var $paddedlength                = 4096;     // minimum length of ID3v2 tag in bytes
 	var $majorversion                = 3;        // ID3v2 major version (2, 3 (recommended), 4)
 	var $minorversion                = 0;        // ID3v2 minor version - always 0
@@ -36,17 +37,22 @@ class getid3_write_id3v2
 		// File MUST be writeable - CHMOD(646) at least. It's best if the
 		// directory is also writeable, because that method is both faster and less susceptible to errors.
 
-		if (is_writeable($this->filename) || (!file_exists($this->filename) && is_writeable(dirname($this->filename)))) {
+		if (!empty($this->filename) && (is_writeable($this->filename) || (!file_exists($this->filename) && is_writeable(dirname($this->filename))))) {
 			// Initialize getID3 engine
 			$getID3 = new getID3;
 			$OldThisFileInfo = $getID3->analyze($this->filename);
+			if (!getid3_lib::intValueSupported($OldThisFileInfo['filesize'])) {
+				$this->errors[] = 'Unable to write ID3v2 because file is larger than '.round(PHP_INT_MAX / 1073741824).'GB';
+				fclose($fp_source);
+				return false;
+			}
 			if ($this->merge_existing_data) {
 				// merge with existing data
 				if (!empty($OldThisFileInfo['id3v2'])) {
 					$this->tag_data = $this->array_join_merge($OldThisFileInfo['id3v2'], $this->tag_data);
 				}
 			}
-			$this->paddedlength = max(@$OldThisFileInfo['id3v2']['headerlength'], $this->paddedlength);
+			$this->paddedlength = (isset($OldThisFileInfo['id3v2']['headerlength']) ? max($OldThisFileInfo['id3v2']['headerlength'], $this->paddedlength) : $this->paddedlength);
 
 			if ($NewID3v2Tag = $this->GenerateID3v2Tag()) {
 
@@ -55,36 +61,31 @@ class getid3_write_id3v2
 					// best and fastest method - insert-overwrite existing tag (padded to length of old tag if neccesary)
 					if (file_exists($this->filename)) {
 
-						ob_start();
-						if ($fp = fopen($this->filename, 'r+b')) {
+						if (is_readable($this->filename) && is_writable($this->filename) && is_file($this->filename) && ($fp = fopen($this->filename, 'r+b'))) {
 							rewind($fp);
 							fwrite($fp, $NewID3v2Tag, strlen($NewID3v2Tag));
 							fclose($fp);
 						} else {
-							$this->errors[] = 'Could not open '.$this->filename.' mode "r+b" - '.strip_tags(ob_get_contents());
+							$this->errors[] = 'Could not fopen("'.$this->filename.'", "r+b")';
 						}
-						ob_end_clean();
 
 					} else {
 
-						ob_start();
-						if ($fp = fopen($this->filename, 'wb')) {
+						if (is_writable($this->filename) && is_file($this->filename) && ($fp = fopen($this->filename, 'wb'))) {
 							rewind($fp);
 							fwrite($fp, $NewID3v2Tag, strlen($NewID3v2Tag));
 							fclose($fp);
 						} else {
-							$this->errors[] = 'Could not open '.$this->filename.' mode "wb" - '.strip_tags(ob_get_contents());
+							$this->errors[] = 'Could not fopen("'.$this->filename.'", "wb")';
 						}
-						ob_end_clean();
 
 					}
 
 				} else {
 
-					if ($tempfilename = tempnam('*', 'getID3')) {
-						ob_start();
-						if ($fp_source = fopen($this->filename, 'rb')) {
-							if ($fp_temp = fopen($tempfilename, 'wb')) {
+					if ($tempfilename = tempnam(GETID3_TEMP_DIR, 'getID3')) {
+						if (is_readable($this->filename) && is_file($this->filename) && ($fp_source = fopen($this->filename, 'rb'))) {
+							if (is_writable($tempfilename) && is_file($tempfilename) && ($fp_temp = fopen($tempfilename, 'wb'))) {
 
 								fwrite($fp_temp, $NewID3v2Tag, strlen($NewID3v2Tag));
 
@@ -93,7 +94,7 @@ class getid3_write_id3v2
 									fseek($fp_source, $OldThisFileInfo['avdataoffset'], SEEK_SET);
 								}
 
-								while ($buffer = fread($fp_source, GETID3_FREAD_BUFFER_SIZE)) {
+								while ($buffer = fread($fp_source, $this->fread_buffer_size)) {
 									fwrite($fp_temp, $buffer, strlen($buffer));
 								}
 
@@ -101,22 +102,16 @@ class getid3_write_id3v2
 								fclose($fp_source);
 								copy($tempfilename, $this->filename);
 								unlink($tempfilename);
-								ob_end_clean();
 								return true;
 
 							} else {
-
-								$this->errors[] = 'Could not open '.$tempfilename.' mode "wb" - '.strip_tags(ob_get_contents());
-
+								$this->errors[] = 'Could not fopen("'.$tempfilename.'", "wb")';
 							}
 							fclose($fp_source);
 
 						} else {
-
-							$this->errors[] = 'Could not open '.$this->filename.' mode "rb" - '.strip_tags(ob_get_contents());
-
+							$this->errors[] = 'Could not fopen("'.$this->filename.'", "rb")';
 						}
-						ob_end_clean();
 					}
 					return false;
 
@@ -133,38 +128,43 @@ class getid3_write_id3v2
 			}
 			return true;
 		} else {
-			$this->errors[] = '!is_writeable('.$this->filename.')';
+			$this->errors[] = 'WriteID3v2() failed: !is_writeable('.$this->filename.')';
 		}
 		return false;
 	}
 
 	function RemoveID3v2() {
-
 		// File MUST be writeable - CHMOD(646) at least. It's best if the
 		// directory is also writeable, because that method is both faster and less susceptible to errors.
 		if (is_writeable(dirname($this->filename))) {
 
 			// preferred method - only one copying operation, minimal chance of corrupting
 			// original file if script is interrupted, but required directory to be writeable
-			if ($fp_source = @fopen($this->filename, 'rb')) {
+			if (is_readable($this->filename) && is_file($this->filename) && ($fp_source = fopen($this->filename, 'rb'))) {
+
 				// Initialize getID3 engine
 				$getID3 = new getID3;
 				$OldThisFileInfo = $getID3->analyze($this->filename);
+				if (!getid3_lib::intValueSupported($OldThisFileInfo['filesize'])) {
+					$this->errors[] = 'Unable to remove ID3v2 because file is larger than '.round(PHP_INT_MAX / 1073741824).'GB';
+					fclose($fp_source);
+					return false;
+				}
 				rewind($fp_source);
 				if ($OldThisFileInfo['avdataoffset'] !== false) {
 					fseek($fp_source, $OldThisFileInfo['avdataoffset'], SEEK_SET);
 				}
-				if ($fp_temp = @fopen($this->filename.'getid3tmp', 'w+b')) {
-					while ($buffer = fread($fp_source, GETID3_FREAD_BUFFER_SIZE)) {
+				if (is_writable($this->filename) && is_file($this->filename) && ($fp_temp = fopen($this->filename.'getid3tmp', 'w+b'))) {
+					while ($buffer = fread($fp_source, $this->fread_buffer_size)) {
 						fwrite($fp_temp, $buffer, strlen($buffer));
 					}
 					fclose($fp_temp);
 				} else {
-					$this->errors[] = 'Could not open '.$this->filename.'getid3tmp mode "w+b"';
+					$this->errors[] = 'Could not fopen("'.$this->filename.'getid3tmp", "w+b")';
 				}
 				fclose($fp_source);
 			} else {
-				$this->errors[] = 'Could not open '.$this->filename.' mode "rb"';
+				$this->errors[] = 'Could not fopen("'.$this->filename.'", "rb")';
 			}
 			if (file_exists($this->filename)) {
 				unlink($this->filename);
@@ -175,35 +175,41 @@ class getid3_write_id3v2
 
 			// less desirable alternate method - double-copies the file, overwrites original file
 			// and could corrupt source file if the script is interrupted or an error occurs.
-			if ($fp_source = @fopen($this->filename, 'rb')) {
+			if (is_readable($this->filename) && is_file($this->filename) && ($fp_source = fopen($this->filename, 'rb'))) {
+
 				// Initialize getID3 engine
 				$getID3 = new getID3;
 				$OldThisFileInfo = $getID3->analyze($this->filename);
+				if (!getid3_lib::intValueSupported($OldThisFileInfo['filesize'])) {
+					$this->errors[] = 'Unable to remove ID3v2 because file is larger than '.round(PHP_INT_MAX / 1073741824).'GB';
+					fclose($fp_source);
+					return false;
+				}
 				rewind($fp_source);
 				if ($OldThisFileInfo['avdataoffset'] !== false) {
 					fseek($fp_source, $OldThisFileInfo['avdataoffset'], SEEK_SET);
 				}
 				if ($fp_temp = tmpfile()) {
-					while ($buffer = fread($fp_source, GETID3_FREAD_BUFFER_SIZE)) {
+					while ($buffer = fread($fp_source, $this->fread_buffer_size)) {
 						fwrite($fp_temp, $buffer, strlen($buffer));
 					}
 					fclose($fp_source);
-					if ($fp_source = @fopen($this->filename, 'wb')) {
+					if (is_writable($this->filename) && is_file($this->filename) && ($fp_source = fopen($this->filename, 'wb'))) {
 						rewind($fp_temp);
-						while ($buffer = fread($fp_temp, GETID3_FREAD_BUFFER_SIZE)) {
+						while ($buffer = fread($fp_temp, $this->fread_buffer_size)) {
 							fwrite($fp_source, $buffer, strlen($buffer));
 						}
 						fseek($fp_temp, -128, SEEK_END);
 						fclose($fp_source);
 					} else {
-						$this->errors[] = 'Could not open '.$this->filename.' mode "wb"';
+						$this->errors[] = 'Could not fopen("'.$this->filename.'", "wb")';
 					}
 					fclose($fp_temp);
 				} else {
 					$this->errors[] = 'Could not create tmpfile()';
 				}
 			} else {
-				$this->errors[] = 'Could not open '.$this->filename.' mode "rb"';
+				$this->errors[] = 'Could not fopen("'.$this->filename.'", "rb")';
 			}
 
 		} else {
@@ -223,25 +229,25 @@ class getid3_write_id3v2
 		switch ($this->majorversion) {
 			case 4:
 				// %abcd0000
-				$flag  = (@$flags['unsynchronisation'] ? '1' : '0'); // a - Unsynchronisation
-				$flag .= (@$flags['extendedheader']    ? '1' : '0'); // b - Extended header
-				$flag .= (@$flags['experimental']      ? '1' : '0'); // c - Experimental indicator
-				$flag .= (@$flags['footer']            ? '1' : '0'); // d - Footer present
+				$flag  = (!empty($flags['unsynchronisation']) ? '1' : '0'); // a - Unsynchronisation
+				$flag .= (!empty($flags['extendedheader']   ) ? '1' : '0'); // b - Extended header
+				$flag .= (!empty($flags['experimental']     ) ? '1' : '0'); // c - Experimental indicator
+				$flag .= (!empty($flags['footer']           ) ? '1' : '0'); // d - Footer present
 				$flag .= '0000';
 				break;
 
 			case 3:
 				// %abc00000
-				$flag  = (@$flags['unsynchronisation'] ? '1' : '0'); // a - Unsynchronisation
-				$flag .= (@$flags['extendedheader']    ? '1' : '0'); // b - Extended header
-				$flag .= (@$flags['experimental']      ? '1' : '0'); // c - Experimental indicator
+				$flag  = (!empty($flags['unsynchronisation']) ? '1' : '0'); // a - Unsynchronisation
+				$flag .= (!empty($flags['extendedheader']   ) ? '1' : '0'); // b - Extended header
+				$flag .= (!empty($flags['experimental']     ) ? '1' : '0'); // c - Experimental indicator
 				$flag .= '00000';
 				break;
 
 			case 2:
 				// %ab000000
-				$flag  = (@$flags['unsynchronisation'] ? '1' : '0'); // a - Unsynchronisation
-				$flag .= (@$flags['compression']       ? '1' : '0'); // b - Compression
+				$flag  = (!empty($flags['unsynchronisation']) ? '1' : '0'); // a - Unsynchronisation
+				$flag .= (!empty($flags['compression']      ) ? '1' : '0'); // b - Compression
 				$flag .= '000000';
 				break;
 
@@ -763,7 +769,7 @@ class getid3_write_id3v2
 						$framedata .= chr($source_data_array['encodingid']);
 						$framedata .= str_replace("\x00", '', $source_data_array['mime'])."\x00";
 						$framedata .= chr($source_data_array['picturetypeid']);
-						$framedata .= @$source_data_array['description'].getid3_id3v2::TextEncodingTerminatorLookup($source_data_array['encodingid']);
+						$framedata .= (!empty($source_data_array['description']) ? $source_data_array['description'] : '').getid3_id3v2::TextEncodingTerminatorLookup($source_data_array['encodingid']);
 						$framedata .= $source_data_array['data'];
 					}
 					break;
@@ -1132,7 +1138,9 @@ class getid3_write_id3v2
 					break;
 
 				default:
-					if ($frame_name{0} == 'T') {
+					if ((($this->majorversion == 2) && (strlen($frame_name) != 3)) || (($this->majorversion > 2) && (strlen($frame_name) != 4))) {
+						$this->errors[] = 'Invalid frame name "'.$frame_name.'" for ID3v2.'.$this->majorversion;
+					} elseif ($frame_name{0} == 'T') {
 						// 4.2. T???  Text information frames
 						// Text encoding                $xx
 						// Information                  <text string(s) according to encoding>
@@ -1610,7 +1618,9 @@ class getid3_write_id3v2
 			if (!$footer && ($this->paddedlength > (strlen($tagstring) + getid3_id3v2::ID3v2HeaderLength($this->majorversion)))) {
 				// pad up to $paddedlength bytes if unpadded tag is shorter than $paddedlength
 				// "Furthermore it MUST NOT have any padding when a tag footer is added to the tag."
-				$tagstring .= @str_repeat("\x00", $this->paddedlength - strlen($tagstring) - getid3_id3v2::ID3v2HeaderLength($this->majorversion));
+				if (($this->paddedlength - strlen($tagstring) - getid3_id3v2::ID3v2HeaderLength($this->majorversion)) > 0) {
+					$tagstring .= str_repeat("\x00", $this->paddedlength - strlen($tagstring) - getid3_id3v2::ID3v2HeaderLength($this->majorversion));
+				}
 			}
 			if ($this->id3v2_use_unsynchronisation && (substr($tagstring, strlen($tagstring) - 1, 1) == "\xFF")) {
 				// special unsynchronisation case:
@@ -1808,7 +1818,7 @@ class getid3_write_id3v2
 				// hashes -> merge based on keys
 				$keys = array_merge(array_keys($arr1), array_keys($arr2));
 				foreach ($keys as $key) {
-					$new_array[$key] = $this->array_join_merge(@$arr1[$key], @$arr2[$key]);
+					$new_array[$key] = $this->array_join_merge((isset($arr1[$key]) ? $arr1[$key] : ''), (isset($arr2[$key]) ? $arr2[$key] : ''));
 				}
 			} else {
 				// two real arrays -> merge
@@ -1866,15 +1876,15 @@ class getid3_write_id3v2
 		if ($parts = $this->safe_parse_url($url)) {
 			if (($parts['scheme'] != 'http') && ($parts['scheme'] != 'https') && ($parts['scheme'] != 'ftp') && ($parts['scheme'] != 'gopher')) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]]([-.]?[0-9a-z])*\.[a-z]{2,3}$", $parts['host'], $regs) && !IsValidDottedIP($parts['host'])) {
+			} elseif (!preg_match('#^[[:alnum:]]([-.]?[0-9a-z])*\\.[a-z]{2,3}$#i', $parts['host'], $regs) && !preg_match('#^[0-9]{1,3}(\\.[0-9]{1,3}){3}$#', $parts['host'])) {
 				return false;
-			} elseif (!eregi("^([[:alnum:]-]|[\_])*$", $parts['user'], $regs)) {
+			} elseif (!preg_match('#^([[:alnum:]-]|[\\_])*$#i', $parts['user'], $regs)) {
 				return false;
-			} elseif (!eregi("^([[:alnum:]-]|[\_])*$", $parts['pass'], $regs)) {
+			} elseif (!preg_match('#^([[:alnum:]-]|[\\_])*$#i', $parts['pass'], $regs)) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]/_\.@~-]*$", $parts['path'], $regs)) {
+			} elseif (!preg_match('#^[[:alnum:]/_\\.@~-]*$#i', $parts['path'], $regs)) {
 				return false;
-			} elseif (!eregi("^[[:alnum:]?&=+:;_()%#/,\.-]*$", $parts['query'], $regs)) {
+			} elseif (!empty($parts['query']) && !preg_match('#^[[:alnum:]?&=+:;_()%\\#/,\\.-]*$#i', $parts['query'], $regs)) {
 				return false;
 			} else {
 				return true;
@@ -1883,7 +1893,7 @@ class getid3_write_id3v2
 		return false;
 	}
 
-	function ID3v2ShortFrameNameLookup($majorversion, $long_description) {
+	static function ID3v2ShortFrameNameLookup($majorversion, $long_description) {
 		$long_description = str_replace(' ', '_', strtolower(trim($long_description)));
 		static $ID3v2ShortFrameNameLookup = array();
 		if (empty($ID3v2ShortFrameNameLookup)) {
@@ -1894,6 +1904,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[2]['beats_per_minute']                                 = 'TBP';
 			$ID3v2ShortFrameNameLookup[2]['composer']                                         = 'TCM';
 			$ID3v2ShortFrameNameLookup[2]['genre']                                            = 'TCO';
+			$ID3v2ShortFrameNameLookup[2]['itunescompilation']                                = 'TCP';
 			$ID3v2ShortFrameNameLookup[2]['copyright']                                        = 'TCR';
 			$ID3v2ShortFrameNameLookup[2]['encoded_by']                                       = 'TEN';
 			$ID3v2ShortFrameNameLookup[2]['language']                                         = 'TLA';
@@ -1949,6 +1960,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[3]['synchronised_tempo_codes']                         = 'SYTC';
 			$ID3v2ShortFrameNameLookup[3]['album']                                            = 'TALB';
 			$ID3v2ShortFrameNameLookup[3]['beats_per_minute']                                 = 'TBPM';
+			$ID3v2ShortFrameNameLookup[3]['itunescompilation']                                = 'TCMP';
 			$ID3v2ShortFrameNameLookup[3]['composer']                                         = 'TCOM';
 			$ID3v2ShortFrameNameLookup[3]['genre']                                            = 'TCON';
 			$ID3v2ShortFrameNameLookup[3]['copyright']                                        = 'TCOP';
@@ -1972,7 +1984,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[3]['band']                                             = 'TPE2';
 			$ID3v2ShortFrameNameLookup[3]['conductor']                                        = 'TPE3';
 			$ID3v2ShortFrameNameLookup[3]['remixer']                                          = 'TPE4';
-			$ID3v2ShortFrameNameLookup[3]['part_of_set']                                      = 'TPOS';
+			$ID3v2ShortFrameNameLookup[3]['part_of_a_set']                                    = 'TPOS';
 			$ID3v2ShortFrameNameLookup[3]['publisher']                                        = 'TPUB';
 			$ID3v2ShortFrameNameLookup[3]['tracknumber']                                      = 'TRCK';
 			$ID3v2ShortFrameNameLookup[3]['internet_radio_station_name']                      = 'TRSN';
@@ -2029,7 +2041,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[4]['title_sort_order']                                 = 'TSOT';
 			$ID3v2ShortFrameNameLookup[4]['set_subtitle']                                     = 'TSST';
 		}
-		return @$ID3v2ShortFrameNameLookup[$majorversion][strtolower($long_description)];
+		return (isset($ID3v2ShortFrameNameLookup[$majorversion][strtolower($long_description)]) ? $ID3v2ShortFrameNameLookup[$majorversion][strtolower($long_description)] : '');
 
 	}
 
