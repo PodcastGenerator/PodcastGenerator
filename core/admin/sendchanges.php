@@ -22,7 +22,7 @@ if (isset($_POST['userfile']) AND $_POST['userfile']!=NULL AND isset($_POST['tit
 
 	$img = $_FILES['image'] ['name']; // image file
 	
-	$existentimage = $_POST['existentimage'];
+	if (isset($_POST['existentimage'])) $existentimage = $_POST['existentimage']; else $existentimage = NULL;
 	
 	$title = $_POST['title'];
 
