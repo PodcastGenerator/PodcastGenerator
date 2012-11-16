@@ -18,7 +18,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the script in a GET variable - security issue
 
-	$PG_mainbody .= "<h3>$L_admin_editdel</h3>";
+	$PG_mainbody .= "<h3>_("Edit/Delete Podcasts")</h3>";
 
 	//load XML parser for PHP4 or PHP5
 	include("$absoluteurl"."components/xmlparser/loadparser.php");
@@ -109,16 +109,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 						$PG_mainbody .= 
 							'<div class="episode">
-							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'.$L_view.'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'.$L_edit.'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'.$L_delete.'</a>]</p>
+							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'."._("Watch").".'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'."._("Edit").".'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'."._("Delete").".'</a>]</p>
 							<div id="'.$text_title2.$recent_count.'" style="display:none">
 
-							<b>'.$L_deleteconfirmation.'</b>
-							<p>'.$L_yes.' <input type="radio" name="'.$L_delete.' '.$text_title2.'" value="yes" onClick="showNotify(\''.$L_deleting.'\');location.href=\'?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'';
+							<b>'._("Do you really want to delete permanently this episode?").'</b>
+							<p>'."._("Yes").".' <input type="radio" name="'."._("Delete").".' '.$text_title2.'" value="yes" onClick="showNotify(\''."._("Deleting...").".'\');location.href=\'?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'';
 
 						if ($text_imgpg!=NULL) {
 							$PG_mainbody .= '&img='.$text_imgpg.'';
 						}
-						$PG_mainbody .= '\';"> &nbsp;&nbsp; '.$L_no.' <input type="radio" name="'.$L_no.'" value="no" onClick="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');"></p>
+						$PG_mainbody .= '\';"> &nbsp;&nbsp; '."._("No").".' <input type="radio" name="'."._("No").".'" value="no" onClick="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');"></p>
 
 							</div>
 							';
@@ -139,7 +139,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		}
 
 	} else { 
-		$PG_mainbody .= '<div class="topseparator"><p>'.$L_dir.' <b>'.$upload_dir.'</b> '.$L_empty.'</p><p><a href="?p=admin&do=upload">'.$L_uploadanepisode.'</a></p></div>';
+		$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p><p><a href="?p=admin&do=upload">'."._("Upload a podcast").".'</a></p></div>';
 	}
 
 } //end if admin

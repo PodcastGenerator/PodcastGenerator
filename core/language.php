@@ -15,7 +15,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['scriptlang'])) { exit; }
 ########### End
 // I depurate scriptlang above
 
-
+/*
 if (file_exists("language/en.php") AND $scriptlang != "en") {
 	
 	
@@ -40,4 +40,44 @@ else { // if language file exist
 
 }
 
+
+
+*/
+
+//INITIALIZE PHPGETTEXT LIB - https://launchpad.net/php-gettext/
+// define constants
+define('PROJECT_DIR', realpath('./'));
+define('LOCALE_DIR', PROJECT_DIR .'/components/locale'); //dir containing locales
+define('DEFAULT_LOCALE', 'en_EN');
+
+require_once('components/php-gettext/gettext.inc');
+
+$supported_locales = array('en_US', 'sr_CS', 'de_CH');
+$encoding = 'UTF-8';
+
+$locale = (isset($_GET['lang']))? $_GET['lang'] : DEFAULT_LOCALE;
+
+// gettext setup
+T_setlocale(LC_MESSAGES, $locale);
+// Set the text domain as 'messages'
+$domain = 'messages';
+T_bindtextdomain($domain, LOCALE_DIR);
+T_bind_textdomain_codeset($domain, $encoding);
+T_textdomain($domain);
+
+
+
+
+/*
+################################
+#### GESTIONE LINGUE CON GETTEXT
+$locale = "en_EN";
+if (isset($scriptlang) AND $scriptlang == "en") $locale = "en_EN";
+putenv("LC_ALL=$locale");
+setlocale(LC_ALL, $locale);
+bindtextdomain("messages", "./components/locale");
+textdomain("messages");
+
+#### FINE - GESTIONE LINGUE CON GETTEXT
+*/
 ?>

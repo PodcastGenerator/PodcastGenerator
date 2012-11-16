@@ -99,8 +99,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 			$PG_mainbody .= '
 				<div class="topseparator"> 
-				<h3>'.$L_welcome.'</h3>
-				<p><i>'.$L_firstadminmsg.'</i> <a href="?p=admin&do=changedetails"><b>'.$L_startnow.'</b></a></p>
+				<h3>'._("Welcome").'</h3>
+				<p><i>'._("This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are reccommended to set a podcast title, description, your name, e-mail, etc...").'</i> <a href="?p=admin&do=changedetails"><b>'."._("Start now...").".'</b></a></p>
 
 				</div>';	
 		}
@@ -108,21 +108,21 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 		$PG_mainbody .= '
 			<div class="topseparator"> 
-			<h3>'.$L_admin_episodes.'</h3>
+			<h3>'._("Episodes").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=upload">'.$L_admin_upload.'</a></li>
-			<li><a href="?p=admin&do=editdel">'.$L_admin_editdel.'</a></li>
-			<li><a href="?p=admin&do=ftpfeature">'.$L_ftpfeature.'</a></li>
-			<li><a href="?p=admin&do=generate">'.$L_admin_genfeed.'</a></li>
+			<li><a href="?p=admin&do=upload">'._("New Podcast").'</a></li>
+			<li><a href="?p=admin&do=editdel">'._("Edit/Delete Podcasts").'</a></li>
+			<li><a href="?p=admin&do=ftpfeature">'."._("FTP Feature").".'</a></li>
+			<li><a href="?p=admin&do=generate">'._("Manually regenerate xml feed").'</a></li>
 			</ul>
 			</div>';
 
 		if ($categoriesenabled == "yes") { //if categories are enabled in config.php
 
 			$PG_mainbody .= '<div class="topseparator"> 
-				<h3>'.$L_admin_categories.'</h3>
+				<h3>'._("Categories").'</h3>
 				<ul> 
-				<li><a href="?p=admin&do=categories">'.$L_adddel_categories.'</a></li>
+				<li><a href="?p=admin&do=categories">'._("Add")del_categories.'</a></li>
 				</ul>
 				</div>';
 		} // end if categories enabled
@@ -130,43 +130,43 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		if ($freebox == "yes") {
 
 			$PG_mainbody .= '<div class="topseparator"> 
-				<h3>'.$L_admin_freebox.'</h3>
+				<h3>'._("FreeBox").'</h3>
 				<ul> 
-				<li><a href="?p=admin&do=freebox">'.$L_customize_freebox.'</a></li>
+				<li><a href="?p=admin&do=freebox">'."._("Customize your FreeBox").".'</a></li>
 				</ul>
 				</div>';
 		}
 
 		$PG_mainbody .= '<div class="topseparator"> 
-			<h3>'.$L_admin_themes.'</h3>
+			<h3>'._("Themes and aspect").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=theme">'.$L_admin_selecttheme.'</a></li>
+			<li><a href="?p=admin&do=theme">'._("Select Theme").'</a></li>
 			</ul>
 			</div>
 
 
 			<div class="topseparator"> 
-			<h3>'.$L_admin_itunessettings.'</h3>
+			<h3>'._("iTunes Settings").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=itunesimg">'.$L_change_itunesimage.'</a></li>
-			<li><a href="?p=admin&do=itunescat">'.$L_changecat.'</a></li>
-			<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'.$L_submit_itunes_store.'</a></li>
-		<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'.$L_ping_itunes_store.'</a></li>
+			<li><a href="?p=admin&do=itunesimg">'."._("Change")."_itunesimage.'</a></li>
+			<li><a href="?p=admin&do=itunescat">'."._("Change")."cat.'</a></li>
+			<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'."._("Submit your podcast to the iTunes Store").".'</a></li>
+		<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'."._("Ping the itunes store to update your podcast immediately").".'</a></li>
 		</ul>
 			</div>
 
 			<div class="topseparator"> 
-			<h3>'.$L_admin_podcastdetails.'</h3>
+			<h3>'._("Your podcast details").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=changedetails">'.$L_changepodcastdetails.'</a></li>
-			<li><a href="http://validator.w3.org/feed/check.cgi?url='.$url.'feed.xml" target="_blank">'.$L_admin_feed_validate.'</a></li>
+			<li><a href="?p=admin&do=changedetails">'."._("Change")."podcastdetails.'</a></li>
+			<li><a href="http://validator.w3.org/feed/check.cgi?url='.$url.'feed.xml" target="_blank">'._("Validate this feed with w3c validation service").'</a></li>
 		</ul>
 			</div>
 
 			<div class="topseparator"> 
-			<h3>'.$L_pgconfig.'</h3>
+			<h3>'."._("Podcast Generator Configuration").".'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=config">'.$L_admin_changeconf.'</a></li>
+			<li><a href="?p=admin&do=config">'._("Change Podcast Generator Configuration").'</a></li>
 			</ul>
 			</div>
 
@@ -179,7 +179,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		if ($enablepgnewsinadmin == "yes") { //if display news is enabled in config.php
 
 			$PG_mainbody .= '<div class="topseparator">
-				<h3>'.$L_pgnews.'</h3>';
+				<h3>'."._("Podcast Generator News").".'</h3>';
 
 			include("$absoluteurl"."core/admin/pgRSSnews.php"); // display the latest RSS news of podcastgen
 

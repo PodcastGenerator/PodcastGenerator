@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GPPinfoNET\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-17 17:56+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Language: English\n"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:41
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:154
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:272
+msgid "Descrizione"
+msgstr "Description"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:41
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:154
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:272
+msgid "Documenti"
+msgstr "Documents"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:43
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:159
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:181
+msgid "Archivio Newsletter"
+msgstr "Newsletter Archive"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:124
+msgid "Visualizza / Scarica il documento"
+msgstr "Download / View the document"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:126
+msgid "Data"
+msgstr "Date"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:126
+msgid "Tipo di file"
+msgstr "Filetype"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:126
+msgid "Dimensione"
+msgstr "Size"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:185
+msgid "Feed RSS Allegati"
+msgstr "Attachments - RSS Feed"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:185
+msgid "Documenti allegati alla pagina"
+msgstr "Documents attached to"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:215
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:251
+msgid "Successiva"
+msgstr "Next"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/mostra_allegati_tab.php:249
+msgid "Precedente"
+msgstr "Previous"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:69
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:70
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:71
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:72
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:73
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:74
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:75
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:76
+msgid "documento di Microsoft Office"
+msgstr "Microsoft Office document"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:79
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:80
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:81
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:82
+msgid "documento di OpenOffice.org"
+msgstr "OpenOffice.org document"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:85
+msgid "documento PDF"
+msgstr "PDF document"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:86
+msgid "archivio compresso ZIP"
+msgstr "ZIP compressed archive"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:87
+msgid "archivio compresso RAR"
+msgstr "RAR compressed archive"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:88
+msgid "archivio compresso 7-ZIP"
+msgstr "7-ZIP compressed archive"
+
+#: /Users/beta/Sites/GPPinfoNET/resource/components/allegati/tipi_allegato_supportati.php:89
+msgid "audio MP3"
+msgstr "MP3 audio"
+
+#~ msgid "TES World!"
+#~ msgstr "Cane"
+

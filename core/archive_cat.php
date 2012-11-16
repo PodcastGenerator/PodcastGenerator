@@ -37,7 +37,7 @@ if (!isset($_GET['cat']) OR $_GET['cat'] == NULL ) {
 
 
 
-		$PG_mainbody .= "<h3>$L_choosecat</h3>";
+		$PG_mainbody .= "<h3>"._("Choose a category:")."</h3>";
 		$PG_mainbody .= '<ul>';
 
 
@@ -54,7 +54,7 @@ if (!isset($_GET['cat']) OR $_GET['cat'] == NULL ) {
 	} //if xml categories file doesn't exist
 
 	$PG_mainbody .= '</ul>
-		<div class="episode"><a href="?p=archive&amp;cat=all"><b>'.$L_allepisodes.'</b></a></div>';
+		<div class="episode"><a href="?p=archive&amp;cat=all"><b>'._("Show all episodes").'</b></a></div>';
 }
 
 #########################
@@ -94,8 +94,8 @@ else { // if category is set
 			if ($_GET['cat'] == $arrid[$key]) {
 
 				$PG_mainbody .= '<h3>' . $val . '</h3>
-					<p><a href="'.$url.'feed.php?cat='.$_GET['cat'].'">'.$L_cat_subscribe.' <img src="feed-icon.gif" alt="'.$L_cat_subscribe.'" border="0" /></a></p>
-					<p><a href="'.$urlforitunes.'feed.php?cat='.$_GET['cat'].'">'.$L_cat_subscribe_itunes.'</a></p><br />';
+					<p><a href="'.$url.'feed.php?cat='.$_GET['cat'].'">'."._("Subscribe to this category").".' <img src="feed-icon.gif" alt="'."._("Subscribe to this category").".'" border="0" /></a></p>
+					<p><a href="'.$urlforitunes.'feed.php?cat='.$_GET['cat'].'">'."._("Subscribe to this category")."_itunes.'</a></p><br />';
 				$categorypresent = "yes"; 
 			} 
 		}
@@ -164,7 +164,7 @@ else { // if category is set
 							#Define episode headline
 							$episode_date = "<a name=\"$file_multimediale[0]\"></a>
 								<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\">
-								<img src=\"podcast.gif\" alt=\"$L_downloadfile $text_title\" title=\"$L_downloadfile $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size $L_bytes)</i>";
+								<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
 
 
 
@@ -195,7 +195,7 @@ else { // if category is set
 
 								if ($podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-									$PG_mainbody .= '&nbsp;<img src="video.png" alt="'.$L_podcastvideo.'" />';
+									$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
 
 								}
 
@@ -227,16 +227,16 @@ else { // if category is set
 			}
 			if (!isset($oneispresent) AND isset($categorypresent)) {
 
-				$PG_mainbody .= '<p>'.$L_catempty.'</p>';
+				$PG_mainbody .= '<p>'."._("This category is empty...").".'</p>';
 
 			} elseif (!isset($categorypresent)) {
-				$PG_mainbody .= '<p>'.$L_catnotexist.'</p>';
+				$PG_mainbody .= '<p>'."._("This category doesn't exist").".'</p>';
 			}
 
-			$PG_mainbody .=	'<p><a href="?p=archive">'.$L_backcatlist.'</a></p>';
+			$PG_mainbody .=	'<p><a href="?p=archive">'."._("Back")."catlist.'</a></p>';
 
 		} else { 
-			$PG_mainbody .= '<div class="topseparator"><p>'.$L_dir.' <b>'.$upload_dir.'</b> '.$L_empty.'</p></div>';
+			$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
 		}
 
 	}

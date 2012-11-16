@@ -15,8 +15,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 // check if user is already logged in
 if(isset($amilogged) AND $amilogged =="true") {
 
-	$PG_mainbody .= '<h3>'.$L_changepodcastdetails.'</h3>
-		<p><span class="admin_hints">'.$L_podcastdetailshints.'</span></p>';
+	$PG_mainbody .= '<h3>'."._("Change")."podcastdetails.'</h3>
+		<p><span class="admin_hints">'."._("podcasts")."detailshints.'</span></p>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
@@ -29,7 +29,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$title = depurateContent($title);
 			$podcast_title = $title;
 		}else{
-			$PG_mainbody .= '<p>'.$L_podcastitle.' '.$L_empty.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'."._("podcasts")."itle.' '."._("is empty...").".' '."._("(ignored)").".'</p>';	
 		}
 
 		// subtitle
@@ -41,7 +41,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$subtitle = depurateContent($subtitle);
 			$podcast_subtitle = $subtitle;
 		}else{
-			$PG_mainbody .= '<p>'.$L_podcastsubtitle.' '.$L_empty.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'."._("podcasts")."subtitle.' '."._("is empty...").".' '."._("(ignored)").".'</p>';	
 		}
 
 		// description
@@ -59,11 +59,11 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 			}else { //if description is more than max characters allowed
 
-				$PG_mainbody .= "<p>$L_podcastdesctoolong<br />$L_max $descmax $L_characters - $L_actualenght ".strlen($description)." $L_characters.</p>";
+				$PG_mainbody .= "<p>"._("podcasts")."desctoolong<br />"._("Max:")." $descmax "._("characters")." - "._("Actual Length")." ".strlen($description)." "._("characters").".</p>";
 
 			} // end of description lenght checking
 		}else{
-			$PG_mainbody .= '<p>'.$L_podcastdesc.' '.$L_empty.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'."._("podcasts")."desc.' '."._("is empty...").".' '."._("(ignored)").".'</p>';	
 		}
 
 
@@ -77,7 +77,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$copyright_notice = depurateContent($copyright_notice);
 			$copyright = $copyright_notice;
 		}else{
-			$PG_mainbody .= '<p>'.$L_copyrightnotice.' '.$L_empty.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'."._("copyright")."notice.' '."._("is empty...").".' '."._("(ignored)").".'</p>';	
 		}
 
 		// author's name
@@ -90,7 +90,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$authorname = depurateContent($authorname);
 			$author_name = $authorname;
 		}else{
-			$PG_mainbody .= '<p>'.$L_authorname.' '.$L_empty.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'._("Author")name.' '."._("is empty...").".' '."._("(ignored)").".'</p>';	
 		}
 
 		// author's email
@@ -106,7 +106,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$author_email = $authoremail;
 		}
 		else{ // if email not valid
-			$PG_mainbody .= '<p>'.$L_noauthemail.' '.$L_ignored.'</p>';	
+			$PG_mainbody .= '<p>'."._("No")."authemail.' '."._("(ignored)").".'</p>';	
 		}
 
 
@@ -121,7 +121,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-		$PG_mainbody .= '<p><b>'.$L_informationsent.'</b></p>';
+		$PG_mainbody .= '<p><b>'."._("The information has been successfully sent.").".'</b></p>';
 
 		//REGENERATE FEED ...
 		include ("$absoluteurl"."core/admin/feedgenerate.php");
@@ -133,22 +133,22 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .=	'<form name="podcastdetails" method="POST" enctype="multipart/form-data" action="?p=admin&do=changedetails&action=change">';
 
 		$PG_mainbody .=	'<br /><br />
-			<p><label for="title"><b>'.$L_podcastitle.'</b></label></p>
+			<p><label for="title"><b>'."._("podcasts")."itle.'</b></label></p>
 			<input name="title" type="text" id="title" size="50" maxlength="255" value="'.$podcast_title.'">
 			<br /><br />
-			<p><label for="subtitle"><b>'.$L_podcastsubtitle.'</b></label></p>
+			<p><label for="subtitle"><b>'."._("podcasts")."subtitle.'</b></label></p>
 			<input name="subtitle" type="text" id="title" size="50" maxlength="255" value="'.$podcast_subtitle.'">
 			<br /><br />
-			<p><label for="description"><b>'.$L_podcastdesc.'</b></label></p>
+			<p><label for="description"><b>'."._("podcasts")."desc.'</b></label></p>
 			<textarea name="description" cols="50" rows="3">'.$podcast_description.'</textarea>	
 			<br /><br />
-			<p><label for="copyright_notice"><b>'.$L_copyrightnotice.'</b></label></p>
+			<p><label for="copyright_notice"><b>'."._("copyright")."notice.'</b></label></p>
 			<input name="copyright_notice" type="text" id="title" size="50" maxlength="255" value="'.$copyright.'">	
 			<br /><br />
-			<p><label for="authorname"><b>'.$L_authorname.'</b></label></p>
+			<p><label for="authorname"><b>'._("Author")name.'</b></label></p>
 			<input name="authorname" type="text" id="title" size="50" maxlength="255" value="'.$author_name.'">	
 			<br /><br />
-			<p><label for="authoremail"><b>'.$L_authoremail.'</b></label></p>
+			<p><label for="authoremail"><b>'._("Author")email.'</b></label></p>
 			<input name="authoremail" type="text" id="title" size="50" maxlength="255" value="'.$author_email.'">';
 
 
@@ -176,8 +176,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		## FEED LANGUAGES LIST
 
-		$PG_mainbody .= '<br /><br /><p><label for="feedlanguage"><b>'.$L_feedlang.'</b></label></p>
-			<p><span class="admin_hints">'.$L_feedlanguagehint.'</span></p>
+		$PG_mainbody .= '<br /><br /><p><label for="feedlanguage"><b>'."._("Feed language").".'</b></label></p>
+			<p><span class="admin_hints">'."._("Feed language")."uagehint.'</span></p>
 			';
 		$PG_mainbody .= '<select name="feedlanguage">';
 
@@ -204,21 +204,21 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '</select>';	
 
 
-		$PG_mainbody .= '<br /><br /><p><label for="explicit"><b>'.$L_explicitpodcast.'</b></label></p>
-			<span class="admin_hints">'.$L_yourpodcastexplicit.'</span>
-			<p>'.$L_yes.' <input type="radio" name="explicit" value="yes" ';
+		$PG_mainbody .= '<br /><br /><p><label for="explicit"><b>'."._("Explicit")."podcast.'</b></label></p>
+			<span class="admin_hints">'."._("Does your podcast contain explicit language?").".'</span>
+			<p>'."._("Yes").".' <input type="radio" name="explicit" value="yes" ';
 
 		if ($explicit_podcast == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '.$L_no.' <input type="radio" name="explicit" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="explicit" value="no" ';
 
 		if ($explicit_podcast == "no") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '.$L_clean.'<input type="radio" name="explicit" value="clean" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No, it's clean").".'<input type="radio" name="explicit" value="clean" ';
 
 		if ($explicit_podcast == "clean") {
 			$PG_mainbody .= 'checked';
@@ -227,7 +227,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '></p>';
 
 		$PG_mainbody .= '<br /><p>
-			<input type="submit" name="'.$L_send.'" value="'.$L_send.'" onClick="showNotify(\''.$L_setting.'\');"></p>';
+			<input type="submit" name="'."._("Send").".'" value="'."._("Send").".'" onClick="showNotify(\''."._("Setting...").".'\');"></p>';
 	}
 
 }

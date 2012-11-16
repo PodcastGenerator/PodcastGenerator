@@ -21,7 +21,7 @@ if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['
 	$freeboxcontent = $_POST['long_description'];
 	$freeboxcontent = stripslashes($freeboxcontent); //depurate
 
-	$PG_mainbody .= '<h3>'.$L_admin_freebox.'</h3>';
+	$PG_mainbody .= '<h3>'._("FreeBox").'</h3>';
 
 	$fp1 = fopen("$absoluteurl"."freebox-content.txt", "w+"); //Apri il file in lettura e svuotalo (w+)
 	fclose($fp1);
@@ -30,14 +30,14 @@ if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['
 	fwrite($fp, "$freeboxcontent"); 
 	fclose($fp);
 
-	$PG_mainbody .= "$L_freeboxupdated";
+	$PG_mainbody .= ""._("Your freebox has been updated!")."";
 
 }
 
 else {
 
 
-	$PG_mainbody .= '<h3>'.$L_admin_freebox.'</h3>';
+	$PG_mainbody .= '<h3>'._("FreeBox").'</h3>';
 
 	if(file_exists("$absoluteurl"."freebox-content.txt")){
 
@@ -47,13 +47,13 @@ else {
 		$PG_mainbody .= '
 			<form action="?p=admin&amp;do=freebox&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
-			<span class ="admin_hints">'.$L_htmlaccepted.'</span><br /><br />
+			<span class ="admin_hints">'."._("(HTML tags accepted)").".'</span><br /><br />
 
 			<textarea id="long_description" name="long_description" cols="50" rows="3">'.$freeboxcontenttodisplay.'</textarea>
 
 			<br /></div>
 
-			<input type="submit" value="'.$L_send.'" onClick="showNotify(\''.$L_setting.'\');">
+			<input type="submit" value="'."._("Send").".'" onClick="showNotify(\''."._("Setting...").".'\');">
 			<br /><br /><br /><br />
 
 			</form>

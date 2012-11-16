@@ -17,7 +17,7 @@ include("$absoluteurl"."components/xmlparser/loadparser.php");
 
 $PG_mainbody = NULL; //erase variable which contains episodes data
 
-$PG_mainbody .= '<h3>' . $L_episodesarchive . '</h3>'; 
+$PG_mainbody .= '<h3>' . "._("Episodes Archive")." . '</h3>'; 
 
 // Open podcast directory
 $handle = opendir ($absoluteurl.$upload_dir);
@@ -80,7 +80,7 @@ if (!empty($file_array)) { //if directory is not empty
 					#Define episode headline
 					$episode_date = "<a name=\"$file_multimediale[0]\"></a>
 						<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\">
-						<img src=\"podcast.gif\" alt=\"$L_downloadfile $text_title\" title=\"$L_downloadfile $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size $L_bytes)</i>";
+						<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
 
 
 
@@ -107,7 +107,7 @@ if (!empty($file_array)) { //if directory is not empty
 
 					if ($podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'.$L_podcastvideo.'" />';
+						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
 
 					}
 
@@ -139,7 +139,7 @@ if (!empty($file_array)) { //if directory is not empty
 	}
 
 } else { 
-	$PG_mainbody .= '<div class="topseparator"><p>'.$L_dir.' <b>'.$upload_dir.'</b> '.$L_empty.'</p></div>';
+	$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
 }
 
 ?>

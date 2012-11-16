@@ -28,7 +28,7 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 	if (file_exists("$absoluteurl$upload_dir$file.$ext")) {
 		unlink ("$upload_dir$file.$ext");
-		$PG_mainbody .="<p><b>$file.$ext</b> $L_deleted</p>";
+		$PG_mainbody .="<p><b>$file.$ext</b> "._("has been deleted")."</p>";
 
 	}
 
@@ -47,7 +47,7 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 			unlink ("$absoluteurl$img_dir$img"); // DELETE IMAGE FILE
 
-			$PG_mainbody .="<p>$L_del_img</p>";
+			$PG_mainbody .="<p>"._("Image associated to this file deleted")."</p>";
 		}
 
 	} //end if isset image
@@ -57,9 +57,9 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 	include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
 	##########
 
-	$PG_mainbody .= '<p><a href=?p=admin&do=editdel>'.$L_delother.'</a></p>';
+	$PG_mainbody .= '<p><a href=?p=admin&do=editdel>'."._("Delete other episodes").".'</a></p>';
 
 } else { 
-	$PG_mainbody .="$L_deletenothing";
+	$PG_mainbody .= _("No file to delete...");
 }
 ?>
