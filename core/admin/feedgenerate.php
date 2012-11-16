@@ -22,8 +22,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	if (isset($_GET['do']) AND $_GET['do']=="generate" AND !isset($_GET['c'])) { //show "Continue" Button
 
-	$PG_mainbody .= "<h3>$L_generate</h3>";
-	$PG_mainbody .= "<p><span class=\"admin_hints\">$L_admin_genfeed</span></p>";
+	$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
+	$PG_mainbody .= "<p><span class=\"admin_hints\">_("Manually regenerate xml feed")</span></p>";
 
 	include ("$absoluteurl"."components/loading_indicator/loading.js");
 
@@ -33,7 +33,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<input type="hidden" name="p" value="'.$_GET['p'].'">
 		<input type="hidden" name="do" value="'.$_GET['do'].'">
 		<input type="hidden" name="c" value="ok">
-		<input type="submit" value="'.$L_continue.'" onClick="showNotify(\''.$L_generating.'\');">
+		<input type="submit" value="'."._("Continue").".'" onClick="showNotify(\''."._("Generating...").".'\');">
 		</form>
 		';
 
@@ -42,8 +42,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	if (isset($_GET['do']) AND $_GET['do']=="generate") {	// do not show following text if included in other php files
 
-		$PG_mainbody .= "<h3>$L_generate</h3>";
-		$PG_mainbody .= "<p><span class=\"admin_hints\">$L_admin_genfeed</span></p>";
+		$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
+		$PG_mainbody .= "<p><span class=\"admin_hints\">_("Manually regenerate xml feed")</span></p>";
 	}
 
 	### DEFINE FEED FILENAME
@@ -365,19 +365,19 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	############
 
-	$PG_mainbody .= "<br /><b>$L_feedgenerated</b><br />";
+	$PG_mainbody .= "<br /><b>"._("Feed XML generated!")."</b><br />";
 
 	if ($recent_episode_in_feed == "0") {
 
-		$PG_mainbody .= "<br /><i>$L_allepisodesindexed</i><br /><span class=\"admin_hints\">$L_allepisodesindexed_hint</span>";	
+		$PG_mainbody .= "<br /><i>"._("All the episodes have been indexed in the feed")."</i><br /><span class=\"admin_hints\">"._("You can limit the feed to the last episodes")."</span>";	
 
 	} else {
 
-		$PG_mainbody .= "<br /><i>$recent_count $L_episodes</i>";	
+		$PG_mainbody .= "<br /><i>$recent_count "._("episode(s) in the feed")."</i>";	
 
 	}
 
-	//$PG_mainbody .= "<p><a href=\"$url\">$L_gohome</a></p>";
+	//$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 
 
 

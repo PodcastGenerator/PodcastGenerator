@@ -13,7 +13,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 if(($theme_file_contents = file_get_contents($theme_path."index.htm")) === FALSE) {
-	echo "<p class=\"error\">".$L_failedopentheme."</p>";
+	echo "<p class=\"error\">"._("Failed to open theme file")."</p>";
 	exit;
 }
 
@@ -42,7 +42,7 @@ $page_title = $podcast_title;
 if (isset($_GET['p'])) {
 
 	if ($_GET['p']=="archive") {
-		$page_title .= " - $L_menu_allpodcasts";
+		$page_title .= " - "._("Podcast Archive")."";
 
 		#########
 		// display category name in the title	
@@ -138,11 +138,11 @@ $urlforitunes = str_replace("http://", "itpc://", $url);
 
 $rightboxcontent = '<div class="rightbox">
 
-	<b>'.$podcast_title.' '.$L_boxdx_feed.'</b>
-	<p>'.$L_boxdx_copylink.'<br /><br />
-	<a href="'.$url.$feed_dir.'feed.xml"><img src="rss-podcast.gif" alt="'.$L_boxdx_copylink.'" title="'.$L_boxdx_copylink.'" border="0" /></a>
+	<b>'.$podcast_title.' '._("feed:").'</b>
+	<p>'._("Copy the feed link and paste it into your aggregator").'<br /><br />
+	<a href="'.$url.$feed_dir.'feed.xml"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
 	</p>
-	<p>'.$L_boxdx_subitunes.'<br /><br /><a href="'.$urlforitunes.$feed_dir.'feed.xml"><img src="podcast_itunes.jpg" alt="'.$L_boxdx_subitunes.'" title="'.$L_boxdx_subitunes.'" border="0" /></a></p>
+	<p>'._("Subscribe to this podcast with iTunes").'<br /><br /><a href="'.$urlforitunes.$feed_dir.'feed.xml"><img src="podcast_itunes.jpg" alt="'._("Subscribe to this podcast with iTunes").'" title="'._("Subscribe to this podcast with iTunes").'" border="0" /></a></p>
 
 
 	</div>';
@@ -153,13 +153,13 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 
 	//show donation box
 	$rightboxcontent .= '<div class="rightbox">
-		<b>'.$L_donatebox.'</b><p>'.$L_admin_donation.'<br /><br />
-		<a href="http://www.podcastgenerator.net/donation.php"><img src="project-support.jpg" title="'.$L_admin_donation1.'" alt="'.$L_admin_donation1.'" width="88" height="32" border="0" /></a></p>
+		<b>'._("Make a donation:").'</b><p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
+		<a href="http://www.podcastgenerator.net/donation.php"><img src="project-support.jpg" title="'._("If you like Podcast Generator please consider making a donation:").'" alt="'._("If you like Podcast Generator please consider making a donation:").'" width="88" height="32" border="0" /></a></p>
 	</div>';
 
 	//show PG box
 	$rightboxcontent .= '<div class="rightbox">
-		<b>'.$L_podcast_generator.'</b><br /><p>- <a href="?p=admin&do=serverinfo">'.$L_serverconf.'</a><br />- <a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'.$L_checkforupdates.'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'.$L_subscribenewsfeed.'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation.php?ref=local-admin" target="_blank">'.$L_readdocgetsupport.'</a><br />- <a href="http://podcastgen.sourceforge.net/credits.php?ref=local-admin" target="_blank">'.$L_credits.'</a></p>
+		<b>'._("Podcast Generator").'</b><br /><p>- <a href="?p=admin&do=serverinfo">'._("Your server configuration").'</a><br />- <a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'._("Subscribe to the news feed").'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation.php?ref=local-admin" target="_blank">'._("Read documentation and get support").'</a><br />- <a href="http://podcastgen.sourceforge.net/credits.php?ref=local-admin" target="_blank">'._("Credits").'</a></p>
 	</div>';
 
 }
@@ -210,15 +210,15 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	$theme_file_contents = str_replace("-----PG_PODCASTDESC-----", $podcast_description, $theme_file_contents); 
 
-	$theme_file_contents = str_replace("-----PG_MENUHOME-----", $L_menu_home, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUHOME-----", _("Home"), $theme_file_contents); 
 
-	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $L_menu_allpodcasts, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
 
-	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", $L_menu_admin, $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", _("Admin"), $theme_file_contents); 
 
 	#FOOTER
 
-	$definefooter = $L_footer_poweredby.' <a href="http://podcastgen.sourceforge.net" title="'.$L_podcast_generator.$L_footer_pgdesc.'">'.$L_podcast_generator.'</a>'.$L_footer_pgdesc;
+	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution.").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution.");
 
 	$theme_file_contents = str_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
 

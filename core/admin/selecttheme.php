@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 
-	$PG_mainbody .= '<h3>'.$L_selecttheme.'</h3>';
+	$PG_mainbody .= '<h3>'."._("Theme Selection").".'</h3>';
 
 
 	if (isset($_POST['themedir']) AND $_POST['themedir'] != NULL) { 
@@ -30,13 +30,13 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 			include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-			$PG_mainbody .= '<p>'.$L_themechanged.'</p>
-				<p><a href="?p=admin&do=theme">'.$L_tryanothertheme.'</a></p>';
+			$PG_mainbody .= '<p>'."._("Theme changed!").".'</p>
+				<p><a href="?p=admin&do=theme">'."._("Try another theme...").".'</a></p>';
 		}
 		else { // if theme is already in use
 
-			$PG_mainbody .= '<p>'.$L_themeinuse.'</p>
-				<p><a href="?p=admin&do=theme">'.$L_tryanothertheme.'</a></p>';
+			$PG_mainbody .= '<p>'."._("You are already using this theme").".'</p>
+				<p><a href="?p=admin&do=theme">'."._("Try another theme...").".'</a></p>';
 
 		}
 
@@ -45,8 +45,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		$PG_mainbody .= '
 
-			<p>'.$L_selectpgtheme.'</p>
-			<form name="'.$L_selecttheme.'" method="POST" enctype="multipart/form-data" action="?p=admin&do=theme">
+			<p>'."._("Change Podcast Generator theme and aspect:").".'</p>
+			<form name="'."._("Theme Selection").".'" method="POST" enctype="multipart/form-data" action="?p=admin&do=theme">
 
 			<select name="themedir">';
 
@@ -76,7 +76,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		$PG_mainbody .= '</select><br /><br />
 
-			<input type="submit" name="'.$L_change.'" value="'.$L_change.'" onClick="showNotify(\''.$L_setting.'\');">
+			<input type="submit" name="'."._("Change").".'" value="'."._("Change").".'" onClick="showNotify(\''."._("Setting...").".'\');">
 
 			';
 
@@ -85,7 +85,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 	} 
 
 	$PG_mainbody .= '<br /><br /><div class="topseparator">
-		<span class="admin_hints">'.$L_howtocreatetheme.' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'.$L_seedocumentation.'</a></span>
+		<span class="admin_hints">'."._("Hint: How to create your own theme?").".' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'."._("See documentation").".'</a></span>
 	</div>
 		';
 

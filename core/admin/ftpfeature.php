@@ -18,8 +18,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the script in a GET variable - security issue
 
-	$PG_mainbody .= "<h3>$L_ftpfeature</h3>";
-	$PG_mainbody .= "<p><span class=\"admin_hints\">$L_ftplooking $upload_dir</span></p>";
+	$PG_mainbody .= "<h3>"._("FTP Feature")."</h3>";
+	$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Looking for manually uploaded podcast into directory:")." $upload_dir</span></p>";
 
 	if (!isset($_GET['c'])) { //show "Continue" Button
 
@@ -31,7 +31,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<input type="hidden" name="p" value="'.$_GET['p'].'">
 		<input type="hidden" name="do" value="'.$_GET['do'].'">
 		<input type="hidden" name="c" value="ok">
-		<input type="submit" value="'.$L_continue.'" onClick="showNotify(\''.$L_searching.'\');">
+		<input type="submit" value="'."._("Continue").".'" onClick="showNotify(\''."._("Searching...").".'\');">
 		</form>
 		';
 
@@ -41,7 +41,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 		$getID3 = new getID3; //initialize getID3 engine
 
-		//$PG_mainbody .= '<div><i>'.$L_searching.'</i></div>';
+		//$PG_mainbody .= '<div><i>'."._("Searching...").".'</i></div>';
 
 		// Open podcast directory
 		$handle = opendir ($upload_dir);
@@ -93,7 +93,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 						if (file_exists("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype") AND !file_exists("$filedescr")) { //if there is the multimedia file but not the database file with information
 
-							$PG_mainbody .= '<br /><ul><li><p><b>'.$L_foundmedia.'</b> '.$file_multimediale[0].'.'.$podcast_filetype.'</li></ul></p>';
+							$PG_mainbody .= '<br /><ul><li><p><b>'."._("Media file found:").".'</b> '.$file_multimediale[0].'.'.$podcast_filetype.'</li></ul></p>';
 
 							# File details (duration, bitrate, etc...)
 							$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype"); //read file tags
@@ -104,14 +104,14 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 							if (isset($ThisFileInfo['tags']['id3v2']['title'][0]) AND $ThisFileInfo['tags']['id3v2']['title'][0] != NULL) { //try id3 v2
 								$episode_id_title = @$ThisFileInfo['tags']['id3v2']['title'][0];
 
-								$PG_mainbody .= '<p><i>'.$L_readid3.'</i></p>
-									<p><b>'.$L_title.'</b> '.$episode_id_title.'</p>';
+								$PG_mainbody .= '<p><i>'."._("Reading data from ID3 tags:").".'</i></p>
+									<p><b>'."._("Title").".'</b> '.$episode_id_title.'</p>';
 
 								} elseif (isset($ThisFileInfo['tags']['id3v1']['title'][0]) AND $ThisFileInfo['tags']['id3v1']['title'][0] != NULL) { //try id3 v1
 									$episode_id_title = @$ThisFileInfo['tags']['id3v1']['title'][0];
 
-									$PG_mainbody .= '<p><i>'.$L_readid3.'</i></p>
-										<p><b>'.$L_title.'</b> '.$episode_id_title.'</p>';
+									$PG_mainbody .= '<p><i>'."._("Reading data from ID3 tags:").".'</i></p>
+										<p><b>'."._("Title").".'</b> '.$episode_id_title.'</p>';
 
 								} else { //if it cannot read both id3 v1 and v2 use the filename
 									$episode_id_title = $file_multimediale[0];
@@ -122,12 +122,12 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 								if (isset($ThisFileInfo['tags']['id3v2']['artist'][0]) AND $ThisFileInfo['tags']['id3v2']['artist'][0] != NULL) { //try id3 v2
 									$episode_id_description = @$ThisFileInfo['tags']['id3v2']['artist'][0];
 
-									$PG_mainbody .= '<p><b>'.$L_description.'</b> '.$episode_id_description.'</p>';
+									$PG_mainbody .= '<p><b>'."._("Description").".'</b> '.$episode_id_description.'</p>';
 
 									} elseif (isset($ThisFileInfo['tags']['id3v1']['artist'][0]) AND $ThisFileInfo['tags']['id3v1']['artist'][0] != NULL) { //try id3 v1
 										$episode_id_description = @$ThisFileInfo['tags']['id3v1']['artist'][0];
 
-										$PG_mainbody .= '<p><b>'.$L_description.'</b> '.$episode_id_description.'</p>';
+										$PG_mainbody .= '<p><b>'."._("Description").".'</b> '.$episode_id_description.'</p>';
 
 									} else { //if it cannot read both id3 v1 and v2 use the filename
 										$episode_id_description = $file_multimediale[0];
@@ -220,9 +220,9 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 					}
 
-					$PG_mainbody .= '<br /><div><b>'.$L_scanfinished.'</b> '.$files_count.' '.$L_ftp_newepisodes;
+					$PG_mainbody .= '<br /><div><b>'."._("Scan finished:").".'</b> '.$files_count.' '."._("new episode(s) added.").";
 
-					$PG_mainbody .= "<p><a href=\"$url\">$L_gohome</a></p>";
+					$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 
 					//REGENERATE FEED ...
 					if ($files_count != "0") {include ("$absoluteurl"."core/admin/feedgenerate.php");}

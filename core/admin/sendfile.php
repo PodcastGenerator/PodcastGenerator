@@ -98,12 +98,12 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 		#$PG_mainbody .= "QUI: $long_description<br>lunghezza:".strlen($long_description)."<br>"; //debug
 
 		if ($long_description == NULL OR $long_description == " ") { //if user didn't input long description the long description is equal to short description
-		$PG_mainbody .= "<p>$L_longdesnotpresent</p>";
+		$PG_mainbody .= "<p>"._("Long description not present; I'll use short description...")."</p>";
 		$long_description = $description;
 	}
 
 	else {
-		$PG_mainbody .= "<p>$L_longdescpresent</p>";
+		$PG_mainbody .= "<p>"._("Long Description")."present</p>";
 		$long_description = str_replace("&nbsp;", " ", $long_description); 
 	}
 
@@ -115,12 +115,12 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 	# $PG_mainbody .= "$keywords<br>"; /debug
 
 	if (isset($ituneskeywords) AND $ituneskeywords != NULL) { 
-		$PG_mainbody .= "<p>$L_itunes_keywords $ituneskeywords</p>";
+		$PG_mainbody .= "<p>"._("iTunes Keywords:")." $ituneskeywords</p>";
 
 		$singlekeyword=explode(",",$keywords); // divide filename from extension
 
 		if ($singlekeyword[12] != NULL) { //if more than 12 keywords
-			$PG_mainbody .= "<p>- $L_itunes_num_keyw</p>";
+			$PG_mainbody .= "<p>- "._("You submitted more than 12 keywords for iTunes...")."</p>";
 
 		}
 	}
@@ -130,11 +130,11 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 
 	if (isset($auth_name) AND $auth_name != NULL) { //if a different author is specified
 
-		$PG_mainbody .= "<p>$L_authpresent</p>";
+		$PG_mainbody .= "<p>_("Author specified for this episode...")</p>";
 
 		if (!validate_email($auth_email)) { //if author doesn't have a valid email address, just ignore it and use default author
 
-		$PG_mainbody .= "<p>$L_noauthemail $L_authignored</p>";
+		$PG_mainbody .= "<p>"._("No")."authemail "._("Author will be IGNORED")."</p>";
 
 		$auth_name = NULL; //ignore author
 		$auth_email = NULL; //ignore email
@@ -156,12 +156,12 @@ $auth_email = NULL; //ignore email
 
 ## start processing podcast
 
-$PG_mainbody .= "<p><b>$L_processingpod</b></p>";
+$PG_mainbody .= "<p><b>"._("processing...")."pod</b></p>";
 
-$PG_mainbody .= "<p>$L_origfilename <i>$file</i></p>";
+$PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
 $file_ext=explode(".",$file); // divide filename from extension
 
-// $PG_mainbody .= "<p>$L_file_ext <i>$file_ext[1]</i></p>"; //display file extension
+// $PG_mainbody .= "<p>"._("File")."_ext <i>$file_ext[1]</i></p>"; //display file extension
 
 ##############
 ### processing file extension
@@ -212,7 +212,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 	}
 
 
-	$PG_mainbody .= "$L_filerenamed <i>$filenamechanged$filesuffix.$file_ext[1]</i><br>";
+	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$file_ext[1]</i><br>";
 
 	$uploadFile == NULL ;
 
@@ -229,13 +229,13 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 		if ($img!=NULL) {
 
-			$PG_mainbody .= "<p><b>$L_imgpresent</b></p>";
+			$PG_mainbody .= "<p><b>"._("Image present: processing...")."</b></p>";
 
 			$img_ext=explode(".",$img); // divide filename from extension
 
 			if ($img_ext[1]=="jpg" OR $img_ext[1]=="jpeg" OR $img_ext[1]=="gif"OR $img_ext[1]=="png" OR $img_ext[1]=="JPG" OR $img_ext[1]=="JPEG" OR $img_ext[1]=="GIF"OR $img_ext[1]=="PNG") { // control accepted image format
 
-				// $PG_mainbody .= "<p>$L_origfilename <i>$img</i></p>";
+				// $PG_mainbody .= "<p>"._("Original filename:")." <i>$img</i></p>";
 
 				// Assign a new name to the image
 				$uploadFile2 = $absoluteurl.$img_dir.$filenamechanged.$filesuffix.".".$img_ext[1];
@@ -247,9 +247,9 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 					$image_new_name = "$filenamechanged$filesuffix.$img_ext[1]";
 
-					// $PG_mainbody .= "$L_filerenamed <i>$nome_immagine</i>";
+					// $PG_mainbody .= ""._("File")."renamed <i>$nome_immagine</i>";
 
-					$PG_mainbody .= "<p><font color=\"green\">$L_imgsent</font></p>"; // If upload is successful.
+					$PG_mainbody .= "<p><font color=\"green\">"._("Image sent.")."</font></p>"; // If upload is successful.
 
 
 
@@ -259,9 +259,9 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 					$image_new_name = NULL;
 
-					$PG_mainbody .= "<p><font color=\"red\">$L_imgnotsent $L_ignored</font></p>";
+					$PG_mainbody .= "<p><font color=\"red\">"._("Error: image NOT sent!")." "._("(ignored)")."</font></p>";
 					// $temporaneo= $_FILES['image']['tmp_name'];
-					// $PG_mainbody .= "$L_tempfile $temporaneo";
+					// $PG_mainbody .= ""._("Temp file:")." $temporaneo";
 				}
 
 
@@ -272,7 +272,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 				$image_new_name = NULL;
 
-				$PG_mainbody .= "<p>$L_imgnotvalidext $L_imgextok jpg, gif, png.</p>";
+				$PG_mainbody .= "<p>"._("Not valid image extension:")." "._("Accepted extensions are:")." jpg, gif, png.</p>";
 
 
 			}
@@ -347,39 +347,39 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 		############################################
 
 
-		$PG_mainbody .= "<p><b><font color=\"green\">$L_filesent</font></b></p>"; // If upload is successful.
+		$PG_mainbody .= "<p><b><font color=\"green\">"._("File")."sent</font></b></p>"; // If upload is successful.
 
 		########## REGENERATE FEED
 		include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
 		##########
 
 
-		$PG_mainbody .= "<p><a href=\"$url\">$L_gohome</a> - <a href=\"?p=admin&do=upload\">$L_sendother</a></p>";
+		$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=upload\">"._("Send")."other</a></p>";
 
 	}
 	else //If upload is not successfull
 	{
 
-		$PG_mainbody .= "<p><b><font color=\"red\">$L_err_file $L_uploadfailed</font></b></p>";
-		$PG_mainbody .= "<p><b>$L_err_file1</b></p>";
-		$PG_mainbody .= "<p> - $L_err_file3</p>";
-		$PG_mainbody .= "<p> - $L_err_file4</p>";
+		$PG_mainbody .= "<p><b><font color=\"red\">"._("FILE ERROR")." "._("Upload Failed")."</font></b></p>";
+		$PG_mainbody .= "<p><b>"._("FILE ERROR")."1</b></p>";
+		$PG_mainbody .= "<p> - "._("You didn't assign writing permission to the media folder and the uploaded file can't be saved on the server.")."</p>";
+		$PG_mainbody .= "<p> - "._("Your file is bigger than upload max filesize on your server.")."</p>";
 
-		$PG_mainbody .= "<p><b>$L_debuginfo</b> <a href=\"?p=admin&do=serverinfo\">$L_serverconf</a></p>";
+		$PG_mainbody .= "<p><b>"._("Useful information for debugging:")."</b> <a href=\"?p=admin&do=serverinfo\">"._("Your server configuration")."</a></p>";
 
-		$PG_mainbody .= "<p>$L_err_file5 <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">$L_podcastgensite</a></p>";
+		$PG_mainbody .= "<p>"._("FILE ERROR")."5 <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">"._("podcasts")."gensite</a></p>";
 
 		$PG_mainbody .= "<p><form>
-			<INPUT TYPE=\"button\" VALUE=\"$L_back\" onClick=\"history.back()\">
+			<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
 			</form></p>";
 	}
 
 
 } // 003 (if file extension is not accepted)
 else {
-	$PG_mainbody .= "<p><i>$file_ext[1]</i> $L_notvalidext</p>";
+	$PG_mainbody .= "<p><i>$file_ext[1]</i> "._("is not a supported extension or filename not correct (did you add points to the filename?).")."</p>";
 	$PG_mainbody .= "<form>
-		<INPUT TYPE=\"button\" VALUE=\"$L_back\" onClick=\"history.back()\">
+		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
 		</form>";
 }
 
@@ -388,9 +388,9 @@ else {
 } // 002
 else { //if long description is more than max characters allowed
 
-	$PG_mainbody .= "<b>$L_longdesctoolong</b><p>$L_longdescmaxchar $longdescmax $L_characters - $L_actualenght <font color=red>".strlen($long_description)."</font> $L_characters.</p>
+	$PG_mainbody .= "<b>"._("Long Description")."toolong</b><p>"._("Long Description")."maxchar $longdescmax "._("characters")." - "._("Actual Length")." <font color=red>".strlen($long_description)."</font> "._("characters").".</p>
 		<form>
-		<INPUT TYPE=\"button\" VALUE=\"$L_back\" onClick=\"history.back()\">
+		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
 		</form>";
 }
 #### end of long desc lenght checking
@@ -398,10 +398,10 @@ else { //if long description is more than max characters allowed
 
 } //001 
 else { //if file, description or title not present...
-	$PG_mainbody .= '<p>'.$L_nofield.'
+	$PG_mainbody .= '<p>'."._("No")."field.'
 		<br />
 		<form>
-		<INPUT TYPE="button" VALUE='.$L_back.' onClick="history.back()">
+		<INPUT TYPE="button" VALUE='."._("Back").".' onClick="history.back()">
 		</form>
 		</p>
 		';

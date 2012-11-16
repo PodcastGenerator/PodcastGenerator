@@ -67,7 +67,7 @@ if (!empty($file_array)) {
 					$file_contents=NULL; //reset 
 
 					//open description file
-					$fs1 = fopen( $filedescr, "r" ) or die("$L_opendesc_error"); 
+					$fs1 = fopen( $filedescr, "r" ) or die(""._("error when opening the description file").""); 
 
 					while (!feof($fs1)) { 
 						$file_contents .= fgets($fs1, 1024); 

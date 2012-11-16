@@ -31,8 +31,8 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 	else { //001 (If no add or remove display main categories page)
 
-		$PG_mainbody .= "<h3>$L_adddel_categories</h3>";
-		$PG_mainbody .= '<span class="admin_hints">'.$L_cathintdisable.' <a href="?p=admin&do=config#setcategoriesfeature">'.$L_cathintsimplydisable.'</a></span>';
+		$PG_mainbody .= "<h3>_("Add")del_categories</h3>";
+		$PG_mainbody .= '<span class="admin_hints">'."._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").".' <a href="?p=admin&do=config#setcategoriesfeature">'."._("Simply disable them").".'</a></span>';
 
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
 		include ("$absoluteurl"."core/admin/readXMLcategories.php");
@@ -45,10 +45,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">
 
 				<br /><br />
-				<label for="addcategory"><b>'.$L_addnewcat.'</b></label><br />
+				<label for="addcategory"><b>'._("Add")newcat.'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'.$L_add.'" onClick="showNotify(\''.$L_adding.'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Add")ing.'\');">
 				';
 			#####
 
@@ -70,7 +70,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 
 
-			$PG_mainbody .= "<br /><br /><p><b>$L_del_categories</b> ($n)</p>";
+			$PG_mainbody .= "<br /><br /><p><b>"._("Delete Categories")."</b> ($n)</p>";
 			$PG_mainbody .= "<ul>";
 
 
@@ -83,10 +83,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 
 
-				$PG_mainbody .= '<a href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['.$L_delete.']</a></li>';
+				$PG_mainbody .= '<a href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['."._("Delete").".']</a></li>';
 
 
-				$PG_mainbody .= '<div id="'.$arrid[$key].'" style="display:none"><b>'.$L_catdeleteconfirmation.'</b><p>'.$L_yes.' <input type="radio" name="'.$L_delete.' '.$val.'" value="yes" onClick="showNotify(\''.$L_deleting.'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '.$L_no.' <input type="radio" name="'.$L_no.'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
+				$PG_mainbody .= '<div id="'.$arrid[$key].'" style="display:none"><b>'."._("Do you really want to permanently delete this category?").".'</b><p>'."._("Yes").".' <input type="radio" name="'."._("Delete").".' '.$val.'" value="yes" onClick="showNotify(\''."._("Deleting...").".'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '."._("No").".' <input type="radio" name="'."._("No").".'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
 
 					</div>';
 
@@ -102,16 +102,16 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 		} //if xml categories file doesn't exist
 		else
 		{
-			$PG_mainbody .= '<p><b>'.$L_catfileerror.'</b></p>';
+			$PG_mainbody .= '<p><b>'."._("Categories file doesn't exist or empty...").".'</b></p>';
 
 			$PG_mainbody .= '
 				<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">
 
 				<br /><br />
-				<label for="addcategory"><b>'.$L_addnewcat.'</b></label><br />
+				<label for="addcategory"><b>'._("Add")newcat.'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'.$L_add.'" onClick="showNotify(\''.$L_adding.'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Add")ing.'\');">
 				';
 		}
 
@@ -119,6 +119,6 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 } /////// end if categories enabled
 else {
-	$PG_mainbody .= $L_categoriesdisabled;
+	$PG_mainbody .= "._("Categories disabled").";
 }
 ?>

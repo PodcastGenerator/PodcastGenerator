@@ -19,8 +19,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 // check if user is already logged in
 if(isset($amilogged) AND $amilogged =="true") {
 
-	$PG_mainbody .= '<h3>'.$L_itunescategories.'</h3>
-		<span class="admin_hints">'.$L_changecat.'</span>';
+	$PG_mainbody .= '<h3>'."._("iTunes categories").".'</h3>
+		<span class="admin_hints">'."._("Change")."cat.'</span>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
@@ -39,7 +39,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-		$PG_mainbody .= '<br /><br /><p>'.$L_itunescatchanged.'</p>';
+		$PG_mainbody .= '<br /><br /><p>'."._("iTunes Categories successfully changed...").".'</p>';
 
 		//REGENERATE FEED ...
 		include ("$absoluteurl"."core/admin/feedgenerate.php");
@@ -66,12 +66,12 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$n++;
 		}
 
-		$PG_mainbody .=	'<form name="'.$L_itunescategories.'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunescat&action=change">';
+		$PG_mainbody .=	'<form name="'."._("iTunes categories").".'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunescat&action=change">';
 
 
 		## CATEGORY 1
 
-		$PG_mainbody .= "<br /><br /><p><b>$L_itunes_cat1</b></p>";
+		$PG_mainbody .= "<br /><br /><p><b>"._("iTunes Category 1")."</b></p>";
 		$PG_mainbody .= '<select name="category1">';
 
 
@@ -100,7 +100,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		## CATEGORY 2
 
-		$PG_mainbody .= "<br /><br /><p><b>$L_itunes_cat2</b></p>";
+		$PG_mainbody .= "<br /><br /><p><b>"._("iTunes Category 2")."</b></p>";
 		$PG_mainbody .= '<select name="category2">';
 
 
@@ -126,7 +126,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		## CATEGORY 3
 
-		$PG_mainbody .= "<br /><br /><p><b>$L_itunes_cat3</b></p>";
+		$PG_mainbody .= "<br /><br /><p><b>"._("iTunes Category 3")."</b></p>";
 		$PG_mainbody .= '<select name="category3">';
 
 
@@ -149,7 +149,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 		$PG_mainbody .= '<p>
-			<input type="submit" name="'.$L_send.'" value="'.$L_send.'" onClick="showNotify(\''.$L_setting.'\');"></p>';
+			<input type="submit" name="'."._("Send").".'" value="'."._("Send").".'" onClick="showNotify(\''."._("Setting...").".'\');"></p>';
 	}
 
 }

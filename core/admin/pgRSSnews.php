@@ -44,7 +44,7 @@ if ($rs = $rss->get($rssurl)) {
 
 }
 else {
-	$PG_mainbody .= $L_cantreadnewsfeed;
+	$PG_mainbody .= _("Error: It's not possible to get Podcast Generator news feed...");
 }
 
 ?>

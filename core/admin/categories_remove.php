@@ -19,7 +19,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 include ("$absoluteurl"."components/xmlparser/loadparser.php");
 include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
-$PG_mainbody .= '<h3>'.$L_deleteacat.'</h3>';
+$PG_mainbody .= '<h3>'."._("Delete a category").".'</h3>';
 
 // define variables
 $arrdesc = NULL;
@@ -71,7 +71,7 @@ if ($existsinthefeed == "yes") { // 001 if the category already exists in the XM
 
 $arrdesc[] .= $rem; //Description
 
-$PG_mainbody .= '<p><b>'.$L_catdeleted.'</b></p><p><a href="?p=admin&do=categories">'.$L_catgotomanagement.'</a>';
+$PG_mainbody .= '<p><b>'."._("Category deleted").".'</b></p><p><a href="?p=admin&do=categories">'."._("Back to category management").".'</a>';
 
 
 $arrid[] .= $id; // create Id
@@ -116,8 +116,8 @@ fclose($fp);
 
 else { //if category doesn't exist in the XML
 
-$PG_mainbody .= $L_cat_notexist.'<br /><br />
-	<p><a href="?p=admin&do=categories">'.$L_catgotomanagement.'</a>';
+$PG_mainbody .= "._("The category doesn't exist...").".'<br /><br />
+	<p><a href="?p=admin&do=categories">'."._("Back to category management").".'</a>';
 
 }
 

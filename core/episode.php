@@ -15,8 +15,6 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 $PG_mainbody = NULL; //erase variable which contains episodes data
 
 
-
-
 if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 	$file_multimediale = $_GET['name'];
 
@@ -79,7 +77,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 					#Define episode headline
 					$episode_date = "<a name=\"$file_multimediale[0]\"></a>
 						<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\">
-						<img src=\"podcast.gif\" alt=\"$L_downloadfile $text_title\" title=\"$L_downloadfile $text_title\" border=\"0\" align=\"left\" /></a>&nbsp;$filedate <i>($file_size $L_bytes)</i>";
+						<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a>&nbsp;$filedate <i>($file_size "._("MB").")</i>";
 
 
 					# File details (duration, bitrate, etc...)
@@ -88,17 +86,17 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 					$file_duration = @$ThisFileInfo['playtime_string'];
 
 					if($file_duration!=NULL) { // display file duration
-						$episode_details = "$L_duration ";
+						$episode_details = _("Duration:");
 						$episode_details .= @$ThisFileInfo['playtime_string'];
-						$episode_details .= " $L_episode_minutes - $L_episode_filetype ";
+						$episode_details .= " "._("m")." - "._("Filetype:")." ";
 						$episode_details .= @$ThisFileInfo['fileformat'];
 
 						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
-							$episode_details .= " - $L_bitrate ";
+							$episode_details .= " - "._("Bitrate")." ";
 							$episode_details .= @$ThisFileInfo['bitrate']/1000;
-							$episode_details .= " $L_episode_kbps - $L_frequency ";
+							$episode_details .= " "._("KBPS")." - "._("Frequency:")." ";
 							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
-							$episode_details .= " $L_episode_hz";
+							$episode_details .= " "._("HZ")."";
 						}
 
 					} 
@@ -129,7 +127,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 
 					if ($podcast_filetype=="mpg" OR $podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'.$L_podcastvideo.'" />';
+						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
 
 						$isvideo = "yes"; 
 
@@ -168,16 +166,16 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 					$PG_mainbody .= "<br />";
 
 					if (isset($isvideo) AND $isvideo == "yes") {
-						$PG_mainbody .= "<a href=\"".$url.$upload_dir."$file_multimediale[0].$podcast_filetype\" title=\"$L_viewvideo\"><span class=\"episode_download\">$L_view</span></a><span class=\"episode_download\"> - </span>";
+						$PG_mainbody .= "<a href=\"".$url.$upload_dir."$file_multimediale[0].$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
 
 						$isvideo = "no"; //so variable is assigned on every cicle
 
 					}
 
-					$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\"$L_donloadthis\"><span class=\"episode_download\">$L_downloadfile</span></a>";
+					$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
 
 					if ($text_keywordspg != NULL) {
-						$PG_mainbody .=	'<p class="episode_keywords"><b>'.$L_episode_keywords.'</b> '.$text_keywordspg.'</p>';
+						$PG_mainbody .=	'<p class="episode_keywords"><b>'."._("Keywords:").".'</b> '.$text_keywordspg.'</p>';
 					}
 
 
@@ -194,7 +192,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 	} else { // if file doesn't exist
 	$episode_present = "no"; 
 
-	$PG_mainbody .= '<div class="topseparator"><p>'.$L_dir.' <b>'.$upload_dir.'</b> '.$L_empty.'</p></div>';
+	$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
 }
 }
 ?>
