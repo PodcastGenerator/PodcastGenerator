@@ -120,26 +120,26 @@ else {
 							<form action="?p=admin&amp;do=edit&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
 							<fieldset>
-							<legend><b>'."._("Main information (required):").".'</b></legend>
+							<legend><b>'._("Main information (required):").'</b></legend>
 							<br />
 
 							<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
-							<label for="userfile">'."._("File")."toedit.'</label><br />
+							<label for="userfile">'._("File")."toedit.'</label><br />
 							<p><b>'.$text_title.'</b> ('.$_GET['name'].')</p>';
 
 						$PG_mainbody .= '<br /><br />
-							<label for="title">'."._("Title").".'*</label><br />
+							<label for="title">'._("Title").'*</label><br />
 							<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'"><br /><br /><br />
 
-							<label for="description">'."._("Short Description").".'*</label><br />
-							<span class ="admin_hints">'."._("Max:")."chardesc.'</span><br />
+							<label for="description">'._("Short Description").'*</label><br />
+							<span class ="admin_hints">'._("Max:")."chardesc.'</span><br />
 
 							<input name="description" id="description" type="text" onKeyDown="limitText this.form.description,this.form.countdown,255);" 
 							onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value="'.$text_shortdesc.'">
 							<br /><br />
 							<span class ="admin_hints">
-							<input name="countdown" type="text" value="255" class ="admin_hints" size="3" readonly> '."._("remaining characters.").".'</span> 
+							<input name="countdown" type="text" value="255" class ="admin_hints" size="3" readonly> '._("remaining characters.").'</span> 
 							<br /><br />';
 
 						### INCLUDE CATEGORIES FORM
@@ -154,7 +154,7 @@ else {
 
 							### END CATEGORIES FORM
 
-							$PG_mainbody .= "._("Fields marked with * are required.").".'
+							$PG_mainbody .= "._("Fields marked with * are required.").'
 								</fieldset>
 								';
 
@@ -165,9 +165,9 @@ else {
 								<div id="main"> 
 
 								<fieldset>
-								<legend><b>'."._("Extra information (optional):").".'</b></legend>
+								<legend><b>'._("Extra information (optional):").'</b></legend>
 
-								<label for="long_description">'."._("Long Description").".'</label> <span class ="admin_hints">'."._("(HTML tags accepted)").".'</span><br /><br />
+								<label for="long_description">'._("Long Description").'</label> <span class ="admin_hints">'._("(HTML tags accepted)").'</span><br /><br />
 
 								<textarea id="long_description" name="long_description" cols="50" rows="3">'.$text_longdesc.'</textarea>
 								<br /><br />
@@ -184,21 +184,21 @@ else {
 								
 								<input type="hidden" name="existentimage" value="'.$text_imgpg.'">
 								
-								<label for="image">'."._("Image").".'</label><br /><br />'."._("Image")."current.'<br /><img src="'.$url.$img_dir.$text_imgpg.'" alt="'."._("Image")."current.'" /><br />
+								<label for="image">'._("Image").'</label><br /><br />'._("Image")."current.'<br /><img src="'.$url.$img_dir.$text_imgpg.'" alt="'._("Image")."current.'" /><br />
 
-									'."._("Image")."new.'<br />	
-									<span class ="admin_hints">'."._("Image")."newhint.'</span><br />
-									<span class ="admin_hints">'."._("Image")."format.'</span><br /><br />
+									'._("Image")."new.'<br />	
+									<span class ="admin_hints">'._("Image")."newhint.'</span><br />
+									<span class ="admin_hints">'._("Image")."format.'</span><br /><br />
 									<input name="image" type="file">
 									<br />	
 
 									';
 							}	else { // if image doesn't exist
 
-							$PG_mainbody .= '<label for="image">'."._("Image").".'</label><br />
+							$PG_mainbody .= '<label for="image">'._("Image").'</label><br />
 
-								<span class ="admin_hints">'."._("Image")."hint.'</span><br />
-								<span class ="admin_hints">'."._("Image")."format.'</span><br /><br />
+								<span class ="admin_hints">'._("Image")."hint.'</span><br />
+								<span class ="admin_hints">'._("Image")."format.'</span><br /><br />
 					
 					<input name="image" type="file">
 								<br />
@@ -209,22 +209,22 @@ else {
 						$PG_mainbody .= '
 							<br /><br /><br />
 
-							<label for="keywords">'."._("iTunes Keywords:").".'</label><br />
-							<span class ="admin_hints">'."._("Separate keywords by a comma").".'</span><br /><br />
+							<label for="keywords">'._("iTunes Keywords:").'</label><br />
+							<span class ="admin_hints">'._("Separate keywords by a comma").'</span><br /><br />
 							<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" value="'.$text_keywordspg.'"><br />
-							<span class ="admin_hints"><input type="text" name="counttotalwords" class ="admin_hints" value="0" size="3" onkeyup="cnt(document.uploadform.keywords,this)" readonly> '."._("words.").".'</span>
+							<span class ="admin_hints"><input type="text" name="counttotalwords" class ="admin_hints" value="0" size="3" onkeyup="cnt(document.uploadform.keywords,this)" readonly> '._("words.").'</span>
 							<br /><br /><br />
 
 
-							<label for="explicit">'."._("Explicit")."content.'</label><br />
-							<span class ="admin_hints">'."._("Explicit")."hint.'</span><br /><br />
-							'."._("Yes").".'<input type="radio" name="explicit" value="yes"';
+							<label for="explicit">'._("Explicit")."content.'</label><br />
+							<span class ="admin_hints">'._("Explicit")."hint.'</span><br /><br />
+							'._("Yes").'<input type="radio" name="explicit" value="yes"';
 
 						if ($text_explicitpg == "yes") {
 							$PG_mainbody .= ' checked';	
 						}
 
-						$PG_mainbody .=	'>&nbsp;'."._("No").".'<input type="radio" name="explicit" value="no"';
+						$PG_mainbody .=	'>&nbsp;'._("No").'<input type="radio" name="explicit" value="no"';
 						if ($text_explicitpg != "yes") {
 							$PG_mainbody .= ' checked';	
 						}
@@ -245,7 +245,7 @@ else {
 							</fieldset>
 							<br /></div>
 
-							<input type="submit" value="'."._("Send").".'" onClick="showNotify(\''."._("Uploading...").".'\');">
+							<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
 							<br /><br /><br /><br />
 
 							</form>

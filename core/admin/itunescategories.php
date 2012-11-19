@@ -19,8 +19,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 // check if user is already logged in
 if(isset($amilogged) AND $amilogged =="true") {
 
-	$PG_mainbody .= '<h3>'."._("iTunes categories").".'</h3>
-		<span class="admin_hints">'."._("Change")."cat.'</span>';
+	$PG_mainbody .= '<h3>'._("iTunes categories").'</h3>
+		<span class="admin_hints">'._("Change")."cat.'</span>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
@@ -39,7 +39,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-		$PG_mainbody .= '<br /><br /><p>'."._("iTunes Categories successfully changed...").".'</p>';
+		$PG_mainbody .= '<br /><br /><p>'._("iTunes Categories successfully changed...").'</p>';
 
 		//REGENERATE FEED ...
 		include ("$absoluteurl"."core/admin/feedgenerate.php");
@@ -66,7 +66,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$n++;
 		}
 
-		$PG_mainbody .=	'<form name="'."._("iTunes categories").".'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunescat&action=change">';
+		$PG_mainbody .=	'<form name="'._("iTunes categories").'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunescat&action=change">';
 
 
 		## CATEGORY 1
@@ -149,7 +149,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 		$PG_mainbody .= '<p>
-			<input type="submit" name="'."._("Send").".'" value="'."._("Send").".'" onClick="showNotify(\''."._("Setting...").".'\');"></p>';
+			<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p>';
 	}
 
 }

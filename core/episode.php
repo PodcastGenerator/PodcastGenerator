@@ -127,7 +127,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 
 					if ($podcast_filetype=="mpg" OR $podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
+						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'._("(Video Podcast)").'" />';
 
 						$isvideo = "yes"; 
 
@@ -175,7 +175,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 					$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
 
 					if ($text_keywordspg != NULL) {
-						$PG_mainbody .=	'<p class="episode_keywords"><b>'."._("Keywords:").".'</b> '.$text_keywordspg.'</p>';
+						$PG_mainbody .=	'<p class="episode_keywords"><b>'._("Keywords:").'</b> '.$text_keywordspg.'</p>';
 					}
 
 
@@ -192,7 +192,7 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 	} else { // if file doesn't exist
 	$episode_present = "no"; 
 
-	$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
+	$PG_mainbody .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
 }
 }
 ?>

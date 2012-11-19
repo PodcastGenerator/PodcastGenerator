@@ -48,10 +48,10 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 
 
 
-	$PG_mainbody .= '<label for="category">'."._("Categories").".'*</label><br />
+	$PG_mainbody .= '<label for="category">'._("Categories").'*</label><br />
 		<span class ="admin_hints">'._("Select up to 3 categories for your episode...").'</span><br />';
 	if ($preselectcat == "yes") {
-		$PG_mainbody .= '<span class ="admin_hints">'."._("(The categories already associated to this episode are pre-selected in the form below)").".'</span><br />';
+		$PG_mainbody .= '<span class ="admin_hints">'._("(The categories already associated to this episode are pre-selected in the form below)").'</span><br />';
 	}
 	$PG_mainbody .= '<br /><select name="category[]"';
 
@@ -62,7 +62,7 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 		$PG_mainbody .= 'size="5" '; //standard height if more than 5 categories
 	}
 
-	$PG_mainbody .=  'multiple id="category"  onchange="checkMaxSelected(this, 3, \''."._("Maximum number of selectable category per single episode: ").".'\');">'; // 3 = max category number... if u change this value, you should also change php code in other files...
+	$PG_mainbody .=  'multiple id="category"  onchange="checkMaxSelected(this, 3, \''._("Maximum number of selectable category per single episode: ").'\');">'; // 3 = max category number... if u change this value, you should also change php code in other files...
 
 
 	natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
@@ -99,16 +99,16 @@ $PG_mainbody .= '</select><br /><br /><br />';
 } //if xml categories file doesn't exist
 else
 {
-	$PG_mainbody .= '<p><b>'."._("Categories file doesn't exist or empty...").".'</b></p>';
+	$PG_mainbody .= '<p><b>'._("Categories file doesn't exist or empty...").'</b></p>';
 
 	$PG_mainbody .= '
 		<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">
 
 		<br /><br />
-		<label for="addcategory"><b>'._("Add")newcat.'</b></label><br />
+		<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
 		<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-		<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Add")ing.'\');">
+		<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding...").'\');">
 		';
 }
 

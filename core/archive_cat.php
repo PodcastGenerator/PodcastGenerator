@@ -94,8 +94,8 @@ else { // if category is set
 			if ($_GET['cat'] == $arrid[$key]) {
 
 				$PG_mainbody .= '<h3>' . $val . '</h3>
-					<p><a href="'.$url.'feed.php?cat='.$_GET['cat'].'">'."._("Subscribe to this category").".' <img src="feed-icon.gif" alt="'."._("Subscribe to this category").".'" border="0" /></a></p>
-					<p><a href="'.$urlforitunes.'feed.php?cat='.$_GET['cat'].'">'."._("Subscribe to this category")."_itunes.'</a></p><br />';
+					<p><a href="'.$url.'feed.php?cat='.$_GET['cat'].'">'._("Subscribe to this category").' <img src="feed-icon.gif" alt="'._("Subscribe to this category").'" border="0" /></a></p>
+					<p><a href="'.$urlforitunes.'feed.php?cat='.$_GET['cat'].'">'._("Subscribe to this category with iTunes").'</a></p><br />';
 				$categorypresent = "yes"; 
 			} 
 		}
@@ -195,7 +195,7 @@ else { // if category is set
 
 								if ($podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-									$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
+									$PG_mainbody .= '&nbsp;<img src="video.png" alt="'._("(Video Podcast)").'" />';
 
 								}
 
@@ -227,16 +227,16 @@ else { // if category is set
 			}
 			if (!isset($oneispresent) AND isset($categorypresent)) {
 
-				$PG_mainbody .= '<p>'."._("This category is empty...").".'</p>';
+				$PG_mainbody .= '<p>'._("This category is empty...").'</p>';
 
 			} elseif (!isset($categorypresent)) {
-				$PG_mainbody .= '<p>'."._("This category doesn't exist").".'</p>';
+				$PG_mainbody .= '<p>'._("This category doesn't exist").'</p>';
 			}
 
-			$PG_mainbody .=	'<p><a href="?p=archive">'."._("Back")."catlist.'</a></p>';
+			$PG_mainbody .=	'<p><a href="?p=archive">'._("Back to category list").'</a></p>';
 
 		} else { 
-			$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
+			$PG_mainbody .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
 		}
 
 	}

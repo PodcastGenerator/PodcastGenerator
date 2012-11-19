@@ -17,7 +17,7 @@ include("$absoluteurl"."components/xmlparser/loadparser.php");
 
 $PG_mainbody = NULL; //erase variable which contains episodes data
 
-$PG_mainbody .= '<h3>' . "._("Episodes Archive")." . '</h3>'; 
+$PG_mainbody .= '<h3>'._("Episodes Archive").'</h3>'; 
 
 // Open podcast directory
 $handle = opendir ($absoluteurl.$upload_dir);
@@ -107,7 +107,7 @@ if (!empty($file_array)) { //if directory is not empty
 
 					if ($podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
 
-						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'."._("podcasts")."video.'" />';
+						$PG_mainbody .= '&nbsp;<img src="video.png" alt="'._("(Video Podcast)").'" />';
 
 					}
 
@@ -139,7 +139,7 @@ if (!empty($file_array)) { //if directory is not empty
 	}
 
 } else { 
-	$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p></div>';
+	$PG_mainbody .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
 }
 
 ?>

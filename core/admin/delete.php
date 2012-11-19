@@ -57,7 +57,7 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 	include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
 	##########
 
-	$PG_mainbody .= '<p><a href=?p=admin&do=editdel>'."._("Delete other episodes").".'</a></p>';
+	$PG_mainbody .= '<p><a href=?p=admin&do=editdel>'._("Delete other episodes").'</a></p>';
 
 } else { 
 	$PG_mainbody .= _("No file to delete...");

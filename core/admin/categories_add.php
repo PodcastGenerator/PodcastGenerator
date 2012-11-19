@@ -111,17 +111,17 @@ if ($add != NULL and $add != "all") { /// 000
 
 	fclose($fp);
 
-	$PG_mainbody .= '<p>'."._("New category:").".' <i>'.$val.'</i></p>';
+	$PG_mainbody .= '<p>'._("New category:").' <i>'.$val.'</i></p>';
 
-	$PG_mainbody .= '<p><b>'."._("Category added!").".'</b></p><p><a href="?p=admin&do=categories">'."._("Back to category management").".'</a>';
+	$PG_mainbody .= '<p><b>'._("Category added!").'</b></p><p><a href="?p=admin&do=categories">'._("Back to category management").'</a>';
 
 } // 001 end 
 
 else { //if new category already exists
 
-	$PG_mainbody .= "._("The category you wish to add already exists...").".'<br /><br />
+	$PG_mainbody .= "._("The category you wish to add already exists...").'<br /><br />
 		<form>
-		<INPUT TYPE="button" VALUE='."._("Back").".' onClick="history.back()">
+		<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
 		</form>';
 
 }
@@ -130,10 +130,10 @@ else { //if new category already exists
 else { // if POST is empty or is = to the word "all", which is already taken to show all podcasts
 
 
-$PG_mainbody .= "._("Please write a category name...").".'
+$PG_mainbody .= "._("Please write a category name...").'
 	<br /><br />
 	<form>
-	<INPUT TYPE="button" VALUE='."._("Back").".' onClick="history.back()">
+	<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
 	</form>';
 
 

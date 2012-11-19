@@ -115,7 +115,7 @@ $createcf = fopen("$absoluteurl"."config.php",'w'); //open config file
 fwrite($createcf,$configfiletocreate); //write content into the config file
 fclose($createcf);
 
-// $PG_mainbody .= '<b>'."._("Config.php created!").".'</b><br />';
+// $PG_mainbody .= '<b>'._("Config.php created!").'</b><br />';
 
 
 ?>

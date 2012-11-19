@@ -109,16 +109,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 						$PG_mainbody .= 
 							'<div class="episode">
-							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'."._("Watch").".'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'."._("Edit").".'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'."._("Delete").".'</a>]</p>
+							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("Watch").'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("Edit").'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'._("Delete").'</a>]</p>
 							<div id="'.$text_title2.$recent_count.'" style="display:none">
 
 							<b>'._("Do you really want to delete permanently this episode?").'</b>
-							<p>'."._("Yes").".' <input type="radio" name="'."._("Delete").".' '.$text_title2.'" value="yes" onClick="showNotify(\''."._("Deleting...").".'\');location.href=\'?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'';
+							<p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$text_title2.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'';
 
 						if ($text_imgpg!=NULL) {
 							$PG_mainbody .= '&img='.$text_imgpg.'';
 						}
-						$PG_mainbody .= '\';"> &nbsp;&nbsp; '."._("No").".' <input type="radio" name="'."._("No").".'" value="no" onClick="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');"></p>
+						$PG_mainbody .= '\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onClick="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');"></p>
 
 							</div>
 							';
@@ -139,7 +139,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		}
 
 	} else { 
-		$PG_mainbody .= '<div class="topseparator"><p>'."._("Directory").".' <b>'.$upload_dir.'</b> '."._("is empty...").".'</p><p><a href="?p=admin&do=upload">'."._("Upload a podcast").".'</a></p></div>';
+		$PG_mainbody .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p><p><a href="?p=admin&do=upload">'._("Upload a podcast").'</a></p></div>';
 	}
 
 } //end if admin
