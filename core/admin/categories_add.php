@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 	if ($amilogged != "true") { exit; }
 ###
 
-$PG_mainbody .= '<h3>'._("Add")acat.'</h3>';
+$PG_mainbody .= '<h3>'._("Add a category").'</h3>';
 
 include ("$absoluteurl"."components/xmlparser/loadparser.php");
 include ("$absoluteurl"."core/admin/readXMLcategories.php");
@@ -119,7 +119,7 @@ if ($add != NULL and $add != "all") { /// 000
 
 else { //if new category already exists
 
-	$PG_mainbody .= "._("The category you wish to add already exists...").'<br /><br />
+	$PG_mainbody .= _("The category you wish to add already exists...").'<br /><br />
 		<form>
 		<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
 		</form>';
@@ -130,7 +130,7 @@ else { //if new category already exists
 else { // if POST is empty or is = to the word "all", which is already taken to show all podcasts
 
 
-$PG_mainbody .= "._("Please write a category name...").'
+$PG_mainbody .= _("Please write a category name...").'
 	<br /><br />
 	<form>
 	<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">

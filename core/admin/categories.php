@@ -31,7 +31,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 	else { //001 (If no add or remove display main categories page)
 
-		$PG_mainbody .= "<h3>_("Add")del_categories</h3>";
+		$PG_mainbody .= "<h3>"._("Add / Delete categories")."</h3>";
 		$PG_mainbody .= '<span class="admin_hints">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
 
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
@@ -45,10 +45,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">
 
 				<br /><br />
-				<label for="addcategory"><b>'._("Add")newcat.'</b></label><br />
+				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Add")ing.'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding...").'\');">
 				';
 			#####
 
@@ -108,10 +108,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">
 
 				<br /><br />
-				<label for="addcategory"><b>'._("Add")newcat.'</b></label><br />
+				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Add")ing.'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding...").'\');">
 				';
 		}
 
@@ -119,6 +119,6 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 } /////// end if categories enabled
 else {
-	$PG_mainbody .= "._("Categories disabled").";
+	$PG_mainbody .= _("Categories disabled");
 }
 ?>

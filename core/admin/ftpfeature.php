@@ -220,7 +220,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 					}
 
-					$PG_mainbody .= '<br /><div><b>'._("Scan finished:").'</b> '.$files_count.' '._("new episode(s) added.").";
+					$PG_mainbody .= '<br /><div><b>'._("Scan finished:").'</b> '.$files_count.' '._("new episode(s) added.");
 
 					$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 

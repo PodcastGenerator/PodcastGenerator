@@ -130,7 +130,7 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 
 	if (isset($auth_name) AND $auth_name != NULL) { //if a different author is specified
 
-		$PG_mainbody .= "<p>_("Author specified for this episode...")</p>";
+		$PG_mainbody .= "<p>"._("Author specified for this episode...")."</p>";
 
 		if (!validate_email($auth_email)) { //if author doesn't have a valid email address, just ignore it and use default author
 
@@ -398,7 +398,7 @@ else { //if long description is more than max characters allowed
 
 } //001 
 else { //if file, description or title not present...
-	$PG_mainbody .= '<p>'._("No")."field.'
+	$PG_mainbody .= '<p>'._("Error: No file, description or title present").'
 		<br />
 		<form>
 		<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">

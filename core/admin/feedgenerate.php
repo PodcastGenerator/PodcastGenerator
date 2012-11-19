@@ -23,7 +23,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	if (isset($_GET['do']) AND $_GET['do']=="generate" AND !isset($_GET['c'])) { //show "Continue" Button
 
 	$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
-	$PG_mainbody .= "<p><span class=\"admin_hints\">_("Manually regenerate xml feed")</span></p>";
+	$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Manually regenerate xml feed")."</span></p>";
 
 	include ("$absoluteurl"."components/loading_indicator/loading.js");
 
@@ -43,7 +43,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	if (isset($_GET['do']) AND $_GET['do']=="generate") {	// do not show following text if included in other php files
 
 		$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
-		$PG_mainbody .= "<p><span class=\"admin_hints\">_("Manually regenerate xml feed")</span></p>";
+		$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Manually regenerate xml feed")."</span></p>";
 	}
 
 	### DEFINE FEED FILENAME
