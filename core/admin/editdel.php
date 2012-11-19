@@ -18,7 +18,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the script in a GET variable - security issue
 
-	$PG_mainbody .= "<h3>_("Edit/Delete Podcasts")</h3>";
+	$PG_mainbody .= "<h3>"._("Edit/Delete Podcasts")."</h3>";
 
 	//load XML parser for PHP4 or PHP5
 	include("$absoluteurl"."components/xmlparser/loadparser.php");
@@ -109,7 +109,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 						$PG_mainbody .= 
 							'<div class="episode">
-							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("Watch").'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("Edit").'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'._("Delete").'</a>]</p>
+							<p><b>'.$text_title.'</b><span class="admin_hints">'.$episode_date.'</span></p><p>[<a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("View").'</a> - <a href="?p=admin&do=edit&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'._("Edit").'</a> - <a href="javascript:Effect.toggle(\''.$text_title2.$recent_count.'\',\'appear\');">'._("Delete").'</a>]</p>
 							<div id="'.$text_title2.$recent_count.'" style="display:none">
 
 							<b>'._("Do you really want to delete permanently this episode?").'</b>

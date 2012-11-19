@@ -116,7 +116,7 @@ fclose($fp);
 
 else { //if category doesn't exist in the XML
 
-$PG_mainbody .= "._("The category doesn't exist...").'<br /><br />
+$PG_mainbody .= _("The category doesn't exist...").'<br /><br />
 	<p><a href="?p=admin&do=categories">'._("Back to category management").'</a>';
 
 }

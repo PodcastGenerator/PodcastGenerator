@@ -125,7 +125,7 @@ else {
 
 							<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
-							<label for="userfile">'._("File")."toedit.'</label><br />
+							<label for="userfile">'._("File to edit:").'</label><br />
 							<p><b>'.$text_title.'</b> ('.$_GET['name'].')</p>';
 
 						$PG_mainbody .= '<br /><br />
@@ -133,7 +133,7 @@ else {
 							<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'"><br /><br /><br />
 
 							<label for="description">'._("Short Description").'*</label><br />
-							<span class ="admin_hints">'._("Max:")."chardesc.'</span><br />
+							<span class ="admin_hints">'._("(max 255 characters)").'</span><br />
 
 							<input name="description" id="description" type="text" onKeyDown="limitText this.form.description,this.form.countdown,255);" 
 							onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value="'.$text_shortdesc.'">
@@ -154,7 +154,7 @@ else {
 
 							### END CATEGORIES FORM
 
-							$PG_mainbody .= "._("Fields marked with * are required.").'
+							$PG_mainbody .= _("Fields marked with * are required.").'
 								</fieldset>
 								';
 
@@ -184,11 +184,11 @@ else {
 								
 								<input type="hidden" name="existentimage" value="'.$text_imgpg.'">
 								
-								<label for="image">'._("Image").'</label><br /><br />'._("Image")."current.'<br /><img src="'.$url.$img_dir.$text_imgpg.'" alt="'._("Image")."current.'" /><br />
+								<label for="image">'._("Image").'</label><br /><br />'._("Current image:").'<br /><img src="'.$url.$img_dir.$text_imgpg.'" alt="'._("Current image:").'" /><br />
 
-									'._("Image")."new.'<br />	
-									<span class ="admin_hints">'._("Image")."newhint.'</span><br />
-									<span class ="admin_hints">'._("Image")."format.'</span><br /><br />
+									'._("New image:").'<br />	
+									<span class ="admin_hints">'._("Specify a new image if you want to replace the old one.").'</span><br />
+									<span class ="admin_hints">'._("Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted formats: png, gif e jpg.").'</span><br /><br />
 									<input name="image" type="file">
 									<br />	
 
@@ -197,8 +197,8 @@ else {
 
 							$PG_mainbody .= '<label for="image">'._("Image").'</label><br />
 
-								<span class ="admin_hints">'._("Image")."hint.'</span><br />
-								<span class ="admin_hints">'._("Image")."format.'</span><br /><br />
+								<span class ="admin_hints">'._("You can associate an image to this episode; it will appear on the recent podcast page and on the details page.").'</span><br />
+								<span class ="admin_hints">'._("Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted formats: png, gif e jpg.").'</span><br /><br />
 					
 					<input name="image" type="file">
 								<br />
@@ -216,8 +216,8 @@ else {
 							<br /><br /><br />
 
 
-							<label for="explicit">'._("Explicit")."content.'</label><br />
-							<span class ="admin_hints">'._("Explicit")."hint.'</span><br /><br />
+							<label for="explicit">'._("Explicit content?").'</label><br />
+							<span class ="admin_hints">'._("Select YES if this episode contains explicit language or adult content.").'</span><br /><br />
 							'._("Yes").'<input type="radio" name="explicit" value="yes"';
 
 						if ($text_explicitpg == "yes") {
@@ -233,13 +233,13 @@ else {
 
 
 							'._("Author").'<br />
-							<span class ="admin_hints">'._("Author")hint.'</span><br /><br />
+							<span class ="admin_hints">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner.").'</span><br /><br />
 
-							<label for="auth_name">'._("Author")name.'</label><br />
+							<label for="auth_name">'._("Author's name").'</label><br />
 							<input name="auth_name" type="text" id="auth_name" size="50" maxlength="255" value="'.$text_authornamepg.'">
 							<br /><br />
 
-							<label for="auth_email">'._("Author")email.'</label><br />
+							<label for="auth_email">'._("Author's email address").'</label><br />
 							<input name="auth_email" type="text" id="auth_email" size="50" maxlength="255" value="'.$text_authoremailpg.'">
 
 							</fieldset>
