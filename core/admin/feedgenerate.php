@@ -33,7 +33,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<input type="hidden" name="p" value="'.$_GET['p'].'">
 		<input type="hidden" name="do" value="'.$_GET['do'].'">
 		<input type="hidden" name="c" value="ok">
-		<input type="submit" value="'."._("Continue").".'" onClick="showNotify(\''."._("Generating...").".'\');">
+		<input type="submit" value="'._("Continue").'" onClick="showNotify(\''._("Generating...").'\');">
 		</form>
 		';
 

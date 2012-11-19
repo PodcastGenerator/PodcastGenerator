@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 
-	$PG_mainbody .= '<h3>'."._("Theme Selection").".'</h3>';
+	$PG_mainbody .= '<h3>'._("Theme Selection").'</h3>';
 
 
 	if (isset($_POST['themedir']) AND $_POST['themedir'] != NULL) { 
@@ -30,13 +30,13 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 			include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-			$PG_mainbody .= '<p>'."._("Theme changed!").".'</p>
-				<p><a href="?p=admin&do=theme">'."._("Try another theme...").".'</a></p>';
+			$PG_mainbody .= '<p>'._("Theme changed!").'</p>
+				<p><a href="?p=admin&do=theme">'._("Try another theme...").'</a></p>';
 		}
 		else { // if theme is already in use
 
-			$PG_mainbody .= '<p>'."._("You are already using this theme").".'</p>
-				<p><a href="?p=admin&do=theme">'."._("Try another theme...").".'</a></p>';
+			$PG_mainbody .= '<p>'._("You are already using this theme").'</p>
+				<p><a href="?p=admin&do=theme">'._("Try another theme...").'</a></p>';
 
 		}
 
@@ -45,8 +45,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		$PG_mainbody .= '
 
-			<p>'."._("Change Podcast Generator theme and aspect:").".'</p>
-			<form name="'."._("Theme Selection").".'" method="POST" enctype="multipart/form-data" action="?p=admin&do=theme">
+			<p>'._("Change Podcast Generator theme and aspect:").'</p>
+			<form name="'._("Theme Selection").'" method="POST" enctype="multipart/form-data" action="?p=admin&do=theme">
 
 			<select name="themedir">';
 
@@ -76,7 +76,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		$PG_mainbody .= '</select><br /><br />
 
-			<input type="submit" name="'."._("Change").".'" value="'."._("Change").".'" onClick="showNotify(\''."._("Setting...").".'\');">
+			<input type="submit" name="'._("Change").'" value="'._("Change").'" onClick="showNotify(\''._("Setting...").'\');">
 
 			';
 
@@ -85,7 +85,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 	} 
 
 	$PG_mainbody .= '<br /><br /><div class="topseparator">
-		<span class="admin_hints">'."._("Hint: How to create your own theme?").".' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'."._("See documentation").".'</a></span>
+		<span class="admin_hints">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'._("See documentation").'</a></span>
 	</div>
 		';
 

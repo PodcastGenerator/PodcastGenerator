@@ -18,11 +18,11 @@ include ("$absoluteurl"."components/loading_indicator/loading.js"); //include to
 $loginform ='
 	<br /><br />
 	<form id="login" action="?p=admin" method="post">
-	<label for="user">'."._("User").".'</label><br />
+	<label for="user">'._("User").'</label><br />
 	<input type="text" id="user" name="user" size="20" maxlength="255"><br /><br />
-	<label for="password">'."._("Password").".'</label><br />
+	<label for="password">'._("Password").'</label><br />
 	<input type="password" id="password" name="password" size="20" maxlength="255"><br /><br />
-	<input type="submit" value="'."._("Log in").".'" onClick="showNotify(\''."._("Logging in...").".'\');">';
+	<input type="submit" value="'._("Log in").'" onClick="showNotify(\''._("Logging in...").'\');">';
 
 
 // logout section
@@ -45,15 +45,15 @@ if(isset($_GET['action']) AND $_GET['action'] == "logout" ){
 if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword){ //if so, keep displaying the page
 
 	$PG_mainbody .= '<div class="episode">
-		'."._("Welcome").".' <i>'.$username.'</i> ';
+		'._("Welcome").' <i>'.$username.'</i> ';
 
 	if (isset($_GET['do']) AND $_GET['do'] != NULL) {
 
-		$PG_mainbody .= '(<a href="?p=admin">'."._("Back to Admin").".'</a> - <a href="?p=admin&action=logout">'."._("Log out").".'</a>)';
+		$PG_mainbody .= '(<a href="?p=admin">'._("Back to Admin").'</a> - <a href="?p=admin&action=logout">'._("Log out").'</a>)';
 	}
 	else {
 
-		$PG_mainbody .= '(<a href="?p=admin&action=logout">'."._("Log out").".'</a>)';
+		$PG_mainbody .= '(<a href="?p=admin&action=logout">'._("Log out").'</a>)';
 
 	}
 
@@ -65,7 +65,7 @@ if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND
 	if(isset($_POST["user"]) AND $_POST["user"]==$username AND isset($_POST["password"]) AND md5($_POST["password"])==$userpassword){ //if user and pwd are valid
 
 		$PG_mainbody .= '<div class="episode">
-			'."._("Welcome").".' <i>'.$username.'</i> (<a href="?p=admin&action=logout">'."._("Log out").".'</a>)
+			'._("Welcome").' <i>'.$username.'</i> (<a href="?p=admin&action=logout">'._("Log out").'</a>)
 			<br /><br />
 			</div>';
 
@@ -80,7 +80,7 @@ if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND
 
 			$PG_mainbody .= '
 				<div class="topseparator">
-				<b>'."._("No")."tvalid.'</b>
+				<b>'._("Username or password not valid. Please try again...").'</b>
 				'.$loginform.'
 				</div>
 				</form>';
@@ -93,7 +93,7 @@ if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND
 
 			$PG_mainbody .= '
 				<div class="topseparator">
-				<b>'."._("Log in").".'</b>
+				<b>'._("Log in").'</b>
 				'.$loginform.'
 				</div>
 

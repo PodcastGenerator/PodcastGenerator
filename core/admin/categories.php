@@ -32,7 +32,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 	else { //001 (If no add or remove display main categories page)
 
 		$PG_mainbody .= "<h3>_("Add")del_categories</h3>";
-		$PG_mainbody .= '<span class="admin_hints">'."._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").".' <a href="?p=admin&do=config#setcategoriesfeature">'."._("Simply disable them").".'</a></span>';
+		$PG_mainbody .= '<span class="admin_hints">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
 
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
 		include ("$absoluteurl"."core/admin/readXMLcategories.php");
@@ -83,10 +83,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 
 
-				$PG_mainbody .= '<a href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['."._("Delete").".']</a></li>';
+				$PG_mainbody .= '<a href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
 
 
-				$PG_mainbody .= '<div id="'.$arrid[$key].'" style="display:none"><b>'."._("Do you really want to permanently delete this category?").".'</b><p>'."._("Yes").".' <input type="radio" name="'."._("Delete").".' '.$val.'" value="yes" onClick="showNotify(\''."._("Deleting...").".'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '."._("No").".' <input type="radio" name="'."._("No").".'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
+				$PG_mainbody .= '<div id="'.$arrid[$key].'" style="display:none"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
 
 					</div>';
 
@@ -102,7 +102,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 		} //if xml categories file doesn't exist
 		else
 		{
-			$PG_mainbody .= '<p><b>'."._("Categories file doesn't exist or empty...").".'</b></p>';
+			$PG_mainbody .= '<p><b>'._("Categories file doesn't exist or empty...").'</b></p>';
 
 			$PG_mainbody .= '
 				<form action="?p=admin&amp;do=categories&amp;action=add" method="POST" enctype="multipart/form-data" name="categoryform" id="categoryform" onsubmit="return submitForm();">

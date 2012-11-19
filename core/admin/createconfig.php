@@ -113,7 +113,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	fwrite($createcf,$configfiletocreate); //write content into the config file
 	fclose($createcf);
 
-	// $PG_mainbody .= '<b>'."._("Config.php created!").".'</b><br />';
+	// $PG_mainbody .= '<b>'._("Config.php created!").'</b><br />';
 
 } // end if logged
 

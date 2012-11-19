@@ -410,10 +410,10 @@ $file_ext=explode(".",$file); // divide filename from extension
 
 						} //001 
 						else { //if file, description or title not present...
-							$PG_mainbody .= '<p>'."._("No")."field.'
+							$PG_mainbody .= '<p>'._("No")."field.'
 								<br />
 								<form>
-								<INPUT TYPE="button" VALUE='."._("Back").".' onClick="history.back()">
+								<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
 								</form>
 								</p>
 								';

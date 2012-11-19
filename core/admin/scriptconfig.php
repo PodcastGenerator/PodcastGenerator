@@ -80,7 +80,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-		$PG_mainbody .= '<p><b>'."._("The information has been successfully sent.").".'</b></p>';
+		$PG_mainbody .= '<p><b>'._("The information has been successfully sent.").'</b></p>';
 
 		//REGENERATE FEED ...
 		include ("$absoluteurl"."core/admin/feedgenerate.php");
@@ -94,15 +94,15 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		##########streaming
 
-		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'."._("Enable Streaming mp3 Player?").".'</b></label></p>
-			<span class="admin_hints">'."._("Enable mp3 streaming")."_hint.'</span>
-			<p>'."._("Yes").".' <input type="radio" name="streaming" value="yes" ';
+		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'._("Enable Streaming mp3 Player?").'</b></label></p>
+			<span class="admin_hints">'._("Enable mp3 streaming")."_hint.'</span>
+			<p>'._("Yes").' <input type="radio" name="streaming" value="yes" ';
 
 		if ($enablestreaming == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="streaming" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="streaming" value="no" ';
 
 		if ($enablestreaming == "no") {
 			$PG_mainbody .= 'checked';
@@ -115,15 +115,15 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## freebox
 
-		$PG_mainbody .= '<br /><br /><p><label for="fbox"><b>'."._("Enable Freebox?").".'</b></label></p>
-			<span class="admin_hints">'."._("Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.").".'</span>
-			<p>'."._("Yes").".' <input type="radio" name="fbox" value="yes" ';
+		$PG_mainbody .= '<br /><br /><p><label for="fbox"><b>'._("Enable Freebox?").'</b></label></p>
+			<span class="admin_hints">'._("Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.").'</span>
+			<p>'._("Yes").' <input type="radio" name="fbox" value="yes" ';
 
 		if ($freebox == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="fbox" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="fbox" value="no" ';
 
 		if ($freebox == "no") {
 			$PG_mainbody .= 'checked';
@@ -135,15 +135,15 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## categories
 
-		$PG_mainbody .= '<br /><br /><a name="setcategoriesfeature" id="setcategoriesfeature"></a><p><label for="cats"><b>'."._("Enable categories?").".'</b></label></p>
-			<span class="admin_hints">'."._("Enable categories feature to make thematic lists of your podcasts.").".'</span>
-			<p>'."._("Yes").".' <input type="radio" name="cats" value="yes" ';
+		$PG_mainbody .= '<br /><br /><a name="setcategoriesfeature" id="setcategoriesfeature"></a><p><label for="cats"><b>'._("Enable categories?").'</b></label></p>
+			<span class="admin_hints">'._("Enable categories feature to make thematic lists of your podcasts.").'</span>
+			<p>'._("Yes").' <input type="radio" name="cats" value="yes" ';
 
 		if ($categoriesenabled == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="cats" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="cats" value="no" ';
 
 		if ($categoriesenabled == "no") {
 			$PG_mainbody .= 'checked';
@@ -155,15 +155,15 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## newsinadmin
 
-		$PG_mainbody .= '<br /><br /><p><label for="newsinadmin"><b>'."._("Enable news display?").".'</b></label></p>
-			<span class="admin_hints">'."._("Enable news display?")."_hint.'</span>
-			<p>'."._("Yes").".' <input type="radio" name="newsinadmin" value="yes" ';
+		$PG_mainbody .= '<br /><br /><p><label for="newsinadmin"><b>'._("Enable news display?").'</b></label></p>
+			<span class="admin_hints">'._("Enable news display?")."_hint.'</span>
+			<p>'._("Yes").' <input type="radio" name="newsinadmin" value="yes" ';
 
 		if ($enablepgnewsinadmin == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="newsinadmin" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="newsinadmin" value="no" ';
 
 		if ($enablepgnewsinadmin == "no") {
 			$PG_mainbody .= 'checked';
@@ -175,15 +175,15 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## strictfilename
 
-		$PG_mainbody .= '<br /><br /><p><label for="strictfilename"><b>'."._("Enable strict episode renaming policy?").".'</b></label></p>
-			<span class="admin_hints">'."._("Enable strict episode renaming policy?")."_hint.'</span>
-			<p>'."._("Yes").".' <input type="radio" name="strictfilename" value="yes" ';
+		$PG_mainbody .= '<br /><br /><p><label for="strictfilename"><b>'._("Enable strict episode renaming policy?").'</b></label></p>
+			<span class="admin_hints">'._("Enable strict episode renaming policy?")."_hint.'</span>
+			<p>'._("Yes").' <input type="radio" name="strictfilename" value="yes" ';
 
 		if ($strictfilenamepolicy == "yes") {
 			$PG_mainbody .= 'checked';
 		}
 
-		$PG_mainbody .= '>&nbsp;&nbsp; '."._("No").".' <input type="radio" name="strictfilename" value="no" ';
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="strictfilename" value="no" ';
 
 		if ($strictfilenamepolicy == "no") {
 			$PG_mainbody .= 'checked';
@@ -195,7 +195,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## recent in home
 
-		$PG_mainbody .= '<br /><br /><p><label for="recent"><b>'."._("How many recent podcasts in the home page?").".'</b></label></p>
+		$PG_mainbody .= '<br /><br /><p><label for="recent"><b>'._("How many recent podcasts in the home page?").'</b></label></p>
 
 			<select name="recent" id="recent">
 
@@ -230,7 +230,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## recent in feed
 
-		$PG_mainbody .= '<br /><br /><br /><p><label for="recentinfeed"><b>'."._("How many recent podcasts in the home page?")."infeed.'</b></label></p>
+		$PG_mainbody .= '<br /><br /><br /><p><label for="recentinfeed"><b>'._("How many recent podcasts in the home page?")."infeed.'</b></label></p>
 
 			<select name="recentinfeed" id="recentinfeed">
 
@@ -264,21 +264,21 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## date format
 
-		$PG_mainbody .= '<br /><br /><br /><p><label for="selectdateformat"><b>'."._("Select date format").".'</b></label></p>
+		$PG_mainbody .= '<br /><br /><br /><p><label for="selectdateformat"><b>'._("Select date format").'</b></label></p>
 
 			<select name="selectdateformat" id="selectdateformat">
 
 			<option value=\'d-m-Y\'';
 		if ($dateformat == "d-m-Y") { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>'."._("Day").".' / '."._("Month").".' / '."._("Year").".'</option>
+		$PG_mainbody .= '>'._("Day").' / '._("Month").' / '._("Year").'</option>
 
 			<option value=\'m-d-Y\'';
 		if ($dateformat == "m-d-Y") { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>'."._("Month").".' / '."._("Day").".' / '."._("Year").".'</option>
+		$PG_mainbody .= '>'._("Month").' / '._("Day").' / '._("Year").'</option>
 
 			<option value=\'Y-m-d\'';
 		if ($dateformat == "Y-m-d") { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>'."._("Year").".' / '."._("Month").".' / '."._("Day").".'</option>
+		$PG_mainbody .= '>'._("Year").' / '._("Month").' / '._("Day").'</option>
 
 			</select>
 			';
@@ -311,8 +311,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		## SCRIPT LANGUAGES LIST
 
-		$PG_mainbody .= '<br /><br /><br /><p><label for="scriptlanguage"><b>'."._("podcasts")."genlang.'</b></label></p>
-			<p><span class="admin_hints">'."._("Choose among available languages *").".'</span></p>
+		$PG_mainbody .= '<br /><br /><br /><p><label for="scriptlanguage"><b>'._("podcasts")."genlang.'</b></label></p>
+			<p><span class="admin_hints">'._("Choose among available languages *").'</span></p>
 			';
 		$PG_mainbody .= '<select name="scriptlanguage">';
 
@@ -340,8 +340,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 
-		$PG_mainbody .= '<p><span class="admin_hints"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'."._("* Volunteer to translate Podcast Generator into your native language").".'</a></span></p><br /><br /><p>
-		<input type="submit" name="'."._("Send").".'" value="'."._("Send").".'" onClick="showNotify(\''."._("Setting...").".'\');"></p><br />';
+		$PG_mainbody .= '<p><span class="admin_hints"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'._("* Volunteer to translate Podcast Generator into your native language").'</a></span></p><br /><br /><p>
+		<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p><br />';
 	}
 
 }
