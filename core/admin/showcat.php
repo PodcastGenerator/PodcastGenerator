@@ -62,10 +62,9 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 		$PG_mainbody .= 'size="5" '; //standard height if more than 5 categories
 	}
 
-//	$PG_mainbody .=  'multiple id="category"  onchange="checkMaxSelected(this, 3, \''._("Maximum number of selectable category per single episode: ").'\');">'; // 3 = max category number... if u change this value, you should also change php code in other files...
+	$PG_mainbody .=  'multiple id="category"  onchange="checkMaxSelected(this, 3, \''._("Maximum number of selectable category per single episode: ").'\');">'; // 3 = max category number... if u change this value, you should also change php code in other files...
 	
 	
-		$PG_mainbody .=  'multiple id="category" onchange="checkMaxSelected(this, 3, \'aaa\');">'; // 3 = max category number... if u change this value, you should also change php code in other files...
 
 
 	natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
