@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2012-11-24 12:36+0100\n"
-"PO-Revision-Date: 2012-11-24 12:36+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2012-11-24 12:38+0100\n"
+"PO-Revision-Date: 2012-11-24 12:39+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: English\n"
 "MIME-Version: 1.0\n"
@@ -222,7 +222,7 @@ msgstr ""
 #: C:\wamp\www\podcastgen/core/admin/login.php:48
 #: C:\wamp\www\podcastgen/core/admin/login.php:68
 msgid "Welcome"
-msgstr ""
+msgstr "Benvenuto"
 
 #: C:\wamp\www\podcastgen/core/admin/admin.php:103
 msgid ""
