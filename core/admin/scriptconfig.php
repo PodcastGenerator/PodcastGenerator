@@ -95,7 +95,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		##########streaming
 
 		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'._("Enable Streaming mp3 Player?").'</b></label></p>
-			<span class="admin_hints">'._("Enable mp3 streaming")."_hint.'</span>
+			<span class="admin_hints">'._("Enable flash streaming player for mp3 files on the web pages.").'</span>
 			<p>'._("Yes").' <input type="radio" name="streaming" value="yes" ';
 
 		if ($enablestreaming == "yes") {
@@ -156,7 +156,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## newsinadmin
 
 		$PG_mainbody .= '<br /><br /><p><label for="newsinadmin"><b>'._("Enable news display?").'</b></label></p>
-			<span class="admin_hints">'._("Enable news display?")."_hint.'</span>
+			<span class="admin_hints">'._("Displays Podcast Generator latest news in the main administration page of your podcast.").'</span>
 			<p>'._("Yes").' <input type="radio" name="newsinadmin" value="yes" ';
 
 		if ($enablepgnewsinadmin == "yes") {
@@ -176,7 +176,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## strictfilename
 
 		$PG_mainbody .= '<br /><br /><p><label for="strictfilename"><b>'._("Enable strict episode renaming policy?").'</b></label></p>
-			<span class="admin_hints">'._("Enable strict episode renaming policy?")."_hint.'</span>
+			<span class="admin_hints">'._("If this option is enabled the files you upload will be renamed using just characters from A to Z and numbers. Unless you are using a different set of characters (e.g. Oriental, Arabic, etc...), YES is the suggested value.").'</span>
 			<p>'._("Yes").' <input type="radio" name="strictfilename" value="yes" ';
 
 		if ($strictfilenamepolicy == "yes") {
@@ -230,7 +230,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		########## recent in feed
 
-		$PG_mainbody .= '<br /><br /><br /><p><label for="recentinfeed"><b>'._("How many recent podcasts in the home page?")."infeed.'</b></label></p>
+		$PG_mainbody .= '<br /><br /><br /><p><label for="recentinfeed"><b>'._("How many episodes indexed in the podcast feeds?").'</b></label></p>
 
 			<select name="recentinfeed" id="recentinfeed">
 
@@ -311,7 +311,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		## SCRIPT LANGUAGES LIST
 
-		$PG_mainbody .= '<br /><br /><br /><p><label for="scriptlanguage"><b>'._("podcasts")."genlang.'</b></label></p>
+		$PG_mainbody .= '<br /><br /><br /><p><label for="scriptlanguage"><b>'._("Podcast Generator Language").'</b></label></p>
 			<p><span class="admin_hints">'._("Choose among available languages *").'</span></p>
 			';
 		$PG_mainbody .= '<select name="scriptlanguage">';

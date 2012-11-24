@@ -20,14 +20,13 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 	$PG_mainbody .= '<h3>'._("iTunes categories").'</h3>
-		<span class="admin_hints">'._("Change")."cat.'</span>';
+		<span class="admin_hints">'._("Select or change iTunes Categories (iTunes Store)").'</span>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
 
 		if (isset($_POST['category1'])) { //cat1
-			$itunes_category[0] = $_POST['category1'];
-		}
+			$itunes_category[0] = $_POST['category1'];		}
 
 		if (isset($_POST['category2'])) { //cat2
 			$itunes_category[1] = $_POST['category2'];

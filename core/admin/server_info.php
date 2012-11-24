@@ -45,7 +45,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	}
 
 	$PG_mainbody .= '
-		<br />'._("Max:")."up.' '.$max_upload_form_size_MB.'M</p>';
+		<br />'._("Max upload size set in the script (config.php):").' '.$max_upload_form_size_MB.'M</p>';
 
 	########### Determine max upload file size through php script reading the server parameters (and the form parameter specified in config.php. We find the minimum value: it should be the max file size allowed...
 
@@ -54,7 +54,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		#############################
 
 		if ($showmin!=NULL and $showmin!="0") { 
-			$PG_mainbody .= '<p><b>'._("Max:")."_upload_allowed.' '.$showmin."._("MB").'</b></p>';
+			$PG_mainbody .= '<p><b>'._("Your server configuration allows you to upload files up to").' '.$showmin._("MB").'</b></p>';
 		}
 
 
