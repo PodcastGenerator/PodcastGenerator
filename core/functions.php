@@ -65,11 +65,7 @@ function renamefile ($filetorename) { // normal file rename policy
 ## Validate e-mail address
 
 function validate_email ($address) { //validate email address
-	return (ereg('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
-	'@'.
-		'[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.'.
-	'[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$',
-	$address));
+	return (preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $address));
 }
 
 ########
