@@ -150,7 +150,6 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<li><a href="?p=admin&do=itunesimg">'.("Change iTunes image").'</a></li>
 			<li><a href="?p=admin&do=itunescat">'._("Select or change iTunes Categories").'</a></li>
 			<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'._("Submit your podcast to the iTunes Store").'</a></li>
-		<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'._("Ping the itunes store to update your podcast immediately").'</a></li>
 		</ul>
 			</div>
 
