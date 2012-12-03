@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2012-11-24 12:38+0100\n"
-"PO-Revision-Date: 2012-11-24 12:52+0100\n"
+"POT-Creation-Date: 2012-12-03 11:38+0100\n"
+"PO-Revision-Date: 2012-12-03 11:38+0100\n"
 "Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: Italiano\n"
@@ -1197,6 +1197,13 @@ msgstr ""
 msgid "add extra information to this episode"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/setup/upgrade.php:70
-msgid "error when opening the description file"
-msgstr ""
+#: C:\wamp\www\podcastgen/setup/index.php:81
+msgid "in_INGLESE"
+msgstr "in_ITALIANO"
+
+#: C:\wamp\www\podcastgen/setup/index.php:87
+msgid "in_INGLESE2"
+msgstr "in_ITALIANO2"
+
+#~ msgid "CIAOOO"
+#~ msgstr "TEST AAAA"
