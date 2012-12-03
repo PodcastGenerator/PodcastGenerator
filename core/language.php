@@ -52,7 +52,7 @@ define('DEFAULT_LOCALE', 'en_EN');
 
 require_once('components/php-gettext/gettext.inc');
 
-$supported_locales = array('en_US', 'sr_CS', 'de_CH');
+$supported_locales = array('en_US', 'it_IT', 'de_CH');
 $encoding = 'UTF-8';
 
 $locale = (isset($_GET['lang']))? $_GET['lang'] : DEFAULT_LOCALE;
