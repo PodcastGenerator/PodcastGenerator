@@ -11,7 +11,13 @@
 include ('set_path.php'); //define URL and absolute path on the server
 include ('../core/admin/VERSION.php'); //define Podcast Generator Version
 
-include ('checkconfigexistence.php');
+
+if (isset($_POST['setuplanguage'])) { //lang is posted in step1
+	$scriptlang = $_POST['setuplanguage'];
+}
+include($absoluteurl."core/language.php");
+
+include ("checkconfigexistence.php");
 
 
 
@@ -32,6 +38,8 @@ if (isset($_POST['setuplanguage'])) {
 	if (file_exists("lang/setup_".$setuplang.".php")) {
 		include ("lang/setup_".$setuplang.".php");
 	}
+	
+
 }
 ################ 
 
@@ -45,7 +53,7 @@ $SL_pgsetuptext = $SL_pg." ".$podcastgen_version." ".$SL_pgsetup;
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php echo $SL_pgsetuptext; ?></title>
+	<title><?php echo $SL_pgsetuptext;?></title>
 <meta name="Description" content="<?php echo $SL_pgsetuptext; ?>" />
 
 <META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW" />
@@ -69,6 +77,7 @@ $SL_pgsetuptext = $SL_pg." ".$podcastgen_version." ".$SL_pgsetup;
 if (!isset($_GET['step'])){
 
 	echo "Step 1/5";
+
 
 }
 elseif (isset($_GET['step']) AND $_GET['step'] == 2) {
