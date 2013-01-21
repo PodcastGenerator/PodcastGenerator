@@ -23,10 +23,10 @@ include ("checkconfigexistence.php");
 
 ################ LAGUAGES: 1/2
 //assigned below in english before language choice, when language has been chosen they will be read in the language files and the below variables "overwritten" (see 2/2)
-$SL_pg = "Podcast Generator";
-$SL_pgsetup = "- Setup"; 
-$SL_welcome = "Welcome!";
-$SL_next = "Next";
+_("Podcast Generator") = "Podcast Generator";
+_("Podcast Generator")setup = "- Setup"; 
+_("Welcome!") = "Welcome!";
+_("Next") = "Next";
 ################ 
 
 ################ LAGUAGES: 2/2
@@ -43,7 +43,7 @@ if (isset($_POST['setuplanguage'])) {
 }
 ################ 
 
-$SL_pgsetuptext = $SL_pg." ".$podcastgen_version." ".$SL_pgsetup;
+_("Podcast Generator")setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("Podcast Generator")setup;
 
 ?>
 
@@ -53,8 +53,8 @@ $SL_pgsetuptext = $SL_pg." ".$podcastgen_version." ".$SL_pgsetup;
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php echo $SL_pgsetuptext;?></title>
-<meta name="Description" content="<?php echo $SL_pgsetuptext; ?>" />
+	<title><?php echo _("Podcast Generator")setuptext;?></title>
+<meta name="Description" content="<?php echo _("Podcast Generator")setuptext; ?>" />
 
 <META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW" />
 
@@ -67,7 +67,7 @@ $SL_pgsetuptext = $SL_pg." ".$podcastgen_version." ".$SL_pgsetup;
 	<div class="container">
 
 	<div class="header">
-	<h1 class="headertitle"><?php echo $SL_pgsetuptext; ?></h1>
+	<h1 class="headertitle"><?php echo _("Podcast Generator")setuptext; ?></h1>
 </div>
 	<div class="headermenu">
 	<div class="headermenutext">
@@ -124,11 +124,11 @@ elseif (isset($_GET['step']) AND $_GET['step'] == 5) {
 	<div class="leftcolumn">
 
 	<div>
-	<h2 class="site_welcome"><?php echo $SL_welcome; ?></h2>
+	<h2 class="site_welcome"><?php echo _("Welcome!"); ?></h2>
 <p class="site_desc">
 	<?php
-if (isset($SL_welcometext) AND $SL_welcometext != NULL) {
-	echo $SL_welcometext;
+if (isset(_("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...")) AND _("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...") != NULL) {
+	echo _("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...");
 } 
 
 ?>	

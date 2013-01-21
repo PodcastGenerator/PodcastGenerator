@@ -14,14 +14,14 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../categories.xml")) { //if categories already exist stop the script
 
-	echo "<font color=\"red\">$SL_catexist</font><br />";
+	echo "<font color=\"red\">_("Categories file already exists...")</font><br />";
 
 
 } else { // else create "categories.xml" file in the root dir
 
-// take the localized $SL_uncategorized variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
+// take the localized _("Uncategorized") variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
 
-$idcat = stripslashes($SL_uncategorized); 
+$idcat = stripslashes(_("Uncategorized")); 
 $idcat = htmlspecialchars($idcat);
 $idcat = depurateContent($idcat); // category name (external)
 $id = renamefilestrict ($idcat); // category id generated (internal)
