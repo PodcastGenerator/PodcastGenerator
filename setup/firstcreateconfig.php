@@ -14,7 +14,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../config.php")) { //if config.php already exists stop the script
 
-	echo "<font color=\"red\">$SL_configexists</font><br />$SL_configdelete";
+	echo "<font color=\"red\">_("Config.php file already exists!")</font><br />_("Please delete this file before proceeding with the installation...")";
 
 	exit;
 
@@ -83,11 +83,11 @@ $firsttimehere = "yes";
 # The followings specifications will be included in your podcast "feed.xml" file.
 
 
-$podcast_title = "'.$SL_podcast_title.'";
+$podcast_title = "'._("Podcast Title").'";
 
-$podcast_subtitle = "'.$SL_podcast_subtitle.'";
+$podcast_subtitle = "'._("Subtitle").'";
 
-$podcast_description = "'.$SL_podcast_description.'";
+$podcast_description = "'._("This is the description of your podcast... you can change it through the administration area.").'";
 
 $author_name = "Test"; 
 
@@ -101,7 +101,7 @@ $link = $url."?p=episode&amp;name="; // permalink URL of single episode (appears
 
 $feed_language = "'.$setuplang.'"; // Language used in the XML feed (can differ from the script language).
 
-$copyright = "'.$SL_copyright.'"; // Copyright notice
+$copyright = "'._("Your copyright notice").'"; // Copyright notice
 
 $feed_encoding = "utf-8"; // Feed Encoding (e.g. "iso-8859-1", "utf-8"). UTF-8 is strongly suggested
 

@@ -36,25 +36,25 @@ include('firstcreatecategory.php'); //creates categories.xml file in the root di
 
 include('firstcreatefreeboxtext.php'); //creates freebox-content.txt file in the root dir
 
-		$PG_mainbody .= '<p>'.$SL_configcreation.'</p>';
+		$PG_mainbody .= '<p>'._("Creation of the configuration file...").'</p>';
 
 		include('firstcreateconfig.php'); //creates config.php file in the root dir
-		$PG_mainbody .= '<p>'.$SL_complete.'</p>';
-		$PG_mainbody .= '<p><a href="../?p=admin"><b>'.$SL_start.'</b></a></p>';
+		$PG_mainbody .= '<p>'._("Installation completed successfully :-)").'</p>';
+		$PG_mainbody .= '<p><a href="../?p=admin"><b>'._("Start managing your podcast!").'</b></a></p>';
 	}
 	else { //if pwds not set or don't match
 
-	$PG_mainbody .= '<p>'.$SL_pwdwrong.'</p>
+	$PG_mainbody .= '<p>'._("You didn't enter a password or the two passwords do not correspond; please go back and type your password again...").'</p>
 		<form method="post" action="index.php?step=4">
-		<input type="button" value="'.$SL_back.'" onClick="history.back()">
+		<input type="button" value="'._("Back").'" onClick="history.back()">
 		</form>';
 }
 
 } else { // if user is not set
 
-	$PG_mainbody .= '<p>'.$SL_nouser.'</p>
+	$PG_mainbody .= '<p>'._("You didn't enter the username...").'</p>
 		<form method="post" action="index.php?step=4">
-		<input type="button" value="'.$SL_back.'" onClick="history.back()">
+		<input type="button" value="'._("Back").'" onClick="history.back()">
 		</form>';
 }
 

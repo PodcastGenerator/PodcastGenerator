@@ -81,7 +81,7 @@ foreach ($arr as $key => $val) {
 }
 $PG_mainbody .= '</select>
 	<br /><br />
-	<input type="submit" value="'.$SL_next.'">
+	<input type="submit" value="'._("Next").'">
 	</form>
 	<br /><br />
 	';

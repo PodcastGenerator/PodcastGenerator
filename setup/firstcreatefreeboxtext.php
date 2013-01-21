@@ -14,14 +14,14 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../freebox-content.txt")) { //if freebox text is already present
 
-	echo "<font color=\"red\">$SL_freeboxexist</font><br />";
+	echo "<font color=\"red\">_("Freebox text already exists...")</font><br />";
 
 
 } else { // else create "freebox-content.txt" file in the root dir
 
-// take the localized $SL_uncategorized variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
+// take the localized _("Uncategorized") variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
 
-$texttowrite = stripslashes($SL_freeboxcontent); 
+$texttowrite = stripslashes(_("FREEBOX: in this box you can write freely what you wish: add links, text, HTML code through a visual editor from the admin section! You can optionally disable this feature if you don't need it...")); 
 $texttowrite = htmlspecialchars($texttowrite);
 $texttowrite = depurateContent($texttowrite);
 
