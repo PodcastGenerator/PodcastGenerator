@@ -103,7 +103,7 @@ if (isset($_POST['userfile']) AND $_POST['userfile']!=NULL AND isset($_POST['tit
 	}
 
 	else {
-		$PG_mainbody .= "<p>"._("Long Description")."present</p>";
+		$PG_mainbody .= "<p>"._("Long Description present")."</p>";
 		$long_description = str_replace("&nbsp;", " ", $long_description); 
 	}
 
@@ -148,89 +148,43 @@ $auth_email = NULL; //ignore email
 }
 
 
-
-$PG_mainbody .= "<p><b>"._("processing...")."changes</b></p>";
-
-
-
-#show submitted data (debug purposes)
-#$PG_mainbody .= "Dati inseriti:</b><br><br>Titolo: <i>$title</i> <br>Descrizione breve: <i>$description</i> <br>Descrizione lunga: <i>$long_description</i>";
-###
-
-
-
-
-
-#$PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
-
-
-
 $file_ext=explode(".",$file); // divide filename from extension
 
 
 
-// $PG_mainbody .= "<p>"._("File")."_ext <i>$file_ext[1]</i></p>"; //display file extension
+					
+############################################
+# START CHANGE DATE
 
-##############
-### processing file extension
-#$fileData = checkFileType($file_ext[1],$podcast_filetypes,$filemimetypes);
+//print_r($_POST);
 
-#if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
-#$podcast_filetype=$fileData[0];
-#}else {
-	#$podcast_filetype=NULL;	
-	#}
-
-	#if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go on....
+if (isset($_POST['Day']) AND isset($_POST['Month']) AND isset($_POST['Year']) AND isset($_POST['Hour']) AND isset($_POST['Minute'])) { 
 
 
-		##############
-		##############
-		### file name depuration!!!! Important... By default Podcastgen uses a "strict" depuration policy (just characters from a to z and numbers... no accents and other characters).
+$filefullpath = $absoluteurl.$upload_dir.$file;
 
-		#if ($strictfilenamepolicy == "yes") {
-			#enable this to have a very strict filename policy
+$oradelfile = filemtime($filefullpath);
 
-			#$file_ext[0] = renamefilestrict ($file_ext[0]);
-
-			#}
-
-			#else {
-				# LESS strict renaming policy
-
-				#$file_ext[0] = renamefile ($file_ext[0]);
-
-				#}
-				##############
-				############## end filename depuration
+$oracambiata = mktime($_POST['Hour'],$_POST['Minute'],0,$_POST['Month'],$_POST['Day'],$_POST['Year']); //seconds are simply 0, no need to handle them
 
 
-				#$filenamechanged = date('Y-m-d')."_".$file_ext[0]; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
+if ($oradelfile != $oracambiata AND checkdate($_POST['Month'],$_POST['Day'],$_POST['Year']) == TRUE) { //is date posted is different from file date and if php function CHECKDATE == TRUE
+	
+touch($filefullpath,$oracambiata);
 
-				#$uploadFile = $upload_dir . $filenamechanged.".".$file_ext[1] ;
+$PG_mainbody .= "<p>"._("Date and time of the episode have been modified (this might change the order of your episodes in the podcast feed).")."</p>";
 
+				}
 
-				#while (file_exists("$uploadFile")) { //cicle: if file already exists add an incremental suffix
-					#$filesuffix++;
-
-					# $PG_mainbody .= "$filesuffix"; //debug
-
-					#$uploadFile = $absoluteurl . $upload_dir . $filenamechanged . $filesuffix.".".$file_ext[1] ;
-
-					#}
-
-
-					#$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$file_ext[1]</i><br>";
-
-					#$uploadFile == NULL ;
-
-					#$PG_mainbody .= "<br>Uploaded file:$uploadFile<br>";
-
-					//move file from the temp directory to the upload directory
-					#if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadFile))
-					#{
+} 					
+						
+# END CHANGE DATE						
+############################################					
+						
 
 
+
+$PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 
 						########################
 						######### IMAGE upload section, if image is present
@@ -294,8 +248,13 @@ $file_ext=explode(".",$file); // divide filename from extension
 						########## end IMAGE upload section
 						######################
 
-
-
+						
+	
+						
+						
+						
+						
+						
 
 						############################################
 						#########################
@@ -368,32 +327,7 @@ $file_ext=explode(".",$file); // divide filename from extension
 
 						$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=editdel\">"._("Edit other episodes")."</a></p>";
 
-						#}
-						#else //If upload is not successfull
-						#{
-
-							#$PG_mainbody .= "<p><b><font color=\"red\">"._("FILE ERROR")." "._("Upload Failed")."</font></b></p>";
-							#$PG_mainbody .= "<p><b>"._("FILE ERROR")."1</b></p>";
-							#$PG_mainbody .= "<p> - "._("You didn't assign writing permission to the media folder and the uploaded file can't be saved on the server.")."</p>";
-							#$PG_mainbody .= "<p> - "._("Your file is bigger than upload max filesize on your server.")."</p>";
-
-							#$PG_mainbody .= "<p><b>"._("Useful information for debugging:")."</b> <a href=\"?p=admin&do=serverinfo\">"._("Your server configuration")."</a></p>";
-
-							#$PG_mainbody .= "<p>"._("FILE ERROR")."5 <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">"._("podcasts")."gensite</a></p>";
-
-							#$PG_mainbody .= "<p><form>
-							#<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
-							#</form></p>";
-							#}
-
-
-							#} // 003 (if file extension is not accepted)
-							#else {
-								#$PG_mainbody .= "<p><i>$file_ext[1]</i> "._("is not a supported extension or filename not correct (did you add points to the filename?).")."</p>";
-								#$PG_mainbody .= "<form>
-								#<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
-								#</form>";
-								#}
+						
 
 
 
