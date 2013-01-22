@@ -21,15 +21,8 @@ include ("checkconfigexistence.php");
 
 
 
-################ LAGUAGES: 1/2
-//assigned below in english before language choice, when language has been chosen they will be read in the language files and the below variables "overwritten" (see 2/2)
-_("Podcast Generator") = "Podcast Generator";
-_("Podcast Generator")setup = "- Setup"; 
-_("Welcome!") = "Welcome!";
-_("Next") = "Next";
-################ 
-
-################ LAGUAGES: 2/2
+/*
+################ LAGUAGES
 if (isset($_POST['setuplanguage'])) {
 
 	$setuplang = $_POST['setuplanguage'];	
@@ -41,9 +34,14 @@ if (isset($_POST['setuplanguage'])) {
 	
 
 }
+
+*/
+
+
+
 ################ 
 
-_("Podcast Generator")setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("Podcast Generator")setup;
+$setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("- Setup");
 
 ?>
 
@@ -53,8 +51,8 @@ _("Podcast Generator")setuptext = _("Podcast Generator")." ".$podcastgen_version
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php echo _("Podcast Generator")setuptext;?></title>
-<meta name="Description" content="<?php echo _("Podcast Generator")setuptext; ?>" />
+	<title><?php echo setuptext; ?></title>
+<meta name="Description" content="<?php echo $setuptext; ?>" />
 
 <META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW" />
 
@@ -64,13 +62,7 @@ _("Podcast Generator")setuptext = _("Podcast Generator")." ".$podcastgen_version
 
 	<body>
 
-	<div class="container">
 
-	<div class="header">
-	<h1 class="headertitle"><?php echo _("Podcast Generator")setuptext; ?></h1>
-</div>
-	<div class="headermenu">
-	<div class="headermenutext">
 
 	<?php
 
@@ -105,38 +97,12 @@ elseif (isset($_GET['step']) AND $_GET['step'] == 5) {
 }
 ?>
 
-	</div>
-
-	</div>
-
-	<div class="main">
-
-	<!--
-	<div class="rightcolumn">
-
-	<div>
-
-	</div>
-
-	</div>
-	-->
-
-	<div class="leftcolumn">
-
-	<div>
-	<h2 class="site_welcome"><?php echo _("Welcome!"); ?></h2>
-<p class="site_desc">
-	<?php
-if (isset(_("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...")) AND _("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...") != NULL) {
-	echo _("Welcome to the Setup Wizard; just follow the simple steps to install Podcast Generator...");
-} 
-
-?>	
-	</p>
-	</div>
 
 
-	<div class="episode">
+
+
+
+	
 
 
 	<?php
@@ -166,22 +132,6 @@ if (!isset($_GET['step'])) {
 			?>
 
 
-
-				</div>
-
-
-				</div>
-
-
-				</div>
-
-				<div class="footer">
-				<a href="http://podcastgen.sourceforge.net" title="Podcast Generator: open source podcast publishing solution"><img src="img/podcastgen.gif" alt="Podcast Generator: open source podcast publishing solution" class="footerdx" /></a>
-			Powered by <a href="http://podcastgen.sourceforge.net" title="Podcast Generator: open source podcast publishing solution">Podcast Generator</a>, an open source podcast publishing solution.
-
-			</div>
-
-				</div>
 
 				</body>
 
