@@ -12,8 +12,6 @@ include ('checkconfigexistence.php');
 ?>
 
 
-	<ul class="episode_imgdesc">
-	<li>
 
 	<?php
 
@@ -47,6 +45,3 @@ echo $PG_mainbody;
 
 ?>
 
-
-	</li>
-	</ul>
