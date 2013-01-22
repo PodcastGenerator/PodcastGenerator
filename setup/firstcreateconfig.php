@@ -34,7 +34,7 @@ $configfiletocreate = '<?php
 
 $podcastgen_version = "'.$podcastgen_version.'"; // Version
 
-$scriptlang = "'.$scriptlang.'";
+$scriptlang = "'.$_POST['setuplanguage'].'";
 
 $url = "'.$currenturl.'"; // Complete URL of the script (Trailing slash REQUIRED)
 
@@ -99,7 +99,7 @@ $itunes_category[2] = "";
 
 $link = $url."?p=episode&amp;name="; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
 
-$feed_language = "'.$setuplang.'"; // Language used in the XML feed (can differ from the script language).
+$feed_language = "'.$_POST['setuplanguage'].'"; // Language used in the XML feed (can differ from the script language).
 
 $copyright = "'._("Your copyright notice").'"; // Copyright notice
 
