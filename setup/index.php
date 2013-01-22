@@ -41,7 +41,7 @@ if (isset($_POST['setuplanguage'])) {
 
 ################ 
 
-$setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("- Setup");
+$setuptext = _("Podcast Generator")." ".$podcastgen_version;
 
 ?>
 
@@ -51,8 +51,8 @@ $setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("- Setup");
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><?php echo setuptext; ?></title>
-<meta name="Description" content="<?php echo $setuptext; ?>" />
+	<title><?php echo $setuptext." "._("Setup"); ?></title>
+<meta name="Description" content="<?php echo $setuptext." "._("Setup") ?>" />
 
 <META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW" />
 
@@ -68,33 +68,30 @@ $setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("- Setup");
 
 if (!isset($_GET['step'])){
 
-	echo "Step 1/5";
-
+	echo "Step 1/3";
+echo "<p>"._("Welcome to")." ".$setuptext."</p>";
+echo "<p>"._("You are just 3 steps away to setup your podcast!")."</p>"; 
 
 }
 elseif (isset($_GET['step']) AND $_GET['step'] == 2) {
 
-	echo "Step 2/5";
+	echo "Step 2/3";
 
 }
 
 elseif (isset($_GET['step']) AND $_GET['step'] == 3) {
 
-	echo "Step 3/5";
+	echo "Step 3/3";
 
 }
 
 elseif (isset($_GET['step']) AND $_GET['step'] == 4) {
 
-	echo "Step 4/5";
+//	echo "Step 4/5";
 
 }
 
-elseif (isset($_GET['step']) AND $_GET['step'] == 5) {
 
-	echo "Step 5/5";
-
-}
 ?>
 
 

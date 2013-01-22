@@ -12,8 +12,6 @@ include ('checkconfigexistence.php');
 ?>
 
 
-	<ul class="episode_imgdesc">
-	<li>
 
 	<?php
 
@@ -65,7 +63,3 @@ include('firstcreatefreeboxtext.php'); //creates freebox-content.txt file in the
 echo $PG_mainbody;
 
 ?>
-
-
-	</li>
-	</ul>

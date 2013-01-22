@@ -14,13 +14,13 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../config.php")) { //if config.php already exists stop the script
 
-	echo "<font color=\"red\">_("Config.php file already exists!")</font><br />_("Please delete this file before proceeding with the installation...")";
+	echo "<font color=\"red\">"._("Config.php file already exists!")."</font><br />"._("Please delete this file before proceeding with the installation...");
 
 	exit;
 
 }
 
-$currenturl = str_replace("?step=5", "", $currenturl); //set script URL to be saved in the config.php file
+$currenturl = str_replace("?step=4", "", $currenturl); //set script URL to be saved in the config.php file
 
 $configfiletocreate = '<?php
 
@@ -34,7 +34,7 @@ $configfiletocreate = '<?php
 
 $podcastgen_version = "'.$podcastgen_version.'"; // Version
 
-$scriptlang = "'.$setuplang.'";
+$scriptlang = "'.$scriptlang.'";
 
 $url = "'.$currenturl.'"; // Complete URL of the script (Trailing slash REQUIRED)
 

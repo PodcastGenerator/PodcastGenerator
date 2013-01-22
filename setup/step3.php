@@ -18,7 +18,7 @@ include ('checkconfigexistence.php');
 	<?php
 
 $PG_mainbody = NULL; //define
-$PG_mainbody = '<form method="post" action="index.php?step=5">	
+$PG_mainbody = '<form method="post" action="index.php?step=4">	
 	';
 
 $PG_mainbody .= '<p><b>'._("Choose a username and a password for the admin page:").'</b></p>

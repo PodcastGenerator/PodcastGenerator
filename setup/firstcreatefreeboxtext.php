@@ -14,7 +14,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../freebox-content.txt")) { //if freebox text is already present
 
-	echo "<font color=\"red\">_("Freebox text already exists...")</font><br />";
+	echo "<font color=\"red\">"._("Freebox text already exists...")."</font><br />";
 
 
 } else { // else create "freebox-content.txt" file in the root dir
