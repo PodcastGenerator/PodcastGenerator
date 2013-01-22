@@ -100,7 +100,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			$PG_mainbody .= "
 				<div class=\"topseparator\"> 
 				<h3>"._("Welcome")."</h3>
-				<p><i>"._("This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are reccommended to set a podcast title, description, your name, e-mail, etc...")."</i> <a href=\"?p=admin&amp;do=changedetails\"><b>"._("Start now...")."</b></a></p>
+				<p><i>"._("This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are reccommended to provide a podcast title, description, etc... Try a different theme!")."</i> <a href=\"?p=admin&amp;do=changedetails\"><b>"._("Start now...")."</b></a></p>
 				</div>";	
 		}
 
