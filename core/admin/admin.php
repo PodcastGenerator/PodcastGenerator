@@ -140,6 +140,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<h3>'._("Themes and aspect").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=theme">'._("Select Theme").'</a></li>
+			<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>
+			<li><a href="?p=admin&do=aaaa">'._("Attach code to episodes (advanced)").'</a></li>
 			</ul>
 			</div>
 

@@ -178,7 +178,21 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 						$PG_mainbody .=	'<p class="episode_keywords"><b>'._("Keywords:").'</b> '.$text_keywordspg.'</p>';
 					}
 
+/// DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
+	
+	
+			if(file_exists("$absoluteurl"."episode-attachment.txt")){
 
+			$attachmenttodisplay = file_get_contents("$absoluteurl"."episode-attachment.txt");	
+		} else {
+			$attachmenttodisplay = NULL;
+		}
+
+		$PG_mainbody .= $attachmenttodisplay;
+
+/// END - DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
+					
+					
 					$PG_mainbody .= "</li>
 						</ul>
 						</div>";
