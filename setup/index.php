@@ -44,6 +44,7 @@ if (isset($_POST['setuplanguage'])) {
 
 ################ 
 
+//joins name + version
 $setuptext = _("Podcast Generator")." ".$podcastgen_version;
 
 ?>
