@@ -87,4 +87,121 @@ function depurateContent($content) {
 }
 
 
+
+
+############ Create form date and time
+	function CreaFormData($inName, $useDate=0, $dateformat) //inName is the form name, it can be null
+	{ 
+	// array with months
+	$monthName = array(1=> _("January"), _("February"), _("March"),
+	_("April"), _("May"), _("June"), _("July"), _("August"),
+	_("September"), _("October"), _("November"), _("December"));
+
+	// se data non specificata, o invalida, usa timestamp corrente
+	if($useDate == NULL)
+	{
+	$useDate = Time();
+	}
+	
+	$outputform =  _("Date:")." "; //title
+	
+	//day
+	$outputformDAY =  "<select name=\"" . $inName . "Day\">\n";
+	for($currentDay=1; $currentDay <= 31; $currentDay++)
+	{
+	$outputformDAY .=  "<option value=\"$currentDay\"";
+	if(intval(date( "d", $useDate))==$currentDay)
+	{
+	$outputformDAY .=  " selected";
+	}
+	$outputformDAY .=  ">$currentDay\n";
+	}
+	$outputformDAY .=  "</select>";
+
+	//mese
+	$outputformMONTH =  "<select name=\"" . $inName . "Month\">\n";
+	for($currentMonth = 1; $currentMonth <= 12; $currentMonth++)
+	{
+	$outputformMONTH .=  "<option value=\"";
+	$outputformMONTH .=  intval($currentMonth);
+	$outputformMONTH .=  "\"";
+	if(intval(date( "m", $useDate))==$currentMonth)
+	{
+	$outputformMONTH .=  " selected";
+	}
+	$outputformMONTH .=  ">" . $monthName[$currentMonth] . "\n";
+	}
+	$outputformMONTH .=  "</select>";
+
+	//anno
+	$outputformYEAR =  "<select name=\"" . $inName . "Year\">\n";
+	$startYear = date( "Y", $useDate);
+	for($currentYear = $startYear - 5; $currentYear <= $startYear+5;$currentYear++)
+	{
+	$outputformYEAR .=  "<option value=\"$currentYear\"";
+	if(date( "Y", $useDate)==$currentYear)
+	{
+	$outputformYEAR .=  " selected";
+	}
+	$outputformYEAR .=  ">$currentYear\n";
+	}
+	$outputformYEAR .=  "</select>";
+	
+	
+	if ($dateformat == "m-d-Y") {
+	$outputform.= $outputformMONTH.$outputformDAY.$outputformYEAR;}
+	elseif ($dateformat == "Y-m-d") {
+	$outputform.= $outputformYEAR.$outputformMONTH.$outputformDAY;}
+	else { $outputform.= $outputformDAY.$outputformMONTH.$outputformYEAR; }
+	
+	
+	$outputform .=  "&nbsp;&nbsp;"; //two blank spaces
+	$outputform .=  _("Time:")." "; //titoletto
+
+
+    //ore
+	$outputform .=  "<select name=\"" . $inName . "Hour\">\n";
+	for($currentHour = 0; $currentHour <= 23; $currentHour++)
+	{
+	$outputform .=  "<option value=\"";
+	$outputform .=  intval($currentHour);
+	$outputform .=  "\"";
+	if(intval(date( "G", $useDate))==$currentHour)
+	{
+	$outputform .=  " selected";
+	}
+	$outputform .=  ">" . $currentHour. "\n";
+	}
+	$outputform .=  "</select>";
+	
+	//minuti
+	$outputform .=  "<select name=\"" . $inName . "Minute\">\n";
+	for($currentMinute = 0; $currentMinute <= 59; $currentMinute++)
+	{
+	$outputform .=  "<option value=\"";
+	
+	if ($currentMinute <= 9) {
+	$outputform .=  "0".intval($currentMinute); } //add 0 before number from 1 to 9
+	else { $outputform .=  intval($currentMinute); }
+	
+	$outputform .=  "\"";
+	if(intval(date( "i", $useDate))==$currentMinute)
+	{
+	$outputform .=  " selected";
+	}
+	
+	if ($currentMinute <= 9) {
+	$outputform .=  ">0".intval($currentMinute). "\n"; } //aggiungi zero ai minuti da 1 a 9
+	else { $outputform .=  ">".intval($currentMinute). "\n"; }
+	
+	}
+	$outputform .=  "</select>";
+
+	
+	return $outputform;
+
+} // End - form date and time
+
+
+
 ?>

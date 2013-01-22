@@ -140,7 +140,7 @@ else {
 							<br /><br />
 							<span class ="admin_hints">
 							<input name="countdown" type="text" value="255" class ="admin_hints" size="3" readonly> '._("remaining characters.").'</span> 
-							<br /><br />';
+							';
 
 						### INCLUDE CATEGORIES FORM
 						if ($categoriesenabled == "yes") { // if categories are enabled in config.php
@@ -154,7 +154,19 @@ else {
 
 							### END CATEGORIES FORM
 
-							$PG_mainbody .= _("Fields marked with * are required.").'
+							
+							//Read file date
+							$episodedate = filemtime($wholeepisodefile);
+							
+							$PG_mainbody .= '<label>Change the file date</label>
+							<br /><span class ="admin_hints">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed.").'</span><br /><br />
+							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
+							
+							
+							
+							
+							
+							$PG_mainbody .= "<br /><br /><br />"._("Fields marked with * are required.").'
 								</fieldset>
 								';
 
@@ -242,15 +254,15 @@ else {
 							<label for="auth_email">'._("Author's email address").'</label><br />
 							<input name="auth_email" type="text" id="auth_email" size="50" maxlength="255" value="'.$text_authoremailpg.'">
 
+							';
+		
+							$PG_mainbody .= '
 							</fieldset>
-							<br /></div>
-
+							<br />
+							</div>
 							<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
 							<br /><br /><br /><br />
-
-							</form>
-
-							';
+							</form>';
 
 						$PG_mainbody .= '</div>';
 						}	}				
