@@ -29,10 +29,12 @@ if (isset($user) AND $user != "") {
 ##LOAD FUNCTIONS (needs depuratecontent and renamefilestrict)
 if (!isset($defined)) include("$absoluteurl"."core/functions.php"); //LOAD ONCE
 ################
-
+/*
 include('firstcreatecategory.php'); //creates categories.xml file in the root dir
-
 include('firstcreatefreeboxtext.php'); //creates freebox-content.txt file in the root dir
+*/
+
+include('firstcreation.php'); //creates categories file, freebox and attachment files
 
 		$PG_mainbody .= '<p>'._("Creation of the configuration file...").'</p>';
 
