@@ -8,16 +8,19 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+include ("checkconfigexistence.php");
+
 include ('set_path.php'); //define URL and absolute path on the server
 include ('../core/admin/VERSION.php'); //define Podcast Generator Version
 
-
+/*
 if (isset($_POST['setuplanguage'])) { //lang is posted in step1
 	$scriptlang = $_POST['setuplanguage'];
 }
-include($absoluteurl."core/language.php");
+*/
 
-include ("checkconfigexistence.php");
+//notice: $_POST['setuplanguage'] is used also in firstcreateconfig.php
+include($absoluteurl."core/language.php");
 
 
 
