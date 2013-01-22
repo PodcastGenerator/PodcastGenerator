@@ -19,9 +19,6 @@ include ('checkconfigexistence.php');
 
 
 
-	<ul class="episode_imgdesc">
-	<li>
-
 	<?php
 
 $PG_mainbody = NULL; //define
@@ -48,7 +45,7 @@ foreach($parser->document->language as $singlelanguage)
 
 ## SCRIPT LANGUAGES LIST
 
-$PG_mainbody .= '<br /><br />
+$PG_mainbody .= '
 
 	<form method="post" action="index.php?step=2">
 
@@ -93,6 +90,3 @@ echo $PG_mainbody;
 
 ?>
 
-
-	</li>
-	</ul>

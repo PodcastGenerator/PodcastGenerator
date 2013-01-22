@@ -14,7 +14,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../categories.xml")) { //if categories already exist stop the script
 
-	echo "<font color=\"red\">_("Categories file already exists...")</font><br />";
+	echo "<font color=\"red\">"._("Categories file already exists...")."</font><br />";
 
 
 } else { // else create "categories.xml" file in the root dir
