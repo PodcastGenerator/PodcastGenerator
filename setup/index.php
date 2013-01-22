@@ -45,7 +45,7 @@ if (isset($_POST['setuplanguage'])) {
 ################ 
 
 //joins name + version
-$setuptext = _("Podcast Generator")." ".$podcastgen_version;
+$setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("Setup");
 
 ?>
 
@@ -67,14 +67,22 @@ $setuptext = _("Podcast Generator")." ".$podcastgen_version;
 	<body>
 
 
+<div class="container"> <!-- OPEN CONTAINER -->
+
+<div class="header">
+<h1><?php echo $setuptext; ?></h1>
+
+			</div>
+
+
 
 	<?php
 
 if (!isset($_GET['step'])){
 
 	echo "Step 1/3";
-echo "<p>"._("Welcome to")." ".$setuptext."</p>";
-echo "<p>"._("You are just 3 steps away to setup your podcast!")."</p>"; 
+echo "<p>"._("Welcome!")."</p>";
+echo "<p>"._("You are just 3 steps away to setup your podcast...")."</p>"; 
 
 }
 elseif (isset($_GET['step']) AND $_GET['step'] == 2) {
@@ -132,7 +140,8 @@ if (!isset($_GET['step'])) {
 
 			?>
 
-
+			
+			</div> <!-- CLOSE CONTAINER -->
 
 				</body>
 
