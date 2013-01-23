@@ -62,6 +62,12 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 			include("$absoluteurl"."core/admin/freebox.php");
 		}
+		
+		elseif (isset($_GET['do']) AND $_GET['do']=="embed-code") {
+
+			include("$absoluteurl"."core/admin/embed-code.php");
+		}
+
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="theme") {
 
@@ -126,22 +132,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 				</div>';
 		} // end if categories enabled
 
-		if ($freebox == "yes") {
-
-			$PG_mainbody .= '<div class="topseparator"> 
-				<h3>'._("FreeBox").'</h3>
-				<ul> 
-				<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>
-				</ul>
-				</div>';
-		}
 
 		$PG_mainbody .= '<div class="topseparator"> 
 			<h3>'._("Themes and aspect").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=theme">'._("Select Theme").'</a></li>
-			<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>
-			<li><a href="?p=admin&do=aaaa">'._("Attach code to episodes (advanced)").'</a></li>
+			<li><a href="?p=admin&do=theme">'._("Select Theme").'</a></li>';
+	
+//Frebox	
+	if ($freebox == "yes") { $PG_mainbody .= '<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>'; }
+			
+			$PG_mainbody .= '<li><a href="?p=admin&do=embed-code">'._("Embed code with episodes").'</a></li>
 			</ul>
 			</div>
 
