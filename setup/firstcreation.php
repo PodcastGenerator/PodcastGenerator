@@ -87,9 +87,9 @@ $first_attachment = '<!-- begin htmlcommentbox.com -->
 <!-- end htmlcommentbox.com -->
 ';
 
-if (file_exists("../episode-attachment.txt")) { //if freebox text is already present
+if (file_exists("../embedded-code.txt")) { //if freebox text is already present
 
-	echo "<font color=\"red\">"._("The episode attachment file already exists...")."</font><br />";
+	echo "<font color=\"red\">"._("The embedded code file already exists...")."</font><br />";
 
 
 } else { // else create "episode-attachment.txt" file in the root dir
@@ -100,7 +100,7 @@ if (file_exists("../episode-attachment.txt")) { //if freebox text is already pre
 //$first_attachment = depurateContent($first_attachment);
 
 
-$createtxtbox = fopen("$absoluteurl"."episode-attachment.txt",'w'); //create categories file
+$createtxtbox = fopen("$absoluteurl"."embedded-code.txt",'w'); //create categories file
 fwrite($createtxtbox,$first_attachment); //write content into the file
 fclose($createtxtbox);
 

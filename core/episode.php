@@ -181,14 +181,14 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 /// DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
 	
 	
-			if(file_exists("$absoluteurl"."episode-attachment.txt")){
+			if(file_exists("$absoluteurl"."embedded-code.txt")){
 
-			$attachmenttodisplay = file_get_contents("$absoluteurl"."episode-attachment.txt");	
+			$attachmenttodisplay = file_get_contents("$absoluteurl"."embedded-code.txt");	
 		} else {
 			$attachmenttodisplay = NULL;
 		}
 
-		$PG_mainbody .= $attachmenttodisplay;
+		$PG_mainbody .= "<br />".$attachmenttodisplay;
 
 /// END - DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
 					
