@@ -42,7 +42,11 @@ $encoding = 'UTF-8';
 //$locale = (isset($_GET['lang']))? $_GET['lang'] : DEFAULT_LOCALE;
 
 // gettext setup
+
+// TO DEBUG  T_setlocale in /core/language.php doesn't work on IIS8, PHP5.5alpha4 when php_gettext.dll is enabled in php.ini -> switching to setlocale doesn't generate errors but doesn't change language either
 T_setlocale(LC_MESSAGES, $locale);
+
+
 // Set the text domain as 'messages'
 $domain = 'messages';
 T_bindtextdomain($domain, LOCALE_DIR);
