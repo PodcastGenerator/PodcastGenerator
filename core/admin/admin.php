@@ -63,11 +63,6 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			include("$absoluteurl"."core/admin/freebox.php");
 		}
 		
-		elseif (isset($_GET['do']) AND $_GET['do']=="embed-code") {
-
-			include("$absoluteurl"."core/admin/embed-code.php");
-		}
-
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="theme") {
 
@@ -141,8 +136,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 //Frebox	
 	if ($freebox == "yes") { $PG_mainbody .= '<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>'; }
 			
-			$PG_mainbody .= '<li><a href="?p=admin&do=embed-code">'._("Embed code with episodes").'</a></li>
-			</ul>
+			$PG_mainbody .= '</ul>
 			</div>
 
 

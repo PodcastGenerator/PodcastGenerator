@@ -56,7 +56,7 @@ else {
 			<input name="userfile" id="userfile" type="file"><br />';
 
 		if ($showmin!=NULL and $showmin!="0") { 
-			$PG_mainbody .= '<span class ="admin_hints">'._("Max:")."_upload_allowed.' '.$showmin."._("MB").' '._("- If you need to upload larger files you can use the").' <a href="?p=admin&amp;do=ftpfeature">'._("FTP Feature").'</a></span>';
+			$PG_mainbody .= '<span class ="admin_hints">'._("Your server configuration allows you to upload files up to").' '.$showmin._("MB").' '._("- If you need to upload larger files you can use the").' <a href="?p=admin&amp;do=ftpfeature">'._("FTP Feature").'</a></span>';
 		}
 
 		$PG_mainbody .= '<br /><br />

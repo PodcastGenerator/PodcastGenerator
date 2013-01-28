@@ -25,7 +25,7 @@ if (file_exists("../freebox-content.txt")) { //if freebox text is already presen
 
 // take the localized _("Uncategorized") variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
 
-$texttowrite = stripslashes(_("FREEBOX: in this box you can write freely what you wish: add links, text, HTML code through a visual editor from the admin section! You can optionally disable this feature if you don't need it..."));
+$texttowrite = stripslashes(_("FREEBOX: use this box as you wish. For instance you can add links and text or embed HTML widgets through a visual editor from the admin section! You can also disable this feature if you don't need it."));
 $texttowrite = htmlspecialchars($texttowrite);
 $texttowrite = depurateContent($texttowrite);
 
@@ -76,35 +76,4 @@ fclose($createcatf);
 
 
 
-
-
-######################## EPISODE ATTACHMENT FILE CREATION
-
-//Comment box attachment (just an example)
-$first_attachment = '<!-- begin htmlcommentbox.com -->
- <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
- <script type="text/javascript" language="javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} hcb_user.PAGE="__THISEPISODEURL__";(function(){s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "http://www.htmlcommentbox.com/jread?page="+escape((window.hcb_user && hcb_user.PAGE)||(""+window.location)).replace("+","%2B")+"&opts=327&num=10");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-<!-- end htmlcommentbox.com -->';
-
-if (file_exists("../embedded-code.txt")) { //if freebox text is already present
-
-	echo "<font color=\"red\">"._("The embedded code file already exists...")."</font><br />";
-
-
-} else { // else create "episode-attachment.txt" file in the root dir
-
-// take the localized _("Uncategorized") variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
-
-//$first_attachment = htmlspecialchars($first_attachment);
-//$first_attachment = depurateContent($first_attachment);
-
-
-$createtxtbox = fopen("$absoluteurl"."embedded-code.txt",'w'); //create categories file
-fwrite($createtxtbox,$first_attachment); //write content into the file
-fclose($createtxtbox);
-
-}
-
-
-######################## END - EPISODE ATTACHMENT FILE CREATION
 ?>
