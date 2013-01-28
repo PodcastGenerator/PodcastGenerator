@@ -44,19 +44,27 @@ else {
 		$freeboxcontenttodisplay = file_get_contents("$absoluteurl"."freebox-content.txt");
 		} else { $freeboxcontenttodisplay = NULL; }
 
+		
+		
 		$PG_mainbody .= '
-			<form action="?p=admin&amp;do=freebox&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
+		
+		<span class ="admin_hints">'._("(HTML tags accepted)").'</span><br /><br />
+		
+			<form action="?p=admin&amp;do=freebox&amp;c=ok" method="POST" enctype="application/x-www-form-urlencoded" name="freeboxform" id="freeboxform">
 
-			<span class ="admin_hints">'._("(HTML tags accepted)").'</span><br /><br />
+			<textarea id="long_description" name="long_description" cols="50" rows="10">'.$freeboxcontenttodisplay.'</textarea>
 
-			<textarea id="long_description" name="long_description" cols="50" rows="3">'.$freeboxcontenttodisplay.'</textarea>
+		
+			
+<br /><br />
 
-			<br /></div>
-
+			
+			
 			<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');">
-			<br /><br /><br /><br />
+		
 
 			</form>
+				
 
 			';
 
