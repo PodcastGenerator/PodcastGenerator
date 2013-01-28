@@ -98,12 +98,12 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 		#$PG_mainbody .= "QUI: $long_description<br>lunghezza:".strlen($long_description)."<br>"; //debug
 
 		if ($long_description == NULL OR $long_description == " ") { //if user didn't input long description the long description is equal to short description
-		$PG_mainbody .= "<p>"._("Long description not present; I'll use short description...")."</p>";
+		$PG_mainbody .= "<p>"._("Long description not present (the short description will be used)")."</p>";
 		$long_description = $description;
 	}
 
 	else {
-		$PG_mainbody .= "<p>"._("Long Description")."present</p>";
+		$PG_mainbody .= "<p>"._("Long Description present")."</p>";
 		$long_description = str_replace("&nbsp;", " ", $long_description); 
 	}
 
@@ -156,22 +156,27 @@ $auth_email = NULL; //ignore email
 
 ## start processing podcast
 
-$PG_mainbody .= "<p><b>"._("processing...")."pod</b></p>";
+$PG_mainbody .= "<p><b>"._("Processing episode...")."</b></p>";
 
 $PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
 $file_ext=explode(".",$file); // divide filename from extension
+
+
 
 // $PG_mainbody .= "<p>"._("File")."_ext <i>$file_ext[1]</i></p>"; //display file extension
 
 ##############
 ### processing file extension
-$fileData = checkFileType($file_ext[1],$podcast_filetypes,$filemimetypes);
+$fileData = checkFileType(strtolower($file_ext[1]),$podcast_filetypes,$filemimetypes); //lowercase extension to compare with the accepted extensions array
 
 if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
 $podcast_filetype=$fileData[0];
+
 }else {
 	$podcast_filetype=NULL;	
 }
+
+if ($file_ext[1]==strtoupper($podcast_filetype)) $podcast_filetype = strtoupper($podcast_filetype); //accept also uppercase extension
 
 if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go on....
 
@@ -193,6 +198,10 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 		$file_ext[0] = renamefile ($file_ext[0]);
 
 	}
+
+		$file_ext[1] = strtolower ($file_ext[1]); //lowercase file extension
+
+
 	##############
 	############## end filename depuration
 
@@ -347,7 +356,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 		############################################
 
 
-		$PG_mainbody .= "<p><b><font color=\"green\">"._("File")."sent</font></b></p>"; // If upload is successful.
+		$PG_mainbody .= "<p><b><font color=\"green\">"._("File sent")."</font></b></p>"; // If upload is successful.
 
 		########## REGENERATE FEED
 		include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
@@ -377,7 +386,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 } // 003 (if file extension is not accepted)
 else {
-	$PG_mainbody .= "<p><i>$file_ext[1]</i> "._("is not a supported extension or filename not correct (did you add points to the filename?).")."</p>";
+	$PG_mainbody .= "<p><i>$file_ext[1]</i> "._("is not a supported extension or your filename contains forbidden characters.")."</p>";
 	$PG_mainbody .= "<form>
 		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
 		</form>";

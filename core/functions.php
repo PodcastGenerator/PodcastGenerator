@@ -17,6 +17,7 @@ function checkFileType ($filetype,$podcast_filetypes,$filemimetypes) {
 	$bool=false;
 	$fileData = array();
 
+	
 	while (($i < sizeof($podcast_filetypes)) && $bool==false) {
 		if ($filetype==$podcast_filetypes[$i]) {
 			$fileData[0]=$podcast_filetypes[$i];
@@ -27,7 +28,6 @@ function checkFileType ($filetype,$podcast_filetypes,$filemimetypes) {
 	}
 	return $fileData;
 }
-// Thanks to Francesco D'Offizi (francesco.doffizi@email.it) for implementing the checkFileType function.
 
 
 ########
