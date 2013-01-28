@@ -24,10 +24,10 @@ include("$absoluteurl"."components/lastRSS/lastRSS.php");
 $rss = new lastRSS;
 
 // Set cache dir and cache time limit (1200 seconds)
-// (don't forget to chmod cahce dir to 777 to allow writing)
+// (don't forget to chmod cache dir to 777 to allow writing)
 ### In podcastgen I set the ROOT directory as RSS cache dir, as it should already haver writing permissions:
 $rss->cache_dir = $absoluteurl;
-$rss->cache_time = 21600; // I put 6 hours cache time... I do not update soo often podcastgen news
+$rss->cache_time = 43200; // 12 hours cache time between each update of podcastgen news
 
 if ($rs = $rss->get($rssurl)) {
 
@@ -45,6 +45,10 @@ if ($rs = $rss->get($rssurl)) {
 }
 else {
 	$PG_mainbody .= _("Error: It's not possible to get Podcast Generator news feed...");
+	
+	//DISABLE news display if the server doesn't allow
+	$enablepgnewsinadmin = "no";
+	include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 }
 
 ?>
