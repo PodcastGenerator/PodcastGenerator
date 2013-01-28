@@ -1,0 +1,1550 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator 2.0 Beta\n"
+"POT-Creation-Date: 2013-01-24 16:21+0100\n"
+"PO-Revision-Date: 2013-01-24 18:17+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Matthias Wirtz <matthias.wirtz@hotmail.de>\n"
+"Language: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: \\\\SWIFFER-Q25B\\wwwroot\\podcastgen\n"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:40
+msgid "Choose a category:"
+msgstr "Wähle eine Kategorie:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:57
+msgid "Show all episodes"
+msgstr "Zeige alle Folgen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:97
+msgid "Subscribe to this category"
+msgstr "Abboniere diese Kategorie"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:98
+msgid "Subscribe to this category with iTunes"
+msgstr "Abboniere diese Kategorie mit iTunes"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:167
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:83
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:80
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:175
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:92
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:187
+msgid "Download"
+msgstr "Herunterladen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:167
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:83
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:80
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:92
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:57
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:59
+msgid "MB"
+msgstr "MB"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:198
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:110
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:130
+msgid "(Video Podcast)"
+msgstr "(Video Podcast)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:230
+msgid "This category is empty..."
+msgstr "Die Kategorie ist leer..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:233
+msgid "This category doesn't exist"
+msgstr "Diese Kategorie existiert nicht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:236
+msgid "Back to category list"
+msgstr "Zurück zur Kategorieübersicht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:239
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:142
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:209
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:207
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:142
+msgid "Directory"
+msgstr "Verzeichnis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_cat.php:239
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:142
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:209
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:207
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:142
+msgid "is empty..."
+msgstr "ist leer..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/archive_nocat.php:20
+msgid "Episodes Archive"
+msgstr "Folgenarchiv"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:89
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:101
+msgid "Duration:"
+msgstr "Dauer:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:91
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:103
+msgid "m"
+msgstr "min"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:91
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:103
+msgid "Filetype:"
+msgstr "Dateityp:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:95
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:107
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:97
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:109
+msgid "KBPS"
+msgstr "KBPS"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:97
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:109
+msgid "Frequency:"
+msgstr "Frequenz:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:99
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:111
+msgid "HZ"
+msgstr "HZ"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:169
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:181
+msgid "Watch this video (requires browser plugin)"
+msgstr "Betrachte dieses Video (benötigt ein Browserplugin)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:169
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:181
+msgid "Watch"
+msgstr "Ansehen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:175
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:187
+msgid "Download this episode"
+msgstr "Diese Folge herunterladen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/episode.php:178
+msgid "Keywords:"
+msgstr "Schlagworte:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:96
+msgid "January"
+msgstr "Januar"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:96
+msgid "February"
+msgstr "Februar"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:96
+msgid "March"
+msgstr "März"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:97
+msgid "April"
+msgstr "April"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:97
+msgid "May"
+msgstr "Mai"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:97
+msgid "June"
+msgstr "Juni"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:97
+msgid "July"
+msgstr "Juli"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:97
+msgid "August"
+msgstr "August"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:98
+msgid "September"
+msgstr "September"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:98
+msgid "October"
+msgstr "Oktober"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:98
+msgid "November"
+msgstr "November"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:98
+msgid "December"
+msgstr "Dezember"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:106
+msgid "Date:"
+msgstr "Datum:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/functions.php:159
+msgid "Time:"
+msgstr "Uhrzeit:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/recent_list.php:142
+msgid "Video Podcast"
+msgstr "Video Podcast"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:16
+msgid "Failed to open theme file"
+msgstr "Das Design konnte nicht geöffnet werden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:45
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:215
+msgid "Podcast Archive"
+msgstr "Podcastarchiv"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:141
+msgid "feed:"
+msgstr "feed:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:142
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:143
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "Kopiere den Link zu diesem Feed in deinen Aggregator"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:145
+msgid "Subscribe to this podcast with iTunes"
+msgstr "Abboniere diesen Podcast mit iTunes"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:156
+msgid "Make a donation:"
+msgstr "Mache eine Spende:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:156
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:157
+msgid "If you like Podcast Generator please consider making a donation:"
+msgstr ""
+"Du magst den Podcast Generator? Unterstütze die Entwicklung mit einer Spende:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:221
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:48
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:368
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:22
+msgid "Your server configuration"
+msgstr "Deine Serverkonfiguration"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+msgid "Check for updates"
+msgstr "Prüfe auf Aktualisierungen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+msgid "Subscribe to the news feed"
+msgstr "Abboniere den News Feed"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+msgid "Read documentation and get support"
+msgstr "Betrachte die Dokumentation"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:162
+msgid "Credits"
+msgstr "Danksagung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:213
+msgid "Home"
+msgstr "Home"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:217
+msgid "Admin"
+msgstr "Administration"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:221
+msgid "Powered by"
+msgstr "Bereitgestellt von"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/themes.php:221
+msgid ", an open source podcast publishing solution."
+msgstr ", einer quelltextoffenen Podcast Publizierungslösung."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:108
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:48
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:68
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:109
+msgid ""
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
+msgstr ""
+"Das ist möglicherweise das erstmal, dass du diese Seite betrittst; du hast "
+"bisher keine Podcast Details geändert. Es wird empfohlen den den Podcast "
+"Titel, die Beschreibung, etc... zu setzten. Wähle auch ein anderes Design!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:109
+msgid "Start now..."
+msgstr "Starte jetzt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:116
+msgid "Episodes"
+msgstr "Folgen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:118
+msgid "New Podcast"
+msgstr "Neuer Podcast"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:119
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:21
+msgid "Edit/Delete Podcasts"
+msgstr "Bearbeite/Lösche Podcasts"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:120
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:21
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:59
+msgid "FTP Feature"
+msgstr "FTP Funktionalität"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:121
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:26
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:46
+msgid "Manually regenerate xml feed"
+msgstr "XML Feed erneut generieren"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:128
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:51
+msgid "Categories"
+msgstr "Kategorien"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:130
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "Kategorien hinzufügen/löschen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:137
+msgid "Themes and aspect"
+msgstr "Designs und Ansicht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:139
+msgid "Select Theme"
+msgstr "Wähle ein Design"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:142
+msgid "Customize your FreeBox"
+msgstr "Bearbeite deine FreeBox"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:144
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:24
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:40
+msgid "Embed code with episodes"
+msgstr "Code in Folgen einbinden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:150
+msgid "iTunes Settings"
+msgstr "iTunes Einstellungen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:152
+msgid "Change iTunes image"
+msgstr "iTunes Bild wechseln"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:153
+msgid "Select or change iTunes Categories"
+msgstr "iTunes Kategorien auswählen/ändern"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:154
+msgid "Submit your podcast to the iTunes Store"
+msgstr "Reiche deinen Podcast im iTunes Store ein"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:159
+msgid "Your podcast details"
+msgstr "Deine Podcast Eigenschaften"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:161
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "Ändere deine Podcast Eigenschaften"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:162
+msgid "Validate this feed with w3c validation service"
+msgstr "Validiere diese Seite mit dem W3C Validierungsservice"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:167
+msgid "Podcast Generator Configuration"
+msgstr "Podcast Generator Konfiguration"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:169
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "Ändere die Podcast Generator Konfiguration"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/admin.php:182
+msgid "Podcast Generator News"
+msgstr "Podcast Generator News"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:35
+msgid ""
+"Hint: Don't you need to classify your podcast into categories? Too "
+"complicated? "
+msgstr ""
+"Tipp: Du willst deine Podcasts nicht in Kategorien einteilen? Es ist zu "
+"kompliziert?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:35
+msgid "Simply disable them"
+msgstr "Deaktiviere sie einfach"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:48
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:111
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:110
+msgid "Add a new category:"
+msgstr "Kategorie hinzufügen:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:51
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:114
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:113
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:51
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:114
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:113
+msgid "Adding..."
+msgstr "Wird hinzugefügt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:73
+msgid "Delete Categories"
+msgstr "Kategorien löschen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:86
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:89
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:112
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:116
+msgid "Delete"
+msgstr "Löschen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:89
+msgid "Do you really want to permanently delete this category?"
+msgstr "Willst du diese Kategorie wirklich für immer löschen?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:89
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:233
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:116
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:209
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:99
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:120
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:140
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:160
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:180
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:123
+msgid "Yes"
+msgstr "Ja"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:89
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:116
+msgid "Deleting..."
+msgstr "Lösche..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:89
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:239
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:121
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:215
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:105
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:126
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:146
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:166
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:186
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:137
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:124
+msgid "No"
+msgstr "Nein"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:105
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:104
+msgid "Categories file doesn't exist or empty..."
+msgstr "Kategorie "
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories.php:122
+msgid "Categories disabled"
+msgstr "Kategorien sind deaktiviert"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "Kategorie hinzufügen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:114
+msgid "New category:"
+msgstr "Neue Kategorie:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:116
+msgid "Category added!"
+msgstr "Kategorie hinzugefügt!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:116
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_remove.php:74
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_remove.php:120
+msgid "Back to category management"
+msgstr "Zurück zur Kategorieverwaltung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:122
+msgid "The category you wish to add already exists..."
+msgstr "Die Kategorie, die du hinzufügen willst, existiert bereits..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:124
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:136
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:59
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:70
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:339
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:350
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:373
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:382
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:393
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:404
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:49
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:57
+msgid "Back"
+msgstr "Zurück"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_add.php:133
+msgid "Please write a category name..."
+msgstr "Bitte einen Kategorienamen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "Kategorie löschen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_remove.php:74
+msgid "Category deleted"
+msgstr "Kategorie gelöscht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/categories_remove.php:119
+msgid "The category doesn't exist..."
+msgstr "Die Kategorie existiert nicht..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "wurde gelöscht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/delete.php:50
+msgid "Image associated to this file deleted"
+msgstr "Das zu dieser Datei zugehörige Bild wurde gelöscht"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/delete.php:60
+msgid "Delete other episodes"
+msgstr "Andere Folgen löschen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/delete.php:63
+msgid "No file to delete..."
+msgstr "Keine Datei zum löschen vorhanden..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:21
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:117
+msgid "Edit podcast"
+msgstr "Podcast bearbeiten"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:123
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:51
+msgid "Main information (required):"
+msgstr "Grundsätzliche Informationen (benötigt):"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:128
+msgid "File to edit:"
+msgstr "zu bearbeitende Datei:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:132
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:108
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:114
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:63
+msgid "Title"
+msgstr "Titel"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:135
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:66
+msgid "Short Description"
+msgstr "Kurze Beschreibung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:136
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:67
+msgid "(max 255 characters)"
+msgstr "(maximal 255 Zeichen)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:142
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:73
+msgid "remaining characters."
+msgstr "Zeichen verbleibend."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:162
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed."
+msgstr ""
+"Die Folgen deines Podcasts werden automatisch nach Datum sortiert. Wenn du "
+"das Datum veränderst ändert sich auch die Reihenfolge im Podcast Feed."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:169
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:88
+msgid "Fields marked with * are required."
+msgstr "Mit einem * gekennzeichne Felder werden benötigt."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:180
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:100
+msgid "Extra information (optional):"
+msgstr "Weitere Informationen (optionell):"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:182
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:337
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:106
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:391
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:102
+msgid "Long Description"
+msgstr "Lange Beschreibung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:182
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:50
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:102
+msgid "(HTML tags accepted)"
+msgstr "(HTML Tags werden akzeptiert)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:199
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:210
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:107
+msgid "Image"
+msgstr "Bild"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:199
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:85
+msgid "Current image:"
+msgstr "Aktuelles Bild:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:201
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:92
+msgid "New image:"
+msgstr "Neues Bild:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:202
+msgid "Specify a new image if you want to replace the old one."
+msgstr "Wähle ein neues Bild, wenn du das alte ersetzen willst."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:203
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:213
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:109
+msgid ""
+"Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted "
+"formats: png, gif e jpg."
+msgstr ""
+"Ein KLEINES Bild hochladen (empfohlene Maße 150x150 Pixel). Akzeptierte "
+"Formate: png, gif und jpg."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:212
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:108
+msgid ""
+"You can associate an image to this episode; it will appear on the recent "
+"podcast page and on the details page."
+msgstr ""
+"Du kannst ein Bild zu dieser Episode hinzufügen; es wird auf der \"kürzlich "
+"hinzugefügte Podcasts\"-Seite und auf der \"Details\"-Seite angezeigt."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:224
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:118
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:118
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:114
+msgid "iTunes Keywords:"
+msgstr "iTunes Schlagwörter:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:225
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:115
+msgid "Separate keywords by a comma"
+msgstr "Trenne Schlagwörter mit einem Komma"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:227
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:117
+msgid "words."
+msgstr "Wörter."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:231
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:121
+msgid "Explicit content?"
+msgstr "Anstößlicher Inhalt?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:232
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:122
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr ""
+"Wähle JA, wenn diese Folge allzu deutliche Sprache oder obszönen Inhalt "
+"enthält."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:247
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:128
+msgid "Author"
+msgstr "Autor"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:248
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:129
+msgid ""
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner."
+msgstr ""
+"Du kannst für jede Folge einen unterschiedlchen Autor wählen, andernfalls "
+"ist der Besitzer des Podcasts der Autor."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:250
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:93
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:148
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:131
+msgid "Author's name"
+msgstr "Name des Autors"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:254
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:151
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:135
+msgid "Author's email address"
+msgstr "E-Mail Adresse des Autors"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:263
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:59
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:56
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:151
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:96
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:230
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:344
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:357
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:141
+msgid "Send"
+msgstr "Senden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/edit.php:263
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:96
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:141
+msgid "Uploading..."
+msgstr "Lade hoch..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:112
+msgid "View"
+msgstr "Betrachte"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:112
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:115
+msgid "Do you really want to delete permanently this episode?"
+msgstr "Willst du diese Folge wirklich für immer löschen?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/editdel.php:142
+msgid "Upload a podcast"
+msgstr "Einen Podcast hochladen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:33
+msgid "The code has been embedded."
+msgstr "Der Code wurde eingebunden."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:50
+msgid ""
+"(If you wish, you can insert below a code with want to embed with each "
+"episode.)"
+msgstr ""
+"(Wenn du willst, kannst du hier einen Code einbinden, der in jede Folge "
+"eingebettet wird.)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:55
+msgid ""
+"Notice: this feature is potentially dangerous. Do not use it unless you know "
+"what you are doing. Here you can find some examples of code you can embed."
+msgstr ""
+"Hinweis: Dieses Feature ist potenziell gefährlich. Nutze es nicht, wenn du "
+"nicht genau weißt was du tust. Hier kannst du einige Beispiele für Code den "
+"du einbinden kannst finden."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/embed-code.php:59
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:56
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:151
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:230
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:344
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "Speichere..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:25
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:45
+msgid "Generate XML feed"
+msgstr "XML Feed generieren"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:36
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "Fortfahren"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:36
+msgid "Generating..."
+msgstr "Generiere..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:368
+msgid "Feed XML generated!"
+msgstr "XML Feed generiert!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:372
+msgid "All the episodes have been indexed in the feed"
+msgstr "Alle Folgen wurden dem Feed hinzugefügt."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:372
+msgid "You can limit the feed to the last episodes"
+msgstr "Schränke den Feed auf die letztes Folgen ein"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/feedgenerate.php:376
+msgid "episode(s) in the feed"
+msgstr "Folge(n) im Feed"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:24
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "FreeBox"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "Deine FreeBox wurde aktualisiert!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "Suche nach manuell hochgeladenden Podcasts:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "Suche..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:96
+msgid "Media file found:"
+msgstr "Mediendatei gefunden:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:107
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:113
+msgid "Reading data from ID3 tags:"
+msgstr "Lese Informationen aus den ID3 Tags:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:125
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:130
+msgid "Description"
+msgstr "Beschreibung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:223
+msgid "Scan finished:"
+msgstr "Suche beendet:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:223
+msgid "new episode(s) added."
+msgstr "neue Folge(n) hinzugefügt."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/ftpfeature.php:225
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:328
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:357
+msgid "Go to the homepage"
+msgstr "Gehe zur Startseite"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:22
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:68
+msgid "iTunes categories"
+msgstr "iTunes Kategorien"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "Wähle oder Wechsle die iTunes Kategorien (iTunes Store)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "iTunes Kategorien erfolgreich gewechselt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:73
+msgid "iTunes Category 1"
+msgstr "iTunes Kategorie 1"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:102
+msgid "iTunes Category 2"
+msgstr "iTunes Kategorie 2"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunescategories.php:128
+msgid "iTunes Category 3"
+msgstr "iTunes Kategorie 3"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:23
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:86
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:90
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:92
+msgid "iTunes image"
+msgstr "iTunes Bild"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:24
+msgid "Podcast image that will be displayed in the iTunes Music Store"
+msgstr "Podcast Bild, dass im iTunes Music Store angezeigt wird"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:44
+msgid "iTunes image replace successfully."
+msgstr "iTunes Bild erfolgreich ausgetauscht."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:48
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:224
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:262
+msgid "Error: image NOT sent!"
+msgstr "Fehler: Das Bild wurde NICHT gesendet!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:55
+msgid "Image extension not valid..."
+msgstr "Bild Erweiterung nicht gültig..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:56
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:94
+msgid ""
+"You can replace the current image with a new image: according to iTunes "
+"technical specifications this must be a 300x300 pixels JPG file."
+msgstr ""
+"Du kannst das aktuelle Bild gegen ein Neues austauschen: nach den "
+"technischen Spezifikationen von iTunes sollte dies ein 300x300 Pixel JPG "
+"Bild sein."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/itunesimg.php:67
+msgid "No file selected. Please go back and select an image."
+msgstr "Keine Datei ausgewählt. Bitte kehre zurück und wähle ein Bild aus."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:21
+msgid "User"
+msgstr "Benutzer"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:23
+msgid "Password"
+msgstr "Passwort"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:25
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:96
+msgid "Log in"
+msgstr "Anmelden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:25
+msgid "Logging in..."
+msgstr "Melde an..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:52
+msgid "Back to Admin"
+msgstr "Zurück zur Administration"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:52
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:56
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:68
+msgid "Log out"
+msgstr "Abmelden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/login.php:83
+msgid "Username or password not valid. Please try again..."
+msgstr "Benutzername oder Passwort nicht gültig. Bitte erneut versuchen..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/pgRSSnews.php:47
+msgid "Error: It's not possible to get Podcast Generator news feed..."
+msgstr "Fehler: Der Podcast Generator News Feed konnte nicht geladen werden..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:19
+msgid ""
+"This information will be used both in this website and in the resulting RSS "
+"feed"
+msgstr ""
+"Diese Informationen werden sowohl auf der Website wie auch im RSS Feed "
+"genutzt"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:32
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:136
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:86
+msgid "Podcast Title"
+msgstr "Podcast Titel"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:32
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:44
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:66
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:80
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "ist leer... (wird ignoriert)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:44
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:139
+msgid "Podcast Subtitle"
+msgstr "Podcast Untertitel"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "Die Beschreibung des Podcasts ist zu lang und wird ignoriert."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:59
+msgid "Max:"
+msgstr "Maximal:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:337
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:391
+msgid "characters"
+msgstr "Zeichen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:337
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:391
+msgid "Actual Length"
+msgstr "Aktuelle Länge"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:66
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:142
+msgid "Podcast Description"
+msgstr "Podcast Beschreibung"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:80
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:145
+msgid "Copyright Notice"
+msgstr "Copyright Hinweis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "E-Mail Adresse des Autors nicht angegeben oder ungültig"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(wird ignoriert)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:124
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:83
+msgid "The information has been successfully sent."
+msgstr "Die Informationen wurden erfolgreich gesendet."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:179
+msgid "Feed language"
+msgstr "Sprache des Feeds"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:180
+msgid "Main language of your episodes"
+msgstr "Hauptsprache deiner Folgen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:207
+msgid "Explicit Podcast?"
+msgstr "Anstößiger Podcast?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:208
+msgid "Does your podcast contain explicit language?"
+msgstr "Enthält dein Podcast allzu deutliche Sprache?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/podcastdetails.php:221
+msgid "No, it's clean"
+msgstr "Nein, er ist sauber"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:97
+msgid "Enable Streaming mp3 Player?"
+msgstr "Streaming MP3 Player aktivieren?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:98
+msgid "Enable flash streaming player for mp3 files on the web pages."
+msgstr ""
+"Aktiviere den Flash Streaming Player um MP3 Dateien auf der Website "
+"abzuspielen."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:118
+msgid "Enable Freebox?"
+msgstr "FreeBox aktivieren?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:119
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"In der FreeBox kannst du schreiben, was du möchtest. Füge mit einem "
+"visuellen Editor in der Administration Links oder Text hinzu."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:138
+msgid "Enable categories?"
+msgstr "Kategorien aktivieren?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:139
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr ""
+"Aktiviere Kategorien um eine thematische Liste deiner Podcasts zu erstellen."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:158
+msgid "Enable news display?"
+msgstr "Newsanzeige aktivieren?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:159
+msgid ""
+"Displays Podcast Generator latest news in the main administration page of "
+"your podcast."
+msgstr ""
+"Zeige die letzten Podcast Generator News auf der Administrationsseite deines "
+"Podcasts."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:178
+msgid "Enable strict episode renaming policy?"
+msgstr "Aktiviere die strenge Richtlinie zur Umbennung der Folgen?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:179
+msgid ""
+"If this option is enabled the files you upload will be renamed using just "
+"characters from A to Z and numbers. Unless you are using a different set of "
+"characters (e.g. Oriental, Arabic, etc...), YES is the suggested value."
+msgstr ""
+"Wenn diese Option aktiviert ist werden Dateien die du hochlädst automatisch "
+"umbenannt. Hierbei werden nur die Zeichen A-Z und Nummern verwendet. Wenn du "
+"keinen anderen Zeichensatz verwendest (Orientalisch, Arabisch, etc...) is JA "
+"die empfohlene Option."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:198
+msgid "How many recent podcasts in the home page?"
+msgstr ""
+"Wie viele kürzliche Podcasts sollen auf der Startseite angezeigt werden?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:233
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "Wie viele Folgen sollen im Podcast Feed enthalten sein?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:256
+msgid "All"
+msgstr "Alle"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:267
+msgid "Select date format"
+msgstr "Wähle ein Datumsformat"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:273
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:277
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:281
+msgid "Day"
+msgstr "Tag"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:273
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:277
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:281
+msgid "Month"
+msgstr "Monat"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:273
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:277
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:281
+msgid "Year"
+msgstr "Jahr"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:314
+msgid "Podcast Generator Language"
+msgstr "Spracheinstellungen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:315
+msgid "Choose among available languages *"
+msgstr "Wähle aus den verfügbaren Übersetzungen *"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/scriptconfig.php:343
+msgid "* Volunteer to translate Podcast Generator into your native language"
+msgstr ""
+"* Trage zum Projekt bei und übersetzte den Podcast Generator in deine "
+"Mutterpsprache"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:19
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "Design Auswahl"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "Design geändert!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:34
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "Probiere ein anderes Design..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "Du nutzt bereits dieses Design"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "Wechsle Das Design und die Ansicht vom Podcast Generator:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "Ändern"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "Tipp: Du möchtest dein eigenes Design erstellen?"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "Betrachte die Hinweise in der Dokumentation"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:101
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:101
+msgid "Long description not present; I'll use short description..."
+msgstr ""
+"Lange Beschreibung nicht vorhanden; Ich werde die kurze Beschreibung "
+"nutzen..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:106
+msgid "Long Description present"
+msgstr "Lange Beschreibung vorhanden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:123
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:123
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "Du hast mehr als 12 Schlagwörter für iTunes übermittelt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:133
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:133
+msgid "Author specified for this episode..."
+msgstr "Autor für diese Folge..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:137
+msgid "Author's email address not present or not valid."
+msgstr "E-Mail Adresse des Autors nicht angegeben oder ungültig."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:137
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:137
+msgid "Author will be IGNORED"
+msgstr "Autor wird ignoriert."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:175
+msgid ""
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
+msgstr ""
+"Datum und Uhrzeit der Folge wurde geändert (dies verändert eventuell die "
+"Reihenfolge der Folgen im Podcast Feed)."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:187
+msgid "Processing changes..."
+msgstr "Verarbeite Änderungen..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:194
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:232
+msgid "Image present: processing..."
+msgstr "Bild vorhanden: Verarbeite...."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:214
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:252
+msgid "Image sent."
+msgstr "Bild gesendet."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:224
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:262
+msgid "(ignored)"
+msgstr "(ignoriert)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:238
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:275
+msgid "Not valid image extension:"
+msgstr "Der Dateityp des Bilds ist ungültig:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:238
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:275
+msgid "Accepted extensions are:"
+msgstr "Akzeptierte Erweiterungen sind:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:328
+msgid "Edit other episodes"
+msgstr "andere Folgen bearbeiten"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendchanges.php:347
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:401
+msgid "Error: No file, description or title present"
+msgstr "Fehler: Keine Datei, Beschreibung oder Titel vorhanden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:159
+msgid "processing..."
+msgstr "verarbeite..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:161
+msgid "Original filename:"
+msgstr "Original Dateiname:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:215
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:350
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:55
+msgid "File"
+msgstr "Datei"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:363
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:364
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:370
+msgid "FILE ERROR"
+msgstr "DATEI FEHLER"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:363
+msgid "Upload Failed"
+msgstr "Hochladen fehlgeschlagen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:365
+msgid ""
+"You didn't assign writing permission to the media folder and the uploaded "
+"file can't be saved on the server."
+msgstr ""
+"Du hast keine Schreibberechtigungen für das Medienverzeichnis gesetzt und "
+"die hochgeladenen Dateien können nicht auf dem Server gespeichert werden."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:366
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr ""
+"Deine Datei ist größer als die maximale Dateigröße für Uploads auf deinem "
+"Server."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:368
+msgid "Useful information for debugging:"
+msgstr "Nützliche Informationen für die Fehlersuche:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:370
+msgid "podcasts"
+msgstr "Podcasts"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/sendfile.php:380
+msgid ""
+"is not a supported extension or filename not correct (did you add points to "
+"the filename?)."
+msgstr ""
+"ist keine unterstütze Erweiterung oder der Dateiname ist inkorekkt (hast du "
+"Punkte zum Dateinamen hinzugefügt?)."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "Betriebssystem:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "PHP Version:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:48
+msgid "Max upload size set in the script (config.php):"
+msgstr "Maximale Größe für Dateiuploads im Konfigurationsscript (config.php):"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/server_info.php:57
+msgid "Your server configuration allows you to upload files up to"
+msgstr "Deine Serverkonfiguration erlaubt Dateipuloads bis zu einer Größe von"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:52
+msgid "Select up to 3 categories for your episode..."
+msgstr "Wähle bis zu 3 Kategorien für deine Folge..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:54
+msgid ""
+"(The categories already associated to this episode are pre-selected in the "
+"form below)"
+msgstr ""
+"(Die Kategorien die bereits in Verbindung zu dieser Folge stehen wurden im "
+"unteren Formular vorausgewählt)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/showcat.php:65
+msgid "Maximum number of selectable category per single episode: "
+msgstr "Maximale Anzahl an auswählbaren Kategorien pro Folge:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:21
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:45
+msgid "Upload Podcast"
+msgstr "Podcast hochladen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:59
+msgid "- If you need to upload larger files you can use the"
+msgstr "- Nutze für das Hochladen größerer Dateien den"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/core/admin/upload.php:93
+msgid "add extra information to this episode"
+msgstr "zusätzliche Informationen zu dieser Folge hinzufügen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:17
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "Die Konfigurationsdatei (config.php) exisitiert bereits!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:17
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr "Bitte lösche diese Datei bevor du mit der Installation fortfährst..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:88
+msgid "Subtitle"
+msgstr "Podcast Untertitel"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:90
+msgid ""
+"This is the description of your podcast... you can change it through the "
+"administration area."
+msgstr ""
+"Dies ist die Beschreibung deines Podcasts... Du kannst sie in der "
+"Administration verändern."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreateconfig.php:104
+msgid "Your copyright notice"
+msgstr "Dein Copyright Hinweis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "FreeBox Text existiert bereits..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreation.php:28
+msgid ""
+"FREEBOX: in this box you can write freely what you wish: add links, text, "
+"HTML code through a visual editor from the admin section! You can optionally "
+"disable this feature if you don't need it..."
+msgstr ""
+"FreeBox: In der FreeBox kannst du schreiben, was du möchtest. Füge mit einem "
+"visuellen Editor in der Administration Links oder Text hinzu. Solltest du "
+"diese Box nicht benötigen kannst du Sie deaktivieren."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreation.php:48
+msgid "Categories file already exists..."
+msgstr "Kategorie Datei exisitert bereits..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreation.php:55
+msgid "Uncategorized"
+msgstr "Unkategorisiert"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/firstcreation.php:92
+msgid "The embedded code file already exists..."
+msgstr "Die eingebettete Code Datei exisitert bereits..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:48
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:58
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:59
+msgid "Setup"
+msgstr "Installation"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:84
+msgid "Welcome!"
+msgstr "Willkommen!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/index.php:85
+msgid "You are just 3 steps away to setup your podcast..."
+msgstr ""
+"Du bist nur drei Schritte von der Einrichtung deines Podcasts entfernt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "Prüfe Ordnerberechtigungen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:49
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:54
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "Medienverzeichnis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:49
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:67
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "ist beschreibbar"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:54
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:72
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "is NICHT beschreibbar"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:67
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:72
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Bilder Verzeichnis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:85
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:90
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "Root Verzeichnis"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:97
+msgid "Directories have correct writing permissions"
+msgstr "Die Verzeichnisse haben die korrekten Schreibberechtigungen"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:98
+msgid "You can proceed with Podcast Generator Installation..."
+msgstr "Du kannst mit der Podcast Generator Installation fortfahren..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:104
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step1.php:81
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step3.php:39
+msgid "Next"
+msgstr "Weiter"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "Versuche Schreibberechtigungen zu setzten:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:113
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:117
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "Setzte Schreibberechtigungen auf"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:125
+msgid ""
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
+msgstr ""
+"Ich habe versucht die Schreibberechtigungen (chmod 777) für die oben "
+"angegebenen Verzeichnisse zu setzten..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "Diese Seite neu laden"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr ""
+"und analysiere, ob du mit der Installation des Scripts fortfahren kannst."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/set_permissions.php:137
+msgid ""
+"...if not, set writing permission manually using your FTP program and be "
+"sure to have the privilege to change permission to folders on your server."
+msgstr ""
+"...wenn nicht, setze die Schreibberechtigungen händisch in dem du ein FTP "
+"Programm verwendest. Vergewissere dich, dass du die benötigten "
+"Berechtigungen auf dem Server hast um diese Änderungen durchführen zu können."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step3.php:22
+msgid "Choose a username and a password for the admin page:"
+msgstr ""
+"Wähle einen Benutzername und ein Passwort für die Administrations Seite:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step3.php:23
+msgid "Username"
+msgstr "Benutzername"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step3.php:27
+msgid "Password:"
+msgstr "Passwort:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step3.php:31
+msgid "Please type again your password:"
+msgstr "Gebe dein Passwort bitte erneut an:"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:39
+msgid "Creation of the configuration file..."
+msgstr "Konfigurationsdatei wird erzeugt..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:42
+msgid "Installation completed successfully :-)"
+msgstr "Die Installation wurde erfolgreich abgeschlossen :-)"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:43
+msgid "Start managing your podcast!"
+msgstr "Starte die Verwaltung deines Podcasts!"
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:47
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
+msgstr ""
+"Du hast kein Passwort eingegeben oder die Passwörter stimmen nicht überein; "
+"Gehe bitte zurück und versuche es erneut..."
+
+#: \\SWIFFER-Q25B\wwwroot\podcastgen/setup/step4.php:55
+msgid "You didn't enter the username..."
+msgstr "Du hast keinen Benutzernamen eingegeben..."
+
+#~ msgid "CIAOOO"
+#~ msgstr "TEST AAAA"

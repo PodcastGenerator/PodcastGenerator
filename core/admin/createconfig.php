@@ -60,6 +60,8 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	$episodeperpage = '.$episodeperpage.';
 
 	$enablestreaming = "'.$enablestreaming.'"; // Enable mp3 streaming? ("yes" or "no")
+	
+	$enablesocialnetworks = '.$enablesocialnetworks.'; // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
 
 	$streamingplayercolor = "'.$streamingplayercolor.'";
 

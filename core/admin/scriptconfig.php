@@ -26,6 +26,16 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$enablestreaming = $streaming;
 		}
 
+		
+		// social networks integration
+		$socialnetworks = $_POST['socialnetworks'];
+		if ($socialnetworks != "") {
+			$enablesocialnetworks = "array(".$socialnetworks.")"; //1 = TRUE
+		}
+		
+		
+		
+		
 		//freebox
 		$fbox = $_POST['fbox'];
 		if ($fbox != "") {
@@ -111,6 +121,29 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '></p>';
 
 		####
+		
+		
+		
+		########## social networks integration
+
+		$PG_mainbody .= '<br /><br /><p><label for="socialnetworks"><b>'._("Enable Social Networks Integration?").'</b></label></p>
+			<span class="admin_hints">'._("Display Facebook, Twitter and Google+ buttons for each episode.").'</span>
+			<p>'._("Yes").' <input type="radio" name="socialnetworks" value="1,1,1" ';
+
+		if (in_array(TRUE,$enablesocialnetworks)) { //if at least one is true
+			$PG_mainbody .= 'checked';
+		}
+
+		$PG_mainbody .= '>&nbsp;&nbsp; '._("No").' <input type="radio" name="socialnetworks" value="0,0,0" ';
+
+		if (!in_array(TRUE,$enablesocialnetworks)) { //if all false
+			$PG_mainbody .= 'checked';
+		}
+
+		$PG_mainbody .= '></p>';
+
+		####
+		
 
 
 		########## freebox

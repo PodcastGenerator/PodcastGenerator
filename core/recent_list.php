@@ -186,8 +186,15 @@ if (!empty($file_array)) { //if directory is not empty
 
 						$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>
 							</li>
-							</ul>
-							</div>";
+							</ul>";
+							
+					
+				//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");	
+					
+
+							
+						$PG_mainbody .= "</div>";
 
 
 						if ($recent_count == 0) { //use keywords of the most recent episode as meta tags in the home page
