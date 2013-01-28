@@ -41,7 +41,7 @@ $podcast_filetypes[20]="m4a";
 $podcast_filetypes[21]="m4v";
 
 
-## NOTE: every $podcast_filetypes[k] must have a corresponding $filemimetypes[k] below, containing its "mime type"
+## NOTE: each $podcast_filetypes[k] must have a corresponding $filemimetypes[k] below, containing its "mime type"
 
 $filemimetypes = array();
 

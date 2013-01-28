@@ -172,30 +172,19 @@ if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
 
 					}
 
-					$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
+					$PG_mainbody .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><p class=\"episode_download\">"._("Download")."</p></a>";
 
 					if ($text_keywordspg != NULL) {
 						$PG_mainbody .=	'<p class="episode_keywords"><b>'._("Keywords:").'</b> '.$text_keywordspg.'</p>';
 					}
 
-/// DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
-	
-	
-			if(file_exists("$absoluteurl"."embedded-code.txt")){
-
-			$attachmenttodisplay = file_get_contents("$absoluteurl"."embedded-code.txt");	
-		} else {
-			$attachmenttodisplay = NULL;
-		}
-
-		$PG_mainbody .= "<br />".$attachmenttodisplay;
-
-/// END - DISPLAY SOMETHING (SOME CODE) ATTACHED TO EACH SINGLE EPISODE					
+					$PG_mainbody .= "</li></ul>";
+						
+				//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");	
 					
 					
-					$PG_mainbody .= "</li>
-						</ul>
-						</div>";
+						$PG_mainbody .= "</div>";
 
 				} 
 

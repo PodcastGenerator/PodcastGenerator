@@ -127,6 +127,11 @@ if (!empty($file_array)) { //if directory is not empty
 					// echo "$recent_count<br />";
 					// if ($recent_count == ($episodeperpage - 1)) { echo "STOP<br />";}
 
+			
+					//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");	
+					
+					
 					$PG_mainbody .= "</div>";
 
 

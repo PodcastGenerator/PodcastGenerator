@@ -215,6 +215,11 @@ else { // if category is set
 								// echo "$recent_count<br />";
 								// if ($recent_count == ($episodeperpage - 1)) { echo "STOP<br />";}
 
+		
+		//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");			
+								
+								
 								$PG_mainbody .= "</div>";
 
 							} //end check belonging to category

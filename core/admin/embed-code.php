@@ -47,12 +47,12 @@ else {
 		$PG_mainbody .= '
 			<form action="?p=admin&amp;do=embed-code&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
-			<span class ="admin_hints">'._("(If you wish, you can insert below a code with want to embed with each episode.)").'</span><br /><br />
+			<span class ="admin_hints">'._("You can insert below a code with want to embed with each episode. Optionally use the special string").' __THISEPISODEURL__ '._("to obtain the URL of the single episode.").'</span><br /><br />
 
 			<textarea id="embedded-code" name="embedded-code" cols="50" rows="10">'.$embedcodetodisplay.'</textarea>
 
 			<br />
-			<span class ="admin_hints">'._("Notice: this feature is potentially dangerous. Do not use it unless you know what you are doing. Here you can find some examples of code you can embed.").'</span><br /><br />
+	
 			
 			</div>
 
