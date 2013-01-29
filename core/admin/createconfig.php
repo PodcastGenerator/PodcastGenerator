@@ -22,9 +22,13 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	include ("$absoluteurl"."core/admin/VERSION.php"); //read PodcastGenerator version
 
 	
+	// Social networks are handled independently (through array) in the config.php file, so more can be added in future and some can also be excluded in the config file.
+	$social_networks_active_buttons = NULL;
+	foreach ($enablesocialnetworks as $singlesocialnetwork) {$social_networks_active_buttons .= $singlesocialnetwork.","; }
 	
 	
 	
+	//Regenerate the config.php file
 	$configfiletocreate = '<?php
 
 	#################################################################
@@ -65,7 +69,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 
 	$enablestreaming = "'.$enablestreaming.'"; // Enable mp3 streaming? ("yes" or "no")
 	
-	$enablesocialnetworks = array('.$enablesocialnetworks[0].','.$enablesocialnetworks[1].','.$enablesocialnetworks[2].'); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
+	$enablesocialnetworks = array('.$social_networks_active_buttons.'); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
 
 	$streamingplayercolor = "'.$streamingplayercolor.'";
 
