@@ -62,6 +62,8 @@ $episodeperpage = 10;
 
 $enablestreaming = "yes"; // Enable mp3 streaming? ("yes" or "no")
 
+$enablesocialnetworks = array(0,0,0); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
+
 $streamingplayercolor = "grey";
 
 $dateformat = "d-m-Y"; // d-m-Y OR m-d-Y OR Y-m-d 
