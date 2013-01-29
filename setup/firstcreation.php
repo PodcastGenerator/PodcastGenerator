@@ -23,11 +23,13 @@ if (file_exists("../freebox-content.txt")) { //if freebox text is already presen
 
 } else { // else create "freebox-content.txt" file in the root dir
 
-// take the localized _("Uncategorized") variable in setup_LANGUAGE, depurate it and generate a unique id to use in the categories.xml file generated
 
-$texttowrite = stripslashes(_("FREEBOX: use this box as you wish. For instance you can add links and text or embed HTML widgets through a visual editor from the admin section! You can also disable this feature if you don't need it."));
-$texttowrite = htmlspecialchars($texttowrite);
-$texttowrite = depurateContent($texttowrite);
+// DEFAULT freebox content showing the potential
+$texttowrite = '<p><strong>'._('This is FREEBOX').'</strong></p><p><img src=images/smiley_default_freebox.png alt="Smiley face" style="float:left;margin-right:5px;" />'._('From the admin area you can customize this box. For instance you can add:').'</p><ul><li><a href="http://podcastgen.sourceforge.net" target="_blank">'._('Hyperlinks').'</a></li><li><span style="font-size:0.8em;color:#666;letter-spacing:5px;">Formatted Text</span></li><li>Widgets/Buttons<br/>
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPodcast-Generator%2F399742720074553&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+</li></ul><p>'._('and so on...').'<br />'._('You can optionally disable the freebox if you don\'t need it.</p>');
+//$texttowrite = htmlspecialchars($texttowrite);
+//$texttowrite = depurateContent($texttowrite);
 
 
 $createtxtbox = fopen("$absoluteurl"."freebox-content.txt",'w'); //create categories file

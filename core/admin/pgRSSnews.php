@@ -44,7 +44,7 @@ if ($rs = $rss->get($rssurl)) {
 
 }
 else {
-	$PG_mainbody .= _("Error: It's not possible to get Podcast Generator news feed...");
+	$PG_mainbody .= _("Error: It's not possible to get Podcast Generator news feed. News will be automatically disabled.");
 	
 	//DISABLE news display if the server doesn't allow
 	$enablepgnewsinadmin = "no";
