@@ -62,7 +62,7 @@ $episodeperpage = 10;
 
 $enablestreaming = "yes"; // Enable mp3 streaming? ("yes" or "no")
 
-$enablesocialnetworks = array(0,0,0); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
+$enablesocialnetworks = array(1,1,1); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
 
 $streamingplayercolor = "grey";
 
@@ -89,7 +89,7 @@ $podcast_title = "'._("Podcast Title").'";
 
 $podcast_subtitle = "'._("Subtitle").'";
 
-$podcast_description = "'._("This is the description of your podcast... you can change it through the administration area.").'";
+$podcast_description = "'._("A little description of your podcast.").'";
 
 $author_name = "Test"; 
 
