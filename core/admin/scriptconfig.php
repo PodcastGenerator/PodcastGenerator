@@ -30,7 +30,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		// social networks integration
 		$socialnetworks = $_POST['socialnetworks'];
 		if ($socialnetworks != "") {
-			$enablesocialnetworks = $socialnetworks; //1 = TRUE
+			$enablesocialnetworks = array($socialnetworks); //create an array with values 1 or 0 for each social networks
 		}
 		
 		
