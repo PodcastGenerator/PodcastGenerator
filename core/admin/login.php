@@ -14,6 +14,10 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 include ("$absoluteurl"."components/loading_indicator/loading.js"); //include top right loading indicator
 
+
+
+
+
 // define login form
 $loginform ='
 	<br /><br />
@@ -40,43 +44,42 @@ if(isset($_GET['action']) AND $_GET['action'] == "logout" ){
 // end logout section 
 
 
-// check if user is already logged in (Thanks to Pavel Urusov for the MD5 password encoding suggestion)
+// check if user is already logged in 
 
 if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword){ //if so, keep displaying the page
 
-	$PG_mainbody .= '<div class="episode">
-		'._("Welcome").' <i>'.$username.'</i> ';
 
-	if (isset($_GET['do']) AND $_GET['do'] != NULL) {
+if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 
+//write in the body the login / logout pointers
+	$PG_mainbody .= '<div class="episode">'._("Hello").' <i>'.$username.'</i> ';
+	if (isset($_GET['do']) AND $_GET['do'] != NULL) { //if we are in admin area and an action is performed
 		$PG_mainbody .= '(<a href="?p=admin">'._("Back to Admin").'</a> - <a href="?p=admin&action=logout">'._("Log out").'</a>)';
-	}
-	else {
-
-		$PG_mainbody .= '(<a href="?p=admin&action=logout">'._("Log out").'</a>)';
-
-	}
-
-	$PG_mainbody .= '<br /><br />
-		</div>';
-
+	} else {$PG_mainbody .= '(<a href="?p=admin&action=logout">'._("Log out").'</a>)';}
+	$PG_mainbody .= '<br /><br /></div>';
+}
+	
+	
 }else{
 
 	if(isset($_POST["user"]) AND $_POST["user"]==$username AND isset($_POST["password"]) AND md5($_POST["password"])==$userpassword){ //if user and pwd are valid
 
+	if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 		$PG_mainbody .= '<div class="episode">
-			'._("Welcome").' <i>'.$username.'</i> (<a href="?p=admin&action=logout">'._("Log out").'</a>)
+			'._("Hello").' <i>'.$username.'</i> (<a href="?p=admin&action=logout">'._("Log out").'</a>)
 			<br /><br />
 			</div>';
+	}
 
 		$_SESSION["user_session"] = $_POST["user"];
 		$_SESSION["password_session"] = $_POST["password"];
 
 	}else{
 
-		if(isset($_POST["user"]) AND isset($_POST["password"])){ //if user and pwd are not correct
+		if(isset($_POST["user"]) AND isset($_POST["password"])) { //if user and pwd are not correct
 
 			//display AGAIN login form if usr/pwd not correct
+
 
 			$PG_mainbody .= '
 				<div class="topseparator">
@@ -86,7 +89,7 @@ if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND
 				</form>';
 
 
-		}else{ 
+		}else {
 
 
 			//display login form

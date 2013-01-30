@@ -12,8 +12,9 @@
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
-### If admin pages, start a PHP session
-if (isset($_GET['p'])) if ($_GET['p']=="admin") { session_start(); }
+### Start a PHP session
+session_start();
+
 
 include("core/includes.php");
 
@@ -56,7 +57,12 @@ else { // if no p= specifies, e.g. just index.php with no GET
 
 
 
+//If the theme folder contains theme.xml then it's a theme for PG 2.0+ with new features and we use the new template engine templates.php
+if (useNewThemeEngine($theme_path)) { //if function is TRUE
+include("$absoluteurl"."core/templates.php");
+} else { //otherwise use the old theme engine (themes.php) for retrocompatibility
 include("$absoluteurl"."core/themes.php");
+}
 
 
 

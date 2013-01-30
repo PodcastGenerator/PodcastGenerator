@@ -87,6 +87,24 @@ function depurateContent($content) {
 }
 
 
+############ Determine whether to use the old or the new theme engine
+//It depends on the presence or absence of the file theme.xml in the theme root folder
+function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
+{
+	if (file_exists($theme_path.'theme.xml')) { 
+	return TRUE;
+	}
+	else {
+	return FALSE;
+	}
+}
+
+
+############ Is this an admin page?
+function isThisAdminPage ()
+{
+if (isset($_GET['p']) and $_GET['p'] == "admin") return TRUE;
+}
 
 
 ############ Create form date and time
