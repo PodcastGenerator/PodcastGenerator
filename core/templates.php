@@ -8,10 +8,23 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+//THIS FILE IS SIMILAR to themes.php and is used instead of it when we
+//have a new theme for version 2.0+
+//The old themes.php is kept for retro-compatibility with old themes
+//The choice between themes.php and templates.php is made in index.php
+//and depends on the theme.xml file (a file that must be included
+//in the main folder of each new theme for PG 2.0+
+
+
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
+
+
+//check login and degine which login menu to display (link or welcome user)
+include($absoluteurl."core/admin/checklogged.php");
+
 
 if(($theme_file_contents = file_get_contents($theme_path."index.htm")) === FALSE) {
 	echo "<p class=\"error\">"._("Failed to open theme file")."</p>";
@@ -150,7 +163,7 @@ $rightboxcontent = '<div class="rightbox">
 
 # If you are logged show right boxes
 
-if(isset($amilogged) AND $amilogged =="true") { //if logged
+if(isThisAdminPage()) { //if admin page
 
 	//show donation box
 	$rightboxcontent .= '<div class="rightbox">
@@ -170,13 +183,8 @@ $theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $t
 
 # SET RIGHT OPTIONAL BOX ("freebox")
 
-if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not display freebox
-
-	$freeboxcontent = NULL;
-
-	$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents);
-
-	} elseif($freebox == "yes") {
+$freeboxcontent = NULL;
+	if (!isThisAdminPage() AND $freebox == "yes") { //if it's an admin page do not display freebox - and freebox is enabled
 
 		if(file_exists("$absoluteurl"."freebox-content.txt")){
 
@@ -185,8 +193,6 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 			$freeboxcontent = "<div class=\"rightbox\">
 				$freeboxcontenttodisplay
 				</div>";
-		} else {
-			$freeboxcontent = NULL;
 		}
 
 		$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 
@@ -199,6 +205,9 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	}
 
+	
+	
+	
 
 	# Othere Theme elements replacing
 	$theme_file_contents = str_replace("-----PG_MAINBODY-----", $PG_mainbody, $theme_file_contents);
@@ -215,7 +224,7 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
 
-	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", _("Admin"), $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", $loginmenu, $theme_file_contents); 
 
 	#FOOTER
 
