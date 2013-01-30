@@ -30,7 +30,7 @@ $texttowrite = '<p><strong>'._('This is FREEBOX').'</strong></p><p><img src=imag
 <br />
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="podcastgen.sourceforge.net" data-text="I\'m trying Podcast Generator and I like it. Check it out!">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</li></ul><p>'._('and so on...').'<br />'._('You can optionally disable the freebox if you don\'t need it.</p>');
+</li></ul><p>'._('and so on...').'<br />'._('You can optionally disable the freebox if you don\'t need it.').'</p>';
 //$texttowrite = htmlspecialchars($texttowrite);
 //$texttowrite = depurateContent($texttowrite);
 
