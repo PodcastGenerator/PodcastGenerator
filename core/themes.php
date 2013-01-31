@@ -8,6 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+//THIS FILE HANDLES THE OLD THEMES (i.e. PG v. 1.x). We keep it for retro compatibility with customized themes the users might have designed
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
