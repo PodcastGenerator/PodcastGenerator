@@ -25,12 +25,12 @@ if (file_exists("../freebox-content.txt")) { //if freebox text is already presen
 
 
 // DEFAULT freebox content showing the potential
-$texttowrite = '<p><strong>'._('This is FREEBOX').'</strong></p><p><img src=images/smiley_default_freebox.png alt="Smiley face" style="float:left;margin-right:5px;" />'._('From the admin area you can customize this box. For instance you can add:').'</p><ul><li><a href="http://podcastgen.sourceforge.net" target="_blank">'._('Hyperlinks').'</a></li><li><span style="font-size:0.8em;color:#666;letter-spacing:5px;">Formatted Text</span></li><li>Widgets/Buttons<br/>
+$texttowrite = '<p class="nav-header">'._('This is FREEBOX').'</p><p><img src=images/smiley_default_freebox.png alt="Smiley face" style="float:right;margin-left:5px;" />'._('From the admin area you can customize this box. For instance you can add Widgets and Buttons').'<br/><br/>
 <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FPodcast-Generator%2F399742720074553&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
 <br />
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="podcastgen.sourceforge.net" data-text="I\'m trying Podcast Generator and I like it. Check it out!">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</li></ul><p>'._('and so on...').'<br />'._('You can optionally disable the freebox if you don\'t need it.').'</p>';
+</li></ul><p>'.'<br /><br/>'._('You can optionally disable the freebox if you don\'t need it.').'</p>';
 //$texttowrite = htmlspecialchars($texttowrite);
 //$texttowrite = depurateContent($texttowrite);
 

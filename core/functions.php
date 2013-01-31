@@ -103,7 +103,9 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 ############ Is this an admin page?
 function isThisAdminPage ()
 {
-if (isset($_GET['p']) and $_GET['p'] == "admin") return TRUE;
+if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])
+
+) return TRUE;
 }
 
 

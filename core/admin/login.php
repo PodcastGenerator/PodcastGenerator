@@ -52,7 +52,7 @@ if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND
 if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 
 //write in the body the login / logout pointers
-	$PG_mainbody .= '<div class="episode">'._("Hello").' <i>'.$username.'</i> ';
+	$PG_mainbody .= '<div class="episode">'._("Hello").' '.$username.' ';
 	if (isset($_GET['do']) AND $_GET['do'] != NULL) { //if we are in admin area and an action is performed
 		$PG_mainbody .= '(<a href="?p=admin">'._("Back to Admin").'</a> - <a href="?p=admin&action=logout">'._("Log out").'</a>)';
 	} else {$PG_mainbody .= '(<a href="?p=admin&action=logout">'._("Log out").'</a>)';}
@@ -66,7 +66,7 @@ if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 
 	if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 		$PG_mainbody .= '<div class="episode">
-			'._("Hello").' <i>'.$username.'</i> (<a href="?p=admin&action=logout">'._("Log out").'</a>)
+			'._("Hello").' '.$username.' (<a href="?p=admin&action=logout">'._("Log out").'</a>)
 			<br /><br />
 			</div>';
 	}
