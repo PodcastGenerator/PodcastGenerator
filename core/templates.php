@@ -16,6 +16,14 @@
 //in the main folder of each new theme for PG 2.0+
 
 
+/*Common CSS classes to add to a PG theme:
+
+active (menu active)
+nav-header (titles in sidebar)
+
+navbar-link (links in the navbar (e.g. log out) - checklogged.php
+
+*/
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
@@ -146,13 +154,17 @@ $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $the
 
 
 
+
+
+
+
 # SET RIGHT BOX
 
 $urlforitunes = str_replace("http://", "itpc://", $url); 
 
 $rightboxcontent = '<div class="rightbox">
 
-	<b>'.$podcast_title.' '._("feed:").'</b>
+	<span class="nav-header">'.$podcast_title.' '._("feed").'</span>
 	<p>'._("Copy the feed link and paste it into your aggregator").'<br /><br />
 	<a href="'.$url.$feed_dir.'feed.xml"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
 	</p>
@@ -162,23 +174,25 @@ $rightboxcontent = '<div class="rightbox">
 	</div>';
 
 # If you are logged show right boxes
-
+$adminrightboxcontent = NULL;
 if(isThisAdminPage()) { //if admin page
 
 	//show donation box
-	$rightboxcontent .= '<div class="rightbox">
-		<b>'._("Make a donation:").'</b><p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
+	$adminrightboxcontent .= '
+		<span class="nav-header">'._("Make a donation:").'</span><p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
 		<a href="http://www.podcastgenerator.net/donation.php"><img src="project-support.jpg" title="'._("If you like Podcast Generator please consider making a donation:").'" alt="'._("If you like Podcast Generator please consider making a donation:").'" width="88" height="32" border="0" /></a></p>
-	</div>';
+	';
 
 	//show PG box
-	$rightboxcontent .= '<div class="rightbox">
-		<b>'._("Podcast Generator").'</b><br /><p>- <a href="?p=admin&do=serverinfo">'._("Your server configuration").'</a><br />- <a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'._("Subscribe to the news feed").'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation.php?ref=local-admin" target="_blank">'._("Read documentation and get support").'</a><br />- <a href="http://podcastgen.sourceforge.net/credits.php?ref=local-admin" target="_blank">'._("Credits").'</a></p>
-	</div>';
+	$adminrightboxcontent .= '
+		<span class="nav-header">'._("Podcast Generator").'</span><p>- <a href="?p=admin&do=serverinfo">'._("Your server configuration").'</a><br />- <a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'._("Subscribe to the news feed").'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation.php?ref=local-admin" target="_blank">'._("Read documentation and get support").'</a><br />- <a href="http://podcastgen.sourceforge.net/credits.php?ref=local-admin" target="_blank">'._("Credits").'</a></p>
+	';
 
 }
 
-$theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents); 
+$theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents);
+
+$theme_file_contents = str_replace("-----PG2_ADMINRIGHTBOX-----", $adminrightboxcontent, $theme_file_contents); 
 
 
 # SET RIGHT OPTIONAL BOX ("freebox")
@@ -219,16 +233,47 @@ $freeboxcontent = NULL;
 	$theme_file_contents = str_replace("-----PG_PODCASTSUBTITLE-----", $podcast_subtitle, $theme_file_contents);
 
 	$theme_file_contents = str_replace("-----PG_PODCASTDESC-----", $podcast_description, $theme_file_contents); 
+	
+	
+	$theme_file_contents = str_replace("-----PG2_URLRSSFEED-----", 	$url.$feed_dir.'feed.xml', $theme_file_contents); 
+	
+	$theme_file_contents = str_replace("-----PG2_URLFORITUNES-----", 	$urlforitunes.$feed_dir.'feed.xml', $theme_file_contents); 
 
-	$theme_file_contents = str_replace("-----PG_MENUHOME-----", _("Home"), $theme_file_contents); 
+	
+	
+#### MENU TOP
+// Replace menu top (class active assigned to the active menu)
+
+//home button
+$contentmenuhome = '<li';
+if (isset($_GET['p']) and $_GET['p'] == "home") $contentmenuhome .= ' class="active"';
+$contentmenuhome .= '><a href="?p=home">'._("Home").'</a></li>';
+
+$theme_file_contents = str_replace("-----PG_MENUHOME-----", $contentmenuhome, $theme_file_contents);
+
+// end home button
+
+
+//archive button
+$contentmenuarchive = '<li';
+if (isset($_GET['p']) and $_GET['p'] == "archive") $contentmenuarchive .= ' class="active"';
+$contentmenuarchive .= '><a href="?p=archive">'._("Archive").'</a></li>';
+
+$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchive, $theme_file_contents);
+
+// end home button
+
+
 
 	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
-
+	
+	
+//$loginmenu is defined in checklogged.php
 	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", $loginmenu, $theme_file_contents); 
 
 	#FOOTER
 
-	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution.").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution.");
+	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution");
 
 	$theme_file_contents = str_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
 

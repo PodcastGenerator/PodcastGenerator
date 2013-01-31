@@ -21,7 +21,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 	$PG_mainbody .= '<h3>'._("iTunes image").'</h3>
-		<span class="admin_hints">'._("Podcast image that will be displayed in the iTunes Music Store").'</span><br /><br />';
+		<span class="admin_hints">'._("Podcast image that will be displayed in the iTunes Store").'</span><br /><br />';
 
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") {
