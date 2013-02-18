@@ -8,10 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-## MEDIA FORMATS SUPPORTED BY PODCAST GENERATORS
-##
-## Here you can add new formats :-)
-
+## MEDIA FORMATS SUPPORTED BY PODCAST GENERATOR
 
 ## Specify file format supported by Podcast Generator: 
 
@@ -39,7 +36,7 @@ $podcast_filetypes[18]="aif";
 $podcast_filetypes[19]="aiff";
 $podcast_filetypes[20]="m4a";
 $podcast_filetypes[21]="m4v";
-
+$podcast_filetypes[22]="epub";
 
 ## NOTE: each $podcast_filetypes[k] must have a corresponding $filemimetypes[k] below, containing its "mime type"
 
@@ -67,5 +64,5 @@ $filemimetypes[18]="audio/x-aiff";
 $filemimetypes[19]="audio/x-aiff";
 $filemimetypes[20]="audio/x-m4a";
 $filemimetypes[21]="video/x-m4v";
-
+$filemimetypes[22]="application/epub+zip";
 ?>

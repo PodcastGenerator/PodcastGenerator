@@ -290,108 +290,56 @@ $handle = opendir ($absoluteurl.$upload_dir);
 while (($filename = readdir ($handle)) !== false)
 {
 
-	if ($filename != '..' && $filename != '.' && $filename != 'index.htm' && $filename != '_vti_cnf' && $filename != '.DS_Store')
-	{
 
-		$file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-	}
+//List of directory or filename to exclude
+$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn");
+
+
+	if (!in_array($filename, $toExclude)) $file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
 
 }
 
 if (!empty($file_array)) { //if directory is not empty
 
-
-	# asort ($file_array);
 	arsort ($file_array); //the opposite of asort (inverse order)
 
 	$recent_count = 0; //set recents to zero
 
 
-
-	foreach ($file_array as $key => $value) //start loop through each file in the media directory
-
-	{
+	foreach ($file_array as $key => $value) //loop through each file in the media dir
+		{
 
 		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
 
+		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
+		$filenameWithouExtension = $file_parts[0];
+		$fileExtension = $file_parts[1];
+	
 
-
-			$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
-
-
-		$count_of_elements = count($file_multimediale);
-		
-		$file_name = $file_multimediale[0];
-		$file_extension = $file_multimediale[$count_of_elements - 1];
-		echo "file name:".$file_name;
-		echo "<br>estensione:".$file_extension;
-			
-			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
+		$fileData = checkFileType($fileExtension,$podcast_filetypes,$filemimetypes);
 
 
 			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
 
 
-				$podcast_filetype = $fileData[0];
+			$podcast_filetype = $fileData[0];
 
 
-				if ($file_multimediale[1]=="$podcast_filetype") { // if the extension is the same as specified in config.php
+			if ($fileExtension==$podcast_filetype) { // if the extension is accepted
 
-					//$file_size = filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype");
-					$file_size = round(filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype")/1048576,2);
-				//	$file_size = round($file_size, 2);
+					$file_size = round(filesize("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype")/1048576,2);
 
-					############
-					$filedescr = "$absoluteurl"."$upload_dir$file_multimediale[0].xml"; //database file
+					
+					$filedescr = $absoluteurl.$upload_dir.$filenameWithouExtension.'.xml'; //database file
 
 
-
-
-					if (file_exists("$filedescr")) { //if database file exists 
-
-
-						//$file_contents=NULL; 
-
-
-						# READ the XML database file and parse the fields
-						//include("$absoluteurl"."core/readXMLdb.php");
+					if (file_exists($filedescr)) { //if database file exists 
 
 
 	# READ the XML database file and parse the fields
-						include("$absoluteurl"."core/readXMLdb.php");				
+						include("$absoluteurl"."core/readXMLdb.php");		
 						
-
-						#Define episode headline
-						$episode_date = "<a name=\"$file_multimediale[0]\"></a>
-							<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\">
-							<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
-
-
-						# File details (duration, bitrate, etc...)
-						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype"); //read file tags
-
-						$file_duration = @$ThisFileInfo['playtime_string'];
-
-						if($file_duration!=NULL) { // display file duration
-							$episode_details = _("Duration:")." ";
-							$episode_details .= @$ThisFileInfo['playtime_string'];
-							$episode_details .= " "._("m")." - "._('Filetype:')." ";
-							$episode_details .= @$ThisFileInfo['fileformat'];
-
-							if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
-								$episode_details .= " - "._("Bitrate")." ";
-								$episode_details .= @$ThisFileInfo['bitrate']/1000;
-								$episode_details .= " "._("KBPS")." - "._("Frequency:")." ";
-								$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
-								$episode_details .= " "._("HZ");
-							}
-
-						} 
-
-
-						### Here the output code for the episode is created
-
-						# Fields Legend (parsed from XML):
+						//Fields retrieved from XML
 						# $text_title = episode title
 						# $text_shortdesc = short description
 						# $text_longdesc = long description
@@ -402,44 +350,108 @@ if (!empty($file_array)) { //if directory is not empty
 						# $text_authornamepg = author's name
 						# $text_authoremailpg = author's email
 
+						
+						
+						#Define episode headline
+						
+						/*
+						$episode_date = "<a name=\"$filenameWithouExtension\"></a>
+							<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\">
+							<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
+						*/
+						
+						$episodeDateAndSize = date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
+						
+
+						# File details (duration, bitrate, etc...)
+						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype"); //read file tags
+
+						$file_duration = @$ThisFileInfo['playtime_string'];
+
+						if($file_duration!=NULL) { // display file duration
+							$episode_details = _("Duration:")." ";
+							$episode_details .= @$ThisFileInfo['playtime_string'];
+							$episode_details .= " "._("m")." - "._('Filetype:')." ";
+							$episode_details .= @$ThisFileInfo['fileformat'];
+
+						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
+							$episode_details .= " - ";
+							$episode_details .= @$ThisFileInfo['bitrate']/1000;
+							$episode_details .= " "._("kbps")." ";
+							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
+							$episode_details .= " "._("Hz");
+							}
+
+						
+						} 
+
+
+	
+
+//CONSTRUCT EPISODE OUTPUT!
+
+if (useNewThemeEngine($theme_path)) { //If use new theme template
+$CSSClass_SingleEpisode = "span6";
+
+$resulting_episodes .= '<div class="row-fluid">';
+}
+else {
+$CSSClass_SingleEpisode = "episode";
+} 
+	
 						$resulting_episodes .= 
-							'<div class="episode">
-							<p class="episode_date">'.$episode_date.'</p>';
+							'<div class="'.$CSSClass_SingleEpisode.'">';
+							
 
-						if (isset($episode_details)) {
-							$resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
-						}
-
-						$resulting_episodes .= '<h3 class="episode_title"><a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'.$text_title.'</a>';
-
-						if ($podcast_filetype=="mpg" OR $podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
-
-							$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
-							$isvideo = "yes"; 
-
-						}
+						$resulting_episodes .= '<h3 class="episode_title"><a href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'.$text_title.'</a>';
 
 
-						$resulting_episodes .= '</h3>
-							<ul class="episode_imgdesc">';
+						//List of file extensions classified as videos
+$listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
+
+if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
+$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
+$isvideo = TRUE; 
+}
+
+
+$resulting_episodes .= '</h3>';
+		
+
+// EPISODE DATE AND SIZE
+$resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
+
+	
+					/*	
+					$resulting_episodes .= '<ul class="episode_imgdesc">';
 
 						if(isset($text_imgpg) AND $text_imgpg!=NULL AND file_exists("$img_dir$text_imgpg")) {
 
 							$resulting_episodes .= "<li><img src=\"$img_dir$text_imgpg\" class=\"episode_image\" alt=\"$text_title\" /></li>";
 
-						}
+						} */
 
+						/*
 						if(isset($text_longdesc) AND $text_longdesc!=NULL ) { // if is set long description
 
-							$resulting_episodes .= 
-								'<li>'.$text_longdesc;
+							$resulting_episodes .= $text_longdesc;
 
 						} else {
 
-							$resulting_episodes .= 
-								'<li>'.$text_shortdesc;	
+							$resulting_episodes .= $text_shortdesc;	
 						}
+						*/
+						
 
+						$resulting_episodes .= '<p>'.$text_shortdesc.'</p>';	 //SHOW short description (no HTML)
+						
+						
+					//EPISODE DURATION, FILETYPE AND OTHER DETAILS IS AVAILABLE
+if (isset($episode_details)) {
+$resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
+}
+						
+						
 
 						if($enablestreaming=="yes" AND $podcast_filetype=="mp3") { // if streaming is enabled show streaming player
 
@@ -452,16 +464,14 @@ if (!empty($file_array)) { //if directory is not empty
 
 						$resulting_episodes .= "<br />";
 
-						if (isset($isvideo) AND $isvideo == "yes") {
-							$resulting_episodes .= "<a href=\"".$url.$upload_dir."$file_multimediale[0].$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+						if (isset($isvideo) AND $isvideo == TRUE) {
+							$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
 
-							$isvideo = "no"; //so variable is assigned on every cicle
-
+							$isvideo = FALSE; //so variable is assigned on every cicle
 						}
 
-						$resulting_episodes .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>
-							</li>
-							</ul>";
+
+						$resulting_episodes .= "<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
 							
 					
 				//add social networks and embedded code
@@ -471,6 +481,13 @@ if (!empty($file_array)) { //if directory is not empty
 							
 						$resulting_episodes .= "</div>";
 
+
+						if ($recent_count % 2 != 0 OR $recent_count == count($file_array)) { //2 is the number of episodes per row
+						//close class row-fluid
+						$resulting_episodes .= "</div>";
+						}
+						
+							
 
 						if ($recent_count == 0) { //use keywords of the most recent episode as meta tags in the home page
 							$assignmetakeywords = $text_keywordspg;
@@ -504,5 +521,17 @@ return $resulting_episodes; // return results
 
 
 
+function divideFilenameFromExtension ($filetodivide) {
+
+	$file_parts = pathinfo($filetodivide); //divide filename from extension 
+
+	$fileParts = array();
+	
+		$fileParts[0] = $file_parts['filename'];
+		$fileParts[1] = $file_parts['extension'];
+
+		return $fileParts;
+		
+}
 
 ?>

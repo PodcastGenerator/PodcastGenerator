@@ -14,7 +14,9 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 # FORCE DOWNLOAD OF SUPPORTED FILES (doesn't play in the browser, but forces download)
 
-include("config.php"); 
+//NB. does not work with some mobile browsers
+
+include("config.php");
 
 include("$absoluteurl"."core/functions.php");
 
@@ -34,7 +36,10 @@ $filename_path = "$absoluteurl"."$upload_dir$filename"; // absolute path of the 
 if (file_exists("$filename_path") ) { // check real existence of the file. Avoid possible cross-site scripting attacks
 
 
-	$file_media = explode(".",$filename); //divide filename from extension
+	//$file_media = explode(".",$filename); //divide filename from extension
+	
+	$file_media = divideFilenameFromExtension($filename);
+	
 
 	$fileData = checkFileType($file_media[1],$podcast_filetypes,$filemimetypes);
 
@@ -42,7 +47,7 @@ if (file_exists("$filename_path") ) { // check real existence of the file. Avoid
 		$podcast_filetype=$fileData[0]; $filemimetype=$fileData[1];
 
 
-		if ($file_media[1]=="$podcast_filetype" AND $file_media[1]!=NULL) {// SECURITY OPTION: if extension is supported (file to download must have a known episode extension)
+		if ($file_media[1]==$podcast_filetype AND $file_media[1]!=NULL) {// SECURITY OPTION: if extension is supported (file to download must have a known episode extension)
 
 
 			### required by internet explorer
@@ -63,8 +68,12 @@ if (file_exists("$filename_path") ) { // check real existence of the file. Avoid
 		}
 	}
 }
+
+//else do nothing - no feedback
+/*
 else {
 	echo "<p>File doesn't exist or Variable not correct. Cannot Download.</p><p>No cross-site scripting allowed with Podcast Generator :-P</p>";	
 }
+*/
 
 ?>

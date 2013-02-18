@@ -159,15 +159,20 @@ $auth_email = NULL; //ignore email
 $PG_mainbody .= "<p><b>"._("Processing episode...")."</b></p>";
 
 $PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
-$file_ext=explode(".",$file); // divide filename from extension
 
 
 
-// $PG_mainbody .= "<p>"._("File")."_ext <i>$file_ext[1]</i></p>"; //display file extension
+	$file_parts = divideFilenameFromExtension($file);
+	$filenameWithouExtension = $file_parts[0];
+	$fileExtension = $file_parts[1];
+
+
+
+// $PG_mainbody .= "<p>"._("File")."_ext <i>$fileExtension</i></p>"; //display file extension
 
 ##############
 ### processing file extension
-$fileData = checkFileType(strtolower($file_ext[1]),$podcast_filetypes,$filemimetypes); //lowercase extension to compare with the accepted extensions array
+$fileData = checkFileType(strtolower($fileExtension),$podcast_filetypes,$filemimetypes); //lowercase extension to compare with the accepted extensions array
 
 if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
 $podcast_filetype=$fileData[0];
@@ -176,9 +181,9 @@ $podcast_filetype=$fileData[0];
 	$podcast_filetype=NULL;	
 }
 
-if ($file_ext[1]==strtoupper($podcast_filetype)) $podcast_filetype = strtoupper($podcast_filetype); //accept also uppercase extension
+if ($fileExtension==strtoupper($podcast_filetype)) $podcast_filetype = strtoupper($podcast_filetype); //accept also uppercase extension
 
-if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go on....
+if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, go on....
 
 
 	##############
@@ -188,27 +193,27 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 	if ($strictfilenamepolicy == "yes") {
 		#enable this to have a very strict filename policy
 
-		$file_ext[0] = renamefilestrict ($file_ext[0]);
+		$fileExtension[0] = renamefilestrict ($fileExtension[0]);
 
 	}
 
 	else {
 		# LESS strict renaming policy
 
-		$file_ext[0] = renamefile ($file_ext[0]);
+		$fileExtension[0] = renamefile ($fileExtension[0]);
 
 	}
 
-		$file_ext[1] = strtolower ($file_ext[1]); //lowercase file extension
+		$fileExtension = strtolower ($fileExtension); //lowercase file extension
 
 
 	##############
 	############## end filename depuration
 
 
-	$filenamechanged = date('Y-m-d')."_".$file_ext[0]; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
+	$filenamechanged = date('Y-m-d')."_".$fileExtension[0]; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
 
-	$uploadFile = $upload_dir . $filenamechanged.".".$file_ext[1] ;
+	$uploadFile = $upload_dir . $filenamechanged.".".$fileExtension ;
 
 
 	while (file_exists("$uploadFile")) { //cicle: if file already exists add an incremental suffix
@@ -216,12 +221,12 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 		# $PG_mainbody .= "$filesuffix"; //debug
 
-		$uploadFile = $absoluteurl . $upload_dir . $filenamechanged . $filesuffix.".".$file_ext[1] ;
+		$uploadFile = $absoluteurl . $upload_dir . $filenamechanged . $filesuffix.".".$fileExtension ;
 
 	}
 
 
-	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$file_ext[1]</i><br>";
+	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$fileExtension</i><br>";
 
 	$uploadFile == NULL ;
 
@@ -380,7 +385,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 
 } // 003 (if file extension is not accepted)
 else {
-	$PG_mainbody .= "<p><i>$file_ext[1]</i> "._("is not a supported extension or your filename contains forbidden characters.")."</p>";
+	$PG_mainbody .= "<p><i>$fileExtension</i> "._("is not a supported extension or your filename contains forbidden characters.")."</p>";
 	$PG_mainbody .= "<form>
 		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
 		</form>";

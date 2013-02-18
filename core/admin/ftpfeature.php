@@ -69,7 +69,10 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			{
 
 
-				$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+			//	$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+
+				
+				$file_multimediale = divideFilenameFromExtension($key);
 
 				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
 
