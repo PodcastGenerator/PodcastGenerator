@@ -27,7 +27,7 @@ if (isset($user) AND $user != "") {
 
 ################
 ##LOAD FUNCTIONS (needs depuratecontent and renamefilestrict)
-if (!isset($defined)) include("$absoluteurl"."core/functions.php"); //LOAD ONCE
+include_once("$absoluteurl"."core/functions.php"); //LOAD ONCE
 ################
 /*
 include('firstcreatecategory.php'); //creates categories.xml file in the root dir

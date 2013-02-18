@@ -21,7 +21,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['scriptlang'])) { exit; }
 //define('LOCALE_DIR', PROJECT_DIR .'/components/locale'); //dir containing locales
 
 
-define('LOCALE_DIR', $absoluteurl .'/components/locale'); //dir containing locales
+if (!defined('LOCALE_DIR')) define('LOCALE_DIR', $absoluteurl .'/components/locale'); //dir containing locales - define just if not already defined
 
 
 if (isset($scriptlang)) {

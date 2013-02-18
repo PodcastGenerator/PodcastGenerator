@@ -268,15 +268,9 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 						$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
 						<PodcastGenerator>
 							<episode>
-							<titlePG>
-							<![CDATA[ '.$title.' ]]>
-							</titlePG>
-							<shortdescPG>
-							<![CDATA[ '.$description.' ]]>
-							</shortdescPG>
-							<longdescPG>
-							<![CDATA[ '.$long_description.' ]]>
-							</longdescPG>
+							<titlePG><![CDATA['.$title.']]></titlePG>
+							<shortdescPG><![CDATA['.$description.']]></shortdescPG>
+							<longdescPG><![CDATA['.$long_description.']]></longdescPG>
 							<imgPG>'.$image_new_name.'</imgPG>
 							<categoriesPG>
 							<category1PG>';
