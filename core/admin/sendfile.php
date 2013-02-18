@@ -306,15 +306,9 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 		$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
 		<PodcastGenerator>
 			<episode>
-			<titlePG>
-			<![CDATA[ '.$title.' ]]>
-			</titlePG>
-			<shortdescPG>
-			<![CDATA[ '.$description.' ]]>
-			</shortdescPG>
-			<longdescPG>
-			<![CDATA[ '.$long_description.' ]]>
-			</longdescPG>
+			<titlePG><![CDATA['.$title.']]></titlePG>
+			<shortdescPG><![CDATA['.$description.']]></shortdescPG>
+			<longdescPG><![CDATA['.$long_description.']]></longdescPG>
 			<imgPG>'.$image_new_name.'</imgPG>
 			<categoriesPG>
 			<category1PG>';
@@ -363,7 +357,7 @@ if ($file_ext[1]==$podcast_filetype) { //003 (if file extension is accepted, go 
 		##########
 
 
-		$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=upload\">"._("Send")."other</a></p>";
+		$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=upload\">"._("Upload another episode")."</a></p>";
 
 	}
 	else //If upload is not successfull

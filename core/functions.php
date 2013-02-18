@@ -8,7 +8,6 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-$defined=true;
 
 ## Support for multiple file types (e.g. mp3, ogg, mpg, avi) at the same time.
 
@@ -264,6 +263,244 @@ $construct_output .= '
 	
 	return $construct_output;
 }
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+//SHOW PODCAST EPISODES
+
+function showPodcastEpisodes($all,$category) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories
+
+include("core/includes.php");
+
+require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+
+$resulting_episodes = NULL; // Define variable that will contain output of this function
+
+$getID3 = new getID3; //initialize getID3 engine
+
+//load XML parser for PHP4 or PHP5
+//include("$absoluteurl"."components/xmlparser/loadparser.php");
+
+
+// Open podcast directory
+
+
+$handle = opendir ($absoluteurl.$upload_dir);
+while (($filename = readdir ($handle)) !== false)
+{
+
+	if ($filename != '..' && $filename != '.' && $filename != 'index.htm' && $filename != '_vti_cnf' && $filename != '.DS_Store')
+	{
+
+		$file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
+	}
+
+}
+
+if (!empty($file_array)) { //if directory is not empty
+
+
+	# asort ($file_array);
+	arsort ($file_array); //the opposite of asort (inverse order)
+
+	$recent_count = 0; //set recents to zero
+
+
+
+	foreach ($file_array as $key => $value) //start loop through each file in the media directory
+
+	{
+
+		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
+
+
+
+			$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+
+
+		$count_of_elements = count($file_multimediale);
+		
+		$file_name = $file_multimediale[0];
+		$file_extension = $file_multimediale[$count_of_elements - 1];
+		echo "file name:".$file_name;
+		echo "<br>estensione:".$file_extension;
+			
+			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
+
+
+			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
+
+
+				$podcast_filetype = $fileData[0];
+
+
+				if ($file_multimediale[1]=="$podcast_filetype") { // if the extension is the same as specified in config.php
+
+					//$file_size = filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype");
+					$file_size = round(filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype")/1048576,2);
+				//	$file_size = round($file_size, 2);
+
+					############
+					$filedescr = "$absoluteurl"."$upload_dir$file_multimediale[0].xml"; //database file
+
+
+
+
+					if (file_exists("$filedescr")) { //if database file exists 
+
+
+						//$file_contents=NULL; 
+
+
+						# READ the XML database file and parse the fields
+						//include("$absoluteurl"."core/readXMLdb.php");
+
+
+	# READ the XML database file and parse the fields
+						include("$absoluteurl"."core/readXMLdb.php");				
+						
+
+						#Define episode headline
+						$episode_date = "<a name=\"$file_multimediale[0]\"></a>
+							<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\">
+							<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
+
+
+						# File details (duration, bitrate, etc...)
+						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype"); //read file tags
+
+						$file_duration = @$ThisFileInfo['playtime_string'];
+
+						if($file_duration!=NULL) { // display file duration
+							$episode_details = _("Duration:")." ";
+							$episode_details .= @$ThisFileInfo['playtime_string'];
+							$episode_details .= " "._("m")." - "._('Filetype:')." ";
+							$episode_details .= @$ThisFileInfo['fileformat'];
+
+							if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
+								$episode_details .= " - "._("Bitrate")." ";
+								$episode_details .= @$ThisFileInfo['bitrate']/1000;
+								$episode_details .= " "._("KBPS")." - "._("Frequency:")." ";
+								$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
+								$episode_details .= " "._("HZ");
+							}
+
+						} 
+
+
+						### Here the output code for the episode is created
+
+						# Fields Legend (parsed from XML):
+						# $text_title = episode title
+						# $text_shortdesc = short description
+						# $text_longdesc = long description
+						# $text_imgpg = image (url) associated to episode
+						# $text_category1, $text_category2, $text_category3 = categories
+						# $text_keywordspg = keywords
+						# $text_explicitpg = explicit podcast (yes or no)
+						# $text_authornamepg = author's name
+						# $text_authoremailpg = author's email
+
+						$resulting_episodes .= 
+							'<div class="episode">
+							<p class="episode_date">'.$episode_date.'</p>';
+
+						if (isset($episode_details)) {
+							$resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
+						}
+
+						$resulting_episodes .= '<h3 class="episode_title"><a href="?p=episode&amp;name='.$file_multimediale[0].'.'.$podcast_filetype.'">'.$text_title.'</a>';
+
+						if ($podcast_filetype=="mpg" OR $podcast_filetype=="mpeg" OR $podcast_filetype=="mov" OR $podcast_filetype=="mp4" OR $podcast_filetype=="wmv" OR $podcast_filetype=="3gp" OR $podcast_filetype=="mp4" OR $podcast_filetype=="avi" OR $podcast_filetype=="flv" OR $podcast_filetype=="m4v") { // if it is a video
+
+							$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
+							$isvideo = "yes"; 
+
+						}
+
+
+						$resulting_episodes .= '</h3>
+							<ul class="episode_imgdesc">';
+
+						if(isset($text_imgpg) AND $text_imgpg!=NULL AND file_exists("$img_dir$text_imgpg")) {
+
+							$resulting_episodes .= "<li><img src=\"$img_dir$text_imgpg\" class=\"episode_image\" alt=\"$text_title\" /></li>";
+
+						}
+
+						if(isset($text_longdesc) AND $text_longdesc!=NULL ) { // if is set long description
+
+							$resulting_episodes .= 
+								'<li>'.$text_longdesc;
+
+						} else {
+
+							$resulting_episodes .= 
+								'<li>'.$text_shortdesc;	
+						}
+
+
+						if($enablestreaming=="yes" AND $podcast_filetype=="mp3") { // if streaming is enabled show streaming player
+
+							include ("components/player/player.php");
+							$resulting_episodes .= '<br /><br />'.$showplayercode; 
+
+						} else {
+							$resulting_episodes .= '<br />'; 
+						}
+
+						$resulting_episodes .= "<br />";
+
+						if (isset($isvideo) AND $isvideo == "yes") {
+							$resulting_episodes .= "<a href=\"".$url.$upload_dir."$file_multimediale[0].$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+
+							$isvideo = "no"; //so variable is assigned on every cicle
+
+						}
+
+						$resulting_episodes .= "<a href=\"".$url."download.php?filename=$file_multimediale[0].$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>
+							</li>
+							</ul>";
+							
+					
+				//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");	
+					
+
+							
+						$resulting_episodes .= "</div>";
+
+
+						if ($recent_count == 0) { //use keywords of the most recent episode as meta tags in the home page
+							$assignmetakeywords = $text_keywordspg;
+						}
+
+						$recent_count++; //increment recents
+					} 
+
+				} 
+
+			}
+		} //END - COUNT RECENTS (if statement)
+		
+		else  {  // i.e. if COUNT RECENTS condition occurs
+		break; // Jump out of the loop 
+		}
+		
+	} //END "if directory is not empty"
+	
+} else { // IF media directory is empty
+	//$resulting_episodes .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
+	
+	$resulting_episodes .= '<div class="topseparator"><p>'._("No episodes at the moment.").'</p></div>';
+	
+}
+
+
+return $resulting_episodes; // return results
+
+} // end function showPodcastEpisodes
 
 
 

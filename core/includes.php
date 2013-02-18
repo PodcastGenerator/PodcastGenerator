@@ -23,7 +23,7 @@ header("Location: setup/"); // open setup script
 include("config.php"); 
 
 
-if (!isset($defined)) include("$absoluteurl"."core/functions.php"); //LOAD ONCE
+include_once("$absoluteurl"."core/functions.php"); //LOAD ONCE
 
 include("$absoluteurl"."core/supported_media.php");
 
