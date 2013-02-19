@@ -375,11 +375,11 @@ if (!empty($file_array)) { //if directory is not empty
 							$episode_details .= @$ThisFileInfo['fileformat'];
 
 						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
-							$episode_details .= " - ";
+							$episode_details .= " (";
 							$episode_details .= @$ThisFileInfo['bitrate']/1000;
 							$episode_details .= " "._("kbps")." ";
 							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
-							$episode_details .= " "._("Hz");
+							$episode_details .= " "._("Hz").")";
 							}
 
 						
@@ -393,7 +393,15 @@ if (!empty($file_array)) { //if directory is not empty
 if (useNewThemeEngine($theme_path)) { //If use new theme template
 $CSSClass_SingleEpisode = "span6";
 
+
+
+if ($recent_count % 2 != 0 OR $recent_count == count($file_array)) { //2 is the number of episodes per row
+//open div with class row-fluid
 $resulting_episodes .= '<div class="row-fluid">';
+}
+
+
+
 }
 else {
 $CSSClass_SingleEpisode = "episode";
@@ -403,7 +411,7 @@ $CSSClass_SingleEpisode = "episode";
 							'<div class="'.$CSSClass_SingleEpisode.'">';
 							
 
-						$resulting_episodes .= '<h3 class="episode_title"><a href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'.$text_title.'</a>';
+						$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
 
 
 						//List of file extensions classified as videos
@@ -445,6 +453,9 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 
 						$resulting_episodes .= '<p>'.$text_shortdesc.'</p>';	 //SHOW short description (no HTML)
 						
+						//show button
+						$resulting_episodes .= '<p><a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a></p>';
+						
 						
 					//EPISODE DURATION, FILETYPE AND OTHER DETAILS IS AVAILABLE
 if (isset($episode_details)) {
@@ -456,7 +467,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 						if($enablestreaming=="yes" AND $podcast_filetype=="mp3") { // if streaming is enabled show streaming player
 
 							include ("components/player/player.php");
-							$resulting_episodes .= '<br /><br />'.$showplayercode; 
+							$resulting_episodes .= ''.$showplayercode; 
 
 						} else {
 							$resulting_episodes .= '<br />'; 
@@ -474,6 +485,8 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 						$resulting_episodes .= "<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
 							
 					
+					$resulting_episodes .= "<br />";
+					
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	
 					
@@ -481,11 +494,13 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 							
 						$resulting_episodes .= "</div>";
 
-
+							
+						
 						if ($recent_count % 2 != 0 OR $recent_count == count($file_array)) { //2 is the number of episodes per row
 						//close class row-fluid
 						$resulting_episodes .= "</div>";
 						}
+						
 						
 							
 
