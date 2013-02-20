@@ -33,7 +33,6 @@ $showplayercode .= "\" ALIGN=\"\">
 
 </OBJECT>
 
-<br />
 
 ";
 
