@@ -29,13 +29,24 @@ if (isset($_GET['p'])) {
 	elseif ($_GET['p']=="archive") {
 		if ($categoriesenabled == "yes") {
 
-			if (isset($_GET['cat']) AND $_GET['cat'] == "all" ) {
-				include("$absoluteurl"."core/archive_nocat.php");
-			} else {
+			//CATEGORIES
+			if (isset($_GET['cat']) AND $_GET['cat'] == "all") {
+
+					//show all episodes - no categories distinction
+					$PG_mainbody .= showPodcastEpisodes(1,NULL); 
+			} 
+			elseif (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
+
+					$PG_mainbody .= showPodcastEpisodes(1,$_GET['cat']); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
+			} 
+			//END CATEGORIES
+			
+			else {
 				include("$absoluteurl"."core/archive_cat.php");
 			}
 		} else {
-			include("$absoluteurl"."core/archive_nocat.php");
+			//include("$absoluteurl"."core/archive_nocat.php");
+			$PG_mainbody .= showPodcastEpisodes(1,NULL); 
 		}
 	}
 
@@ -49,13 +60,13 @@ if (isset($_GET['p'])) {
 	}
 
 	else {
-	//	include("$absoluteurl"."core/recent_list.php");
-		$PG_mainbody .= showPodcastEpisodes(0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
+	//show recent episodes (don't show all episodes) - no categories distinction
+		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
 	}
 }
 else { // if no p= specifies, e.g. just index.php with no GET
-	//include("$absoluteurl"."core/recent_list.php");
-	$PG_mainbody .= showPodcastEpisodes(0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
+//show recent episodes (don't show all episodes) - no categories distinction
+		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
 }
 
 
