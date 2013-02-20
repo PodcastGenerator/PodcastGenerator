@@ -274,6 +274,9 @@ function showPodcastEpisodes($all,$category) { //$all is a bool, yes or not (the
 
 include("core/includes.php");
 
+
+if ($all == TRUE) $max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
+
 require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
 
 $resulting_episodes = NULL; // Define variable that will contain output of this function
@@ -311,6 +314,10 @@ if (!empty($file_array)) { //if directory is not empty
 		{
 
 		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
+		
+		
+		
+		
 
 		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
 		$filenameWithouExtension = $file_parts[0];
@@ -351,15 +358,21 @@ if (!empty($file_array)) { //if directory is not empty
 						# $text_authornamepg = author's name
 						# $text_authoremailpg = author's email
 
+						//echo "<p>1: $text_category1,2: $text_category2,3: $text_category3</p>";
+						
+						 
+						//if 
+						
+						if (isset($category) AND $category != NULL) {
+							if ($category != $text_category1 AND $category != $text_category2 AND $category != $text_category3) {
+							
+							//echo ">>>match Category: $category<br><br><br>";
+							continue; //STOP this cicle in the loop and start a new cicle
+							}
+						}
 						
 						
-						#Define episode headline
 						
-						/*
-						$episode_date = "<a name=\"$filenameWithouExtension\"></a>
-							<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\">
-							<img src=\"podcast.gif\" alt=\""._("Download")." $text_title\" title=\""._("Download")." $text_title\" border=\"0\" align=\"left\" /></a> &nbsp;".date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
-						*/
 						
 						$episodeDateAndSize = date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
 						
@@ -495,10 +508,6 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 						}
 
 
-					//	$resulting_episodes .= "<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
-							
-					
-					//$resulting_episodes .= "<br />";
 					
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	
