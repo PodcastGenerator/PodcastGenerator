@@ -282,12 +282,10 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 	# META TAGS AND FEED LINK
 
 	//meta tags
+	//new meta tags HTML5 - deleted the obsolete
 	$metatagstoreplace = '
-
-		<meta http-equiv="content-language" content="'.$scriptlang.'" />
 		<meta name="Generator" content="Podcast Generator '.$podcastgen_version.'" />
 		<meta name="Author" content="'.depuratecontent($author_name).'" />
-		<meta name="Copyright" content="'.depuratecontent($copyright).'" />
 		';
 
 	if (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "itunesimg") { // no cache in itunes image admin page

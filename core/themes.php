@@ -230,12 +230,12 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	//meta tags
 	$metatagstoreplace = '
-
 		<meta http-equiv="content-language" content="'.$scriptlang.'" />
 		<meta name="Generator" content="Podcast Generator '.$podcastgen_version.'" />
 		<meta name="Author" content="'.depuratecontent($author_name).'" />
 		<meta name="Copyright" content="'.depuratecontent($copyright).'" />
 		';
+		
 
 	if (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "itunesimg") { // no cache in itunes image admin page
 
