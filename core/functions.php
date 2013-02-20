@@ -260,7 +260,8 @@ $construct_output .= '
 </script>
 ';
 }
-	
+
+	$construct_output .= '<br /><br />';
 	return $construct_output;
 }
 
@@ -452,8 +453,18 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 
 						$resulting_episodes .= '<p>'.$text_shortdesc.'</p>';	 //SHOW short description (no HTML)
 						
-						//show button
-						$resulting_episodes .= '<p><a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a></p>';
+						
+						#BUTTONS
+						$resulting_episodes .= '<p>';
+						
+						//show button view Details
+						$resulting_episodes .= '<a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
+						
+						//show button download
+						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						
+						$resulting_episodes .= '</p>';
+						#END BUTTONS
 						
 						
 					//EPISODE DURATION, FILETYPE AND OTHER DETAILS IS AVAILABLE
@@ -482,10 +493,10 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 						}
 
 
-						$resulting_episodes .= "<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
+					//	$resulting_episodes .= "<a href=\"".$url."download.php?filename=$filenameWithouExtension.$podcast_filetype\" title=\""._("Download this episode")."\"><span class=\"episode_download\">"._("Download")."</span></a>";
 							
 					
-					$resulting_episodes .= "<br />";
+					//$resulting_episodes .= "<br />";
 					
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	

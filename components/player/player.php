@@ -31,6 +31,10 @@ $showplayercode .= "\" ALIGN=\"\">
 
 	<EMBED src=\"components/player/player.swf?FlashVars=&amp;soundFile=$url$upload_dir$filenameWithouExtension.mp3&amp;bg=0xf8f8f8&amp;leftbg=0xeeeeee&amp;lefticon=0x666666&amp;rightbg=0xcccccc&amp;rightbghover=0x999999&amp;righticon=0x666666&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=16777215&amp;border=0x666666&amp;loader=0xffffcc&amp;\" quality=high bgcolor=#FFFFFF wmode=\"transparent\" WIDTH=\"290\" HEIGHT=\"24\" NAME=\"Streaming\" ALIGN=\"\" TYPE=\"application/x-shockwave-flash\" PLUGINSPAGE=\"http://www.macromedia.com/go/getflashplayer\"></EMBED>
 
-</OBJECT>";
+</OBJECT>
+
+<br />
+
+";
 
 ?> 
