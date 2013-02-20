@@ -232,25 +232,25 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 			<select name="recent" id="recent">
 
-			<option value=\'1\'';
-		if ($max_recent == 1) { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>1</option>
+			<option value=\'2\'';
+		if ($max_recent == 2) { $PG_mainbody .= ' selected'; }
+		$PG_mainbody .= '>2</option>
 
-			<option value=\'3\'';
-		if ($max_recent == 3) { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>3</option>  
+			<option value=\'4\'';
+		if ($max_recent == 4) { $PG_mainbody .= ' selected'; }
+		$PG_mainbody .= '>4</option>  
 
-			<option value=\'5\'';
-		if ($max_recent == 5) { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>5</option>
-
+			<option value=\'6\'';
+		if ($max_recent == 6) { $PG_mainbody .= ' selected'; }
+		$PG_mainbody .= '>6</option>
+		
+			<option value=\'8\'';
+		if ($max_recent == 8) { $PG_mainbody .= ' selected'; }
+		$PG_mainbody .= '>8</option>
+		
 			<option value=\'10\'';
 		if ($max_recent == 10) { $PG_mainbody .= ' selected'; }
 		$PG_mainbody .= '>10</option>
-
-			<option value=\'15\'';
-		if ($max_recent == 15) { $PG_mainbody .= ' selected'; }
-		$PG_mainbody .= '>15</option>
 
 			<option value=\'20\'';
 		if ($max_recent == 20) { $PG_mainbody .= ' selected'; }

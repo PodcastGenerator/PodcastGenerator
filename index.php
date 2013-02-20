@@ -15,6 +15,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ### Start a PHP session
 session_start();
 
+$PG_mainbody = NULL; //erase variable which contains episodes data
 
 include("core/includes.php");
 
@@ -48,11 +49,13 @@ if (isset($_GET['p'])) {
 	}
 
 	else {
-		include("$absoluteurl"."core/recent_list.php");
+	//	include("$absoluteurl"."core/recent_list.php");
+		$PG_mainbody .= showPodcastEpisodes(0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
 	}
 }
 else { // if no p= specifies, e.g. just index.php with no GET
-	include("$absoluteurl"."core/recent_list.php");
+	//include("$absoluteurl"."core/recent_list.php");
+	$PG_mainbody .= showPodcastEpisodes(0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
 }
 
 
