@@ -177,6 +177,8 @@ $rightboxcontent = '<div class="rightbox">
 $adminrightboxcontent = NULL;
 if(isThisAdminPage()) { //if admin page
 
+$adminrightboxcontent .= '<div class="rightbox">';
+
 	//show donation box
 	$adminrightboxcontent .= '
 		<span class="nav-header">'._("Make a donation:").'</span><p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
@@ -187,7 +189,7 @@ if(isThisAdminPage()) { //if admin page
 	$adminrightboxcontent .= '
 		<span class="nav-header">'._("Podcast Generator").'</span><p>- <a href="?p=admin&do=serverinfo">'._("Your server configuration").'</a><br />- <a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'._("Subscribe to the news feed").'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation.php?ref=local-admin" target="_blank">'._("Read documentation and get support").'</a><br />- <a href="http://podcastgen.sourceforge.net/credits.php?ref=local-admin" target="_blank">'._("Credits").'</a></p>
 	';
-
+$adminrightboxcontent .= '</div>';
 }
 
 $theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents);
@@ -204,9 +206,9 @@ $freeboxcontent = NULL;
 
 			$freeboxcontenttodisplay = file_get_contents("$absoluteurl"."freebox-content.txt");	
 
-			$freeboxcontent = "<div class=\"rightbox\">
-				$freeboxcontenttodisplay
-				</div>";
+			$freeboxcontent = '<div class="rightbox">
+				'.$freeboxcontenttodisplay.'
+				</div>';
 		}
 
 		$theme_file_contents = str_replace("-----PG_FREEBOX-----", $freeboxcontent, $theme_file_contents); 
