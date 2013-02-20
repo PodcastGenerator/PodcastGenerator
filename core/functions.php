@@ -261,7 +261,7 @@ $construct_output .= '
 ';
 }
 
-	$construct_output .= '<br /><br />';
+	
 	return $construct_output;
 }
 
@@ -487,7 +487,9 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 					//	$resulting_episodes .= "<br />";
 
 						if (isset($isvideo) AND $isvideo == TRUE) {
-							$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+	
+//Display watch button (old)	
+//$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
 
 							$isvideo = FALSE; //so variable is assigned on every cicle
 						}
@@ -501,7 +503,9 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	
 					
-
+					//Blank space
+					$resulting_episodes .= "<br />";
+					
 							
 						$resulting_episodes .= "</div>";
 

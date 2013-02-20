@@ -15,7 +15,12 @@
 	//SOCIAL NETWORKS INTEGRATION
 if (in_array(TRUE,$enablesocialnetworks)) { //IF at least one value is true
 	$resulting_episodes .= displaySocialNetworkButtons($fullURL,$text_title,$enablesocialnetworks[0],$enablesocialnetworks[1],$enablesocialnetworks[2]); //0 is FB, 1 twitter, 2 G+
+	
+	//Blank space
+	$resulting_episodes .= '<br />';
 	}
 	
+	
+
 	
 ?>
