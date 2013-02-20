@@ -21,8 +21,7 @@ $getID3 = new getID3; //initialize getID3 engine
 include("$absoluteurl"."components/xmlparser/loadparser.php");
 */
 
-$PG_mainbody = NULL; //erase variable which contains episodes data
-
+//$PG_mainbody = NULL; //erase variable which contains episodes data
 $PG_mainbody .= showPodcastEpisodes(0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
 
 
