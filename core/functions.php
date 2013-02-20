@@ -387,36 +387,35 @@ if (!empty($file_array)) { //if directory is not empty
 
 
 	
+//////////////////////////////////////////////////////////////////////////
+//CONSTRUCT EPISODE OUTPUT!! (here <2.0 themes compatibility is preserved)
 
-//CONSTRUCT EPISODE OUTPUT!
+$numberOfEpisodesPerLine = 2; //number of episodes per line in some themes - defined in $numberOfEpisodesPerLine
+
 
 if (useNewThemeEngine($theme_path)) { //If use new theme template
-$CSSClass_SingleEpisode = "span6";
 
+		//just if the episod number is multiple of $numberOfEpisodesPerLine
+		if ($recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($file_array)) {
+		//open div with class row-fluid (theme based on bootstrap)
+		$resulting_episodes .= '<div class="row-fluid">'; // row-fluid is a line that contains 1 or more episodes
+		}
 
-
-if ($recent_count % 2 != 0 OR $recent_count == count($file_array)) { //2 is the number of episodes per row
-//open div with class row-fluid
-$resulting_episodes .= '<div class="row-fluid">';
+	$resulting_episodes .= '<div class="span6">'; //open the single episode DIV
 }
 
-
-
-}
-else {
-$CSSClass_SingleEpisode = "episode";
+else { //if an old theme is used
+	$resulting_episodes .= '<div class="episode">'; //open the single episode DIV
 } 
 	
-						$resulting_episodes .= 
-							'<div class="'.$CSSClass_SingleEpisode.'">';
 							
 
-						$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
+	$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
 
 
-						//List of file extensions classified as videos
+						
+//List of file extensions classified as videos
 $listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
-
 if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
 $resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
 $isvideo = TRUE; 
@@ -468,12 +467,13 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 							include ("components/player/player.php");
 							$resulting_episodes .= ''.$showplayercode; 
-
-						} else {
 							$resulting_episodes .= '<br />'; 
-						}
 
-						$resulting_episodes .= "<br />";
+						} 
+						
+						
+
+					//	$resulting_episodes .= "<br />";
 
 						if (isset($isvideo) AND $isvideo == TRUE) {
 							$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
@@ -495,14 +495,13 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 						$resulting_episodes .= "</div>";
 
 							
-						
-						if ($recent_count % 2 != 0 OR $recent_count == count($file_array)) { //2 is the number of episodes per row
+						//close line with one or more episode for new themes >=2.0
+						if (useNewThemeEngine($theme_path) AND $recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($file_array)) { 
 						//close class row-fluid
 						$resulting_episodes .= "</div>";
 						}
 						
-						
-							
+			
 
 						if ($recent_count == 0) { //use keywords of the most recent episode as meta tags in the home page
 							$assignmetakeywords = $text_keywordspg;

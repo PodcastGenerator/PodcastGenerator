@@ -14,7 +14,7 @@ $amilogged = NULL; //reset variable for security reasons
 if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword) {
 
 	$amilogged = "true";
-	$loginmenu = _("Hello").' '.$username.' (<a href="?p=admin" class="navbar-link">'._("Admin").'</a> - <a href="?p=admin&action=logout" class="navbar-link">'._("Log out").'</a>)';
+	$loginmenu = _("Hello").' '.$username.' (<a href="?p=admin" class="navbar-link">'._("Admin").'</a> - <a href="?p=admin&amp;action=logout" class="navbar-link">'._("Log out").'</a>)';
 } else {
 
 	$amilogged = "false";
