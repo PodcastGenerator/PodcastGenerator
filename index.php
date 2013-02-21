@@ -42,7 +42,25 @@ if (isset($_GET['p'])) {
 			//END CATEGORIES
 			
 			else {
-				include("$absoluteurl"."core/archive_cat.php");
+
+	//SHOW CATEGORIES LIST
+	$existingCategories = readPodcastCategories ($absoluteurl);
+		//var_dump($existingCategories); //Debug
+	
+	$PG_mainbody .= '<h3>'._("Select a category:").'</h3>';
+	$PG_mainbody .= '<ul>';
+	ksort($existingCategories);	//sort array by key alphabetically
+	for ($i = 0; $i <  count($existingCategories); $i++) {
+    $key=key($existingCategories);
+    $val=$existingCategories[$key];
+		if ($val<> ' ') {
+		$PG_mainbody .= '<li><a href="?p=archive&amp;cat='.$key.'">'.$val.'</a></li>';
+		}
+     next($existingCategories);
+    }	
+		$PG_mainbody .= '</ul>';
+			
+			
 			}
 		} else {
 			//include("$absoluteurl"."core/archive_nocat.php");
@@ -63,7 +81,7 @@ if (isset($_GET['p'])) {
 	//show recent episodes (don't show all episodes) - no categories distinction
 		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
 		
-		
+	/*	
 		$existingCategories = readPodcastCategories ($absoluteurl);
 		//var_dump($existingCategories); //Debug
 		
@@ -76,7 +94,7 @@ if (isset($_GET['p'])) {
 		}
      next($existingCategories);
     }
-		
+	*/	
 		
 		
 	}
