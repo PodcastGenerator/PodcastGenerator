@@ -604,6 +604,23 @@ function readPodcastCategories ($absoluteurl) {
 }		
 
 
+detectMobileDevice() {
+//Detect special conditions devices
+$iPod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+$iPhone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+$iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+$Android= stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+$webOS= stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+$Blackberry= stripos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
+
+//do something with this information
+if( $iPod OR $iPhone OR $iPad OR $Android OR $webOS){
+  
+}
+
+return $isMobile;
+
+}
 
 
 ?>
