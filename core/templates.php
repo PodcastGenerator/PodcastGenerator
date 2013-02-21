@@ -44,6 +44,8 @@ $theme_file_contents = str_replace("href=\"style/", "href=\"".$theme_path."style
 
 $theme_file_contents = str_replace("src=\"img/", "src=\"".$theme_path."img/", $theme_file_contents); // Replace image location
 
+$theme_file_contents = str_replace("src=\"js/", "src=\"".$theme_path."js/", $theme_file_contents); // Replace js location
+
 $theme_file_contents = str_replace("<param name=movie value=\"", "<param name=movie value=\"".$theme_path, $theme_file_contents); // Replace flash objects IE
 
 $theme_file_contents = str_replace("<embed src=\"", "<embed src=\"".$theme_path, $theme_file_contents); // Replace flash objects embed
@@ -257,9 +259,37 @@ $theme_file_contents = str_replace("-----PG_MENUHOME-----", $contentmenuhome, $t
 
 
 //archive button
-$contentmenuarchive = '<li';
-if (isset($_GET['p']) and $_GET['p'] == "archive") $contentmenuarchive .= ' class="active"';
-$contentmenuarchive .= '><a href="?p=archive">'._("Archive").'</a></li>';
+$contentmenuarchive = NULL; //DEFINE VARIABLE
+
+//if (isset($_GET['p']) and $_GET['p'] == "archive") $contentmenuarchive .= ' class="active"';
+
+//$contentmenuarchive .= '<a href="?p=archive">'._("Archive").'</a>';
+
+$contentmenuarchive .= '
+    <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">'._("Archive").' <b class="caret"></b></a>
+                <ul class="dropdown-menu">';
+		
+
+		// READ THE CATEGORIES
+$existingCategories = readPodcastCategories ($absoluteurl);
+//var_dump($existingCategories); //Debug
+		
+	ksort($existingCategories);	//sort array by key alphabetically
+	
+	for ($i = 0; $i <  count($existingCategories); $i++) {
+    $key=key($existingCategories);
+    $val=$existingCategories[$key];
+		if ($val<> ' ') {
+		   $contentmenuarchive .= '<li><a href="?p=archive&amp;cat='.$key.'">'.$val.'</a></li>';
+		}
+     next($existingCategories);
+    }
+	// END - READ THE CATEGORIES
+		
+ $contentmenuarchive .= '</ul></li>';
+
+
 
 $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchive, $theme_file_contents);
 
@@ -267,7 +297,7 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 
 
 
-	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
+//	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
 	
 	
 //$loginmenu is defined in checklogged.php

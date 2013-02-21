@@ -102,9 +102,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 ############ Is this an admin page?
 function isThisAdminPage ()
 {
-if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])
-
-) return TRUE;
+if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])) return TRUE;
 }
 
 
@@ -571,5 +569,33 @@ function divideFilenameFromExtension ($filetodivide) {
 		return $fileParts;
 		
 }
+
+
+function readPodcastCategories ($absoluteurl) {
+
+	if (file_exists($absoluteurl."categories.xml")) { //if categories file exists
+
+	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
+
+	//var_dump($parser); //Debug
+
+	$existingCategories = array();
+	
+			$n = 0;
+			foreach($parser->category as $singlecategory) {
+
+			//create array containing category id as seed and description for each id
+			$catID = $singlecategory->id[0];
+			$catDescription = $singlecategory->description[0];
+			$existingCategories["$catID"] = $catDescription;
+				
+			$n++;
+			}
+	}
+	return $existingCategories;	
+}		
+
+
+
 
 ?>
