@@ -136,7 +136,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			<p><label for="title"><b>'._("Podcast Title").'</b></label></p>
 			<input name="title" type="text" id="title" size="50" maxlength="255" value="'.$podcast_title.'">
 			<br /><br />
-			<p><label for="subtitle"><b>'._("Podcast Subtitle").'</b></label></p>
+			<p><label for="subtitle"><b>'._("Podcast Subtitle or Slogan").'</b></label></p>
 			<input name="subtitle" type="text" id="title" size="50" maxlength="255" value="'.$podcast_subtitle.'">
 			<br /><br />
 			<p><label for="description"><b>'._("Podcast Description").'</b></label></p>

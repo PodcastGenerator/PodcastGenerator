@@ -303,6 +303,8 @@ $toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn");
 
 if (!empty($file_array)) { //if directory is not empty
 
+if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE; //Set bool to false. if we require a category and no episode are associated it will be set to true
+
 	arsort ($file_array); //the opposite of asort (inverse order)
 
 	$recent_count = 0; //set recents to zero
@@ -362,12 +364,13 @@ if (!empty($file_array)) { //if directory is not empty
 						//if 
 						
 						if (isset($category) AND $category != NULL) {
-							if ($category != $text_category1 AND $category != $text_category2 AND $category != $text_category3) {
-							
-							//echo ">>>match Category: $category<br><br><br>";
-							continue; //STOP this cicle in the loop and start a new cicle
-							}
-						}
+								if ($category != $text_category1 AND $category != $text_category2 AND $category != $text_category3) {
+								//echo ">>>match Category: $category<br><br><br>";
+								continue; //STOP this cicle in the loop and start a new cicle
+								} else {
+								$atLeastOneEpisodeInCategory = TRUE; //There is at least one episode
+								}
+						} 
 						
 						
 						
@@ -541,6 +544,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 		break; // Jump out of the loop 
 		}
 		
+
 	} //END "if directory is not empty"
 	
 } else { // IF media directory is empty
@@ -550,6 +554,10 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 	
 }
 
+//If a category is requested and this doesn't contain any episode, then tell to the user there are no episodes
+	if (isset($category) AND $category != NULL AND isset($atLeastOneEpisodeInCategory) AND $atLeastOneEpisodeInCategory != TRUE) {
+	$resulting_episodes .= '<p>'.("No episodes here yet...").'</p>';
+	};
 
 return $resulting_episodes; // return results
 
