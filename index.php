@@ -62,6 +62,23 @@ if (isset($_GET['p'])) {
 	else {
 	//show recent episodes (don't show all episodes) - no categories distinction
 		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
+		
+		
+		$existingCategories = readPodcastCategories ($absoluteurl);
+		//var_dump($existingCategories); //Debug
+		
+	ksort($existingCategories);	//sort array by key alphabetically
+	for ($i = 0; $i <  count($existingCategories); $i++) {
+    $key=key($existingCategories);
+    $val=$existingCategories[$key];
+		if ($val<> ' ') {
+		   echo $key ." = ".  $val ." <br> ";
+		}
+     next($existingCategories);
+    }
+		
+		
+		
 	}
 }
 else { // if no p= specifies, e.g. just index.php with no GET
