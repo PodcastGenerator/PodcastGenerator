@@ -287,7 +287,10 @@ $existingCategories = readPodcastCategories ($absoluteurl);
     }
 	// END - READ THE CATEGORIES
 		
- $contentmenuarchive .= '</ul></li>';
+ $contentmenuarchive .= '
+ <li class="divider"></li>
+ <li><a href="?p=archive&amp;cat=all">'._("All Episodes").'</a></li>
+ </ul></li>';
 
 
 
