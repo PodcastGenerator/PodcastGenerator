@@ -291,7 +291,7 @@ if (isset($category) AND $category != NULL) {
 $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategories[$category] will be the name of the category (not the simple ID / $category)
 
 	$category_header = '<div>';
-	$category_header .= '<h3><a href="'.$url.'feed.php?cat='.$existingCategories[$category].'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
+	$category_header .= '<h3><a href="'.$url.'feed.php?cat='.$category.'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
 	$category_header .= '</div>';
 }
 

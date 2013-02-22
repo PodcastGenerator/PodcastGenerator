@@ -63,53 +63,21 @@ if (file_exists($theme_path."functions.php")) {
 # SET PAGE TITLE
 $page_title = $podcast_title; 
 
-if (isset($_GET['p'])) {
-
-	if ($_GET['p']=="archive") {
-		$page_title .= " - "._("Podcast Archive")."";
-
-		#########
-		// display category name in the title	
-		if (isset($_GET['cat']) and $_GET['cat'] != NULL) {	
-			include ("$absoluteurl"."components/xmlparser/loadparser.php");
-			include ("$absoluteurl"."core/admin/readXMLcategories.php");
-
-			if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->category)) {
-
-				// define variables
-				$arr = NULL;
-				$arrid = NULL;
-				$n = 0;
-
-				foreach($parser->document->category as $singlecategory)
-				{
-					//echo $singlecategory->id[0]->tagData."<br>";
-					//echo $singlecategory->description[0]->tagData;
-
-					$arr[] .= $singlecategory->description[0]->tagData;
-					$arrid[] .= $singlecategory->id[0]->tagData;
-					$n++;
-				}
-
-				foreach ($arr as $key => $val) {
-					//$PG_mainbody .= "cat[" . $key . "] = " . $val . "<br>";
-
-					if ($_GET['cat'] == $arrid[$key])
-						$page_title .= ' - ' . $val . ''; //display cat name in the title
-
-				}
-
-			}
-
-
-		}	
-		#########		
+//Show category name
+if (isset($_GET['cat']) AND $_GET['cat'] != "all") {
+	$existingCategories = readPodcastCategories ($absoluteurl);
+	$page_title .= " &raquo; ".$existingCategories[$_GET['cat']];		
 	}
+	//Show a generic "All episodes"
+	elseif (isset($_GET['p']) AND $_GET['p']=="archive") {
+		$page_title .= " &raquo; "._("All Episodes");
+	}
+	
+	//Show title of the episode
 	elseif ($_GET['p']=="episode" AND isset($episode_present) AND $episode_present == "yes") {
-
 		$page_title .= " - $text_title";
 	}
-}
+
 
 $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
 
@@ -258,41 +226,49 @@ $theme_file_contents = str_replace("-----PG_MENUHOME-----", $contentmenuhome, $t
 // end home button
 
 
+
+
 //archive button
 $contentmenuarchive = NULL; //DEFINE VARIABLE
 
-//if (isset($_GET['p']) and $_GET['p'] == "archive") $contentmenuarchive .= ' class="active"';
 
-//$contentmenuarchive .= '<a href="?p=archive">'._("Archive").'</a>';
+if ($categoriesenabled == "yes") { //if categories are enabled
 
-$contentmenuarchive .= '
-    <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">'._("Archive").' <b class="caret"></b></a>
-                <ul class="dropdown-menu">';
+	$contentmenuarchive .= '
+		<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">'._("Archive").' <b class="caret"></b></a>
+					<ul class="dropdown-menu">';
+			
+
+			// READ THE CATEGORIES
+	$existingCategories = readPodcastCategories ($absoluteurl);
+	//var_dump($existingCategories); //Debug
+			
+		ksort($existingCategories);	//sort array by key alphabetically
 		
-
-		// READ THE CATEGORIES
-$existingCategories = readPodcastCategories ($absoluteurl);
-//var_dump($existingCategories); //Debug
-		
-	ksort($existingCategories);	//sort array by key alphabetically
-	
-	for ($i = 0; $i <  count($existingCategories); $i++) {
-    $key=key($existingCategories);
-    $val=$existingCategories[$key];
-		if ($val<> ' ') {
-		   $contentmenuarchive .= '<li><a href="?p=archive&amp;cat='.$key.'">'.$val.'</a></li>';
+		for ($i = 0; $i <  count($existingCategories); $i++) {
+		$key=key($existingCategories);
+		$val=$existingCategories[$key];
+			if ($val<> ' ') {
+			   $contentmenuarchive .= '<li><a href="?p=archive&amp;cat='.$key.'">'.$val.'</a></li>';
+			}
+		 next($existingCategories);
 		}
-     next($existingCategories);
-    }
-	// END - READ THE CATEGORIES
-		
- $contentmenuarchive .= '
- <li class="divider"></li>
- <li><a href="?p=archive&amp;cat=all">'._("All Episodes").'</a></li>
- </ul></li>';
+		// END - READ THE CATEGORIES
+			
+	 $contentmenuarchive .= '
+	 <li class="divider"></li>
+	 <li><a href="?p=archive&amp;cat=all">'._("All Episodes").'</a></li>
+	 </ul></li>';
 
 
+} else {
+$contentmenuarchive = '<li';
+if (isset($_GET['p']) and $_GET['p'] == "archive") $contentmenuarchive .= ' class="active"';
+$contentmenuarchive .= '><a href="?p=archive">'._("All Episodes").'</a></li>';
+}
+ 
+ 
 
 $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchive, $theme_file_contents);
 
