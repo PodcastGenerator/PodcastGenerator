@@ -281,13 +281,24 @@ $resulting_episodes = NULL; // Define variable that will contain output of this 
 
 $getID3 = new getID3; //initialize getID3 engine
 
-//load XML parser for PHP4 or PHP5
-//include("$absoluteurl"."components/xmlparser/loadparser.php");
+
+## Handle header if it's a category
+
+//IF it's a category print category title and feed
+if (isset($category) AND $category != NULL) {
+
+//retrieve existing categories (to read their description/long name)
+$existingCategories = readPodcastCategories ($absoluteurl); //$existingCategories[$category] will be the name of the category (not the simple ID / $category)
+
+	$category_header = '<div>';
+	$category_header .= '<h3><a href="'.$url.'feed.php?cat='.$existingCategories[$category].'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
+	$category_header .= '</div>';
+}
+
+## END - Handle header if it's a category
 
 
 // Open podcast directory
-
-
 $handle = opendir ($absoluteurl.$upload_dir);
 while (($filename = readdir ($handle)) !== false)
 {
@@ -474,8 +485,17 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 						//show button view Details
 						$resulting_episodes .= '<a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
 						
-						//show button download
+						
+						## BUTTON DOWNLOAD
+						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
+						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
+						//show button (FORCED) download using download.php
 						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						} 
+						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
+						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						}
+						## END - BUTTON DOWNLOAD
 						
 						$resulting_episodes .= '</p>';
 						#END BUTTONS
@@ -486,16 +506,15 @@ if (isset($episode_details)) {
 $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 }
 						
-						
-
-						if($enablestreaming=="yes" AND $podcast_filetype=="mp3") { // if streaming is enabled show streaming player
+							#MP3 FLASH PLAYER
+// if it's not a mobile device and streaming is enabled show streaming player
+						if(!detectMobileDevice() AND $enablestreaming=="yes" AND $podcast_filetype=="mp3") { 
 
 							include ("components/player/player.php");
 							$resulting_episodes .= ''.$showplayercode; 
 							$resulting_episodes .= '<br />'; 
-
 						} 
-						
+						# END - MP3 FLASH PLAYER
 						
 
 					//	$resulting_episodes .= "<br />";
@@ -554,10 +573,17 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 	
 }
 
-//If a category is requested and this doesn't contain any episode, then tell to the user there are no episodes
-	if (isset($category) AND $category != NULL AND isset($atLeastOneEpisodeInCategory) AND $atLeastOneEpisodeInCategory != TRUE) {
-	$resulting_episodes .= '<p>'.("No episodes here yet...").'</p>';
+	//IF a category is requested
+	if (isset($category) AND $category != NULL) {
+	
+		//If a category is requested and this doesn't contain any episode, then tell to the user there are no episodes
+		if (isset($atLeastOneEpisodeInCategory) AND $atLeastOneEpisodeInCategory != TRUE) {
+		$resulting_episodes .= '<p>'.("No episodes here yet...").'</p>';
+		}
+		
+	$resulting_episodes = $category_header.$resulting_episodes; //category header at the top
 	};
+
 
 return $resulting_episodes; // return results
 
@@ -604,22 +630,23 @@ function readPodcastCategories ($absoluteurl) {
 }		
 
 
-detectMobileDevice() {
-//Detect special conditions devices
+function detectMobileDevice() {
+
+//Some of the main mobile devices
 $iPod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
 $iPhone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
 $iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
 $Android= stripos($_SERVER['HTTP_USER_AGENT'],"Android");
 $webOS= stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
 $Blackberry= stripos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
+$Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
 
-//do something with this information
-if( $iPod OR $iPhone OR $iPad OR $Android OR $webOS){
-  
-}
-
-return $isMobile;
-
+	//here we can do something with the mobile devices or just a subset of them
+	if($iPod OR $iPhone OR $iPad OR $Android OR $webOS OR $Blackberry OR $Kindle){
+	return TRUE;
+	} else {
+	return FALSE;
+	} 
 }
 
 
