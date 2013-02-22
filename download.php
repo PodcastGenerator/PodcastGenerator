@@ -33,7 +33,7 @@ $filename_path = "$absoluteurl"."$upload_dir$filename"; // absolute path of the 
 
 
 
-if (file_exists("$filename_path") ) { // check real existence of the file. Avoid possible cross-site scripting attacks
+if (file_exists($filename_path) ) { // check real existence of the file. Avoid possible cross-site scripting attacks
 
 
 	//$file_media = explode(".",$filename); //divide filename from extension

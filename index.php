@@ -19,7 +19,6 @@ $PG_mainbody = NULL; //erase variable which contains episodes data
 
 include("core/includes.php");
 
-
 if (isset($_GET['p'])) {
 
 	if ($_GET['p']=="admin") {
