@@ -1,0 +1,16 @@
+/*
+CLASSES COMMON TO ALL THE THEMES
+Can be loaded through the string -----PG_COMMONCSSLOAD----- in each theme
+*/
+
+.importantSection {
+padding: 25px;
+padding-top:0;
+background-color:#EEE;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+
+.sectionTitle {
+padding-left:20px;
+}

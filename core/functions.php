@@ -102,7 +102,11 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 ############ Is this an admin page?
 function isThisAdminPage ()
 {
-if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])) return TRUE;
+	
+########### Security code, avoids cross-site scripting with Register Globals ON
+if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
+########### End	
+else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])) return TRUE;
 }
 
 
@@ -291,7 +295,7 @@ if (isset($category) AND $category != NULL) {
 $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategories[$category] will be the name of the category (not the simple ID / $category)
 
 	$category_header = '<div>';
-	$category_header .= '<h3><a href="'.$url.'feed.php?cat='.$category.'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
+	$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
 	$category_header .= '</div>';
 }
 

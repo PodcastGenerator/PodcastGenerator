@@ -8,15 +8,19 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-$loadjavascripts = '<script language="JavaScript" type="text/javascript" src="components/limitfield/limitfield.js"></script>';
+//$loadjavascripts = '<script language="JavaScript" type="text/javascript" src="components/limitfield/limitfield.js"></script>';
 
-$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/countwords/countwords.js"></script>';
+//$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/countwords/countwords.js"></script>';
 
-$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/maxselect/maxselect.js"></script>';
+//$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/maxselect/maxselect.js"></script>';
 
-$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/prototype/prototype.js"></script>';
+//$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/prototype/prototype.js"></script>';
 
-$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/scriptaculous/scriptaculous.js?load=effects"></script>';
+//$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/scriptaculous/scriptaculous.js?load=effects"></script>';
+
+$loadjavascripts .= '<script language="JavaScript" type="text/javascript" src="components/js/admin.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="components/js/jquery.js"></script>';
 
 
 

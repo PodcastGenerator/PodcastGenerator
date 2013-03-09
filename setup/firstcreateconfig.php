@@ -40,7 +40,7 @@ $url = "'.$currenturl.'"; // Complete URL of the script (Trailing slash REQUIRED
 
 $absoluteurl = "'.addslashes($absoluteurl).'"; // Absolute path on the server (Trailing slash REQUIRED)
 
-$theme_path = "themes/default_ocean/";
+$theme_path = "themes/default_modern/";
 
 $username = "'.$user.'";
 
