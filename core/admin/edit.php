@@ -264,7 +264,9 @@ else {
 							<br /><br /><br /><br />
 							</form>';
 
-						$PG_mainbody .= '</div>';
+			//			$PG_mainbody .= '</div>';
+				
+				
 						}	}				
 
 					} // end else . if GET variable "c" is not = "ok"

@@ -83,7 +83,7 @@ $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme
 
 ###############################
 # LOAD JAVASCRIPTS IN THE HEADER IF PAGE REQUIRES - REPLACES "-----PG_JSLOAD-----" IN THE HEADER OF THE THEME PAGE
-
+/*
 if (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "upload") {
 
 	include("$absoluteurl"."core/admin/loadjavascripts.php");
@@ -116,6 +116,9 @@ else {
 	$loadjavascripts = ""; //null
 
 }
+*/
+
+include($absoluteurl."core/admin/loadjavascripts.php");
 
 $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $theme_file_contents); 
 
@@ -124,11 +127,15 @@ $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $the
 
 
 
+//LOAD A CSS WITH CLASSES COMMON TO ALL THE THEMES
+$commonCSSurl = '<link href="themes/common.css" rel="stylesheet">';
+$theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, $theme_file_contents); 
 
 
 
 
-# SET RIGHT BOX
+
+# SET PODCAST FEED URL
 
 $urlforitunes = str_replace("http://", "itpc://", $url); 
 

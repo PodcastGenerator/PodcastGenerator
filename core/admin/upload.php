@@ -42,14 +42,17 @@ else {
 
 		#########
 
-		$PG_mainbody .= '<h3>'._("Upload Podcast").'</h3>';
+		$PG_mainbody .= '<h3 class="sectionTitle">'._("Upload Podcast").'</h3>';
 
 		$PG_mainbody .= '
+		
+		 <div class="span5 importantSection">
 			<form action="?p=admin&amp;do=upload&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
 			<fieldset>
 			<legend><b>'._("Main information (required):").'</b></legend>
 			<br />
+			
 			<input type="hidden" name="MAX_FILE_SIZE" value="'.$max_upload_form_size.'">
 
 			<label for="userfile">'._("File").'*</label><br />
@@ -93,8 +96,11 @@ else {
 				<p><input type="checkbox" value="'._("add extra information to this episode").'" onClick="javascript:Effect.toggle(\'main\',\'appear\');">'._("add extra information to this episode").'
 				</p>
 
-				<br />
-				<div id="main" style="display:none"> 
+</div>
+
+			
+			
+			 <div class="span5">
 
 				<fieldset>
 				<legend><b>'._("Extra information (optional):").'</b></legend>
@@ -136,16 +142,17 @@ else {
 				<input name="auth_email" type="text" id="auth_email" size="50" maxlength="255">
 
 				</fieldset>
-				<br /></div>
+				<br />
+				
+				
+				</div>
 
 				<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
-				<br /><br /><br /><br />
-
 				</form>
 
 				';
 
-			$PG_mainbody .= '</div>';
+		//	$PG_mainbody .= '</div>';
 
 		} // end else . if GET variable "c" is not = "ok"
 
