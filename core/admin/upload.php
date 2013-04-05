@@ -92,11 +92,18 @@ else {
 				</fieldset>
 				';
 
-			$PG_mainbody .= '
-				<p><input type="checkbox" value="'._("add extra information to this episode").'" onClick="javascript:Effect.toggle(\'main\',\'appear\');">'._("add extra information to this episode").'
-				</p>
-
-</div>
+		//	$PG_mainbody .= '<p><input type="checkbox" value="'._("add extra information to this episode").'" onClick="javascript:Effect.toggle(\'main\',\'appear\');">'._("add extra information to this episode").'</p>';
+				
+				
+		
+				$PG_mainbody .= '
+				
+				<br /><br />
+				
+				<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
+				</form>
+				
+			</div>
 
 			
 			
@@ -147,8 +154,8 @@ else {
 				
 				</div>
 
-				<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
-				</form>
+				
+			
 
 				';
 
