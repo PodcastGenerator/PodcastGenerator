@@ -48,7 +48,7 @@ else {
 		
 		$PG_mainbody .= '
 		
-		<span class ="admin_hints">'._("(HTML tags accepted)").'</span><br /><br />
+		<span class ="alert">'._("(HTML tags accepted)").'</span><br /><br />
 		
 			<form action="?p=admin&amp;do=freebox&amp;c=ok" method="POST" enctype="application/x-www-form-urlencoded" name="freeboxform" id="freeboxform">
 

@@ -20,7 +20,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 	$PG_mainbody .= '<h3>'._("iTunes categories").'</h3>
-		<span class="admin_hints">'._("Select or change iTunes Categories (iTunes Store)").'</span>';
+		<span class="alert">'._("Select or change iTunes Categories (iTunes Store)").'</span>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 

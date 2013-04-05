@@ -74,9 +74,10 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all") {
 	}
 	
 	//Show title of the episode
-	elseif ($_GET['p']=="episode" AND isset($episode_present) AND $episode_present == "yes") {
+	elseif (isset($_GET['p']) AND $_GET['p']=="episode" AND isset($episode_present) AND $episode_present == "yes") {
 		$page_title .= " - $text_title";
 	}
+
 
 
 $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  

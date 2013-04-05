@@ -32,7 +32,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 	else { //001 (If no add or remove display main categories page)
 
 		$PG_mainbody .= "<h3>"._("Add / Delete categories")."</h3>";
-		$PG_mainbody .= '<span class="admin_hints">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
+		$PG_mainbody .= '<span class="alert">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
 
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
 		include ("$absoluteurl"."core/admin/readXMLcategories.php");

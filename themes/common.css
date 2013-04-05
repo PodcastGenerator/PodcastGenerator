@@ -3,6 +3,11 @@ CLASSES COMMON TO ALL THE THEMES
 Can be loaded through the string -----PG_COMMONCSSLOAD----- in each theme
 */
 
+label {
+display:block;clear:both;
+font-weight:bold;
+}
+
 .importantSection {
 padding: 25px;
 padding-top:0;
@@ -14,3 +19,13 @@ border-radius: 15px;
 .sectionTitle {
 padding-left:20px;
 }
+
+.alert {
+height:auto;
+width:auto;
+padding:3px;
+padding-left:0;
+border:0;
+background-color:transparent;
+}
+

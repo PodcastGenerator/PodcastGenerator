@@ -20,8 +20,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 
-	$PG_mainbody .= '<h3>'._("iTunes image").'</h3>
-		<span class="admin_hints">'._("Podcast image that will be displayed in the iTunes Store").'</span><br /><br />';
+	$PG_mainbody .= '<h3>'._("iTunes cover art").'</h3>
+		<span class="admin_hints">'._("Podcast cover that will be displayed in the iTunes Store").'</span><br /><br />';
 
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") {
@@ -53,7 +53,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			} else { // if image extension is NOT valid
 
 				$PG_mainbody .= "<p><b>"._("Image extension not valid...")."</b></p>";
-				$PG_mainbody .= "<p>"._("You can replace the current image with a new image: according to iTunes technical specifications this must be a 300x300 pixels JPG file.")."</p>";
+				$PG_mainbody .= "<p>"._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.")."</p>";
 				$PG_mainbody .= '<br />
 					<form>
 					<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
@@ -87,11 +87,11 @@ if(isset($amilogged) AND $amilogged =="true") {
 			</p><br /></div>
 
 			<div class="topseparator">	
-			<form name="'._("iTunes image").'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunesimg&action=change">
+			<form name="'._("iTunes cover art").'" method="POST" enctype="multipart/form-data" action="?p=admin&do=itunesimg&action=change">
 
 			<p><label for="'._("iTunes image").'">'._("New image:").'</label></p>
 			<input name="image" type="file">
-			<p><span class="admin_hints">'._("You can replace the current image with a new image: according to iTunes technical specifications this must be a 300x300 pixels JPG file.").'</span></p>
+			<p><span class="admin_hints">'._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.").'</span></p>
 			<p>
 			<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');"></p>
 			</p>

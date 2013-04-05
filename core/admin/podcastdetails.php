@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 	$PG_mainbody .= '<h3>'._("Change your podcast details").'</h3>
-		<p><span class="admin_hints">'._("This information will be used both in this website and in the resulting RSS feed").'</span></p>';
+		<p><span class="alert">'._("This information will be used both in this website and in the resulting RSS feed").'</span></p>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
@@ -177,7 +177,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		## FEED LANGUAGES LIST
 
 		$PG_mainbody .= '<br /><br /><p><label for="feedlanguage"><b>'._("Feed language").'</b></label></p>
-			<p><span class="admin_hints">'._("Main language of your episodes").'</span></p>
+			<p><span class="alert">'._("Main language of your episodes").'</span></p>
 			';
 		$PG_mainbody .= '<select name="feedlanguage">';
 
@@ -205,7 +205,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 		$PG_mainbody .= '<br /><br /><p><label for="explicit"><b>'._("Explicit Podcast?").'</b></label></p>
-			<span class="admin_hints">'._("Does your podcast contain explicit language?").'</span>
+			<span class="alert">'._("Does your podcast contain explicit language?").'</span>
 			<p>'._("Yes").' <input type="radio" name="explicit" value="yes" ';
 
 		if ($explicit_podcast == "yes") {
