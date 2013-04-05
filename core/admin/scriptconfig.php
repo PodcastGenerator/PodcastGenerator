@@ -105,7 +105,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		##########streaming
 
 		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'._("Enable Streaming mp3 Player?").'</b></label></p>
-			<span class="admin_hints">'._("Enable flash streaming player for mp3 files on the web pages.").'</span>
+			<span class="alert">'._("Enable flash streaming player for mp3 files on the web pages.").'</span>
 			<p>'._("Yes").' <input type="radio" name="streaming" value="yes" ';
 
 		if ($enablestreaming == "yes") {
@@ -127,7 +127,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## social networks integration
 
 		$PG_mainbody .= '<br /><br /><p><label for="socialnetworks"><b>'._("Enable Social Networks Integration?").'</b></label></p>
-			<span class="admin_hints">'._("Display Facebook, Twitter and Google+ buttons for each episode.").'</span>
+			<span class="alert">'._("Display Facebook, Twitter and Google+ buttons for each episode.").'</span>
 			<p>'._("Yes").' <input type="radio" name="socialnetworks" value="1,1,1" ';
 
 		if (in_array(TRUE,$enablesocialnetworks)) { //if at least one is true
@@ -149,7 +149,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## freebox
 
 		$PG_mainbody .= '<br /><br /><p><label for="fbox"><b>'._("Enable Freebox?").'</b></label></p>
-			<span class="admin_hints">'._("Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.").'</span>
+			<span class="alert">'._("Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.").'</span>
 			<p>'._("Yes").' <input type="radio" name="fbox" value="yes" ';
 
 		if ($freebox == "yes") {
@@ -169,7 +169,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## categories
 
 		$PG_mainbody .= '<br /><br /><a name="setcategoriesfeature" id="setcategoriesfeature"></a><p><label for="cats"><b>'._("Enable categories?").'</b></label></p>
-			<span class="admin_hints">'._("Enable categories feature to make thematic lists of your podcasts.").'</span>
+			<span class="alert">'._("Enable categories feature to make thematic lists of your podcasts.").'</span>
 			<p>'._("Yes").' <input type="radio" name="cats" value="yes" ';
 
 		if ($categoriesenabled == "yes") {
@@ -189,7 +189,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## newsinadmin
 
 		$PG_mainbody .= '<br /><br /><p><label for="newsinadmin"><b>'._("Enable news display?").'</b></label></p>
-			<span class="admin_hints">'._("Displays Podcast Generator latest news in the main administration page of your podcast.").'</span>
+			<span class="alert">'._("Displays Podcast Generator latest news in the main administration page of your podcast.").'</span>
 			<p>'._("Yes").' <input type="radio" name="newsinadmin" value="yes" ';
 
 		if ($enablepgnewsinadmin == "yes") {
@@ -209,7 +209,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## strictfilename
 
 		$PG_mainbody .= '<br /><br /><p><label for="strictfilename"><b>'._("Enable strict episode renaming policy?").'</b></label></p>
-			<span class="admin_hints">'._("If this option is enabled the files you upload will be renamed using just characters from A to Z and numbers. Unless you are using a different set of characters (e.g. Oriental, Arabic, etc...), YES is the suggested value.").'</span>
+			<span class="alert">'._("If this option is enabled the files you upload will be renamed using just characters from A to Z and numbers. Unless you are using a different set of characters (e.g. Oriental, Arabic, etc...), YES is the suggested value.").'</span>
 			<p>'._("Yes").' <input type="radio" name="strictfilename" value="yes" ';
 
 		if ($strictfilenamepolicy == "yes") {
@@ -345,7 +345,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		## SCRIPT LANGUAGES LIST
 
 		$PG_mainbody .= '<br /><br /><br /><p><label for="scriptlanguage"><b>'._("Podcast Generator Language").'</b></label></p>
-			<p><span class="admin_hints">'._("Choose among available languages *").'</span></p>
+			<p><span class="alert">'._("Choose among available languages *").'</span></p>
 			';
 		$PG_mainbody .= '<select name="scriptlanguage">';
 
@@ -373,7 +373,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 
-		$PG_mainbody .= '<p><span class="admin_hints"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'._("* Volunteer to translate Podcast Generator into your native language").'</a></span></p><br /><br /><p>
+		$PG_mainbody .= '<p><span class="alert"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'._("* Volunteer to translate Podcast Generator into your native language").'</a></span></p><br /><br /><p>
 		<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p><br />';
 	}
 

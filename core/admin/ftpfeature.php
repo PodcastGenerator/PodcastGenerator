@@ -19,7 +19,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the script in a GET variable - security issue
 
 	$PG_mainbody .= "<h3>"._("FTP Feature")."</h3>";
-	$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Looking for manually uploaded podcast into directory:")." $upload_dir</span></p>";
+	$PG_mainbody .= "<p><span class=\"alert\">"._("Looking for manually uploaded podcast into directory:")." $upload_dir</span></p>";
 
 	if (!isset($_GET['c'])) { //show "Continue" Button
 

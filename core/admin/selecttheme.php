@@ -58,7 +58,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		while ($themedir = readdir($dirHandle)) {
 
 
-			if(!is_dir($themedir) AND $themedir != '..' AND $themedir != '.' AND $themedir != 'index.htm' AND $themedir != '_vti_cnf' AND $themedir != '.DS_Store') {
+			if(!is_dir($themedir) AND $themedir != '..' AND $themedir != '.' AND $themedir != 'index.htm' AND $themedir != 'common.css' AND $themedir != '_vti_cnf' AND $themedir != '.DS_Store') {
 
 				//      $count++; //if u want a theme counter
 				//      $returnstr .= '&f'.$count.'='.$file;
@@ -85,7 +85,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 	} 
 
 	$PG_mainbody .= '<br /><br /><div class="topseparator">
-		<span class="admin_hints">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'._("See documentation").'</a></span>
+		<span class="alert">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'._("See documentation").'</a></span>
 	</div>
 		';
 
