@@ -111,27 +111,27 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<h3>'._("Episodes").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=upload">'._("New Podcast").'</a></li>
-			<li><a href="?p=admin&do=editdel">'._("Edit/Delete Podcasts").'</a></li>
+			<li><a href="?p=admin&do=editdel">'._("Edit/Delete Podcasts").'</a></li>';
+			
+			if ($categoriesenabled == "yes") { //if categories are enabled in config.php
+
+			$PG_mainbody .= '
+				<li><a href="?p=admin&do=categories">'._("Manage categories").'</a></li>';
+		} // end if categories enabled
+			
+			$PG_mainbody .= '
 			<li><a href="?p=admin&do=ftpfeature">'._("FTP Feature").'</a></li>
-			<li><a href="?p=admin&do=generate">'._("Manually regenerate xml feed").'</a></li>
+			<li><a href="?p=admin&do=generate">'._("Manually regenerate RSS feed").'</a></li>
 			</ul>
 			</div>';
 
-		if ($categoriesenabled == "yes") { //if categories are enabled in config.php
-
-			$PG_mainbody .= '<div class="topseparator"> 
-				<h3>'._("Categories").'</h3>
-				<ul> 
-				<li><a href="?p=admin&do=categories">'._("Add / Delete categories").'</a></li>
-				</ul>
-				</div>';
-		} // end if categories enabled
+		
 
 
 		$PG_mainbody .= '<div class="topseparator"> 
 			<h3>'._("Themes and aspect").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=theme">'._("Select Theme").'</a></li>';
+			<li><a href="?p=admin&do=theme">'._("Change Theme").'</a></li>';
 	
 //Frebox	
 	if ($freebox == "yes") { $PG_mainbody .= '<li><a href="?p=admin&do=freebox">'._("Customize your FreeBox").'</a></li>'; }
@@ -141,9 +141,9 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 
 			<div class="topseparator"> 
-			<h3>'._("iTunes Settings").'</h3>
+			<h3>'._("iTunes Store Settings").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=itunesimg">'._("Change iTunes cover art").'</a></li>
+			<li><a href="?p=admin&do=itunesimg">'._("Change iTunes Cover Art").'</a></li>
 			<li><a href="?p=admin&do=itunescat">'._("Select or change iTunes Categories").'</a></li>
 			<li><a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'._("Submit your podcast to the iTunes Store").'</a></li>
 		</ul>
