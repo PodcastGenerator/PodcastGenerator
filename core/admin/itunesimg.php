@@ -52,11 +52,11 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 			} else { // if image extension is NOT valid
 
-				$PG_mainbody .= "<p><b>"._("Image extension not valid...")."</b></p>";
-				$PG_mainbody .= "<p>"._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.")."</p>";
+				$PG_mainbody .= "<p><b>"._("Image extension not valid. The image extension must end in .jpg, .jpeg or .png")."</b></p>";
+			//	$PG_mainbody .= "<p>"._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.")."</p>";
 				$PG_mainbody .= '<br />
 					<form>
-					<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
+					<INPUT TYPE="button" VALUE="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small">
 					</form>';
 			}
 

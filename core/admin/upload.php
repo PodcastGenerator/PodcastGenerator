@@ -51,7 +51,7 @@ else {
 
 			<fieldset>
 			<legend><b>'._("Main information").'</b></legend>
-			<br />
+		
 			
 			<input type="hidden" name="MAX_FILE_SIZE" value="'.$max_upload_form_size.'">
 
@@ -67,13 +67,12 @@ else {
 			<input name="title" id="title" type="text" size="50" maxlength="255" ><br /><br />
 
 			<label for="description">'._("Short Description").' *</label>
-			<span class ="alert">'._("(max 255 characters)").'</span>
 
 			<input name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
 			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255">
 			<br />
-			<span class ="alert">
-			<input name="countdown" type="text" value="255" class ="alert" size="3" readonly> '._("remaining characters.").'</span> 
+			<span>
+			<input name="countdown" class="readonlyinput" type="text" value="255" class ="alert" size="3" readonly> '._("characters left").'</span> 
 			<br /><br />';
 
 		### INCLUDE CATEGORIES FORM
@@ -97,10 +96,7 @@ else {
 				
 				
 		
-				$PG_mainbody .= '
-				<br /><br />
-				<input type="submit" value="'._("Upload Episode").'"  class="btn btn-success btn-large" onClick="showNotify(\''._("Uploading...").'\');">
-				</form>';
+				
 				
 				$PG_mainbody .= '</fieldset>
 			</div>';
@@ -110,12 +106,11 @@ else {
 			 <div class="span5">
 
 				<fieldset>
-				<legend><b>'._("Extra information (optional)").'</b></legend>
+				<legend><b>'._("Extras").'</b></legend>
 
-				<label for="long_description">'._("Long Description").'</label> <span class ="alert">'._("(HTML tags accepted)").'</span><br /><br />
-
+				<label for="long_description">'._("Long Description").'</label>
 				<textarea id="long_description" name="long_description" cols="50" rows="3"></textarea>
-				<br /><br />';
+				<br />';
 				
 		
 //UPLOAD IMAGE ASSOCIATED TO EACH EPISODE
@@ -128,34 +123,43 @@ else {
 				
 				
 				$PG_mainbody .= '
-				<label for="keywords">'._("iTunes Keywords:").'</label><br />
-				<span class ="alert">'._("Separate keywords by a comma").'</span><br /><br />
-				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255"></textarea><br />
-				<span class ="alert"><input type="text" name="counttotalwords" class ="alert" value="0" size="3" onkeyup="cnt(document.uploadform.keywords,this)" readonly> '._("words.").'</span>
-				<br /><br /><br />
-
-
-				<label for="explicit">'._("Explicit content?").'</label><br />
-				<span class ="alert">'._("Select YES if this episode contains explicit language or adult content.").'</span><br /><br />
-				'._("Yes").'<input type="radio" name="explicit" value="yes">&nbsp;
-			'._("No").'<input type="radio" name="explicit" value="no" checked>
-				<br /><br /><br />
-
-
-				'._("Author").'<br />
-				<span class ="alert">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner.").'</span><br /><br />
-
-				<label for="auth_name">'._("Author's name").'</label><br />
-				<input name="auth_name" type="text" id="auth_name" size="50" maxlength="255">
+				<label for="keywords">'._("iTunes Keywords").'</label>
+		
+				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 10)").'"></textarea>';
+				
+				//count keywords
+				//$PG_mainbody .= '<span><input type="text" name="counttotalwords" value="0"  onkeyup="cnt(document.uploadform.keywords,this)" class="readonlyinput" readonly />'._("keywords").'</span>';
+				
+				$PG_mainbody .= '
 				<br /><br />
 
-				<label for="auth_email">'._("Author's email address").'</label><br />
-				<input name="auth_email" type="text" id="auth_email" size="50" maxlength="255">
+
+				<label for="explicit">'._("Explicit content").'</label>
+				<span class ="alert">'._("Select YES if this episode contains explicit language or adult content").'</span><br /><br />
+				'._("Yes").'&nbsp;<input type="radio" name="explicit" value="yes">&nbsp;
+			'._("No").'&nbsp;<input type="radio" name="explicit" value="no" checked>
+				<br /><br />
+
+
+				<label for="auth_name">'._("Author").'</label>
+				<span class ="alert">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner").'</span><br />
+
+				
+				<input name="auth_name" type="text" id="auth_name" size="30" maxlength="255" placeholder="'._("Author's name").'" class="input-medium">
+
+				
+				<input name="auth_email" type="text" id="auth_email" size="30" maxlength="255" placeholder="'._("Author's email address").'" class="input-medium">
 
 				</fieldset>
+				
+				
 				<br />
 				
+				<input type="submit" value="'._("Upload Episode").'"  class="btn btn-success btn-large" onClick="showNotify(\''._("Uploading...").'\');">
 				
+				<br /><br />
+				
+				</form>
 				</div>
 
 				
