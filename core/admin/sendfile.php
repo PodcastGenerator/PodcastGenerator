@@ -12,6 +12,7 @@
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
+
 ### Check if user is logged ###
 	if ($amilogged != "true") { exit; }
 ###
@@ -414,6 +415,10 @@ else { //if file, description or title not present...
 		</p>
 		';
 }
+
+
+
+
 
 
 ?>
