@@ -341,7 +341,7 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 							$PG_mainbody .= '<p>'._("Error: No file, description or title present").'
 								<br />
 								<form>
-								<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
+								<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 								</form>
 								</p>
 								';
