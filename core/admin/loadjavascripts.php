@@ -52,7 +52,7 @@ if (isset($_GET["do"])) {
 				theme_advanced_buttons1 : "bold,italic,underline,separator,"
 				+ "justifyleft,justifycenter,justifyright,separator,"
 				+ "forecolor,bullist,numlist,link,unlink,separator,"
-				+ "undo,redo,cleanup,code",
+				+ "image,separator,undo,redo,code",
 				height:"200px",
 				width:"400px"
 				});

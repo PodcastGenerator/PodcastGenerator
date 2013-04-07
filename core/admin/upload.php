@@ -22,7 +22,7 @@ if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['
 
 	include("$absoluteurl"."core/admin/sendfile.php");
 
-	$PG_mainbody .= '</div>';
+//	$PG_mainbody .= '</div>';
 
 }
 
