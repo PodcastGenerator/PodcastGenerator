@@ -17,19 +17,20 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 	if ($amilogged != "true") { exit; }
 ###
 
+
+
+
 if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['title']) AND $_POST['title']!=NULL AND isset($_POST['description']) AND $_POST['description']!=NULL){ //001
 
 	$file= $_FILES['userfile'] ['name']; //episode file
 
-	$img= $_FILES['image'] ['name']; // image file
+	if (isset($_FILES['image'])) $img= $_FILES['image'] ['name']; // image file
 
 	$title = $_POST['title'];
 
 	$description = $_POST['description'];
 
-	if (isset($_POST['category']) AND $_POST['category'] != NULL) {
-		$category = $_POST['category'];
-	}
+	if (isset($_POST['category']) AND $_POST['category'] != NULL) $category = $_POST['category'];
 
 	$long_description = $_POST['long_description'];
 
@@ -54,7 +55,7 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 	## here I check lenght of long description: according to the iTunes technical specifications
 	## the itunes:summary field can be up to 4000 characters, while the other fields up to 255
 
-	$longdescmax =4000; #set max characters variable. iTunes specifications by Apple say "max 4000 characters" for long description field
+	$longdescmax = 4000; #set max characters variable. iTunes specifications by Apple say "max 4000 characters" for long description field
 
 	if (strlen($long_description)<$longdescmax) { // 002 (if long description IS NOT too long, go on executing...
 		####
@@ -227,7 +228,7 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 	}
 
 
-	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$fileExtension</i><br>";
+	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$fileExtension</i><br />";
 
 	$uploadFile == NULL ;
 
@@ -242,7 +243,7 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 		########################
 		######### IMAGE upload section, if image is present
 
-		if ($img!=NULL) {
+		if (isset($img) AND $img!=NULL) {
 
 			$PG_mainbody .= "<p><b>"._("Image present: processing...")."</b></p>";
 
@@ -262,7 +263,7 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 
 					$image_new_name = "$filenamechanged$filesuffix.$img_ext[1]";
 
-					// $PG_mainbody .= ""._("File")."renamed <i>$nome_immagine</i>";
+					// $PG_mainbody .= ""._("File renamed")." <i>$nome_immagine</i>";
 
 					$PG_mainbody .= "<p><font color=\"green\">"._("Image sent.")."</font></p>"; // If upload is successful.
 
@@ -374,22 +375,22 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 		$PG_mainbody .= "<p> - "._("You didn't assign writing permission to the media folder and the uploaded file can't be saved on the server.")."</p>";
 		$PG_mainbody .= "<p> - "._("Your file is bigger than upload max filesize on your server.")."</p>";
 
-		$PG_mainbody .= "<p><b>"._("Useful information for debugging:")."</b> <a href=\"?p=admin&do=serverinfo\">"._("Your server configuration")."</a></p>";
+		$PG_mainbody .= "<p><b>"._("Useful information for debugging:")."</b> <a href=\"?p=admin&amp;do=serverinfo\">"._("Your server configuration")."</a></p>";
 
-		$PG_mainbody .= "<p>"._("FILE ERROR")."5 <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">"._("podcasts")."gensite</a></p>";
+		$PG_mainbody .= "<p>"._("FILE ERROR")." <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">"._("Podcast Generator web page")."</a></p>";
 
-		$PG_mainbody .= "<p><form>
-			<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
-			</form></p>";
+		$PG_mainbody .= '<p><form>
+			<input type="button" value="'._("Back").'" class="btn btn-danger btn-small" onClick="history.back()">
+			</form></p>';
 	}
 
 
 } // 003 (if file extension is not accepted)
 else {
 	$PG_mainbody .= "<p><i>$fileExtension</i> "._("is not a supported extension or your filename contains forbidden characters.")."</p>";
-	$PG_mainbody .= "<form>
-		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
-		</form>";
+	$PG_mainbody .= '<form>
+		<input type="button" value="'._("Back").'" class="btn btn-danger btn-small" onClick="history.back()">
+		</form>';
 }
 
 
@@ -397,10 +398,10 @@ else {
 } // 002
 else { //if long description is more than max characters allowed
 
-	$PG_mainbody .= "<b>"._("Long Description")."toolong</b><p>"._("Long Description")."maxchar $longdescmax "._("characters")." - "._("Actual Length")." <font color=red>".strlen($long_description)."</font> "._("characters").".</p>
-		<form>
-		<INPUT TYPE=\"button\" VALUE=\""._("Back")."\" onClick=\"history.back()\">
-		</form>";
+	$PG_mainbody .= "<b>"._("Long Description")."toolong</b><p>"._("Long Description")."maxchar $longdescmax "._("characters")." - "._("Actual Length")." <font color=red>".strlen($long_description)."</font> "._("characters").".</p>";
+		$PG_mainbody .= '<form>
+		<input type="button" value="'._("Back").'" class="btn btn-danger btn-small" onClick=\"history.back()\">
+		</form>';
 }
 #### end of long desc lenght checking
 
@@ -415,6 +416,7 @@ else { //if file, description or title not present...
 		</p>
 		';
 }
+
 
 
 
