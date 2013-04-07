@@ -121,7 +121,7 @@ else { //if new category already exists
 
 	$PG_mainbody .= _("The category you wish to add already exists...").'<br /><br />
 		<form>
-		<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
+		<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 		</form>';
 
 }
@@ -133,7 +133,7 @@ else { // if POST is empty or is = to the word "all", which is already taken to 
 $PG_mainbody .= _("Please write a category name...").'
 	<br /><br />
 	<form>
-	<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
+	<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 	</form>';
 
 

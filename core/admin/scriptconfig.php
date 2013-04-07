@@ -374,7 +374,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 		$PG_mainbody .= '<p><span class="alert"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'._("* Volunteer to translate Podcast Generator into your native language").'</a></span></p><br /><br /><p>
-		<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p><br />';
+		<input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p><br />';
 	}
 
 }

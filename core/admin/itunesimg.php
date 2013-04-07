@@ -56,7 +56,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			//	$PG_mainbody .= "<p>"._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.")."</p>";
 				$PG_mainbody .= '<br />
 					<form>
-					<INPUT TYPE="button" VALUE="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small">
+					<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 					</form>';
 			}
 
@@ -67,7 +67,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$PG_mainbody .= "<p>"._("No file selected. Please go back and select an image.")."</p>";
 			$PG_mainbody .= '<br />
 				<form>
-				<INPUT TYPE="button" VALUE='._("Back").' onClick="history.back()">
+				<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 				</form>';
 		}
 
@@ -93,7 +93,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 			<input name="image" type="file">
 			<p><span class="admin_hints">'._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.").'</span></p>
 			<p>
-			<input type="submit" name="'._("Send").'" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');"></p>
+			<input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Uploading...").'\');"></p>
 			</p>
 			</div>
 			';
