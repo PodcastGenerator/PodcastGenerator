@@ -50,9 +50,13 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 
 	$PG_mainbody .= '<label for="category">'._("Categories").' *</label>
 		<span class ="alert">'._("Select up to 3 categories for your episode...").'</span>';
-	if ($preselectcat == "yes") {
+
+	/*
+		if ($preselectcat == "yes") {
 		$PG_mainbody .= '<span class ="alert">'._("(The categories already associated to this episode are pre-selected in the form below)").'</span><br />';
 	}
+	*/
+	
 	$PG_mainbody .= '<br /><select name="category[]"';
 
 	if ($n<5) { //height of the category form

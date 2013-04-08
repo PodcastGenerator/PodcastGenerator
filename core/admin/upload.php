@@ -125,7 +125,7 @@ else {
 				$PG_mainbody .= '
 				<label for="keywords">'._("iTunes Keywords").'</label>
 		
-				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'"></textarea>';
+				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'">';
 				
 				//count keywords
 				//$PG_mainbody .= '<span><input type="text" name="counttotalwords" value="0"  onkeyup="cnt(document.uploadform.keywords,this)" class="readonlyinput" readonly />'._("keywords").'</span>';
