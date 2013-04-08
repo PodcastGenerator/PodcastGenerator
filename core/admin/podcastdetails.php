@@ -227,7 +227,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '></p>';
 
 		$PG_mainbody .= '<br /><p>
-			<input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');"></p>';
+			<input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Updating").'\');"></p>';
 	}
 
 }

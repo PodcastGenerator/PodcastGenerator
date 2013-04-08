@@ -83,3 +83,4 @@ function checkMaxSelected (select, maxSelected, displ_error_nummaxcat) {
 
 // END - DISPLAY LOADER
 ///////////////////////
+

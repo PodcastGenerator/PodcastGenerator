@@ -114,35 +114,45 @@ else {
 						}	}	}
 						#########
 
-						$PG_mainbody .= '<h3>'._("Edit podcast").'</h3>';
 
-						$PG_mainbody .= '
-							<form action="?p=admin&amp;do=edit&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
+
+
+
+
+$PG_mainbody .= '<h3 class="sectionTitle">'._("Edit or Delete Episode").'</h3>';
+
+							
+
+		$PG_mainbody .= '
+		
+		 <div class="span5 importantSection">
+		<form action="?p=admin&amp;do=edit&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
 							<fieldset>
 							<legend><b>'._("Main information (required):").'</b></legend>
-							<br />
-
-							<input type="hidden" name="userfile" value="'.$_GET['name'].'">
-
-							<label for="userfile">'._("File to edit:").'</label><br />
-							<p><b>'.$text_title.'</b> ('.$_GET['name'].')</p>';
-
-						$PG_mainbody .= '<br /><br />
-							<label for="title">'._("Title").'*</label><br />
-							<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'"><br /><br /><br />
-
-							<label for="description">'._("Short Description").'*</label><br />
-							<span class ="admin_hints">'._("(max 255 characters)").'</span><br />
-
-							<input name="description" id="description" type="text" onKeyDown="limitText this.form.description,this.form.countdown,255);" 
-							onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value="'.$text_shortdesc.'">
-							<br /><br />
-							<span class ="admin_hints">
-							<input name="countdown" type="text" value="255" class ="admin_hints" size="3" readonly> '._("remaining characters.").'</span> 
 							';
+$PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">';
 
-						### INCLUDE CATEGORIES FORM
+
+//$PG_mainbody .= '<label for="userfile">'._("File to edit:").'</label><br />
+//<p><b>'.$text_title.'</b> ('.$_GET['name'].')</p>';
+
+		$PG_mainbody .= '
+			<label for="title">'._("Title").' *</label>
+			<input name="title" id="title" type="text" size="50" maxlength="255" value='.$text_title.' /><br /><br />
+
+			<label for="description">'._("Short Description").' *</label>
+
+			<input name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
+			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value='.$text_shortdesc.'>
+			<br />
+			<span>
+			<input name="countdown" class="readonlyinput" type="text" value="255" class ="alert" size="3" readonly> '._("characters left").'</span> 
+			<br /><br />';
+
+		
+		
+		### INCLUDE CATEGORIES FORM
 						if ($categoriesenabled == "yes") { // if categories are enabled in config.php
 
 							include("$absoluteurl"."core/admin/showcat.php");
@@ -158,77 +168,63 @@ else {
 							//Read file date
 							$episodedate = filemtime($wholeepisodefile);
 							
-							$PG_mainbody .= '<label>Change the file date</label>
-							<br /><span class ="admin_hints">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed.").'</span><br /><br />
-							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
-							
-							
-							
-							
-							
-							$PG_mainbody .= "<br /><br /><br />"._("Fields marked with * are required.").'
-								</fieldset>
-								';
-
 							$PG_mainbody .= '
+							<br /><br />
+							<label>Change the episode date</label>
+							<span class ="alert">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed.").'</span><br /><br />
+							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
+		
+		
+		
+
+			$PG_mainbody .= '<br /><br />';
+			$PG_mainbody .= _("Fields marked with * are required.").'
+				
+				';
+
+		//	$PG_mainbody .= '<p><input type="checkbox" value="'._("add extra information to this episode").'" onClick="javascript:Effect.toggle(\'main\',\'appear\');">'._("add extra information to this episode").'</p>';
+				
+				
+		
+				
+				
+				$PG_mainbody .= '</fieldset>
+			</div>';
+
+			
+			$PG_mainbody .= '
+			 <div class="span5">
+
+				<fieldset>
+				<legend><b>'._("Extras").'</b></legend>
+
+				<label for="long_description">'._("Long Description").'</label>
+				<textarea id="long_description" name="long_description" cols="50" rows="3">'.$text_longdesc.'</textarea>
+				<br />';
+				
+		
+//UPLOAD IMAGE ASSOCIATED TO EACH EPISODE
+//Disabled for the moment (does it really work in the podcast feed?
+//better to upload images in the WYSIWYG editor in future
+
+//$PG_mainbody .= '<label for="image">'._("Image").'</label><br /><span class ="alert">'._("You can associate an image to this episode; it will appear on the recent podcast page and on the details page.").'</span><br /><span class ="alert">'._("Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted formats: png, gif e jpg.").'</span><br /><br /><input name="image" type="file"><br /><br /><br />';
+
+				
+				
+				
+				$PG_mainbody .= '
+				<label for="keywords">'._("iTunes Keywords").'</label>
+		
+				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'" value="'.$text_keywordspg.'">';
+				
+				//count keywords
+				//$PG_mainbody .= '<span><input type="text" name="counttotalwords" value="0"  onkeyup="cnt(document.uploadform.keywords,this)" class="readonlyinput" readonly />'._("keywords").'</span>';
+				
+				$PG_mainbody .= '
+				<br /><br />
 
 
-								<br />
-								<div id="main"> 
-
-								<fieldset>
-								<legend><b>'._("Extra information (optional):").'</b></legend>
-
-								<label for="long_description">'._("Long Description").'</label> <span class ="admin_hints">'._("(HTML tags accepted)").'</span><br /><br />
-
-								<textarea id="long_description" name="long_description" cols="50" rows="3">'.$text_longdesc.'</textarea>
-								<br /><br />
-
-
-
-								';
-
-							$fileimagetocheck = "$absoluteurl"."$img_dir$text_imgpg";
-
-							if (file_exists($fileimagetocheck) AND $text_imgpg != NULL) { // if image exists
-								
-								$PG_mainbody .= '
-								
-								<input type="hidden" name="existentimage" value="'.$text_imgpg.'">
-								
-								<label for="image">'._("Image").'</label><br /><br />'._("Current image:").'<br /><img src="'.$url.$img_dir.$text_imgpg.'" alt="'._("Current image:").'" /><br />
-
-									'._("New image:").'<br />	
-									<span class ="admin_hints">'._("Specify a new image if you want to replace the old one.").'</span><br />
-									<span class ="admin_hints">'._("Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted formats: png, gif e jpg.").'</span><br /><br />
-									<input name="image" type="file">
-									<br />	
-
-									';
-							}	else { // if image doesn't exist
-
-							$PG_mainbody .= '<label for="image">'._("Image").'</label><br />
-
-								<span class ="admin_hints">'._("You can associate an image to this episode; it will appear on the recent podcast page and on the details page.").'</span><br />
-								<span class ="admin_hints">'._("Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted formats: png, gif e jpg.").'</span><br /><br />
-					
-					<input name="image" type="file">
-								<br />
-								';
-						} 
-
-
-						$PG_mainbody .= '
-							<br /><br /><br />
-
-							<label for="keywords">'._("iTunes Keywords:").'</label><br />
-							<span class ="admin_hints">'._("Separate keywords by a comma").'</span><br /><br />
-							<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" value="'.$text_keywordspg.'"><br />
-							<span class ="admin_hints"><input type="text" name="counttotalwords" class ="admin_hints" value="0" size="3" onkeyup="cnt(document.uploadform.keywords,this)" readonly> '._("words.").'</span>
-							<br /><br /><br />
-
-
-							<label for="explicit">'._("Explicit content?").'</label><br />
+				<label for="explicit">'._("Explicit content?").'</label><br />
 							<span class ="admin_hints">'._("Select YES if this episode contains explicit language or adult content.").'</span><br /><br />
 							'._("Yes").'<input type="radio" name="explicit" value="yes"';
 
@@ -237,35 +233,56 @@ else {
 						}
 
 						$PG_mainbody .=	'>&nbsp;'._("No").'<input type="radio" name="explicit" value="no"';
+						
 						if ($text_explicitpg != "yes") {
 							$PG_mainbody .= ' checked';	
 						}
-						$PG_mainbody .= '>
-							<br /><br /><br />
-
-
-							'._("Author").'<br />
-							<span class ="admin_hints">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner.").'</span><br /><br />
-
-							<label for="auth_name">'._("Author's name").'</label><br />
-							<input name="auth_name" type="text" id="auth_name" size="50" maxlength="255" value="'.$text_authornamepg.'">
-							<br /><br />
-
-							<label for="auth_email">'._("Author's email address").'</label><br />
-							<input name="auth_email" type="text" id="auth_email" size="50" maxlength="255" value="'.$text_authoremailpg.'">
-
-							';
-		
-							$PG_mainbody .= '
-							</fieldset>
-							<br />
-							</div>
-							<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Uploading...").'\');">
-							<br /><br /><br /><br />
-							</form>';
-
-			//			$PG_mainbody .= '</div>';
+						
+						
+				$PG_mainbody .= '>
 				
+<br /><br />
+
+
+				<label for="auth_name">'._("Author").'</label>
+				<span class ="alert">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner").'</span><br />
+
+				
+				<input name="auth_name" type="text" id="auth_name" size="30" maxlength="255" placeholder="'._("Author's name").'" class="input-medium" value="'.$text_authornamepg.'" />
+
+				
+				<input name="auth_email" type="text" id="auth_email" size="30" maxlength="255" placeholder="'._("Author's email address").'" class="input-medium" value="'.$text_authoremailpg.'" />
+
+				</fieldset>
+				
+				
+				<br />
+				
+				<input type="submit" value="'._("Update Episode").'"  class="btn btn-success btn-large" onClick="showNotify(\''._("Updating").'\');">
+				
+				<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-warning btn-medium" />
+				
+				
+			
+				
+				<div id="confirmation" style="display:none;">
+				<br />
+				'._("Do you really want to permanently delete this episode?").' 
+				
+				<a class="btn btn-danger btn-mini" href="?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'">'._("YES, I am sure").'</a>
+				
+				</div>
+				
+			
+				
+				<br /><br />
+
+				
+				</form>
+				</div>
+
+				';
+
 				
 						}	}				
 
