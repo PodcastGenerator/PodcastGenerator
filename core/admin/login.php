@@ -12,7 +12,7 @@
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
-include ("$absoluteurl"."components/loading_indicator/loading.js"); //include top right loading indicator
+//include ("$absoluteurl"."components/loading_indicator/loading.js"); //include top right loading indicator
 
 
 
@@ -100,10 +100,12 @@ if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 				'.$loginform.'
 				</div>
 
-				</form>';
+				</form>
+				';
 
 		}
 
 	}		
 }	
+
 ?>
