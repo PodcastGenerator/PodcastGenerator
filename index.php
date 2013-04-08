@@ -58,6 +58,12 @@ if (isset($_GET['p'])) {
      next($existingCategories);
     }	
 		$PG_mainbody .= '</ul>';
+		
+		
+		//If old themes then show also the option "All Episodes"
+		if (!useNewThemeEngine($theme_path)) {
+		$PG_mainbody .= '<a href="?p=archive&amp;cat=all">'._("All Episodes").'</a>';
+		}
 			
 			
 			}

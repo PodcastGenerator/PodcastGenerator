@@ -453,12 +453,27 @@ $isvideo = TRUE;
 
 
 $resulting_episodes .= '</h3>';
-		
+	
 
 // EPISODE DATE AND SIZE
 $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 
-	
+
+///////////////////////////////////////////
+//EDIT DELETE BUTTON (JUST IF LOGGED IN)
+
+// IF USER IS LOGGED AND PAGE IS ALL PODCAST
+if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
+
+
+		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+
+}
+		
+		
+
+// END - EDIT DELETE BUTTON
+///////////////////////////////////////////
 					/*	
 					$resulting_episodes .= '<ul class="episode_imgdesc">';
 
@@ -503,6 +518,7 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 						
 						$resulting_episodes .= '</p>';
 						#END BUTTONS
+		
 						
 						
 					//EPISODE DURATION, FILETYPE AND OTHER DETAILS IS AVAILABLE
@@ -536,10 +552,13 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	
 					
+
+					
+					
 					//Blank space
 					$resulting_episodes .= "<br />";
 					
-							
+
 						$resulting_episodes .= "</div>";
 
 							

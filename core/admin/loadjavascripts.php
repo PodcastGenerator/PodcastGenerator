@@ -20,7 +20,8 @@
 
 $loadjavascripts = '<script language="JavaScript" type="text/javascript" src="components/js/admin.js"></script>
 
-<script language="JavaScript" type="text/javascript" src="components/js/jquery.js"></script>';
+<script language="JavaScript" type="text/javascript" src="components/js/jquery.js"></script>
+';
 
 
 
