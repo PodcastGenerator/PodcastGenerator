@@ -347,5 +347,25 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 	# END META TAGS DEFINITION
 	#########################
 
+	
+	
+	
+	
+//INCLUDE LOADING INDICATOR IN ALL THE PAGES 
+//The indicator is included in all the pages just before closing the tag </html> so we are sure it is outside others relative containers (e.g. bootstrap theme). Otherwise it would be displayed relative to the main container, not to the body
+
+if (isset($_GET['p']) AND $_GET['p']=="admin") { //all admin pages included login
+		
+//NB the closing body tag has been added below!
+$loading_indicator_code = '
+<div id="status_notification">Uploading...</div>
+</body>
+';
+			
+	$theme_file_contents = str_replace("</body>", $loading_indicator_code, $theme_file_contents);
+	
+}
+	
+//END - INCLUDE LOADING INDICATOR IN ALL THE PAGES 
 
 	?>

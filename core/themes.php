@@ -94,6 +94,7 @@ $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme
 ###############################
 # LOAD JAVASCRIPTS IN THE HEADER IF PAGE REQUIRES - REPLACES "-----PG_JSLOAD-----" IN THE HEADER OF THE THEME PAGE
 
+/*
 if (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "upload") {
 
 	include("$absoluteurl"."core/admin/loadjavascripts.php");
@@ -122,10 +123,14 @@ elseif (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $
 }
 
 else {
+*/
 
-	$loadjavascripts = ""; //null
-
+include($absoluteurl."core/admin/loadjavascripts.php");
+	
+/*
 }
+*/
+
 
 $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $theme_file_contents); 
 
@@ -286,5 +291,24 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 	# END META TAGS DEFINITION
 	#########################
 
+	
+	
+//INCLUDE LOADING INDICATOR IN ALL THE PAGES 
+//The indicator is included in all the pages just before closing the tag </html> so we are sure it is outside others relative containers (e.g. bootstrap theme). Otherwise it would be displayed relative to the main container, not to the body
+
+if (isset($_GET['p']) AND $_GET['p']=="admin") { //all admin pages included login
+		
+//NB the closing body tag has been added below!
+$loading_indicator_code = '
+<div id="status_notification"></div>
+</body>
+';
+			
+	$theme_file_contents = str_replace("</body>", $loading_indicator_code, $theme_file_contents);
+	
+}
+	
+//END - INCLUDE LOADING INDICATOR IN ALL THE PAGES 
+	
 
 	?>
