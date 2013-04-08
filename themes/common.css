@@ -44,8 +44,8 @@ padding:0;
 /* Loader (hidden by default) */
 #status_notification {
 	position: fixed; /* fixed so it doesn't scroll */
-	left: 46%;
-    top: 50%;
+	left: 45%;
+    top: 40%;
 	width:128px;
 	height:128px;
 	display: none;
@@ -53,7 +53,6 @@ padding:0;
 	/* Loader Image & size */
 	background: url('../loading.gif') no-repeat bottom;
 	background-color: #000;
-	font-size:14px;
 	color: #FFF;
 	margin: 0px;
 	padding: 20px;
@@ -62,5 +61,4 @@ padding:0;
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	}
-
 
