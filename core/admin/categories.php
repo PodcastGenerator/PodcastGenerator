@@ -34,10 +34,14 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 		$PG_mainbody .= "<h3>"._("Add / Delete categories")."</h3>";
 		$PG_mainbody .= '<span class="alert">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
 
+	/*
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
+		
+	*/
+		
 		include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
-		if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->category)) {
+		if (file_exists("$absoluteurl"."categories.xml")) {
 
 
 			######
@@ -48,25 +52,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding...").'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding").'\');">
 				';
 			#####
 
-
-			// define variables
-			$arr = NULL;
-			$arrid = NULL;
-			$n = 0;
-
-			foreach($parser->document->category as $singlecategory)
-			{
-				//echo $singlecategory->id[0]->tagData."<br>";
-				//echo $singlecategory->description[0]->tagData;
-
-				$arr[] .= $singlecategory->description[0]->tagData;
-				$arrid[] .= $singlecategory->id[0]->tagData;
-				$n++;
-			}
 
 
 
@@ -84,16 +73,12 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 		//		$PG_mainbody .= '<a id="confirmdelete" href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
 
-				$PG_mainbody .= '<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-warning btn-mini" /></li>';
+				$PG_mainbody .= '<input type="button" id="confirmdelete-'.$arrid[$key].'" value="'._("Delete Episode").'" class="btn btn-warning btn-mini" /></li>';
 				
 
-				$PG_mainbody .= '<div id="confirmation" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
+				$PG_mainbody .= '<div id="confirmation-'.$arrid[$key].'" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no"></p>
 
 					</div>';
-
-
-
-
 
 
 

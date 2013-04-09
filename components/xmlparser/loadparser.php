@@ -1,5 +1,6 @@
 <?php
 
+/*
 ########### Security code, avoids cross-site scripting (Register Globals ON)
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
@@ -18,5 +19,5 @@ if (version_compare(phpversion(), "5.0.0", ">=")) {
  
  } 
 
-
+*/
 ?>

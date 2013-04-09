@@ -16,10 +16,18 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 	if ($amilogged != "true") { exit; }
 ###
 
-include ("$absoluteurl"."components/xmlparser/loadparser.php");
+/*
+include ("$absoluteurl"."components/xmlparser/loadparser.php"); */
+
+
 include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
-if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->category)) {
+
+
+
+
+if (file_exists("$absoluteurl"."categories.xml")) {
+//if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->category)) {
 
 	///// DETERMINE NEW PODCAST OR EDIT PODCAST MODE
 	if (isset($_GET['do']) AND $_GET['do']=="edit") { //if edit mode
@@ -31,12 +39,10 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 	}
 	/////
 
-	// define variables
-	$arr = NULL;
-	$arrid = NULL;
-	$n = 0;
-
-	foreach($parser->document->category as $singlecategory)
+	
+	
+	/*
+	foreach($parser->category as $singlecategory)
 	{
 		//echo $singlecategory->id[0]->tagData."<br>";
 		//echo $singlecategory->description[0]->tagData;
@@ -46,7 +52,7 @@ if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->ca
 		$n++;
 	}
 
-
+*/
 
 	$PG_mainbody .= '<label for="category">'._("Categories").' *</label>
 		<span class ="alert">'._("Select up to 3 categories for your episode...").'</span>';

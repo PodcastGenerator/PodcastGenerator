@@ -18,7 +18,7 @@ $parser = new XMLParser($xml);
 //$parser->Parse();
 
 //to handle CDATA values see here: http://blog.evandavey.com/2008/04/how-to-fix-simplexml-cdata-problem-in-php.html
-$parser = simplexml_load_file("$filedescr",'SimpleXMLElement',LIBXML_NOCDATA);
+$parser = simplexml_load_file($filedescr,'SimpleXMLElement',LIBXML_NOCDATA);
 
 //var_dump($parser); //Debug
 

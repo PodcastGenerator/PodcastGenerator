@@ -25,7 +25,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
 	$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Manually regenerate xml feed")."</span></p>";
 
-	include ("$absoluteurl"."components/loading_indicator/loading.js");
+//	include ("$absoluteurl"."components/loading_indicator/loading.js");
 
 	$PG_mainbody .= '<br /><br />
 
@@ -33,7 +33,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<input type="hidden" name="p" value="'.$_GET['p'].'">
 		<input type="hidden" name="do" value="'.$_GET['do'].'">
 		<input type="hidden" name="c" value="ok">
-		<input type="submit" value="'._("Continue").'" onClick="showNotify(\''._("Generating...").'\');">
+		<input type="submit" value="'._("Continue").'" onClick="showNotify(\''._("Regenerating Feed").'\');">
 		</form>
 		';
 
