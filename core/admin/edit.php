@@ -224,15 +224,15 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				<br /><br />
 
 
-				<label for="explicit">'._("Explicit content?").'</label><br />
-							<span class ="admin_hints">'._("Select YES if this episode contains explicit language or adult content.").'</span><br /><br />
-							'._("Yes").'<input type="radio" name="explicit" value="yes"';
+				<label for="explicit">'._("Explicit content?").'</label>
+				<span class ="alert">'._("Select YES if this episode contains explicit language or adult content.").'</span><br /><br />
+				'._("Yes").'&nbsp;<input type="radio" name="explicit" value="yes"';
 
 						if ($text_explicitpg == "yes") {
 							$PG_mainbody .= ' checked';	
 						}
 
-						$PG_mainbody .=	'>&nbsp;'._("No").'<input type="radio" name="explicit" value="no"';
+						$PG_mainbody .=	'>&nbsp;'._("No").'&nbsp;<input type="radio" name="explicit" value="no"';
 						
 						if ($text_explicitpg != "yes") {
 							$PG_mainbody .= ' checked';	

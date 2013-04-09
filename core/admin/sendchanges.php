@@ -20,7 +20,7 @@ if (isset($_POST['userfile']) AND $_POST['userfile']!=NULL AND isset($_POST['tit
 
 	$file = $_POST['userfile']; //episode file
 
-	$img = $_FILES['image'] ['name']; // image file
+	if (isset($_FILES['image'])) $img = $_FILES['image'] ['name']; // image file
 	
 	if (isset($_POST['existentimage'])) $existentimage = $_POST['existentimage']; else $existentimage = NULL;
 	
@@ -189,7 +189,7 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 						########################
 						######### IMAGE upload section, if image is present
 
-						if ($img!=NULL) {
+						if (isset($img) AND $img!=NULL) {
 
 							$PG_mainbody .= "<p><b>"._("Image present: processing...")."</b></p>";
 

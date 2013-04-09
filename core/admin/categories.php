@@ -79,14 +79,15 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 			foreach ($arr as $key => $val) {
 				//$PG_mainbody .= "cat[" . $key . "] = " . $val . "<br>";
 
-				$PG_mainbody .= '<li>' . $val . ' ';
+				$PG_mainbody .= '<li style="margin-bottom:10px;">' . $val . ' ';
 
 
+		//		$PG_mainbody .= '<a id="confirmdelete" href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
 
-				$PG_mainbody .= '<a href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
+				$PG_mainbody .= '<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-warning btn-mini" /></li>';
+				
 
-
-				$PG_mainbody .= '<div id="'.$arrid[$key].'" style="display:none"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
+				$PG_mainbody .= '<div id="confirmation" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onClick="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');"></p>
 
 					</div>';
 

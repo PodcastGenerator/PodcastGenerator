@@ -114,9 +114,9 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	function CreaFormData($inName, $useDate=0, $dateformat) //inName is the form name, it can be null
 	{ 
 	// array with months
-	$monthName = array(1=> _("January"), _("February"), _("March"),
-	_("April"), _("May"), _("June"), _("July"), _("August"),
-	_("September"), _("October"), _("November"), _("December"));
+	$monthName = array(1=> _("Jan"), _("Feb"), _("Mar"),
+	_("Apr"), _("May"), _("Jun"), _("Jul"), _("Aug"),
+	_("Sep"), _("Oct"), _("Nov"), _("Dec"));
 
 	// se data non specificata, o invalida, usa timestamp corrente
 	if($useDate == NULL)
@@ -124,10 +124,10 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	$useDate = Time();
 	}
 	
-	$outputform =  _("Date:")." "; //title
+	$outputform =  _("<p>Date:</p>"); //title
 	
 	//day
-	$outputformDAY =  "<select name=\"" . $inName . "Day\">\n";
+	$outputformDAY =  "<select class=\"input-small\" name=\"" . $inName . "Day\">\n";
 	for($currentDay=1; $currentDay <= 31; $currentDay++)
 	{
 	$outputformDAY .=  "<option value=\"$currentDay\"";
@@ -140,7 +140,7 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	$outputformDAY .=  "</select>";
 
 	//mese
-	$outputformMONTH =  "<select name=\"" . $inName . "Month\">\n";
+	$outputformMONTH =  "<select class=\"input-small\" name=\"" . $inName . "Month\">\n";
 	for($currentMonth = 1; $currentMonth <= 12; $currentMonth++)
 	{
 	$outputformMONTH .=  "<option value=\"";
@@ -155,7 +155,7 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	$outputformMONTH .=  "</select>";
 
 	//anno
-	$outputformYEAR =  "<select name=\"" . $inName . "Year\">\n";
+	$outputformYEAR =  "<select class=\"input-small\" name=\"" . $inName . "Year\">\n";
 	$startYear = date( "Y", $useDate);
 	for($currentYear = $startYear - 5; $currentYear <= $startYear+5;$currentYear++)
 	{
@@ -177,11 +177,11 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	
 	
 	$outputform .=  "&nbsp;&nbsp;"; //two blank spaces
-	$outputform .=  _("Time:")." "; //titoletto
+	$outputform .=  _("<p>Time:</p>"); //titoletto
 
 
     //ore
-	$outputform .=  "<select name=\"" . $inName . "Hour\">\n";
+	$outputform .=  "<select class=\"input-small\" name=\"" . $inName . "Hour\">\n";
 	for($currentHour = 0; $currentHour <= 23; $currentHour++)
 	{
 	$outputform .=  "<option value=\"";
@@ -196,7 +196,7 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	$outputform .=  "</select>";
 	
 	//minuti
-	$outputform .=  "<select name=\"" . $inName . "Minute\">\n";
+	$outputform .=  "<select class=\"input-small\" name=\"" . $inName . "Minute\">\n";
 	for($currentMinute = 0; $currentMinute <= 59; $currentMinute++)
 	{
 	$outputform .=  "<option value=\"";
