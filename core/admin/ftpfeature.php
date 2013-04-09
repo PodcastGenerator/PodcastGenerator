@@ -23,7 +23,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	if (!isset($_GET['c'])) { //show "Continue" Button
 
-	include ("$absoluteurl"."components/loading_indicator/loading.js");
+	//include ("$absoluteurl"."components/loading_indicator/loading.js");
 
 	$PG_mainbody .= '<br /><br />
 
