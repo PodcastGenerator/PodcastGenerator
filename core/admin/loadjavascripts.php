@@ -36,6 +36,8 @@ if (isset($_GET["do"])) {
 	if ($_GET["do"]=="upload" OR $_GET["do"]=="freebox" OR $_GET["do"]=="edit") {
 
 	//FADING IN CONFIRMATION (e.g. are you sure u want to delete?)
+
+
 	$loadjavascripts .='
 	<script type="text/javascript">
 	$(document).ready(
@@ -44,11 +46,12 @@ if (isset($_GET["do"])) {
             $("#confirmation").fadeToggle();
         });
     });
-</script>
+</script>';
 
 
-	';
-	
+
+
+
 	//EDITOR WYSIWYG
 		$loadjavascripts .='
 		<script language="javascript" type="text/javascript" src="components/tiny_mce/tiny_mce.js"></script>

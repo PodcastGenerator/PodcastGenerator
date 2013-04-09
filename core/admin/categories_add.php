@@ -18,8 +18,8 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 $PG_mainbody .= '<h3>'._("Add a category").'</h3>';
 
-include ("$absoluteurl"."components/xmlparser/loadparser.php");
-include ("$absoluteurl"."core/admin/readXMLcategories.php");
+//include ("$absoluteurl"."components/xmlparser/loadparser.php");
+//include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
 // define variables
 $arrdesc = NULL;
@@ -42,22 +42,22 @@ if ($add != NULL and $add != "all") { /// 000
 	// create unique and depurated id from the description (using the function renamefilestrict)
 	$id = renamefilestrict ($add);
 
+	
+	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
 
 	//parse
-	if (isset($parser->document->category)) {
-		foreach($parser->document->category as $singlecategory)
+//	if (isset($parser->document->category)) {
+		foreach($parser->category as $singlecategory)
 		{
 			// echo $singlecategory->id[0]->tagData."<br>";
 			// echo $singlecategory->description[0]->tagData;
 			// echo "<br><br>";
 
-			if ($id != ($singlecategory->id[0]->tagData)) { // if the id of the new category is different from the ids already present in the XML file 
+			if ($id != ($singlecategory->id[0])) { // if the id of the new category is different from the ids already present in the XML file 
 
-				// put into the array 
-				//(yeah yeah I know I'm using arrays instead of XML commands... but I thought this solution, and it works...). If you have a more elegant solution (e.g. PHP native XML commands), please re-code this file and send your work to me under GPL license: beta@yellowjug.com (PS. your solution should work perfectly either with PHP 4 and 5, otherwise I won't be able to include it in the new releases of podcast generator)
-
-			$arrdesc[] .= htmlspecialchars($singlecategory->description[0]->tagData); // Encode special characters - Thanks to Garrett Vogenbeck for this fix
-				$arrid[] .= $singlecategory->id[0]->tagData;
+			// put into the array 
+			$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
+				$arrid[] .= $singlecategory->id[0];
 
 			}
 			else { // if ID already present in XML
@@ -69,7 +69,7 @@ if ($add != NULL and $add != "all") { /// 000
 
 			$n++; //increment count
 		}
-	}
+//	}
 
 
 	if ($isduplicated != "yes") { // 001 if new category doesn't exist yet
@@ -119,7 +119,7 @@ if ($add != NULL and $add != "all") { /// 000
 
 else { //if new category already exists
 
-	$PG_mainbody .= _("The category you wish to add already exists...").'<br /><br />
+	$PG_mainbody .= _("The category you are trying to add already exists...").'<br /><br />
 		<form>
 		<input type="button" value="&laquo; '._("Back").'" onClick="history.back()" class="btn btn-danger btn-small" />
 		</form>';

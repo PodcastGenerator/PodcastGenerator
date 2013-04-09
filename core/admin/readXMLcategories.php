@@ -19,12 +19,33 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if (file_exists("$absoluteurl"."categories.xml")) {
 
 	$xml = file_get_contents("$absoluteurl"."categories.xml");
-	//Set up the parser object
-	$parser = new XMLParser($xml);
 
-	//Parse the XML file with categories data...
-	$parser->Parse();
+	// define variables
+	$arr = NULL;
+	$arrid = NULL;
+	$n = 0;
 
+	
+	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
+
+	//var_dump($parser); //Debug
+
+//	$existingCategories = array();
+	
+			$n = 0;
+			foreach($parser->category as $singlecategory) {
+
+			//create array containing category id as seed and description for each id
+			$catID = $singlecategory->id[0];
+			$catDescription = $singlecategory->description[0];
+		//	$existingCategories[$catID] = $catDescription;
+			
+			$arr[] .= $catDescription;
+			$arrid[] .= $catID;
+			
+			$n++;
+			}
+	
 }
 
 
