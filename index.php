@@ -109,7 +109,7 @@ if (isset($_GET['p'])) {
 }
 else { // if no p= specifies, e.g. just index.php with no GET
 //show recent episodes (don't show all episodes) - no categories distinction
-		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
+		$PG_mainbody .= showPodcastEpisodes(0,0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
 }
 
 
