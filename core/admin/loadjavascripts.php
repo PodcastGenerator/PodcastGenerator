@@ -37,7 +37,20 @@ if (isset($_GET["do"])) {
 
 	//FADING IN CONFIRMATION (e.g. are you sure u want to delete?)
 
+	
+// DELETE confirmation from edit page
+$loadjavascripts .='
+	<script type="text/javascript">
+$(document).ready(
+    function() {
+        $("#confirmdelete").click(function() {
+            $("#confirmation").fadeToggle();
+        });
+    });
+</script>';	
 
+
+// DELETE categories confirmation
 	$loadjavascripts .='
 	<script type="text/javascript">
 $(document).ready(
