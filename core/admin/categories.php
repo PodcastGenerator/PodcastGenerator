@@ -32,7 +32,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 	else { //001 (If no add or remove display main categories page)
 
 		$PG_mainbody .= "<h3>"._("Add / Delete categories")."</h3>";
-		$PG_mainbody .= '<span class="alert">'._("Hint: Don't you need to classify your podcast into categories? Too complicated? ").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Simply disable them").'</a></span>';
+		$PG_mainbody .= '<span class="alert">'._("Hint: You don't need categories?").' <a href="?p=admin&do=config#setcategoriesfeature">'._("Disable them").'</a></span>';
 
 	/*
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
@@ -73,17 +73,26 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 		//		$PG_mainbody .= '<a id="confirmdelete" href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
 
-				$PG_mainbody .= '<input type="button" id="confirmdelete-'.$arrid[$key].'" value="'._("Delete Episode").'" class="btn btn-warning btn-mini" /></li>';
+				$PG_mainbody .= '<input type="button" id="confirmdelete-'.$arrid[$key].'" value="'._("Delete Category").'" class="btn btn-warning btn-mini" /></li>';
 				
 
-				$PG_mainbody .= '<div id="confirmation-'.$arrid[$key].'" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no"></p>
+				$PG_mainbody .= '<div id="confirmation-'.$arrid[$key].'" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onclick="$(\'#confirmation-'.$arrid[$key].'\').fadeOut();" />
+				</p>
 
-					</div>';
+					</div>
+					
+					
+					';
 
 
 
 			}
-			$PG_mainbody .= '</ul>';
+			$PG_mainbody .= '</ul>
+			
+	
+
+			
+			';
 
 		} //if xml categories file doesn't exist
 		else

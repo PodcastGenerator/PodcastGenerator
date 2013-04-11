@@ -33,20 +33,21 @@ if (isset($_GET["do"])) {
 
 
 
-	if ($_GET["do"]=="upload" OR $_GET["do"]=="freebox" OR $_GET["do"]=="edit") {
+	if ($_GET["do"]=="upload" OR $_GET["do"]=="freebox" OR $_GET["do"]=="edit" OR $_GET["do"]=="categories") {
 
 	//FADING IN CONFIRMATION (e.g. are you sure u want to delete?)
 
 
 	$loadjavascripts .='
 	<script type="text/javascript">
-	$(document).ready(
+$(document).ready(
     function() {
-        $("#confirmdelete").click(function() {
-            $("#confirmation").fadeToggle();
+        $(\'[id^="confirmdelete-"]\').click(function() {
+            $(\'#confirmation-\'+$(this).attr(\'id\').replace(\'confirmdelete-\',\'\')).fadeToggle();
         });
-    });
+});
 </script>';
+
 
 
 
