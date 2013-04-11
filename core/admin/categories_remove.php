@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 	if ($amilogged != "true") { exit; }
 ###
 
-include ("$absoluteurl"."components/xmlparser/loadparser.php");
+//include ("$absoluteurl"."components/xmlparser/loadparser.php");
 include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
 $PG_mainbody .= '<h3>'._("Delete a category").'</h3>';
@@ -30,6 +30,8 @@ $n = 0; // counter
 
 $rem = $_GET['cat']; // the variable passed is the category ID
 
+//$PG_mainbody .= "<p>Category: $rem</p>"; //debug
+
 ## add depuration here.......
 
 
@@ -39,26 +41,26 @@ $id = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "
 
 
 //parse
-if (isset($parser->document->category)) {
-	foreach($parser->document->category as $singlecategory)
+if (isset($parser->category)) {
+	foreach($parser->category as $singlecategory)
 	{
 		// echo $singlecategory->id[0]->tagData."<br>";
 		// echo $singlecategory->description[0]->tagData;
 		// echo "<br><br>";
 
-		if ($id != ($singlecategory->id[0]->tagData)) { // if the id of the new category is different from the ids already present in the XML file
+		if ($id != ($singlecategory->id[0])) { // if the id of the new category is different from the ids already present in the XML file
 
 			// put into the array
 			//(yeah yeah I know I'm using arrays instead of XML commands... but I thought this solution, and it works...). If you have a more elegant solution (e.g. PHP native XML commands), please re-code this file and send your work to me under GPL license: beta@yellowjug.com (PS. your solution should work perfectly either with PHP 4 and 5, otherwise I won't be able to include it in the new releases of podcast generator)
 
-				$arrdesc[] .= htmlspecialchars($singlecategory->description[0]->tagData); // Encode special characters - Thanks to Garrett Vogenbeck for this fix
-			$arrid[] .= $singlecategory->id[0]->tagData;
+				$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
+			$arrid[] .= $singlecategory->id[0];
 
 		}
 		else { // if ID already present in XML
 
 			$existsinthefeed = "yes"; // assign duplicated label
-			$duplicatedarrid = $singlecategory->id[0]->tagData; // set the the already present id name into a variable
+			$duplicatedarrid = $singlecategory->id[0]; // set the the already present id name into a variable
 		}
 
 		$n++; //increment count

@@ -55,13 +55,13 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$arrid = NULL;
 		$n = 0;
 
-		foreach($parser->document->category as $singlecategory)
+		foreach($parser->category as $singlecategory)
 		{
 			//echo $singlecategory->id[0]->tagData."<br>";
 			//echo $singlecategory->description[0]->tagData;
 
-			$arr[] .= $singlecategory->description[0]->tagData;
-			$arrid[] .= $singlecategory->id[0]->tagData;
+			$arr[] .= $singlecategory->description[0];
+			$arrid[] .= $singlecategory->id[0];
 			$n++;
 		}
 
