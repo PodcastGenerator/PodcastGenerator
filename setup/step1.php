@@ -23,7 +23,7 @@ include ('checkconfigexistence.php');
 
 $PG_mainbody = NULL; //define
 
-include ("$absoluteurl"."components/xmlparser/loadparser.php");
+//include ("$absoluteurl"."components/xmlparser/loadparser.php");
 include ("$absoluteurl"."setup/readsetuplanguages.php");
 
 
@@ -32,13 +32,13 @@ $arr = NULL;
 $arrid = NULL;
 $n = 0;
 
-foreach($parser->document->language as $singlelanguage)
+foreach($parser->language as $singlelanguage)
 {
 	//echo $singlelanguage->id[0]->tagData."<br>";
 	//echo $singlelanguage->description[0]->tagData;
 
-	$arr[] .= $singlelanguage->description[0]->tagData;
-	$arrid[] .= $singlelanguage->id[0]->tagData;
+	$arr[] .= $singlelanguage->description[0];
+	$arrid[] .= $singlelanguage->id[0];
 	$n++;
 }
 
