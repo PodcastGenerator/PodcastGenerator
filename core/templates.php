@@ -64,7 +64,7 @@ if (file_exists($theme_path."functions.php")) {
 $page_title = $podcast_title; 
 
 //Show category name
-if (isset($_GET['cat']) AND $_GET['cat'] != "all") {
+if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	$existingCategories = readPodcastCategories ($absoluteurl);
 	$page_title .= " &raquo; ".$existingCategories[$_GET['cat']];		
 	}
