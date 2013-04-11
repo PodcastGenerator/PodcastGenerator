@@ -54,7 +54,7 @@ $img_dir = "images/";  // (Trailing slash required). Set chmod 755
 
 $feed_dir = ""; // Where to create feed.xml (empty value = root directory). Set chmod 755
 
-$max_recent = 3; // How many file to show in the home page
+$max_recent = 4; // How many file to show in the home page
 
 $recent_episode_in_feed = "All"; // How many file to show in the XML feed (1,2,5 etc.. or "All")
 

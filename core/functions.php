@@ -272,7 +272,7 @@ $construct_output .= '
 ////////////////////////////////////////////////////////
 //SHOW PODCAST EPISODES
 
-function showPodcastEpisodes($all,$category) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories
+function showPodcastEpisodes($all,$category,$singleEpisode) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories
 
 include("core/includes.php");
 
@@ -671,6 +671,265 @@ $Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
 	return FALSE;
 	} 
 }
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+//SHOW SINGLE PODCAST EPISODE
+
+function showSinglePodcastEpisode($all,$category,$singleEpisode) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories
+
+include("core/includes.php");
+
+
+if ($all == TRUE) $max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
+
+require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+
+$resulting_episodes = NULL; // Define variable that will contain output of this function
+
+$getID3 = new getID3; //initialize getID3 engine
+
+
+
+
+if (isset($singleEpisode) AND $singleEpisode != NULL ) {
+	
+	
+	$key = $singleEpisode;
+		
+
+		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
+		$filenameWithouExtension = $file_parts[0];
+		$fileExtension = $file_parts[1];
+	
+
+		$fileData = checkFileType($fileExtension,$podcast_filetypes,$filemimetypes);
+
+
+			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
+
+
+			$podcast_filetype = $fileData[0];
+
+
+			if ($fileExtension==$podcast_filetype) { // if the extension is accepted
+
+					$file_size = round(filesize($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype")/1048576,2);
+
+					
+					//TIMESTAMP
+					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype");
+					
+					
+					$filedescr = $absoluteurl.$upload_dir.$filenameWithouExtension.'.xml'; //database file
+
+
+					if (file_exists($filedescr)) { //if database file exists 
+
+
+	# READ the XML database file and parse the fields
+						include("$absoluteurl"."core/readXMLdb.php");		
+						
+						//Fields retrieved from XML
+						# $text_title = episode title
+						# $text_shortdesc = short description
+						# $text_longdesc = long description
+						# $text_imgpg = image (url) associated to episode
+						# $text_category1, $text_category2, $text_category3 = categories
+						# $text_keywordspg = keywords
+						# $text_explicitpg = explicit podcast (yes or no)
+						# $text_authornamepg = author's name
+						# $text_authoremailpg = author's email
+
+						//echo "<p>1: $text_category1,2: $text_category2,3: $text_category3</p>";
+						
+				
+
+						$episodeDateAndSize = date ($dateformat,$file_timestamp)." <i>($file_size "._("MB").")</i>";
+						
+
+						# File details (duration, bitrate, etc...)
+						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype"); //read file tags
+
+						$file_duration = @$ThisFileInfo['playtime_string'];
+
+						if($file_duration!=NULL) { // display file duration
+							$episode_details = _("Duration:")." ";
+							$episode_details .= @$ThisFileInfo['playtime_string'];
+							$episode_details .= " "._("m")." - "._('Filetype:')." ";
+							$episode_details .= @$ThisFileInfo['fileformat'];
+
+						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
+							$episode_details .= " (";
+							$episode_details .= @$ThisFileInfo['bitrate']/1000;
+							$episode_details .= " "._("kbps")." ";
+							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
+							$episode_details .= " "._("Hz").")";
+							}
+
+						
+						} 
+
+
+	
+//////////////////////////////////////////////////////////////////////////
+//CONSTRUCT EPISODE OUTPUT!! (here <2.0 themes compatibility is preserved)
+
+$numberOfEpisodesPerLine = 2; //number of episodes per line in some themes - defined in $numberOfEpisodesPerLine
+
+
+if (useNewThemeEngine($theme_path)) { //If use new theme template
+
+
+
+	$resulting_episodes .= '<div class="span6">'; //open the single episode DIV
+}
+
+else { //if an old theme is used
+	$resulting_episodes .= '<div class="episode">'; //open the single episode DIV
+} 
+	
+							
+
+	$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
+
+
+						
+//List of file extensions classified as videos
+$listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
+if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
+$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
+$isvideo = TRUE; 
+}
+
+
+$resulting_episodes .= '</h3>';
+	
+
+// EPISODE DATE AND SIZE
+$resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
+
+
+///////////////////////////////////////////
+//EDIT DELETE BUTTON (JUST IF LOGGED IN)
+
+// IF USER IS LOGGED AND PAGE IS ALL PODCAST
+if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
+
+
+		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+
+}
+		
+						
+
+						$resulting_episodes .= '<p>'.$text_longdesc.'</p>';	 //SHOW short description (no HTML)
+						
+						$resulting_episodes .= '<p>'._("Categories").' '.$text_category1.' '.$text_category2.' '.$text_category3.'</p>';	 //SHOW short description (no HTML)
+						
+						
+						#BUTTONS
+						$resulting_episodes .= '<p>';
+						
+						//show button view Details
+						//$resulting_episodes .= '<a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
+						
+						
+						## BUTTON DOWNLOAD
+						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
+						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
+						//show button (FORCED) download using download.php
+						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						} 
+						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
+						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						}
+						## END - BUTTON DOWNLOAD
+						
+						$resulting_episodes .= '</p>';
+						#END BUTTONS
+		
+						
+						
+					//EPISODE DURATION, FILETYPE AND OTHER DETAILS IS AVAILABLE
+if (isset($episode_details)) {
+$resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
+}
+						
+							#MP3 FLASH PLAYER
+// if it's not a mobile device and streaming is enabled show streaming player
+						if(!detectMobileDevice() AND $enablestreaming=="yes" AND $podcast_filetype=="mp3") { 
+
+							include ("components/player/player.php");
+							$resulting_episodes .= ''.$showplayercode; 
+							$resulting_episodes .= '<br />'; 
+						} 
+						# END - MP3 FLASH PLAYER
+						
+
+					//	$resulting_episodes .= "<br />";
+
+						if (isset($isvideo) AND $isvideo == TRUE) {
+	
+//Display watch button (old)	
+//$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+
+							$isvideo = FALSE; //so variable is assigned on every cicle
+						}
+
+
+					
+				//add social networks and embedded code
+				include("$absoluteurl"."core/attachtoepisode.php");	
+					
+
+					
+					
+					//Blank space
+					$resulting_episodes .= "<br />";
+					
+
+						$resulting_episodes .= "</div>";
+
+							
+					
+						
+			
+
+						
+					} 
+
+				} 
+
+			}
+
+	
+} else { // IF media directory is empty
+	//$resulting_episodes .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
+	
+	$resulting_episodes .= '<div class="topseparator"><p>'._("No episodes at the moment.").'</p></div>';
+	
+}
+
+	
+
+
+return $resulting_episodes; // return results
+
+} // end function showPodcastEpisodes
+
+
+
+
 
 
 ?>
