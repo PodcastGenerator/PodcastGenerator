@@ -139,7 +139,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
 		$PG_mainbody .= '
 			<label for="title">'._("Title").' *</label>
-			<input name="title" id="title" type="text" size="50" maxlength="255" value='.$text_title.' /><br /><br />
+			<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'" /><br /><br />
 
 			<label for="description">'._("Short Description").' *</label>
 
