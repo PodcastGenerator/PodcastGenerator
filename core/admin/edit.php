@@ -144,7 +144,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 			<label for="description">'._("Short Description").' *</label>
 
 			<input name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
-			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value='.$text_shortdesc.'>
+			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value="'.$text_shortdesc.'">
 			<br />
 			<span>
 			<input name="countdown" class="readonlyinput" type="text" value="255" class ="alert" size="3" readonly> '._("characters left").'</span> 
