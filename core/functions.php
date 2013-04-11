@@ -622,7 +622,7 @@ function divideFilenameFromExtension ($filetodivide) {
 	
 		$fileParts[0] = $file_parts['filename'];
 		$fileParts[1] = $file_parts['extension'];
-
+		
 		return $fileParts;
 		
 }

@@ -163,12 +163,9 @@ $PG_mainbody .= "<p><b>"._("Processing episode...")."</b></p>";
 $PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
 
 
-
 	$file_parts = divideFilenameFromExtension($file);
 	$filenameWithouExtension = $file_parts[0];
 	$fileExtension = $file_parts[1];
-
-
 
 // $PG_mainbody .= "<p>"._("File")."_ext <i>$fileExtension</i></p>"; //display file extension
 
@@ -195,14 +192,14 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 	if ($strictfilenamepolicy == "yes") {
 		#enable this to have a very strict filename policy
 
-		$fileExtension[0] = renamefilestrict ($fileExtension[0]);
+		$filenameWithouExtension = renamefilestrict ($filenameWithouExtension);
 
 	}
 
 	else {
 		# LESS strict renaming policy
 
-		$fileExtension[0] = renamefile ($fileExtension[0]);
+		$filenameWithouExtension = renamefile ($filenameWithouExtension);
 
 	}
 
@@ -213,7 +210,7 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 	############## end filename depuration
 
 
-	$filenamechanged = date('Y-m-d')."_".$fileExtension[0]; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
+	$filenamechanged = date('Y-m-d')."_".$filenameWithouExtension; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
 
 	$uploadFile = $upload_dir . $filenamechanged.".".$fileExtension ;
 
