@@ -86,7 +86,7 @@
 		<description>da (danish)</description>
 	</language>
 	<language>
-		<id>de_DE</id>
+		<id>de</id>
 		<description>de (german)</description>
 	</language>
 	<language>
@@ -98,7 +98,7 @@
 		<description>el (greek)</description>
 	</language>
 	<language>
-		<id>en_EN</id>
+		<id>en</id>
 		<description>en (english)</description>
 	</language>
 	<language>
