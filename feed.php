@@ -14,12 +14,17 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
+
+
 	include("config.php"); 
 	include("$absoluteurl"."core/functions.php");
 
 	include("$absoluteurl"."core/supported_media.php");
 
 	include("$absoluteurl"."core/language.php");
+
+
+	$cat_image = $img_dir.$_GET['cat'].".jpg";
 
 	### DEFINE FEED FILENAME
 	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
@@ -79,10 +84,24 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 		<generator>Podcast Generator $podcastgen_version - http://podcastgen.sourceforge.net</generator>
 	<lastBuildDate>".date("r")."</lastBuildDate>
 		<language>$feed_language</language>
-		<copyright>$copyright</copyright>
-		<itunes:image href=\"".$url.$img_dir."itunes_image.jpg\" />
+		<copyright>$copyright</copyright>";
+		
+		
+		if (file_exists($cat_image)) { 
+			$head_feed .= "<siono>yes</siono>";
+			$head_feed .= "
+			<itunes:image href=\"$url$cat_image\" />
+			<image>
+			<url>$url$cat_image</url>";
+		}
+		else{
+		$head_feed .= "<siono>no: $cat_image</siono>";
+		$head_feed .= "<itunes:image href=\"".$url.$img_dir."itunes_image.jpg\" />
 		<image>
-		<url>".$url.$img_dir."itunes_image.jpg</url>
+		<url>".$url.$img_dir."itunes_image.jpg</url>";
+		}
+		
+		$head_feed .= "
 		<title>$podcast_title</title>
 		<link>$url</link>
 		</image>
