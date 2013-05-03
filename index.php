@@ -73,13 +73,9 @@ if (isset($_GET['p'])) {
 		}
 	}
 
-	elseif ($_GET['p']=="episode" AND isset($_GET['name'])) {
-		//include("$absoluteurl"."core/episode.php");
-		
-		$PG_mainbody .= showSinglePodcastEpisode(1,NULL,$_GET['name']); 
-		
-	}
-
+	//elseif ($_GET['p']=="episode" AND isset($_GET['name'])) {
+	
+	
 
 	elseif ($_GET['p']=="ftpfeature") {//DA METTERE IN ADMIN
 		include("$absoluteurl"."core/ftpfeature.php");
@@ -107,6 +103,19 @@ if (isset($_GET['p'])) {
 		
 	}
 }
+
+//if a single episode page is specified (important for SEO etc... social network, search 
+//engines etc.. don't like more than one get vars e.g. myurl.com?p=episode&name=name
+//better to use just one GET for the single episode page
+elseif (isset($_GET['name'])) {
+
+		//include("$absoluteurl"."core/episode.php");
+		
+		$PG_mainbody .= showSinglePodcastEpisode(1,NULL,$_GET['name'],NULL); 
+		
+	}
+
+
 else { // if no p= specifies, e.g. just index.php with no GET
 //show recent episodes (don't show all episodes) - no categories distinction
 		$PG_mainbody .= showPodcastEpisodes(0,0,NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category 

@@ -73,14 +73,24 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 		$page_title .= " &raquo; "._("All Episodes");
 	}
 	
-	//Show title of the episode
-	elseif (isset($_GET['p']) AND $_GET['p']=="episode" AND isset($episode_present) AND $episode_present == "yes") {
-		$page_title .= " - $text_title";
+	
+	//if is single episode, add title of episode to title of page
+	elseif (isset($_GET['name'])) {
+	
+		$titleOfEpisode = showSinglePodcastEpisode(1,NULL,$_GET['name'],1); //the last parameter (1) requires just the title to that function
+		
+		if ($titleOfEpisode != NULL) $page_title .= " &raquo; $titleOfEpisode";
+	
 	}
-
-
+	
 
 $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
+
+
+
+
+
+
 
 ###############################
 # LOAD JAVASCRIPTS IN THE HEADER IF PAGE REQUIRES - REPLACES "-----PG_JSLOAD-----" IN THE HEADER OF THE THEME PAGE
@@ -340,7 +350,44 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 
 	// general XML feed of the podcast
 	$metatagstoreplace .= '
-		<link href="'.$url.$feed_dir.'feed.xml" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />'; 
+		<link href="'.$url.$feed_dir.'feed.xml" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />';
+		
+		
+		
+	//CUSTOMIZE THE PAGES DEDICATED TO SINGLE EPISODES (with dedicated meta tags to increase SEO)
+	
+	//reconstruct the full URL of the episode
+			
+			if (isset($_GET['name'])) {
+			
+			$episodeURLreconstructed = $url.'?name='.$_GET['name'];
+			
+			// then ADD SOME OPEN GRAPH META TAGS
+			$metatagstoreplace .= '
+			<meta property="og:title" content="'.$titleOfEpisode.' &laquo; '.$podcast_title.'"/>
+			<meta property="og:url" content="'.$episodeURLreconstructed.'"/>
+			';
+	
+			// and the canonical link
+			$metatagstoreplace .= '
+			<link rel="canonical" href="'.$episodeURLreconstructed.'" />
+			';
+			} 
+			
+			else { //IF IS HOME PAGE
+			
+			$metatagstoreplace .= '
+			<meta property="og:title" content="'.$podcast_title.'"/>
+			<meta property="og:url" content="'.$url.'"/>
+			<meta property="og:image" content="'.$url.$img_dir.'itunes_image.jpg"/>
+			';
+	
+			// and the canonical link
+			$metatagstoreplace .= '
+			<link rel="canonical" href="'.$url.'" />
+			';
+			} 
+			
 
 	$theme_file_contents = str_replace("-----PG_METATAGS-----", $metatagstoreplace, $theme_file_contents);
 

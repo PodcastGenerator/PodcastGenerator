@@ -43,7 +43,7 @@ else {
 			//		$getID3 = new getID3; //initialize getID3 engine
 
 			//load XML parser for PHP4 or PHP5
-			include("$absoluteurl"."components/xmlparser/loadparser.php");
+		//	include("$absoluteurl"."components/xmlparser/loadparser.php");
 
 
 			$file_multimediale = explode(".",$file_multimediale); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
