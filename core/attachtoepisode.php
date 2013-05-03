@@ -2,7 +2,7 @@
 //ATTACH TO EACH EPISODE (social networks)
 
 //Define the full URL of a single episode
-	$fullURL = $url.'?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype; //full URL of the episode
+	$fullURL = $url.'?name='.$filenameWithouExtension.'.'.$podcast_filetype; //full URL of the episode
 
 	
 // CUSTOMIZED CODE TO EMBED

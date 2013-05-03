@@ -502,7 +502,7 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						$resulting_episodes .= '<p>';
 						
 						//show button view Details
-						$resulting_episodes .= '<a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
+						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
 						
 						
 						## BUTTON DOWNLOAD
@@ -685,7 +685,8 @@ $Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
 ////////////////////////////////////////////////////////
 //SHOW SINGLE PODCAST EPISODE
 
-function showSinglePodcastEpisode($all,$category,$singleEpisode) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories
+function showSinglePodcastEpisode($all,$category,$singleEpisode,$justTitle) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories.
+//Note that $justTitle == 1 will return just the title of the episode (for meta tags in the head etc...) and not follow with the function
 
 include("core/includes.php");
 
@@ -721,7 +722,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 			$podcast_filetype = $fileData[0];
 
 
-			if ($fileExtension==$podcast_filetype) { // if the extension is accepted
+			if ($fileExtension==$podcast_filetype AND file_exists($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
 
 					$file_size = round(filesize($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype")/1048576,2);
 
@@ -752,7 +753,11 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 
 						//echo "<p>1: $text_category1,2: $text_category2,3: $text_category3</p>";
 						
-				
+
+//RETURN JUST THE TITLE IF REQUESTED
+if ($justTitle == 1) {
+return $text_title;
+} 			
 
 						$episodeDateAndSize = date ($dateformat,$file_timestamp)." <i>($file_size "._("MB").")</i>";
 						
@@ -910,7 +915,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 				} 
 
-			}
+			} 
 
 	
 } else { // IF media directory is empty
@@ -922,8 +927,8 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 	
 
-
 return $resulting_episodes; // return results
+
 
 } // end function showPodcastEpisodes
 
