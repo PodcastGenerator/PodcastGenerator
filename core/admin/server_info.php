@@ -30,10 +30,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<br />display_errors = ' . ini_get('display_errors').'';
 
 
+	//IF GETTEXT EXTENSION INSTALLED IN THE SERVER OR NOT
+	//note that $gettextInstalled is created in language.php
+	if ($gettextInstalled == 0) $PG_mainbody .= '<br />'._("GETTEXT extension: not installed (php-gettext will be used)");
+	else $PG_mainbody .= '<br />'._("GETTEXT extension: installed");
 
 
 	if (ini_get('register_globals')!= NULL) { //if value not null
 		$PG_mainbody .= '<br />register_globals = ' . ini_get('register_globals').'';
+	} else {
+		$PG_mainbody .= '<br />register_globals = OFF '._("(this is good)");
 	}
 
 	$PG_mainbody .= '<br />

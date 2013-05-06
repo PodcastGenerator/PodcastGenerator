@@ -14,7 +14,13 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['scriptlang'])) { exit; }
 ########### End
 
 
-//INITIALIZE PHPGETTEXT LIB - https://launchpad.net/php-gettext/
+//FIRST CHECK IF GETTEXT IS INSTALLED AS A PHP EXTENSION IN THE SERVER (Otherwise php-gettext lib will be installed)
+//the var $gettextInstalled is used to show the server info (for future debugs)
+if (function_exists("gettext")) $gettextInstalled = 1; //1 = extension installed
+else $gettextInstalled = 0;
+
+
+//WE USE PHPGETTEXT LIB - https://launchpad.net/php-gettext/
 // define constants
 
 //define('PROJECT_DIR', realpath('./'));
