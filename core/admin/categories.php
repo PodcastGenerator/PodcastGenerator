@@ -52,7 +52,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
 				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
 
-				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding").'\');">
+				<input type="submit" value="'._("Add").'" onClick="showNotify(\''._("Adding...").'\');">
 				';
 			#####
 

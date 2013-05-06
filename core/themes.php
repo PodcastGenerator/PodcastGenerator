@@ -235,7 +235,7 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	#FOOTER
 
-	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution.").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution.");
+	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution");
 
 	$theme_file_contents = str_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
 

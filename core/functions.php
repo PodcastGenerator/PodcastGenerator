@@ -124,7 +124,7 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	$useDate = Time();
 	}
 	
-	$outputform =  _("<p>Date:</p>"); //title
+	$outputform =  '<p>'._("Date:").'</p>'; //title
 	
 	//day
 	$outputformDAY =  "<select class=\"input-small\" name=\"" . $inName . "Day\">\n";
@@ -177,7 +177,7 @@ else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_s
 	
 	
 	$outputform .=  "&nbsp;&nbsp;"; //two blank spaces
-	$outputform .=  _("<p>Time:</p>"); //titoletto
+	$outputform .=  '<p>'._("Time:").'</p>'; //titoletto
 
 
     //ore

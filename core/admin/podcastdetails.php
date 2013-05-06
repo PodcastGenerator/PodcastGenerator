@@ -16,7 +16,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if(isset($amilogged) AND $amilogged =="true") {
 
 	$PG_mainbody .= '<h3>'._("Change your podcast details").'</h3>
-		<p><span class="alert">'._("This information will be used both in this website and in the resulting RSS feed").'</span></p>';
+		<p><span class="alert">'._("These information will be used both in this website and in the resulting RSS feed").'</span></p>';
 
 	if (isset($_GET['action']) AND $_GET['action']=="change") { // if action is set
 
