@@ -46,6 +46,7 @@ if (isset($_GET['p'])) {
 	if ($_GET['p']=="archive") {
 		$page_title .= " - "._("Podcast Archive")."";
 
+		/*
 		#########
 		// display category name in the title	
 		if (isset($_GET['cat']) and $_GET['cat'] != NULL) {	
@@ -80,7 +81,7 @@ if (isset($_GET['p'])) {
 			}
 
 
-		}	
+		}	*/
 		#########		
 	}
 	elseif ($_GET['p']=="episode" AND isset($episode_present) AND $episode_present == "yes") {
