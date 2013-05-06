@@ -46,9 +46,17 @@ if(isset($amilogged) AND $amilogged =="true") {
 	}
 	else { // if action not set
 
+	/*
 		include ("$absoluteurl"."components/xmlparser/loadparser.php");
 		include ("$absoluteurl"."core/admin/readitunescategories.php");
+*/
 
+
+if (file_exists($absoluteurl."components/itunes_categories/itunes_categories.xml")) {
+
+$parser = simplexml_load_file($absoluteurl.'components/itunes_categories/itunes_categories.xml','SimpleXMLElement',LIBXML_NOCDATA);
+	
+}
 
 		// define variables
 		$arr = NULL;
