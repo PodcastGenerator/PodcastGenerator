@@ -227,13 +227,10 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 							//$file_contents=NULL; 
 
 
-							######## INCLUDE PARSER AND PARSE
-							//load XML parser for PHP4 or PHP5
-							require_once("$absoluteurl"."components/xmlparser/loadparser.php");
 
-							# READ the XML database file and parse the fields
-							include("$absoluteurl"."core/readXMLdb.php");
-
+	# READ the XML database file and parse the fields
+						include("$absoluteurl"."core/readXMLdb.php");		
+						
 
 
 							### Here the output code for the episode is created
