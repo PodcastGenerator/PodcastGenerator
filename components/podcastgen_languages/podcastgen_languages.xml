@@ -11,10 +11,4 @@
 		<description>English</description>
 	</language>
 	
-	<language>
-		<id>de_DE</id>
-		<description>Deutsch</description>
-	</language>
-	
-	
 </PodcastGenerator>

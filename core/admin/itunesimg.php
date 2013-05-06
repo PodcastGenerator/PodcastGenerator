@@ -41,7 +41,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 				if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile2))
 				{
-					$PG_mainbody .= "<p><b>"._("iTunes image replace successfully.")."</b></p>"; // If upload is successful.
+					$PG_mainbody .= "<p><b>"._("iTunes cover art replaced successfully.")."</b></p>"; // If upload is successful.
 				}
 				else { //if upload NOT successful
 
