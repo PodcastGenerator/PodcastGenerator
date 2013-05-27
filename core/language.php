@@ -43,6 +43,9 @@ if (isset($scriptlang)) {
 //define('DEFAULT_LOCALE', $scriptlang); 
 $locale = $scriptlang;
 }
+elseif (!isset($scriptlang) AND isset($_POST['setuplanguage'])) { //if setup
+$locale = $_POST['setuplanguage'];
+}
 else {
 //define('DEFAULT_LOCALE', 'en_EN');
 $locale = "en_EN";
