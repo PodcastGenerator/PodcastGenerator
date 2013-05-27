@@ -8,7 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-/*
+/*aa
  NOTE: podcastgen uses gettext to handle locale and translations
  English is the main language and will work always. However, when using translations:
  if the gettext extension is not installed in the server then a php lib is used.
