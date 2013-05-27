@@ -8,7 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-/*aa
+/*
  NOTE: podcastgen uses gettext to handle locale and translations
  English is the main language and will work always. However, when using translations:
  if the gettext extension is not installed in the server then a php lib is used.
@@ -49,38 +49,36 @@ $locale = "en_EN";
 }
 
 
+//Encoding! UT8 recommended!
+$encoding = 'UTF-8';
+
+// Set the text domain as 'messages'
+$domain = 'messages';
+
 
 if ($gettextInstalled == 0) {
 //WE USE PHPGETTEXT LIB - https://launchpad.net/php-gettext/
-
-
-
 require_once($absoluteurl.'components/php-gettext/gettext.inc');
-
-//$supported_locales = array('en_EN', 'it_IT', 'de_CH');
-$encoding = 'UTF-8';
 
 //$locale = (isset($_GET['lang']))? $_GET['lang'] : DEFAULT_LOCALE;
 
 // gettext setup
 
 // TO DEBUG  T_setlocale in /core/language.php doesn't work on IIS8, PHP5.5alpha4 when php_gettext.dll is enabled in php.ini -> switching to setlocale doesn't generate errors but doesn't change language either
+
 T_setlocale(LC_MESSAGES, $locale);
-
-
-// Set the text domain as 'messages'
-$domain = 'messages';
 T_bindtextdomain($domain, LOCALE_DIR);
-T_bind_textdomain_codeset($domain, $encoding);
+T_bind_textdomain_codeset($domain, $encoding);  //encoding
 T_textdomain($domain);
 }
 
 else { //IF GETTEXT EXTENSION INSTALLED
 
-putenv("LC_ALL=$locale");
+if (!ini_get('safe_mode')) putenv("LC_ALL=$locale");
 setlocale(LC_ALL, $locale);
-bindtextdomain("messages", LOCALE_DIR);
-textdomain("messages");
+bindtextdomain($domain, LOCALE_DIR);
+bind_textdomain_codeset($domain, $encoding); //encoding
+textdomain($domain);
 	
 }
 
