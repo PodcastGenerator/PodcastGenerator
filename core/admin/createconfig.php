@@ -105,7 +105,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	$itunes_category[1] = "'.$itunes_category[1].'";
 	$itunes_category[2] = "'.$itunes_category[2].'";
 
-	$link = $url."?p=episode&amp;name="; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
+	$link = $url."?name="; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
 
 	$feed_language = "'.$feed_language.'"; // Language used in the XML feed (can differ from the script language).
 
