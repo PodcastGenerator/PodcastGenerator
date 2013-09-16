@@ -21,9 +21,10 @@ include ('checkconfigexistence.php');
 
 $PG_mainbody = NULL; //define
 
-//include ("$absoluteurl"."components/xmlparser/loadparser.php");
-include ("$absoluteurl"."setup/readsetuplanguages.php");
-
+//Get the XML document loaded into a variable (The xml parser must be previously included)
+if (file_exists($absoluteurl."components/podcastgen_languages/podcastgen_languages.xml")) {
+$parser = simplexml_load_file($absoluteurl.'components/podcastgen_languages/podcastgen_languages.xml','SimpleXMLElement',LIBXML_NOCDATA);
+}
 
 // define variables
 $arr = NULL;
