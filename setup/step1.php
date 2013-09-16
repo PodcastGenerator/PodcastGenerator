@@ -14,10 +14,6 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 include ('checkconfigexistence.php');
-?>
-
-
-<?php
 
 $PG_mainbody = NULL; //define
 
@@ -56,7 +52,8 @@ $PG_mainbody .= '<select name="setuplanguage">';
 natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
 
 
-$browserlanguage = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2); // ASSIGN BROWSER LANGUAGE into a VARIABLE
+$browserlanguage = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2); // Extract browser locale (en, es, it)
+$browserlanguage .= '_'.strtoupper($browserlanguage); //this way we obtain the complete locale (e.g. en_EN, es_ES, it_IT) 
 
 foreach ($arr as $key => $val) {
 
