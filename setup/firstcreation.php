@@ -18,7 +18,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if (file_exists("../freebox-content.txt")) { //if freebox text is already present
 
-	echo "<font color=\"red\">"._("Freebox text already exists...")."</font><br />";
+	echo "<span style=\"color:red;\">"._("Freebox text already exists...")."</span><br />";
 
 
 } else { // else create "freebox-content.txt" file in the root dir
@@ -50,7 +50,7 @@ fclose($createtxtbox);
 
 if (file_exists("../categories.xml")) { //if categories already exist stop the script
 
-	echo "<font color=\"red\">"._("Categories file already exists...")."</font><br />";
+	echo "<span style=\"color:red;\">"._("Categories file already exists...")."</span><br />";
 
 
 } else { // else create "categories.xml" file in the root dir

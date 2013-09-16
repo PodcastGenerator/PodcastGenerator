@@ -26,7 +26,7 @@ $script_directory = "../";
 
 		if (file_exists("../config.php")) { //if config.php already exists stop the script
 
-			echo "<font color=\"red\">"._("Config.php file already exists!")."</font><br />"._("Please delete this file before proceeding with the installation...");
+			echo "<span style=\"color:red;\">"._("Config.php file already exists!")."</span><br />"._("Please delete this file before proceeding with the installation...");
 
 			exit;
 
@@ -36,7 +36,7 @@ $script_directory = "../";
 
 		###############
 		############### try to set writing permissions
-		$PG_mainbody .= "<b>"._("Now checking folders permissions")."</b><br />";
+		$PG_mainbody .= "<p><strong>"._("Now checking folders permissions")."</strong><br />";
 
 		## checking media dir
 		$fp = fopen("$media_directory$testfile",'a'); //create test file
@@ -46,12 +46,12 @@ $script_directory = "../";
 
 		if (file_exists("$media_directory$testfile")) {
 
-			$PG_mainbody .= "<p><font color=\"green\">"._("Media Directory")." "._("is writable")."</font></p>";
+			$PG_mainbody .= "<p><span style=\"color:green;\">"._("Media Directory")." "._("is writable")."</span></p>";
 			unlink ("$media_directory$testfile");
 			$dir1 = "ok";
 		}
 		else {
-			$PG_mainbody .= "<p><font color=\"red\"><b>"._("Media Directory")." ".$media_directory." "._("is NOT writable")."</b></font></p>";
+			$PG_mainbody .= "<p><span style=\"color:red;\"><strong>"._("Media Directory")." ".$media_directory." "._("is NOT writable")."</strong></span></p>";
 			$dir1 = "NO";
 		}
 
@@ -64,12 +64,12 @@ $script_directory = "../";
 
 		if (file_exists("$images_directory$testfile")) {
 
-			$PG_mainbody .= "<p><font color=\"green\">"._("Images Directory")." "._("is writable")."</font></p>";
+			$PG_mainbody .= "<p><span style=\"color:green;\">"._("Images Directory")." "._("is writable")."</span></p>";
 			unlink ("$images_directory$testfile");
 			$dir2 = "ok";
 		}
 		else {
-			$PG_mainbody .= "<p><font color=\"red\"><b>"._("Images Directory")." ".$images_directory." "._("is NOT writable")."</b></font></p>";
+			$PG_mainbody .= "<p><span style=\"color:red;\"><strong>"._("Images Directory")." ".$images_directory." "._("is NOT writable")."</strong></span></p>";
 			$dir2 = "NO";
 		}
 
@@ -82,20 +82,20 @@ $script_directory = "../";
 
 		if (file_exists("$script_directory$testfile")) {
 
-			$PG_mainbody .=  "<p><font color=\"green\">"._("Root Directory")." "._("is writable")."</font></p>";
+			$PG_mainbody .=  "<p><span style=\"color:green;\">"._("Root Directory")." "._("is writable")."</span></p>";
 			unlink ("$script_directory$testfile");
 			$dir3 = "ok";
 		}
 		else {
-			$PG_mainbody .=  "<p><font color=\"red\"><b>"._("Root Directory")." ".$script_directory." "._("is NOT writable")."</b></font></p>";
+			$PG_mainbody .=  "<p><span style=\"color:red;\"><strong>"._("Root Directory")." ".$script_directory." "._("is NOT writable")."</strong></span></p>";
 			$dir3 = "NO";
 		}
 
 
 		if (isset($dir1) AND $dir1=="ok" AND isset($dir2) AND $dir2=="ok" AND isset($dir3) AND $dir3=="ok") { // OK CAN PROCEED
 
-			$PG_mainbody .= "<br /><p><b>"._("Directories have correct writing permissions")."</b></p>";
-			$PG_mainbody .=  "<p>"._("You can proceed with Podcast Generator Installation...")."</p>";
+			$PG_mainbody .= "<br /><p><strong>"._("Yes! Directories have the correct writing permissions")."</strong></p>";
+			$PG_mainbody .=  "<p>"._("You can now proceed to the last step of Podcast Generator Installation...")."</p>";
 
 			$PG_mainbody .= '
 				<form method="post" action="index.php?step=3">
@@ -107,7 +107,7 @@ $script_directory = "../";
 
 		} else {
 
-			$PG_mainbody .=  "<br /><br /><font color=\"red\"><b>"._("Try to set writing permission:")."</b></font>";
+			$PG_mainbody .=  "<br /><br /><span style=\"color:red;\"><strong>"._("Try to set writing permission:")."</strong></span>";
 
 			if (isset($dir1) AND $dir1!="ok") {
 				$PG_mainbody .=  "<br />"._("Setting writing permission to")." ".$media_directory." ("._("Media Directory").")";
@@ -122,7 +122,7 @@ $script_directory = "../";
 				chmod("$script_directory", 0777);
 			}
 
-			$PG_mainbody .=  "<br /><p><b>"._("I tried to set writing permissions (chmod 777) to the directories listed above...")."</b></p>";
+			$PG_mainbody .=  "<br /><p><strong>"._("I tried to set writing permissions (chmod 777) to the directories listed above...")."</strong></p>";
 
 			// reload button
 			$PG_mainbody .= '
@@ -134,7 +134,7 @@ $script_directory = "../";
 				';
 
 			$PG_mainbody .=  "<p>"._("and see if you can proceed with the installation of the script.")."</p>";
-			$PG_mainbody .=  "<p>"._("...if not, set writing permission manually using your FTP program and be sure to have the privilege to change permission to folders on your server.")."</p><br />";
+			$PG_mainbody .=  "<p>"._("...if not, you can set writing permission manually (via FTP, SSH, etc...) and make sure you have the privileges to change folder permissions on your server.")."</p><br />";
 
 
 		}
