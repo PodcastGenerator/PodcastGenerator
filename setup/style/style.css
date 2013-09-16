@@ -1,47 +1,24 @@
 body{	margin:0;
 	margin-top:20px;
-	margin-bottom:20px;	background-image: url(../img/back.png);	background-position:top;	background-repeat:repeat-x;}
+	margin-bottom:20px;	background-color:#fff;}
 	
 .container {
 	width:640px;	margin: 0 auto 0;	padding:30px;	padding-top:10px;	text-align:left;
-	border:2px solid #999;
-	font-family: Arial, helvetica, sans-serif;
-	background-color:#fff;	border-radius: 20px;	-moz-border-radius: 20px;	-webkit-border-radius: 20px;	box-shadow: 10px 10px 15px #354871;	-webkit-box-shadow:10px 10px 15px #354871;	-moz-box-shadow: 10px 10px 15px #354871;
+	border-top:2px solid #00688B;	border-bottom:1px solid #00688B;
+	font-family: 'Didact Gothic', sans-serif;
+	background-color:#fff;
 	}
 	
-	
-.sfondo {
-	background-color:#ffffff;
-	background-repeat: no-repeat;
-	padding-top:20px;
-	}
-	
-
-
-	
-	
-.header {
-	border: 0;
-	/* background-image: url(../img/pg-header.png); */	background-position:top right;	background-repeat:no-repeat;
-	background-color: #fff;
-	margin:0px;
-	margin-bottom:30px;
-	}
 
 
 
 a:link, a:active, a:visited {
-	text-decoration:none;
-	color:#cc3300;
+	text-decoration:underlined;
+	color:#00688B;
 	}
 
 a:hover {
-	color:#e67817;
+	color:#5F9EA0;
 	} 
-
-.footerdx {
-	float:right;
-	text-align:right;
-	border:0;
-	}		input, textarea, select {	font-family: 'Didact Gothic', sans-serif;   border: 1px solid #555;   padding: 0.2em;   font-size: 1em;   line-height: 1.2em;	border-radius: 5px;	-moz-border-radius: 5px;	-webkit-border-radius: 5px;	margin-bottom:0; }input {	height:30px;	padding-top:0;}
-h1 {text-shadow: #999 0.1em 0.1em 0.2em;}
+input, textarea, select {font-family: 'Didact Gothic', sans-serif;   border: 1px solid #555;   font-size: 1em;   line-height: 1.2em; }input {	height:30px;	padding-top:0;}
+.nav {color:#00688B;}

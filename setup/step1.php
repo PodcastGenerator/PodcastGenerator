@@ -17,9 +17,7 @@ include ('checkconfigexistence.php');
 ?>
 
 
-
-
-	<?php
+<?php
 
 $PG_mainbody = NULL; //define
 
@@ -68,7 +66,7 @@ foreach ($arr as $key => $val) {
 
 	// PRE select the language in the form checking the browser language
 
-	if (isset($browserlanguage) AND  $browserlanguage == $arrid[$key]) {
+	if (isset($browserlanguage) AND $browserlanguage == $arrid[$key]) {
 		$PG_mainbody .= ' selected';
 	}
 

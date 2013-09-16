@@ -34,13 +34,14 @@ include('firstcreatecategory.php'); //creates categories.xml file in the root di
 include('firstcreatefreeboxtext.php'); //creates freebox-content.txt file in the root dir
 */
 
-include('firstcreation.php'); //creates categories file, freebox and attachment files
+		include('firstcreation.php'); //creates categories file, freebox and attachment files
 
-		$PG_mainbody .= '<p>'._("Creation of the configuration file...").'</p>';
+	//	$PG_mainbody .= '<p>'._("Creation of the configuration file...").'</p>';
 
 		include('firstcreateconfig.php'); //creates config.php file in the root dir
-		$PG_mainbody .= '<p>'._("Installation completed successfully :-)").'</p>';
-		$PG_mainbody .= '<p><a href="../?p=admin"><b>'._("Start managing your podcast!").'</b></a></p>';
+		
+		$PG_mainbody .= '<p>'._("Installation completed successfully...").'</p>';
+		$PG_mainbody .= '<p><a href="../?p=admin"><b>'._("Go right to your podcast!").'</b></a></p>';
 	}
 	else { //if pwds not set or don't match
 
