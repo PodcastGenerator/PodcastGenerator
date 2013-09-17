@@ -9,11 +9,8 @@ font-weight:bold;
 }
 
 .importantSection {
-padding: 25px;
-padding-top:0;
-background-color:#EEE;
--moz-border-radius: 15px;
-border-radius: 15px;
+padding: 1em 1em 1em 0;
+margin-bottom:2em;
 }
 
 .sectionTitle {

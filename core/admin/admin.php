@@ -23,19 +23,23 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	// check if user is already logged in
 	if(isset($amilogged) AND $amilogged =="true") {
 
-
+		
 		if (isset($_GET['do']) AND $_GET['do']=="ftpfeature") {
-
+		
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/ftpfeature.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 		elseif (isset($_GET['do']) AND $_GET['do']=="generate") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/feedgenerate.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="upload") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/upload.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
 		/*
@@ -46,62 +50,73 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		*/
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="edit") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/edit.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="delete") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/delete.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="categories") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/categories.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="freebox") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/freebox.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
 		
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="theme") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/selecttheme.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="itunesimg") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/itunesimg.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="itunescat") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/itunescategories.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
 
 
 		elseif (isset($_GET['do']) AND $_GET['do']=="changedetails") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/podcastdetails.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
 		elseif (isset($_GET['do']) AND $_GET['do']=="config") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/scriptconfig.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		}
-
 		elseif (isset($_GET['do']) AND $_GET['do']=="serverinfo") {
-
+		$PG_mainbody .= '<div class=" episodebox">';
 			include("$absoluteurl"."core/admin/server_info.php");
+		$PG_mainbody .= '</div>'; //close episodebox 
 		} 
 
+	
+	
 		else {
 
 			if (isset($firsttimehere) AND $firsttimehere == "yes") { // if it's the first time (parameter specified in config.php)
 
 			$PG_mainbody .= "
-				<div class=\"topseparator\"> 
+				<div class=\"topseparator episodebox\"> 
 				<h3>"._("Welcome")."</h3>
 				<p><i>"._("This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are reccommended to provide a podcast title, description, etc... Try a different theme!")."</i> <a href=\"?p=admin&amp;do=changedetails\"><b>"._("Start now...")."</b></a></p>
 				</div>";	
@@ -109,7 +124,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 
 		$PG_mainbody .= '
-			<div class="topseparator"> 
+			<div class="topseparator episodebox"> 
 			<h3>'._("Episodes").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=upload">'._("New Podcast").'</a></li>
@@ -130,7 +145,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		
 
 
-		$PG_mainbody .= '<div class="topseparator"> 
+		$PG_mainbody .= '<div class="topseparator episodebox"> 
 			<h3>'._("Themes and aspect").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=theme">'._("Change Theme").'</a></li>';
@@ -142,7 +157,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			</div>
 
 
-			<div class="topseparator"> 
+			<div class="topseparator episodebox"> 
 			<h3>'._("iTunes Store Settings").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=itunesimg">'._("Change iTunes Cover Art").'</a></li>
@@ -151,7 +166,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		</ul>
 			</div>
 
-			<div class="topseparator"> 
+			<div class="topseparator episodebox"> 
 			<h3>'._("Your podcast details").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=changedetails">'._("Change your podcast details").'</a></li>
@@ -159,7 +174,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		</ul>
 			</div>
 
-			<div class="topseparator"> 
+			<div class="topseparator episodebox"> 
 			<h3>'._("Podcast Generator Configuration").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=config">'._("Change Podcast Generator Configuration").'</a></li>
