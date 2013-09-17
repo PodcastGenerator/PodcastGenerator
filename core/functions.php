@@ -431,7 +431,7 @@ if (useNewThemeEngine($theme_path)) { //If use new theme template
 		$resulting_episodes .= '<div class="row-fluid">'; // row-fluid is a line that contains 1 or more episodes
 		}
 
-	$resulting_episodes .= '<div class="span6">'; //open the single episode DIV
+	$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
 }
 
 else { //if an old theme is used
@@ -795,7 +795,7 @@ $numberOfEpisodesPerLine = 2; //number of episodes per line in some themes - def
 if (useNewThemeEngine($theme_path)) { //If use new theme template
 
 
-
+	$resulting_episodes .= '<div class="episodebox">'; //open the single episode BOX
 	$resulting_episodes .= '<div class="span6">'; //open the single episode DIV
 }
 
@@ -903,9 +903,9 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 					$resulting_episodes .= "<br />";
 					
 
-						$resulting_episodes .= "</div>";
+						$resulting_episodes .= "</div>"; //close the single episode DIV
 
-							
+						$resulting_episodes .= "</div>";	//close the single episode BOX
 					
 						
 			
