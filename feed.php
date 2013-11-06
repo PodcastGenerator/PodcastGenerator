@@ -32,8 +32,11 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 	###### display category title
-	include ("$absoluteurl"."components/xmlparser/loadparser.php");
-	include ("$absoluteurl"."core/admin/readXMLcategories.php");
+//	include ("$absoluteurl"."components/xmlparser/loadparser.php");
+//	include ("$absoluteurl"."core/admin/readXMLcategories.php");
+
+# READ the XML database file and parse the fields
+	//				include("$absoluteurl"."core/readXMLdb.php");
 
 	if (file_exists("$absoluteurl"."categories.xml") AND isset($parser->document->category)) {
 
@@ -254,7 +257,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 							######## INCLUDE PARSER AND PARSE
 							//load XML parser for PHP4 or PHP5
-							require_once("$absoluteurl"."components/xmlparser/loadparser.php");
+		//					require_once("$absoluteurl"."components/xmlparser/loadparser.php");
 
 							# READ the XML database file and parse the fields
 							include("$absoluteurl"."core/readXMLdb.php");
