@@ -210,7 +210,9 @@ if ($fileExtension==$podcast_filetype) { //003 (if file extension is accepted, g
 	############## end filename depuration
 
 
-	$filenamechanged = date('Y-m-d')."_".$filenameWithouExtension; //add date, to order files in mp3 players --- here the date is fixed Y-m-d to keep the order
+if ($strictfilenamepolicy == "yes") 	$filenamechanged = date('Y-m-d')."_".$filenameWithouExtension; //add date, to order files in mp3 players
+else $filenamechanged = $filenameWithouExtension;
+
 
 	$uploadFile = $upload_dir . $filenamechanged.".".$fileExtension ;
 
