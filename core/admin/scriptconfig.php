@@ -209,7 +209,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 		########## strictfilename
 
 		$PG_mainbody .= '<br /><br /><p><label for="strictfilename"><b>'._("Enable strict episode renaming policy?").'</b></label></p>
-			<span class="alert">'._("If this option is enabled the files you upload will be renamed using just characters from A to Z and numbers. Unless you are using a different set of characters (e.g. Oriental, Arabic, etc...), YES is the suggested value.").'</span>
+			<span class="alert">'._("The uploaded episode files will be automatically renamed using just alphanumeric characters and the current date.").'</span>
 			<p>'._("Yes").' <input type="radio" name="strictfilename" value="yes" ';
 
 		if ($strictfilenamepolicy == "yes") {
