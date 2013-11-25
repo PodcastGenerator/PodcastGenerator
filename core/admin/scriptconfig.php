@@ -341,6 +341,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 			$n++;
 		}
 
+		
+
 
 		## SCRIPT LANGUAGES LIST
 
@@ -354,12 +356,13 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		foreach ($arr as $key => $val) {
 
-
+//$thisLanguage is created for retro compatibility (previous versions of PG use en while new use en_EN)
+			$thisLanguage = explode ("_",$arrid[$key]); 
 
 			$PG_mainbody .= '
 				<option value="' . $arrid[$key] . '"';
 
-			if ($scriptlang == $arrid[$key]) {
+			if ($scriptlang == $thisLanguage[0] OR $scriptlang == $arrid[$key]) {
 				$PG_mainbody .= ' selected';
 			}
 
