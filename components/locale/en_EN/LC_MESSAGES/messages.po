@@ -1,1202 +1,1435 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2012-12-03 10:53+0100\n"
-"PO-Revision-Date: 2012-12-03 10:56+0100\n"
+"POT-Creation-Date: 2013-11-30 20:42+0100\n"
+"PO-Revision-Date: 2013-11-30 20:42+0100\n"
 "Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: C:\\wamp\\www\\podcastgen\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
 
-#: C:\wamp\www\podcastgen/core/archive_cat.php:40
-msgid "Choose a category:"
+#: /Users/alberto/Sites/podcastgen/code/index.php:49
+msgid "Select a category:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/archive_cat.php:57
-msgid "Show all episodes"
+#: /Users/alberto/Sites/podcastgen/code/index.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:285
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:292
+msgid "All Episodes"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/archive_cat.php:97
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Jan"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Feb"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Mar"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Apr"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "May"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jun"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jul"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Aug"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Sep"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Oct"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Nov"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Dec"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:127
+msgid "Date:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:180
+msgid "Time:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:298
 msgid "Subscribe to this category"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/archive_cat.php:98
-msgid "Subscribe to this category with iTunes"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:167
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:83
-#: C:\wamp\www\podcastgen/core/episode.php:80
-#: C:\wamp\www\podcastgen/core/episode.php:175
-#: C:\wamp\www\podcastgen/core/recent_list.php:92
-#: C:\wamp\www\podcastgen/core/recent_list.php:187
-msgid "Download"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:167
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:83
-#: C:\wamp\www\podcastgen/core/episode.php:80
-#: C:\wamp\www\podcastgen/core/recent_list.php:92
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:57
-#: C:\wamp\www\podcastgen/core/admin/upload.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:393
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:762
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "MB"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/archive_cat.php:198
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:110
-#: C:\wamp\www\podcastgen/core/episode.php:130
-msgid "(Video Podcast)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:230
-msgid "This category is empty..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:233
-msgid "This category doesn't exist"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:236
-msgid "Back to category list"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:239
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:142
-#: C:\wamp\www\podcastgen/core/episode.php:195
-#: C:\wamp\www\podcastgen/core/recent_list.php:207
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:142
-msgid "Directory"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_cat.php:239
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:142
-#: C:\wamp\www\podcastgen/core/episode.php:195
-#: C:\wamp\www\podcastgen/core/recent_list.php:207
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:142
-msgid "is empty..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/archive_nocat.php:20
-msgid "Episodes Archive"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:89
-#: C:\wamp\www\podcastgen/core/recent_list.php:101
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:771
 msgid "Duration:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/episode.php:91
-#: C:\wamp\www\podcastgen/core/recent_list.php:103
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
 msgid "m"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/episode.php:91
-#: C:\wamp\www\podcastgen/core/recent_list.php:103
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
 msgid "Filetype:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/episode.php:95
-#: C:\wamp\www\podcastgen/core/recent_list.php:107
-msgid "Bitrate"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:410
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:779
+msgid "kbps"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/episode.php:97
-#: C:\wamp\www\podcastgen/core/recent_list.php:109
-msgid "KBPS"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:412
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:781
+msgid "Hz"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/episode.php:97
-#: C:\wamp\www\podcastgen/core/recent_list.php:109
-msgid "Frequency:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:99
-#: C:\wamp\www\podcastgen/core/recent_list.php:111
-msgid "HZ"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:169
-#: C:\wamp\www\podcastgen/core/recent_list.php:181
-msgid "Watch this video (requires browser plugin)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:169
-#: C:\wamp\www\podcastgen/core/recent_list.php:181
-msgid "Watch"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:175
-#: C:\wamp\www\podcastgen/core/recent_list.php:187
-msgid "Download this episode"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/episode.php:178
-msgid "Keywords:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/recent_list.php:142
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:450
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:815
 msgid "Video Podcast"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/themes.php:16
-msgid "Failed to open theme file"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:469
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:834
+msgid "Edit / Delete"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/themes.php:45
-#: C:\wamp\www\podcastgen/core/themes.php:215
-msgid "Podcast Archive"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:505
+msgid "View details"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/themes.php:141
-msgid "feed:"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:512
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:515
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:856
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:859
+msgid "Download"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/themes.php:142
-#: C:\wamp\www\podcastgen/core/themes.php:143
-msgid "Copy the feed link and paste it into your aggregator"
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:595
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:924
+msgid "No episodes at the moment."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/themes.php:145
-msgid "Subscribe to this podcast with iTunes"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:156
-msgid "Make a donation:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:156
-#: C:\wamp\www\podcastgen/core/themes.php:157
-msgid "If you like Podcast Generator please consider making a donation:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-#: C:\wamp\www\podcastgen/core/themes.php:221
-msgid "Podcast Generator"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:368
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:22
-msgid "Your server configuration"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-msgid "Check for updates"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-msgid "Subscribe to the news feed"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-msgid "Read documentation and get support"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:162
-msgid "Credits"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:213
-msgid "Home"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:217
-msgid "Admin"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:221
-msgid "Powered by"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/themes.php:221
-msgid ", an open source podcast publishing solution."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:102
-#: C:\wamp\www\podcastgen/core/admin/login.php:48
-#: C:\wamp\www\podcastgen/core/admin/login.php:68
-msgid "Welcome"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:103
-msgid ""
-"This is possibly the first time you have entered this page: you haven't "
-"changed your podcast details yet. You are reccommended to set a podcast "
-"title, description, your name, e-mail, etc..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:103
-msgid "Start now..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:110
-msgid "Episodes"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:112
-msgid "New Podcast"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:113
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:21
-msgid "Edit/Delete Podcasts"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:114
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:21
-#: C:\wamp\www\podcastgen/core/admin/upload.php:59
-msgid "FTP Feature"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:115
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:26
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:46
-msgid "Manually regenerate xml feed"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/admin.php:122
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:51
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:842
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:57
 msgid "Categories"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:124
-#: C:\wamp\www\podcastgen/core/admin/categories.php:34
-msgid "Add / Delete categories"
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:18
+msgid "Failed to open theme file"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:132
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:24
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:40
-msgid "FreeBox"
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:155
+msgid "feed"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:134
-msgid "Customize your FreeBox"
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:156
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:160
+msgid "Copy the feed link and paste it into your aggregator"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:162
+msgid "Subscribe to this podcast with iTunes"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "Make a donation:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "If you like Podcast Generator please consider making a donation:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+msgid "Podcast Generator"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:22
+msgid "Your server configuration"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Check for updates"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Subscribe to the news feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Read documentation and get support"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Credits"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:246
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:236
+msgid "Home"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:263
+msgid "Archive"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid "Powered by"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid ", an open source podcast publishing solution"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:238
+msgid "Podcast Archive"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:158
+msgid "feed:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:240
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:22
+msgid "Admin"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:120
+msgid "Welcome"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid ""
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid "Start now..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:128
+msgid "Episodes"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:130
+msgid "New Podcast"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:131
+msgid "Edit / Delete Podcasts"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:136
+msgid "Manage categories"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:141
+msgid "Manually regenerate RSS feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:149
 msgid "Themes and aspect"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:142
-msgid "Select Theme"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:151
+msgid "Change Theme"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:148
-msgid "iTunes Settings"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:154
+msgid "Customize your FreeBox"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:161
+msgid "iTunes Store Settings"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:163
+msgid "Change iTunes Cover Art"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:164
 msgid "Select or change iTunes Categories"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:152
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:165
 msgid "Submit your podcast to the iTunes Store"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:170
 msgid "Your podcast details"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:159
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:18
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:18
 msgid "Change your podcast details"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:160
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:173
 msgid "Validate this feed with w3c validation service"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:165
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:178
 msgid "Podcast Generator Configuration"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:167
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:18
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:18
 msgid "Change Podcast Generator Configuration"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:192
 msgid "Podcast Generator News"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:35
-msgid ""
-"Hint: Don't you need to classify your podcast into categories? Too "
-"complicated? "
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:34
+msgid "Add / Delete categories"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:35
-msgid "Simply disable them"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:48
-#: C:\wamp\www\podcastgen/core/admin/categories.php:111
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Disable them"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:120
 msgid "Add a new category:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:51
-#: C:\wamp\www\podcastgen/core/admin/categories.php:114
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:113
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
 msgid "Add"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:51
-#: C:\wamp\www\podcastgen/core/admin/categories.php:114
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:113
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
 msgid "Adding..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:62
 msgid "Delete Categories"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:86
-#: C:\wamp\www\podcastgen/core/admin/categories.php:89
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:112
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:116
-msgid "Delete"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:76
+msgid "Delete Category"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:89
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
 msgid "Do you really want to permanently delete this category?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:89
-#: C:\wamp\www\podcastgen/core/admin/edit.php:221
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:116
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:209
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:99
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:120
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:140
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:160
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:180
-#: C:\wamp\www\podcastgen/core/admin/upload.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:229
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:209
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:131
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:153
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:193
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:213
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:139
 msgid "Yes"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:89
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Delete"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
 msgid "Deleting..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:89
-#: C:\wamp\www\podcastgen/core/admin/edit.php:227
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:121
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:215
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:105
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:126
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:146
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:166
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:186
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:137
-#: C:\wamp\www\podcastgen/core/admin/upload.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:235
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:215
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:219
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:140
 msgid "No"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:105
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:104
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:100
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:114
 msgid "Categories file doesn't exist or empty..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories.php:122
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:117
 msgid "Categories disabled"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:19
 msgid "Add a category"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:114
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:114
 msgid "New category:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
 msgid "Category added!"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:116
-#: C:\wamp\www\podcastgen/core/admin/categories_remove.php:74
-#: C:\wamp\www\podcastgen/core/admin/categories_remove.php:120
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:122
 msgid "Back to category management"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:122
-msgid "The category you wish to add already exists..."
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:122
+msgid "The category you are trying to add already exists..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:124
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:136
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:59
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:70
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:405
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:416
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:373
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:382
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:393
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:70
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:333
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:344
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:382
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:413
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:58
 msgid "Back"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_add.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:133
 msgid "Please write a category name..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_remove.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:22
 msgid "Delete a category"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_remove.php:74
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
 msgid "Category deleted"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/categories_remove.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:121
 msgid "The category doesn't exist..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/delete.php:31
-msgid "has been deleted"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/delete.php:50
-msgid "Image associated to this file deleted"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/delete.php:60
-msgid "Delete other episodes"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/delete.php:63
-msgid "No file to delete..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:21
-#: C:\wamp\www\podcastgen/core/admin/edit.php:117
-msgid "Edit podcast"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:123
-#: C:\wamp\www\podcastgen/core/admin/upload.php:51
-msgid "Main information (required):"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:128
-msgid "File to edit:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:132
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:108
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:114
-#: C:\wamp\www\podcastgen/core/admin/upload.php:63
-msgid "Title"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:135
-#: C:\wamp\www\podcastgen/core/admin/upload.php:66
-msgid "Short Description"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:136
-#: C:\wamp\www\podcastgen/core/admin/upload.php:67
-msgid "(max 255 characters)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:142
-#: C:\wamp\www\podcastgen/core/admin/upload.php:73
-msgid "remaining characters."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:157
-#: C:\wamp\www\podcastgen/core/admin/upload.php:88
-msgid "Fields marked with * are required."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:168
-#: C:\wamp\www\podcastgen/core/admin/upload.php:100
-msgid "Extra information (optional):"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:170
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:106
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:403
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:106
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:391
-#: C:\wamp\www\podcastgen/core/admin/upload.php:102
-msgid "Long Description"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:170
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:50
-#: C:\wamp\www\podcastgen/core/admin/upload.php:102
-msgid "(HTML tags accepted)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:187
-#: C:\wamp\www\podcastgen/core/admin/edit.php:198
-#: C:\wamp\www\podcastgen/core/admin/upload.php:107
-msgid "Image"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:187
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:85
-msgid "Current image:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:189
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:92
-msgid "New image:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:190
-msgid "Specify a new image if you want to replace the old one."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:191
-#: C:\wamp\www\podcastgen/core/admin/edit.php:201
-#: C:\wamp\www\podcastgen/core/admin/upload.php:109
-msgid ""
-"Upload a SMALL image (suggested dimensions: 150x150 pixels). Accepted "
-"formats: png, gif e jpg."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:200
-#: C:\wamp\www\podcastgen/core/admin/upload.php:108
-msgid ""
-"You can associate an image to this episode; it will appear on the recent "
-"podcast page and on the details page."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:212
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:118
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:118
-#: C:\wamp\www\podcastgen/core/admin/upload.php:114
-msgid "iTunes Keywords:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:213
-#: C:\wamp\www\podcastgen/core/admin/upload.php:115
-msgid "Separate keywords by a comma"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:215
-#: C:\wamp\www\podcastgen/core/admin/upload.php:117
-msgid "words."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:219
-#: C:\wamp\www\podcastgen/core/admin/upload.php:121
-msgid "Explicit content?"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:220
-#: C:\wamp\www\podcastgen/core/admin/upload.php:122
-msgid "Select YES if this episode contains explicit language or adult content."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:235
-#: C:\wamp\www\podcastgen/core/admin/upload.php:128
-msgid "Author"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:236
-#: C:\wamp\www\podcastgen/core/admin/upload.php:129
-msgid ""
-"You can specify a different author for this episode, otherwise the default "
-"author will be the podcast owner."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:238
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:93
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:148
-#: C:\wamp\www\podcastgen/core/admin/upload.php:131
-msgid "Author's name"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:242
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:151
-#: C:\wamp\www\podcastgen/core/admin/upload.php:135
-msgid "Author's email address"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:248
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:56
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:151
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:96
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:230
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:344
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:357
-#: C:\wamp\www\podcastgen/core/admin/upload.php:141
-msgid "Send"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/edit.php:248
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:96
-#: C:\wamp\www\podcastgen/core/admin/upload.php:141
-msgid "Uploading..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:112
-msgid "View"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:112
-msgid "Edit"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:115
-msgid "Do you really want to delete permanently this episode?"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/editdel.php:142
-msgid "Upload a podcast"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:25
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:45
-msgid "Generate XML feed"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:36
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:34
-msgid "Continue"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:36
-msgid "Generating..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:368
-msgid "Feed XML generated!"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:372
-msgid "All the episodes have been indexed in the feed"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:372
-msgid "You can limit the feed to the last episodes"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/feedgenerate.php:376
-msgid "episode(s) in the feed"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:33
-msgid "Your freebox has been updated!"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/freebox.php:56
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:151
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:230
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:344
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:79
-msgid "Setting..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:22
-msgid "Looking for manually uploaded podcast into directory:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:34
-msgid "Searching..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:96
-msgid "Media file found:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:107
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:113
-msgid "Reading data from ID3 tags:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:125
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:130
-msgid "Description"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:223
-msgid "Scan finished:"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:223
-msgid "new episode(s) added."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/ftpfeature.php:225
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:369
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:357
-msgid "Go to the homepage"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:22
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:68
-msgid "iTunes categories"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:23
-msgid "Select or change iTunes Categories (iTunes Store)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:41
-msgid "iTunes Categories successfully changed..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:73
-msgid "iTunes Category 1"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:102
-msgid "iTunes Category 2"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunescategories.php:128
-msgid "iTunes Category 3"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:23
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:86
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:90
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:92
-msgid "iTunes image"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:24
-msgid "Podcast image that will be displayed in the iTunes Music Store"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:44
-msgid "iTunes image replace successfully."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:48
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:270
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:262
-msgid "Error: image NOT sent!"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:55
-msgid "Image extension not valid..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:56
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:94
-msgid ""
-"You can replace the current image with a new image: according to iTunes "
-"technical specifications this must be a 300x300 pixels JPG file."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/itunesimg.php:67
-msgid "No file selected. Please go back and select an image."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:21
-msgid "User"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:23
-msgid "Password"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:25
-#: C:\wamp\www\podcastgen/core/admin/login.php:96
-msgid "Log in"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:25
-msgid "Logging in..."
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:52
-msgid "Back to Admin"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/login.php:52
-#: C:\wamp\www\podcastgen/core/admin/login.php:56
-#: C:\wamp\www\podcastgen/core/admin/login.php:68
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Hello"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
 msgid "Log out"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/login.php:83
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:50
+msgid "Image associated to this file deleted"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:60
+msgid "Delete other episodes"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:63
+msgid "No file to delete..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:122
+msgid "Edit or Delete Episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
+msgid "Main information (required):"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:141
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:66
+msgid "Title"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:69
+msgid "Short Description"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:75
+msgid "characters left"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:174
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:181
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:91
+msgid "Fields marked with * are required."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:109
+msgid "Extras"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:201
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:111
+msgid "Long Description"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:216
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:126
+msgid "iTunes Keywords"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:218
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:128
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:227
+msgid "Explicit content?"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:228
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:247
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:144
+msgid "Author"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:248
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:145
+msgid ""
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:251
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:148
+msgid "Author's name"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:254
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:151
+msgid "Author's email address"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+msgid "Update Episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Updating"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:263
+msgid "Delete Episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:270
+msgid "Do you really want to permanently delete this episode?"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:272
+msgid "YES, I am sure"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:45
+msgid "Generate XML feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:26
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:46
+msgid "Manually regenerate xml feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+msgid "Regenerating Feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:365
+msgid "Feed XML generated!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "All the episodes have been indexed in the feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "You can limit the feed to the last episodes"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:373
+msgid "episode(s) in the feed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Send"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:99
+msgid "Media file found:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:116
+msgid "Reading data from ID3 tags:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:133
+msgid "Description"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "Scan finished:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "new episode(s) added."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Go to the homepage"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:90
+msgid "iTunes cover art"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:44
+msgid "iTunes cover art replaced successfully."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "Error: image NOT sent!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
+msgid ""
+"Image extension not valid. The image extension must end in .jpg, .jpeg or ."
+"png"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
+msgid "No file selected. Please go back and select an image."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:85
+msgid "Current image:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "iTunes image"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "New image:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:94
+msgid ""
+"You can replace the current image with a new one. To be eligible for "
+"featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
+"in JPG or PNG."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Uploading..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:25
+msgid "User"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:27
+msgid "Password"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:99
+msgid "Log in"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+msgid "Logging in..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:86
 msgid "Username or password not valid. Please try again..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/pgRSSnews.php:47
-msgid "Error: It's not possible to get Podcast Generator news feed..."
+#: /Users/alberto/Sites/podcastgen/code/core/admin/pgRSSnews.php:47
+msgid ""
+"Error: It's not possible to get Podcast Generator news feed. News will be "
+"automatically disabled."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
 msgid ""
-"This information will be used both in this website and in the resulting RSS "
+"These information will be used both in this website and in the resulting RSS "
 "feed"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:32
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:88
 msgid "Podcast Title"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:32
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:44
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:66
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:80
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
 msgid "is empty... (it will be ignored)"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:44
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
 msgid "Podcast Subtitle"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
 msgid "The podcast description is too long and will be ignored."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:62
-#: C:\wamp\www\podcastgen/core/admin/upload.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
 msgid "Max:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:62
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:403
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
 msgid "characters"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:62
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:403
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
 msgid "Actual Length"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:66
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:142
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:142
 msgid "Podcast Description"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:80
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:145
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:145
 msgid "Copyright Notice"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
 msgid "Author's email address not present or not valid"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
 msgid "(it will be ignored)"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:124
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:83
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:93
 msgid "The information has been successfully sent."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:139
+msgid "Podcast Subtitle or Slogan"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:179
 msgid "Feed language"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:180
 msgid "Main language of your episodes"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:207
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:207
 msgid "Explicit Podcast?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:208
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:208
 msgid "Does your podcast contain explicit language?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/podcastdetails.php:221
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:221
 msgid "No, it's clean"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:97
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:107
 msgid "Enable Streaming mp3 Player?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:98
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:108
 msgid "Enable flash streaming player for mp3 files on the web pages."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:129
+msgid "Enable Social Networks Integration?"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:130
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:151
 msgid "Enable Freebox?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:152
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:138
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:171
 msgid "Enable categories?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:158
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:191
 msgid "Enable news display?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:192
 msgid ""
 "Displays Podcast Generator latest news in the main administration page of "
 "your podcast."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:178
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:211
 msgid "Enable strict episode renaming policy?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
 msgid ""
-"If this option is enabled the files you upload will be renamed using just "
-"characters from A to Z and numbers. Unless you are using a different set of "
-"characters (e.g. Oriental, Arabic, etc...), YES is the suggested value."
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:198
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:231
 msgid "How many recent podcasts in the home page?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:233
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:266
 msgid "How many episodes indexed in the podcast feeds?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:256
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:289
 msgid "All"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:267
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:300
 msgid "Select date format"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:273
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:277
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:281
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Day"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:273
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:277
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:281
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Month"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:273
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:277
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:281
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Year"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:314
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
 msgid "Podcast Generator Language"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:315
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:350
 msgid "Choose among available languages *"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/scriptconfig.php:343
-msgid "* Volunteer to translate Podcast Generator into your native language"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:19
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:49
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
 msgid "Theme Selection"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:33
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:33
 msgid "Theme changed!"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:34
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:39
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:39
 msgid "Try another theme..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:38
 msgid "You are already using this theme"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:48
 msgid "Change Podcast Generator theme and aspect:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
 msgid "Change"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:88
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
 msgid "Hint: How to create your own theme?"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/selecttheme.php:88
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
 msgid "See documentation"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:101
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:101
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:101
 msgid "Long description not present; I'll use short description..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:123
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:108
+msgid "Long Description present"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:120
+msgid "iTunes Keywords:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:125
 msgid "You submitted more than 12 keywords for iTunes..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:133
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:135
 msgid "Author specified for this episode..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
 msgid "Author's email address not present or not valid."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:137
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
 msgid "Author will be IGNORED"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:152
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:159
-msgid "processing..."
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:175
+msgid ""
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:240
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:232
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:187
+msgid "Processing changes..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:247
 msgid "Image present: processing..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:260
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:252
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:214
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:267
 msgid "Image sent."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:270
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:262
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
 msgid "(ignored)"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:284
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:275
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
 msgid "Not valid image extension:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:284
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:275
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
 msgid "Accepted extensions are:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:369
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
 msgid "Edit other episodes"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendchanges.php:413
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:401
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:341
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:410
 msgid "Error: No file, description or title present"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:161
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:103
+msgid "Long description not present (the short description will be used)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:161
+msgid "Processing episode..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:163
 msgid "Original filename:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:215
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:350
-#: C:\wamp\www\podcastgen/core/admin/upload.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:58
 msgid "File"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:363
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:364
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:370
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:359
+msgid "File sent"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Upload another episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
 msgid "FILE ERROR"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:363
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
 msgid "Upload Failed"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:365
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
 msgid ""
 "You didn't assign writing permission to the media folder and the uploaded "
 "file can't be saved on the server."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:366
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:375
 msgid "Your file is bigger than upload max filesize on your server."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:368
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
 msgid "Useful information for debugging:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:370
-msgid "podcasts"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "Podcast Generator web page"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/sendfile.php:380
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:389
 msgid ""
-"is not a supported extension or filename not correct (did you add points to "
-"the filename?)."
+"is not a supported extension or your filename contains forbidden characters."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
 msgid "Operating System:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:28
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:28
 msgid "PHP Version:"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:54
 msgid "Max upload size set in the script (config.php):"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/server_info.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "Your server configuration allows you to upload files up to"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:58
 msgid "Select up to 3 categories for your episode..."
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:54
-msgid ""
-"(The categories already associated to this episode are pre-selected in the "
-"form below)"
-msgstr ""
-
-#: C:\wamp\www\podcastgen/core/admin/showcat.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:75
 msgid "Maximum number of selectable category per single episode: "
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/upload.php:21
-#: C:\wamp\www\podcastgen/core/admin/upload.php:45
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:21
 msgid "Upload Podcast"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/upload.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:53
+msgid "Main information"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "- If you need to upload larger files you can use the"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/core/admin/upload.php:93
-msgid "add extra information to this episode"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:137
+msgid "Explicit content"
 msgstr ""
 
-#: C:\wamp\www\podcastgen/setup/index.php:74
-msgid "CIAOOO"
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:138
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Upload Episode"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:90
+msgid "Subtitle"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:92
+msgid "A little description of your podcast."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:106
+msgid "Your copyright notice"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid ""
+"From the admin area you can customize this box. For instance you can add "
+"Widgets and Buttons"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:30
+msgid "Setup"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:52
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:54
+msgid "Step"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:49
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+msgid "is writable"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:98
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/code/setup/step1.php:77
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:30
+msgid "Next"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:125
+msgid ""
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:137
+msgid ""
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:18
+msgid "Username"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:22
+msgid "Password:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:48
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
+msgid "You didn't enter the username..."
 msgstr ""

@@ -1,262 +1,260 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2013-05-06 17:19+0100\n"
-"PO-Revision-Date: 2013-05-06 17:20+0100\n"
-"Last-Translator: Matthias Wirtz <matthias.wirtz@hotmail.de>\n"
+"POT-Creation-Date: 2013-11-30 20:43+0100\n"
+"PO-Revision-Date: 2013-11-30 20:43+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Matthias Wirtz <matthias.wirtz@hotmail.de>\n"
 "Language: Deutsch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: \\\\swiffer-q25b\\wwwroot\\podcastgen\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/index.php:49
+#: /Users/alberto/Sites/podcastgen/code/index.php:49
 msgid "Select a category:"
 msgstr "Wähle eine Kategorie:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/index.php:65
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:73
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:279
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:286
+#: /Users/alberto/Sites/podcastgen/code/index.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:285
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:292
 msgid "All Episodes"
 msgstr "Alle Folgen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
 msgid "Jan"
 msgstr "Jan"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
 msgid "Feb"
 msgstr "Feb"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
 msgid "Mar"
 msgstr "Mrz"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
 msgid "Apr"
 msgstr "Apr"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
 msgid "May"
 msgstr "Mai"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
 msgid "Jun"
 msgstr "Jun"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
 msgid "Jul"
 msgstr "Jul"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
 msgid "Aug"
 msgstr "Aug"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
 msgid "Sep"
 msgstr "Sep"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
 msgid "Oct"
 msgstr "Okt"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
 msgid "Nov"
 msgstr "Nov"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:119
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
 msgid "Dec"
 msgstr "Dez"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:127
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:127
 msgid "Date:"
 msgstr "Datum:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:180
 msgid "Time:"
 msgstr "Zeit:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:298
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:298
 msgid "Subscribe to this category"
 msgstr "Abboniere diese Kategorie"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:393
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:762
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:63
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:393
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:762
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "MB"
 msgstr "MB"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:402
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:771
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:771
 msgid "Duration:"
 msgstr "Dauer:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:404
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:773
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
 msgid "m"
 msgstr "min"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:404
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:773
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
 msgid "Filetype:"
 msgstr "Dateityp:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:410
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:779
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:410
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:779
 msgid "kbps"
 msgstr "kbps"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:412
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:781
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:412
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:781
 msgid "Hz"
 msgstr "Hz"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:450
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:815
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:450
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:815
 msgid "Video Podcast"
 msgstr "Video Podcast"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:469
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:834
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:469
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:834
 msgid "Edit / Delete"
 msgstr "Bearbeiten / Löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:505
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:505
 msgid "View details"
 msgstr "Betrachte Details"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:512
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:515
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:856
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:859
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:512
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:515
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:856
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:859
 msgid "Download"
 msgstr "Herunterladen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:595
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:924
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:595
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:924
 msgid "No episodes at the moment."
 msgstr "Momentan gibt es keine Folgen."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/functions.php:842
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:842
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:57
 msgid "Categories"
 msgstr "Kategorien"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:38
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:18
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:18
 msgid "Failed to open theme file"
 msgstr "Das Design konnte nicht geöffnet werden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:155
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:155
 msgid "feed"
 msgstr "feed"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:156
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:157
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:159
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:160
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:156
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:160
 msgid "Copy the feed link and paste it into your aggregator"
 msgstr "Kopiere den Link zu diesem Feed in deinen Aggregator"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:159
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:162
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:162
 msgid "Subscribe to this podcast with iTunes"
 msgstr "Abboniere diesen Podcast mit iTunes"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:172
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
 msgid "Make a donation:"
 msgstr "Mache eine Spende:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:172
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:173
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:173
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:174
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
 msgid "If you like Podcast Generator please consider making a donation:"
 msgstr ""
 "Du magst den Podcast Generator? Unterstütze die Entwicklung mit einer Spende:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:305
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:238
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
 msgid "Podcast Generator"
 msgstr "Podcast Generator"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:375
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:22
 msgid "Your server configuration"
 msgstr "Deine Serverkonfiguration"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
 msgid "Check for updates"
 msgstr "Prüfe auf Aktualisierungen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
 msgid "Subscribe to the news feed"
 msgstr "Abboniere den News Feed"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
 msgid "Read documentation and get support"
 msgstr "Betrachte die Dokumentation"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:178
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
 msgid "Credits"
 msgstr "Danksagung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:240
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:246
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:236
 msgid "Home"
 msgstr "Home"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:257
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:263
 msgid "Archive"
 msgstr "Podcastarchiv"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:305
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
 msgid "Powered by"
 msgstr "Bereitgestellt von"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/templates.php:305
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
 msgid ", an open source podcast publishing solution"
 msgstr ", einer quelltextoffenen Podcast Publizierungslösung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:47
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:232
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:238
 msgid "Podcast Archive"
 msgstr "Podcastarchiv"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:158
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:158
 msgid "feed:"
 msgstr "feed:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/themes.php:234
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/checklogged.php:17
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/checklogged.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:240
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:22
 msgid "Admin"
 msgstr "Administration"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:105
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:120
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
 msgid ""
 "This is possibly the first time you have entered this page: you haven't "
 "changed your podcast details yet. You are reccommended to provide a podcast "
@@ -266,288 +264,288 @@ msgstr ""
 "bisher keine Podcast Details geändert. Es wird empfohlen den den Podcast "
 "Titel, die Beschreibung, etc... zu setzten. Wähle auch ein anderes Design!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
 msgid "Start now..."
 msgstr "Starte jetzt..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:113
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:128
 msgid "Episodes"
 msgstr "Folgen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:130
 msgid "New Podcast"
 msgstr "Neuer Podcast"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:131
 msgid "Edit / Delete Podcasts"
 msgstr "Bearbeite / Lösche Podcasts"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:121
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:136
 msgid "Manage categories"
 msgstr "Kategorien verwalten"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:125
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:21
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "FTP Feature"
 msgstr "FTP Funktionalität"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:126
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:141
 msgid "Manually regenerate RSS feed"
 msgstr "RSS Feed erneut generieren"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:134
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:149
 msgid "Themes and aspect"
 msgstr "Designs und Ansicht"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:151
 msgid "Change Theme"
 msgstr "Design wechseln"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:154
 msgid "Customize your FreeBox"
 msgstr "Bearbeite deine FreeBox"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:146
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:161
 msgid "iTunes Store Settings"
 msgstr "iTunes Store Einstellungen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:163
 msgid "Change iTunes Cover Art"
 msgstr "iTunes Bild wechseln"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:149
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:164
 msgid "Select or change iTunes Categories"
 msgstr "iTunes Kategorien auswählen/ändern"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:165
 msgid "Submit your podcast to the iTunes Store"
 msgstr "Reiche deinen Podcast im iTunes Store ein"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:155
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:170
 msgid "Your podcast details"
 msgstr "Deine Podcast Eigenschaften"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:157
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:18
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:18
 msgid "Change your podcast details"
 msgstr "Ändere deine Podcast Eigenschaften"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:158
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:173
 msgid "Validate this feed with w3c validation service"
 msgstr "Validiere diese Seite mit dem W3C Validierungsservice"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:163
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:178
 msgid "Podcast Generator Configuration"
 msgstr "Podcast Generator Konfiguration"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:165
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:18
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:18
 msgid "Change Podcast Generator Configuration"
 msgstr "Ändere die Podcast Generator Konfiguration"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/admin.php:177
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:192
 msgid "Podcast Generator News"
 msgstr "Podcast Generator News"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:34
 msgid "Add / Delete categories"
 msgstr "Kategorien hinzufügen/löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:35
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
 msgid "Hint: You don't need categories?"
 msgstr "Hinweis: Du benötigst keine Kategorien?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:35
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
 msgid "Disable them"
 msgstr "Deaktiviere sie"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:52
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:106
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:120
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:120
 msgid "Add a new category:"
 msgstr "Kategorie hinzufügen:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:55
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:109
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:55
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:109
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
 msgid "Adding..."
 msgstr "Wird hinzugefügt..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:62
 msgid "Delete Categories"
 msgstr "Kategorien löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:76
 msgid "Delete Category"
 msgstr "Kategorie löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
 msgid "Do you really want to permanently delete this category?"
 msgstr "Willst du diese Kategorie wirklich für immer löschen?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:79
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:229
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:209
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:109
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:131
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:153
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:173
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:193
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:213
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:229
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:209
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:131
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:153
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:193
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:213
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:139
 msgid "Yes"
 msgstr "Ja"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
 msgid "Delete"
 msgstr "Löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
 msgid "Deleting..."
 msgstr "Lösche..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:79
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:235
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:215
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:115
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:137
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:159
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:179
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:199
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:219
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:139
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:235
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:215
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:219
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:140
 msgid "No"
 msgstr "Nein"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:100
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:114
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:100
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:114
 msgid "Categories file doesn't exist or empty..."
 msgstr "Kategorie "
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:117
 msgid "Categories disabled"
 msgstr "Kategorien sind deaktiviert"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:19
 msgid "Add a category"
 msgstr "Kategorie hinzufügen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:114
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:114
 msgid "New category:"
 msgstr "Neue Kategorie:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
 msgid "Category added!"
 msgstr "Kategorie hinzugefügt!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:116
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_remove.php:76
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_remove.php:122
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:122
 msgid "Back to category management"
 msgstr "Zurück zur Kategorieverwaltung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:122
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:122
 msgid "The category you are trying to add already exists..."
 msgstr "Die Kategorie, die du hinzufügen willst, existiert bereits..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:124
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:136
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:59
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:70
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:333
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:344
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:380
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:389
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:400
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:411
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:49
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:70
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:333
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:344
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:382
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:413
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:58
 msgid "Back"
 msgstr "Zurück"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_add.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:133
 msgid "Please write a category name..."
 msgstr "Bitte einen Kategorienamen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_remove.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:22
 msgid "Delete a category"
 msgstr "Kategorie löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
 msgid "Category deleted"
 msgstr "Kategorie gelöscht"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/categories_remove.php:121
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:121
 msgid "The category doesn't exist..."
 msgstr "Die Kategorie existiert nicht..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/checklogged.php:17
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:55
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:69
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
 msgid "Hello"
 msgstr "Hallo"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/checklogged.php:17
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:57
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:58
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:69
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
 msgid "Log out"
 msgstr "Abmelden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/delete.php:31
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:31
 msgid "has been deleted"
 msgstr "wurde gelöscht"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/delete.php:50
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:50
 msgid "Image associated to this file deleted"
 msgstr "Das zu dieser Datei zugehörige Bild wurde gelöscht"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/delete.php:60
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:60
 msgid "Delete other episodes"
 msgstr "Andere Folgen löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/delete.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:63
 msgid "No file to delete..."
 msgstr "Keine Datei zum löschen vorhanden..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:21
 msgid "Edit podcast"
 msgstr "Podcast bearbeiten"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:122
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:122
 msgid "Edit or Delete Episode"
 msgstr "Folge bearbeiten oder löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:132
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
 msgid "Main information (required):"
 msgstr "Grundsätzliche Informationen (benötigt):"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:141
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:111
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:117
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:141
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:66
 msgid "Title"
 msgstr "Titel"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:144
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:69
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:69
 msgid "Short Description"
 msgstr "Kurze Beschreibung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:150
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:75
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:75
 msgid "characters left"
 msgstr "Zeichen verbleibend"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:174
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:174
 msgid ""
 "The episodes of your podcast are automatically sorted by date. Changing the "
 "date of this episode will change its order in the podcast feed."
@@ -555,50 +553,50 @@ msgstr ""
 "Die Folgen deines Podcasts werden automatisch nach Datum sortiert. Wenn du "
 "das Datum veränderst ändert sich auch die Reihenfolge im Podcast Feed."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:181
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:91
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:181
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:91
 msgid "Fields marked with * are required."
 msgstr "Mit einem * gekennzeichne Felder werden benötigt."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:199
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:109
 msgid "Extras"
 msgstr "Extras"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:201
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:331
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:398
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:201
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:111
 msgid "Long Description"
 msgstr "Lange Beschreibung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:216
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:126
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:216
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:126
 msgid "iTunes Keywords"
 msgstr "iTunes Schlagwörter"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:218
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:218
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:128
 msgid "Keyword1, Keyword2 (max 12)"
 msgstr "Schlagwort 1, Schlagwort 2 (max 12)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:227
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:227
 msgid "Explicit content?"
 msgstr "Anstößlicher Inhalt?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:228
 msgid "Select YES if this episode contains explicit language or adult content."
 msgstr ""
 "Wähle JA, wenn diese Folge allzu deutliche Sprache oder obszönen Inhalt "
 "enthält."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:247
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:247
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:144
 msgid "Author"
 msgstr "Autor"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:248
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:145
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:248
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:145
 msgid ""
 "You can specify a different author for this episode, otherwise the default "
 "author will be the podcast owner"
@@ -606,212 +604,184 @@ msgstr ""
 "Du kannst für jede Folge einen unterschiedlichen Autor wählen, andernfalls "
 "ist der Besitzer des Podcasts der Autor"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:251
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:93
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:148
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:251
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:148
 msgid "Author's name"
 msgstr "Name des Autors"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:254
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:151
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:254
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:151
 msgid "Author's email address"
 msgstr "E-Mail Adresse des Autors"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
 msgid "Update Episode"
 msgstr "Aktualisiere die Folge"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:261
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:230
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
 msgid "Updating"
 msgstr "Aktualisiere"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:263
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:263
 msgid "Delete Episode"
 msgstr "Folgen löschen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:270
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:270
 msgid "Do you really want to permanently delete this episode?"
 msgstr "Willst du diese Folge wirklich für immer löschen?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/edit.php:272
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:272
 msgid "YES, I am sure"
 msgstr "JA, Ich bin sicher"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:24
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:40
-msgid "Embed code with episodes"
-msgstr "Code in Folgen einbinden"
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:33
-msgid "The code has been embedded."
-msgstr "Der Code wurde eingebunden."
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:50
-msgid ""
-"(If you wish, you can insert below a code with want to embed with each "
-"episode.)"
-msgstr ""
-"(Wenn du willst, kannst du hier einen Code einbinden, der in jede Folge "
-"eingebettet wird.)"
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:55
-msgid ""
-"Notice: this feature is potentially dangerous. Do not use it unless you know "
-"what you are doing. Here you can find some examples of code you can embed."
-msgstr ""
-"Hinweis: Dieses Feature ist potenziell gefährlich. Nutze es nicht, wenn du "
-"nicht genau weißt was du tust. Hier kannst du einige Beispiele für Code den "
-"du einbinden kannst finden."
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:59
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:63
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:159
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:96
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:230
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:377
-msgid "Send"
-msgstr "Senden"
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/embed-code.php:59
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:63
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:159
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:79
-msgid "Setting..."
-msgstr "Speichere..."
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:25
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:45
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:45
 msgid "Generate XML feed"
 msgstr "XML Feed generieren"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:26
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:46
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:26
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:46
 msgid "Manually regenerate xml feed"
 msgstr "XML Feed erneut generieren"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:36
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
 msgid "Continue"
 msgstr "Fortfahren"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
 msgid "Regenerating Feed"
 msgstr "Generiere Feed..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:365
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:365
 msgid "Feed XML generated!"
 msgstr "XML Feed generiert!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:369
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
 msgid "All the episodes have been indexed in the feed"
 msgstr "Alle Folgen wurden dem Feed hinzugefügt."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:369
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
 msgid "You can limit the feed to the last episodes"
 msgstr "Schränke den Feed auf die letztes Folgen ein"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/feedgenerate.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:373
 msgid "episode(s) in the feed"
 msgstr "Folge(n) im Feed"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:24
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:40
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:40
 msgid "FreeBox"
 msgstr "FreeBox"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:33
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:33
 msgid "Your freebox has been updated!"
 msgstr "Deine FreeBox wurde aktualisiert!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/freebox.php:51
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:51
 msgid "(HTML tags accepted)"
 msgstr "(HTML Tags werden akzeptiert)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Send"
+msgstr "Senden"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "Speichere..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:22
 msgid "Looking for manually uploaded podcast into directory:"
 msgstr "Suche nach manuell hochgeladenden Podcasts:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
 msgid "Searching..."
 msgstr "Suche..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:99
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:99
 msgid "Media file found:"
 msgstr "Mediendatei gefunden:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:110
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:116
 msgid "Reading data from ID3 tags:"
 msgstr "Lese Informationen aus den ID3 Tags:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:128
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:133
 msgid "Description"
 msgstr "Beschreibung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:226
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
 msgid "Scan finished:"
 msgstr "Suche beendet:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:226
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
 msgid "new episode(s) added."
 msgstr "neue Folge(n) hinzugefügt."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/ftpfeature.php:228
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:322
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:364
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
 msgid "Go to the homepage"
 msgstr "Gehe zur Startseite"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:22
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:76
 msgid "iTunes categories"
 msgstr "iTunes Kategorien"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:23
 msgid "Select or change iTunes Categories (iTunes Store)"
 msgstr "Wähle oder Wechsle die iTunes Kategorien (iTunes Store)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:41
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:41
 msgid "iTunes Categories successfully changed..."
 msgstr "iTunes Kategorien erfolgreich gewechselt..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:81
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:81
 msgid "iTunes Category 1"
 msgstr "iTunes Kategorie 1"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:110
 msgid "iTunes Category 2"
 msgstr "iTunes Kategorie 2"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunescategories.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:136
 msgid "iTunes Category 3"
 msgstr "iTunes Kategorie 3"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:23
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:90
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:90
 msgid "iTunes cover art"
 msgstr "iTunes Bild"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:24
 msgid "Podcast cover that will be displayed in the iTunes Store"
 msgstr "Podcast Bild, dass im iTunes Music Store angezeigt wird"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:44
 msgid "iTunes cover art replaced successfully."
 msgstr "iTunes Bild erfolgreich ausgetauscht."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:48
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:224
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:275
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
 msgid "Error: image NOT sent!"
 msgstr "Fehler: Das Bild wurde NICHT gesendet!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
 msgid ""
 "Image extension not valid. The image extension must end in .jpg, .jpeg or ."
 "png"
@@ -819,24 +789,24 @@ msgstr ""
 "Bilderweiterung nicht gültig. Die Bilderweiterung muss mit .jpg, .jpeg oder "
 "p.ng enden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:67
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
 msgid "No file selected. Please go back and select an image."
 msgstr "Keine Datei ausgewählt. Bitte kehre zurück und wähle ein Bild aus."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:85
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:85
 msgid "Current image:"
 msgstr "Aktuelles Bild:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:86
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:92
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
 msgid "iTunes image"
 msgstr "iTunes Bild"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:92
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
 msgid "New image:"
 msgstr "Neues Bild:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:94
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:94
 msgid ""
 "You can replace the current image with a new one. To be eligible for "
 "featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
@@ -846,37 +816,37 @@ msgstr ""
 "iTunes Store zu qualifizieren sollte dies ein 1400x1400 Pixel JPG oder PNG "
 "Bild sein."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/itunesimg.php:96
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:158
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
 msgid "Uploading..."
 msgstr "Lade hoch..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:25
 msgid "User"
 msgstr "Benutzer"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:27
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:27
 msgid "Password"
 msgstr "Passwort"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:29
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:99
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:99
 msgid "Log in"
 msgstr "Anmelden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
 msgid "Logging in..."
 msgstr "Melde an..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
 msgid "Back to Admin"
 msgstr "Zurück zur Administration"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/login.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:86
 msgid "Username or password not valid. Please try again..."
 msgstr "Benutzername oder Passwort nicht gültig. Bitte erneut versuchen..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/pgRSSnews.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/admin/pgRSSnews.php:47
 msgid ""
 "Error: It's not possible to get Podcast Generator news feed. News will be "
 "automatically disabled."
@@ -884,7 +854,7 @@ msgstr ""
 "Fehler: Der Podcast Generator News Feed konnte nicht geladen werden. Die "
 "Anzeige wird automatisch deaktiviert."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
 msgid ""
 "These information will be used both in this website and in the resulting RSS "
 "feed"
@@ -892,114 +862,114 @@ msgstr ""
 "Diese Informationen werden sowohl auf der Website als auch im RSS Feed "
 "genutzt"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:32
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:136
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:88
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:88
 msgid "Podcast Title"
 msgstr "Podcast Titel"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:32
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:44
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:66
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:80
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
 msgid "is empty... (it will be ignored)"
 msgstr "ist leer... (wird ignoriert)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
 msgid "Podcast Subtitle"
 msgstr "Podcast Untertitel"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
 msgid "The podcast description is too long and will be ignored."
 msgstr "Die Beschreibung des Podcasts ist zu lang und wird ignoriert."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
 msgid "Max:"
 msgstr "Maximal:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:62
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:331
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:398
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
 msgid "characters"
 msgstr "Zeichen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:62
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:331
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:398
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
 msgid "Actual Length"
 msgstr "Aktuelle Länge"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:66
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:142
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:142
 msgid "Podcast Description"
 msgstr "Podcast Beschreibung"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:80
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:145
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:145
 msgid "Copyright Notice"
 msgstr "Copyright Hinweis"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
 msgid "Author's email address not present or not valid"
 msgstr "E-Mail Adresse des Autors nicht angegeben oder ungültig"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
 msgid "(it will be ignored)"
 msgstr "(wird ignoriert)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:124
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:93
 msgid "The information has been successfully sent."
 msgstr "Die Informationen wurden erfolgreich gesendet."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:139
 msgid "Podcast Subtitle or Slogan"
 msgstr "Podcast Untertitel oder Slogan"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:179
 msgid "Feed language"
 msgstr "Sprache des Feeds"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:180
 msgid "Main language of your episodes"
 msgstr "Hauptsprache deiner Folgen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:207
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:207
 msgid "Explicit Podcast?"
 msgstr "Anstößiger Podcast?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:208
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:208
 msgid "Does your podcast contain explicit language?"
 msgstr "Enthält dein Podcast allzu deutliche Sprache?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/podcastdetails.php:221
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:221
 msgid "No, it's clean"
 msgstr "Nein, er ist sauber"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:107
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:107
 msgid "Enable Streaming mp3 Player?"
 msgstr "Streaming MP3 Player aktivieren?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:108
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:108
 msgid "Enable flash streaming player for mp3 files on the web pages."
 msgstr ""
 "Aktiviere den Flash Streaming Player um MP3 Dateien auf der Website "
 "abzuspielen."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:129
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:129
 msgid "Enable Social Networks Integration?"
 msgstr "Integration von Sozialen Netzwerken aktivieren?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:130
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:130
 msgid "Display Facebook, Twitter and Google+ buttons for each episode."
 msgstr "Zeige Facebook, Twitter und Google+ Buttons für jede Folge."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:151
 msgid "Enable Freebox?"
 msgstr "FreeBox aktivieren?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:152
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:152
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
@@ -1007,20 +977,20 @@ msgstr ""
 "In der FreeBox kannst du schreiben, was du möchtest. Füge mit einem "
 "visuellen Editor in der Administration Links oder Text hinzu."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:171
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:171
 msgid "Enable categories?"
 msgstr "Kategorien aktivieren?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 "Aktiviere Kategorien um eine thematische Liste deiner Podcasts zu erstellen."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:191
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:191
 msgid "Enable news display?"
 msgstr "Newsanzeige aktivieren?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:192
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:192
 msgid ""
 "Displays Podcast Generator latest news in the main administration page of "
 "your podcast."
@@ -1028,140 +998,129 @@ msgstr ""
 "Zeige die letzten Podcast Generator News auf der Administrationsseite deines "
 "Podcasts."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:211
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:211
 msgid "Enable strict episode renaming policy?"
 msgstr "Aktiviere die strenge Richtlinie zur Umbennung der Folgen?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:212
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
 msgid ""
-"If this option is enabled the files you upload will be renamed using just "
-"characters from A to Z and numbers. Unless you are using a different set of "
-"characters (e.g. Oriental, Arabic, etc...), YES is the suggested value."
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
 msgstr ""
-"Wenn diese Option aktiviert ist werden Dateien die du hochlädst automatisch "
-"umbenannt. Hierbei werden nur die Zeichen A-Z und Nummern verwendet. Wenn du "
-"keinen anderen Zeichensatz verwendest (Orientalisch, Arabisch, etc...) is JA "
-"die empfohlene Option."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:231
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:231
 msgid "How many recent podcasts in the home page?"
 msgstr ""
 "Wie viele kürzliche Podcasts sollen auf der Startseite angezeigt werden?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:266
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:266
 msgid "How many episodes indexed in the podcast feeds?"
 msgstr "Wie viele Folgen sollen im Podcast Feed enthalten sein?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:289
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:289
 msgid "All"
 msgstr "Alle"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:300
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:300
 msgid "Select date format"
 msgstr "Wähle ein Datumsformat"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:306
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:310
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:314
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Day"
 msgstr "Tag"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:306
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:310
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:314
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Month"
 msgstr "Monat"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:306
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:310
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:314
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
 msgid "Year"
 msgstr "Jahr"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:347
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
 msgid "Podcast Generator Language"
 msgstr "Spracheinstellungen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:348
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:350
 msgid "Choose among available languages *"
 msgstr "Wähle aus den verfügbaren Übersetzungen *"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/scriptconfig.php:376
-msgid "* Volunteer to translate Podcast Generator into your native language"
-msgstr ""
-"* Trage zum Projekt bei und übersetzte den Podcast Generator in deine "
-"Mutterpsprache"
-
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:19
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:49
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
 msgid "Theme Selection"
 msgstr "Design Auswahl"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:33
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:33
 msgid "Theme changed!"
 msgstr "Design geändert!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:34
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:39
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:39
 msgid "Try another theme..."
 msgstr "Probiere ein anderes Design..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:38
 msgid "You are already using this theme"
 msgstr "Du nutzt bereits dieses Design"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:48
 msgid "Change Podcast Generator theme and aspect:"
 msgstr "Wechsle Das Design und die Ansicht vom Podcast Generator:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
 msgid "Change"
 msgstr "Ändern"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:88
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
 msgid "Hint: How to create your own theme?"
 msgstr "Tipp: Du möchtest dein eigenes Design erstellen?"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/selecttheme.php:88
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
 msgid "See documentation"
 msgstr "Betrachte die Hinweise in der Dokumentation"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:101
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:101
 msgid "Long description not present; I'll use short description..."
 msgstr ""
 "Lange Beschreibung nicht vorhanden; Ich werde die kurze Beschreibung "
 "nutzen..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:106
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:108
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:108
 msgid "Long Description present"
 msgstr "Lange Beschreibung vorhanden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:118
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:120
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:120
 msgid "iTunes Keywords:"
 msgstr "iTunes Schlagwörter:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:123
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:125
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:125
 msgid "You submitted more than 12 keywords for iTunes..."
 msgstr "Du hast mehr als 12 Schlagwörter für iTunes übermittelt..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:133
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:135
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:135
 msgid "Author specified for this episode..."
 msgstr "Autor für diese Folge..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
 msgid "Author's email address not present or not valid."
 msgstr "E-Mail Adresse des Autors nicht angegeben oder ungültig."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:137
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
 msgid "Author will be IGNORED"
 msgstr "Autor wird ignoriert."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:175
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:175
 msgid ""
 "Date and time of the episode have been modified (this might change the order "
 "of your episodes in the podcast feed)."
@@ -1169,81 +1128,81 @@ msgstr ""
 "Datum und Uhrzeit der Folge wurde geändert (dies verändert eventuell die "
 "Reihenfolge der Folgen im Podcast Feed)."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:187
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:187
 msgid "Processing changes..."
 msgstr "Verarbeite Änderungen..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:194
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:245
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:247
 msgid "Image present: processing..."
 msgstr "Bild vorhanden: Verarbeite...."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:214
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:265
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:214
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:267
 msgid "Image sent."
 msgstr "Bild gesendet."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:224
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:275
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
 msgid "(ignored)"
 msgstr "(ignoriert)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:238
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:288
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
 msgid "Not valid image extension:"
 msgstr "Der Dateityp des Bilds ist ungültig:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:238
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:288
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
 msgid "Accepted extensions are:"
 msgstr "Akzeptierte Erweiterungen sind:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
 msgid "Edit other episodes"
 msgstr "andere Folgen bearbeiten"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendchanges.php:341
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:408
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:341
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:410
 msgid "Error: No file, description or title present"
 msgstr "Fehler: Keine Datei, Beschreibung oder Titel vorhanden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:103
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:103
 msgid "Long description not present (the short description will be used)"
 msgstr ""
 "Lange Beschreibung nicht vorhanden (die kurze Beschreibung wird benutzt)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:161
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:161
 msgid "Processing episode..."
 msgstr "Verarbeite Folge..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:163
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:163
 msgid "Original filename:"
 msgstr "Original Dateiname:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:228
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:58
 msgid "File"
 msgstr "Datei"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:357
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:359
 msgid "File sent"
 msgstr "Datei gesendet"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:364
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
 msgid "Upload another episode"
 msgstr "Lade eine weitere Folge hoch"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:370
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:371
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
 msgid "FILE ERROR"
 msgstr "DATEI FEHLER"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:370
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
 msgid "Upload Failed"
 msgstr "Hochladen fehlgeschlagen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
 msgid ""
 "You didn't assign writing permission to the media folder and the uploaded "
 "file can't be saved on the server."
@@ -1251,217 +1210,222 @@ msgstr ""
 "Du hast keine Schreibberechtigungen für das Medienverzeichnis gesetzt und "
 "die hochgeladenen Dateien können nicht auf dem Server gespeichert werden."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:375
 msgid "Your file is bigger than upload max filesize on your server."
 msgstr ""
 "Deine Datei ist größer als die maximale Dateigröße für Uploads auf deinem "
 "Server."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:375
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
 msgid "Useful information for debugging:"
 msgstr "Nützliche Informationen für die Fehlersuche:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
 msgid "Podcast Generator web page"
 msgstr "Podcast Generator Website"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/sendfile.php:387
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:389
 msgid ""
 "is not a supported extension or your filename contains forbidden characters."
 msgstr ""
 "ist keine unterstütze Erweiterung oder der Dateiname enthält verbotene "
 "Zeichen."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
 msgid "Operating System:"
 msgstr "Betriebssystem:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:28
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:28
 msgid "PHP Version:"
 msgstr "PHP Version:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:35
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:35
 msgid "GETTEXT extension: not installed (php-gettext will be used)"
 msgstr ""
 "GETTEXT Erweiterung: nicht installiert (stattdessen wird php-gettext genutzt)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:36
 msgid "GETTEXT extension: installed"
 msgstr "GETTEXT Erweiterung: installiert"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:42
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:42
 msgid "(this is good)"
 msgstr "(das ist gut)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:54
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:54
 msgid "Max upload size set in the script (config.php):"
 msgstr "Maximale Größe für Dateiuploads im Konfigurationsscript (config.php):"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/server_info.php:63
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "Your server configuration allows you to upload files up to"
 msgstr "Deine Serverkonfiguration erlaubt Dateipuloads bis zu einer Größe von"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:58
 msgid "Select up to 3 categories for your episode..."
 msgstr "Wähle bis zu 3 Kategorien für deine Folge..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/showcat.php:75
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:75
 msgid "Maximum number of selectable category per single episode: "
 msgstr "Maximale Anzahl an auswählbaren Kategorien pro Folge:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:21
 msgid "Upload Podcast"
 msgstr "Podcast hochladen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:45
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:45
 msgid "Upload New Episode"
 msgstr "Lade eine neue Folge hoch"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:53
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:53
 msgid "Main information"
 msgstr "Grundsätzliche Informationen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
 msgid "- If you need to upload larger files you can use the"
 msgstr "- Nutze für das Hochladen größerer Dateien den"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:137
 msgid "Explicit content"
 msgstr "Anstößlicher Inhalt"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:138
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:138
 msgid "Select YES if this episode contains explicit language or adult content"
 msgstr ""
 "Wähle JA, wenn diese Folge allzu deutliche Sprache oder obszönen Inhalt "
 "enthält"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/core/admin/upload.php:158
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
 msgid "Upload Episode"
 msgstr "Lade eine Folge hoch"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:17
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:29
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
 msgid "Config.php file already exists!"
 msgstr "Die Konfigurationsdatei (config.php) exisitiert bereits!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:17
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:29
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
 msgid "Please delete this file before proceeding with the installation..."
 msgstr "Bitte lösche diese Datei bevor du mit der Installation fortfährst..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:90
 msgid "Subtitle"
 msgstr "Podcast Untertitel"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:92
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:92
 msgid "A little description of your podcast."
 msgstr "Eine kurze Beschreibung deines Podcasts."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreateconfig.php:106
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:106
 msgid "Your copyright notice"
 msgstr "Dein Copyright Hinweis"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:21
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:21
 msgid "Freebox text already exists..."
 msgstr "FreeBox Text existiert bereits..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:28
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
 msgid "This is FREEBOX"
 msgstr "Das ist FreeBox"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:28
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
 msgid ""
 "From the admin area you can customize this box. For instance you can add "
 "Widgets and Buttons"
 msgstr "Diese Box kannst du im Administrationsbereich verändert."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:33
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
 msgid "You can optionally disable the freebox if you don't need it."
 msgstr "Du kannst die FreeBox deaktivieren wenn du sie nicht benötigst."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:53
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:53
 msgid "Categories file already exists..."
 msgstr "Kategorie Datei exisitert bereits..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/firstcreation.php:60
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:60
 msgid "Uncategorized"
 msgstr "Unkategorisiert"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:48
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:58
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:59
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:30
 msgid "Setup"
 msgstr "Installation"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:84
-msgid "Welcome!"
-msgstr "Willkommen!"
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:52
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:54
+msgid "Step"
+msgstr ""
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/index.php:85
-msgid "You are just 3 steps away to setup your podcast..."
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:49
+#, fuzzy
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
 msgstr ""
 "Du bist nur drei Schritte von der Einrichtung deines Podcasts entfernt..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:39
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:39
 msgid "Now checking folders permissions"
 msgstr "Prüfe Ordnerberechtigungen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:49
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:54
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
 msgid "Media Directory"
 msgstr "Medienverzeichnis"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:49
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:67
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
 msgid "is writable"
 msgstr "ist beschreibbar"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:54
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:72
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
 msgid "is NOT writable"
 msgstr "is NICHT beschreibbar"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:67
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:72
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
 msgid "Images Directory"
 msgstr "Bilder Verzeichnis"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:85
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:90
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:121
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
 msgid "Root Directory"
 msgstr "Root Verzeichnis"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:97
-msgid "Directories have correct writing permissions"
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:97
+#, fuzzy
+msgid "Yes! Directories have the correct writing permissions"
 msgstr "Die Verzeichnisse haben die korrekten Schreibberechtigungen"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:98
-msgid "You can proceed with Podcast Generator Installation..."
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:98
+#, fuzzy
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
 msgstr "Du kannst mit der Podcast Generator Installation fortfahren..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:104
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step1.php:81
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step3.php:39
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/code/setup/step1.php:77
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:30
 msgid "Next"
 msgstr "Weiter"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:110
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:110
 msgid "Try to set writing permission:"
 msgstr "Versuche Schreibberechtigungen zu setzten:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:113
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:117
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:121
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
 msgid "Setting writing permission to"
 msgstr "Setzte Schreibberechtigungen auf"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:125
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:125
 msgid ""
 "I tried to set writing permissions (chmod 777) to the directories listed "
 "above..."
@@ -1469,54 +1433,55 @@ msgstr ""
 "Ich habe versucht die Schreibberechtigungen (chmod 777) für die oben "
 "angegebenen Verzeichnisse zu setzten..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:132
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
 msgid "Reload this page"
 msgstr "Diese Seite neu laden"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:136
 msgid "and see if you can proceed with the installation of the script."
 msgstr ""
 "und analysiere, ob du mit der Installation des Scripts fortfahren kannst."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/set_permissions.php:137
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:137
+#, fuzzy
 msgid ""
-"...if not, set writing permission manually using your FTP program and be "
-"sure to have the privilege to change permission to folders on your server."
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
 msgstr ""
 "...wenn nicht, setze die Schreibberechtigungen händisch in dem du ein FTP "
 "Programm verwendest. Vergewissere dich, dass du die benötigten "
 "Berechtigungen auf dem Server hast um diese Änderungen durchführen zu können."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step3.php:22
-msgid "Choose a username and a password for the admin page:"
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
+#, fuzzy
+msgid "Choose a username and a password for the administration area:"
 msgstr ""
 "Wähle einen Benutzername und ein Passwort für die Administrations Seite:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step3.php:23
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:18
 msgid "Username"
 msgstr "Benutzername"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step3.php:27
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:22
 msgid "Password:"
 msgstr "Passwort:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step3.php:31
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:26
 msgid "Please type again your password:"
 msgstr "Gebe dein Passwort bitte erneut an:"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:39
-msgid "Creation of the configuration file..."
-msgstr "Konfigurationsdatei wird erzeugt..."
-
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:42
-msgid "Installation completed successfully :-)"
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:43
+#, fuzzy
+msgid "Installation completed successfully..."
 msgstr "Die Installation wurde erfolgreich abgeschlossen :-)"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:43
-msgid "Start managing your podcast!"
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:44
+#, fuzzy
+msgid "Go right to your podcast!"
 msgstr "Starte die Verwaltung deines Podcasts!"
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:47
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:48
 msgid ""
 "You didn't enter a password or the two passwords do not correspond; please "
 "go back and type your password again..."
@@ -1524,9 +1489,52 @@ msgstr ""
 "Du hast kein Passwort eingegeben oder die Passwörter stimmen nicht überein; "
 "Gehe bitte zurück und versuche es erneut..."
 
-#: \\swiffer-q25b\wwwroot\podcastgen/setup/step4.php:55
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
 msgid "You didn't enter the username..."
 msgstr "Du hast keinen Benutzernamen eingegeben..."
+
+#~ msgid "Embed code with episodes"
+#~ msgstr "Code in Folgen einbinden"
+
+#~ msgid "The code has been embedded."
+#~ msgstr "Der Code wurde eingebunden."
+
+#~ msgid ""
+#~ "(If you wish, you can insert below a code with want to embed with each "
+#~ "episode.)"
+#~ msgstr ""
+#~ "(Wenn du willst, kannst du hier einen Code einbinden, der in jede Folge "
+#~ "eingebettet wird.)"
+
+#~ msgid ""
+#~ "Notice: this feature is potentially dangerous. Do not use it unless you "
+#~ "know what you are doing. Here you can find some examples of code you can "
+#~ "embed."
+#~ msgstr ""
+#~ "Hinweis: Dieses Feature ist potenziell gefährlich. Nutze es nicht, wenn "
+#~ "du nicht genau weißt was du tust. Hier kannst du einige Beispiele für "
+#~ "Code den du einbinden kannst finden."
+
+#~ msgid ""
+#~ "If this option is enabled the files you upload will be renamed using just "
+#~ "characters from A to Z and numbers. Unless you are using a different set "
+#~ "of characters (e.g. Oriental, Arabic, etc...), YES is the suggested value."
+#~ msgstr ""
+#~ "Wenn diese Option aktiviert ist werden Dateien die du hochlädst "
+#~ "automatisch umbenannt. Hierbei werden nur die Zeichen A-Z und Nummern "
+#~ "verwendet. Wenn du keinen anderen Zeichensatz verwendest (Orientalisch, "
+#~ "Arabisch, etc...) is JA die empfohlene Option."
+
+#~ msgid "* Volunteer to translate Podcast Generator into your native language"
+#~ msgstr ""
+#~ "* Trage zum Projekt bei und übersetzte den Podcast Generator in deine "
+#~ "Mutterpsprache"
+
+#~ msgid "Welcome!"
+#~ msgstr "Willkommen!"
+
+#~ msgid "Creation of the configuration file..."
+#~ msgstr "Konfigurationsdatei wird erzeugt..."
 
 #~ msgid "Bitrate"
 #~ msgstr "Bitrate"
