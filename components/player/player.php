@@ -8,6 +8,14 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+//HTML 5 to add (tested with Chrome and Safari)
+/*
+$showplayercode =	'<audio controls>
+	  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.mp3" type="audio/mpeg">
+	Your browser does not support the audio element.
+	</audio>';
+*/
+
 $showplayercode = "<OBJECT classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"
 	codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0\" WIDTH=\"290\" HEIGHT=\"24\" id=\"player";
 
@@ -35,5 +43,6 @@ $showplayercode .= "\" ALIGN=\"\">
 
 
 ";
+
 
 ?> 

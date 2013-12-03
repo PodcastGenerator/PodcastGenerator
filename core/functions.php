@@ -86,6 +86,27 @@ function depurateContent($content) {
 }
 
 
+
+########
+
+## Sanitize URL Content to avoid cross-site scripting (XSS)
+
+function avoidXSS($url) {
+	$url = filter_var($url,FILTER_SANITIZE_URL);				
+	$url = str_replace('<', '&lt;', $url);
+	$url = str_replace('>', '&gt;', $url);
+	$url = str_replace('& ', '&amp; ', $url);
+	$url = str_replace('’', '&apos;', $url);
+	$url = str_replace('"', '&quot;', $url);
+	$url = str_replace('iframe', '', $url);
+	$url = str_replace('width=', '', $url);
+	$url = str_replace('height=', '', $url);
+	$url = str_replace('src=', '', $url);
+	$url = str_replace('javascript=', '', $url);
+	return $url;
+}
+
+
 ############ Determine whether to use the old or the new theme engine
 //It depends on the presence or absence of the file theme.xml in the theme root folder
 function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
@@ -291,11 +312,18 @@ $getID3 = new getID3; //initialize getID3 engine
 //IF it's a category print category title and feed
 if (isset($category) AND $category != NULL) {
 
+//URL depuration
+$category = avoidXSS($category);
+
 //retrieve existing categories (to read their description/long name)
 $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategories[$category] will be the name of the category (not the simple ID / $category)
 
 	$category_header = '<div>';
+	
+	if (isset($existingCategories[$category])) {
 	$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
+	}
+	
 	$category_header .= '</div>';
 }
 

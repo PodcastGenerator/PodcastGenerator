@@ -66,7 +66,10 @@ $page_title = $podcast_title;
 //Show category name
 if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	$existingCategories = readPodcastCategories ($absoluteurl);
-	$page_title .= " &raquo; ".$existingCategories[$_GET['cat']];		
+	if (isset($existingCategories[avoidXSS($_GET['cat'])])) {
+		//URL depuration (avoidXSS)
+		$page_title .= " &raquo; ".$existingCategories[avoidXSS($_GET['cat'])];
+		}	
 	}
 	//Show a generic "All episodes"
 	elseif (isset($_GET['p']) AND $_GET['p']=="archive") {
@@ -77,7 +80,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	//if is single episode, add title of episode to title of page
 	elseif (isset($_GET['name'])) {
 	
-		$titleOfEpisode = showSinglePodcastEpisode(1,NULL,$_GET['name'],1); //the last parameter (1) requires just the title to that function
+		$titleOfEpisode = showSinglePodcastEpisode(1,NULL,avoidXSS($_GET['name']),1); //the last parameter (1) requires just the title to that function
 		
 		if ($titleOfEpisode != NULL) $page_title .= " &raquo; $titleOfEpisode";
 	
@@ -366,7 +369,7 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 			
 			if (isset($_GET['name'])) {
 			
-			$episodeURLreconstructed = $url.'?name='.$_GET['name'];
+			$episodeURLreconstructed = $url.'?name='.avoidXSS($_GET['name']);
 			
 			// then ADD SOME OPEN GRAPH META TAGS
 			$metatagstoreplace .= '
