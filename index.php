@@ -35,8 +35,11 @@ if (isset($_GET['p'])) {
 					$PG_mainbody .= showPodcastEpisodes(1,NULL,NULL); 
 			} 
 			elseif (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
-
-					$PG_mainbody .= showPodcastEpisodes(1,$_GET['cat'],NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
+			
+				
+					$PG_mainbody .= showPodcastEpisodes(1,avoidXSS(($_GET['cat'])),NULL); //parameter, is bool yes or not (all episodes?), the second parameter is the category (NULL = all categories)
+			
+					
 			} 
 			//END CATEGORIES
 			
@@ -111,7 +114,7 @@ elseif (isset($_GET['name'])) {
 
 		//include("$absoluteurl"."core/episode.php");
 		
-		$PG_mainbody .= showSinglePodcastEpisode(1,NULL,$_GET['name'],NULL); 
+		$PG_mainbody .= showSinglePodcastEpisode(1,NULL,avoidXSS($_GET['name']),NULL); 
 		
 	}
 
