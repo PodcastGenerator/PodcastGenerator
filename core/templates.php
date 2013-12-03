@@ -172,13 +172,10 @@ $adminrightboxcontent .= '<div class="rightbox">';
 
 	//show donation box
 	$adminrightboxcontent .= '
-		<span class="nav-header">'._("Make a donation:").'</span><p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="5907873">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
+		<span class="nav-header">'._("Make a donation:").'</span>
+		<p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
+			<a href="https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+Podcast+Generator&cmd=_donations&business=beta%40yellowjug.com" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
+			<br /><br />
 		</p>
 	';
 
