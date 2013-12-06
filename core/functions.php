@@ -297,12 +297,16 @@ function showPodcastEpisodes($all,$category,$singleEpisode) { //$all is a bool, 
 
 include("core/includes.php");
 
+$categoryURLforPagination = ""; //preserve category in links in number of pages at the button
 
-if ($all == TRUE) $max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
+if ($all == TRUE) {
+$max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
+$categoryURLforPagination = "&cat=all"; //preserve category in links in number of pages at the button
+}
 
 require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
 
-$resulting_episodes = NULL; // Define variable that will contain output of this function
+$finalOutputEpisodes = NULL; // Define variable that will contain output of this function
 
 $getID3 = new getID3; //initialize getID3 engine
 
@@ -314,6 +318,8 @@ if (isset($category) AND $category != NULL) {
 
 //URL depuration
 $category = avoidXSS($category);
+
+$categoryURLforPagination = "&cat=".$category;
 
 //retrieve existing categories (to read their description/long name)
 $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategories[$category] will be the name of the category (not the simple ID / $category)
@@ -353,8 +359,31 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 	$recent_count = 0; //set recents to zero
 
 
+	//if isset page in variables GET
+	if (isset($_GET["pgn"]) AND is_numeric($_GET["pgn"])) {
+
+
+		$maxC = $episodeperpage * $_GET["pgn"];
+		$minC = $episodeperpage* $_GET["pgn"] - $episodeperpage;
+
+	//	echo "<br>MAX: $maxC and MIN: $minC"; //debug
+		
+	} 
+	//if home page or no pages are set in GET 
+	else {
+		
+	$maxC = $episodeperpage;
+	$minC = 0;
+		
+	}
+
+
 	foreach ($file_array as $key => $value) //loop through each file in the media dir
 		{
+
+	
+		$resulting_episodes = NULL; //reset VAR
+
 
 		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
 		
@@ -452,10 +481,14 @@ $numberOfEpisodesPerLine = 2; //number of episodes per line in some themes - def
 
 
 if (useNewThemeEngine($theme_path)) { //If use new theme template
+	
+	//NB $resulting_episodes is not appended to the previous. it will be appended to $finalOutputEpisodes
+
 
 		//just if the episod number is multiple of $numberOfEpisodesPerLine
 		if ($recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($file_array)) {
 		//open div with class row-fluid (theme based on bootstrap)
+	
 		$resulting_episodes .= '<div class="row-fluid">'; // row-fluid is a line that contains 1 or more episodes
 		}
 
@@ -463,6 +496,9 @@ if (useNewThemeEngine($theme_path)) { //If use new theme template
 }
 
 else { //if an old theme is used
+	
+	//NB $resulting_episodes is not appended to the previous. it will be appended to $finalOutputEpisodes
+
 	$resulting_episodes .= '<div class="episode">'; //open the single episode DIV
 } 
 	
@@ -608,19 +644,29 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 				} 
 
 			}
+			
+		//FINAL OUTPUT
+if ($recent_count <= $maxC AND $recent_count > $minC) {
+		$finalOutputEpisodes .= $resulting_episodes;
+	}
+
+		
+			
 		} //END - COUNT RECENTS (if statement)
 		
 		else  {  // i.e. if COUNT RECENTS condition occurs
 		break; // Jump out of the loop 
 		}
-		
+				
+			
+			
 
 	} //END "if directory is not empty"
 	
 } else { // IF media directory is empty
 	//$resulting_episodes .= '<div class="topseparator"><p>'._("Directory").' <b>'.$upload_dir.'</b> '._("is empty...").'</p></div>';
 	
-	$resulting_episodes .= '<div class="topseparator"><p>'._("No episodes at the moment.").'</p></div>';
+	$finalOutputEpisodes .= '<div class="topseparator"><p>'._("No episodes at the moment.").'</p></div>';
 	
 }
 
@@ -629,14 +675,45 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 	
 		//If a category is requested and this doesn't contain any episode, then tell to the user there are no episodes
 		if (isset($atLeastOneEpisodeInCategory) AND $atLeastOneEpisodeInCategory != TRUE) {
-		$resulting_episodes .= '<p>'.("No episodes here yet...").'</p>';
+		$finalOutputEpisodes .= '<p>'.("No episodes here yet...").'</p>';
 		}
 		
-	$resulting_episodes = $category_header.$resulting_episodes; //category header at the top
-	};
+	$finalOutputEpisodes = $category_header.$finalOutputEpisodes; //category header at the top
+	
+	} 
 
 
-return $resulting_episodes; // return results
+
+	//CREATE PAGES
+	
+	//calculate total number of pages
+	$numberOfPages = ($recent_count / $episodeperpage);
+	if ($numberOfPages>1) $numberOfPages = ceil($numberOfPages); //round to the next integer
+	
+	//echo $numberOfPages;
+	
+	if (isset($_GET['p'])) $pageURLforPagination = avoidXSS(($_GET['p']));
+	else $pageURLforPagination = "home";
+	
+	if  (isset($_GET["pgn"])) $thisCurrentPage = $_GET["pgn"];
+	else $thisCurrentPage = 1;
+	
+	if ($recent_count > $episodeperpage) {
+		
+		$finalOutputEpisodes .= '<div class="row-fluid" style="clear:both;"><p>';
+		//print page index and links
+		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
+		
+		if ($thisCurrentPage == $onePage) {
+		$finalOutputEpisodes .= $onePage.' | ';		
+		} else
+		$finalOutputEpisodes .= '
+		<a href="?p='.$pageURLforPagination.$categoryURLforPagination.'&amp;pgn='.$onePage.'">'.$onePage.'</a> | ';		
+		}
+		$finalOutputEpisodes .= '</p></div>';
+	}
+
+return $finalOutputEpisodes; // return results
 
 } // end function showPodcastEpisodes
 
@@ -867,7 +944,14 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 
 						$resulting_episodes .= '<p>'.$text_longdesc.'</p>';	 //SHOW short description (no HTML)
 						
-						$resulting_episodes .= '<p>'._("Categories").' '.$text_category1.' '.$text_category2.' '.$text_category3.'</p>';	 //SHOW short description (no HTML)
+						$resulting_episodes .= '<p><em>'._("Categories").'</em> ';	
+						
+						if ($text_category1 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category1.'">'.$text_category1.'</a>';
+						if ($text_category2 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category2.'">'.$text_category2.'</a>';
+						if ($text_category3 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category3.'">'.$text_category3.'</a>';
+						
+						$resulting_episodes .= '</p>';
+						
 						
 						
 						#BUTTONS

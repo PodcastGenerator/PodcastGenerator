@@ -319,7 +319,7 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 						##########
 
 
-						$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=editdel\">"._("Edit other episodes")."</a></p>";
+						$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=archive&amp;cat=all\">"._("Edit other episodes")."</a></p>";
 
 						
 
