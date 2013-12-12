@@ -380,9 +380,15 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 	foreach ($file_array as $key => $value) //loop through each file in the media dir
 		{
-
 	
 		$resulting_episodes = NULL; //reset VAR
+
+		//avoid reading files that won't be displayed in this page
+		if ($recent_count > $maxC) {
+			//	$recent_count++;
+				break;
+			}
+
 
 
 		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
