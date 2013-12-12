@@ -2,18 +2,33 @@
 <PodcastGenerator>
 
 	<language>
-		<id>it_IT</id>
-		<description>Italiano</description>
+		<id>cs_CS</id>
+		<description>Čeština</description>
+	</language>
+
+	<language>
+		<id>de_DE</id>
+		<description>Deutsch</description>
 	</language>
 
 	<language>
 		<id>en_EN</id>
 		<description>English</description>
-	</language>
-	
+	</language>	
+
 	<language>
-		<id>de_DE</id>
-		<description>Deutsch</description>
+		<id>fr_FR</id>
+		<description>Français</description>
+	</language>
+
+	<language>
+		<id>it_IT</id>
+		<description>Italiano</description>
+	</language>
+
+	<language>
+		<id>th_TH</id>
+		<description>ไทย</description>
 	</language>
 	
 </PodcastGenerator>
