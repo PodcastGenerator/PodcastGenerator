@@ -385,7 +385,8 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 		//avoid reading files that won't be displayed in this page
 		if ($recent_count > $maxC) {
-			//	$recent_count++;
+				$recent_count = count($file_array)/2; //count($file_array)/2 is the total number of episodes
+			//	echo "total episodes:".count($file_array)/2;
 				break;
 			}
 
