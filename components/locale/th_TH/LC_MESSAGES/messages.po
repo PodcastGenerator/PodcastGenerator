@@ -1,0 +1,1451 @@
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator\n"
+"POT-Creation-Date: 2013-11-30 20:42+0100\n"
+"PO-Revision-Date: 2013-12-12 15:17+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Thai (Thailand) (http://www.transifex.com/projects/p/podcast-"
+"generator/language/th_TH/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th_TH\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:49
+msgid "Select a category:"
+msgstr "เลือกรายการ:"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:285
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:292
+msgid "All Episodes"
+msgstr "episode ทั้งหมด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Jan"
+msgstr "ม.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Feb"
+msgstr "ก.พ."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Mar"
+msgstr "มี.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Apr"
+msgstr "เม.ย."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "May"
+msgstr "พ.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jun"
+msgstr "มิ.ย."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jul"
+msgstr "ก.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Aug"
+msgstr "ส.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Sep"
+msgstr "ก.ย."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Oct"
+msgstr "ต.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Nov"
+msgstr "พ.ย."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Dec"
+msgstr "ธ.ค."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:127
+msgid "Date:"
+msgstr "วันที่:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:180
+msgid "Time:"
+msgstr "เวลา:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:298
+msgid "Subscribe to this category"
+msgstr "รับรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:393
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:762
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "MB"
+msgstr "MB"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:771
+msgid "Duration:"
+msgstr "ระยะเวลา:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "m"
+msgstr "m"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "Filetype:"
+msgstr "ชนิดของไฟล์:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:410
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:779
+msgid "kbps"
+msgstr "kbps"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:412
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:781
+msgid "Hz"
+msgstr "Hz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:450
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:815
+msgid "Video Podcast"
+msgstr "Podcast Video"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:469
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:834
+msgid "Edit / Delete"
+msgstr "แก้ไข/ลบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:505
+msgid "View details"
+msgstr "ดูรายละเอียด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:512
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:515
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:856
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:859
+msgid "Download"
+msgstr "Download"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:595
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:924
+msgid "No episodes at the moment."
+msgstr "ขณะนี้ยังไม่มี episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:842
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:57
+msgid "Categories"
+msgstr "รายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:18
+msgid "Failed to open theme file"
+msgstr "เกิดความล้มเหลวในการเปิดไฟล์ theme"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:155
+msgid "feed"
+msgstr "feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:156
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:160
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "คัดลอก feed link และวางใน aggregator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:162
+msgid "Subscribe to this podcast with iTunes"
+msgstr "รับ podcast ผ่าน iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "Make a donation:"
+msgstr "สนับสนุนเรา:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "If you like Podcast Generator please consider making a donation:"
+msgstr "หากคุณชื่นชอบ Podcast Generator กรุณาสนับสนุนเรา:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:22
+msgid "Your server configuration"
+msgstr "คุณสมบัติเครื่องแม่ข่ายของคุณ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Check for updates"
+msgstr "ตรวจหารุ่นล่าสุด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Subscribe to the news feed"
+msgstr "รับข่าว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Read documentation and get support"
+msgstr "อ่านเอกสารและรับการสนับสนุน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Credits"
+msgstr "ผู้ร่วมพัฒนา"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:246
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:236
+msgid "Home"
+msgstr "หน้าแรก"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:263
+msgid "Archive"
+msgstr "คลังข้อมูล"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid "Powered by"
+msgstr "สร้างสรรค์โดย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid ", an open source podcast publishing solution"
+msgstr "ระบบเผยแพร่ podcast รหัสเปิด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:238
+msgid "Podcast Archive"
+msgstr "คลัง Podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:158
+msgid "feed:"
+msgstr "feed:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:240
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:22
+msgid "Admin"
+msgstr "หน้าดูแลระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:120
+msgid "Welcome"
+msgstr "ยินดีต้อนรับ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid ""
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
+msgstr "นี่เป็นครั้งแรกในการเข้าสู่หน้าจัดการระบบ คุณอาจยังไม่ต้องเปลี่ยนแปลงรายละเอียดใดๆ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid "Start now..."
+msgstr "เริ่มกันเลย..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:128
+msgid "Episodes"
+msgstr "Episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:130
+msgid "New Podcast"
+msgstr "podcast ใหม่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:131
+msgid "Edit / Delete Podcasts"
+msgstr "แก้ไข/ลบ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:136
+msgid "Manage categories"
+msgstr "จัดการรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr "ความสามารถของ FTP"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:141
+msgid "Manually regenerate RSS feed"
+msgstr "สร้าง RSS feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:149
+msgid "Themes and aspect"
+msgstr "Theme และมุมมอง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:151
+msgid "Change Theme"
+msgstr "เปลี่ยน theme"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:154
+msgid "Customize your FreeBox"
+msgstr "จัดการกล่องข้อความ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:161
+msgid "iTunes Store Settings"
+msgstr "ตั้งค่า iTunes Store"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:163
+msgid "Change iTunes Cover Art"
+msgstr "เปลี่ยนภาพปกของ iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:164
+msgid "Select or change iTunes Categories"
+msgstr "เลือกหรือเปลี่ยนประเภทรายการของ iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:165
+msgid "Submit your podcast to the iTunes Store"
+msgstr "ส่ง podcast ของคุณไปที่ iTunes Store"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:170
+msgid "Your podcast details"
+msgstr "รายละเอียดของ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "กำหนดรายละเอียดของ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:173
+msgid "Validate this feed with w3c validation service"
+msgstr "ตรวจสอบ feed ด้วยบริการ w3c validation"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:178
+msgid "Podcast Generator Configuration"
+msgstr "คุณสมบัติของ Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "กำหนดคุณสมบัติของ Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:192
+msgid "Podcast Generator News"
+msgstr "ข่าวของ Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "เพิ่ม/ลบรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
+msgstr "หมายเหตุ: คุณอาจไม่ใช้การแบ่งรายการก็ได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Disable them"
+msgstr "ปิดการใช้ theme"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:120
+msgid "Add a new category:"
+msgstr "เพิ่มรายการ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Add"
+msgstr "เพิ่ม"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Adding..."
+msgstr "กำลังเพิ่ม..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:62
+msgid "Delete Categories"
+msgstr "ลบรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:76
+msgid "Delete Category"
+msgstr "ลบรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Do you really want to permanently delete this category?"
+msgstr "คุณแน่ใจที่จะลบรายการนี้หรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:229
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:209
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:131
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:153
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:193
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:213
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:139
+msgid "Yes"
+msgstr "ใช่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Delete"
+msgstr "ลบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Deleting..."
+msgstr "กำลังลบ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:235
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:215
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:219
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:140
+msgid "No"
+msgstr "ไม่ใช่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:100
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:114
+msgid "Categories file doesn't exist or empty..."
+msgstr "ไม่พบรายการ หรือรายการยังไม่มีข้อมูล..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:117
+msgid "Categories disabled"
+msgstr "รายการไม่สามารถใช้ได้..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "เพิ่มรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:114
+msgid "New category:"
+msgstr "รายการใหม่:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+msgid "Category added!"
+msgstr "เพิ่มรายการแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:122
+msgid "Back to category management"
+msgstr "กลับสู่หน้าจัดการรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:122
+msgid "The category you are trying to add already exists..."
+msgstr "มีรายการที่ต้องการเพิ่มแล้ว..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:70
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:333
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:344
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:382
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:413
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:58
+msgid "Back"
+msgstr "ย้อนกลับ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:133
+msgid "Please write a category name..."
+msgstr "โปรดระบุชื่อรายการ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "ลบรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+msgid "Category deleted"
+msgstr "รายการถูกลบแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:121
+msgid "The category doesn't exist..."
+msgstr "ไม่พบรายการ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Hello"
+msgstr "สวัสดี"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Log out"
+msgstr "ออกจากระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "ถูกลบแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:50
+msgid "Image associated to this file deleted"
+msgstr "ภาพที่เกี่ยวข้องถูกลบแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:60
+msgid "Delete other episodes"
+msgstr "ลบ episode อื่น"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:63
+msgid "No file to delete..."
+msgstr "ไม่มีข้อมูลให้ลบ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr "แก้ไข podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:122
+msgid "Edit or Delete Episode"
+msgstr "แก้ไขหรือลบ episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
+msgid "Main information (required):"
+msgstr "ข้อมูลสำคัญ (ต้องระบุ):"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:141
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:66
+msgid "Title"
+msgstr "ชื่อ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:69
+msgid "Short Description"
+msgstr "คำบรรยาย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:75
+msgid "characters left"
+msgstr "ตัวอักษรที่พิมพ์ได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:174
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed."
+msgstr ""
+"episode ถูกจัดเรียงโดยอัตโนมัติตามวันที่เผยแพร่ การแก้ไขวันที่เผยแพร่อาจส่งผลต่อการจัดเรียงใน "
+"feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:181
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:91
+msgid "Fields marked with * are required."
+msgstr "ต้องระบุข้อมูลทุกช่องที่มีเครื่องหมาย *"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:109
+msgid "Extras"
+msgstr "พิเศษ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:201
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:111
+msgid "Long Description"
+msgstr "ข้อความบรรยาย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:216
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:126
+msgid "iTunes Keywords"
+msgstr "คำสำคัญใน iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:218
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:128
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr "คำสำคัญ1, คำสำคัญ2 (ไม่เกิน 12 ตัวอักษร)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:227
+msgid "Explicit content?"
+msgstr "รายการเฉพาะ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:228
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr "เลือก \"ใช่\" ถ้าเป็นรายการเฉพาะหรือมีเนื้อหาสำหรับผู้ใหญ่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:247
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:144
+msgid "Author"
+msgstr "ผู้ดำเนินรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:248
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:145
+msgid ""
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner"
+msgstr ""
+"คุณสามารถระบุชื่อผู้ดำเนินรายการของแต่ละ episode ได้ หากไม่ระบุ "
+"ระบบจะใช้ชื่อผู้ดำเนินรายการที่ระบุเป็นค่าเริ่มต้น"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:251
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:148
+msgid "Author's name"
+msgstr "ชื่อผู้ดำเนินรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:254
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:151
+msgid "Author's email address"
+msgstr "email address ของผู้ดำเนินรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+msgid "Update Episode"
+msgstr "ปรับปรุง episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Updating"
+msgstr "กำลังปรับปรุง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:263
+msgid "Delete Episode"
+msgstr "ลบ episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:270
+msgid "Do you really want to permanently delete this episode?"
+msgstr "คุณแน่ใจที่จะลบ episode นี้หรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:272
+msgid "YES, I am sure"
+msgstr "ใช่ แน่ใจ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:45
+msgid "Generate XML feed"
+msgstr "สร้าง XML feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:26
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:46
+msgid "Manually regenerate xml feed"
+msgstr "สร้าง xml feed ด้วยตนเอง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "ทำต่อไป"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+msgid "Regenerating Feed"
+msgstr "ปรับปรุง feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:365
+msgid "Feed XML generated!"
+msgstr "สร้าง Feed XML แล้ว!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "All the episodes have been indexed in the feed"
+msgstr "จัดเรียง episode ทั้งหมดใน feed แล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "You can limit the feed to the last episodes"
+msgstr "คุณสามารถสร้าง feed สำหรับ episode ล่าสุดได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:373
+msgid "episode(s) in the feed"
+msgstr "episode ใน feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "กล่องข้อความ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "กล่องข้อความถูกปรับปรุงแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr "(รับข้อความภาษา HTML)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Send"
+msgstr "ส่ง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "กำลังตั้งค่า..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "กำลังตรวจสอบรายการที่เพิ่ม:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "กำลังค้นหา..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:99
+msgid "Media file found:"
+msgstr "รายการที่พบ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:116
+msgid "Reading data from ID3 tags:"
+msgstr "กำลังสังเคราะห์ข้อมูลจาก ID3 tags:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:133
+msgid "Description"
+msgstr "คำบรรยาย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "Scan finished:"
+msgstr "ตรวจสอบเรียบร้อย:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "new episode(s) added."
+msgstr "episode ถูกเพิ่มแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Go to the homepage"
+msgstr "กลับสู่หน้าแรก"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr "รายการของ iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "เลือกหรือเปลี่ยนแปลงรายการของ iTunes (iTunes Store)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "รายการของ iTunes เปลี่ยนแปลงแล้ว..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr "รายการของ iTunes 1"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr "รายการของ iTunes 2"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr "รายการของ iTunes 3"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:90
+msgid "iTunes cover art"
+msgstr "ภาพปกของ iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr "ภาพปกของ podcast จะถูกแสดงใน iTunes Store"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:44
+msgid "iTunes cover art replaced successfully."
+msgstr "แทนที่ภาพปกของ iTunes แล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "Error: image NOT sent!"
+msgstr "Error: ไม่สามารถส่งภาพ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
+msgid ""
+"Image extension not valid. The image extension must end in .jpg, .jpeg or ."
+"png"
+msgstr "ชนิดของภาพไม่รองรับ ชนิดที่รองรับคือ .jpg, .jpeg หรือ .png"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
+msgid "No file selected. Please go back and select an image."
+msgstr "กรุณากลับไปเลือกภาพ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:85
+msgid "Current image:"
+msgstr "ภาพปัจจุบัน:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "iTunes image"
+msgstr "ภาพของ iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "New image:"
+msgstr "ภาพใหม่:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:94
+msgid ""
+"You can replace the current image with a new one. To be eligible for "
+"featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
+"in JPG or PNG."
+msgstr ""
+"คุณสามารถใช้ภาพปกใหม่เพื่อแสดงใน iTunes Store โดยใช้ภาพที่มีความละเอียด 1400 x 1400 "
+"pixel ชนิด JPG หรือ PNG"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Uploading..."
+msgstr "กำลังส่งข้อมูล..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:25
+msgid "User"
+msgstr "ชื่อผู้ใช้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:27
+msgid "Password"
+msgstr "รหัสผ่าน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:99
+msgid "Log in"
+msgstr "เข้าสู่ระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+msgid "Logging in..."
+msgstr "กำลังเข้าสู่ระบบ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr "กลับสู่หน้าดูแลระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:86
+msgid "Username or password not valid. Please try again..."
+msgstr "ชื่อผู้ใช้หรือรหัสผ่านผิดพลาด กรุณาลงชื่อใหม่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/pgRSSnews.php:47
+msgid ""
+"Error: It's not possible to get Podcast Generator news feed. News will be "
+"automatically disabled."
+msgstr "error: ไม่สามารถรับ feed ข่าวของ Podcast Generator ข่าวจะไม่ถูกแสดง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
+msgid ""
+"These information will be used both in this website and in the resulting RSS "
+"feed"
+msgstr "ข้อมูลนี้จะถูกใช้ทั้งใน website และใน RSS feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:88
+msgid "Podcast Title"
+msgstr "ชื่อของ Podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "ไม่มีข้อมูล (อาจไม่มีการแสดงข้อมูลส่วนนี้)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+msgid "Podcast Subtitle"
+msgstr "คำโปรยของ Podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "คำบรรยายของ Podcast ยาวเกินไป อาจไม่สามารถแสดงได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "Max:"
+msgstr "ไม่เกิน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "characters"
+msgstr "ตัวอักษร"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "Actual Length"
+msgstr "ขนาด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:142
+msgid "Podcast Description"
+msgstr "คำบรรยายของ Podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:145
+msgid "Copyright Notice"
+msgstr "สงวนลิขสิทธิ์"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "ไม่สามารถแสดง email address ของผู้ดำเนินรายการได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(อาจไม่มีการแสดงข้อมูลส่วนนี้)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:93
+msgid "The information has been successfully sent."
+msgstr "ส่งข้อมูลเรียบร้อย."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:139
+msgid "Podcast Subtitle or Slogan"
+msgstr "คำโปรยหรือ Slogan ของ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:179
+msgid "Feed language"
+msgstr "ภาษาของ feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:180
+msgid "Main language of your episodes"
+msgstr "ภาษาหลักของ Episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:207
+msgid "Explicit Podcast?"
+msgstr "podcast ที่มีเนื้อหาเฉพาะ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:208
+msgid "Does your podcast contain explicit language?"
+msgstr "podcast มีเนื้อหาเฉพาะหรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:221
+msgid "No, it's clean"
+msgstr "ไม่มี"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:107
+msgid "Enable Streaming mp3 Player?"
+msgstr "เปิดใช้การ Streaming mp3 Player หรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:108
+msgid "Enable flash streaming player for mp3 files on the web pages."
+msgstr "เปิใช้ flash streaming player สำหรับไฟล์ mp3 บนหน้าเว็บ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:129
+msgid "Enable Social Networks Integration?"
+msgstr "เผยแพร่ผ่าน Social Networks Integration หรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:130
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr "แสดงปุ่ม Facebook, Twitter และ Google+ สำหรับแต่ละ episode"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:151
+msgid "Enable Freebox?"
+msgstr "เปิดใช้กล่องข้อความหรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:152
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr "คุณสามารถเพิ่มข้อมูลในกล่องข้อความได้โดยใช้ visual editor ในหน้าดูแลระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:171
+msgid "Enable categories?"
+msgstr "เปิดใช้การแบ่งรายการหรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "การแบ่งรายการ เป็นการจัดกลุ่มให้กับ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:191
+msgid "Enable news display?"
+msgstr "แสดงข่าวหรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:192
+msgid ""
+"Displays Podcast Generator latest news in the main administration page of "
+"your podcast."
+msgstr "ข่าวล่าสุดของ Podcast Generator จะถูกแสดงในหน้าดูแลระบบ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:211
+msgid "Enable strict episode renaming policy?"
+msgstr "ใช้กดการเปลี่ยนชื่อ episode หรือไม่?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
+msgid ""
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
+msgstr "episode ที่ถูก upload จะถูกเปลี่ยนชื่อโดยใช้ตัวอักษรภาษาอังกฤษ ตัวเลข และวันที่ปัจจุบัน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:231
+msgid "How many recent podcasts in the home page?"
+msgstr "จำนวน episode ที่ต้องการแสดงในหน้าแรก"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:266
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "จำนวน episode ที่ต้องการแสดงใน podcast feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:289
+msgid "All"
+msgstr "ทั้งหมด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:300
+msgid "Select date format"
+msgstr "เลือกรูปแบบการแสดงวันที่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Day"
+msgstr "วันที่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Month"
+msgstr "เดือน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Year"
+msgstr "ปี"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
+msgid "Podcast Generator Language"
+msgstr "ภาษาของ Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:350
+msgid "Choose among available languages *"
+msgstr "เลือกภาษา *"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "เลือก Theme"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "Theme ถูกเปลี่ยนแล้ว!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "ใช้ Theme อื่น..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "คุณใช้ Theme นี้อยู่แล้ว..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "เปลี่ยน theme ของ Podcast Generator และมุมมอง:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "เปลี่ยนแปลง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "หมายเหตุ: วิธีการสร้าง theme ของคุณ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "อ่านข้อมูลเพิ่มเติม"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:101
+msgid "Long description not present; I'll use short description..."
+msgstr "ไม่มีข้อมูลเพิ่มเติม จะแสดงเฉพาะคำบรรยาย..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:108
+msgid "Long Description present"
+msgstr "ข้อมูลเพิ่มเติมถูกแสดง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:120
+msgid "iTunes Keywords:"
+msgstr "คำสำคัญที่ใช้สำหรับ iTunes:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:125
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "คุณใส่คำสำคัญครบ 12 คำแล้ว ตามกฎของ iTunes..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:135
+msgid "Author specified for this episode..."
+msgstr "ระบุชื่อผู้ดำเนินรายการสำหรับ episode นี้..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+msgid "Author's email address not present or not valid."
+msgstr "email address ของผู้ดำเนินรายการไม่สามารถแสดงหรือไม่สามารถใช้ได้"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+msgid "Author will be IGNORED"
+msgstr "ไม่แสดงชื่อผู้ดำเนินรายการ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:175
+msgid ""
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
+msgstr ""
+"วันที่และเวลาของ episode ถูกเปลี่ยนแปลงแล้ว (อาจส่งผลให้เกิดการเปลี่ยนแปลงลำดับ episode "
+"ใน feed)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:187
+msgid "Processing changes..."
+msgstr "กำลังประมวลผล..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:247
+msgid "Image present: processing..."
+msgstr "การแสดงภาพ: กำลังประมวลผล..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:214
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:267
+msgid "Image sent."
+msgstr "ส่งภาพเรียบร้อย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "(ignored)"
+msgstr "(ข้ามไป)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Not valid image extension:"
+msgstr "ภาพชนิดนี้ไม่สามารถใช้ได้:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Accepted extensions are:"
+msgstr "ชนิดของภาพที่ใช้ได้:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+msgid "Edit other episodes"
+msgstr "แก้ไข episode อื่น"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:341
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:410
+msgid "Error: No file, description or title present"
+msgstr "Error: ไม่มีไฟล์ คำบรรยาย หรือชื่อเรื่อง "
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:103
+msgid "Long description not present (the short description will be used)"
+msgstr "ไม่มีข้อมูลเพิ่มเติม แสดงเฉพาะคำบรรยาย"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:161
+msgid "Processing episode..."
+msgstr "กำลังประมวลผล episode..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:163
+msgid "Original filename:"
+msgstr "ชื่อไฟล์เดิม:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:58
+msgid "File"
+msgstr "ไฟล์"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:359
+msgid "File sent"
+msgstr "ไฟล์ถูกส่งแล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Upload another episode"
+msgstr "upload episode อื่น"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "FILE ERROR"
+msgstr "ไฟล์ผิดพลาด"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+msgid "Upload Failed"
+msgstr "การ upload ล้มเหลว"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
+msgid ""
+"You didn't assign writing permission to the media folder and the uploaded "
+"file can't be saved on the server."
+msgstr ""
+"คุณยังไม่ได้กำหนดสิทธิ์ในการเขียนสำหรับ media folder ทำให้ไม่สามารถ upload ไฟล์ไปยัง "
+"server"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:375
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr "ไฟล์ของคุณมีขนาดเกินกว่าที่ server อนุญาตให้ upload"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+msgid "Useful information for debugging:"
+msgstr "ข้อมูลเพื่อแก้ไขข้อบกพร่อง:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "Podcast Generator web page"
+msgstr "webpage ของ Podcast Generator "
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:389
+msgid ""
+"is not a supported extension or your filename contains forbidden characters."
+msgstr "ไม่ใช่ชนิดของไฟล์ที่ถูกสนับสนุน หรือมีตัวอักษรที่ไม่รองรับ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "ระบบปฏิบัติการ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "รุ่นของ PHP:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr "GETTEXT extension: ไม่ถูกติดตั้ง (จะใช้ php-gettext)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr "GETTEXT extension: ถูกติดตั้ง"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr "(ดี)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:54
+msgid "Max upload size set in the script (config.php):"
+msgstr "ขนาดไฟล์ที่อนุญาตใน script สำหรับการ upload  (config.php):"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "Your server configuration allows you to upload files up to"
+msgstr "server ของคุณกำหนดให้ upload ไฟล์ขนาดไม่เกิน"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:58
+msgid "Select up to 3 categories for your episode..."
+msgstr "แต่ละ episode สามารถจัดกลุ่มได้มากถึง 3 รายการ..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:75
+msgid "Maximum number of selectable category per single episode: "
+msgstr "รายการที่สามารถเลือกได้สำหรับแต่ละ episode คือ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:21
+msgid "Upload Podcast"
+msgstr "Upload Podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr "Upload episode ใหม่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:53
+msgid "Main information"
+msgstr "ข้อมูลหลัก"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "- If you need to upload larger files you can use the"
+msgstr "ถ้าคุณต้องการ upload ไฟล์ขนาดใหญ่ สามารถใช้ "
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:137
+msgid "Explicit content"
+msgstr "เนื้อหาเฉพาะ"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:138
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr "เลือก ใช่ ถ้ามีเนื้อหาเฉพาะหรือเนื้อหาสำหรับผู้ใหญ่"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Upload Episode"
+msgstr "Upload Episode"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "มีไฟล์ Config.php อยู่แล้ว"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr "โปรดลบไฟล์นี้ก่อนทำการติดตั้งต่อไป..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:90
+msgid "Subtitle"
+msgstr "คำโปรย"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:92
+msgid "A little description of your podcast."
+msgstr "คำบรรยายสั้นๆ ของ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:106
+msgid "Your copyright notice"
+msgstr "ข้อมูลลิขสิทธิ์"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "มีข้อความในกล่องข้อความแล้ว..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr "ส่วนนี้คือกล่องข้อความ"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid ""
+"From the admin area you can customize this box. For instance you can add "
+"Widgets and Buttons"
+msgstr "จากหน้าดูแลระบบ คุณสามารถจัดการเนื้อหาในกล่องข้อความโดยเพิ่ม Widget และปุ่มต่างๆ"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr "หากคุณไม่ต้องการใช้กล่องข้อความก็สามารถปิดการใช้งานส่วนนี้ได้"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr "รายการนี้มีอยู่แล้ว..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr "ไม่อยู่ในรายการใดๆ"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:30
+msgid "Setup"
+msgstr "ตั้งค่า"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:52
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:54
+msgid "Step"
+msgstr "ขั้นตอนที่"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:49
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr "ขอต้อนรับสู่การตั้งค่า podcast เพียง 3 ขั้นตอน..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "กำลังตรวจสอบสิทธิ์การเขียนทับใน folder ต่างๆ"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "Media Directory"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "สามารถเขียนทับได้"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "ไม่สามารถเขียนทับได้"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Images Directory"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "Directory หลัก"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr "สิทธิ์การเขียนทับถูกกำหนดเรียบร้อย"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:98
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
+msgstr "เราจะนำคุณสู่ขั้นตอนสุดท้ายในการติดตั้ง Podcast Generator..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/code/setup/step1.php:77
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:30
+msgid "Next"
+msgstr "ต่อไป"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "กำลังกำหนดสิทธิ์การเขียนทับ:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "กำลังกำหนดสิทธิ์การเขียนทับให้กับ"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:125
+msgid ""
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
+msgstr "ตัวติดตั้งจะลองกำหนดสิทธิ์การเขียนทับ (chmod 777) สำหรับ directory ต่อไปนี้..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "เรียกหน้านี้ใหม่"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr "และจะเห็นว่าสามารถติดตั้งต่อไปได้หรือไม่"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:137
+msgid ""
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
+msgstr ""
+"ถ้าไม่สามารถทำได้, คุณสามารถกำหนดสิทธิ์การเขียนทับผ่าน FTP, SSH, ฯลฯ "
+"ซึ่งคุณมีสิทธิ์ในการกำหนดค่า"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr "กำหนดชื่อผู้ใช้และรหัสผ่านสำหรับดูแลระบบ:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:18
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:22
+msgid "Password:"
+msgstr "รหัสผ่าน"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr "พิมพ์รหัสผ่านอีกครั้ง:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr "การติดตั้งเสร็จสมบูรณ์..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr "ไปที่ podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:48
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
+msgstr "คุณยังไม่ได้กำหนดรหัสผ่าน หรือรหัสผ่านไม่ตรงกัน โปรดกำหนดรหัสผ่านอีกครั้ง..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
+msgid "You didn't enter the username..."
+msgstr "คุณยังไม่ได้กำหนดชื่อผู้ใช้..."

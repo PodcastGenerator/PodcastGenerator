@@ -1,0 +1,1486 @@
+#
+# Translators:
+# fri <pavelfric@seznam.cz>, 2013
+# fri <pavelfric@seznam.cz>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator\n"
+"POT-Creation-Date: 2013-11-30 20:42+0100\n"
+"PO-Revision-Date: 2013-12-12 15:17+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Czech (http://www.transifex.com/projects/p/podcast-generator/"
+"language/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:49
+msgid "Select a category:"
+msgstr "Vybrat skupinu:"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:285
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:292
+msgid "All Episodes"
+msgstr "Všechny díly"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Jan"
+msgstr "Led"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Feb"
+msgstr "Úno"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Mar"
+msgstr "Bře"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Apr"
+msgstr "Dub"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "May"
+msgstr "Kvě"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jun"
+msgstr "Čer"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jul"
+msgstr "Čerc"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Aug"
+msgstr "Srp"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Sep"
+msgstr "Zář"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Oct"
+msgstr "Říj"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Nov"
+msgstr "Lis"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Dec"
+msgstr "Pro"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:127
+msgid "Date:"
+msgstr "Datum:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:180
+msgid "Time:"
+msgstr "Čas:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:298
+msgid "Subscribe to this category"
+msgstr "Přihlásit se k odběru z této skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:393
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:762
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "MB"
+msgstr "MB"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:771
+msgid "Duration:"
+msgstr "Doba trvání:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "m"
+msgstr "m"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "Filetype:"
+msgstr "Souborový typ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:410
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:779
+msgid "kbps"
+msgstr "kb/s"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:412
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:781
+msgid "Hz"
+msgstr "Hz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:450
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:815
+msgid "Video Podcast"
+msgstr "Obrazový záznam"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:469
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:834
+msgid "Edit / Delete"
+msgstr "Upravit/Smazat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:505
+msgid "View details"
+msgstr "Zobrazit podrobnosti"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:512
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:515
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:856
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:859
+msgid "Download"
+msgstr "Stažení"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:595
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:924
+msgid "No episodes at the moment."
+msgstr "Právě teď žádné díly."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:842
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:57
+msgid "Categories"
+msgstr "Skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:18
+msgid "Failed to open theme file"
+msgstr "Nepodařilo se otevřít soubor s motivem vzhledu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:155
+msgid "feed"
+msgstr "Kanál"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:156
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:160
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "Kopírujte odkaz kanálu a vložte jej do svého sběrného programu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:162
+msgid "Subscribe to this podcast with iTunes"
+msgstr "Přihlašte se k odběru tohoto záznamu s iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "Make a donation:"
+msgstr "Darovat:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "If you like Podcast Generator please consider making a donation:"
+msgstr "Pokud se vám Podcast Generator líbí, zvažte, prosím, poskytnutí daru:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:22
+msgid "Your server configuration"
+msgstr "Nastavení serveru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Check for updates"
+msgstr "Zkontrolovat aktualizace"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Subscribe to the news feed"
+msgstr "Přihlásit se k odběru kanálu zpráv"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Read documentation and get support"
+msgstr "Čtěte dokumentaci a dostaňte podporu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Credits"
+msgstr "Zásluhy"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:246
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:236
+msgid "Home"
+msgstr "Domovská složka"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:263
+msgid "Archive"
+msgstr "Archiv"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid "Powered by"
+msgstr "Poháněno"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid ", an open source podcast publishing solution"
+msgstr ", řešením zveřejňování záznamů, jehož zdrojový kód je otevřený"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:238
+msgid "Podcast Archive"
+msgstr "Archiv záznamů"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:158
+msgid "feed:"
+msgstr "Kanál:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:240
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:22
+msgid "Admin"
+msgstr "Správce"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:120
+msgid "Welcome"
+msgstr "Vítejte"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid ""
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
+msgstr ""
+"Toto je zřejmě poprvé, co jste zavítal na tyto stránky: Ještě jste nezměnil "
+"podrobnosti svého záznamu. Doporučuje se poskytnout název záznamu, jeho "
+"popis atd. Vyzkoušejte odlišný vzhled!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid "Start now..."
+msgstr "Spustit nyní..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:128
+msgid "Episodes"
+msgstr "Díly"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:130
+msgid "New Podcast"
+msgstr "Nový záznam"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:131
+msgid "Edit / Delete Podcasts"
+msgstr "Upravit/Smazat záznamy"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:136
+msgid "Manage categories"
+msgstr "Spravovat skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr "Funkce FTP"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:141
+msgid "Manually regenerate RSS feed"
+msgstr "Ručně znovuvytvořit kanál RSS"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:149
+msgid "Themes and aspect"
+msgstr "Vzhled a poměr stran"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:151
+msgid "Change Theme"
+msgstr "Změnit vzhled"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:154
+msgid "Customize your FreeBox"
+msgstr "Přizpůsobit si FreeBox"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:161
+msgid "iTunes Store Settings"
+msgstr "Nastavení obchodu iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:163
+msgid "Change iTunes Cover Art"
+msgstr "Změnit obal iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:164
+msgid "Select or change iTunes Categories"
+msgstr "Vybrat nebo změnit skupiny iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:165
+msgid "Submit your podcast to the iTunes Store"
+msgstr "Odeslat záznam do obchodu iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:170
+msgid "Your podcast details"
+msgstr "Podrobnosti záznamu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "Změnit podrobnosti záznamu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:173
+msgid "Validate this feed with w3c validation service"
+msgstr "Schválit tento kanál schvalovací službou w3c"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:178
+msgid "Podcast Generator Configuration"
+msgstr "Nastavení Podcast Generatoru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "Změnit nastavení Podcast Generatoru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:192
+msgid "Podcast Generator News"
+msgstr "Zprávy Podcast Generatoru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "Přidat/Smazat skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
+msgstr "Rada: Nepotřebujete skupiny?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Disable them"
+msgstr "Zakázat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:120
+msgid "Add a new category:"
+msgstr "Přidat novou skupinu:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Add"
+msgstr "Přidat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Adding..."
+msgstr "Přidává se %1..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:62
+msgid "Delete Categories"
+msgstr "Smazat skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:76
+msgid "Delete Category"
+msgstr "Smazat skupinu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Do you really want to permanently delete this category?"
+msgstr "Opravdu chcete trvale smazat tuto skupinu?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:229
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:209
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:131
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:153
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:193
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:213
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:139
+msgid "Yes"
+msgstr "Ano"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Delete"
+msgstr "Smazat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Deleting..."
+msgstr "Maže se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:235
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:215
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:219
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:140
+msgid "No"
+msgstr "Ne"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:100
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:114
+msgid "Categories file doesn't exist or empty..."
+msgstr "Soubor se skupinou neexistuje nebo je prázdný..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:117
+msgid "Categories disabled"
+msgstr "Skupiny zakázány"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "Přidat skupinu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:114
+msgid "New category:"
+msgstr "Nová skupina:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+msgid "Category added!"
+msgstr "Skupina přidána!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:122
+msgid "Back to category management"
+msgstr "Zpět na správu skupiny"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:122
+msgid "The category you are trying to add already exists..."
+msgstr "Skupina, již se pokoušíte přidat, již existuje..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:70
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:333
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:344
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:382
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:413
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:58
+msgid "Back"
+msgstr "Zpět"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:133
+msgid "Please write a category name..."
+msgstr "Napište, prosím, název skupiny..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "Smazat skupinu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+msgid "Category deleted"
+msgstr "Skupina smazána"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:121
+msgid "The category doesn't exist..."
+msgstr "Skupina neexistuje..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Hello"
+msgstr "Ahoj"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Log out"
+msgstr "Odhlásit se"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "byl smazán"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:50
+msgid "Image associated to this file deleted"
+msgstr "Obrázek přiřazený k tomuto souboru smazán"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:60
+msgid "Delete other episodes"
+msgstr "Smazat jiné díly"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:63
+msgid "No file to delete..."
+msgstr "Žádný soubor ke smazání..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr "Upravit záznam"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:122
+msgid "Edit or Delete Episode"
+msgstr "Upravit nebo smazat díl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
+msgid "Main information (required):"
+msgstr "Hlavní informace (požadováno):"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:141
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:66
+msgid "Title"
+msgstr "Název"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:69
+msgid "Short Description"
+msgstr "Krátký popis"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:75
+msgid "characters left"
+msgstr "znaků zbývá"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:174
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed."
+msgstr ""
+"Díly záznamu jsou automaticky tříděny podle data. Změna data tohoto dílu "
+"změní jeho zařazení v kanálu záznamu."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:181
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:91
+msgid "Fields marked with * are required."
+msgstr "Pole označená * jsou vyžadována."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:109
+msgid "Extras"
+msgstr "Další"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:201
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:111
+msgid "Long Description"
+msgstr "Dlouhý popis"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:216
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:126
+msgid "iTunes Keywords"
+msgstr "Klíčová slova iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:218
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:128
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr "Klíčové slovo 1, klíčové slovo 2 (nejvíce 12)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:227
+msgid "Explicit content?"
+msgstr "Nezakrytý obsah?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:228
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr ""
+"Zvolte Ano, pokud tento díl obsahuje nezakrytě mluvící jazyk nebo obsah pro "
+"dospělé."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:247
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:144
+msgid "Author"
+msgstr "Autor"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:248
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:145
+msgid ""
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner"
+msgstr ""
+"Můžete pro tento díl uvést jiného autora. Jinak bude vlastníkem záznamu "
+"výchozí autor"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:251
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:148
+msgid "Author's name"
+msgstr "Autorovo jméno"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:254
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:151
+msgid "Author's email address"
+msgstr "Autorova e-mailová adresa"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+msgid "Update Episode"
+msgstr "Aktualizovat díl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Updating"
+msgstr "Obnovuje se"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:263
+msgid "Delete Episode"
+msgstr "Smazat díl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:270
+msgid "Do you really want to permanently delete this episode?"
+msgstr "Opravdu chcete trvale smazat tento díl?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:272
+msgid "YES, I am sure"
+msgstr "Ano"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:45
+msgid "Generate XML feed"
+msgstr "Vytvořit kanál XML"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:26
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:46
+msgid "Manually regenerate xml feed"
+msgstr "Ručně znovuvytvořit kanál XML"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "Pokračovat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+msgid "Regenerating Feed"
+msgstr "Znovuvytvoření kanálu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:365
+msgid "Feed XML generated!"
+msgstr "Kanál XML vytvořen!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "All the episodes have been indexed in the feed"
+msgstr "Všechny díly v kanálu byly zrejstříkovány"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "You can limit the feed to the last episodes"
+msgstr "Můžete kanál omezit na poslední díly"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:373
+msgid "episode(s) in the feed"
+msgstr "díl(ů) v kanálu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "FreeBox"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "Váš freebox byl aktualizován!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr "( značky HTML přijaty)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Send"
+msgstr "Poslat"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "Nastavuje se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "Hledá se ručně nahraný záznam do adresáře:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "Hledá se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:99
+msgid "Media file found:"
+msgstr "Soubor byl nalezen:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:116
+msgid "Reading data from ID3 tags:"
+msgstr "Čtou se data ze značky ID3:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:133
+msgid "Description"
+msgstr "Popis"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "Scan finished:"
+msgstr "Prohledávání dokončeno:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "new episode(s) added."
+msgstr "Přidán nový díl."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Go to the homepage"
+msgstr "Jít na domovskou stránku"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr "Skupiny iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "Vybrat nebo změnit skupiny iTunes (obchod iTunes)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "Skupiny iTunes byly úspěšně změněny..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr "Skupina iTunes 1"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr "Skupina iTunes 2"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr "Skupina iTunes 3"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:90
+msgid "iTunes cover art"
+msgstr "Obal na iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr "Obal záznamu bude zobrazen v obchodu iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:44
+msgid "iTunes cover art replaced successfully."
+msgstr "Obal pro iTunes byl úspěšně nahrazen."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "Error: image NOT sent!"
+msgstr "Chyba: Obrázek neposlán!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
+msgid ""
+"Image extension not valid. The image extension must end in .jpg, .jpeg or ."
+"png"
+msgstr ""
+"Neplatná obrázková přípona. Přípona obrázku musí končit na .jpg, .jpeg nebo ."
+"png"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
+msgid "No file selected. Please go back and select an image."
+msgstr "Nebyl vybrán žádný soubor. Jděte, prosím, zpět a vyberte obrázek."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:85
+msgid "Current image:"
+msgstr "Nynější obrázek"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "iTunes image"
+msgstr "Obrázek pro iTunes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "New image:"
+msgstr "Nový obrázek:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:94
+msgid ""
+"You can replace the current image with a new one. To be eligible for "
+"featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
+"in JPG or PNG."
+msgstr ""
+"Nynější obrázek můžete nahradit novým. Kvůli vhodnosti pro obchod na iTunes "
+"musí mít záznam obal ve formátu JPG nebo PNG o rozlišení 1400 x 1400 "
+"obrazových bodů."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Uploading..."
+msgstr "Nahrává se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:25
+msgid "User"
+msgstr "Uživatel"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:27
+msgid "Password"
+msgstr "Heslo"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:99
+msgid "Log in"
+msgstr "Přihlášení"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+msgid "Logging in..."
+msgstr "Přihlašuje se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr "Zpět na správce"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:86
+msgid "Username or password not valid. Please try again..."
+msgstr ""
+"Uživatelské jméno nebo heslo nejsou platné. Zkuste to, prosím, znovu..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/pgRSSnews.php:47
+msgid ""
+"Error: It's not possible to get Podcast Generator news feed. News will be "
+"automatically disabled."
+msgstr ""
+"Chyba: Není možné získat kanál se zprávami Podcast Generatoru. Zprávy budou "
+"automaticky zakázány."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
+msgid ""
+"These information will be used both in this website and in the resulting RSS "
+"feed"
+msgstr ""
+"Tyto informace se použijí jak na této internetové stránce, tak ve výsledném "
+"kanálu RSS"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:88
+msgid "Podcast Title"
+msgstr "Název záznamu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "je prázdný... (bude se přehlížet)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+msgid "Podcast Subtitle"
+msgstr "Podnázev záznamu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "Popis záznamu je příliš dlouhý a bude se přehlížet."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "Max:"
+msgstr "Nejvíce:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "characters"
+msgstr "znaků"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "Actual Length"
+msgstr "Skutečná délka"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:142
+msgid "Podcast Description"
+msgstr "Popis záznamu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:145
+msgid "Copyright Notice"
+msgstr "Oznámení o autorském právu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "Autorova e-mailová adresa buď není přítomna, anebo není platná"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(bude se přehlížet)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:93
+msgid "The information has been successfully sent."
+msgstr "Informace byla úspěšně poslána."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:139
+msgid "Podcast Subtitle or Slogan"
+msgstr "Podnázev záznamu a průpovídka"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:179
+msgid "Feed language"
+msgstr "Jazyk kanálu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:180
+msgid "Main language of your episodes"
+msgstr "Hlavní jazyk dílů"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:207
+msgid "Explicit Podcast?"
+msgstr "Nezakrytě mluvící záznam?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:208
+msgid "Does your podcast contain explicit language?"
+msgstr "Obsahuje záznam otevřeně/nezakrytě mluvící jazyk?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:221
+msgid "No, it's clean"
+msgstr "Ne, je to čisté"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:107
+msgid "Enable Streaming mp3 Player?"
+msgstr "Povolit přenos dat MP3?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:108
+msgid "Enable flash streaming player for mp3 files on the web pages."
+msgstr ""
+"Povolit program pro přenos dat (flash) pro soubory MP3 na internetových "
+"stránkách."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:129
+msgid "Enable Social Networks Integration?"
+msgstr "Povolit začlenění společenských sítí?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:130
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr "Zobrazit tlačítka pro Facebook, Twitter a Google+ pro každý díl."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:151
+msgid "Enable Freebox?"
+msgstr "Povolit Freebox?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:152
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"Freebox vám umožňuje psát volně to, co si přejete, přidávat odkazy nebo text "
+"pomocí editoru v oddíle správce."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:171
+msgid "Enable categories?"
+msgstr "Povolit skupiny?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "Povolit funkci skupin pro dělání tematických seznamů záznamů."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:191
+msgid "Enable news display?"
+msgstr "Povolit zobrazení zpráv?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:192
+msgid ""
+"Displays Podcast Generator latest news in the main administration page of "
+"your podcast."
+msgstr ""
+"Zobrazí nejnovější zprávy Podcast Generatoru na hlavní správcovské stránce "
+"záznamu."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:211
+msgid "Enable strict episode renaming policy?"
+msgstr "Povolit přísnou politiku ohledně přejmenování dílů?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
+msgid ""
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
+msgstr ""
+"Nahrané soubory s díly budou automaticky přejmenovány pouze za pomoci "
+"alfanumerických znaků a nynějšího data."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:231
+msgid "How many recent podcasts in the home page?"
+msgstr "Kolik nedávných záznamů na domovské stránce?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:266
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "Kolik dílů zrejstříkovaných v kanálech záznamů?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:289
+msgid "All"
+msgstr "Vše"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:300
+msgid "Select date format"
+msgstr "Vybrat formát data"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Day"
+msgstr "Den"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Month"
+msgstr "Měsíc"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Year"
+msgstr "Rok"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
+msgid "Podcast Generator Language"
+msgstr "Jazyk Podcast Generatoru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:350
+msgid "Choose among available languages *"
+msgstr "Vybrat mezi dostupnými jazyky *"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "Výběr vzhledu"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "Vzhled změněn!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "Zkusit jiný vzhled..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "Již tento vzhled používáte"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "Změnit vzhled a poměr stran Podcast Generatoru:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "Změnit"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "Rada: Jak vytvořit své vlastní téma vzhledu?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "Zobrazit dokumentaci"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:101
+msgid "Long description not present; I'll use short description..."
+msgstr "Dlouhý popis nepřítomen; použije se krátký popis..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:108
+msgid "Long Description present"
+msgstr "Dlouhý popis přítomen"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:120
+msgid "iTunes Keywords:"
+msgstr "Klíčová slova iTunes:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:125
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "Odeslal jste více než 12 klíčových slov pro iTunes..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:135
+msgid "Author specified for this episode..."
+msgstr "Autor stanovený pro tento díl..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+msgid "Author's email address not present or not valid."
+msgstr "Autorova e-mailová adresa buď není přítomna, anebo není platná."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+msgid "Author will be IGNORED"
+msgstr "Autor se bude přehlížet"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:175
+msgid ""
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
+msgstr ""
+"Datum a čas dílu byly změněny (to může vést ke změně pořadí dílů v kanálu "
+"záznamu)."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:187
+msgid "Processing changes..."
+msgstr "Zpracovávají se změny..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:247
+msgid "Image present: processing..."
+msgstr "Obrázek přítomen: Zpracovává se..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:214
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:267
+msgid "Image sent."
+msgstr "Obrázek poslán"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "(ignored)"
+msgstr "(přehlíženo)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Not valid image extension:"
+msgstr "Neplatná obrázková přípona:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Accepted extensions are:"
+msgstr "Přijatelné přípony jsou:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+msgid "Edit other episodes"
+msgstr "Upravit další díly"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:341
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:410
+msgid "Error: No file, description or title present"
+msgstr "Chyba: Není přítomen žádný soubor, popis nebo název"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:103
+msgid "Long description not present (the short description will be used)"
+msgstr "Dlouhý popis nepřítomen (použije se krátký popis)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:161
+msgid "Processing episode..."
+msgstr "Zpracovává se díl..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:163
+msgid "Original filename:"
+msgstr "Původní název souboru:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:58
+msgid "File"
+msgstr "Soubor"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:359
+msgid "File sent"
+msgstr "Soubor poslán"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Upload another episode"
+msgstr "Nahrát další díl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "FILE ERROR"
+msgstr "Chyba v souboru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+msgid "Upload Failed"
+msgstr "Nahrání se nezdařilo"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
+msgid ""
+"You didn't assign writing permission to the media folder and the uploaded "
+"file can't be saved on the server."
+msgstr ""
+"Nepřiřadil jste oprávnění k zápisu pro složku s multimédii a nahraný soubor "
+"nelze uložit na serveru."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:375
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr ""
+"Soubor je větší než největší dovolená velikost souboru, který lze nahrát na "
+"server."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+msgid "Useful information for debugging:"
+msgstr "Užitečné informace pro ladění:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "Podcast Generator web page"
+msgstr "Stránky Podcast Generatoru"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:389
+msgid ""
+"is not a supported extension or your filename contains forbidden characters."
+msgstr "není podporované rozšíření nebo název souboru obsahuje zakázané znaky."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "Operační systém:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "Verze PHP:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr "Rozšíření GETTEXT: Nenainstalováno (použije se php-gettext)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr "Rozšíření GETTEXT: Nainstalováno"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr "(toto je dobré)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:54
+msgid "Max upload size set in the script (config.php):"
+msgstr "Největší velikost při nahrávání nastavená ve skriptu (config.php):"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "Your server configuration allows you to upload files up to"
+msgstr "Nastavení serveru vám umožňuje nahrát souborů až"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:58
+msgid "Select up to 3 categories for your episode..."
+msgstr "Vyberte až tři skupiny pro svůj díl..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:75
+msgid "Maximum number of selectable category per single episode: "
+msgstr "Nejvyšší počet vybratelných skupin na jeden díl: "
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:21
+msgid "Upload Podcast"
+msgstr "Nahrát záznam"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr "Nahrát nový díl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:53
+msgid "Main information"
+msgstr "Hlavní informace"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "- If you need to upload larger files you can use the"
+msgstr "- Pokud potřebujete nahrát větší soubory, můžete použít"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:137
+msgid "Explicit content"
+msgstr "Nezakrytý obsah"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:138
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr ""
+"Zvolte Ano, pokud tento díl obsahuje nezakrytě mluvící jazyk nebo obsah pro "
+"dospělé"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Upload Episode"
+msgstr "Nahrát díl"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "Soubor Config.php již existuje!"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr ""
+"Smažte, prosím, tento soubor, předtím než budete pokračovat v instalaci..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:90
+msgid "Subtitle"
+msgstr "Podnázev"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:92
+msgid "A little description of your podcast."
+msgstr "Malý popis záznamu."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:106
+msgid "Your copyright notice"
+msgstr "Oznámení o autorském právu"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "Text Freebox již existuje..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr "Toto je FREEBOX"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid ""
+"From the admin area you can customize this box. For instance you can add "
+"Widgets and Buttons"
+msgstr ""
+"Toto okno můžete upravit ze správcovské oblasti. Například můžete přidat "
+"doplňky a tlačítka"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr "Volitelně můžete zakázat Freebox, pokud jej nepotřebujete."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr "Soubor se skupinami již existuje..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr "Neroztříděný"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:30
+msgid "Setup"
+msgstr "Nastavení"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:52
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:54
+msgid "Step"
+msgstr "Krok"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:49
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr "Nazdar! Jen tři kroky vás dělí od nastavení záznamu..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "Nyní se ověřují oprávnění ke složkám"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "Adresář s multimédii"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "je zapisovatelný"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "není zapisovatelný"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Adresář s obrázky"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "Kořenový adresář"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr "Ano! Adresáře mají správná oprávnění pro zápis"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:98
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
+msgstr ""
+"Nyní můžete pokračovat posledním krokem instalace Podcast Generatoru..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/code/setup/step1.php:77
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:30
+msgid "Next"
+msgstr "Další"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "Pokusit se nastavit oprávnění k zápisu:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "Nastavení oprávnění k zápisu pro"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:125
+msgid ""
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
+msgstr ""
+"Byl učiněn pokus o nastavení oprávnění pro zápis (chmod 777) k adresářům "
+"uvedeným výše..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "Nahrát tuto stránku znovu"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr "a podívejte se, zda můžete pokračovat v instalaci skriptu."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:137
+msgid ""
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
+msgstr ""
+"...pokud ne, můžete nastavit práva pro zápis ručně (přes FTP, SSH, etc...) a "
+"ujistit se, že máte oprávnění ke změně oprávnění ke složkám na svém serveru."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr "Zvolte uživatelské jméno a heslo pro oblast správy:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:18
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:22
+msgid "Password:"
+msgstr "Heslo:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr "Zadejte, prosím, znovu své heslo:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr "Instalace úspěšně dokončena..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr "Jděte rovnou na svůj záznam!"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:48
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
+msgstr ""
+"Nezadal jste heslo, nebo dvojice hesel neodpovídá;.Jděte, prosím, zpět a "
+"napišt své heslo znovu..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
+msgid "You didn't enter the username..."
+msgstr "Nezadal jste uživatelské jméno..."
