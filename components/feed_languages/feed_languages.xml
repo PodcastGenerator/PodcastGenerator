@@ -74,8 +74,8 @@
 		<description>co (corsican)</description>
 	</language>
 	<language>
-		<id>cs</id>
-		<description>cs (czech)</description>
+		<id>cs_CS</id>
+		<description>Čeština</description>
 	</language>
 	<language>
 		<id>cy</id>
@@ -86,8 +86,8 @@
 		<description>da (danish)</description>
 	</language>
 	<language>
-		<id>de</id>
-		<description>de (german)</description>
+		<id>de_DE</id>
+		<description>Deutsch</description>
 	</language>
 	<language>
 		<id>dz</id>
@@ -98,9 +98,9 @@
 		<description>el (greek)</description>
 	</language>
 	<language>
-		<id>en</id>
-		<description>en (english)</description>
-	</language>
+		<id>en_EN</id>
+		<description>English</description>
+	</language>	
 	<language>
 		<id>eo</id>
 		<description>eo (esperanto)</description>
@@ -134,8 +134,8 @@
 		<description>fo (faeroese)</description>
 	</language>
 	<language>
-		<id>fr</id>
-		<description>fr (french)</description>
+		<id>fr_FR</id>
+		<description>Français</description>
 	</language>
 	<language>
 		<id>fy</id>
@@ -174,8 +174,8 @@
 		<description>hr (croatian)</description>
 	</language>
 	<language>
-		<id>hu</id>
-		<description>hu (hungarian)</description>
+		<id>hu_HU</id>
+		<description>Magyar</description>
 	</language>
 	<language>
 		<id>hy</id>
@@ -202,8 +202,8 @@
 		<description>is (icelandic)</description>
 	</language>
 	<language>
-		<id>it</id>
-		<description>it (italian)</description>
+		<id>it_IT</id>
+		<description>Italiano</description>
 	</language>
 	<language>
 		<id>iw</id>
@@ -466,8 +466,8 @@
 		<description>tg (tajik)</description>
 	</language>
 	<language>
-		<id>th</id>
-		<description>th (thai)</description>
+		<id>th_TH</id>
+		<description>ไทย</description>
 	</language>
 	<language>
 		<id>ti</id>
