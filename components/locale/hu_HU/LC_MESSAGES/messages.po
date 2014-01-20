@@ -1,0 +1,1480 @@
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator\n"
+"POT-Creation-Date: 2013-11-30 20:42+0100\n"
+"PO-Revision-Date: 2014-01-20 19:05+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/"
+"podcast-generator/language/hu_HU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:49
+msgid "Select a category:"
+msgstr "Válassz kategóriát:"
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:65
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:73
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:285
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:292
+msgid "All Episodes"
+msgstr "Összes epizód"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Jan"
+msgstr "jan."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Feb"
+msgstr "feb."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:117
+msgid "Mar"
+msgstr "márc."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Apr"
+msgstr "ápr."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "May"
+msgstr "máj."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jun"
+msgstr "jún."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Jul"
+msgstr "júl."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:118
+msgid "Aug"
+msgstr "aug."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Sep"
+msgstr "szept."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Oct"
+msgstr "okt."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Nov"
+msgstr "nov."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:119
+msgid "Dec"
+msgstr "dec."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:127
+msgid "Date:"
+msgstr "Dátum:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:180
+msgid "Time:"
+msgstr "Idő:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:298
+msgid "Subscribe to this category"
+msgstr "Előfizetés erre a kategóriára:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:393
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:762
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "MB"
+msgstr "MB"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:771
+msgid "Duration:"
+msgstr "Hossz:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "m"
+msgstr "m"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:404
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:773
+msgid "Filetype:"
+msgstr "Fájltípus:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:410
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:779
+msgid "kbps"
+msgstr "kbps"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:412
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:781
+msgid "Hz"
+msgstr "Hz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:450
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:815
+msgid "Video Podcast"
+msgstr "Videó podcast"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:469
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:834
+msgid "Edit / Delete"
+msgstr "Szerkesztés / Törlés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:505
+msgid "View details"
+msgstr "Részletek"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:512
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:515
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:856
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:859
+msgid "Download"
+msgstr "Letöltés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:595
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:924
+msgid "No episodes at the moment."
+msgstr "Jelenleg nincs epizód."
+
+#: /Users/alberto/Sites/podcastgen/code/core/functions.php:842
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:57
+msgid "Categories"
+msgstr "Kategóriák:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:38
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:18
+msgid "Failed to open theme file"
+msgstr "Nem sikerült megnyitni a sminkfájlt"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:155
+msgid "feed"
+msgstr "feed"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:156
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:157
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:160
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "A feed linkjét másold be az aggregátorodba"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:162
+msgid "Subscribe to this podcast with iTunes"
+msgstr "Előfizetés erre a podcastra iTunes-szal"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "Make a donation:"
+msgstr "Adományozz:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:173
+msgid "If you like Podcast Generator please consider making a donation:"
+msgstr "Ha kedveled a Podcast Generatort, fontold meg, hogy adakozz:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:22
+msgid "Your server configuration"
+msgstr "Szervered konfigurációja:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Check for updates"
+msgstr "Frissítések keresése:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Subscribe to the news feed"
+msgstr "Előfizetés a hírfolyamra"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Read documentation and get support"
+msgstr "Dokumentáció olvasása és támogatás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:184
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:185
+msgid "Credits"
+msgstr "Credits"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:246
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:236
+msgid "Home"
+msgstr "Kezdőlap"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:263
+msgid "Archive"
+msgstr "Archívum"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid "Powered by"
+msgstr "Működteti a"
+
+#: /Users/alberto/Sites/podcastgen/code/core/templates.php:311
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:244
+msgid ", an open source podcast publishing solution"
+msgstr ", egy nyílt forráskódú podcastpublikációs megoldás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:238
+msgid "Podcast Archive"
+msgstr "Podcast-archívum"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:158
+msgid "feed:"
+msgstr "feed:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/themes.php:240
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:22
+msgid "Admin"
+msgstr "Adminisztráció"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:120
+msgid "Welcome"
+msgstr "Üdvözlet"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid ""
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
+msgstr ""
+"Valószínűleg most először léptél be erre az oldalra:még nem változtattad meg "
+"a podcastod részleteit. Ajánlott, hogy add mega podcastod címét, leírását, "
+"stb. Próbálj más sminket!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:121
+msgid "Start now..."
+msgstr "Indítás..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:128
+msgid "Episodes"
+msgstr "Epizódok"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:130
+msgid "New Podcast"
+msgstr "Új epizód"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:131
+msgid "Edit / Delete Podcasts"
+msgstr "Epizódok módosítása / törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:136
+msgid "Manage categories"
+msgstr "Kategóriák kezelése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:140
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr "FTP Feature"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:141
+msgid "Manually regenerate RSS feed"
+msgstr "RSS feed kézi újragenerálása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:149
+msgid "Themes and aspect"
+msgstr "Sminkek és oldaldoboz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:151
+msgid "Change Theme"
+msgstr "Smink megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:154
+msgid "Customize your FreeBox"
+msgstr "A Freebox szerkesztése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:161
+msgid "iTunes Store Settings"
+msgstr "iTunes áruház beállítások"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:163
+msgid "Change iTunes Cover Art"
+msgstr "iTunes lemezborító megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:164
+msgid "Select or change iTunes Categories"
+msgstr "iTunes kategóriák kiválasztása, megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:165
+msgid "Submit your podcast to the iTunes Store"
+msgstr "Podcastod elküldése az iTunes áruházba"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:170
+msgid "Your podcast details"
+msgstr "Podcastod részletei"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:172
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "Podcastod részleteinek megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:173
+msgid "Validate this feed with w3c validation service"
+msgstr "Feed validálása a w3c szolgáltatásával"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:178
+msgid "Podcast Generator Configuration"
+msgstr "A Podcast Generátor konfigurálása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:180
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "A Podcast Generator konfigurációjának megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:192
+msgid "Podcast Generator News"
+msgstr "Podcast Generator hírek"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "Kategóriák hozzáadása / törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
+msgstr "Nincs szükséged kategóriákra?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:35
+msgid "Disable them"
+msgstr "Tiltsd le őket"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:120
+msgid "Add a new category:"
+msgstr "Új kategória hozzáadása:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:123
+msgid "Adding..."
+msgstr "Hozzáadás..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:62
+msgid "Delete Categories"
+msgstr "Kategóriák törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:76
+msgid "Delete Category"
+msgstr "Kategória törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Do you really want to permanently delete this category?"
+msgstr "Tényleg véglegesen törölni akarod ezt a kategóriát?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:229
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:209
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:109
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:131
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:153
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:173
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:193
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:213
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:139
+msgid "Yes"
+msgstr "Igen"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Delete"
+msgstr "Törlés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+msgid "Deleting..."
+msgstr "Törlés..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:79
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:235
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:215
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:115
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:179
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:219
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:140
+msgid "No"
+msgstr "Nem"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:100
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:114
+msgid "Categories file doesn't exist or empty..."
+msgstr "A kategóriafájl nem létezik vagy üres"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories.php:117
+msgid "Categories disabled"
+msgstr "A kategóriák le vannak tiltva"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "Kategória hozzáadása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:114
+msgid "New category:"
+msgstr "Új kategória:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+msgid "Category added!"
+msgstr "A kategóriát hozzáadtuk!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:116
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:122
+msgid "Back to category management"
+msgstr "Vissza a kategóriák kezeléséhez"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:122
+msgid "The category you are trying to add already exists..."
+msgstr "A kategória, amit hozzá próbálsz adni, már létezik..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:136
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:59
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:70
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:333
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:344
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:382
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:391
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:402
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:413
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:58
+msgid "Back"
+msgstr "Vissza"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_add.php:133
+msgid "Please write a category name..."
+msgstr "Írj be egy kategórianevet..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "Egy kategória törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:76
+msgid "Category deleted"
+msgstr "Kategória törölve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/categories_remove.php:121
+msgid "The category doesn't exist..."
+msgstr "A kategória nem létezik..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Hello"
+msgstr "Üdv"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/checklogged.php:17
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:69
+msgid "Log out"
+msgstr "Kilépés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "törlésre került"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:50
+msgid "Image associated to this file deleted"
+msgstr "Az ehhez a fájlhoz tartozó kép törölve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:60
+msgid "Delete other episodes"
+msgstr "Más epizódok törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/delete.php:63
+msgid "No file to delete..."
+msgstr "Nincs törölhető fájl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr "Podcast szerkesztése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:122
+msgid "Edit or Delete Episode"
+msgstr "Epizód szerkesztése vagy törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
+msgid "Main information (required):"
+msgstr "Fő információk (kötelező)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:141
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:111
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:117
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:66
+msgid "Title"
+msgstr "Cím"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:144
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:69
+msgid "Short Description"
+msgstr "Rövid leírás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:75
+msgid "characters left"
+msgstr "karakter van még"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:174
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed."
+msgstr ""
+"A podcastod epizódjai automatikusan, dátum szerint vannak rendezve. Az "
+"epizód dátumának megváltoztatása meg fogja változtatni a helyét is a feedben."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:181
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:91
+msgid "Fields marked with * are required."
+msgstr "A * jelű mezőket kötelező megadni."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:109
+msgid "Extras"
+msgstr "Extrák"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:201
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:111
+msgid "Long Description"
+msgstr "Hosszú leírás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:216
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:126
+msgid "iTunes Keywords"
+msgstr "iTunes kulcsszavak"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:218
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:128
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr "kulcsszó1, kulcsszó2 (max. 12)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:227
+msgid "Explicit content?"
+msgstr "Explicit tartalom?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:228
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr ""
+"Válaszd az IGEN-t, ha ebben az epizódban trágár nyelv vagy csak felnőtteknek "
+"szóló tartalom van."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:247
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:144
+msgid "Author"
+msgstr "Szerző"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:248
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:145
+msgid ""
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner"
+msgstr ""
+"Megadhatsz más szerzőt ehhez az epizódhoz, egyébként azalapértelmezett "
+"szerző a podcast tulajdonosa lesz."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:251
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:148
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:148
+msgid "Author's name"
+msgstr "Szerző neve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:254
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:151
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:151
+msgid "Author's email address"
+msgstr "Szerző email címe"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+msgid "Update Episode"
+msgstr "Epizód frissítése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:261
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Updating"
+msgstr "Frissítés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:263
+msgid "Delete Episode"
+msgstr "Epizód törlése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:270
+msgid "Do you really want to permanently delete this episode?"
+msgstr "Tényleg végleg törölni akarod ezt az epizódot?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:272
+msgid "YES, I am sure"
+msgstr "IGEN, biztos vagyok benne"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:25
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:45
+msgid "Generate XML feed"
+msgstr "XML feed generálása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:26
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:46
+msgid "Manually regenerate xml feed"
+msgstr "XML feed kézi újragenerálása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "Folytatás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:36
+msgid "Regenerating Feed"
+msgstr "Feed újragenerálása..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:365
+msgid "Feed XML generated!"
+msgstr "Az XML feed generálása megtörtént!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "All the episodes have been indexed in the feed"
+msgstr "A feed összes epizódját indexeltük"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:369
+msgid "You can limit the feed to the last episodes"
+msgstr "A feedet az utolsó epizódokra korlátozhatod"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/feedgenerate.php:373
+msgid "episode(s) in the feed"
+msgstr "epizód van a feedben"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "FreeBox"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "FreeBox frissítve!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr "(HTML tag-ek használhatóak)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:380
+msgid "Send"
+msgstr "Küldés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "Beállítás..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "Kézzel feltöltött podcast keresése ebben a könyvtárban:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "Keresés..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:99
+msgid "Media file found:"
+msgstr "Megtalálva ez a médiafájl:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:110
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:116
+msgid "Reading data from ID3 tags:"
+msgstr "Adatok olvasása az ID3 tag-ekből:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:128
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:133
+msgid "Description"
+msgstr "Leírás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "Scan finished:"
+msgstr "Átnézés befejezve:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:226
+msgid "new episode(s) added."
+msgstr "új epizód lett hozzádva."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:228
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Go to the homepage"
+msgstr "Kezdőlapra ugrás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr "iTunes kategóriák"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "iTunes Store kategóriák kiválasztása vagy megváltoztatása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "Az iTunes kategóriák megváltoztatása sikerült..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr "1. iTunes kategória"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr "2. iTunes kategória"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr "3. iTunes kategória"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:90
+msgid "iTunes cover art"
+msgstr "iTunes lemezborító"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr "Podcast borító, ami az iTunes Store-ban megjelenítésre kerül"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:44
+msgid "iTunes cover art replaced successfully."
+msgstr "Az iTunes lemezborítót sikeresen kicseréltük."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:48
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "Error: image NOT sent!"
+msgstr "Hiba: a kép NEM lett elküldve!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
+msgid ""
+"Image extension not valid. The image extension must end in .jpg, .jpeg or ."
+"png"
+msgstr ""
+"A kép kiterjesztése nem érvényes. A fájlnév végződése .jpg, .jpeg, vagy .png "
+"lehet."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
+msgid "No file selected. Please go back and select an image."
+msgstr "Nem lett fájl kiválasztva. Menj vissza és válassz ki egy képet."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:85
+msgid "Current image:"
+msgstr "Jelenlegi kép:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:86
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "iTunes image"
+msgstr "iTunes kép"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:92
+msgid "New image:"
+msgstr "Új kép:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:94
+msgid ""
+"You can replace the current image with a new one. To be eligible for "
+"featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
+"in JPG or PNG."
+msgstr ""
+"Kicserélheted a jelenlegi képet egy újra. Az iTunes Áruházban való "
+"megjelenéshez egy podcastnak 1400x1400 pixel méretű lemezborítóval kell "
+"rendelkeznie JPG vagy PNG formátumban."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Uploading..."
+msgstr "Feltöltés..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:25
+msgid "User"
+msgstr "Felhasználó"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:27
+msgid "Password"
+msgstr "Jelszó"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:99
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:29
+msgid "Logging in..."
+msgstr "Bejelentkezés..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr "Vissza az adminisztrációhoz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/login.php:86
+msgid "Username or password not valid. Please try again..."
+msgstr "A felhasználónév vagy a jelszó nem érvényes. Próbáld újra..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/pgRSSnews.php:47
+msgid ""
+"Error: It's not possible to get Podcast Generator news feed. News will be "
+"automatically disabled."
+msgstr ""
+"Hiba: Nem lehet elérni a Podcast Generator hírfolyamot. A hírek "
+"automatikusan le lesznek tiltva."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
+msgid ""
+"These information will be used both in this website and in the resulting RSS "
+"feed"
+msgstr ""
+"Ezt az információt ezen a website-on és a létrehozott RSS feedben is "
+"felhasználjuk"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:136
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:88
+msgid "Podcast Title"
+msgstr "Podcast címe"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "üres... (figyelmen kívül hagyjuk)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:44
+msgid "Podcast Subtitle"
+msgstr "Podcast alcíme"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "A podcast leírása túl hosszú, figyelmen kívül hagyjuk."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+msgid "Max:"
+msgstr "Max:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "characters"
+msgstr "karakter"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:331
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:400
+msgid "Actual Length"
+msgstr "tényleges hossz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:142
+msgid "Podcast Description"
+msgstr "Podcast leírása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:145
+msgid "Copyright Notice"
+msgstr "Copyright szöveg"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "A szerző email címe nincs megadva vagy érvénytelen"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(figyelmen kívül hagyjuk)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:93
+msgid "The information has been successfully sent."
+msgstr "Az információ elküldése sikeres."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:139
+msgid "Podcast Subtitle or Slogan"
+msgstr "Podcast alcíme vagy szlogenje"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:179
+msgid "Feed language"
+msgstr "A feed nyelve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:180
+msgid "Main language of your episodes"
+msgstr "Az epizódok fő nyelve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:207
+msgid "Explicit Podcast?"
+msgstr "Explicit podcast?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:208
+msgid "Does your podcast contain explicit language?"
+msgstr "Tartalmaz a podcastod durva nyelvet?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:221
+msgid "No, it's clean"
+msgstr "Nem, tiszta"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:107
+msgid "Enable Streaming mp3 Player?"
+msgstr "Engedélyezed a streaming mp3 lejátszót?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:108
+msgid "Enable flash streaming player for mp3 files on the web pages."
+msgstr "Engedélyezed a flash mp3 lejátszót a weboldalakon?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:129
+msgid "Enable Social Networks Integration?"
+msgstr "Engedélyezed a közösségi hálózatok integrációját?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:130
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr "Facebook, Twitter és Google+ gombok minden epizódhoz."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:151
+msgid "Enable Freebox?"
+msgstr "Engedélyezed a FreeBoxot?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:152
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"A FreeBoxba bármit be lehet írni, linkeket, szöveget lehet hozzáadni az "
+"admin részben egy szerkesztő segítségével."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:171
+msgid "Enable categories?"
+msgstr "Engedélyezed a kategóriákat?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "A kategóriák segítségével a podcastok tematikus listákba rendezhetők."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:191
+msgid "Enable news display?"
+msgstr "Engedélyezed a hírek megjelenítését?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:192
+msgid ""
+"Displays Podcast Generator latest news in the main administration page of "
+"your podcast."
+msgstr ""
+"A Podcast Generator legfrissebb híreit jeleníti meg a fő adminisztrációs "
+"oldalon."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:211
+msgid "Enable strict episode renaming policy?"
+msgstr "Engedélyezed a szigorú fájlátnevezést?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
+msgid ""
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
+msgstr ""
+"A feltöltött epizódok automatikusan át lesznek nevezve, az új fájlnév csak "
+"alfanumerikus karaktereket és a dátumot tartalmazza."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:231
+msgid "How many recent podcasts in the home page?"
+msgstr "Hány friss podcast legyen a kezdőlapon?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:266
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "Hány epizód legyen indexelve a podcast feedekben?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:289
+msgid "All"
+msgstr "Összes"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:300
+msgid "Select date format"
+msgstr "Válaszd ki a dátumformátumot"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Day"
+msgstr "Nap"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Month"
+msgstr "Hónap"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:306
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:310
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:314
+msgid "Year"
+msgstr "Év"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
+msgid "Podcast Generator Language"
+msgstr "Podcast Generator nyelve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:350
+msgid "Choose among available languages *"
+msgstr "Válassz a rendelkezésre álló nyelvek közül *"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "Smink kiválasztása"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "Smink megváltoztatása!"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "Más smink kipróbálása..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "Már ezt a sminket használod"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "Podcast Generator sminkjének és megjelenésének megváltoztatása:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "Megváltoztatás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "Hogyan hozhatsz létre saját sminket?"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "Olvasd el a dokumentációt"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:101
+msgid "Long description not present; I'll use short description..."
+msgstr "Hosszú leírás nincs megadva, a rövidet használjuk"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:106
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:108
+msgid "Long Description present"
+msgstr "Meg van adva hosszú leírás"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:118
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:120
+msgid "iTunes Keywords:"
+msgstr "iTunes kulcsszavak:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:123
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:125
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "Több mint 12 iTunes kulcsszót adtál meg..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:133
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:135
+msgid "Author specified for this episode..."
+msgstr "Ezen epizód szerzője..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+msgid "Author's email address not present or not valid."
+msgstr "A szerző email címe nincs megadva vagy érvénytelen."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:137
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:139
+msgid "Author will be IGNORED"
+msgstr "A szerző figyelmen kívül lesz hagyva."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:175
+msgid ""
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
+msgstr ""
+"Az epizód dátuma és ideje meg lett változtatva (ez megváltoztathatja az "
+"epizódok sorrendjét a podcast feedben)."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:187
+msgid "Processing changes..."
+msgstr "Változtatások feldolgozása..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:247
+msgid "Image present: processing..."
+msgstr "Meg van adva kép: feldolgozás..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:214
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:267
+msgid "Image sent."
+msgstr "Kép elküldve."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:224
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:277
+msgid "(ignored)"
+msgstr "(figyelmen kívül hagyva)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Not valid image extension:"
+msgstr "Érvénytelen képkiterjesztés:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:238
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:290
+msgid "Accepted extensions are:"
+msgstr "Az elfogadott kiterjesztések:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:322
+msgid "Edit other episodes"
+msgstr "Egyéb epizódok szerkesztése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:341
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:410
+msgid "Error: No file, description or title present"
+msgstr "Hiba: nincs megadva fájl, leírás vagy cím"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:103
+msgid "Long description not present (the short description will be used)"
+msgstr "Nincs megadva hosszú leírás (a rövidet használjuk)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:161
+msgid "Processing episode..."
+msgstr "Epizód feldolgozása..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:163
+msgid "Original filename:"
+msgstr "Eredeti fájlnév:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:230
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:58
+msgid "File"
+msgstr "Fájl"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:359
+msgid "File sent"
+msgstr "Fájl elküldve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:366
+msgid "Upload another episode"
+msgstr "További epizód feltöltése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:373
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "FILE ERROR"
+msgstr "FÁJLHIBA"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:372
+msgid "Upload Failed"
+msgstr "A feltöltés nem sikerült"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
+msgid ""
+"You didn't assign writing permission to the media folder and the uploaded "
+"file can't be saved on the server."
+msgstr ""
+"A media könyvtárba nincs engedélyezve az írás, ezért a feltöltött fájlt nem "
+"lehet a szerveren elmenteni."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:375
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr "A fájl nagyobb, mint a maximálisan feltölthető fájlméret."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:377
+msgid "Useful information for debugging:"
+msgstr "Debuggoláshoz hasznos információ:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:379
+msgid "Podcast Generator web page"
+msgstr "A Podcast Generator hivatalos weboldala"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:389
+msgid ""
+"is not a supported extension or your filename contains forbidden characters."
+msgstr ""
+"nem támogatott kiterjesztés vagy a fájlnév tiltott karaktereket tartalmaz."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "Operációs rendszer:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "PHP verzió:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr "GETTEXT bővítmény: nincs telepítve (php-gettextet használunk)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr "GETTEXT bővítmény: telepítve"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr "(ez jó)"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:54
+msgid "Max upload size set in the script (config.php):"
+msgstr "Maximális feltöltési méret a scriptben (config.php):"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "Your server configuration allows you to upload files up to"
+msgstr ""
+"A szerverkonfiguráció által megengedett maximális feltölthető fájlméret"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:58
+msgid "Select up to 3 categories for your episode..."
+msgstr "Válassz az epizódnak max. 3 kategóriát..."
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/showcat.php:75
+msgid "Maximum number of selectable category per single episode: "
+msgstr "Egy epizódhoz választható kategóriák maximális száma:"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:21
+msgid "Upload Podcast"
+msgstr "Podcast feltöltése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr "Új epizód feltöltése"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:53
+msgid "Main information"
+msgstr "Főbb adatok"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:62
+msgid "- If you need to upload larger files you can use the"
+msgstr "- Ha nagyobb fájlokat akarsz feltölteni, használhatod a"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:137
+msgid "Explicit content"
+msgstr "Explicit tartalom"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:138
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr ""
+"Válaszd az IGEN-t, ha ez az epizód trágár nyelvet vagy csak felnőtteknek "
+"való tartalmat tartalmaz"
+
+#: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:158
+msgid "Upload Episode"
+msgstr "Epizód feltöltése"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "A config.php fájl már létezik!"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr "Töröld ezt a fájlt, mielőtt folytatod a telepítést..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:90
+msgid "Subtitle"
+msgstr "Alcím"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:92
+msgid "A little description of your podcast."
+msgstr "Podcastod rövid leírása."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreateconfig.php:106
+msgid "Your copyright notice"
+msgstr "Szerzői jogi közleményed"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "Már létezik a FreeBox szöveg."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr "Ez a FreeBox"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:28
+msgid ""
+"From the admin area you can customize this box. For instance you can add "
+"Widgets and Buttons"
+msgstr ""
+"Az adminisztrációs felületen szerkesztheted ezt a dobozt, például widgeteket "
+"vagy gombokat tehetsz ide."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr "Le is tilthatod a FreeBoxot, ha nincs rá szükséged."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr "A kategóriafájl már létezik..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr "Kategorizálatlan"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:20
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:30
+msgid "Setup"
+msgstr "Telepítés"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:48
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:52
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:54
+msgid "Step"
+msgstr "Lépés"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/index.php:49
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr "Üdv! Csak 3 lépésre vagy a podcast telepítésétől..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "Ellenőrizzük a könyvtárak engedélybeállításait"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "Médiakönyvtár"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "írható"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "NEM írható"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Képkönyvtár"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "Gyökérkönyvtár"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr "Igen! A könyvtárak engedélybeállításai helyesek."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:98
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
+msgstr "Továbbléphetsz a telepítés utolsó lépésére..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/code/setup/step1.php:77
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:30
+msgid "Next"
+msgstr "Következő"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "Írási engedély beállításának megkísérlése:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "Írási engedély beállítása erre:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:125
+msgid ""
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
+msgstr ""
+"Megpróbáltam beállítani az írási engedélyt (chmod 777) a fentebb felsorolt "
+"könyvtárakra"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "A jelen oldal újratöltése"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr "és nézd meg, tudod-e folytatni a telepítést."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:137
+msgid ""
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
+msgstr ""
+"...ha nem, kézzel beállíthatod az írási engedélyt (FTP, SSH, stb. "
+"segítségével), és gondoskodj róla, hogy legyen jogosultságod megváltoztatni "
+"a könyvtárak engedélybeállításait a szerveren."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr "Válassz felhasználónevet és jelszót az adminisztrációhoz:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:18
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:22
+msgid "Password:"
+msgstr "Jelszó:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr "Add meg újra a jelszót:"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr "A telepítés sikeresen befejeződött..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr "Ugrás a podcastodra!"
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:48
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
+msgstr ""
+"Nem adtál meg jelszót, vagy a két jelszó nem egyezik. Menj vissza, és add "
+"meg újra a jelszót..."
+
+#: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
+msgid "You didn't enter the username..."
+msgstr "Nem adtál meg felhasználónevet..."
