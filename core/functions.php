@@ -694,8 +694,8 @@ if ($recent_count <= $maxC AND $recent_count > $minC) {
 	//CREATE PAGES
 	
 	//calculate total number of pages
-	$numberOfPages = ($recent_count / $episodeperpage);
-	if ($numberOfPages>1) $numberOfPages = ceil($numberOfPages); //round to the next integer
+	if (isset($recent_count)) $numberOfPages = ($recent_count / $episodeperpage);
+	if (isset($numberOfPages) AND $numberOfPages>1) $numberOfPages = ceil($numberOfPages); //round to the next integer
 	
 	//echo $numberOfPages;
 	
@@ -705,7 +705,7 @@ if ($recent_count <= $maxC AND $recent_count > $minC) {
 	if  (isset($_GET["pgn"])) $thisCurrentPage = $_GET["pgn"];
 	else $thisCurrentPage = 1;
 	
-	if ($recent_count > $episodeperpage) {
+	if (isset($recent_count) AND $recent_count > $episodeperpage) {
 		
 		$finalOutputEpisodes .= '<div class="row-fluid" style="clear:both;"><p>';
 		//print page index and links
