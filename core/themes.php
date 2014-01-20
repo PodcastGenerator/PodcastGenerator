@@ -172,7 +172,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	$rightboxcontent .= '<div class="rightbox">
 		<b>'._("Make a donation:").'</b>
 		<p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
-				<a href="https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+Podcast+Generator&cmd=_donations&business=beta%40yellowjug.com" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
+				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J4EYELBABMGS4" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
 				<br /><br />
 			</p>
 	</div>';
