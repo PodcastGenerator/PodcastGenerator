@@ -22,6 +22,11 @@
 	</language>
 
 	<language>
+		<id>hu_HU</id>
+		<description>Magyar</description>
+	</language>
+	
+	<language>
 		<id>it_IT</id>
 		<description>Italiano</description>
 	</language>
