@@ -351,7 +351,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 
 	$tail_feed ="</channel></rss>";
-
+	
+	if (!isset($single_file)) $single_file = ""; // avoid notice
 	####
 	$fp1 = fopen("$feedfilename", "w+"); //Apri il file in lettura e svuotalo (w+)
 	fclose($fp1);
@@ -370,6 +371,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	} else {
 
+		if (!isset($recent_count)) $recent_count = 0; //avoid notice
 		$PG_mainbody .= "<br /><i>$recent_count "._("episode(s) in the feed")."</i>";	
 
 	}
