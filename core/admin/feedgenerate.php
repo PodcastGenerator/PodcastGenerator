@@ -94,7 +94,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	if ($itunes_category[0]!=NULL) { //category 1
 
 		$cat1 =explode(":",$itunes_category[0]);
-		$cat1 = str_replace('&', ' &amp; ', $cat1); // depurate &
+		//$cat1 = str_replace('&', ' &amp; ', $cat1); // depurate &
 
 
 		$head_feed.= "<itunes:category text=\"$cat1[0]\">
@@ -116,7 +116,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	if ($itunes_category[1]!=NULL) { //category 2
 
 		$cat2 =explode(":",$itunes_category[1]);
-		$cat2 = str_replace('&', ' &amp; ', $cat2); // depurate &
+		//$cat2 = str_replace('&', ' &amp; ', $cat2); // depurate &
 
 		$head_feed.= "<itunes:category text=\"$cat2[0]\">
 			";
@@ -137,7 +137,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	if ($itunes_category[2]!=NULL) { //category 3
 
 		$cat3 =explode(":",$itunes_category[2]);
-		$cat3 = str_replace('&', ' &amp; ', $cat3); // depurate &
+		//$cat3 = str_replace('&', ' &amp; ', $cat3); // depurate &
 
 		$head_feed.= "<itunes:category text=\"$cat3[0]\">
 			";
