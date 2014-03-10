@@ -298,7 +298,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 								#### CONTENT DEPURATION N.2
 								$text_title = depurateContent($text_title); //title
 								$text_shortdesc = depurateContent($text_shortdesc); //short desc
-								$text_longdesc = depurateContent($text_longdesc); //long desc
+								$text_longdesc = depurateCDATAfield($text_longdesc); //long desc
 								$text_keywordspg = depurateContent($text_keywordspg); //Keywords
 								$text_keywordspg = htmlentities($text_keywordspg); //convert special characters e.g. r&b -> r&amp;b
 								$text_authornamepg = depurateContent($text_authornamepg); //author's name
