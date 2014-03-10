@@ -49,6 +49,9 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	### DEFINE FEED FILENAME
 	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
 
+	//rewrite the language var to adhere to ISO639
+	$feed_language = languageISO639($feed_language);
+	
 
 	##### CONTENT DEPURATION n.1
 	#Depurate feed content according to iTunes specifications
@@ -62,12 +65,14 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	######
 
+
 	$head_feed ="<?xml version=\"1.0\" encoding=\"$feed_encoding\"?>
 	<!-- generator=\"Podcast Generator $podcastgen_version\" -->
-		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\">
+		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
 	<channel>
 		<title>$podcast_title</title>
 		<link>$url</link>
+		<atom:link href=\"".$url.$feed_dir."feed.xml\" rel=\"self\" type=\"application/rss+xml\" />
 		<description>$podcast_description</description>
 		<generator>Podcast Generator $podcastgen_version - http://podcastgen.sourceforge.net</generator>
 	<lastBuildDate>".date("r")."</lastBuildDate>

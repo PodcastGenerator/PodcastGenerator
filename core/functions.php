@@ -1053,7 +1053,11 @@ return $resulting_episodes; // return results
 
 
 
-
+//generate language ISO639 format (e.g. just "en" and not "en_EN") for RSS feed
+function languageISO639 ($language) {
+$parts = explode("_", $language);
+return $parts[0];
+}
 
 
 ?>

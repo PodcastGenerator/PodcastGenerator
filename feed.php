@@ -29,8 +29,12 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 	### DEFINE FEED FILENAME
 	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
 
-
-
+//rewrite the language var to adhere to ISO639
+	$feed_language = languageISO639($feed_language);
+	
+	
+	$category = avoidXSS($_GET['cat']);
+	
 	###### display category title
 //	include ("$absoluteurl"."components/xmlparser/loadparser.php");
 //	include ("$absoluteurl"."core/admin/readXMLcategories.php");
@@ -79,10 +83,11 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 	$head_feed ="<?xml version=\"1.0\" encoding=\"$feed_encoding\"?>
 	<!-- generator=\"Podcast Generator $podcastgen_version\" -->
-		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\">
+		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
 	<channel>
 		<title>$podcast_title</title>
 		<link>$url</link>
+		<atom:link href=\"".$url."feed.php?cat=".$category."\" rel=\"self\" type=\"application/rss+xml\" />
 		<description>$podcast_description</description>
 		<generator>Podcast Generator $podcastgen_version - http://podcastgen.sourceforge.net</generator>
 	<lastBuildDate>".date("r")."</lastBuildDate>
@@ -91,14 +96,12 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 		
 		
 		if (file_exists($cat_image)) { 
-			$head_feed .= "<siono>yes</siono>";
 			$head_feed .= "
 			<itunes:image href=\"$url$cat_image\" />
 			<image>
 			<url>$url$cat_image</url>";
 		}
 		else{
-		$head_feed .= "<siono>no: $cat_image</siono>";
 		$head_feed .= "<itunes:image href=\"".$url.$img_dir."itunes_image.jpg\" />
 		<image>
 		<url>".$url.$img_dir."itunes_image.jpg</url>";
@@ -123,7 +126,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 	if ($itunes_category[0]!=NULL) { //category 1
 
 		$cat1 =explode(":",$itunes_category[0]);
-		$cat1 = str_replace('&', ' &amp; ', $cat1); // depurate &
+		//$cat1 = str_replace('&', ' &amp; ', $cat1); // depurate &
 
 		$head_feed.= "<itunes:category text=\"$cat1[0]\">
 			";
@@ -144,7 +147,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 	if ($itunes_category[1]!=NULL) { //category 2
 
 		$cat2 =explode(":",$itunes_category[1]);
-		$cat2 = str_replace('&', ' &amp; ', $cat2); // depurate &
+		//$cat2 = str_replace('&', ' &amp; ', $cat2); // depurate &
 
 		$head_feed.= "<itunes:category text=\"$cat2[0]\">
 			";
@@ -165,7 +168,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 	if ($itunes_category[2]!=NULL) { //category 3
 
 		$cat3 =explode(":",$itunes_category[2]);
-		$cat3 = str_replace('&', ' &amp; ', $cat3); // depurate &
+		//$cat3 = str_replace('&', ' &amp; ', $cat3); // depurate &
 
 		$head_feed.= "<itunes:category text=\"$cat3[0]\">
 			";
@@ -395,6 +398,8 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 }
+
+
 
 
 ?>
