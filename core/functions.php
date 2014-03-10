@@ -72,7 +72,7 @@ function validate_email ($address) { //validate email address
 ## Depurate feed Content from non accepted characters (according also to iTunes specifications)
 
 function depurateContent($content) {
-	$content = stripslashes($content);				
+	$content = stripslashes($content);
 	$content = str_replace('<', '&lt;', $content);
 	$content = str_replace('>', '&gt;', $content);
 	$content = str_replace('& ', '&amp; ', $content);
@@ -82,6 +82,7 @@ function depurateContent($content) {
 	$content = str_replace('&copy;', '&#xA9;', $content);
 	$content = str_replace('℗', '&#x2117;', $content);
 	$content = str_replace('™', '&#x2122;', $content);
+	//$content = htmlentities($content); //this messes up things		
 	return $content;
 }
 
