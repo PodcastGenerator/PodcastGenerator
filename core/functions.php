@@ -86,6 +86,12 @@ function depurateContent($content) {
 	return $content;
 }
 
+//this is just for CDATA fields such as <itunes:summary> (long description in PG)
+function depurateCDATAfield($content) {
+	$content = str_replace(']]>', '] ] &gt;', $content);
+return $content;
+}
+
 
 
 ########
