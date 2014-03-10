@@ -90,48 +90,6 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
 
 
-
-
-
-
-
-###############################
-# LOAD JAVASCRIPTS IN THE HEADER IF PAGE REQUIRES - REPLACES "-----PG_JSLOAD-----" IN THE HEADER OF THE THEME PAGE
-/*
-if (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "upload") {
-
-	include("$absoluteurl"."core/admin/loadjavascripts.php");
-}
-
-elseif (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "editdel") {
-
-	include("$absoluteurl"."core/admin/loadjavascripts.php");
-}
-
-elseif (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "edit") {
-
-	include("$absoluteurl"."core/admin/loadjavascripts.php");
-}
-
-elseif (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "categories") {
-
-	include("$absoluteurl"."core/admin/loadjavascripts.php");
-
-} 
-
-elseif (isset($_GET['p']) and $_GET['p'] == "admin" and isset($_GET['do']) and $_GET['do'] == "freebox") {
-
-	include("$absoluteurl"."core/admin/loadjavascripts.php");
-
-}
-
-else {
-
-	$loadjavascripts = ""; //null
-
-}
-*/
-
 include($absoluteurl."core/admin/loadjavascripts.php");
 
 $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $theme_file_contents); 
