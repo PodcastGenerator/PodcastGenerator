@@ -35,14 +35,13 @@ $add = stripslashes($add);
 $add = htmlspecialchars($add);
 $add = depurateContent($add);
 
-
 if ($add != NULL and $add != "all") { /// 000
 
 
 	// create unique and depurated id from the description (using the function renamefilestrict)
-	$id = renamefilestrict ($add);
+	$id = avoidXSS(renamefilestrict($add)); //deletes also accents
 
-	
+
 	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
 
 	//parse
