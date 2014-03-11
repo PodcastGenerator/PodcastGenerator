@@ -443,7 +443,7 @@ class getid3_lib
 
 	static function PlaytimeString($seconds) {
 		$sign = (($seconds < 0) ? '-' : '');
-		$seconds = abs($seconds);
+		$seconds = round(abs($seconds)); //Changed by PG see here http://www.getid3.org/phpBB3/viewtopic.php?f=4&t=1308
 		$H = floor( $seconds                            / 3600);
 		$M = floor(($seconds - (3600 * $H)            ) /   60);
 		$S = round( $seconds - (3600 * $H) - (60 * $M)        );
