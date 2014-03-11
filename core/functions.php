@@ -1079,4 +1079,44 @@ include ("$absoluteurl"."core/admin/readXMLcategories.php");
 }
 
 
+function languagesList ($absoluteurl,$isTranslation) { // $isTranslation TRUE when the list is used for localized files
+
+	if (file_exists($absoluteurl."components/locale/languages.xml")) {
+	
+	$parser = simplexml_load_file($absoluteurl.'components/locale/languages.xml','SimpleXMLElement',LIBXML_NOCDATA);
+	
+	}
+
+	$languageList = array (); //empty
+	
+	$n = 0;
+	foreach($parser->language as $singlelanguage)
+		{
+
+			//echo $singlelanguage->id[0]."<br>";
+			//echo $singlelanguage->description[0];
+
+			$id = $singlelanguage->id[0];
+			$desc = $singlelanguage->description[0];
+		
+		if ($isTranslation == TRUE) {
+		//if localization folder exists
+		
+		$localizedFolder = $absoluteurl."components/locale/".$id."/LC_MESSAGES/";
+		
+				if (file_exists($localizedFolder."messages.mo") AND file_exists($localizedFolder."messages.po")) { 
+				$languageList["$id"] = "$desc"; //double quotes necessary
+			}
+		} else {
+		//add all to the list
+		$languageList["$id"] = "$desc"; //double quotes necessary
+		}
+		
+		$n++;
+		}
+	
+	return $languageList;
+}
+
+
 ?>
