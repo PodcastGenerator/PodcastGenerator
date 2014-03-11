@@ -154,24 +154,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 
-	//	include ("$absoluteurl"."components/xmlparser/loadparser.php");
-		include ("$absoluteurl"."core/admin/readfeedlanguages.php");
-
-
-		// define variables
-		$arr = NULL;
-		$arrid = NULL;
-		$n = 0;
-
-		foreach($parser->language as $singlelanguage)
-		{
-			//echo $singlelanguage->id[0]->tagData."<br>";
-			//echo $singlelanguage->description[0]->tagData;
-
-			$arr[] .= $singlelanguage->description[0];
-			$arrid[] .= $singlelanguage->id[0];
-			$n++;
-		}
+$listWithLanguages = languagesList($absoluteurl,FALSE);
 
 
 		## FEED LANGUAGES LIST
@@ -182,16 +165,16 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '<select name="feedlanguage">';
 
 
-		natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
+		natcasesort($listWithLanguages); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
 
-		foreach ($arr as $key => $val) {
+		foreach ($listWithLanguages as $key => $val) {
 
 
 
 			$PG_mainbody .= '
-				<option value="' . $arrid[$key] . '"';
+				<option value="' . $key . '"';
 
-			if ($feed_language == $arrid[$key]) {
+			if ($feed_language == $key) {
 				$PG_mainbody .= ' selected';
 			}
 

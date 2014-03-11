@@ -2,8 +2,48 @@
 <PodcastGenerator>
 
 	<language>
+		<id>ar-SA</id>
+		<description>Arabic</description>
+	</language>
+	
+	<language>
+		<id>as-IN</id>
+		<description>Assamese</description>
+	</language>
+	
+	<language>
+		<id>ast-ES</id>
+		<description>Asturian</description>
+	</language>
+	
+	<language>
+		<id>bg-BG</id>
+		<description>Bulgarian</description>
+	</language>
+	
+	<language>
+		<id>bn-IN</id>
+		<description>Bengali</description>
+	</language>
+	
+	<language>
+		<id>bs-BA</id>
+		<description>Bosnian</description>
+	</language>
+	
+	<language>
+		<id>ca-ES</id>
+		<description>Catalan</description>
+	</language>
+
+	<language>
 		<id>cs_CS</id>
 		<description>Čeština</description>
+	</language>
+	
+	<language>
+		<id>da-DK</id>
+		<description>Danish</description>
 	</language>
 
 	<language>
@@ -12,23 +52,178 @@
 	</language>
 
 	<language>
+		<id>el-GR</id>
+		<description>Greek</description>
+	</language>	
+	
+	<language>
 		<id>en_EN</id>
 		<description>English</description>
 	</language>	
 
+	<language>
+		<id>es-ES</id>
+		<description>Español</description>
+	</language>
+	
+	<language>
+		<id>fa-IR</id>
+		<description>Persian</description>
+	</language>
+	
+	<language>
+		<id>fi-FI</id>
+		<description>Finnish</description>
+	</language>
+	
 	<language>
 		<id>fr_FR</id>
 		<description>Français</description>
 	</language>
 
 	<language>
+		<id>gu-IN</id>
+		<description>Gujarati</description>
+	</language>
+	
+	<language>
+		<id>he-IL</id>
+		<description>Hebrew</description>
+	</language>
+	
+	<language>
+		<id>hi-IN</id>
+		<description>Hindi</description>
+	</language>
+	
+	<language>
+		<id>hr-HR</id>
+		<description>Croatian</description>
+	</language>
+	
+	<language>
 		<id>hu_HU</id>
 		<description>Magyar</description>
 	</language>
 	
 	<language>
+		<id>id-ID</id>
+		<description>Indonesian</description>
+	</language>
+	
+	<language>
+		<id>is-IS</id>
+		<description>Icelandic</description>
+	</language>
+	
+	<language>
 		<id>it_IT</id>
 		<description>Italiano</description>
+	</language>
+	
+	<language>
+		<id>ja-JP</id>
+		<description>Japanese</description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
+	</language>
+	
+	<language>
+		<id></id>
+		<description></description>
 	</language>
 
 	<language>

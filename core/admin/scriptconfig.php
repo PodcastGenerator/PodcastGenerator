@@ -318,31 +318,7 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		####
 
-
-
-		##### SCRIPT LANGUAGE
-
-	//	include ("$absoluteurl"."components/xmlparser/loadparser.php");
-		include ("$absoluteurl"."core/admin/readscriptlanguages.php");
-
-
-		// define variables
-		$arr = NULL;
-		$arrid = NULL;
-		$n = 0;
-
-		foreach($parser->language as $singlelanguage)
-		{
-			//echo $singlelanguage->id[0]->tagData."<br>";
-			//echo $singlelanguage->description[0]->tagData;
-
-			$arr[] .= $singlelanguage->description[0];
-			$arrid[] .= $singlelanguage->id[0];
-			$n++;
-		}
-
-		
-
+$listWithLanguages = languagesList($absoluteurl,TRUE);
 
 		## SCRIPT LANGUAGES LIST
 
@@ -352,17 +328,14 @@ if(isset($amilogged) AND $amilogged =="true") {
 		$PG_mainbody .= '<select name="scriptlanguage">';
 
 
-		natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
+		natcasesort($listWithLanguages); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
 
-		foreach ($arr as $key => $val) {
-
-//$thisLanguage is created for retro compatibility (previous versions of PG use en while new use en_EN)
-			$thisLanguage = explode ("_",$arrid[$key]); 
+		foreach ($listWithLanguages as $key => $val) {
 
 			$PG_mainbody .= '
-				<option value="' . $arrid[$key] . '"';
+				<option value="' . $key. '"';
 
-			if ($scriptlang == $thisLanguage[0] OR $scriptlang == $arrid[$key]) {
+			if ($scriptlang == languageISO639($key) OR $scriptlang == $key) {
 				$PG_mainbody .= ' selected';
 			}
 
@@ -376,7 +349,6 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 
 
-//		$PG_mainbody .= '<p><span class="alert"><a href="http://podcastgen.sourceforge.net/helptotranslate.php?ref=local-admin" target="_blank">'._("* Volunteer to translate Podcast Generator into your native language").'</a></span></p><br /><br /><p>';
 		$PG_mainbody .= '<br /><br /><input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Updating").'\');"></p><br />';
 	}
 
