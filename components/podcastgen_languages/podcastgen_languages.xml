@@ -127,108 +127,113 @@
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>kn-IN</id>
+		<description>Kannada</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>ko-KR</id>
+		<description>Korean</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>lv-LV</id>
+		<description>Latvian</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>ml-IN</id>
+		<description>Malayalam</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>mr-IN</id>
+		<description>Marathi</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>nb-NO</id>
+		<description>Norwegian</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>nl-NL</id>
+		<description>Dutch</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>or-IN</id>
+		<description>Oriya</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>pa-IN</id>
+		<description>Punjabi</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>pl-PL</id>
+		<description>Polish</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>pt-BR</id>
+		<description>Portuguese (Brazil)</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>pt-PT</id>
+		<description>Portuguese (Portugal)</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>ru-RU</id>
+		<description>Russian</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>si-LK</id>
+		<description>Sinhalese</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>sk-SK</id>
+		<description>Slovak</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>sr-RS</id>
+		<description>Serbian</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>sv-SE</id>
+		<description>Swedish</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
+		<id>ta-IN</id>
+		<description>Tamil</description>
 	</language>
 	
 	<language>
-		<id></id>
-		<description></description>
-	</language>
-	
-	<language>
-		<id></id>
-		<description></description>
+		<id>te-IN</id>
+		<description>Telugu</description>
 	</language>
 
 	<language>
 		<id>th_TH</id>
 		<description>ไทย</description>
+	</language>
+	
+	<language>
+		<id>uk-UA</id>
+		<description>Ukrainian</description>
+	</language>
+	
+	<language>
+		<id>zh-CN</id>
+		<description>Chinese</description>
 	</language>
 	
 </PodcastGenerator>
