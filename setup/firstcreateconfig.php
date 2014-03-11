@@ -84,6 +84,7 @@ $firsttimehere = "yes";
 # XML Feed elements
 # The followings specifications will be included in your podcast "feed.xml" file.
 
+$feed_URL_replace = "";
 
 $podcast_title = "'._("Podcast Title").'";
 

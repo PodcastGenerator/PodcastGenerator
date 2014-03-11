@@ -19,6 +19,13 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	include("$absoluteurl"."core/admin/checklogged.php");
 
+	
+	# SET PODCAST FEED URL
+	if (isset($feed_URL_replace) AND $feed_URL_replace != "") {
+	$podcastFeedURL = $feed_URL_replace;
+	} else {
+	$podcastFeedURL = $url.$feed_dir.'feed.xml';
+	}
 
 	// check if user is already logged in
 	if(isset($amilogged) AND $amilogged =="true") {
@@ -162,7 +169,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<ul> 
 			<li><a href="?p=admin&do=itunesimg">'._("Change iTunes Cover Art").'</a></li>
 			<li><a href="?p=admin&do=itunescat">'._("Select or change iTunes Categories").'</a></li>
-			<li><a href="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$url.$feed_dir.'feed.xml" target="_blank">'._("Submit your podcast to the iTunes Store").'</a></li>
+			<li><a href="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast?feedURL='.$podcastFeedURL.'" target="_blank">'._("Submit your podcast to the iTunes Store").'</a></li>
 		</ul>
 			</div>
 
@@ -170,7 +177,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<h3>'._("Your podcast details").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=changedetails">'._("Change your podcast details").'</a></li>
-			<li><a href="http://validator.w3.org/feed/check.cgi?url='.$url.'feed.xml" target="_blank">'._("Validate this feed with w3c validation service").'</a></li>
+			<li><a href="http://validator.w3.org/feed/check.cgi?url='.$podcastFeedURL.'" target="_blank">'._("Validate this feed with w3c validation service").'</a></li>
 		</ul>
 			</div>
 
