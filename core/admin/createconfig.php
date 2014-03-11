@@ -90,6 +90,7 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	# XML Feed elements
 	# The followings specifications will be included in your podcast "feed.xml" file.
 
+	$feed_URL_replace = "'.$feed_URL_replace.'";
 
 	$podcast_title = "'.$podcast_title.'";
 

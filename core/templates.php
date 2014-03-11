@@ -109,15 +109,21 @@ $theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, 
 
 # SET PODCAST FEED URL
 
-$urlforitunes = str_replace("http://", "itpc://", $url); 
+if (isset($feed_URL_replace) AND $feed_URL_replace != "") {
+$podcastFeedURL = $feed_URL_replace;
+$podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL); 
+} else {
+$podcastFeedURL = $url.$feed_dir.'feed.xml';
+$podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL);
+}
 
 $rightboxcontent = '<div class="rightbox">
 
 	<span class="nav-header">'.$podcast_title.' '._("feed").'</span>
 	<p>'._("Copy the feed link and paste it into your aggregator").'<br /><br />
-	<a href="'.$url.$feed_dir.'feed.xml"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
+	<a href="'.$podcastFeedURL.'"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
 	</p>
-	<p>'._("Subscribe to this podcast with iTunes").'<br /><br /><a href="'.$urlforitunes.$feed_dir.'feed.xml"><img src="podcast_itunes.jpg" alt="'._("Subscribe to this podcast with iTunes").'" title="'._("Subscribe to this podcast with iTunes").'" border="0" /></a></p>
+	<p>'._("Subscribe to this podcast with iTunes").'<br /><br /><a href="'.$podcastFeedURLiTunes.'"><img src="podcast_itunes.jpg" alt="'._("Subscribe to this podcast with iTunes").'" title="'._("Subscribe to this podcast with iTunes").'" border="0" /></a></p>
 
 
 	</div>';
@@ -189,9 +195,9 @@ $freeboxcontent = NULL;
 	$theme_file_contents = str_replace("-----PG_PODCASTDESC-----", $podcast_description, $theme_file_contents); 
 	
 	
-	$theme_file_contents = str_replace("-----PG2_URLRSSFEED-----", 	$url.$feed_dir.'feed.xml', $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG2_URLRSSFEED-----", $podcastFeedURL, $theme_file_contents); 
 	
-	$theme_file_contents = str_replace("-----PG2_URLFORITUNES-----", 	$urlforitunes.$feed_dir.'feed.xml', $theme_file_contents); 
+	$theme_file_contents = str_replace("-----PG2_URLFORITUNES-----", $podcastFeedURLiTunes, $theme_file_contents); 
 
 	
 	
@@ -314,7 +320,7 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 
 	// general XML feed of the podcast
 	$metatagstoreplace .= '
-		<link href="'.$url.$feed_dir.'feed.xml" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />';
+		<link href="'.$podcastFeedURL.'" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />';
 		
 		
 		

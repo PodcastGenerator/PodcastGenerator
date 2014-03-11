@@ -151,15 +151,24 @@ $theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, 
 
 # SET RIGHT BOX
 
-$urlforitunes = str_replace("http://", "itpc://", $url); 
+# SET PODCAST FEED URL
+
+if (isset($feed_URL_replace) AND $feed_URL_replace != "") {
+$podcastFeedURL = $feed_URL_replace;
+$podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL); 
+} else {
+$podcastFeedURL = $url.$feed_dir.'feed.xml';
+$podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL);
+}
+
 
 $rightboxcontent = '<div class="rightbox">
 
 	<b>'.$podcast_title.' '._("feed:").'</b>
 	<p>'._("Copy the feed link and paste it into your aggregator").'<br /><br />
-	<a href="'.$url.$feed_dir.'feed.xml"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
+	<a href="'.$podcastFeedURL.'"><img src="rss-podcast.gif" alt="'._("Copy the feed link and paste it into your aggregator").'" title="'._("Copy the feed link and paste it into your aggregator").'" border="0" /></a>
 	</p>
-	<p>'._("Subscribe to this podcast with iTunes").'<br /><br /><a href="'.$urlforitunes.$feed_dir.'feed.xml"><img src="podcast_itunes.jpg" alt="'._("Subscribe to this podcast with iTunes").'" title="'._("Subscribe to this podcast with iTunes").'" border="0" /></a></p>
+	<p>'._("Subscribe to this podcast with iTunes").'<br /><br /><a href="'.$podcastFeedURLiTunes.'"><img src="podcast_itunes.jpg" alt="'._("Subscribe to this podcast with iTunes").'" title="'._("Subscribe to this podcast with iTunes").'" border="0" /></a></p>
 
 
 	</div>';
@@ -288,7 +297,7 @@ if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not disp
 
 	// general XML feed of the podcast
 	$metatagstoreplace .= '
-		<link href="'.$url.$feed_dir.'feed.xml" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />'; 
+		<link href="'.$podcastFeedURL.'" rel="alternate" type="application/rss+xml" title="'.$podcast_title.' RSS" />'; 
 
 	$theme_file_contents = str_replace("-----PG_METATAGS-----", $metatagstoreplace, $theme_file_contents);
 
