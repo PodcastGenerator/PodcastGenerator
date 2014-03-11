@@ -960,9 +960,9 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						
 						$resulting_episodes .= '<p><em>'._("Categories").'</em> ';	
 						
-						if ($text_category1 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category1.'">'.$text_category1.'</a>';
-						if ($text_category2 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category2.'">'.$text_category2.'</a>';
-						if ($text_category3 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category3.'">'.$text_category3.'</a>';
+						if ($text_category1 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category1.'">'.categoryNameFromID($absoluteurl,$text_category1).'</a>';
+						if ($text_category2 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category2.'">'.categoryNameFromID($absoluteurl,$text_category2).'</a>';
+						if ($text_category3 != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$text_category3.'">'.categoryNameFromID($absoluteurl,$text_category3).'</a>';
 						
 						$resulting_episodes .= '</p>';
 						
@@ -1064,6 +1064,18 @@ return $resulting_episodes; // return results
 function languageISO639 ($language) {
 $parts = explode("_", $language);
 return $parts[0];
+}
+
+function categoryNameFromID ($absoluteurl,$id) {
+include ("$absoluteurl"."core/admin/readXMLcategories.php");
+	if (in_array($id, $arrid)) {
+	$positionInArray = array_search($id, $arrid);
+	$catName = $arr[$positionInArray];
+	return $catName;
+	} else {
+	return;
+	}
+	
 }
 
 
