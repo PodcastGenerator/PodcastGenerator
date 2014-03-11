@@ -2,13 +2,48 @@
 <PodcastGenerator>
 
 	<language>
-		<id>ts_TS</id>
-		<description>test</description>
+		<id>ar-SA</id>
+		<description>Arabic</description>
+	</language>
+	
+	<language>
+		<id>as-IN</id>
+		<description>Assamese</description>
+	</language>
+	
+	<language>
+		<id>ast-ES</id>
+		<description>Asturian</description>
+	</language>
+	
+	<language>
+		<id>bg-BG</id>
+		<description>Bulgarian</description>
+	</language>
+	
+	<language>
+		<id>bn-IN</id>
+		<description>Bengali</description>
+	</language>
+	
+	<language>
+		<id>bs-BA</id>
+		<description>Bosnian</description>
+	</language>
+	
+	<language>
+		<id>ca-ES</id>
+		<description>Catalan</description>
 	</language>
 
 	<language>
 		<id>cs_CS</id>
 		<description>Čeština</description>
+	</language>
+	
+	<language>
+		<id>da-DK</id>
+		<description>Danish</description>
 	</language>
 
 	<language>
@@ -17,28 +52,188 @@
 	</language>
 
 	<language>
+		<id>el-GR</id>
+		<description>Greek</description>
+	</language>	
+	
+	<language>
 		<id>en_EN</id>
 		<description>English</description>
 	</language>	
 
+	<language>
+		<id>es-ES</id>
+		<description>Español</description>
+	</language>
+	
+	<language>
+		<id>fa-IR</id>
+		<description>Persian</description>
+	</language>
+	
+	<language>
+		<id>fi-FI</id>
+		<description>Finnish</description>
+	</language>
+	
 	<language>
 		<id>fr_FR</id>
 		<description>Français</description>
 	</language>
 
 	<language>
+		<id>gu-IN</id>
+		<description>Gujarati</description>
+	</language>
+	
+	<language>
+		<id>he-IL</id>
+		<description>Hebrew</description>
+	</language>
+	
+	<language>
+		<id>hi-IN</id>
+		<description>Hindi</description>
+	</language>
+	
+	<language>
+		<id>hr-HR</id>
+		<description>Croatian</description>
+	</language>
+	
+	<language>
 		<id>hu_HU</id>
 		<description>Magyar</description>
+	</language>
+	
+	<language>
+		<id>id-ID</id>
+		<description>Indonesian</description>
+	</language>
+	
+	<language>
+		<id>is-IS</id>
+		<description>Icelandic</description>
 	</language>
 	
 	<language>
 		<id>it_IT</id>
 		<description>Italiano</description>
 	</language>
+	
+	<language>
+		<id>ja-JP</id>
+		<description>Japanese</description>
+	</language>
+	
+	<language>
+		<id>kn-IN</id>
+		<description>Kannada</description>
+	</language>
+	
+	<language>
+		<id>ko-KR</id>
+		<description>Korean</description>
+	</language>
+	
+	<language>
+		<id>lv-LV</id>
+		<description>Latvian</description>
+	</language>
+	
+	<language>
+		<id>ml-IN</id>
+		<description>Malayalam</description>
+	</language>
+	
+	<language>
+		<id>mr-IN</id>
+		<description>Marathi</description>
+	</language>
+	
+	<language>
+		<id>nb-NO</id>
+		<description>Norwegian</description>
+	</language>
+	
+	<language>
+		<id>nl-NL</id>
+		<description>Dutch</description>
+	</language>
+	
+	<language>
+		<id>or-IN</id>
+		<description>Oriya</description>
+	</language>
+	
+	<language>
+		<id>pa-IN</id>
+		<description>Punjabi</description>
+	</language>
+	
+	<language>
+		<id>pl-PL</id>
+		<description>Polish</description>
+	</language>
+	
+	<language>
+		<id>pt-BR</id>
+		<description>Portuguese (Brazil)</description>
+	</language>
+	
+	<language>
+		<id>pt-PT</id>
+		<description>Portuguese (Portugal)</description>
+	</language>
+	
+	<language>
+		<id>ru-RU</id>
+		<description>Russian</description>
+	</language>
+	
+	<language>
+		<id>si-LK</id>
+		<description>Sinhalese</description>
+	</language>
+	
+	<language>
+		<id>sk-SK</id>
+		<description>Slovak</description>
+	</language>
+	
+	<language>
+		<id>sr-RS</id>
+		<description>Serbian</description>
+	</language>
+	
+	<language>
+		<id>sv-SE</id>
+		<description>Swedish</description>
+	</language>
+	
+	<language>
+		<id>ta-IN</id>
+		<description>Tamil</description>
+	</language>
+	
+	<language>
+		<id>te-IN</id>
+		<description>Telugu</description>
+	</language>
 
 	<language>
 		<id>th_TH</id>
 		<description>ไทย</description>
+	</language>
+	
+	<language>
+		<id>uk-UA</id>
+		<description>Ukrainian</description>
+	</language>
+	
+	<language>
+		<id>zh-CN</id>
+		<description>Chinese</description>
 	</language>
 	
 </PodcastGenerator>
