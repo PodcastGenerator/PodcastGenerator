@@ -15,6 +15,8 @@ include ('../core/admin/VERSION.php'); //define Podcast Generator Version
 
 include($absoluteurl."core/language.php");
 
+include($absoluteurl."core/functions.php");
+
 ################ 
 
 $setuptext = _("Podcast Generator")." ".$podcastgen_version." "._("Setup");
