@@ -60,7 +60,7 @@ if (file_exists("../categories.xml")) { //if categories already exist stop the s
 $idcat = stripslashes(_("Uncategorized")); 
 $idcat = htmlspecialchars($idcat);
 $idcat = depurateContent($idcat); // category name (external)
-$id = renamefilestrict ($idcat); // category id generated (internal)
+$id = avoidXSS(renamefilestrict($idcat)); // category id generated (internal)
 
 
 $categoriesfiletocreate = '<?xml version="1.0" encoding="utf-8"?>
