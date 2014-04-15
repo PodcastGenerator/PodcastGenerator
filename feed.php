@@ -15,13 +15,20 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
-
 	include("config.php"); 
 	include("$absoluteurl"."core/functions.php");
 
 	include("$absoluteurl"."core/supported_media.php");
 
 	include("$absoluteurl"."core/language.php");
+
+
+	# SET CUSTOM WEB URL (shown in iTunes Store), if specified in config.php
+	if (isset($feed_iTunes_LINKS_Website) AND $feed_iTunes_LINKS_Website != "") {
+	$podcastWebHomePage = $feed_iTunes_LINKS_Website;
+	} else {
+	$podcastWebHomePage = $url; //installation url of PG
+	}
 
 
 	$cat_image = $img_dir.$_GET['cat'].".jpg";
@@ -86,7 +93,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
 	<channel>
 		<title>$podcast_title</title>
-		<link>$url</link>
+		<link>$podcastWebHomePage</link>
 		<atom:link href=\"".$url."feed.php?cat=".$category."\" rel=\"self\" type=\"application/rss+xml\" />
 		<description>$podcast_description</description>
 		<generator>Podcast Generator $podcastgen_version - http://podcastgen.sourceforge.net</generator>
