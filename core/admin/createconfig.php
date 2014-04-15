@@ -90,6 +90,8 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	# XML Feed elements
 	# The followings specifications will be included in your podcast "feed.xml" file.
 
+	$feed_iTunes_LINKS_Website = "'.$feed_iTunes_LINKS_Website.'";
+
 	$feed_URL_replace = "'.$feed_URL_replace.'";
 
 	$podcast_title = "'.$podcast_title.'";

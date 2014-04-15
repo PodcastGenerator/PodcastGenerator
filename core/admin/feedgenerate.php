@@ -45,6 +45,15 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		$PG_mainbody .= "<h3>"._("Generate XML feed")."</h3>";
 		$PG_mainbody .= "<p><span class=\"admin_hints\">"._("Manually regenerate xml feed")."</span></p>";
 	}
+	
+	
+	# SET CUSTOM WEB URL (shown in iTunes Store), if specified in config.php
+	if (isset($feed_iTunes_LINKS_Website) AND $feed_iTunes_LINKS_Website != "") {
+	$podcastWebHomePage = $feed_iTunes_LINKS_Website;
+	} else {
+	$podcastWebHomePage = $url; //installation url of PG
+	}
+	
 
 	### DEFINE FEED FILENAME
 	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
@@ -71,7 +80,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		<rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"$feed_language\" version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
 	<channel>
 		<title>$podcast_title</title>
-		<link>$url</link>
+		<link>$podcastWebHomePage</link>
 		<atom:link href=\"".$url.$feed_dir."feed.xml\" rel=\"self\" type=\"application/rss+xml\" />
 		<description>$podcast_description</description>
 		<generator>Podcast Generator $podcastgen_version - http://podcastgen.sourceforge.net</generator>
