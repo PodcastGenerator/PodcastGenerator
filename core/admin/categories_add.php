@@ -39,8 +39,13 @@ if ($add != NULL and $add != "all") { /// 000
 
 
 	// create unique and depurated id from the description (using the function renamefilestrict)
-	$id = avoidXSS(renamefilestrict($add)); //deletes also accents
-
+	
+	$id = avoidXSS(renamefilestrict($add)); //deletes also accents	
+	
+	if (strlen($id) < 3) {
+	$suffix = random_str(5);
+	$id = $id.$suffix;
+	}
 
 	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
 
@@ -52,7 +57,7 @@ if ($add != NULL and $add != "all") { /// 000
 			// echo $singlecategory->description[0]->tagData;
 			// echo "<br><br>";
 
-			if ($id != ($singlecategory->id[0])) { // if the id of the new category is different from the ids already present in the XML file 
+			if ($id != $singlecategory->id[0] AND $add !=$singlecategory->description[0]) { // if the id of the new category is different from the ids already present in the XML file and if the description is different (e.g. the description is compared cause the id is generated with random characters in case of conversion from japanese, corean etc...
 
 			// put into the array 
 			$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
@@ -61,7 +66,7 @@ if ($add != NULL and $add != "all") { /// 000
 			}
 			else { // if ID already present in XML
 
-				$isduplicated = "yes"; // assign duplicated label
+				$isduplicated = TRUE; // assign duplicated label
 
 			}
 
@@ -71,10 +76,8 @@ if ($add != NULL and $add != "all") { /// 000
 //	}
 
 
-	if ($isduplicated != "yes") { // 001 if new category doesn't exist yet
+	if ($isduplicated != TRUE) { // 001 if new category doesn't exist yet
 	$arrdesc[] .= $add; //Description
-
-
 
 	$arrid[] .= $id; // create Id
 
