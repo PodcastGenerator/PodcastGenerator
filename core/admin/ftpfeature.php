@@ -68,13 +68,12 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 			{
 
-
 			//	$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 				
 				$file_multimediale = divideFilenameFromExtension($key);
 
-				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
+				$fileData = checkFileType(strtolower($file_multimediale[1]),$podcast_filetypes,$filemimetypes);
 
 
 				if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
@@ -83,18 +82,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 					$podcast_filetype = $fileData[0];
 
 
-					if ($file_multimediale[1]=="$podcast_filetype") { // if the extension is the same as specified in config.php
+					if (strtolower($file_multimediale[1])==$podcast_filetype) { // if the extension (case insensitive) is supported
 
 
 						############
 						$filedescr = "$absoluteurl"."$upload_dir$file_multimediale[0].xml"; //database file
 
-
-
 						### "FTP FEATURE" check if there are media files in /media directory uploaded manually, if you find, create a proper XML file and add to the podcast
 
 
-						if (file_exists("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype") AND !file_exists("$filedescr")) { //if there is the multimedia file but not the database file with information
+						if (file_exists($absoluteurl.$upload_dir.$file_multimediale[0].".".$podcast_filetype)  AND !file_exists("$filedescr")) { //if there is the multimedia file but not the database file with information
 
 							$PG_mainbody .= '<br /><ul><li><p><b>'._("Media file found:").'</b> '.$file_multimediale[0].'.'.$podcast_filetype.'</li></ul></p>';
 
@@ -178,7 +175,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 									$filenamechanged = date('Y-m-d')."_".$filenamedepured; //add date, to order files in mp3 players
 
-									$renamedfile = $filenamechanged.".".$podcast_filetype;
+									$renamedfile = $filenamechanged.".".strtolower($podcast_filetype); //lowercase extension
 
 									//echo "<br />renamed file: $renamedfile";
 
