@@ -27,6 +27,10 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	foreach ($enablesocialnetworks as $singlesocialnetwork) {$social_networks_active_buttons .= $singlesocialnetwork.","; }
 	
 	
+	//New vars introduced in 2.2 This avoid a notice when upgrade
+	if (!isset($feed_iTunes_LINKS_Website)) $feed_iTunes_LINKS_Website = "";
+	if (!isset($feed_URL_replace)) $feed_URL_replace = "";
+	
 	
 	//Regenerate the config.php file
 	$configfiletocreate = '<?php
