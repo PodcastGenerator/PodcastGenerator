@@ -138,7 +138,7 @@ $adminrightboxcontent .= '<div class="rightbox">';
 	$adminrightboxcontent .= '
 		<span class="nav-header">'._("Make a donation:").'</span>
 		<p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J4EYELBABMGS4" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
+			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
 			<br /><br />
 		</p>
 	';
