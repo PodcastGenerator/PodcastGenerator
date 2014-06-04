@@ -157,46 +157,72 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 										</episode>
 										</PodcastGenerator>';
 
-									// echo "<br>titolo: $episode_id_title - desc: $episode_id_description<br><br>";
+									
 
-									# file name depuration!
+			
+	##############
+	##############
+	### file name depuration!!!! Important... By default Podcastgen uses a "strict" depuration policy (just characters from a to z and numbers... no accents and other characters).
 
-									$filenamedepured = $file_multimediale[0];
+	$filenameWithoutExtension = $file_multimediale[0];
+	
+	if ($strictfilenamepolicy == "yes") {
+		#enable this to have a very strict filename policy
 
-									#enable this to have a very strict filename policy
-									$filenamedepured = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower($filenamedepured)))); //very strict... not correct with every language...
+		$filenameWithoutExtension = renamefilestrict ($filenameWithoutExtension);
 
-									$filenamedepured = strtolower($filenamedepured);  // lower-case.
-									$filenamedepured = strip_tags($filenamedepured);  // remove HTML tags.
-									$filenamedepured = preg_replace('!\s+!','_',$filenamedepured); // change space chars to underscores.
-									$filenamedepured = stripslashes($filenamedepured); //remove slashes in the file name
-									$filenamedepured = str_replace("'", "", $filenamedepured);
-									$filenamedepured = str_replace("&", "_and_", $filenamedepured);
+	}
 
-									$filenamechanged = date('Y-m-d')."_".$filenamedepured; //add date, to order files in mp3 players
+	else {
+		# LESS strict renaming policy
 
-									$renamedfile = $filenamechanged.".".strtolower($podcast_filetype); //lowercase extension
+		$filenameWithoutExtension = renamefile ($filenameWithoutExtension);
+
+	}
+
+		$fileExtension = strtolower ($podcast_filetype); //lowercase file extension
+
+
+	##############
+	############## end filename depuration
+
+
+if ($strictfilenamepolicy == "yes") 	$filenamechanged = date('Y-m-d')."_".$filenameWithoutExtension; //add date, to order files in mp3 players
+else $filenamechanged = $filenameWithoutExtension;
+									
+
+									$renamedfile = $filenamechanged.".".$fileExtension; //lowercase extension
 
 									//echo "<br />renamed file: $renamedfile";
 
-									$filesuffix = NULL;
-
-									while (file_exists("$absoluteurl"."$upload_dir$renamedfile")) { //cicle: if file already exists add an incremental suffix
-										$filesuffix++;
-
-										# echo "$filesuffix"; //debug
-
-										$renamedfile = $filenamechanged . $filesuffix.".".$podcast_filetype;
+							
+							$filesuffix = NULL;
+							
+							//just if the file name is changed, add suffix in case of duplicates
+							if ($filenamechanged != $filenameWithoutExtension) {
+						
+									while (file_exists("$absoluteurl"."$upload_dir$renamedfile")) { 
+									$filesuffix++;
+								$renamedfile = $filenamechanged . $filesuffix.".".$fileExtension;
 									}
-
+							} else {
+							
+							$renamedfile = $filenamechanged.".".$fileExtension;
+							
+							}
+									
+									
+									
 									#new name to the episode file
-									copy("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype", "$absoluteurl"."$upload_dir$renamedfile"); //copy the file (to rename it) 
+									rename("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype", "$absoluteurl"."$upload_dir$renamedfile"); //copy the file (to rename it) 
 
+									/*
 									#delete old episode file (original name)
 									if (file_exists("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype")) { 
 										unlink ("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype"); //delete original file, if exists
 									}
-
+									*/
+									
 									$newxmlfilename = "$absoluteurl"."$upload_dir"."$filenamechanged"."$filesuffix".".xml";
 
 									### create corresponding XML
