@@ -192,6 +192,11 @@
 	</language>
 	
 	<language>
+		<id>ro_RO</id>
+		<description>Romanian</description>
+	</language>
+	
+	<language>
 		<id>ru_RU</id>
 		<description>Русский язык</description>
 	</language>
