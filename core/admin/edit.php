@@ -170,7 +170,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 							
 							$PG_mainbody .= '
 							<br /><br />
-							<label>Change the episode date</label>
+							<label>'._("Change the episode date").'</label>
 							<span class ="alert">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed.").'</span><br /><br />
 							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
 		
