@@ -1,3 +1,10 @@
+NOTE from Podcast Generator developer:
+This is a super old player, it also has some "potential" security issues
+It will be replaced by native HTML5 players, whose support is growing more and more.
+If you want to completely delete the flash player, you can open player.php in this folder, erase all its content and save it empty.
+
+------------------------------------------------------ 
+
 Plugin Name: Audio player
 Plugin URI: http://www.1pixelout.net/code/audio-player-wordpress-plugin/
 Description: Highly configurable single track mp3 player.
