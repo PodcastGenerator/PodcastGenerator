@@ -1002,7 +1002,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 					//	$resulting_episodes .= "<br />";
 
-						if (isset($isvideo) AND $isvideo == TRUE) {
+						if ($enablestreaming=="yes" AND isset($isvideo) AND $isvideo == TRUE) {
 	
 //Display watch button (old)	
 //$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
