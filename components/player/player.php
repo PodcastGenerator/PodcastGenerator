@@ -12,7 +12,7 @@
 
 
 if (detectModernBrowser() == TRUE) { 
-$showplayercode =	'<audio controls>
+$showplayercode =	'<audio style="width:85%;"  controls>
 	  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.mp3" type="audio/mpeg">
 	'._("Your browser does not support the audio player").'
 	</audio>';
