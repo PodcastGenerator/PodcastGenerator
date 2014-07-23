@@ -580,17 +580,21 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						$resulting_episodes .= '<p>';
 						
 						//show button view Details
-						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
+						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("Details").'</a>&nbsp;&nbsp;';
 						
+						if (isset($isvideo) AND $isvideo == TRUE) {
+						$resulting_episodes .= '<a class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
+						}
+						//videoPlayer.'.$recent_count.'
 						
 						## BUTTON DOWNLOAD
 						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
 						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
 						//show button (FORCED) download using download.php
-						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 						} 
 						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 						}
 						## END - BUTTON DOWNLOAD
 						
@@ -621,6 +625,13 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 	
 //Display watch button (old)	
 //$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+
+
+$resulting_episodes .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
+  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'" type="video/mp4">
+'._("Your browser does not support the video player").'
+</video>';
+
 
 							$isvideo = FALSE; //so variable is assigned on every cicle
 						}
@@ -772,24 +783,6 @@ function readPodcastCategories ($absoluteurl) {
 }		
 
 
-function detectMobileDevice() {
-
-//Some of the main mobile devices
-$iPod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
-$iPhone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
-$iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
-$Android= stripos($_SERVER['HTTP_USER_AGENT'],"Android");
-$webOS= stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
-$Blackberry= stripos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
-$Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
-
-	//here we can do something with the mobile devices or just a subset of them
-	if($iPod OR $iPhone OR $iPad OR $Android OR $webOS OR $Blackberry OR $Kindle){
-	return TRUE;
-	} else {
-	return FALSE;
-	} 
-}
 
 
 
@@ -979,10 +972,10 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
 						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
 						//show button (FORCED) download using download.php
-						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 						} 
 						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Download").' &raquo;</a>';
+						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 						}
 						## END - BUTTON DOWNLOAD
 						
@@ -1135,6 +1128,40 @@ function random_str($size)
 
         return $text; 
 } 
+
+
+
+function detectMobileDevice() {
+
+//Some of the main mobile devices
+$iPod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+$iPhone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+$iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+$Android= stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+$webOS= stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+$Blackberry= stripos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
+$Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
+
+	//here we can do something with the mobile devices or just a subset of them
+	if($iPod OR $iPhone OR $iPad OR $Android OR $webOS OR $Blackberry OR $Kindle){
+	return TRUE;
+	} else {
+	return FALSE;
+	} 
+}
+
+
+//Function detectModernBrowser detects modern browsers to enable HTML5 audio/video players
+//It compares user agent and versions agains a list of browsers known to support html5 audio/video tags
+function detectModernBrowser() 
+{
+	
+	//IE ['majorver'] == '7'
+//	$browser = get_browser(null, true);
+//	echo $browser[browser]." - ".$browser[majorver];
+	return TRUE;
+}
+
 
 
 ?>

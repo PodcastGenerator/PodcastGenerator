@@ -9,23 +9,19 @@
 ############################################################
 
 //HTML 5 to add (tested with Chrome and Safari)
-/*
+
+
+if (detectModernBrowser() == TRUE) { 
 $showplayercode =	'<audio controls>
 	  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.mp3" type="audio/mpeg">
-	Your browser does not support the audio element.
+	'._("Your browser does not support the audio player").'
 	</audio>';
-*/
+}
+// if browser does not (or it is not know to) support HTML5 video and audio, then show mp3 flash
+else { //if no HTML5 support
 
 $showplayercode = "<OBJECT classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"
 	codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0\" WIDTH=\"290\" HEIGHT=\"24\" id=\"player";
-
-if (isset($_GET['p'])) {
-
-	if ($_GET['p']!="episode") { //This IF avoids notice error in PHP4
-		$showplayercode .= $recent_count;
-
-	}
-}
 
 $showplayercode .= "\" ALIGN=\"\">
 
@@ -44,5 +40,7 @@ $showplayercode .= "\" ALIGN=\"\">
 
 ";
 
+
+} //END if no HTML5 support
 
 ?> 
