@@ -587,7 +587,7 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						//show button view Details
 						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 						
-						if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE) {
+						if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE AND !detectMobileDevice()) {
 						//javascript:; is added as an empty link for href
 						$resulting_episodes .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
 						}
@@ -617,7 +617,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 //PLAYER AUDIO (FLASH/HTML5) AND VIDEO (HTML5) FOR SUPPORTED FILES AND BROWSERS
 
-if ($enablestreaming=="yes") { //if audio and video streaming is enabled in PG options
+if ($enablestreaming=="yes" AND !detectMobileDevice()) { //if audio and video streaming is enabled in PG options
 	
 //// AUDIO PLAYER (MP3)
 	if ($browserSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
@@ -628,7 +628,7 @@ if ($enablestreaming=="yes") { //if audio and video streaming is enabled in PG o
 		$resulting_episodes .= ''.$showplayercode.'<br />'; 
 		
 	} else { //if no support for HTML5, then flash player just for mp3
-		if(!detectMobileDevice() AND $podcast_filetype=="mp3") { //if not mobile
+		if($podcast_filetype=="mp3") { //if not mobile
 		include ("components/player/player.php");
 		$resulting_episodes .= ''.$showplayercode.'<br />'; 
 		}
