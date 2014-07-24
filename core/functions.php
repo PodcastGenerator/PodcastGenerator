@@ -530,7 +530,7 @@ else { //if an old theme is used
 //List of file extensions classified as videos
 $listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
 if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
-$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
+$resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
 $isvideo = TRUE; 
 }
 
@@ -647,6 +647,7 @@ if ($enablestreaming=="yes") { //if audio and video streaming is enabled in PG o
 	</video>';
 
 	$isvideo = FALSE; //so variable is assigned on every cicle
+	$resulting_episodes .= '<br />';
 	}
 
 
@@ -939,7 +940,7 @@ else { //if an old theme is used
 //List of file extensions classified as videos
 $listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
 if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
-$resulting_episodes .= '&nbsp;<img src="video.png" alt="'._("Video Podcast").'" />';
+$resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
 $isvideo = TRUE; 
 }
 
