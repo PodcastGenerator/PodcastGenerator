@@ -1228,9 +1228,10 @@ function browserAndVersion() {
 
     
 */
-
-	echo $userAgent."<br />";
-	echo $browser." v.".$version."<br />";
+	
+	// DEBUG!
+	//echo $userAgent."<br />";
+	//echo $browser." v.".$version."<br />";
 	
     return array($browser,$version, 'name'=>$browser,'version'=>$version);
 }
