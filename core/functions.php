@@ -318,6 +318,11 @@ $finalOutputEpisodes = NULL; // Define variable that will contain output of this
 $getID3 = new getID3; //initialize getID3 engine
 
 
+//HTML5 audio and video tag support (for web player)
+//detectModernBrowser returns an array [0] => HTML5 audio support, [1] => HTML5 video support
+$browserSupport = detectModernBrowser(); 
+
+
 ## Handle header if it's a category
 
 //IF it's a category print category title and feed
@@ -575,15 +580,16 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 
 						$resulting_episodes .= '<p>'.$text_shortdesc.'</p>';	 //SHOW short description (no HTML)
 						
-						
+	
 						#BUTTONS
 						$resulting_episodes .= '<p>';
 						
 						//show button view Details
-						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("Details").'</a>&nbsp;&nbsp;';
+						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 						
-						if (isset($isvideo) AND $isvideo == TRUE) {
-						$resulting_episodes .= '<a class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
+						if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE) {
+						//javascript:; is added as an empty link for href
+						$resulting_episodes .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
 						}
 						//videoPlayer.'.$recent_count.'
 						
@@ -607,35 +613,44 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 if (isset($episode_details)) {
 $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 }
-						
-							#MP3 FLASH PLAYER
-// if it's not a mobile device and streaming is enabled show streaming player
-						if(!detectMobileDevice() AND $enablestreaming=="yes" AND $podcast_filetype=="mp3") { 
+			
 
-							include ("components/player/player.php");
-							$resulting_episodes .= ''.$showplayercode; 
-							$resulting_episodes .= '<br />'; 
-						} 
-						# END - MP3 FLASH PLAYER
-						
+//PLAYER AUDIO (FLASH/HTML5) AND VIDEO (HTML5) FOR SUPPORTED FILES AND BROWSERS
 
-					//	$resulting_episodes .= "<br />";
-
-						if (isset($isvideo) AND $isvideo == TRUE) {
+if ($enablestreaming=="yes") { //if audio and video streaming is enabled in PG options
 	
-//Display watch button (old)	
-//$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
+//// AUDIO PLAYER (MP3)
+	if ($browserSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
+	$showplayercode =	'<audio style="width:80%;" controls>
+		  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.mp3" type="audio/mpeg">
+		'._("Your browser does not support the audio player").'
+		</audio>';
+		$resulting_episodes .= ''.$showplayercode.'<br />'; 
+		
+	} else { //if no support for HTML5, then flash player just for mp3
+		if(!detectMobileDevice() AND $podcast_filetype=="mp3") { //if not mobile
+		include ("components/player/player.php");
+		$resulting_episodes .= ''.$showplayercode.'<br />'; 
+		}
+	}
+//// END AUDIO PLAYER (MP3)
 
 
-$resulting_episodes .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
-  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'" type="video/mp4">
-'._("Your browser does not support the video player").'
-</video>';
+//// VIDEO PLAYER (MP4)	
+	
+	// If the file is a video and the browser supports HTML5 video tag
+	if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE) {
+		
+	$resulting_episodes .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
+	  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'" type="video/mp4">
+	'._("Your browser does not support the video player").'
+	</video>';
+
+	$isvideo = FALSE; //so variable is assigned on every cicle
+	}
 
 
-							$isvideo = FALSE; //so variable is assigned on every cicle
-						}
-
+} //END if audio and video streaming is enabled in PG options
 
 					
 				//add social networks and embedded code
@@ -1150,16 +1165,117 @@ $Kindle= stripos($_SERVER['HTTP_USER_AGENT'],"Kindle");
 	} 
 }
 
+//detect browser name and version from user agent (until get_browser will come in bundle with PHP)
+function browserAndVersion() {
+    $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+   
+   
+//The following conditions are custom-tailored for specific user agents and may change in future
+   
+   //Opera (NB. It goes before Chrome, cause the user agent contains chrome too
+   if(preg_match('/(opr)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'opera';
+   preg_match('/(opr)[ \/]([\w]+)/', $userAgent, $versionExtracted); //used (opr) in regexp
+   }
+   //Chrome
+   else if(preg_match('/(chrome)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'chrome';
+   preg_match('/('.$browser.')[ \/]([\w]+)/', $userAgent, $versionExtracted);
+   }
+   //Firefox
+   else if(preg_match('/(firefox)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'firefox';
+   preg_match('/('.$browser.')[ \/]([\w]+)/', $userAgent, $versionExtracted);
+   }
+   //IE
+   else if(preg_match('/(msie)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'msie';
+   preg_match('/('.$browser.')[ \/]([\w]+)/', $userAgent, $versionExtracted);
+   }
+   //IE 11
+   else if(preg_match('/(trident)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'msie';
+	$version = "11"; //manually assigned to IE 11 
+	}
+   //SAFARI
+   else if(preg_match('/(safari)[ \/]([\w.]+)/', $userAgent)) {
+   $browser = 'safari';
+   preg_match('/(version)[ \/]([\w]+)/', $userAgent, $versionExtracted); //version in the regexp
+   }
+   else {
+   $browser = "notDetected";
+   $version = "0";
+   }
+   
+   if (!isset($version)) $version = $versionExtracted[2];
+   
+/*
+   if(preg_match('/(chromium)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'chromium';
+    elseif(preg_match('/(chrome)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'chrome';
+    elseif(preg_match('/(safari)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'safari';
+    elseif(preg_match('/(opera)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'opera';
+    elseif(preg_match('/(msie)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'msie';
+    elseif(preg_match('/(mozilla)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'mozilla';
+	elseif(preg_match('/(opr)[ \/]([\w.]+)/', $userAgent))
+            $browser = 'opera';
+
+    
+*/
+
+	echo $userAgent."<br />";
+	echo $browser." v.".$version."<br />";
+	
+    return array($browser,$version, 'name'=>$browser,'version'=>$version);
+}
+
 
 //Function detectModernBrowser detects modern browsers to enable HTML5 audio/video players
 //It compares user agent and versions agains a list of browsers known to support html5 audio/video tags
 function detectModernBrowser() 
 {
 	
-	//IE ['majorver'] == '7'
-//	$browser = get_browser(null, true);
-//	echo $browser[browser]." - ".$browser[majorver];
-	return TRUE;
+	$supportHTML5audioTag = array("msie","firefox","chrome","safari");
+	$supportHTML5videoTag = array("msie","chrome","safari"); //firefox does not fully support mp4 videos yet
+	
+	//for each browser, which is the minimum required version that supports HTML5 audio and video tags
+	$minumumRequiredVersion = array(
+    "msie" => 9,
+    "firefox" => 29,
+	"safari" => 5, 
+	"chrome" => 36,
+);
+	
+	$browser = browserAndVersion();
+	$browsername = $browser[0];
+	$browserMajorVersion = $browser[1];
+	
+	
+	$HTML5audiosupport = FALSE;
+	if (in_array($browser[0], $supportHTML5audioTag)) {  
+	//echo "<br/>Browser: ".$browsername." - Version: ".$browserMajorVersion." supports HTML5 audio tag";
+		if ($browserMajorVersion >= $minumumRequiredVersion[$browsername]) $HTML5audiosupport = TRUE;
+		//echo $HTML5audiosupport;
+	
+	}
+	
+	$HTML5videosupport = FALSE;
+	if (in_array($browser[0], $supportHTML5videoTag)) {  
+	//echo "<br/>Browser: ".$browsername." - Version: ".$browserMajorVersion." supports HTML5 video tag";  
+		if ($browserMajorVersion >= $minumumRequiredVersion[$browsername]) $HTML5videosupport = TRUE;
+		//echo $HTML5audiosupport;
+	
+	}
+	
+	$browserCompatibility = array($HTML5audiosupport,$HTML5videosupport);
+	//print_r($browserCompatibility);
+	
+	return $browserCompatibility;
 }
 
 

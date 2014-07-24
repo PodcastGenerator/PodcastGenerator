@@ -104,8 +104,8 @@ if(isset($amilogged) AND $amilogged =="true") {
 
 		##########streaming
 
-		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'._("Enable Streaming mp3 Player?").'</b></label></p>
-			<span class="alert">'._("Enable flash streaming player for mp3 files on the web pages.").'</span>
+		$PG_mainbody .= '<br /><br /><p><label for="streaming"><b>'._("Enable Audio and Video Player?").'</b></label></p>
+			<span class="alert">'._("Enable Audio and Video web player for supported files and browsers.").'</span>
 			<p>'._("Yes").' <input type="radio" name="streaming" value="yes" ';
 
 		if ($enablestreaming == "yes") {
