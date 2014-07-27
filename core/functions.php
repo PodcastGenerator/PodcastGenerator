@@ -603,8 +603,12 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						//Write "watch" or "listen" in mobile devices.
 							if (isset($isvideo) AND $isvideo == TRUE) { 
 								$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
-						}	else {
+						}	
+							//if it's audio
+							else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
 							$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+						}	else {
+								$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
 						}
 							
 							
