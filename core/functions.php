@@ -411,7 +411,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 		
 
 		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
-		$filenameWithouExtension = $file_parts[0];
+		$filenameWithoutExtension = $file_parts[0];
 		$fileExtension = $file_parts[1];
 	
 
@@ -426,10 +426,10 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 			if ($fileExtension==$podcast_filetype) { // if the extension is accepted
 
-					$file_size = round(filesize("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype")/1048576,2);
+					$file_size = round(filesize("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype")/1048576,2);
 
 					
-					$filedescr = $absoluteurl.$upload_dir.$filenameWithouExtension.'.xml'; //database file
+					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
 
 
 					if (file_exists($filedescr)) { //if database file exists 
@@ -470,7 +470,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 						
 
 						# File details (duration, bitrate, etc...)
-						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype"); //read file tags
+						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype"); //read file tags
 
 						$file_duration = @$ThisFileInfo['playtime_string'];
 
@@ -521,18 +521,12 @@ else { //if an old theme is used
 	$resulting_episodes .= '<div class="episode">'; //open the single episode DIV
 } 
 	
+	
+	$isvideo = isItAvideo($podcast_filetype);
 							
 
 	$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
-
-
-						
-//List of file extensions classified as videos
-$listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
-if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
-$resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
-$isvideo = TRUE; 
-}
+	if ($isvideo == TRUE) $resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
 
 
 $resulting_episodes .= '</h3>';
@@ -549,7 +543,7 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
 
 
-		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithoutExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
 
 }
 		
@@ -582,42 +576,9 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						
 	
 						#BUTTONS
-						$resulting_episodes .= '<p>';
-						
-						//show button view Details
-						$resulting_episodes .= '<a class="btn" href="?name='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
-						
-						if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE AND !detectMobileDevice()) {
-						//javascript:; is added as an empty link for href
-						$resulting_episodes .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
-						}
-						//videoPlayer.'.$recent_count.'
-						
-						## BUTTON DOWNLOAD
-						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
-						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
-						//show button (FORCED) download using download.php
-						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
-						} 
-						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-						//Write "watch" or "listen" in mobile devices.
-							if (isset($isvideo) AND $isvideo == TRUE) { 
-								$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
-						}	
-							//if it's audio
-							else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
-							$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
-						}	else {
-								$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
-						}
-							
-							
-							
-						
-						}
-						## END - BUTTON DOWNLOAD
-						
-						$resulting_episodes .= '</p>';
+
+$resulting_episodes .= showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count);
+
 						#END BUTTONS
 		
 						
@@ -632,35 +593,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 if ($enablestreaming=="yes" AND !detectMobileDevice()) { //if audio and video streaming is enabled in PG options
 	
-//// AUDIO PLAYER (MP3)
-	if ($browserSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
-	$showplayercode =	'<audio style="width:80%;" controls>
-		  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.mp3" type="audio/mpeg">
-		'._("Your browser does not support the audio player").'
-		</audio>';
-		$resulting_episodes .= ''.$showplayercode.'<br />'; 
-		
-	} else { //if no support for HTML5, then flash player just for mp3
-		if($podcast_filetype=="mp3") { //if not mobile
-		include ("components/player/player.php");
-		$resulting_episodes .= ''.$showplayercode.'<br />'; 
-		}
-	}
-//// END AUDIO PLAYER (MP3)
-
-
-//// VIDEO PLAYER (MP4)	
-	
-	// If the file is a video and the browser supports HTML5 video tag
-	if (isset($isvideo) AND $isvideo == TRUE AND $browserSupport[1] == TRUE) {
-		
-	$resulting_episodes .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
-	  <source src="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'" type="video/mp4">
-	'._("Your browser does not support the video player").'
-	</video>';
-
-	$resulting_episodes .= '<br />';
-	}
+$resulting_episodes .= showStreamingPlayers ($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count);
 
 } //END if audio and video streaming is enabled in PG options
 
@@ -850,7 +783,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 		
 
 		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
-		$filenameWithouExtension = $file_parts[0];
+		$filenameWithoutExtension = $file_parts[0];
 		$fileExtension = $file_parts[1];
 	
 
@@ -863,16 +796,16 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 			$podcast_filetype = $fileData[0];
 
 
-			if ($fileExtension==$podcast_filetype AND file_exists($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
+			if ($fileExtension==$podcast_filetype AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
 
-					$file_size = round(filesize($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype")/1048576,2);
+					$file_size = round(filesize($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")/1048576,2);
 
 					
 					//TIMESTAMP
-					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithouExtension.$podcast_filetype");
+					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype");
 					
 					
-					$filedescr = $absoluteurl.$upload_dir.$filenameWithouExtension.'.xml'; //database file
+					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
 
 
 					if (file_exists($filedescr)) { //if database file exists 
@@ -904,7 +837,7 @@ return $text_title;
 						
 
 						# File details (duration, bitrate, etc...)
-						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithouExtension.$podcast_filetype"); //read file tags
+						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype"); //read file tags
 
 						$file_duration = @$ThisFileInfo['playtime_string'];
 
@@ -948,14 +881,7 @@ else { //if an old theme is used
 
 	$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
 
-
-						
-//List of file extensions classified as videos
-$listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
-if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
-$resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
-$isvideo = TRUE; 
-}
+	if (isItAvideo($podcast_filetype) == TRUE) $resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
 
 
 $resulting_episodes .= '</h3>';
@@ -972,7 +898,7 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
 
 
-		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithoutExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
 
 }
 		
@@ -991,24 +917,7 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						
 						
 						#BUTTONS
-						$resulting_episodes .= '<p>';
-						
-						//show button view Details
-						//$resulting_episodes .= '<a class="btn" href="?p=episode&amp;name='.$filenameWithouExtension.'.'.$podcast_filetype.'">'._("View details").' &raquo;</a>&nbsp;&nbsp;';
-						
-						
-						## BUTTON DOWNLOAD
-						//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
-						if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
-						//show button (FORCED) download using download.php
-						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
-						} 
-						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
-						}
-						## END - BUTTON DOWNLOAD
-						
-						$resulting_episodes .= '</p>';
+	$resulting_episodes .= showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,"singleEpisode"); //NB recent count is passed as non numeric so no button More is showed
 						#END BUTTONS
 		
 						
@@ -1018,27 +927,9 @@ if (isset($episode_details)) {
 $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 }
 						
-							#MP3 FLASH PLAYER
-// if it's not a mobile device and streaming is enabled show streaming player
-						if(!detectMobileDevice() AND $enablestreaming=="yes" AND $podcast_filetype=="mp3") { 
-
-							include ("components/player/player.php");
-							$resulting_episodes .= ''.$showplayercode; 
-							$resulting_episodes .= '<br />'; 
-						} 
-						# END - MP3 FLASH PLAYER
-						
-
-					//	$resulting_episodes .= "<br />";
-
-						if ($enablestreaming=="yes" AND isset($isvideo) AND $isvideo == TRUE) {
-	
-//Display watch button (old)	
-//$resulting_episodes .= "<a href=\"".$url.$upload_dir."$filenameWithouExtension.$podcast_filetype\" title=\""._("Watch this video (requires browser plugin)")."\"><span class=\"episode_download\">"._("Watch")."</span></a><span class=\"episode_download\"> - </span>";
-
-							$isvideo = FALSE; //so variable is assigned on every cicle
-						}
-
+if ($enablestreaming=="yes" AND !detectMobileDevice()) { 
+$resulting_episodes .= showStreamingPlayers ($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,"singleEpisode"); //NB recent count is passed as non numeric so no button More is showed
+}
 
 					
 				//add social networks and embedded code
@@ -1294,5 +1185,90 @@ function detectModernBrowser()
 }
 
 
+function isItAvideo($podcast_filetype) {
+	$listOfVideoFormats = array("mpg","mpeg","mov","mp4","wmv","3gp","avi","flv","m4v");
+	if (in_array($podcast_filetype, $listOfVideoFormats)) { // if it is a video
+	return TRUE; 
+	}
+}
+
+
+function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count) {
+	$buttonsOutput = '<p>';
+	
+	//show button "More" - in the permalink it is not show (no numeric var passed)
+	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
+	
+	if (isItAvideo($podcast_filetype) == TRUE AND detectModernBrowser()[1] == TRUE AND !detectMobileDevice()) {
+	//javascript:; is added as an empty link for href
+	$buttonsOutput .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
+	}
+	//videoPlayer.'.$recent_count.'
+	
+	## BUTTON DOWNLOAD
+	//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
+	if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
+	//show button (FORCED) download using download.php
+	$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
+	} 
+	else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
+	//Write "watch" or "listen" in mobile devices.
+		if (isItAvideo($podcast_filetype) == TRUE) { 
+			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
+	}	
+		//if it's audio
+		else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
+		$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+	}	else {
+			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
+	}
+		
+
+	}
+	## END - BUTTON DOWNLOAD
+	
+	$buttonsOutput .= '</p>';
+
+return $buttonsOutput;
+}
+
+
+function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count) {
+	
+	$playersOutput = "";
+	
+	//// AUDIO PLAYER (MP3)
+		if (detectModernBrowser()[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
+		$showplayercode =	'<audio style="width:80%;" controls>
+			  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.mp3" type="audio/mpeg">
+			'._("Your browser does not support the audio player").'
+			</audio>';
+			$playersOutput .= ''.$showplayercode.'<br />'; 
+
+		} else { //if no support for HTML5, then flash player just for mp3
+			if($podcast_filetype=="mp3") { //if not mobile
+			include ("components/player/player.php");
+			$playersOutput .= ''.$showplayercode.'<br />'; 
+			}
+		}
+	//// END AUDIO PLAYER (MP3)
+
+
+	//// VIDEO PLAYER (MP4)	
+
+		// If the file is a video and the browser supports HTML5 video tag
+		if (isItAvideo($podcast_filetype) == TRUE AND detectModernBrowser()[1] == TRUE) {
+
+		$playersOutput .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
+		  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'" type="video/mp4">
+		'._("Your browser does not support the video player").'
+		</video>';
+
+		$playersOutput .= '<br />';
+		}
+		
+		return $playersOutput;
+		
+}
 
 ?>
