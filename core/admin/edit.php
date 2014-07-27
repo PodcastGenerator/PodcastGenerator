@@ -46,8 +46,11 @@ else {
 		//	include("$absoluteurl"."components/xmlparser/loadparser.php");
 
 
-			$file_multimediale = explode(".",$file_multimediale); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+		$file_multimediale = divideFilenameFromExtension($file_multimediale); //supports more full stops . in the file name. PHP >= 5.2.0 needed
+		//OLD doesn't work with extra . in the file name
+		//$file_multimediale = explode(".",$file_multimediale); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
+//echo '<br>FILE: '.$file_multimediale[0].' - '.$file_multimediale[1];
 
 			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
 

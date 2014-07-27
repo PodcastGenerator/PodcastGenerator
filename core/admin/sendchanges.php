@@ -148,8 +148,7 @@ $auth_email = NULL; //ignore email
 }
 
 
-$file_ext=explode(".",$file); // divide filename from extension
-
+$file_ext = divideFilenameFromExtension($file); //supports more full stops . in the file name. PHP >= 5.2.0 needed
 
 
 					
