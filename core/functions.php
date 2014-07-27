@@ -600,7 +600,16 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 						$resulting_episodes .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 						} 
 						else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-						$resulting_episodes .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
+						//Write "watch" or "listen" in mobile devices.
+							if (isset($isvideo) AND $isvideo == TRUE) { 
+								$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
+						}	else {
+							$resulting_episodes .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithouExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+						}
+							
+							
+							
+						
 						}
 						## END - BUTTON DOWNLOAD
 						
@@ -646,13 +655,13 @@ if ($enablestreaming=="yes" AND !detectMobileDevice()) { //if audio and video st
 	'._("Your browser does not support the video player").'
 	</video>';
 
-	$isvideo = FALSE; //so variable is assigned on every cicle
 	$resulting_episodes .= '<br />';
 	}
 
-
 } //END if audio and video streaming is enabled in PG options
 
+	//PUT ISVIDEO TO FALSE AGAIN	
+	$isvideo = FALSE; //so variable is assigned on every cicle
 					
 				//add social networks and embedded code
 				include("$absoluteurl"."core/attachtoepisode.php");	
