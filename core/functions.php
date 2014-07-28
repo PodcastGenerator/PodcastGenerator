@@ -1199,7 +1199,8 @@ function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_di
 	//show button "More" - in the permalink it is not show (no numeric var passed)
 	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 	
-	if (isItAvideo($podcast_filetype) == TRUE AND detectModernBrowser()[1] == TRUE AND !detectMobileDevice()) {
+	$browserAudioVideoSupport = detectModernBrowser();
+	if (isItAvideo($podcast_filetype) == TRUE AND $browserAudioVideoSupport[1] == TRUE AND !detectMobileDevice()) {
 	//javascript:; is added as an empty link for href
 	$buttonsOutput .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
 	}
@@ -1237,8 +1238,10 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 	
 	$playersOutput = "";
 	
+	$browserAudioVideoSupport = detectModernBrowser();
+	
 	//// AUDIO PLAYER (MP3)
-		if (detectModernBrowser()[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
+		if ($browserAudioVideoSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
 		$showplayercode =	'<audio style="width:80%;" controls>
 			  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.mp3" type="audio/mpeg">
 			'._("Your browser does not support the audio player").'
@@ -1257,7 +1260,7 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 	//// VIDEO PLAYER (MP4)	
 
 		// If the file is a video and the browser supports HTML5 video tag
-		if (isItAvideo($podcast_filetype) == TRUE AND detectModernBrowser()[1] == TRUE) {
+		if (isItAvideo($podcast_filetype) == TRUE AND $browserAudioVideoSupport[1] == TRUE) {
 
 		$playersOutput .= '<video width="85%" id="videoPlayer'.$recent_count.'" style="display:none;" controls>
 		  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'" type="video/mp4">
