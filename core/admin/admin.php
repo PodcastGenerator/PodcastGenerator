@@ -134,8 +134,8 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<div class="topseparator episodebox"> 
 			<h3>'._("Episodes").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=upload">'._("New Podcast").'</a></li>
-			<li><a href="?p=archive&cat=all&nosocial">'._("Edit / Delete Podcasts").'</a></li>';
+			<li><a href="?p=admin&do=upload">'._("Upload New Episode").'</a></li>
+			<li><a href="?p=archive&cat=all&nosocial">'._("Edit / Delete Episodes").'</a></li>';
 			
 			if ($categoriesenabled == "yes") { //if categories are enabled in config.php
 
