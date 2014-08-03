@@ -86,7 +86,19 @@ else {
 			//	}
 
 			### END CATEGORIES FORM
-
+			
+			
+		//	$PG_mainbody .=  '<a href="javascript:;" onclick="$(\'#dateForm\').fadeToggle();"> '._("Publication Date").'</a><br />';
+		//	$PG_mainbody .= '<div id="dateForm" style="display:none;">HERE THE DATE FORM</div>';
+		
+			$PG_mainbody .= '
+			<br /><br />
+			<label>'._("Publication Date").'</label>
+			<span class ="alert">'._("The form below reports the current time and date of the server. If you specify a date in future, your episode won't be shown till then.").'</span><br /><br />
+			'.CreaFormData("",time(),$dateformat); //dateformat is taken from config.php	
+		
+			
+			
 			$PG_mainbody .= '<br /><br />';
 			$PG_mainbody .= _("Fields marked with * are required.").'
 				

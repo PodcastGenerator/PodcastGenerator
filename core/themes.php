@@ -142,6 +142,7 @@ $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $the
 
 //LOAD A CSS WITH CLASSES COMMON TO ALL THE THEMES
 $commonCSSurl = '<link href="themes/common.css" rel="stylesheet">';
+$commonCSSurl .= '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">';
 $theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, $theme_file_contents); 
 
 

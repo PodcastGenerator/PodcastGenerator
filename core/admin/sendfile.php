@@ -156,6 +156,7 @@ $auth_email = NULL; //ignore email
 
 
 
+
 ## start processing podcast
 
 $PG_mainbody .= "<p><b>"._("Processing episode...")."</b></p>";
@@ -296,6 +297,38 @@ else $filenamechanged = $filenameWithoutExtension;
 
 		########## end IMAGE upload section
 		######################
+
+
+			############################################
+			# START CHANGE DATE
+
+			//print_r($_POST);
+
+			if (isset($_POST['Day']) AND isset($_POST['Month']) AND isset($_POST['Year']) AND isset($_POST['Hour']) AND isset($_POST['Minute'])) { 
+
+
+			$filefullpath = $absoluteurl.$upload_dir.$filenamechanged.$filesuffix.'.'.$fileExtension;
+
+			//$oradelfile = filemtime($filefullpath);
+
+			$oracambiata = mktime($_POST['Hour'],$_POST['Minute'],0,$_POST['Month'],$_POST['Day'],$_POST['Year']); //seconds are simply 0, no need to handle them
+
+	//	echo $oracambiata;
+
+			if ($oracambiata > time() AND checkdate($_POST['Month'],$_POST['Day'],$_POST['Year']) == TRUE) { 
+
+			touch($filefullpath,$oracambiata);
+
+			$PG_mainbody .= "<p>"._("The episode date has been set to future. This episode won't show up till then.).")."</p>";
+
+			}
+
+			} 					
+
+			# END CHANGE DATE						
+			############################################
+
+
 
 
 

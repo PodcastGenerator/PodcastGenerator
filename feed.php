@@ -247,8 +247,8 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 					###### Mimetype
 					$filemimetype=$fileData[1]; //define mimetype to put in the feed
 
-
-					if ($file_multimediale[1]=="$podcast_filetype") { // if the extension is the same as specified in config.php
+					$filefullpath = $absoluteurl.$upload_dir.$key;
+					if ($file_multimediale[1]=="$podcast_filetype" AND !publishInFuture($filefullpath)) { 
 
 
 
