@@ -134,7 +134,7 @@ function isThisAdminPage ()
 ########### Security code, avoids cross-site scripting with Register Globals ON
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End	
-else if (isset($_GET['p']) and $_GET['p'] == "admin" AND isset($_SESSION["user_session"])) return TRUE;
+else if (isset($_GET['p']) and $_GET['p'] == "admin" OR isset($_GET['p']) AND $_GET['p'] == "archive" AND isset($_SESSION["user_session"])) return TRUE;
 }
 
 
@@ -423,8 +423,8 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 			$podcast_filetype = $fileData[0];
 
-
-			if ($fileExtension==$podcast_filetype) { // if the extension is accepted
+			$filefullpath = $absoluteurl.$upload_dir.$key;
+			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is accepted
 
 					$file_size = round(filesize("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype")/1048576,2);
 
@@ -533,7 +533,13 @@ $resulting_episodes .= '</h3>';
 	
 
 // EPISODE DATE AND SIZE
-$resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
+$resulting_episodes .= '<p class="episode_date">';
+
+if (filemtime($filefullpath) > time()) {
+$resulting_episodes .= '<i class="fa fa-clock-o"></i>&nbsp;&nbsp;';	
+}
+$resulting_episodes .= $episodeDateAndSize.'</p>';
+
 
 
 ///////////////////////////////////////////
@@ -542,8 +548,7 @@ $resulting_episodes .= '<p class="episode_date">'.$episodeDateAndSize.'</p>';
 // IF USER IS LOGGED AND PAGE IS ALL PODCAST
 if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
 
-
-		$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithoutExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+	$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithoutExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
 
 }
 		
@@ -1272,6 +1277,12 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 		
 		return $playersOutput;
 		
+}
+
+function publishInFuture($filefullpath) {
+	$fileTime = filemtime($filefullpath);
+	if ($fileTime > time() AND !isThisAdminPage()) return TRUE;
+	else return FALSE;
 }
 
 ?>

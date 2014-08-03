@@ -171,10 +171,11 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 							//Read file date
 							$episodedate = filemtime($wholeepisodefile);
 							
+							
 							$PG_mainbody .= '
 							<br /><br />
 							<label>'._("Change the episode date").'</label>
-							<span class ="alert">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed.").'</span><br /><br />
+							<span class ="alert">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed. If you specify a date in future, your episode won't be shown till then.").'</span><br /><br />
 							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
 		
 		
