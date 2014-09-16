@@ -307,7 +307,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 								$text_shortdesc = depurateContent($text_shortdesc); //short desc
 								$text_longdesc = depurateCDATAfield($text_longdesc); //long desc
 								$text_keywordspg = depurateContent($text_keywordspg); //Keywords
-								$text_keywordspg = htmlentities($text_keywordspg); //convert special characters e.g. r&b -> r&amp;b
+								$text_keywordspg = htmlspecialchars($text_keywordspg); //convert special characters e.g. r&b -> r&amp;b
 								$text_authornamepg = depurateContent($text_authornamepg); //author's name
 
 								$file_size = filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype");
