@@ -306,20 +306,38 @@ function showPodcastEpisodes($all,$category,$singleEpisode) { //$all is a bool, 
 
 include("core/includes.php");
 
-$categoryURLforPagination = ""; //preserve category in links in number of pages at the button
+$disableextras = FALSE;
+
+
+$categoryURLforPagination = ""; //preserve category URL GET
 
 if ($all == TRUE) {
-$max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
+$max_recent = 999999; //show all episode (workaround - could be more elegant)
 $categoryURLforPagination = "&cat=all"; //preserve category in links in number of pages at the button
+
+	//don't show social networks nor user GETID3 when showing all episodes and noextras is appended to the URL
+	if (isset($_GET['noextras'])) {
+	$disableextras = TRUE;
+	$categoryURLforPagination .= "&noextras"; //preserve category in links in number of pages at the button
+	}
+
 } else { // in home page, do not paginate but use $max_recent 
-$episodeperpage = 999999;
+$episodeperpage = 999999; //do not use pagination (workaround - could be more elegant)
 }
 
+
+//if parameters is appended to the URL disable GETID3 (can slow down edit process when having a lot of files)
+if (!$disableextras) {
+
+//Note that GETID3 is initialized once
 require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+$getID3 = new getID3; //initialize getID3 engine
+
+}
 
 $finalOutputEpisodes = NULL; // Define variable that will contain output of this function
 
-$getID3 = new getID3; //initialize getID3 engine
+
 
 
 //HTML5 audio and video tag support (for web player)
@@ -472,29 +490,10 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 						
 						$episodeDateAndSize = date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
 						
-
-						# File details (duration, bitrate, etc...)
-						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype"); //read file tags
-
-						$file_duration = @$ThisFileInfo['playtime_string'];
-
-						if($file_duration!=NULL) { // display file duration
-							$episode_details = _("Duration:")." ";
-							$episode_details .= @$ThisFileInfo['playtime_string'];
-							$episode_details .= " "._("m")." - "._('Filetype:')." ";
-							$episode_details .= @$ThisFileInfo['fileformat'];
-
-						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
-							$episode_details .= " (";
-							$episode_details .= @$ThisFileInfo['bitrate']/1000;
-							$episode_details .= " "._("kbps")." ";
-							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
-							$episode_details .= " "._("Hz").")";
-							}
-
-						
-						} 
-
+				if (!$disableextras) {
+					# Use GETID3 lib to retrieve media file duration, bitrate, etc...
+					$episode_details = retrieveMediaFileDetails ("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype",$podcast_filetype,$getID3);
+				}
 
 	
 //////////////////////////////////////////////////////////////////////////
@@ -847,28 +846,9 @@ return $text_title;
 						$episodeDateAndSize = date ($dateformat,$file_timestamp)." <i>($file_size "._("MB").")</i>";
 						
 
-						# File details (duration, bitrate, etc...)
-						$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype"); //read file tags
-
-						$file_duration = @$ThisFileInfo['playtime_string'];
-
-						if($file_duration!=NULL) { // display file duration
-							$episode_details = _("Duration:")." ";
-							$episode_details .= @$ThisFileInfo['playtime_string'];
-							$episode_details .= " "._("m")." - "._('Filetype:')." ";
-							$episode_details .= @$ThisFileInfo['fileformat'];
-
-						if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
-							$episode_details .= " (";
-							$episode_details .= @$ThisFileInfo['bitrate']/1000;
-							$episode_details .= " "._("kbps")." ";
-							$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
-							$episode_details .= " "._("Hz").")";
-							}
-
 						
-						} 
-
+						# Use GETID3 lib to retrieve media file duration, bitrate, etc...
+					$episode_details = retrieveMediaFileDetails ("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype",$podcast_filetype,$getID3);
 
 	
 //////////////////////////////////////////////////////////////////////////
@@ -1301,5 +1281,34 @@ function publishInFutureShowToAdmin($filefullpath) {
 	if  (isThisAdminPage()) return FALSE;
 	else if ($fileTime > time() AND !isThisAdminPage()) return TRUE;
 }
+
+
+function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
+	
+	$ThisFileInfo = $getID3->analyze($MediaFile); //read file tags
+	$file_duration = @$ThisFileInfo['playtime_string'];
+
+	$episode_details = NULL;
+	
+	if($file_duration!=NULL) { // display file duration
+		$episode_details .= _("Duration:")." ";
+		$episode_details .= @$ThisFileInfo['playtime_string'];
+		$episode_details .= " "._("m")." - "._('Filetype:')." ";
+		$episode_details .= @$ThisFileInfo['fileformat'];
+
+		if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
+			$episode_details .= " (";
+			$episode_details .= @$ThisFileInfo['bitrate']/1000;
+			$episode_details .= " "._("kbps")." ";
+			$episode_details .= @$ThisFileInfo['audio']['sample_rate'] ;
+			$episode_details .= " "._("Hz").")";
+		}
+
+	} 
+	
+	return $episode_details;
+	
+}
+
 
 ?>

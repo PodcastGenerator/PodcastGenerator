@@ -15,9 +15,9 @@
 	
 	//SOCIAL NETWORKS INTEGRATION
 
-//if the parameter "nosocial" (e.g. ?p=archive&cat=all&nosocial) is passed in the GET, then no social network integration is displayed, e.g. when from the admin page you are redirected to the page with all episode to edit/delete them
+//if the parameter "noextras" (e.g. ?p=archive&cat=all&noextras) is passed in the GET, then no social network integration is displayed, e.g. when from the admin page you are redirected to the page with all episode to edit/delete them
 
-if (!isset($_GET['nosocial'])) { //if there isn't the "nosocial" parameter"
+if (!isset($_GET['noextras'])) { //if there isn't the "noextras" parameter"
 	
 	if (in_array(TRUE,$enablesocialnetworks)) { //IF at least one value is true
 	$resulting_episodes .= displaySocialNetworkButtons($fullURL,$text_title,$enablesocialnetworks[0],$enablesocialnetworks[1],$enablesocialnetworks[2]); //0 is FB, 1 twitter, 2 G+
