@@ -135,7 +135,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<h3>'._("Episodes").'</h3>
 			<ul> 
 			<li><a href="?p=admin&do=upload">'._("Upload New Episode").'</a></li>
-			<li><a href="?p=archive&cat=all&nosocial">'._("Edit / Delete Episodes").'</a></li>';
+			<li><a href="?p=archive&cat=all&noextras">'._("Edit / Delete Episodes").'</a></li>';
 			
 			if ($categoriesenabled == "yes") { //if categories are enabled in config.php
 
