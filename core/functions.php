@@ -311,6 +311,8 @@ $categoryURLforPagination = ""; //preserve category in links in number of pages 
 if ($all == TRUE) {
 $max_recent = 999999; //show all episode (workaround - could be more elegant I Know)
 $categoryURLforPagination = "&cat=all"; //preserve category in links in number of pages at the button
+} else { // in home page, do not paginate but use $max_recent 
+$episodeperpage = 999999;
 }
 
 require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
