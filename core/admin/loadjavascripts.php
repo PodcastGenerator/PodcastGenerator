@@ -16,12 +16,7 @@ $loadjavascripts = '<script language="JavaScript" type="text/javascript" src="co
 
 
 
-### INSERT EDITOR WYSIWYG in specified pages
-// Note: the - entity_encoding : "raw" - into tinyMCE.init solves issues with html entities (conversion of letter with accents, and other characters) in the "long description" of episodes
 if (isset($_GET["do"])) { 
-
-
-
 
 
 	if ($_GET["do"]=="upload" OR $_GET["do"]=="freebox" OR $_GET["do"]=="edit" OR $_GET["do"]=="categories") {
@@ -55,45 +50,35 @@ $(document).ready(
 
 
 
+### INSERT EDITOR WYSIWYG in specified pages
+// TinyMCE is loaded from an external (offical) URL. If no connection available then a simple textarea will be shown
+// Note: the - entity_encoding : "raw" - into tinyMCE.init solves issues with html entities (conversion of letter with accents, and other characters) in the "long description" of episodes
 
-
-	//EDITOR WYSIWYG
 		$loadjavascripts .='
-		<script language="javascript" type="text/javascript" src="components/tiny_mce/tiny_mce.js"></script>
-
-			<script language="javascript" type="text/javascript">
-
-		tinyMCE.init({
-
+		<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+		<script>
+		tinymce.init({
+		
+			selector:"#long_description",
 			entity_encoding : "raw",
+			width: 400,
+			height: 200,
+			menubar: false,
+			statusbar: false,
+			plugins: [
+					 "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+					 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+					 "save table contextmenu directionality emoticons template paste textcolor"
+			],
+		   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image | forecolor", 
 
-				theme : "advanced",
-
-				mode: "exact",
-
-				elements : "long_description",
-
-				language : "en",
-				
-				theme_advanced_toolbar_location : "top",
-				theme_advanced_buttons1 : "bold,italic,underline,separator,"
-				+ "justifyleft,justifycenter,justifyright,separator,"
-				+ "forecolor,bullist,numlist,link,unlink,separator,"
-				+ "image,separator,undo,redo,code",
-				height:"200px",
-				width:"400px"
-				});
-			</script>
+		});
+		</script>
 		';
 
-				
 		}
-			
 	
-			
-
 	}
-
 
 
 
