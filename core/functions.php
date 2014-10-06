@@ -448,9 +448,6 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 			$filefullpath = $absoluteurl.$upload_dir.$key;
 			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath)) { // if the extension is accepted
 
-					$file_size = round(filesize("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype")/1048576,2);
-
-					
 					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
 
 
@@ -488,7 +485,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 						
 						
 						
-						$episodeDateAndSize = date ($dateformat, $value)." <i>($file_size "._("MB").")</i>";
+						$episodeDate = date ($dateformat, $value);
 						
 				if (!$disableextras) {
 					# Use GETID3 lib to retrieve media file duration, bitrate, etc...
@@ -541,7 +538,7 @@ $resulting_episodes .= '<p class="episode_date">';
 if (filemtime($filefullpath) > time()) {
 $resulting_episodes .= '<i class="fa fa-clock-o"></i>&nbsp;&nbsp;';	
 }
-$resulting_episodes .= $episodeDateAndSize.'</p>';
+$resulting_episodes .= $episodeDate.'</p>';
 
 
 
@@ -807,10 +804,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 			$filefullpath = $absoluteurl.$upload_dir.$key;
 			
 			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath) AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
-
-					$file_size = round(filesize($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")/1048576,2);
-
-					
+		
 					//TIMESTAMP
 					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype");
 					
@@ -843,7 +837,7 @@ if ($justTitle == 1) {
 return $text_title;
 } 			
 
-						$episodeDateAndSize = date ($dateformat,$file_timestamp)." <i>($file_size "._("MB").")</i>";
+						$episodeDate = date ($dateformat,$file_timestamp);
 						
 
 						
@@ -883,7 +877,7 @@ $resulting_episodes .= '<p class="episode_date">';
 if (filemtime($filefullpath) > time()) {
 $resulting_episodes .= '<i class="fa fa-clock-o"></i>&nbsp;&nbsp;';	
 }
-$resulting_episodes .= $episodeDateAndSize.'</p>';
+$resulting_episodes .= $episodeDate.'</p>';
 
 
 
@@ -1285,17 +1279,22 @@ function publishInFutureShowToAdmin($filefullpath) {
 
 function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
 	
+	$ThisFileSize = round(filesize($MediaFile)/1048576,2);
+	
 	$ThisFileInfo = $getID3->analyze($MediaFile); //read file tags
 	$file_duration = @$ThisFileInfo['playtime_string'];
-
+	$file_type = @$ThisFileInfo['fileformat'];
+	
 	$episode_details = NULL;
 	
+	if ($file_type != NULL) $episode_details .= _('Filetype:')." ".strtoupper($file_type)." - ";
+	$episode_details .= _('Size:')." ".$ThisFileSize._("MB");
+	
 	if($file_duration!=NULL) { // display file duration
-		$episode_details .= _("Duration:")." ";
+		$episode_details .= " - "._("Duration:")." ";
 		$episode_details .= @$ThisFileInfo['playtime_string'];
-		$episode_details .= " "._("m")." - "._('Filetype:')." ";
-		$episode_details .= @$ThisFileInfo['fileformat'];
-
+		$episode_details .= " "._("m");
+		
 		if($podcast_filetype=="mp3") { //if mp3 show bitrate &co
 			$episode_details .= " (";
 			$episode_details .= @$ThisFileInfo['bitrate']/1000;
