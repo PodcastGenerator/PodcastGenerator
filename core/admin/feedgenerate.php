@@ -224,7 +224,9 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 					$filemimetype=$fileData[1]; //define mimetype to put in the feed
 
 					$filefullpath = $absoluteurl.$upload_dir.$key;
-					if ($file_multimediale[1]=="$podcast_filetype" AND !publishInFuture($filefullpath)) { // if the extension is the same as specified in config.php
+					
+					
+					if ($file_multimediale[1]==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is the same as specified in config.php
 
 
 
