@@ -19,6 +19,8 @@ $PG_mainbody = NULL; //erase variable which contains episodes data
 
 include("core/includes.php");
 
+include("pg-cron.php"); //Act as a pseudo cron when someone visits the page
+
 if (isset($_GET['p'])) {
 
 	if ($_GET['p']=="admin") {
