@@ -371,24 +371,13 @@ $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategorie
 
 
 // Open podcast directory
-$handle = opendir ($absoluteurl.$upload_dir);
-while (($filename = readdir ($handle)) !== false)
-{
 
+$fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 
-//List of directory or filename to exclude
-$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn");
-
-
-	if (!in_array($filename, $toExclude)) $file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-
-}
-
-if (!empty($file_array)) { //if directory is not empty
+if (!empty($fileNamesList)) { //if directory is not empty
 
 if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE; //Set bool to false. if we require a category and no episode are associated it will be set to true
 
-	arsort ($file_array); //the opposite of asort (inverse order)
 
 	$recent_count = 0; //set recents to zero
 
@@ -412,27 +401,27 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 	}
 
 
-	foreach ($file_array as $key => $value) //loop through each file in the media dir
+	foreach ($fileNamesList as $singleFileName) //loop through each file in the media dir
 		{
 	
 		$resulting_episodes = NULL; //reset VAR
 
 		//avoid reading files that won't be displayed in this page
 		if ($recent_count > $maxC) {
-				$recent_count = count($file_array)/2; //count($file_array)/2 is the total number of episodes
-			//	echo "total episodes:".count($file_array)/2;
+				$recent_count = count($fileNamesList)/2; //count($fileNamesList)/2 is the total number of episodes
+			//	echo "total episodes:".count($fileNamesList)/2;
 				break;
 			}
 
 
 
-		if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
+		else if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
 		
 		
 		
 		
 
-		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
+		$file_parts = divideFilenameFromExtension($singleFileName); //supports more full stops . in the file name. PHP >= 5.2.0 needed
 		$filenameWithoutExtension = $file_parts[0];
 		$fileExtension = $file_parts[1];
 	
@@ -445,7 +434,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 			$podcast_filetype = $fileData[0];
 
-			$filefullpath = $absoluteurl.$upload_dir.$key;
+			$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath)) { // if the extension is accepted
 
 					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
@@ -483,9 +472,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 						} 
 						
 						
-						
-						
-						$episodeDate = date ($dateformat, $value);
+						$episodeDate = date ($dateformat, filemtime($filefullpath));
 						
 				if (!$disableextras) {
 					# Use GETID3 lib to retrieve media file duration, bitrate, etc...
@@ -505,7 +492,7 @@ if (useNewThemeEngine($theme_path)) { //If use new theme template
 
 
 		//just if the episod number is multiple of $numberOfEpisodesPerLine
-		if ($recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($file_array)) {
+		if ($recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($fileNamesList)) {
 		//open div with class row-fluid (theme based on bootstrap)
 	
 		$resulting_episodes .= '<div class="row-fluid">'; // row-fluid is a line that contains 1 or more episodes
@@ -536,7 +523,7 @@ $resulting_episodes .= '</h3>';
 $resulting_episodes .= '<p class="episode_date">';
 
 if (filemtime($filefullpath) > time()) {
-$resulting_episodes .= '<i class="fa fa-clock-o"></i>&nbsp;&nbsp;';	
+$resulting_episodes .= '<i class="fa fa-clock-o fa-2x"></i>&nbsp;&nbsp;';	
 }
 $resulting_episodes .= $episodeDate.'</p>';
 
@@ -619,7 +606,7 @@ $resulting_episodes .= showStreamingPlayers ($filenameWithoutExtension,$podcast_
 
 							
 						//close line with one or more episode for new themes >=2.0
-						if (useNewThemeEngine($theme_path) AND $recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($file_array)) { 
+						if (useNewThemeEngine($theme_path) AND $recent_count % $numberOfEpisodesPerLine != 0 OR $recent_count == count($fileNamesList)) { 
 						//close class row-fluid
 						$resulting_episodes .= "</div>";
 						}
@@ -784,10 +771,10 @@ $getID3 = new getID3; //initialize getID3 engine
 if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 	
 	
-	$key = $singleEpisode;
+	$singleFileName = $singleEpisode;
 		
 
-		$file_parts = divideFilenameFromExtension($key); //supports more full stops . in the file name. PHP >= 5.2.0 needed
+		$file_parts = divideFilenameFromExtension($singleFileName); //supports more full stops . in the file name. PHP >= 5.2.0 needed
 		$filenameWithoutExtension = $file_parts[0];
 		$fileExtension = $file_parts[1];
 	
@@ -801,7 +788,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 			$podcast_filetype = $fileData[0];
 
 //publishInFutureShowToAdmin
-			$filefullpath = $absoluteurl.$upload_dir.$key;
+			$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 			
 			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath) AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
 		
@@ -854,7 +841,7 @@ $numberOfEpisodesPerLine = 2; //number of episodes per line in some themes - def
 if (useNewThemeEngine($theme_path)) { //If use new theme template
 
 
-	$resulting_episodes .= '<div class="episodebox">'; //open the single episode BOX
+	$resulting_episodes .= '<div class="span episodebox">'; //open the single episode BOX
 	$resulting_episodes .= '<div class="span6">'; //open the single episode DIV
 }
 
@@ -875,7 +862,7 @@ $resulting_episodes .= '</h3>';
 // EPISODE DATE AND SIZE
 $resulting_episodes .= '<p class="episode_date">';
 if (filemtime($filefullpath) > time()) {
-$resulting_episodes .= '<i class="fa fa-clock-o"></i>&nbsp;&nbsp;';	
+$resulting_episodes .= '<i class="fa fa-clock-o fa-2x"></i>&nbsp;&nbsp;';	
 }
 $resulting_episodes .= $episodeDate.'</p>';
 
@@ -1264,8 +1251,9 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 		
 }
 
-function publishInFuture($filefullpath) {
-	$fileTime = filemtime($filefullpath);
+function publishInFuture($filefullpath) {	
+	$fileTime = 0;
+	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
 	if ($fileTime > time()) return TRUE;
 	else return FALSE;
 }
@@ -1307,6 +1295,29 @@ function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
 	
 	return $episode_details;
 	
+}
+
+
+
+function readMediaDir ($absoluteurl,$upload_dir) {
+	
+	//List of directories or files to exclude
+	$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn");
+	
+	$handle = opendir ($absoluteurl.$upload_dir);
+	while (($filename = readdir ($handle)) !== false) 
+	{
+		if (!in_array($filename, $toExclude)) $files_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
+	}
+	
+	//$files_array has the file name as key and the file date as value - here we sort inversely by time 
+	arsort ($files_array); //opposite of asort
+	
+	//Now that the array as been ordered by date (most recent on top), we can keep just keys (file names)
+	$fileNamesList = array_keys($files_array);
+
+	//array containing all the accepted files names in media folder, with the exception of $toExclude
+	return $fileNamesList; 
 }
 
 

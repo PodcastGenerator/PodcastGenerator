@@ -34,6 +34,8 @@ $configfiletocreate = '<?php
 
 $podcastgen_version = "'.$podcastgen_version.'"; // Version
 
+$first_installation = '.time().'; 
+
 $scriptlang = "'.$_POST['setuplanguage'].'";
 
 $url = "'.$currenturl.'"; // Complete URL of the script (Trailing slash REQUIRED)

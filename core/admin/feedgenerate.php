@@ -174,33 +174,17 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 
 	// Open podcast directory
-	$handle = opendir ($absoluteurl.$upload_dir);
-	while (($filename = readdir ($handle)) !== false)
-	{
+	$fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 
-		if ($filename != '..' && $filename != '.' && $filename != 'index.htm' && $filename != '_vti_cnf')
-		{
-
-			$file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-		}
-
-	}
-
-	if (!empty($file_array)) { //if directory is not empty
-
-
-		# asort ($file_array);
-		arsort ($file_array); //the opposite of asort (inverse order)
+	if (!empty($fileNamesList)) { //if directory is not empty
 
 		$recent_count = 0; //set recents to zero
-
-
 
 		$single_file = NULL; //define and empty variable
 
 
 		############# START CICLE ###################
-		foreach ($file_array as $key => $value)
+		foreach ($fileNamesList as $singleFileName)
 
 		{
 
@@ -209,7 +193,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 
 
-				$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+				$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 
 				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes); 
@@ -223,7 +207,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 					###### Mimetype
 					$filemimetype=$fileData[1]; //define mimetype to put in the feed
 
-					$filefullpath = $absoluteurl.$upload_dir.$key;
+					$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 					
 					
 					if ($file_multimediale[1]==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is the same as specified in config.php
@@ -289,9 +273,9 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 								<itunes:subtitle>$text_shortdesc</itunes:subtitle>
 								<itunes:summary><![CDATA[ $text_longdesc ]]></itunes:summary>
 								<description>$text_shortdesc</description>
-								<link>$link$key</link>
-								<enclosure url=\"$url$upload_dir$key\" length=\"$file_size\" type=\"$filemimetype\"/>
-								<guid>$link$key</guid>
+								<link>$link$singleFileName</link>
+								<enclosure url=\"$url$upload_dir$singleFileName\" length=\"$file_size\" type=\"$filemimetype\"/>
+								<guid>$link$singleFileName</guid>
 								";
 
 
@@ -401,5 +385,6 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	}}
 
+	
 
 	?>

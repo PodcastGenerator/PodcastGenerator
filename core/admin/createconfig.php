@@ -32,6 +32,9 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 	if (!isset($feed_URL_replace)) $feed_URL_replace = "";
 	
 	
+	if (!isset($first_installation)) $first_installation = time();
+	
+
 	//Regenerate the config.php file
 	$configfiletocreate = '<?php
 
@@ -45,6 +48,8 @@ if(isset($amilogged) AND $amilogged =="true") { //if logged
 
 	$podcastgen_version = "'.$podcastgen_version.'"; // Version
 
+	$first_installation = '.$first_installation.'; 
+	
 	$scriptlang = "'.$scriptlang.'";
 
 	$url = "'.$url.'"; // Complete URL of the script (Trailing slash REQUIRED)

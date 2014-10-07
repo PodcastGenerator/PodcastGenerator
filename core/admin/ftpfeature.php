@@ -44,34 +44,19 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		//$PG_mainbody .= '<div><i>'._("Searching...").'</i></div>';
 
 		// Open podcast directory
-		$handle = opendir ($upload_dir);
-		while (($filename = readdir ($handle)) !== false)
-		{
-
-			if ($filename != '..' && $filename != '.' && $filename != 'index.htm' && $filename != '_vti_cnf')
-			{
-
-				$file_array[$filename] = filemtime ($upload_dir.$filename);
-			}
-
-		}
-
-		if (!empty($file_array)) { //if directory is not empty
-
-
-			# asort ($file_array);
-			arsort ($file_array); //the opposite of asort (inverse order)
+		$fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
+		if (!empty($fileNamesList)) { //if directory is not empty
 
 			$files_count = 0; //set file number to 0
 
-			foreach ($file_array as $key => $value)
+			foreach ($fileNamesList as $singleFileName)
 
 			{
 
-			//	$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+			//	$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 				
-				$file_multimediale = divideFilenameFromExtension($key);
+				$file_multimediale = divideFilenameFromExtension($singleFileName);
 
 				$fileData = checkFileType(strtolower($file_multimediale[1]),$podcast_filetypes,$filemimetypes);
 

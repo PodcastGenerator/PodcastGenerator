@@ -196,25 +196,10 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 
-
-	// Open podcast directory
-	$handle = opendir ($absoluteurl.$upload_dir);
-	while (($filename = readdir ($handle)) !== false)
-	{
-
-		if ($filename != '..' && $filename != '.' && $filename != 'index.htm' && $filename != '_vti_cnf')
-		{
-
-			$file_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-		}
-
-	}
+	$file_array = openMediaDir ($absoluteurl,$upload_dir);
 
 	if (!empty($file_array)) { //if directory is not empty
 
-
-		# asort ($file_array);
-		arsort ($file_array); //the opposite of asort (inverse order)
 
 		$recent_count = 0; //set recents to zero
 
