@@ -12,7 +12,7 @@
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
-if(isset($amilogged) AND $amilogged =="true") { //if logged
+if(isUserLogged()) { //if logged
 
 	if(strpos(PHP_OS, "WIN") !== false) { //if we are in a windows environment...
 			$absoluteurl = addslashes($absoluteurl); // double slashes

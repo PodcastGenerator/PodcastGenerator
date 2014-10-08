@@ -13,11 +13,11 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 ### Check if user is logged ###
-	if ($amilogged != "true") { exit; }
+	if (!isUserLogged()) { exit; }
 ###
 
 // check if user is already logged in
-if(isset($amilogged) AND $amilogged =="true") {
+if(isUserLogged()) {
 
 
 	$PG_mainbody .= '<h3>'._("iTunes cover art").'</h3>

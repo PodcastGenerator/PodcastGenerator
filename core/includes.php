@@ -23,11 +23,11 @@ header("Location: setup/"); // open setup script
 include("config.php"); 
 
 
-include_once("$absoluteurl"."core/functions.php"); //LOAD ONCE
+include_once($absoluteurl."core/functions.php"); //LOAD ONCE
 
-include("$absoluteurl"."core/supported_media.php");
+include($absoluteurl."core/supported_media.php");
 
-include("$absoluteurl"."core/language.php");
+include($absoluteurl."core/language.php");
 
 
 ########## START SESSION PHP IF ADMIN REQUIRED 
@@ -37,4 +37,4 @@ include("$absoluteurl"."core/language.php");
 	//}
 	#########
 
-	?>
+?>

@@ -14,7 +14,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 
 ### Check if user is logged ###
-	if ($amilogged != "true") { exit; }
+	if (!isUserLogged()) { exit; }
 ###
 
 
@@ -172,7 +172,7 @@ $PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
 
 ##############
 ### processing file extension
-$fileData = checkFileType(strtolower($fileExtension),$podcast_filetypes,$filemimetypes); //lowercase extension to compare with the accepted extensions array
+$fileData = checkFileType(strtolower($fileExtension),$podcast_filetypes,$podcast_filemimetypes); //lowercase extension to compare with the accepted extensions array
 
 if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
 $podcast_filetype=$fileData[0];

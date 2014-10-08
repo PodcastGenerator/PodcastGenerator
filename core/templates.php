@@ -21,7 +21,7 @@
 active (menu active)
 nav-header (titles in sidebar)
 
-navbar-link (links in the navbar (e.g. log out) - checklogged.php
+navbar-link (links in the navbar (e.g. log out) 
 
 */
 
@@ -30,9 +30,12 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 
-//check login and degine which login menu to display (link or welcome user)
-include($absoluteurl."core/admin/checklogged.php");
-
+if (isUserLogged()) {
+$loginmenu = _("Hello").' '.$username.' (<a href="?p=admin" class="navbar-link">'._("Admin").'</a> - <a href="?p=admin&amp;action=logout" class="navbar-link">'._("Log out").'</a>)';
+} else {
+	//standard login menu item (replaced with the authenticated one if logged in
+	$loginmenu = '<a href="?p=admin" class="navbar-link">'._("Admin").'</a>';
+}
 
 if(($theme_file_contents = file_get_contents($theme_path."index.htm")) === FALSE) {
 	echo "<p class=\"error\">"._("Failed to open theme file")."</p>";
@@ -269,7 +272,7 @@ $theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", $contentmenuarchi
 //	$theme_file_contents = str_replace("-----PG_MENUARCHIVE-----", _("Podcast Archive"), $theme_file_contents); 
 	
 	
-//$loginmenu is defined in checklogged.php
+
 	$theme_file_contents = str_replace("-----PG_MENUADMIN-----", $loginmenu, $theme_file_contents); 
 
 	#FOOTER

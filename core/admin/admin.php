@@ -17,8 +17,6 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	include("$absoluteurl"."core/admin/login.php");
 
-	include("$absoluteurl"."core/admin/checklogged.php");
-
 	
 	# SET PODCAST FEED URL
 	if (isset($feed_URL_replace) AND $feed_URL_replace != "") {
@@ -28,7 +26,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	}
 
 	// check if user is already logged in
-	if(isset($amilogged) AND $amilogged =="true") {
+	if(isUserLogged()) {
 
 		
 		if (isset($_GET['do']) AND $_GET['do']=="ftpfeature") {
