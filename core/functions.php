@@ -128,14 +128,10 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 
 
 ############ Is the admin logged in and is this one of the administration pages? (including archives with "Edit/Delete" button
-function isThisAdminPage ()
-{
-//isUserLogged();	
+function isThisAdminPage () {
 	if (isset($_GET['p']) AND $_GET['p'] == "admin" OR isset($_GET['p']) AND $_GET['p'] == "archive" OR isset($_GET['name'])) {
-	
-	if (isUserLogged()) return TRUE; //If user is logged-in (=admin)
-	else return FALSE;
-	  
+		if (isUserLogged()) return TRUE; //If user is logged-in (i.e. is admin)
+		else return FALSE;  
 	}
 }
 
@@ -1251,7 +1247,7 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 		
 }
 
-//$showToAdmin set to TRUE shows the future episodes when admin is logged (this should not happen in feed)
+// This function also takes into account a logged in admin that will see future episodes anyway in the defined (admin) pages, but not in the RSS feed (both XML and PHP)
 function publishInFuture($filefullpath) {	
 	$fileTime = 0;
 	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
@@ -1600,12 +1596,12 @@ function generatePodcastFeed ($outputInFile) {
 
 
 
-/*
-	
-function validateSingleEpisode ($episodeFile,$absoluteurl) {
 
-	// read $podcast_filetypes,$podcast_filemimetypes
-	include($absoluteurl."core/supported_media.php"); 
+	
+function validateSingleEpisode ($episodeFile) {
+//include functions and variables in config.php
+
+	include("core/includes.php");
 
 	$episodeFile_parts = divideFilenameFromExtension($singleFileName); // PHP >= 5.2.0 needed
 	$episodeFilenameWithoutExtension = $file_parts[0];
@@ -1613,21 +1609,27 @@ function validateSingleEpisode ($episodeFile,$absoluteurl) {
 	
 	$fileData = checkFileType($EpisodeFileExtension,$podcast_filetypes,$podcast_filemimetypes);
 
-		// $fileData[0] is one of the supported extensions in $podcast_filetypes
-		if (isset($fileData[0]) AND $EpisodeFileExtension==$fileData[0] AND !publishInFuture($filefullpath)) { // if the extension is accepted
-
-				$filedescr = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
-
-
-				if (file_exists($filedescr)) { //if database file exists 
+	$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
+	$filedescr = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
 	
-	//$GoForIt means that the episode file is supported, it has a data file (xml) and is not set to a futre date
-	return array($GoForIt);
+		// $fileData[0] is one of the supported extensions in $podcast_filetypes
+		if (isset($fileData[0]) AND $EpisodeFileExtension==$fileData[0] AND !publishInFuture($filefullpath) AND file_exists($filedescr)) { 
+
+		$GoForIt = TRUE;	
+		}
+		
+		else {
+		$GoForIt = FALSE;	
+		}
+
+	//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding data file (xml) and is not set to a future date
+	
+	return array($GoForIt,$filefullpath);
 
 		
 }
 
-*/
+
 
 //DETECT WHETHER USER IS LOGGED-IN OR NOT
 function isUserLogged () {
