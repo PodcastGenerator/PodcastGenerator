@@ -11,17 +11,17 @@
 
 ## Support for multiple file types (e.g. mp3, ogg, mpg, avi) at the same time.
 
-function checkFileType ($filetype,$podcast_filetypes,$filemimetypes) {
+function checkFileType ($filetype,$podcast_filetypes,$podcast_filemimetypes) {
 	$i=0;
-	$bool=false;
+	$bool=FALSE;
 	$fileData = array();
 
 	
-	while (($i < sizeof($podcast_filetypes)) && $bool==false) {
+	while (($i < sizeof($podcast_filetypes)) && $bool==FALSE) {
 		if ($filetype==$podcast_filetypes[$i]) {
 			$fileData[0]=$podcast_filetypes[$i];
-			$fileData[1]=$filemimetypes[$i];
-			$bool=true;
+			$fileData[1]=$podcast_filemimetypes[$i];
+			$bool=TRUE;
 		}
 		$i+=1;
 	}
@@ -127,16 +127,16 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 }
 
 
-############ Is this an admin page?
+############ Is the admin logged in and is this one of the administration pages? (including archives with "Edit/Delete" button
 function isThisAdminPage ()
 {
+//isUserLogged();	
+	if (isset($_GET['p']) AND $_GET['p'] == "admin" OR isset($_GET['p']) AND $_GET['p'] == "archive" OR isset($_GET['name'])) {
 	
-########### Security code, avoids cross-site scripting with Register Globals ON
-if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
-########### End	
-else if (isset($_GET['p']) and $_GET['p'] == "admin" OR isset($_GET['p']) AND $_GET['p'] == "archive" OR isset($_GET['name'])) {
- if (isset($_SESSION["user_session"])) return TRUE; // just if session present
-}
+	if (isUserLogged()) return TRUE; //If user is logged-in (=admin)
+	else return FALSE;
+	  
+	}
 }
 
 
@@ -361,7 +361,7 @@ $existingCategories = readPodcastCategories ($absoluteurl); //$existingCategorie
 	$category_header = '<div>';
 	
 	if (isset($existingCategories[$category])) {
-	$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><img src="feed-icon.png" alt="'._("Subscribe to this category").'" border="0" /></a>&nbsp'.$existingCategories[$category].'</h3>';
+	$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><i class="fa fa-rss "></i></a>&nbsp'.$existingCategories[$category].'</h3>';
 	}
 	
 	$category_header .= '</div>';
@@ -417,7 +417,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 		else if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
 		
-		
+		$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 		
 		
 
@@ -426,7 +426,7 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 		$fileExtension = $file_parts[1];
 	
 
-		$fileData = checkFileType($fileExtension,$podcast_filetypes,$filemimetypes);
+		$fileData = checkFileType($fileExtension,$podcast_filetypes,$podcast_filemimetypes);
 
 
 			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
@@ -434,8 +434,8 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 			$podcast_filetype = $fileData[0];
 
-			$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
-			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath)) { // if the extension is accepted
+			
+			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is accepted
 
 					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
 
@@ -779,7 +779,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 		$fileExtension = $file_parts[1];
 	
 		
-		$fileData = checkFileType($fileExtension,$podcast_filetypes,$filemimetypes);
+		$fileData = checkFileType($fileExtension,$podcast_filetypes,$podcast_filemimetypes);
 
 
 			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
@@ -787,10 +787,10 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 
 			$podcast_filetype = $fileData[0];
 
-//publishInFutureShowToAdmin
+
 			$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 			
-			if ($fileExtension==$podcast_filetype AND !publishInFutureShowToAdmin($filefullpath) AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
+			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath) AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
 		
 					//TIMESTAMP
 					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype");
@@ -1251,17 +1251,14 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 		
 }
 
+//$showToAdmin set to TRUE shows the future episodes when admin is logged (this should not happen in feed)
 function publishInFuture($filefullpath) {	
 	$fileTime = 0;
 	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
-	if ($fileTime > time()) return TRUE;
-	else return FALSE;
-}
-
-function publishInFutureShowToAdmin($filefullpath) {
-	$fileTime = filemtime($filefullpath);	
+	
 	if  (isThisAdminPage()) return FALSE;
-	else if ($fileTime > time() AND !isThisAdminPage()) return TRUE;
+	else if ($fileTime > time()) return TRUE;
+	else return FALSE;
 }
 
 
@@ -1320,5 +1317,325 @@ function readMediaDir ($absoluteurl,$upload_dir) {
 	return $fileNamesList; 
 }
 
+
+
+
+//GeneratePodcastFeed $outputInFile TRUE writes to a file (feed.xml), FALSE prints on screen
+function generatePodcastFeed ($outputInFile) {
+	
+	//include functions and variables in config.php
+	include("core/includes.php"); 
+	
+
+	# SET CUSTOM WEB URL (shown in iTunes Store), if specified in config.php
+	if (isset($feed_iTunes_LINKS_Website) AND $feed_iTunes_LINKS_Website != NULL) {
+	$podcastWebHomePage = $feed_iTunes_LINKS_Website; } 
+	else { $podcastWebHomePage = $url; }
+	
+
+	### DEFINE FEED FILENAME
+	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
+
+	//rewrite the language var to adhere to ISO639
+	$feed_language = languageISO639($feed_language);
+	
+
+	##### CONTENT DEPURATION n.1
+	#Depurate feed content according to iTunes specifications
+	$itunes_category[0] = depurateContent($itunes_category[0]);
+	$itunes_category[1] = depurateContent($itunes_category[1]);
+	$itunes_category[2] = depurateContent($itunes_category[2]);
+
+
+	//RSS FEED HEADER
+	$head_feed = 
+	'<?xml version="1.0" encoding="'.$feed_encoding.'"?>
+	<!-- generator="Podcast Generator '.$podcastgen_version.'" -->
+	<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="'.$feed_language.'" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>'.$podcast_title.'</title>
+		<link>'.$podcastWebHomePage.'</link>
+		<atom:link href="'.$url.$feed_dir.'feed.xml" rel="self" type="application/rss+xml" />
+		<description>'.$podcast_description.'</description>
+		<generator>Podcast Generator '.$podcastgen_version.' - http://podcastgen.sourceforge.net</generator>
+	<lastBuildDate>'.date("r").'</lastBuildDate>
+		<language>'.$feed_language.'</language>
+		<copyright>'.$copyright.'</copyright>
+		<itunes:image href="'.$url.$img_dir.'itunes_image.jpg" />
+		<image>
+		<url>'.$url.$img_dir.'itunes_image.jpg</url>
+		<title>'.$podcast_title.'</title>
+		<link>'.$url.'</link>
+		</image>
+		<itunes:summary>'.$podcast_description.'</itunes:summary>
+		<itunes:subtitle>'.$podcast_subtitle.'</itunes:subtitle>
+		<itunes:author>'.$author_name.'</itunes:author>
+		<itunes:owner>
+		<itunes:name>'.$author_name.'</itunes:name>
+		<itunes:email>'.$author_email.'</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>'.$explicit_podcast.'</itunes:explicit>';
+
+	####
+	# iTunes categories (and subcategories, which are separated by :)
+	//category 1
+	if ($itunes_category[0]!=NULL) { 
+		$tmpcat = explode(":",$itunes_category[0]);
+		$head_feed.= '
+		<itunes:category text="'.$tmpcat[0].'">';
+		//Sub Category
+		if (isset($tmpcat[1]) AND $tmpcat[1]!=NULL) $head_feed.= '<itunes:category text="'.$tmpcat[1].'" />';
+		$head_feed.= '</itunes:category>
+		';
+	} //end category 1
+	//category 2
+	if ($itunes_category[1]!=NULL) { 
+		$tmpcat = explode(":",$itunes_category[1]);
+		$head_feed.= '<itunes:category text="'.$tmpcat[0].'">';
+		//Sub Category
+		if (isset($tmpcat[1]) AND $tmpcat[1]!=NULL) $head_feed.= '<itunes:category text="'.$tmpcat[1].'" />';
+		$head_feed.= '</itunes:category>
+		';
+	} //end category 2
+	//category 3
+	if ($itunes_category[2]!=NULL) { 
+		$tmpcat =explode(":",$itunes_category[2]);
+		$head_feed.= '<itunes:category text="'.$tmpcat[0].'">';
+		//Sub Category
+		if (isset($tmpcat[1]) AND $tmpcat[1]!=NULL) $head_feed.= '<itunes:category text="'.$tmpcat[1].'" />';
+		$head_feed.= '</itunes:category>
+		';
+	} //end category 3
+	# END iTunes Categories
+
+	####
+	# List all the items (i.e. podcast episodes)
+
+	// Open podcast directory
+	$fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
+
+	if (!empty($fileNamesList)) { //if directory is not empty
+
+		$recent_count = 0; //set counter
+		$episodes_feed = NULL; //define and empty variable
+
+	//Go through episodes and index them as items of the RSS feed
+		foreach ($fileNamesList as $singleFileName) {
+
+			//Limit episodes in the feed (from config.php)
+			if ($recent_count < $recent_episode_in_feed OR $recent_episode_in_feed == "All") { 
+			
+				$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+
+
+				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes); 
+
+
+				if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
+
+
+					$podcast_filetype = $fileData[0];
+
+					###### Mimetype
+					$filemimetype=$fileData[1]; //define mimetype to put in the feed
+
+					$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
+					
+					
+					if ($file_multimediale[1]==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is the same as specified in config.php
+
+
+
+
+						############
+						$filedescr = "$absoluteurl"."$upload_dir$file_multimediale[0].xml"; //database file
+
+
+
+
+						if (file_exists("$filedescr")) { //if database file exists 
+
+
+							//$file_contents=NULL; 
+
+
+
+	# READ the XML database file and parse the fields
+						include("$absoluteurl"."core/readXMLdb.php");		
+						
+
+
+							### Here the output code for the episode is created
+
+							# Fields Legend (parsed from XML):
+							# $text_title = episode title
+							# $text_shortdesc = short description
+							# $text_longdesc = long description
+							# $text_imgpg = image (url) associated to episode
+							# $text_categoriespg = categories
+							# $text_keywordspg = keywords
+							# $text_explicitpg = explicit podcast (yes or no)
+							# $text_authornamepg = author's name
+							# $text_authoremailpg = author's email
+
+
+							//depuration of long description field, appearing in iTunes when you click the "circled i" next to the podcast description
+
+
+							$text_longdesc = stripslashes($text_longdesc);
+							$text_longdesc = strip_tags($text_longdesc);
+
+
+
+							#### CONTENT DEPURATION N.2
+							$text_title = depurateContent($text_title); //title
+							$text_shortdesc = depurateContent($text_shortdesc); //short desc
+							$text_longdesc = depurateCDATAfield($text_longdesc); //long desc
+							$text_keywordspg = depurateContent($text_keywordspg); //Keywords
+							$text_keywordspg = htmlspecialchars($text_keywordspg); //convert special characters e.g. r&b -> r&amp;b
+							$text_authornamepg = depurateContent($text_authornamepg); //author's name
+
+							$file_size = filesize("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype");
+							$filetime = filemtime ("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype");
+							$filepubdate = date ('r', $filetime);
+
+
+							$episodes_feed.="<item>
+								<title>$text_title</title>
+								<itunes:subtitle>$text_shortdesc</itunes:subtitle>
+								<itunes:summary><![CDATA[ $text_longdesc ]]></itunes:summary>
+								<description>$text_shortdesc</description>
+								<link>$link$singleFileName</link>
+								<enclosure url=\"$url$upload_dir$singleFileName\" length=\"$file_size\" type=\"$filemimetype\"/>
+								<guid>$link$singleFileName</guid>
+								";
+
+
+
+							###### GETID3 - DURATION
+							require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+							$getID3 = new getID3; //initialize getID3 engine
+
+							# File details (duration, bitrate, etc...)
+							$ThisFileInfo = $getID3->analyze("$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype"); //read file tags
+
+							$file_duration = @$ThisFileInfo['playtime_string'];
+
+							if($file_duration!=NULL) { // display file duration
+								$episodes_feed.= "<itunes:duration>$file_duration</itunes:duration>
+									";
+							} 
+
+
+							### AUTHOR
+							if ($text_authornamepg==NULL OR $text_authornamepg==",") { //if author field is empty
+
+								$episodes_feed.= "<author>$author_email ($author_name)</author>
+									<itunes:author>$author_name</itunes:author>
+									";
+
+							} 
+
+							else { //if author is present
+
+								$episodes_feed.= "<author>$text_authoremailpg ($text_authornamepg)</author>
+									<itunes:author>$text_authornamepg</itunes:author>
+									";
+							}
+
+
+							## KEYWORDS
+							if ($text_keywordspg!=NULL) { //if keywords are present
+
+								$episodes_feed.= "<itunes:keywords>$text_keywordspg</itunes:keywords>";
+
+							} 
+
+							if ($text_explicitpg!=NULL) {
+								$episodes_feed.= "<itunes:explicit>$text_explicitpg</itunes:explicit>
+									";
+							}
+
+
+							$episodes_feed.= "<pubDate>$filepubdate</pubDate>
+								</item>";
+
+
+							$recent_count++; // increment recent counter
+
+
+						} 
+
+					} 
+
+				}
+			}
+		}
+
+	}
+
+
+
+
+
+
+	#########
+	##########coda
+
+
+	$tail_feed ="</channel></rss>";
+	
+	if (!isset($episodes_feed)) $episodes_feed = ""; // avoid notice
+	####
+	$fp1 = fopen("$feedfilename", "w+"); //Apri il file in lettura e svuotalo (w+)
+	fclose($fp1);
+
+	$fp = fopen("$feedfilename", "a+"); //testa xml
+	fwrite($fp, "$head_feed"."$episodes_feed"."$tail_feed"); 
+	fclose($fp);
+
+	############
+	
+	}
+
+
+
+/*
+	
+function validateSingleEpisode ($episodeFile,$absoluteurl) {
+
+	// read $podcast_filetypes,$podcast_filemimetypes
+	include($absoluteurl."core/supported_media.php"); 
+
+	$episodeFile_parts = divideFilenameFromExtension($singleFileName); // PHP >= 5.2.0 needed
+	$episodeFilenameWithoutExtension = $file_parts[0];
+	$EpisodeFileExtension = $file_parts[1];
+	
+	$fileData = checkFileType($EpisodeFileExtension,$podcast_filetypes,$podcast_filemimetypes);
+
+		// $fileData[0] is one of the supported extensions in $podcast_filetypes
+		if (isset($fileData[0]) AND $EpisodeFileExtension==$fileData[0] AND !publishInFuture($filefullpath)) { // if the extension is accepted
+
+				$filedescr = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
+
+
+				if (file_exists($filedescr)) { //if database file exists 
+	
+	//$GoForIt means that the episode file is supported, it has a data file (xml) and is not set to a futre date
+	return array($GoForIt);
+
+		
+}
+
+*/
+
+//DETECT WHETHER USER IS LOGGED-IN OR NOT
+function isUserLogged () {
+	//read user and md5 pwd from config.php
+	if (file_exists("config.php")) include("config.php"); 
+	//compare sessions to stored user and md5 pwd
+	if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword) { return TRUE; }
+	else { return FALSE; }
+}
 
 ?>

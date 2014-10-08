@@ -176,7 +176,7 @@ $rightboxcontent = '<div class="rightbox">
 
 # If you are logged show right boxes
 
-if(isset($amilogged) AND $amilogged =="true") { //if logged
+if(isUserLogged()) { //if logged
 
 	//show donation box
 	$rightboxcontent .= '<div class="rightbox">
@@ -199,7 +199,7 @@ $theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $t
 
 # SET RIGHT OPTIONAL BOX ("freebox")
 
-if (isset($amilogged) AND $amilogged =="true") { //if you are logged do not display freebox
+if (isUserLogged()) { //if you are logged do not display freebox
 
 	$freeboxcontent = NULL;
 

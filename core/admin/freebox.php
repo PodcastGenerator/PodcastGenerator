@@ -13,7 +13,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 ### Check if user is logged ###
-	if ($amilogged != "true") { exit; }
+	if (!isUserLogged()) { exit; }
 ###
 
 if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['do']=="freebox" AND isset($_GET['c']) AND $_GET['c']=="ok") { 

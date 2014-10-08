@@ -13,7 +13,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 // check if user is already logged in
-if(isset($amilogged) AND $amilogged =="true") {
+if(isUserLogged()) {
 
 	$PG_mainbody .= '<h3>'._("Change Podcast Generator Configuration").'</h3>
 		';

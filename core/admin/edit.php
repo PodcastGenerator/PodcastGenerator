@@ -13,7 +13,7 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ########### End
 
 ### Check if user is logged ###
-	if ($amilogged != "true") { exit; }
+	if (!isUserLogged()) { exit; }
 ###
 
 if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['do']=="edit" AND isset($_GET['c']) AND $_GET['c']=="ok") { 
@@ -52,7 +52,7 @@ else {
 
 //echo '<br>FILE: '.$file_multimediale[0].' - '.$file_multimediale[1];
 
-			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes);
+			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes);
 
 
 			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]

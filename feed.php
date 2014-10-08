@@ -63,9 +63,9 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 			$n++;
 		}
 
-		foreach ($arr as $key => $val) {
+		foreach ($arr as $singleFileName => $val) {
 
-			if ($_GET['cat'] == $arrid[$key]) {
+			if ($_GET['cat'] == $arrid[$singleFileName]) {
 				$podcast_title .= " - $val";
 
 			} 
@@ -196,7 +196,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 
-	$file_array = openMediaDir ($absoluteurl,$upload_dir);
+	$file_array = readMediaDir ($absoluteurl,$upload_dir);
 
 	if (!empty($file_array)) { //if directory is not empty
 
@@ -209,7 +209,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 		############# START CICLE ###################
-		foreach ($file_array as $key => $value)
+		foreach ($file_array as $singleFileName)
 
 		{
 
@@ -218,10 +218,10 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 
 
 
-				$file_multimediale = explode(".",$key); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
+				$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 
-				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$filemimetypes); 
+				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes); 
 
 
 				if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
@@ -232,7 +232,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 					###### Mimetype
 					$filemimetype=$fileData[1]; //define mimetype to put in the feed
 
-					$filefullpath = $absoluteurl.$upload_dir.$key;
+					$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 					if ($file_multimediale[1]=="$podcast_filetype" AND !publishInFuture($filefullpath)) { 
 
 
@@ -306,9 +306,9 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 									<itunes:subtitle>$text_shortdesc</itunes:subtitle>
 									<itunes:summary><![CDATA[ $text_longdesc ]]></itunes:summary>
 									<description>$text_shortdesc</description>
-									<link>$link$key</link>
-									<enclosure url=\"$url$upload_dir$key\" length=\"$file_size\" type=\"$filemimetype\"/>
-									<guid>$link$key</guid>
+									<link>$link$singleFileName</link>
+									<enclosure url=\"$url$upload_dir$singleFileName\" length=\"$file_size\" type=\"$filemimetype\"/>
+									<guid>$link$singleFileName</guid>
 									";
 
 

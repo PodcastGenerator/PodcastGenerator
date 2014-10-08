@@ -38,31 +38,31 @@ $podcast_filetypes[20]="m4a";
 $podcast_filetypes[21]="m4v";
 $podcast_filetypes[22]="epub";
 
-## NOTE: each $podcast_filetypes[k] must have a corresponding $filemimetypes[k] below, containing its "mime type"
+## NOTE: each $podcast_filetypes[k] must have a corresponding $podcast_filemimetypes[k] below, containing its "mime type"
 
-$filemimetypes = array();
+$podcast_filemimetypes = array();
 
-$filemimetypes[0]="audio/mpeg";
-$filemimetypes[1]="video/mpeg";
-$filemimetypes[2]="video/mpeg";
-$filemimetypes[3]="video/quicktime";
-$filemimetypes[4]="audio/x-wav";
-$filemimetypes[5]="audio/x-ms-wma";
-$filemimetypes[6]="video/x-ms-wmv";
-$filemimetypes[7]="application/ogg";
-$filemimetypes[8]="audio/x-ms-wma";
-$filemimetypes[9]="video/3gpp";
-$filemimetypes[10]="audio/amr";
-$filemimetypes[11]="video/mp4";
-$filemimetypes[12]="video/x-ms-asf";
-$filemimetypes[13]="video/x-msvideo";
-$filemimetypes[14]="video/x-flv";
-$filemimetypes[15]="image/jpeg";
-$filemimetypes[16]="image/jpeg";
-$filemimetypes[17]="application/pdf";
-$filemimetypes[18]="audio/x-aiff";
-$filemimetypes[19]="audio/x-aiff";
-$filemimetypes[20]="audio/x-m4a";
-$filemimetypes[21]="video/x-m4v";
-$filemimetypes[22]="application/epub+zip";
+$podcast_filemimetypes[0]="audio/mpeg";
+$podcast_filemimetypes[1]="video/mpeg";
+$podcast_filemimetypes[2]="video/mpeg";
+$podcast_filemimetypes[3]="video/quicktime";
+$podcast_filemimetypes[4]="audio/x-wav";
+$podcast_filemimetypes[5]="audio/x-ms-wma";
+$podcast_filemimetypes[6]="video/x-ms-wmv";
+$podcast_filemimetypes[7]="application/ogg";
+$podcast_filemimetypes[8]="audio/x-ms-wma";
+$podcast_filemimetypes[9]="video/3gpp";
+$podcast_filemimetypes[10]="audio/amr";
+$podcast_filemimetypes[11]="video/mp4";
+$podcast_filemimetypes[12]="video/x-ms-asf";
+$podcast_filemimetypes[13]="video/x-msvideo";
+$podcast_filemimetypes[14]="video/x-flv";
+$podcast_filemimetypes[15]="image/jpeg";
+$podcast_filemimetypes[16]="image/jpeg";
+$podcast_filemimetypes[17]="application/pdf";
+$podcast_filemimetypes[18]="audio/x-aiff";
+$podcast_filemimetypes[19]="audio/x-aiff";
+$podcast_filemimetypes[20]="audio/x-m4a";
+$podcast_filemimetypes[21]="video/x-m4v";
+$podcast_filemimetypes[22]="application/epub+zip";
 ?>
