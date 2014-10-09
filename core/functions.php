@@ -9,22 +9,25 @@
 ############################################################
 
 
-## Support for multiple file types (e.g. mp3, ogg, mpg, avi) at the same time.
-
+// Support for multiple episode formats (from supported_media.php)
 function checkFileType ($filetype,$podcast_filetypes,$podcast_filemimetypes) {
 	$i=0;
-	$bool=FALSE;
+	$found=FALSE;
 	$fileData = array();
 
-	
-	while (($i < sizeof($podcast_filetypes)) && $bool==FALSE) {
+	while (($i < sizeof($podcast_filetypes)) && $found==FALSE) {
 		if ($filetype==$podcast_filetypes[$i]) {
 			$fileData[0]=$podcast_filetypes[$i];
 			$fileData[1]=$podcast_filemimetypes[$i];
-			$bool=TRUE;
+			$found=TRUE;
 		}
 		$i+=1;
 	}
+	
+	//Always return something
+	if (!isset($fileData[0])) $fileData[0] = NULL;
+	if (!isset($fileData[1])) $fileData[1] = NULL;
+	
 	return $fileData;
 }
 
@@ -282,7 +285,6 @@ $construct_output .= '
 ';
 }
 
-	
 	return $construct_output;
 }
 
@@ -405,29 +407,15 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 
 
 		else if ($recent_count < $max_recent) { //COUNT RECENTS if recents are not more than specified in config.php
+				
+		//validateSingleEpisode returns [0] $GoForIt, [1] $episodeFileFullPath, [2] $episodeFileXMLDB,[3] $episodeFileType, [4] episodeFileMimeType, [5] $episodeFilenameWithoutExtension
+		$thisPodcastEpisode = validateSingleEpisode($singleFileName);
 		
-		$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
-		
-		
-
-		$file_parts = divideFilenameFromExtension($singleFileName); //supports more full stops . in the file name. PHP >= 5.2.0 needed
-		$filenameWithoutExtension = $file_parts[0];
-		$fileExtension = $file_parts[1];
-	
-
-		$fileData = checkFileType($fileExtension,$podcast_filetypes,$podcast_filemimetypes);
-
-
-			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
-
-
-			$podcast_filetype = $fileData[0];
-
 			
-			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath)) { // if the extension is accepted
+			if ($thisPodcastEpisode[0]==TRUE AND !publishInFuture($thisPodcastEpisode[1]) OR isUserLogged()) { // if the extension is accepted
 
-					$filedescr = $absoluteurl.$upload_dir.$filenameWithoutExtension.'.xml'; //database file
-
+					$filedescr = $thisPodcastEpisode[2];
+					
 
 					if (file_exists($filedescr)) { //if database file exists 
 
@@ -461,11 +449,12 @@ if (!isset($atLeastOneEpisodeInCategory )) $atLeastOneEpisodeInCategory = FALSE;
 						} 
 						
 						
-						$episodeDate = date ($dateformat, filemtime($filefullpath));
+						// $thisPodcastEpisode[0] is the full path of the episode
+						$episodeDate = date ($dateformat, filemtime($thisPodcastEpisode[1]));
 						
 				if (!$disableextras) {
 					# Use GETID3 lib to retrieve media file duration, bitrate, etc...
-					$episode_details = retrieveMediaFileDetails ("$absoluteurl"."$upload_dir$filenameWithoutExtension.$podcast_filetype",$podcast_filetype,$getID3);
+					$episode_details = retrieveMediaFileDetails ($thisPodcastEpisode[0],$thisPodcastEpisode[3],$getID3);
 				}
 
 	
@@ -498,20 +487,27 @@ else { //if an old theme is used
 } 
 	
 	
-	$isvideo = isItAvideo($podcast_filetype);
+	$isvideo = isItAvideo($thisPodcastEpisode[3]);
 							
 
 	$resulting_episodes .= '<h3 class="episode_title">'.$text_title;
 	if ($isvideo == TRUE) $resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>';
-
-
-$resulting_episodes .= '</h3>';
+	$resulting_episodes .= '</h3>';
+	
+	$resulting_episodes .= "<br><br>";
+	$resulting_episodes .= $thisPodcastEpisode[0]." - ";
+	$resulting_episodes .= $thisPodcastEpisode[1]." - ";
+	$resulting_episodes .= $thisPodcastEpisode[2]." - ";
+	$resulting_episodes .= $thisPodcastEpisode[3]." - ";
+	$resulting_episodes .= $thisPodcastEpisode[4]." - ";
+	$resulting_episodes .= $thisPodcastEpisode[5];
+	$resulting_episodes .= "<br><br>";
 	
 
 // EPISODE DATE AND SIZE
 $resulting_episodes .= '<p class="episode_date">';
 
-if (filemtime($filefullpath) > time()) {
+if (filemtime($thisPodcastEpisode[1]) > time()) {
 $resulting_episodes .= '<i class="fa fa-clock-o fa-2x"></i>&nbsp;&nbsp;';	
 }
 $resulting_episodes .= $episodeDate.'</p>';
@@ -524,7 +520,7 @@ $resulting_episodes .= $episodeDate.'</p>';
 // IF USER IS LOGGED AND PAGE IS ALL PODCAST
 if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isset($_GET["cat"]) AND ($_GET["cat"]) == "all") { 
 
-	$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$filenameWithoutExtension.'.'.$podcast_filetype.'">'._("Edit / Delete").'</a></p>';
+	$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 
 }
 		
@@ -558,7 +554,7 @@ if (!isset($_REQUEST['amilogged']) AND isset($_SESSION["user_session"]) AND isse
 	
 						#BUTTONS
 
-$resulting_episodes .= showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count);
+$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$recent_count);
 
 						#END BUTTONS
 		
@@ -574,7 +570,7 @@ $resulting_episodes .= '<p class="episode_info">'.$episode_details.'</p>';
 
 if ($enablestreaming=="yes" AND !detectMobileDevice()) { //if audio and video streaming is enabled in PG options
 	
-$resulting_episodes .= showStreamingPlayers ($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count);
+$resulting_episodes .= showStreamingPlayers ($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$recent_count);
 
 } //END if audio and video streaming is enabled in PG options
 
@@ -611,7 +607,7 @@ $resulting_episodes .= showStreamingPlayers ($filenameWithoutExtension,$podcast_
 
 				} 
 
-			}
+			
 			
 		//FINAL OUTPUT
 if ($recent_count <= $maxC AND $recent_count > $minC) {
@@ -779,7 +775,7 @@ if (isset($singleEpisode) AND $singleEpisode != NULL ) {
 
 			$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
 			
-			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath) AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
+			if ($fileExtension==$podcast_filetype AND !publishInFuture($filefullpath) OR isUserLogged() AND file_exists($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype")) { // if the extension is accepted AND the file EXISTS
 		
 					//TIMESTAMP
 					$file_timestamp = filemtime($absoluteurl."$upload_dir$filenameWithoutExtension.$podcast_filetype");
@@ -1279,7 +1275,7 @@ function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
 function readMediaDir ($absoluteurl,$upload_dir) {
 	
 	//List of directories or files to exclude
-	$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn");
+	$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn",".xml");
 	
 	$handle = opendir ($absoluteurl.$upload_dir);
 	while (($filename = readdir ($handle)) !== false) 
@@ -1587,30 +1583,25 @@ function validateSingleEpisode ($episodeFile) {
 
 	include("core/includes.php");
 
-	$episodeFile_parts = divideFilenameFromExtension($singleFileName); // PHP >= 5.2.0 needed
-	$episodeFilenameWithoutExtension = $file_parts[0];
-	$EpisodeFileExtension = $file_parts[1];
+	$episodeFile_parts = divideFilenameFromExtension($episodeFile); // PHP >= 5.2.0 needed
+	$episodeFilenameWithoutExtension = $episodeFile_parts[0];
+	$EpisodeFileExtension = $episodeFile_parts[1];
+	echo "$EpisodeFileExtension <br>";
+	$checkEpisodeFileFormat = checkFileType($EpisodeFileExtension,$podcast_filetypes,$podcast_filemimetypes);
+	$episodeFileType = $checkEpisodeFileFormat[0];
+	$episodeFileMimeType = $checkEpisodeFileFormat[1];
+	$episodeFileFullPath = $absoluteurl.$upload_dir.$episodeFile;
+	$episodeFileXMLDB = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
 	
-	$fileData = checkFileType($EpisodeFileExtension,$podcast_filetypes,$podcast_filemimetypes);
-
-	$filefullpath = $absoluteurl.$upload_dir.$singleFileName;
-	$filedescr = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
-	
-		// $fileData[0] is one of the supported extensions in $podcast_filetypes
-		if (isset($fileData[0]) AND $EpisodeFileExtension==$fileData[0] AND !publishInFuture($filefullpath) AND file_exists($filedescr)) { 
-
+		if (isset($episodeFileType) AND $EpisodeFileExtension==$episodeFileType AND !publishInFuture($episodeFileFullPath) AND file_exists($episodeFileXMLDB)) { 
 		$GoForIt = TRUE;	
-		}
-		
-		else {
+		} else {
 		$GoForIt = FALSE;
 		}
 
 	//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding data file (xml)
-	
-	return array($GoForIt,$filefullpath);
+	return array($GoForIt,$episodeFileFullPath,$episodeFileXMLDB,$episodeFileType,$episodeFileMimeType,$episodeFilenameWithoutExtension);
 
-		
 }
 
 
