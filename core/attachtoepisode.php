@@ -2,8 +2,9 @@
 //ATTACH TO EACH EPISODE (social networks)
 
 //Define the full URL of a single episode
-	$fullURL = $url.'?name='.$filenameWithoutExtension.'.'.$podcast_filetype; //full URL of the episode
+//NB $thisPodcastEpisode[3] is the extension of the file, $thisPodcastEpisode[5] is the file name without extension from function validateSingleEpisode
 
+	$fullURL = $url.'?name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3]; //full URL of the episode
 	
 // CUSTOMIZED CODE TO EMBED
 // IF a file called embed-code.txt is manually created in the root of Podcast Generator. The content of that file will be displayed along with each episode (useful to add customized HTML code to each episode)
