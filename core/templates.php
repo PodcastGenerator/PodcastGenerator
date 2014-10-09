@@ -105,7 +105,7 @@ $theme_file_contents = str_replace("-----PG_JSLOAD-----", $loadjavascripts, $the
 //LOAD A CSS WITH CLASSES COMMON TO ALL THE THEMES
 $commonCSSurl = '<link href="themes/common.css" rel="stylesheet">';
 //ADDING FONT AWESOME, FOR AWESOME ICONS
-$commonCSSurl .= '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">';
+$commonCSSurl .= '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">';
 $theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, $theme_file_contents); 
 
 
@@ -135,24 +135,38 @@ $rightboxcontent = '<div class="rightbox">
 
 # If you are logged show right boxes
 $adminrightboxcontent = NULL;
-if(isThisAdminPage()) { //if admin page
+if(isUserLogged()) { //if admin page
 
-$adminrightboxcontent .= '<div class="rightbox">';
 
 	//show donation box
+	
+	if (isset($author_name) and $author_name != NULL) $nameToAddressUser = $author_name.", ";
+	else $nameToAddressUser = NULL;
+	
 	$adminrightboxcontent .= '
-		<span class="nav-header">'._("Make a donation:").'</span>
-		<p>'._("If you like Podcast Generator please consider making a donation:").'<br /><br />
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" alt="Donate through PayPal"></a>
-			<br /><br />
-		</p>
+		<div class="rightbox">
+		<span class="nav-header">'._("Support Podcast Generator").'</span>
+		<p>'.$nameToAddressUser._("if you like Podcast Generator please consider").' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank"><strong>'._(" making a donation").'</strong></a>.
+		'._("No matter the amount you donate, your contribution will support future development and bug fixes. Thank you!").'</p>
+		<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank">
+		<i class="fa fa-cc-paypal fa-2x"></i> <i class="fa fa-cc-visa fa-2x"></i> <i class="fa fa-cc-mastercard fa-2x"></i> <i class="fa fa-cc-amex fa-2x"></i>
+		</a>
+		</div>
 	';
 
 	//show PG box
 	$adminrightboxcontent .= '
-		<span class="nav-header">'._("Podcast Generator").'</span><p>- <a href="?p=admin&amp;do=serverinfo">'._("Your server configuration").'</a><br />- <a href="http://podcastgen.sourceforge.net/index.php?p=checkforupdates&v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a><br />- <a href="http://feeds.podcastgenerator.net/podcastgenerator" target="_blank">'._("Subscribe to the news feed").'</a><br />- <a href="http://podcastgen.sourceforge.net/documentation?ref=local-admin#faq" target="_blank">'._("Read documentation and get support").'</a><br />- <a href="http://podcastgen.sourceforge.net/credits" target="_blank">'._("Credits").'</a></p>
+		<div class="rightbox">
+		<span class="nav-header">'._("Help").'</span>
+		<ul>
+		<li><a href="?p=admin&amp;do=serverinfo">'._("Your server configuration").'</a></li>
+		<li><a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a></li>
+		<li><a href="http://podcastgen.sourceforge.net/documentation/#faq?ref=local-admin" target="_blank">'._("Read Documentation").'</li>
+		<li><a href="http://podcastgen.sourceforge.net/support/?ref=local-admin" target="_blank">'._("Get Support").'</a></li>
+		</ul>
+		</div>
 	';
-$adminrightboxcontent .= '</div>';
+	
 }
 
 $theme_file_contents = str_replace("-----PG_RIGHTBOX-----", $rightboxcontent, $theme_file_contents);
@@ -163,7 +177,7 @@ $theme_file_contents = str_replace("-----PG2_ADMINRIGHTBOX-----", $adminrightbox
 # SET RIGHT OPTIONAL BOX ("freebox")
 
 $freeboxcontent = NULL;
-	if (!isThisAdminPage() AND $freebox == "yes") { //if it's an admin page do not display freebox - and freebox is enabled
+	if ($freebox == "yes") { //if admin is logged do not display freebox - and freebox is enabled
 
 		if(file_exists("$absoluteurl"."freebox-content.txt")){
 

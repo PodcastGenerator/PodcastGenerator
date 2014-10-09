@@ -127,13 +127,6 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 }
 
 
-############ Is the admin logged in and is this one of the administration pages? (including archives with "Edit/Delete" button
-function isThisAdminPage () {
-	if (isset($_GET['p']) AND $_GET['p'] == "admin" OR isset($_GET['p']) AND $_GET['p'] == "archive" OR isset($_GET['name'])) {
-		if (isUserLogged()) return TRUE; //If user is logged-in (i.e. is admin)
-		else return FALSE;  
-	}
-}
 
 
 ############ Create form date and time
@@ -1247,15 +1240,6 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 		
 }
 
-// This function also takes into account a logged in admin that will see future episodes anyway in the defined (admin) pages, but not in the RSS feed (both XML and PHP)
-function publishInFuture($filefullpath) {	
-	$fileTime = 0;
-	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
-	
-	if  (isThisAdminPage()) return FALSE;
-	else if ($fileTime > time()) return TRUE;
-	else return FALSE;
-}
 
 
 function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
@@ -1619,10 +1603,10 @@ function validateSingleEpisode ($episodeFile) {
 		}
 		
 		else {
-		$GoForIt = FALSE;	
+		$GoForIt = FALSE;
 		}
 
-	//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding data file (xml) and is not set to a future date
+	//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding data file (xml)
 	
 	return array($GoForIt,$filefullpath);
 
@@ -1639,5 +1623,17 @@ function isUserLogged () {
 	if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword) { return TRUE; }
 	else { return FALSE; }
 }
+
+
+// Is the episode set to a future date?
+function publishInFuture($filefullpath) {	
+	$fileTime = 0;
+	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
+	if ($fileTime > time()) return TRUE;
+	else return FALSE;
+}
+
+
+
 
 ?>
