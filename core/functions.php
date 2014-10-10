@@ -246,49 +246,52 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 } // End - form date and time
 
 
+##################################################################################
+##################################################################################
+## SOCIAL NETWORK INTEGRATION
 
-
-#################### SOCIAL NETWORK INTEGRATION
-
-//$fullURL,$text_title are episode data. the rest: value 1 (/ TRUE) enable a certain social network, value 0 disables
+//$fullURL,$text_title are episode data. the rest: value 1 (TRUE) enable a certain social network, value 0 disables
 function displaySocialNetworkButtons($fullURL,$text_title,$fb,$tw,$gp) { 
-	
-$construct_output = '<br />'; //space above
+		
+	$construct_output = '<br />'; //space above
 
-//FB Like Button
-if ($fb == TRUE) {
-$construct_output .= '
-<iframe src="//www.facebook.com/plugins/like.php?href='.$fullURL.'&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=361488987252256" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
-';
-}
+	//FB Like Button
+	if ($fb == TRUE) {
+		$construct_output .= '
+		<iframe src="//www.facebook.com/plugins/like.php?href='.$fullURL.'&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=361488987252256" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+		';
+	}
 
-//TWITTER Button
-if ($tw == TRUE) {
-$construct_output.= '
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$fullURL.'" data-text="'.$text_title.'" data-hashtags="podcastgen">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-';
-}
+	//TWITTER Button
+	if ($tw == TRUE) {
+		$construct_output.= '
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$fullURL.'" data-text="'.$text_title.'" data-hashtags="podcastgen">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		';
+	}
 
-//G+ Button
-if ($gp == TRUE) {
-$construct_output .= '
-<div class="g-plusone" data-size="medium" data-href="'.$fullURL.'"></div>
+	//G+ Button
+	if ($gp == TRUE) {
+		$construct_output .= '
+		<div class="g-plusone" data-size="medium" data-href="'.$fullURL.'"></div>
 
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
-    po.src = \'https://apis.google.com/js/plusone.js\';
-    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-';
-}
+		<script type="text/javascript">
+		  (function() {
+			var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+			po.src = \'https://apis.google.com/js/plusone.js\';
+			var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+		';
+	}
 
 	return $construct_output;
 }
+## END SOCIAL NETWORK INTEGRATION
+##################################################################################
 
 
+##################################################################################
 ##################################################################################
 ## SHOW PODCAST EPISODES
 
@@ -581,16 +584,8 @@ function readPodcastCategories ($absoluteurl) {
 
 
 
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-//SHOW SINGLE PODCAST EPISODE
+##################################################################################
+## SHOW SINGLE PODCAST EPISODE
 
 function showSinglePodcastEpisode($all,$category,$singleEpisode,$justTitle) { //$all is a bool, yes or not (the latter meaning that it takes $max_recent in config.php. $category null means all categories.
 //Note that $justTitle == 1 will return just the title of the episode (for meta tags in the head etc...) and not follow with the function
@@ -789,7 +784,8 @@ return $resulting_episodes; // return results
 
 } // end function showPodcastEpisodes
 
-
+## END - SHOW SINGLE PODCAST EPISODE
+##################################################################################
 
 //generate language ISO639 format (e.g. just "en" and not "en_EN") for RSS feed
 function languageISO639 ($language) {
