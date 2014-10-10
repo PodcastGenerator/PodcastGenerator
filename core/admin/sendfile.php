@@ -328,7 +328,19 @@ else $filenamechanged = $filenameWithoutExtension;
 			# END CHANGE DATE						
 			############################################
 
+		
+		############################################
+		# START READ EPISODE DURATION WITH GETID3
+		require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+		$getID3 = new getID3; //initialize getID3 engine
 
+		//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq
+		//retrieveMediaFileDetails ($thisPodcastEpisode[1],$thisPodcastEpisode[3],$getID3);
+		$episodeID3 = retrieveMediaFileDetails ($filefullpath,$fileExtension,$getID3);
+		
+		
+		# END READ EPISODE DURATION WITH GETID3
+		############################################
 
 
 
@@ -371,7 +383,33 @@ else $filenamechanged = $filenameWithoutExtension;
 			<authorPG>
 			<namePG>'.$auth_name.'</namePG>
 			<emailPG>'.$auth_email.'</emailPG>
-			</authorPG>
+			</authorPG>';
+		
+		//Episode size and data from GETID3 from retrieveMediaFileDetails function
+		//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq
+
+		$xmlfiletocreate .='
+			<fileInfoPG>';
+		if(isset($episodeID3[0]) AND $episodeID3[0]!= NULL){
+			$xmlfiletocreate .=	'
+			<size>'.$episodeID3[0].'</size>';
+		}
+		if(isset($episodeID3[1]) AND $episodeID3[1]!= NULL){
+			$xmlfiletocreate .=	'
+			<duration>'.$episodeID3[1].'</duration>';
+		}
+		if(isset($episodeID3[2]) AND $episodeID3[2]!= NULL){
+			$xmlfiletocreate .=	'
+			<bitrate>'.$episodeID3[2].'</bitrate>';
+		}
+		if(isset($episodeID3[3]) AND $episodeID3[3]!= NULL){
+			$xmlfiletocreate .=	'
+			<frequency>'.$episodeID3[3].'</frequency>';
+		}			
+		$xmlfiletocreate .='
+			</fileInfoPG>';
+		
+		$xmlfiletocreate .='
 			</episode>
 			</PodcastGenerator>';
 
