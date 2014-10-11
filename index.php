@@ -116,7 +116,7 @@ elseif (isset($_GET['name'])) {
 
 		//include("$absoluteurl"."core/episode.php");
 		
-		$PG_mainbody .= showSinglePodcastEpisode(1,NULL,avoidXSS($_GET['name']),NULL); 
+		$PG_mainbody .= showSingleEpisode(avoidXSS($_GET['name']),NULL); 
 		
 	}
 
