@@ -83,7 +83,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	//if is single episode, add title of episode to title of page
 	elseif (isset($_GET['name'])) {
 	
-		$titleOfEpisode = showSinglePodcastEpisode(1,NULL,avoidXSS($_GET['name']),1); //the last parameter (1) requires just the title to that function
+		$titleOfEpisode = showSingleEpisode(avoidXSS($_GET['name']),1); //the last parameter (1) requires just the title to that function
 		
 		if ($titleOfEpisode != NULL) $page_title .= " &raquo; $titleOfEpisode";
 	
