@@ -223,7 +223,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 				$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 
-				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes); 
+				$fileData = checkFileType($file_multimediale[1],$absoluteurl); 
 
 
 				if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]

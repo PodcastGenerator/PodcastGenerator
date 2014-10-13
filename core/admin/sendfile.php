@@ -172,7 +172,7 @@ $PG_mainbody .= "<p>"._("Original filename:")." <i>$file</i></p>";
 
 ##############
 ### processing file extension
-$fileData = checkFileType(strtolower($fileExtension),$podcast_filetypes,$podcast_filemimetypes); //lowercase extension to compare with the accepted extensions array
+$fileData = checkFileType(strtolower($fileExtension),$absoluteurl); //lowercase extension to compare with the accepted extensions array
 
 if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
 $podcast_filetype=$fileData[0];

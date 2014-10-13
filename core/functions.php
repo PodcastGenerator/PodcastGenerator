@@ -8,28 +8,50 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+##################################################################################
 
-// Support for multiple episode formats (from supported_media.php)
-function checkFileType ($filetype,$podcast_filetypes,$podcast_filemimetypes) {
-	$i=0;
-	$found=FALSE;
-	$fileData = array();
-
-	while (($i < sizeof($podcast_filetypes)) && $found==FALSE) {
-		if ($filetype==$podcast_filetypes[$i]) {
-			$fileData[0]=$podcast_filetypes[$i];
-			$fileData[1]=$podcast_filemimetypes[$i];
-			$found=TRUE;
+function checkFileType ($filetype,$absoluteurl) {
+	
+	if (file_exists($absoluteurl."components/supported_media/supported_media.xml")) {
+		
+		$parser = simplexml_load_file($absoluteurl.'components/supported_media/supported_media.xml','SimpleXMLElement',LIBXML_NOCDATA);
+		
+		$podcast_filetypes = array();
+		$podcast_filemimetypes = array();
+		foreach($parser->mediaFile as $singleFileType) {
+				array_push ($podcast_filetypes,$singleFileType->extension[0]);
+				array_push ($podcast_filemimetypes,$singleFileType->mimetype[0]);
 		}
-		$i+=1;
+		
+		$i=0;
+		$isFileSupported=FALSE;
+		$fileData = array();	
+		while (($i < sizeof($podcast_filetypes)) && $isFileSupported==false) {
+			if ($filetype==$podcast_filetypes[$i]) {
+				$fileData[0]=$podcast_filetypes[$i];
+				$fileData[1]=$podcast_filetypes[$i];
+				$isFileSupported=TRUE;
+			}
+			$i++;
+		}
+		
+		
+		//Always return something
+		if (!isset($fileData[0])) $fileData[0] = NULL;
+		if (!isset($fileData[1])) $fileData[1] = NULL;
+		
+		//returns bool (true if file is present in supported_media.xml)
+		$fileData[2] = $isFileSupported;
+		
+		//Array with 3 values: podcast_filetypes, podcast_filetypes, isFileSupported
+		return ($fileData);
 	}
-	
-	//Always return something
-	if (!isset($fileData[0])) $fileData[0] = NULL;
-	if (!isset($fileData[1])) $fileData[1] = NULL;
-	
-	return $fileData;
 }
+## END - DETECT SUPPORTED MEDIA FILE FORMATS AND RETURN MIMETYPE
+##################################################################################
+
+
+
 
 
 ########
@@ -224,7 +246,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	$outputform .=  "<option value=\"";
 	
 	if ($currentMinute <= 9) {
-	$outputform .=  "0".intval($currentMinute); } //add 0 before number from 1 to 9
+	$outputform .=  "0".intval($currentMinute); } //add 0 to numbers from 1 to 9
 	else { $outputform .=  intval($currentMinute); }
 	
 	$outputform .=  "\"";
@@ -234,7 +256,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	}
 	
 	if ($currentMinute <= 9) {
-	$outputform .=  ">0".intval($currentMinute). "\n"; } //aggiungi zero ai minuti da 1 a 9
+	$outputform .=  ">0".intval($currentMinute). "\n"; } //add 0 to numbers from 1 to 9
 	else { $outputform .=  ">".intval($currentMinute). "\n"; }
 	
 	}
@@ -1158,7 +1180,7 @@ function generatePodcastFeed ($outputInFile) {
 				$file_multimediale = explode(".",$singleFileName); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
 
 
-				$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes); 
+				$fileData = checkFileType($file_multimediale[1],$absoluteurl); 
 
 
 				if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
@@ -1367,7 +1389,7 @@ function validateSingleEpisode ($episodeFile) {
 	$episodeFile_parts = divideFilenameFromExtension($episodeFile); // PHP >= 5.2.0 needed
 	$episodeFilenameWithoutExtension = $episodeFile_parts[0];
 	$EpisodeFileExtension = $episodeFile_parts[1];
-	$checkEpisodeFileFormat = checkFileType($EpisodeFileExtension,$podcast_filetypes,$podcast_filemimetypes);
+	$checkEpisodeFileFormat = checkFileType($EpisodeFileExtension,$absoluteurl);
 	$episodeFileType = $checkEpisodeFileFormat[0];
 	$episodeFileMimeType = $checkEpisodeFileFormat[1];
 	$episodeFileFullPath = $absoluteurl.$upload_dir.$episodeFile;
