@@ -25,8 +25,6 @@ include("config.php");
 
 include_once($absoluteurl."core/functions.php"); //LOAD ONCE
 
-include($absoluteurl."core/supported_media.php");
-
 include($absoluteurl."core/language.php");
 
 
