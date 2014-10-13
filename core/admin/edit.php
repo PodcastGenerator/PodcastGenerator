@@ -52,7 +52,7 @@ else {
 
 //echo '<br>FILE: '.$file_multimediale[0].' - '.$file_multimediale[1];
 
-			$fileData = checkFileType($file_multimediale[1],$podcast_filetypes,$podcast_filemimetypes);
+			$fileData = checkFileType($file_multimediale[1],$absoluteurl);
 
 
 			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
