@@ -32,89 +32,37 @@ else {
 	###########
 
 	if (isset($_GET['name']) AND $_GET['name'] != NULL ) {
-		$file_multimediale = $_GET['name'];
+		$singleEpisode = $_GET['name'];
 
 
-		if (file_exists("$absoluteurl"."$upload_dir$file_multimediale")) {
+		////Validate the current episode
+				//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension
+	$thisPodcastEpisode = validateSingleEpisode($singleEpisode);
 
+				////If episode is supported and has a related xml db, and if it's not set to a future date OR if it's set for a future date but you are logged in as admin
+				if ($thisPodcastEpisode[0]==TRUE) { 
 
-			//		require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
+					////Parse XML data related to the episode 
+					// NB. Function parseXMLepisodeData returns: [0] episode title, [1] short description, [2] long description, [3] image associated, [4] iTunes keywords, [5] Explicit language,[6] Author's name,[7] Author's email,[8] PG category 1, [9] PG category 2, [10] PG category 3, [11] file_info_size, [12] file_info_duration, [13] file_info_bitrate, [14] file_info_frequency
+					$thisPodcastEpisodeData = parseXMLepisodeData($thisPodcastEpisode[2]);	
+		
 
-			//		$getID3 = new getID3; //initialize getID3 engine
-
-			//load XML parser for PHP4 or PHP5
-		//	include("$absoluteurl"."components/xmlparser/loadparser.php");
-
-
-		$file_multimediale = divideFilenameFromExtension($file_multimediale); //supports more full stops . in the file name. PHP >= 5.2.0 needed
-		//OLD doesn't work with extra . in the file name
-		//$file_multimediale = explode(".",$file_multimediale); //divide filename from extension [1]=extension (if there is another point in the filename... it's a problem)
-
-//echo '<br>FILE: '.$file_multimediale[0].' - '.$file_multimediale[1];
-
-			$fileData = checkFileType($file_multimediale[1],$absoluteurl);
-
-
-			if ($fileData != NULL) { //This IF avoids notice error in PHP4 of undefined variable $fileData[0]
-
-
-				$podcast_filetype = $fileData[0];
-
-
-				if ($file_multimediale[1]=="$podcast_filetype") { // if the extension is the same as specified in config.php
-
-					$wholeepisodefile = "$absoluteurl"."$upload_dir$file_multimediale[0].$podcast_filetype";
-
-
-					//				$file_size = filesize("$wholeepisodefile");
-					//				$file_size = $file_size/1048576;
-					//				$file_size = round($file_size, 2);
-
-
-					//				$file_time = filemtime("$wholeepisodefile");
-
-					//				$filedate = date ("$dateformat", "$file_time");
-
-
-
-					############
-					$filedescr = "$absoluteurl"."$upload_dir$file_multimediale[0].xml"; //database file
-
-					if (file_exists("$filedescr")) { //if database file exists 
-
-
-						//$file_contents=NULL; 
-
-
-						# READ the XML database file and parse the fields
-						include("$absoluteurl"."core/readXMLdb.php");
-
-
-
-						### Here the output code for the episode is created
-
-						# Fields Legend (parsed from XML):
-						# $text_title = episode title
-						# $text_shortdesc = short description
-						# $text_longdesc = long description
-						# $text_imgpg = image (url) associated to episode
-						# $text_category1, $text_category2, $text_category3 = categories
-						# $text_keywordspg = keywords
-						# $text_explicitpg = explicit podcast (yes or no)
-						# $text_authornamepg = author's name
-						# $text_authoremailpg = author's email
-
-						#############################
-
-
-						#### CONTENT DEPURATION (solves problem with quotes etc...)
-						$text_title = depurateContent($text_title); //title
-						$text_shortdesc = depurateContent($text_shortdesc); //short desc
-						$text_longdesc = depurateContent($text_longdesc); //long desc
-						$text_keywordspg = depurateContent($text_keywordspg); //Keywords
-						$text_authornamepg = depurateContent($text_authornamepg); 
-
-						}	}	}
+						//// content definition and depuration (solves problem with quotes etc...)
+						$text_title = depurateContent($thisPodcastEpisodeData[0]); //title
+						$thisPodcastEpisodeData[1] = depurateContent($thisPodcastEpisodeData[1]); //short desc
+						$text_shortdesc = depurateContent($thisPodcastEpisodeData[1]); //short desc
+						$text_longdesc = depurateCDATAfield($thisPodcastEpisodeData[2]); //long desc
+						$text_keywordspg = depurateContent($thisPodcastEpisodeData[4]); //Keywords
+						$text_authornamepg = depurateContent($thisPodcastEpisodeData[6]); //author's name
+						$text_authoremailpg = $thisPodcastEpisodeData[7];
+						$text_explicitpg = $thisPodcastEpisodeData[5];
+						$episodedate = filemtime ($thisPodcastEpisode[1]);
+						$text_category1 = $thisPodcastEpisodeData[8];
+						$text_category2 = $thisPodcastEpisodeData[9];
+						$text_category3 = $thisPodcastEpisodeData[10];
+						
+						
+				
 						#########
 
 
@@ -168,8 +116,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 							### END CATEGORIES FORM
 
 							
-							//Read file date
-							$episodedate = filemtime($wholeepisodefile);
+							
 							
 							
 							$PG_mainbody .= '
@@ -273,7 +220,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				<br />
 				'._("Do you really want to permanently delete this episode?").' 
 				
-				<a class="btn btn-danger btn-mini" href="?p=admin&do=delete&file='.$file_multimediale[0].'&ext='.$podcast_filetype.'">'._("YES, I am sure").'</a>
+				<a class="btn btn-danger btn-mini" href="?p=admin&do=delete&file='.$thisPodcastEpisode[5].'&ext='.$thisPodcastEpisode[3].'">'._("YES, I am sure").'</a>
 				
 				</div>
 				
@@ -288,7 +235,9 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				';
 
 				
-						}	}				
+						}		
+
+}	// END - If episode is supported						
 
 					} // end else . if GET variable "c" is not = "ok"
 

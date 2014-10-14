@@ -342,6 +342,7 @@ function showPodcastEpisodes($all,$category) {
 	/// Header for Category (RSS and Title)
 	if (isset($category) AND $category != NULL) {
 
+		$CounterEpisodesInCategory = 0; // set counter to 0
 		$category = avoidXSS($category); //URL depuration
 		$categoryURLforPagination = "&cat=".$category;
 
@@ -407,10 +408,9 @@ function showPodcastEpisodes($all,$category) {
 					if (isset($category) AND $category != NULL) { 
 						//if category is not associated to the current episode
 						if ($category != $thisPodcastEpisodeData[8] AND $category != $thisPodcastEpisodeData[9] AND $category != $thisPodcastEpisodeData[10]) {
-							$atLeastOneEpisodeInCategory = FALSE;
 							continue; //STOP this cycle and start a new one
 						} else {
-							$atLeastOneEpisodeInCategory = TRUE; //There is at least one episode
+							$CounterEpisodesInCategory++; // Incremente episodes counter
 						}
 					}
 
@@ -520,11 +520,10 @@ function showPodcastEpisodes($all,$category) {
 
 	} // END - If media directory contains files
 
-
 	//IF a category is requested add category header and message when empty
 	if (isset($category) AND $category != NULL) {
 		//If a category is requested and doesn't contain any episode
-		if (isset($atLeastOneEpisodeInCategory) AND $atLeastOneEpisodeInCategory != TRUE) {
+		if ($CounterEpisodesInCategory < 1) {
 		$finalOutputEpisodes .= '<p>'.("No episodes here yet...").'</p>';
 		}
 	$finalOutputEpisodes = $category_header.$finalOutputEpisodes; //category header at the top
@@ -1032,7 +1031,10 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 
 
 
-function retrieveMediaFileDetails ($MediaFile,$podcast_filetype,$getID3) {
+function retrieveMediaFileDetails ($MediaFile,$absoluteURL) {
+	
+	require_once($absoluteURL."components/getid3/getid3.php"); //Lib to read ID3 tags in media files
+	$getID3 = new getID3; //initialize getID3 engine
 	
 	$ThisFileSizeInMB = round(filesize($MediaFile)/1048576,2);
 	$ThisFileInfo = $getID3->analyze($MediaFile); //read file tags

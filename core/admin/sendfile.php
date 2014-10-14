@@ -228,7 +228,7 @@ else $filenamechanged = $filenameWithoutExtension;
 	}
 
 
-	$PG_mainbody .= ""._("File")."renamed <i>$filenamechanged$filesuffix.$fileExtension</i><br />";
+	$PG_mainbody .= _("File Renamed:")." <i>$filenamechanged$filesuffix.$fileExtension</i><br />";
 
 	$uploadFile == NULL ;
 
@@ -331,13 +331,11 @@ else $filenamechanged = $filenameWithoutExtension;
 		
 		############################################
 		# START READ EPISODE DURATION WITH GETID3
-		require_once("$absoluteurl"."components/getid3/getid3.php"); //read id3 tags in media files (e.g.title, duration)
-		$getID3 = new getID3; //initialize getID3 engine
+
 
 		//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq
-		//retrieveMediaFileDetails ($thisPodcastEpisode[1],$thisPodcastEpisode[3],$getID3);
-		$episodeID3 = retrieveMediaFileDetails ($filefullpath,$fileExtension,$getID3);
-		
+		$episodeID3 = retrieveMediaFileDetails ($filefullpath,$absoluteurl);
+
 		
 		# END READ EPISODE DURATION WITH GETID3
 		############################################
