@@ -83,8 +83,6 @@ if(isUserLogged()) { //if logged
 	
 	$enablesocialnetworks = array('.$social_networks_active_buttons.'); // Enable social networks integration? value 1 (true) or 0 (false) for each social network. Array order: Facebook, Twitter, G+
 
-	$streamingplayercolor = "'.$streamingplayercolor.'";
-
 	$dateformat = "'.$dateformat.'"; // d-m-Y OR m-d-Y OR Y-m-d 
 
 	$freebox = "'.$freebox.'"; // enable freely customizable box
