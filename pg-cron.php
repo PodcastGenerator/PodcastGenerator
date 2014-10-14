@@ -23,9 +23,13 @@ $includedInIndexPHP = TRUE; //called via index.php (pseudo cron)
 }
 //echo "URL: ".$absoluteurl; //Debug
 
+$RSSFeedURL = $absoluteurl.$feed_dir."feed.xml";
+$lastRSSFeedBuild = NULL;
+if (file_exists($RSSFeedURL)) {
 //Timestamp last time main RSS feed was generated
-$lastRSSFeedBuild = filemtime($absoluteurl.$feed_dir."feed.xml");
+$lastRSSFeedBuild = filemtime($RSSFeedURL);
 //echo " FEED LAST BUILT: ".$lastRSSFeedBuild; //Debug
+}
 
 $feedCacheTime = 5; 
 //$feedCacheTime can be set in config.php to overwrite the default value below
