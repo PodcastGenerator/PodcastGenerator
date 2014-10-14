@@ -467,7 +467,7 @@ function showPodcastEpisodes($all,$category) {
 
 
 					////Buttons (More, Download, Watch)
-					$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter);
+					$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter,$thisPodcastEpisode[1],$enablestreaming);
 
 					
 					////Other details (file type, duration, bitrate, frequency)					
@@ -642,7 +642,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 				
 
 					////Buttons (More, Download, Watch).
-					$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,"singleEpisode");
+					$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,"singleEpisode",$thisPodcastEpisode[1],$enablestreaming);
 
 					
 					////Other details (file type, duration, bitrate, frequency)					
@@ -788,8 +788,7 @@ function languagesList ($absoluteurl,$isTranslation) { // $isTranslation TRUE wh
 }
 
 
-function random_str($size) 
-{ 
+function random_str($size) { 
 	$text = NULL;
         $randoms = array( 
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", 
@@ -949,40 +948,41 @@ function isItAvideo($podcast_filetype) {
 }
 
 
-function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count) {
+function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_dir,$recent_count,$absolutePathEpisode,$enablestreaming) {
+	
 	$buttonsOutput = '<p>';
 	
-	//show button "More" - in the permalink it is not show (no numeric var passed)
+	//// Button "More" - in the permalink it is not show (no numeric var passed)
 	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 	
+	//// Button Watch (takes into account $enablestreaming from config.php)
 	$browserAudioVideoSupport = detectModernBrowser();
-	if (isItAvideo($podcast_filetype) == TRUE AND $browserAudioVideoSupport[1] == TRUE AND !detectMobileDevice()) {
+	if ($enablestreaming == "yes" AND isItAvideo($podcast_filetype) == TRUE AND $browserAudioVideoSupport[1] == TRUE AND !detectMobileDevice()) {
 	//javascript:; is added as an empty link for href
 	$buttonsOutput .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
 	}
-	//videoPlayer.'.$recent_count.'
 	
-	## BUTTON DOWNLOAD
-	//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
-	if (!detectMobileDevice()) { //IF IS NOT MOBILE DEVICE
-	//show button (FORCED) download using download.php
-	$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
-	} 
-	else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
-	//Write "watch" or "listen" in mobile devices.
-		if (isItAvideo($podcast_filetype) == TRUE) { 
+	//// Button download
+	//Download button doesn't appear for episodes with future publication date (security reasons)
+	if (!publishInFuture($absolutePathEpisode)) {
+		//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
+		if (!detectMobileDevice()) {
+		//show button (FORCED) download using download.php
+		$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
+		} 
+		else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
+		//Write "watch" or "listen" in mobile devices.
+			if (isItAvideo($podcast_filetype) == TRUE) { 
 			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
-	}	
-		//if it's audio
-		else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
-		$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
-	}	else {
-			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
+			}	
+			//if it's audio
+			else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
+			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+			}	else {
+			$buttonsOutput .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
+			}
+		}
 	}
-		
-
-	}
-	## END - BUTTON DOWNLOAD
 	
 	$buttonsOutput .= '</p>';
 
@@ -1053,12 +1053,12 @@ function readMediaDir ($absoluteurl,$upload_dir) {
 	$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn",".xml");
 	
 	$handle = opendir ($absoluteurl.$upload_dir);
-	while (($filename = readdir ($handle)) !== false) 
-	{
-		if (!in_array($filename, $toExclude)) $files_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-		else $files_array = array(); //null array
-	}
-	
+		while (($filename = readdir ($handle)) !== false) 
+		{
+			if (!in_array($filename, $toExclude)) $files_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
+			else $files_array = array(); //null array
+		}
+		
 	//$files_array has the file name as key and the file date as value - here we sort inversely by time 
 	arsort ($files_array); //opposite of asort
 	
@@ -1410,6 +1410,9 @@ function validateSingleEpisode ($episodeFile) {
 
 //DETECT WHETHER USER IS LOGGED-IN OR NOT
 function isUserLogged () {
+	//// Security code (Register Globals ON)
+	if (isset($_REQUEST['GLOBALS'])) { exit; } 
+	
 	//read user and md5 pwd from config.php
 	if (file_exists("config.php")) include("config.php"); 
 	//compare sessions to stored user and md5 pwd
@@ -1421,46 +1424,46 @@ function isUserLogged () {
 // Is the episode set to a future date?
 function publishInFuture($filefullpath) {	
 	$fileTime = 0;
-	if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
-	if ($fileTime > time()) return TRUE;
-	else return FALSE;
+		if (file_exists($filefullpath)) $fileTime = filemtime($filefullpath);
+		if ($fileTime > time()) return TRUE;
+		else return FALSE;
 }
 
 
 function parseXMLepisodeData ($episodeFileXMLDB) {
 
-$parser = simplexml_load_file($episodeFileXMLDB,'SimpleXMLElement',LIBXML_NOCDATA);
-//var_dump($parser); //Debug
-//NB. to handle CDATA values see: http://blog.evandavey.com/2008/04/how-to-fix-simplexml-cdata-problem-in-php.html
+	$parser = simplexml_load_file($episodeFileXMLDB,'SimpleXMLElement',LIBXML_NOCDATA);
+	//var_dump($parser); //Debug
+	
+	//NB. to handle CDATA values see: http://blog.evandavey.com/2008/04/how-to-fix-simplexml-cdata-problem-in-php.html
 
-//Parse the episode in the xml file - just one episode (array [0]) is stored in each XML file
+	//Parse the episode in the xml file - just one episode (array [0]) is stored in each XML file
+	$episode_title = $parser->episode[0]->titlePG[0]; //episode title
+	$episode_shortdesc = $parser->episode[0]->shortdescPG[0]; //short description
+	$episode_longdesc = $parser->episode[0]->longdescPG[0]; // long description
+	$episode_imgpg = $parser->episode[0]->imgPG[0]; // image (url) associated to episode
+	$episode_keywordspg = $parser->episode[0]->keywordsPG[0]; //iTunes keywords
+	$episode_explicitpg = $parser->episode[0]->explicitPG[0]; //explicit podcast (yes or no)
+	$episode_authornamepg = $parser->episode[0]->authorPG[0]->namePG[0]; //author's name 
+	$episode_authoremailpg = $parser->episode[0]->authorPG[0]->emailPG[0]; //author's email
 
-$episode_title = $parser->episode[0]->titlePG[0]; //episode title
-$episode_shortdesc = $parser->episode[0]->shortdescPG[0]; //short description
-$episode_longdesc = $parser->episode[0]->longdescPG[0]; // long description
-$episode_imgpg = $parser->episode[0]->imgPG[0]; // image (url) associated to episode
-$episode_keywordspg = $parser->episode[0]->keywordsPG[0]; //iTunes keywords
-$episode_explicitpg = $parser->episode[0]->explicitPG[0]; //explicit podcast (yes or no)
-$episode_authornamepg = $parser->episode[0]->authorPG[0]->namePG[0]; //author's name 
-$episode_authoremailpg = $parser->episode[0]->authorPG[0]->emailPG[0]; //author's email
+	//categories
+	$episode_category1 = $parser->episode[0]->categoriesPG[0]->category1PG[0];
+	$episode_category2 = $parser->episode[0]->categoriesPG[0]->category2PG[0];
+	$episode_category3 = $parser->episode[0]->categoriesPG[0]->category3PG[0];
 
-//categories
-$episode_category1 = $parser->episode[0]->categoriesPG[0]->category1PG[0];
-$episode_category2 = $parser->episode[0]->categoriesPG[0]->category2PG[0];
-$episode_category3 = $parser->episode[0]->categoriesPG[0]->category3PG[0];
-
-//Until PG 2.2 this data was read from the media file in real time, from 2.3+ it'll be stored in the XML
-$file_info_size = NULL;
-$file_info_duration = NULL;
-$file_info_bitrate = NULL;
-$file_info_frequency = NULL;
-if (isset($parser->episode[0]->fileInfoPG[0]->size[0])) $file_info_size = $parser->episode[0]->fileInfoPG[0]->size[0];
-if (isset($parser->episode[0]->fileInfoPG[0]->duration[0])) $file_info_duration = $parser->episode[0]->fileInfoPG[0]->duration[0];
-if (isset($parser->episode[0]->fileInfoPG[0]->bitrate[0])) $file_info_bitrate = $parser->episode[0]->fileInfoPG[0]->bitrate[0];
-if (isset($parser->episode[0]->fileInfoPG[0]->frequency[0])) $file_info_frequency = $parser->episode[0]->fileInfoPG[0]->frequency[0];
+	//Until PG 2.2 this data was read from the media file in real time, from 2.3+ it'll be stored in the XML
+	$file_info_size = NULL;
+	$file_info_duration = NULL;
+	$file_info_bitrate = NULL;
+	$file_info_frequency = NULL;
+		if (isset($parser->episode[0]->fileInfoPG[0]->size[0])) $file_info_size = $parser->episode[0]->fileInfoPG[0]->size[0];
+		if (isset($parser->episode[0]->fileInfoPG[0]->duration[0])) $file_info_duration = $parser->episode[0]->fileInfoPG[0]->duration[0];
+		if (isset($parser->episode[0]->fileInfoPG[0]->bitrate[0])) $file_info_bitrate = $parser->episode[0]->fileInfoPG[0]->bitrate[0];
+		if (isset($parser->episode[0]->fileInfoPG[0]->frequency[0])) $file_info_frequency = $parser->episode[0]->fileInfoPG[0]->frequency[0];
 
 
-return array($episode_title,$episode_shortdesc,$episode_longdesc,$episode_imgpg,$episode_keywordspg,$episode_explicitpg,$episode_authornamepg,$episode_authoremailpg,$episode_category1,$episode_category2,$episode_category3,$file_info_size,$file_info_duration,$file_info_bitrate,$file_info_frequency);
+	return array($episode_title,$episode_shortdesc,$episode_longdesc,$episode_imgpg,$episode_keywordspg,$episode_explicitpg,$episode_authornamepg,$episode_authoremailpg,$episode_category1,$episode_category2,$episode_category3,$file_info_size,$file_info_duration,$file_info_bitrate,$file_info_frequency);
 
 }
 
