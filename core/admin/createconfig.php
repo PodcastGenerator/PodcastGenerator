@@ -33,7 +33,8 @@ if(isUserLogged()) { //if logged
 	
 	
 	if (!isset($first_installation)) $first_installation = time();
-	
+	//If not existing, generate 8 character key for this PG installation
+	if (!isset($installationKey)) $installationKey = random_str(8);
 
 	//Regenerate the config.php file
 	$configfiletocreate = '<?php
@@ -48,7 +49,9 @@ if(isUserLogged()) { //if logged
 
 	$podcastgen_version = "'.$podcastgen_version.'"; // Version
 
-	$first_installation = '.$first_installation.'; 
+	$first_installation = '.$first_installation.';
+	
+	$installationKey = "'.$installationKey.'";
 	
 	$scriptlang = "'.$scriptlang.'";
 

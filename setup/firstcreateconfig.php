@@ -36,6 +36,8 @@ $podcastgen_version = "'.$podcastgen_version.'"; // Version
 
 $first_installation = '.time().'; 
 
+$installationKey = "'.random_str(8).'";
+
 $scriptlang = "'.$_POST['setuplanguage'].'";
 
 $url = "'.$currenturl.'"; // Complete URL of the script (Trailing slash REQUIRED)
