@@ -9,7 +9,7 @@
 ############################################################
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
-if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
+if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
 ### Check if user is logged ###
@@ -17,8 +17,6 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 ###
 
 if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the script in a GET variable - security issue
-
-
 
 	if (isset($_GET['do']) AND $_GET['do']=="generate" AND !isset($_GET['c'])) { //show "Continue" Button
 
@@ -51,7 +49,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	/////////
 	//Generate RSS Feed in a file (feed.xml)
 	
-	generatePodcastFeed (TRUE); //Output in file
+	$episodesCounter = generatePodcastFeed(TRUE,NULL); //Output in file
 	////////
 	
 	
@@ -64,18 +62,16 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	} else {
 
-		if (!isset($recent_count)) $recent_count = 0; //avoid notice
-		$PG_mainbody .= "<br /><i>$recent_count "._("episode(s) in the feed")."</i>";	
+		if (!isset($episodesCounter)) $episodesCounter = 0; //avoid notice
+		$PG_mainbody .= "<br /><i>$episodesCounter "._("episode(s) in the feed")."</i>";	
 
 	}
 
 	//$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 
 
-
-
-
-	}}
+	}
+	}
 
 	
 
