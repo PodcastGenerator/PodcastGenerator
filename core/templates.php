@@ -179,10 +179,10 @@ $theme_file_contents = str_replace("-----PG2_ADMINRIGHTBOX-----", $adminrightbox
 $freeboxcontent = NULL;
 	if ($freebox == "yes") { //if admin is logged do not display freebox - and freebox is enabled
 
-		if(file_exists("$absoluteurl"."freebox-content.txt")){
+		if(file_exists($absoluteurl."freebox-content.txt")){
 
-			$freeboxcontenttodisplay = file_get_contents("$absoluteurl"."freebox-content.txt");	
-
+			$freeboxcontenttodisplay = file_get_contents($absoluteurl."freebox-content.txt");
+						
 			$freeboxcontent = '<div class="rightbox">
 				'.$freeboxcontenttodisplay.'
 				</div>';

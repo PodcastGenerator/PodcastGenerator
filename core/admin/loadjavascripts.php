@@ -51,13 +51,17 @@ $(document).ready(
 ### INSERT EDITOR WYSIWYG in specified pages
 // TinyMCE is loaded from an external (offical) URL. If no connection available then a simple textarea will be shown
 // Note: the - entity_encoding : "raw" - into tinyMCE.init solves issues with html entities (conversion of letter with accents, and other characters) in the "long description" of episodes
+// extended_valid_elements and custom_elements allows to insert new html elements (e.g. Google custom search engine)
 
+//NB in future enable "code" from toolbar below just for freebox
 		$loadjavascripts .='
 		<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
 		<script>
 		tinymce.init({
 		
 			selector:"#long_description",
+			extended_valid_elements : "gcse:search",
+			custom_elements : "gcse:search,~gcse:search",
 			entity_encoding : "raw",
 			width: 400,
 			height: 200,
@@ -68,7 +72,7 @@ $(document).ready(
 					 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
 					 "save table contextmenu directionality emoticons template paste textcolor"
 			],
-		   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image | forecolor", 
+		   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image | forecolor | code", 
 
 		});
 		</script>
