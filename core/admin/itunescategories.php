@@ -41,8 +41,8 @@ if(isUserLogged()) {
 		$PG_mainbody .= '<br /><br /><p>'._("iTunes Categories successfully changed...").'</p>';
 
 		//REGENERATE FEED ...
-		include ("$absoluteurl"."core/admin/feedgenerate.php");
-
+		//include ("$absoluteurl"."core/admin/feedgenerate.php");
+		generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 	}
 	else { // if action not set
 

@@ -1043,7 +1043,24 @@ function retrieveMediaFileDetails ($MediaFile,$absoluteURL) {
 	$file_bitrate =  @$ThisFileInfo['bitrate']/1000;
 	$file_freq = @$ThisFileInfo['audio']['sample_rate'];
 	
-	return array($ThisFileSizeInMB,$file_duration,$file_bitrate,$file_freq);
+	
+	//// Title from ID3 tags
+	$thisFileTitleID3 = NULL;
+	if (isset($ThisFileInfo['tags']['id3v2']['title'][0]) AND $ThisFileInfo['tags']['id3v2']['title'][0] != NULL) { //ID3 v2
+		$thisFileTitleID3 = @$ThisFileInfo['tags']['id3v2']['title'][0];
+	} elseif (isset($ThisFileInfo['tags']['id3v1']['title'][0]) AND $ThisFileInfo['tags']['id3v1']['title'][0] != NULL) { //ID3 v1
+		$thisFileTitleID3 = @$ThisFileInfo['tags']['id3v1']['title'][0];
+	}
+	
+	//// Artist from ID3 tags
+	$thisFileArtistID3 = NULL;
+	if (isset($ThisFileInfo['tags']['id3v2']['artist'][0]) AND $ThisFileInfo['tags']['id3v2']['artist'][0] != NULL) { //ID3 v2
+		$thisFileArtistID3 = @$ThisFileInfo['tags']['id3v2']['artist'][0];
+	} elseif (isset($ThisFileInfo['tags']['id3v1']['artist'][0]) AND $ThisFileInfo['tags']['id3v1']['artist'][0] != NULL) { //ID3 v1
+		$thisFileArtistID3 = @$ThisFileInfo['tags']['id3v1']['artist'][0];
+	}
+	
+	return array($ThisFileSizeInMB,$file_duration,$file_bitrate,$file_freq,$thisFileTitleID3,$thisFileArtistID3);
 
 }
 
@@ -1077,8 +1094,8 @@ function readMediaDir ($absoluteurl,$upload_dir) {
 ##################################################################################
 ## GENERATE PODCAST RSS FEED
 
-//GeneratePodcastFeed $outputInFile TRUE writes to a file (feed.xml), FALSE prints on screen
-function generatePodcastFeed ($outputInFile,$category) {
+//GeneratePodcastFeed $outputInFile TRUE writes to a file (feed.xml), FALSE prints on screen, $manualRegeneration means that the function is called explicitly by the user (and writeEpisodeXMLDB is called)
+function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	
 	//include functions and variables in config.php
 	include("core/includes.php"); 
@@ -1103,6 +1120,13 @@ function generatePodcastFeed ($outputInFile,$category) {
 	$itunes_category[1] = depurateContent($itunes_category[1]);
 	$itunes_category[2] = depurateContent($itunes_category[2]);
 
+	
+	//// If feed manually regenerated, recreate XML DB for each file when necessary
+	if ($manualRegeneration == TRUE) {
+	
+	
+	}
+	
 
 	//RSS FEED HEADER
 	$head_feed = 
@@ -1209,7 +1233,7 @@ function generatePodcastFeed ($outputInFile,$category) {
 				$text_keywordspg = depurateContent($thisPodcastEpisodeData[4]); //Keywords
 				$text_keywordspg = htmlspecialchars($thisPodcastEpisodeData[4]); //convert special characters e.g. r&b -> r&amp;b
 				$text_authornamepg = depurateContent($thisPodcastEpisodeData[6]); //author's name
-
+				$text_authoremailpg = depurateContent($thisPodcastEpisodeData[7]);
 
 				// Other Data from the file
 				$text_explicit = $thisPodcastEpisodeData[5];
@@ -1420,6 +1444,89 @@ function parseXMLepisodeData ($episodeFileXMLDB) {
 	return array($episode_title,$episode_shortdesc,$episode_longdesc,$episode_imgpg,$episode_keywordspg,$episode_explicitpg,$episode_authornamepg,$episode_authoremailpg,$episode_category1,$episode_category2,$episode_category3,$file_info_size,$file_info_duration,$file_info_bitrate,$file_info_frequency);
 
 }
+
+
+// $readID3 is a bool (true on first upload and on manual RSS regeneration)
+function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$episodeXMLDBAbsPath,$readID3) {
+
+	include($absoluteurl."core/includes.php");
+	
+	
+	//NB. $thisEpisodeData array contains [0] $title, [1] $description, [2] $long_description, [3] $image_new_name, [4] $category (array), [5] $keywords, [6] $explicit, [7] $auth_name, [8] $auth_email
+	
+
+	$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
+	<PodcastGenerator>
+		<episode>
+		<titlePG><![CDATA['.$thisEpisodeData[0].']]></titlePG>
+		<shortdescPG><![CDATA['.$thisEpisodeData[1].']]></shortdescPG>
+		<longdescPG><![CDATA['.$thisEpisodeData[2].']]></longdescPG>
+		<imgPG>'.$thisEpisodeData[3].'</imgPG>
+		<categoriesPG>
+		<category1PG>';
+	if(isset($thisEpisodeData[4][0]) AND $thisEpisodeData[4][0]!= NULL){
+		$xmlfiletocreate .=	$thisEpisodeData[4][0];
+	}
+	$xmlfiletocreate .='</category1PG>
+		<category2PG>';
+	if(isset($thisEpisodeData[4][1]) AND $thisEpisodeData[4][1]!= NULL){
+		$xmlfiletocreate .=	$thisEpisodeData[4][1];
+	}
+	$xmlfiletocreate .='</category2PG>
+		<category3PG>';
+	if(isset($thisEpisodeData[4][2]) AND $thisEpisodeData[4][2]!= NULL){
+		$xmlfiletocreate .=	$thisEpisodeData[4][2];
+	}
+	$xmlfiletocreate .='</category3PG>
+		</categoriesPG>
+		<keywordsPG>'.$thisEpisodeData[5].'</keywordsPG>
+		<explicitPG>'.$thisEpisodeData[6].'</explicitPG>
+		<authorPG>
+		<namePG>'.$thisEpisodeData[7].'</namePG>
+		<emailPG>'.$thisEpisodeData[8].'</emailPG>
+		</authorPG>';
+	
+
+	$episodeID3 = array(); //Declaration
+	if ($readID3 == TRUE) {
+	
+	//Episode size and data from GETID3 from retrieveMediaFileDetails function
+	//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
+	$episodeID3 = retrieveMediaFileDetails ($episodeFileAbsPath,$absoluteurl);
+
+		$xmlfiletocreate .='
+			<fileInfoPG>';
+		if(isset($episodeID3[0]) AND $episodeID3[0]!= NULL){
+			$xmlfiletocreate .=	'
+			<size>'.$episodeID3[0].'</size>';
+		}
+		if(isset($episodeID3[1]) AND $episodeID3[1]!= NULL){
+			$xmlfiletocreate .=	'
+			<duration>'.$episodeID3[1].'</duration>';
+		}
+		if(isset($episodeID3[2]) AND $episodeID3[2]!= NULL){
+			$xmlfiletocreate .=	'
+			<bitrate>'.$episodeID3[2].'</bitrate>';
+		}
+		if(isset($episodeID3[3]) AND $episodeID3[3]!= NULL){
+			$xmlfiletocreate .=	'
+			<frequency>'.$episodeID3[3].'</frequency>';
+		}
+	}
+	
+	$xmlfiletocreate .='
+			</fileInfoPG>
+		</episode>
+	</PodcastGenerator>';
+
+	
+	//// Write the XMK file
+	$fp = fopen($episodeXMLDBAbsPath,'w');
+	fwrite($fp,$xmlfiletocreate);
+	fclose($fp);
+
+}
+
 
 
 ?>

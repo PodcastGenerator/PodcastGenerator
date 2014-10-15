@@ -49,7 +49,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	/////////
 	//Generate RSS Feed in a file (feed.xml)
 	
-	$episodesCounter = generatePodcastFeed(TRUE,NULL); //Output in file
+	$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
 	////////
 	
 	

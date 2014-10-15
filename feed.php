@@ -21,7 +21,7 @@ if (isset($_GET['cat']) AND $_GET['cat'] != NULL) {
 $ShowCategory = avoidXSS($_GET['cat']);
 }
 
-generatePodcastFeed(FALSE,$ShowCategory); //Output on screen
+generatePodcastFeed(FALSE,$ShowCategory,FALSE); //Output on screen
 
 ob_end_flush();
 

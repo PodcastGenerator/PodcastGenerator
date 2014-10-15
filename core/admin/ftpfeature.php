@@ -9,7 +9,7 @@
 ############################################################
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
-if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
+if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
 ### Check if user is logged ###
@@ -236,7 +236,9 @@ else $filenamechanged = $filenameWithoutExtension;
 					$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 
 					//REGENERATE FEED ...
-					if ($files_count != "0") {include ("$absoluteurl"."core/admin/feedgenerate.php");}
+					if ($files_count != "0") {
+					generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
+					}
 
 
 					$PG_mainbody .= '</div>';
