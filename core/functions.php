@@ -1120,13 +1120,6 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	$itunes_category[1] = depurateContent($itunes_category[1]);
 	$itunes_category[2] = depurateContent($itunes_category[2]);
 
-	
-	//// If feed manually regenerated, recreate XML DB for each file when necessary
-	if ($manualRegeneration == TRUE) {
-	
-	
-	}
-	
 
 	//RSS FEED HEADER
 	$head_feed = 
@@ -1213,11 +1206,38 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				////If episode is supported and has a related xml db, and if it's not set to a future date OR if it's set for a future date but you are logged in as admin
 				if (($thisPodcastEpisode[0]==TRUE AND !publishInFuture($thisPodcastEpisode[1]))) { 
 
+				
 				////Parse XML data related to the episode 
 				// NB. Function parseXMLepisodeData returns: [0] episode title, [1] short description, [2] long description, [3] image associated, [4] iTunes keywords, [5] Explicit language,[6] Author's name,[7] Author's email,[8] PG category 1, [9] PG category 2, [10] PG category 3, [11] file_info_size, [12] file_info_duration, [13] file_info_bitrate, [14] file_info_frequency
 				$thisPodcastEpisodeData = parseXMLepisodeData($thisPodcastEpisode[2]);
-
 				
+				
+				//// If feed manually regenerated, recreate XML DB for each file when XML does not contain file data such as size, duration etc... (i.e. <fileInfoPG> tag)
+				// NB. The following function is transitional, to enable new XML tags in the file XML data introduced with PG 2.3: it can be removed in future versions.
+				// We check for data about episode size ($thisPodcastEpisodeData[11]) cause all the episodes should have it, if not, the XML was generated with a version of PG < 2.3
+				if ($manualRegeneration == TRUE AND $thisPodcastEpisodeData[11] == NULL) {
+
+					//// Remapping data from parseXMLepisodeData to be sent as a parameter to writeEpisodeXMLDB
+					$thisEpisodeDataToWriteInXML[0] = $thisPodcastEpisodeData[0]; // Title
+					$thisEpisodeDataToWriteInXML[1] = $thisPodcastEpisodeData[1]; // Short Desc
+					$thisEpisodeDataToWriteInXML[2] = $thisPodcastEpisodeData[2]; // Long Desc
+					$thisEpisodeDataToWriteInXML[3] = $thisPodcastEpisodeData[3]; // Image
+					$thisEpisodeDataToWriteInXML[4] = array($thisPodcastEpisodeData[8],$thisPodcastEpisodeData[9],$thisPodcastEpisodeData[10]); // Categories
+					$thisEpisodeDataToWriteInXML[5] = $thisPodcastEpisodeData[4]; // Keywords
+					$thisEpisodeDataToWriteInXML[6] = $thisPodcastEpisodeData[5]; // Explicit
+					$thisEpisodeDataToWriteInXML[7] = $thisPodcastEpisodeData[6]; // Auth name
+					$thisEpisodeDataToWriteInXML[8] = $thisPodcastEpisodeData[7]; // Auth email
+					
+			
+					//Episode size and data from GETID3 from retrieveMediaFileDetails function
+					//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
+					$episodeID3 = retrieveMediaFileDetails ($thisPodcastEpisode[1],$absoluteurl);
+
+					//Rewrite the XML data file of this episode (including the fileInfoPG tag)
+					writeEpisodeXMLDB($thisEpisodeDataToWriteInXML,$absoluteurl,$thisPodcastEpisode[1],$thisPodcastEpisode[2],TRUE);
+				}
+
+					
 				//// If category is specified, show just episodes belonging to it (if the current is not, skip this loop)
 				if (isset($category) AND $category != NULL AND $category != $thisPodcastEpisodeData[8] AND $category != $thisPodcastEpisodeData[9] AND $category != $thisPodcastEpisodeData[10]) { 
 					continue;
@@ -1527,6 +1547,16 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 
 }
 
+
+
+function autoIndexingEpisodes () {
+
+//include("core/includes.php");
+
+
+
+
+}
 
 
 ?>

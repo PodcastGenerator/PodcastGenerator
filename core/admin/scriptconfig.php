@@ -94,7 +94,7 @@ if(isUserLogged()) {
 
 		//REGENERATE FEED ...
 		//include ("$absoluteurl"."core/admin/feedgenerate.php");
-		$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
+		$episodesCounter = generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 		$PG_mainbody .= '<br /><br />';
 
 	}

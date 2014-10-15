@@ -344,7 +344,7 @@ else $filenamechanged = $filenameWithoutExtension;
 
 		########## REGENERATE FEED
 		//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
-		$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
+		$episodesCounter = generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 		##########
 
 
