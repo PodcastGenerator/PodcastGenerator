@@ -137,23 +137,25 @@ $rightboxcontent = '<div class="rightbox">
 $adminrightboxcontent = NULL;
 if(isUserLogged()) { //if admin page
 
-
-	//show donation box
+	//show donation box after 3 days from installation
+	if (isset($first_installation) and time()-$first_installation>259200) {//259200 seconds = 3 days
 	
-	if (isset($author_name) and $author_name != NULL) $nameToAddressUser = $author_name.", ";
-	else $nameToAddressUser = NULL;
+		if (isset($author_name) and $author_name != NULL) $nameToAddressUser = $author_name.", ";
+		else $nameToAddressUser = NULL;
+		
+		$adminrightboxcontent .= '
+			<div class="rightbox">
+			<span class="nav-header">'._("Support Podcast Generator").'</span>
+			<p>'.$nameToAddressUser._("if you like Podcast Generator please consider").' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank"><strong>'._(" making a donation").'</strong></a>.
+			'._("No matter the amount you donate, your contribution will support future development and bug fixes. Thank you!").'</p>
+			<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank">
+			<i class="fa fa-cc-paypal fa-2x"></i> <i class="fa fa-cc-visa fa-2x"></i> <i class="fa fa-cc-mastercard fa-2x"></i> <i class="fa fa-cc-amex fa-2x"></i>
+			</a>
+			</div>
+		';
+	}
 	
-	$adminrightboxcontent .= '
-		<div class="rightbox">
-		<span class="nav-header">'._("Support Podcast Generator").'</span>
-		<p>'.$nameToAddressUser._("if you like Podcast Generator please consider").' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank"><strong>'._(" making a donation").'</strong></a>.
-		'._("No matter the amount you donate, your contribution will support future development and bug fixes. Thank you!").'</p>
-		<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=K6KLDE3KPP6VN" target="_blank">
-		<i class="fa fa-cc-paypal fa-2x"></i> <i class="fa fa-cc-visa fa-2x"></i> <i class="fa fa-cc-mastercard fa-2x"></i> <i class="fa fa-cc-amex fa-2x"></i>
-		</a>
-		</div>
-	';
-
+	
 	//show PG box
 	$adminrightboxcontent .= '
 		<div class="rightbox">
