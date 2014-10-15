@@ -142,7 +142,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 		} // end if categories enabled
 			
 			$PG_mainbody .= '
-			<li><a href="?p=admin&do=ftpfeature">'._("FTP Feature").'</a></li>
+			<li><a href="?p=admin&do=ftpfeature">'._("FTP Feature").' '._("(Auto Indexing)").'</a></li>
 			<li><a href="?p=admin&do=generate">'._("Manually regenerate RSS feed").'</a></li>
 			</ul>
 			</div>';
