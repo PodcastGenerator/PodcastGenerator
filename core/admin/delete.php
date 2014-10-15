@@ -54,7 +54,8 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 
 	########## REGENERATE FEED
-	include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+	//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+	generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 	##########
 
 	$PG_mainbody .= '<p><a href=?p=archive&amp;cat=all>'._("Delete other episodes").'</a></p>';

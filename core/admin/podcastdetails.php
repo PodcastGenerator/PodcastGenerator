@@ -124,7 +124,8 @@ if(isUserLogged()) {
 		$PG_mainbody .= '<p><b>'._("The information has been successfully sent.").'</b></p>';
 
 		//REGENERATE FEED ...
-		include ("$absoluteurl"."core/admin/feedgenerate.php");
+		//include ("$absoluteurl"."core/admin/feedgenerate.php");
+		generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 		$PG_mainbody .= '<br /><br />';
 	}
 	else { // if action not set

@@ -93,7 +93,8 @@ if(isUserLogged()) {
 		$PG_mainbody .= '<p><b>'._("The information has been successfully sent.").'</b></p>';
 
 		//REGENERATE FEED ...
-		include ("$absoluteurl"."core/admin/feedgenerate.php");
+		//include ("$absoluteurl"."core/admin/feedgenerate.php");
+		$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
 		$PG_mainbody .= '<br /><br />';
 
 	}

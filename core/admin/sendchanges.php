@@ -255,66 +255,21 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 						
 						
 
-						############################################
-						#########################
-						########## CREATING XML FILE ASSOCIATED TO EPISODE
+				//// RE-CREATING XML FILE ASSOCIATED TO EPISODE
 
+				$thisEpisodeData = array($title,$description,$long_description,$image_new_name,$category,$keywords,$explicit,$auth_name,$auth_email);
+		
+		$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$file_ext[0].'.xml'; // extension = XML
 
-						$file_desc = "$file_ext[0].xml"; // extension = XML
-
-						// $PG_mainbody .= "<br>Description filename: $file_desc<br>";
-
-						$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
-						<PodcastGenerator>
-							<episode>
-							<titlePG><![CDATA['.$title.']]></titlePG>
-							<shortdescPG><![CDATA['.$description.']]></shortdescPG>
-							<longdescPG><![CDATA['.$long_description.']]></longdescPG>
-							<imgPG>'.$image_new_name.'</imgPG>
-							<categoriesPG>
-							<category1PG>';
-						if(isset($category[0]) AND $category[0]!= NULL){
-							$xmlfiletocreate .=	$category[0];
-						}
-						$xmlfiletocreate .='</category1PG>
-							<category2PG>';
-						if(isset($category[1]) AND $category[1]!= NULL){
-							$xmlfiletocreate .=	$category[1];
-						}
-						$xmlfiletocreate .='</category2PG>
-							<category3PG>';
-						if(isset($category[2]) AND $category[2]!= NULL){
-							$xmlfiletocreate .=	$category[2];
-						}
-						$xmlfiletocreate .='</category3PG>
-							</categoriesPG>
-							<keywordsPG>'.$keywords.'</keywordsPG>
-							<explicitPG>'.$explicit.'</explicitPG>
-							<authorPG>
-							<namePG>'.$auth_name.'</namePG>
-							<emailPG>'.$auth_email.'</emailPG>
-							</authorPG>
-							</episode>
-							</PodcastGenerator>';
-
-						/////////////////////
-						// WRITE THE XML FILE
-						$fp = fopen($absoluteurl.$upload_dir.$file_desc,'w'); //open desc file or create it
-
-						fwrite($fp,$xmlfiletocreate);
-
-						fclose($fp);
-
-
-						########## END CREATION XML FILE
-						#########################
-						############################################
-
+		//// Creating xml file associated to episode
+		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,TRUE);
+						
 
 						#	$PG_mainbody .= "<p><b><font color=\"green\">"._("File")."sent</font></b></p>"; // If upload is successful.
 
 						########## REGENERATE FEED
-						include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+						//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+						$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
 						##########
 
 

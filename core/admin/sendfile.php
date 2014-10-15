@@ -329,106 +329,22 @@ else $filenamechanged = $filenameWithoutExtension;
 			############################################
 
 		
-		############################################
-		# START READ EPISODE DURATION WITH GETID3
-
-
-		//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq
-		$episodeID3 = retrieveMediaFileDetails ($filefullpath,$absoluteurl);
 
 		
-		# END READ EPISODE DURATION WITH GETID3
-		############################################
-
-
-
-
-		############################################
-		#########################
-		########## CREATING XML FILE ASSOCIATED TO EPISODE
-
-
-		$file_desc = "$filenamechanged$filesuffix.xml"; // extension = XML
-
-		// $PG_mainbody .= "<br>Description filename: $file_desc<br>";
-
-		$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
-		<PodcastGenerator>
-			<episode>
-			<titlePG><![CDATA['.$title.']]></titlePG>
-			<shortdescPG><![CDATA['.$description.']]></shortdescPG>
-			<longdescPG><![CDATA['.$long_description.']]></longdescPG>
-			<imgPG>'.$image_new_name.'</imgPG>
-			<categoriesPG>
-			<category1PG>';
-		if(isset($category[0]) AND $category[0]!= NULL){
-			$xmlfiletocreate .=	$category[0];
-		}
-		$xmlfiletocreate .='</category1PG>
-			<category2PG>';
-		if(isset($category[1]) AND $category[1]!= NULL){
-			$xmlfiletocreate .=	$category[1];
-		}
-		$xmlfiletocreate .='</category2PG>
-			<category3PG>';
-		if(isset($category[2]) AND $category[2]!= NULL){
-			$xmlfiletocreate .=	$category[2];
-		}
-		$xmlfiletocreate .='</category3PG>
-			</categoriesPG>
-			<keywordsPG>'.$keywords.'</keywordsPG>
-			<explicitPG>'.$explicit.'</explicitPG>
-			<authorPG>
-			<namePG>'.$auth_name.'</namePG>
-			<emailPG>'.$auth_email.'</emailPG>
-			</authorPG>';
+		$thisEpisodeData = array($title,$description,$long_description,$image_new_name,$category,$keywords,$explicit,$auth_name,$auth_email);
 		
-		//Episode size and data from GETID3 from retrieveMediaFileDetails function
-		//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq
+		$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$filenamechanged.$filesuffix.'.xml'; // extension = XML
 
-		$xmlfiletocreate .='
-			<fileInfoPG>';
-		if(isset($episodeID3[0]) AND $episodeID3[0]!= NULL){
-			$xmlfiletocreate .=	'
-			<size>'.$episodeID3[0].'</size>';
-		}
-		if(isset($episodeID3[1]) AND $episodeID3[1]!= NULL){
-			$xmlfiletocreate .=	'
-			<duration>'.$episodeID3[1].'</duration>';
-		}
-		if(isset($episodeID3[2]) AND $episodeID3[2]!= NULL){
-			$xmlfiletocreate .=	'
-			<bitrate>'.$episodeID3[2].'</bitrate>';
-		}
-		if(isset($episodeID3[3]) AND $episodeID3[3]!= NULL){
-			$xmlfiletocreate .=	'
-			<frequency>'.$episodeID3[3].'</frequency>';
-		}			
-		$xmlfiletocreate .='
-			</fileInfoPG>';
-		
-		$xmlfiletocreate .='
-			</episode>
-			</PodcastGenerator>';
+		//// Creating xml file associated to episode
+		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,TRUE);
 
-		/////////////////////
-		// WRITE THE XML FILE
-		$fp = fopen($absoluteurl.$upload_dir.$file_desc,'a'); //open desc file or create it
-
-		fwrite($fp,$xmlfiletocreate);
-
-		fclose($fp);
-
-
-		########## END CREATION XML FILE
-		#########################
-		############################################
 
 
 		$PG_mainbody .= "<p><b><font color=\"green\">"._("File sent")."</font></b></p>"; // If upload is successful.
 
 		########## REGENERATE FEED
-		include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+		//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
+		$episodesCounter = generatePodcastFeed(TRUE,NULL,TRUE); //Output in file
 		##########
 
 
