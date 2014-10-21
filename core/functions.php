@@ -1073,10 +1073,10 @@ function readMediaDir ($absoluteurl,$upload_dir) {
 	$toExclude = array("..",".","index.htm","_vti_cnf",".DS_Store",".svn",".xml");
 	
 	$handle = opendir ($absoluteurl.$upload_dir);
+	$files_array = array(); //null array
 		while (($filename = readdir ($handle)) !== false) 
 		{
 			if (!in_array($filename, $toExclude)) $files_array[$filename] = filemtime ($absoluteurl.$upload_dir.$filename);
-			else $files_array = array(); //null array
 		}
 		
 	//$files_array has the file name as key and the file date as value - here we sort inversely by time 
