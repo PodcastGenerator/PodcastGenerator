@@ -1526,9 +1526,10 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 			$xmlfiletocreate .=	'
 			<duration>'.$episodeID3[1].'</duration>';
 		}
+		//NB variable bitrate is rounded to 2 decimals
 		if(isset($episodeID3[2]) AND $episodeID3[2]!= NULL){
 			$xmlfiletocreate .=	'
-			<bitrate>'.$episodeID3[2].'</bitrate>';
+			<bitrate>'.round($episodeID3[2], 2).'</bitrate>';
 		}
 		if(isset($episodeID3[3]) AND $episodeID3[3]!= NULL){
 			$xmlfiletocreate .=	'
