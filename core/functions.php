@@ -524,7 +524,7 @@ function showPodcastEpisodes($all,$category) {
 	//IF a category is requested add category header and message when empty
 	if (isset($category) AND $category != NULL) {
 		//If a category is requested and doesn't contain any episode
-		if ($CounterEpisodesInCategory < 1) {
+		if ($CounterEpisodesInCategory < 1 AND !empty($fileNamesList)) {
 		$finalOutputEpisodes .= '<p>'.("No episodes here yet...").'</p>';
 		}
 	$finalOutputEpisodes = $category_header.$finalOutputEpisodes; //category header at the top
@@ -1344,6 +1344,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	echo $finalRSSfeed;
 	}
 	
+	if (!isset($episodesCounter)) $episodesCounter = 0;
 	return $episodesCounter;
 	
 }
