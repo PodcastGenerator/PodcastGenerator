@@ -394,7 +394,7 @@ function showPodcastEpisodes($all,$category) {
 			else if ($episodesCounter < $max_recent OR $max_recent == NULL) { 
 
 				////Validate the current episode
-				//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension
+				//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension, [6] episode file supported but to XML present
 				$thisPodcastEpisode = validateSingleEpisode($singleFileName);
 
 			
@@ -579,7 +579,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 			$resulting_episodes = NULL; //declare the 1st time and then reset
 
 				////Validate the current episode
-				//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension
+				//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension, [6] episode file supported but to XML present
 				
 				$thisPodcastEpisode = validateSingleEpisode($singleEpisode);
 
@@ -1200,7 +1200,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 			if ($episodesCounter < $recent_episode_in_feed OR $recent_episode_in_feed == "All") { 	
 
 			////Validate the current episode
-			//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension
+			//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension, [6] episode file supported but to XML present
 			$thisPodcastEpisode = validateSingleEpisode($singleFileName);
 
 
@@ -1352,6 +1352,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 ##################################################################################
 
 
+
 function attachToEpisode ($episodeFileNameWithoutExtension,$episodeFileExtension,$episodeTitle) {
 //include functions and variables in config.php
 	include("core/includes.php");
@@ -1388,21 +1389,30 @@ function validateSingleEpisode ($episodeFile) {
 
 	$episodeFile_parts = divideFilenameFromExtension($episodeFile); // PHP >= 5.2.0 needed
 	$episodeFilenameWithoutExtension = $episodeFile_parts[0];
-	$EpisodeFileExtension = $episodeFile_parts[1];
+	$EpisodeFileExtension = strtolower($episodeFile_parts[1]); //lowercase extension
 	$checkEpisodeFileFormat = checkFileType($EpisodeFileExtension,$absoluteurl);
 	$episodeFileType = $checkEpisodeFileFormat[0];
 	$episodeFileMimeType = $checkEpisodeFileFormat[1];
 	$episodeFileFullPath = $absoluteurl.$upload_dir.$episodeFile;
 	$episodeFileXMLDB = $absoluteurl.$upload_dir.$episodeFilenameWithoutExtension.'.xml'; //database file
 	
+		//If media file is ok and XML file is associated to it
 		if (isset($episodeFileType) AND $EpisodeFileExtension==$episodeFileType AND file_exists($episodeFileXMLDB)) { 
-		$GoForIt = TRUE;	
-		} else {
-		$GoForIt = FALSE;
+		//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding XML data file
+		$GoForIt = TRUE;
+		$OkButNoXMLDBpresent = FALSE;
 		}
-
-	//NB. $GoForIt = TRUE means that the episode file format is supported, it has a corresponding data file (xml)
-	return array($GoForIt,$episodeFileFullPath,$episodeFileXMLDB,$episodeFileType,$episodeFileMimeType,$episodeFilenameWithoutExtension);
+		//If media file is ok but no XML file is associated (i.e. auto index / FTP feature)
+		else if (isset($episodeFileType) AND $EpisodeFileExtension==$episodeFileType AND !file_exists($episodeFileXMLDB)) { 
+		$GoForIt = FALSE;
+		$OkButNoXMLDBpresent = TRUE;
+		}
+		else {
+		$GoForIt = FALSE;
+		$OkButNoXMLDBpresent = FALSE;
+		}
+	
+	return array($GoForIt,$episodeFileFullPath,$episodeFileXMLDB,$episodeFileType,$episodeFileMimeType,$episodeFilenameWithoutExtension,$OkButNoXMLDBpresent);
 
 }
 
@@ -1551,13 +1561,81 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 }
 
 
-
+// NB. Former "FTP Feature"
 function autoIndexingEpisodes () {
 
-//include("core/includes.php");
+include("core/includes.php");
+
+// Open podcast directory and read all the files contained
+$fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 
 
+	if (!empty($fileNamesList)) { // If media directory contains files
 
+	$episodesCounter = 0; //set counter to zero
+
+		// Loop through each file in the media directory
+		foreach ($fileNamesList as $singleFileName) {
+
+		////Validate the current episode
+		//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension, [6] episode file supported but to XML present
+		$thisPodcastEpisode = validateSingleEpisode($singleFileName);
+		
+			////If episode is supported and does NOT have a related xml db, and if it's not set to a future date 
+			if ($thisPodcastEpisode[6]==TRUE ) { 
+	echo "$singleFileName ok! <br>";
+			
+				// From config.php
+				if ($strictfilenamepolicy == "yes") {
+				$episodeNewFileName = date('Y-m-d')."_".renamefilestrict($thisPodcastEpisode[5]);
+				}
+				else {
+				$episodeNewFileName = renamefile($thisPodcastEpisode[5]);
+				}
+
+			//lowercase extension
+			$episodeNewFileExtension = strtolower($thisPodcastEpisode[3]);
+
+			// New file full path
+			$episodeNewNameAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.'.'.$episodeNewFileExtension;
+				//if file already exists add an incremental suffix
+				
+				echo "or name: $episodeNewNameAbsPath <br>";
+				
+				$filesuffix = NULL;
+				while (file_exists($episodeNewNameAbsPath)) { 
+				$filesuffix++;
+				$episodeNewNameAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.'.$episodeNewFileExtension;
+				echo "new name: $episodeNewNameAbsPath <br>";
+				}
+				echo "<hr>";
+			
+				//rename episode
+				if (file_exists($thisPodcastEpisode[1])) {
+				rename ($thisPodcastEpisode[1],$episodeNewNameAbsPath);
+				} else { exit; }
+
+
+			//Episode size and data from GETID3 from retrieveMediaFileDetails function
+			//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
+			$episodeID3 = retrieveMediaFileDetails ($episodeNewNameAbsPath,$absoluteurl);
+
+			// Use GETID3 Title and Artist to fill title and description automatically
+			$thisEpisodeData = array($episodeID3[4],$episodeID3[5],NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+			$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.xml';
+			//// Creating xml file associated to episode
+			writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$episodeNewNameAbsPath,$episodeXMLDBAbsPath,TRUE);
+
+			$episodesCounter++;
+			
+			} // END - If episode is supported
+		
+		} // END - Loop through each file
+
+	} // END - If media directory contains files
+
+	return $episodesCounter;
 
 }
 

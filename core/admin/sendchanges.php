@@ -30,6 +30,8 @@ if (isset($_POST['userfile']) AND $_POST['userfile']!=NULL AND isset($_POST['tit
 
 	if (isset($_POST['category']) AND $_POST['category'] != NULL) {
 		$category = $_POST['category'];
+	} else {
+	$category = NULL;
 	}
 
 	$long_description = $_POST['long_description'];
