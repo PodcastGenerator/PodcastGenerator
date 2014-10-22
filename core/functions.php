@@ -1581,9 +1581,9 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 		//NB. validateSingleEpisode returns [0] episode is supported (bool), [1] Episode Absolute path, [2] Episode XML DB absolute path,[3] File Extension (Type), [4] File MimeType, [5] File name without extension, [6] episode file supported but to XML present
 		$thisPodcastEpisode = validateSingleEpisode($singleFileName);
 		
-			////If episode is supported and does NOT have a related xml db, and if it's not set to a future date 
-			if ($thisPodcastEpisode[6]==TRUE ) { 
-	echo "$singleFileName ok! <br>";
+			////If episode is supported and does NOT have a related xml db
+			if ($thisPodcastEpisode[6]==TRUE) { 
+	
 			
 				// From config.php
 				if ($strictfilenamepolicy == "yes") {
@@ -1600,19 +1600,19 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 			$episodeNewNameAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.'.'.$episodeNewFileExtension;
 				//if file already exists add an incremental suffix
 				
-				echo "or name: $episodeNewNameAbsPath <br>";
 				
 				$filesuffix = NULL;
 				while (file_exists($episodeNewNameAbsPath)) { 
 				$filesuffix++;
 				$episodeNewNameAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.'.$episodeNewFileExtension;
-				echo "new name: $episodeNewNameAbsPath <br>";
 				}
-				echo "<hr>";
+
 			
-				//rename episode
 				if (file_exists($thisPodcastEpisode[1])) {
+				//rename episode
 				rename ($thisPodcastEpisode[1],$episodeNewNameAbsPath);
+				// Change file date to now
+				touch($episodeNewNameAbsPath,time());
 				} else { exit; }
 
 
@@ -1620,8 +1620,14 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 			//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
 			$episodeID3 = retrieveMediaFileDetails ($episodeNewNameAbsPath,$absoluteurl);
 
+			//// Assign title and short description (from ID3 title and artist, respectively. Or default)
+			if ($episodeID3[4]!= "") $thisEpisodeTitle = $episodeID3[4];
+			else $thisEpisodeTitle = $thisPodcastEpisode[5];
+			if ($episodeID3[5]!= "") $thisEpisodeShortDesc = $episodeID3[5];
+			else $thisEpisodeShortDesc = _("Podcast Episode");
+			
 			// Use GETID3 Title and Artist to fill title and description automatically
-			$thisEpisodeData = array($episodeID3[4],$episodeID3[5],NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+			$thisEpisodeData = array($thisEpisodeTitle,$thisEpisodeShortDesc,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 			$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.xml';
 			//// Creating xml file associated to episode
