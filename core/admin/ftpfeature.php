@@ -37,7 +37,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 
 	} elseif (isset($_GET['c']) AND isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['do']=="ftpfeature") {
 
-		
+	
 	$episodesCounter = autoIndexingEpisodes();
 
 
