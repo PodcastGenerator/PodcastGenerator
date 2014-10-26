@@ -36,6 +36,11 @@ if(isUserLogged()) { //if logged
 	//If not existing, generate 8 character key for this PG installation
 	if (!isset($installationKey)) $installationKey = random_str(8);
 
+	// Pg cron
+	if (!isset($cronAutoIndex)) $cronAutoIndex = 0;
+	if (!isset($cronAutoRegenerateRSS)) $cronAutoRegenerateRSS = 1;
+	if (!isset($cronAutoRegenerateRSScacheTime)) $cronAutoRegenerateRSScacheTime = 21600;
+
 	//Regenerate the config.php file
 	$configfiletocreate = '<?php
 
@@ -94,6 +99,12 @@ if(isUserLogged()) { //if logged
 	$strictfilenamepolicy = "'.$strictfilenamepolicy.'"; // strictly rename files (just characters A to Z and numbers) 
 
 	$categoriesenabled = "'.$categoriesenabled.'";
+	
+	$cronAutoIndex = "'.$cronAutoIndex.'"; //Auto Index New Episodes via Cron
+	
+	$cronAutoRegenerateRSS = "'.$cronAutoRegenerateRSS.'"; //Auto regenerate RSS via Cron
+	
+	$cronAutoRegenerateRSScacheTime = '.$cronAutoRegenerateRSScacheTime.'; //Cache (in seconds)
 
 
 	###################

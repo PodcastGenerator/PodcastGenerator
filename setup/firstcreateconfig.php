@@ -82,6 +82,12 @@ $categoriesenabled = "yes";
 
 $firsttimehere = "yes";
 
+$cronAutoIndex = 0; //Auto Index New Episodes via Cron
+
+$cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
+
+$cronAutoRegenerateRSScacheTime = 21600; //Cache (in seconds)
+
 ###################
 # XML Feed elements
 # The followings specifications will be included in your podcast "feed.xml" file.
