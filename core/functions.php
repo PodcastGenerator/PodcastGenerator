@@ -352,7 +352,7 @@ function showPodcastEpisodes($all,$category) {
 
 		$category_header = '<div>';
 			if (isset($existingCategories[$category])) {
-			$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><i class="fa fa-rss "></i></a> '.$existingCategories[$category].'</h3>';
+			$category_header .= '<h3 class="sectionTitle"><a href="'.$url.'feed.php?cat='.$category.'"><i class="fa fa-rss "></i> '.$existingCategories[$category].'</a></h3>';
 			}
 		$category_header .= '</div>';
 	}

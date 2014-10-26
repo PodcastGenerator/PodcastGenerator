@@ -340,14 +340,23 @@ $listWithLanguages = languagesList($absoluteurl,TRUE);
 				$PG_mainbody .= ' selected';
 			}
 
-			$PG_mainbody .= '>' . $val . '</option>
-				';	
-
+			$PG_mainbody .= '>' . $val . '</option>';
 
 
 		}
-		$PG_mainbody .= '</select>';	
+		$PG_mainbody .= '</select>
+		
+				<p><a href="http://podcastgen.sourceforge.net/documentation/FAQ-localization" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Look for new languages available or translate Podcast Generator into your language").'</a></p>
+		';	
 
+
+		if (isset($installationKey)){
+		$PG_mainbody .= '<br /><br /><br /><p><label for="cronURL"><b>'._("Use cron to auto index episodes").'</b></label></p>
+			<p><span class="alert">'._("This feature is automatically enabled.")." "._("By calling periodically Podcast Generator via a cron job, you can check automatically the media folder for new episodes and regenerate the RSS feed.").'</span></p>
+			<p>'._("Copy and paste the URL below (including your unique key):").'</p>
+			<input type="text" name="cronURL" value="'.$url.'pg-cron.php?key='.$installationKey.'" style="width:80%;" readonly>
+			<p><a href="http://podcastgen.sourceforge.net/documentation/FAQ-cron-job" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Visit the documentation for more information on how to setup a cron job").'</a></p>';
+		}
 
 
 		$PG_mainbody .= '<br /><br /><input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Updating").'\');"></p><br />';
