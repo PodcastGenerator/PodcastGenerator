@@ -1,13 +1,14 @@
-# 
+#
 # Translators:
 # albertobeta <beta@yellowjug.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator\n"
 "POT-Creation-Date: 2014-10-27 11:55+0100\n"
-"PO-Revision-Date: 2014-10-27 11:41+0000\n"
-"Last-Translator: albertobeta <beta@yellowjug.com>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/podcast-generator/language/it_IT/)\n"
+"PO-Revision-Date: 2014-10-27 15:07+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/podcast-"
+"generator/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,7 +28,10 @@ msgid ""
 "This is possibly the first time you have entered this page: you haven't "
 "changed your podcast details yet. You are reccommended to provide a podcast "
 "title, description, etc... Try a different theme!"
-msgstr "Questa è probabilmente la prima volta in cui accedi all'area di amministrazione: non hai ancora personalizzato il tuo podcast. Aggiungi titolo, descrizione, o prova un tema diverso!"
+msgstr ""
+"Questa è probabilmente la prima volta in cui accedi all'area di "
+"amministrazione: non hai ancora personalizzato il tuo podcast. Aggiungi "
+"titolo, descrizione, o prova un tema diverso!"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/admin.php:126
 msgid "Start now..."
@@ -309,7 +313,11 @@ msgid ""
 "The episodes of your podcast are automatically sorted by date. Changing the "
 "date of this episode will change its order in the podcast feed. If you "
 "specify a date in future, your episode won't be shown till then."
-msgstr "Gli episodi del tuo podcast sono ordinati automaticamente per data. Cambiando la data di questo episodio, cambierai il suo ordine nel feed. Se specifichi una data in futuro, questo episodio non verrà mostrato fino a quel momento."
+msgstr ""
+"Gli episodi del tuo podcast sono ordinati automaticamente per data. "
+"Cambiando la data di questo episodio, cambierai il suo ordine nel feed. Se "
+"specifichi una data in futuro, questo episodio non verrà mostrato fino a "
+"quel momento."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:132
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:103
@@ -343,9 +351,10 @@ msgid "Explicit content?"
 msgstr "Contenuto Esplicito?"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:179
-msgid ""
-"Select YES if this episode contains explicit language or adult content."
-msgstr "Seleziona Sì se questo episodio contiene linguaggio esplicito o adatto a un pubblico adulto"
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr ""
+"Seleziona Sì se questo episodio contiene linguaggio esplicito o adatto a un "
+"pubblico adulto"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:198
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:156
@@ -357,7 +366,9 @@ msgstr "Autore"
 msgid ""
 "You can specify a different author for this episode, otherwise the default "
 "author will be the podcast owner"
-msgstr "Puoi specificare un diverso autore per questo episodio se l'autore è diverso da quello principale del podcast"
+msgstr ""
+"Puoi specificare un diverso autore per questo episodio se l'autore è diverso "
+"da quello principale del podcast"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/edit.php:202
 #: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:93
@@ -524,9 +535,11 @@ msgstr "Errore: immagine non inviata!"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:55
 msgid ""
-"Image extension not valid. The image extension must end in .jpg, .jpeg or "
-".png"
-msgstr "Estensione dell'immagine non valida. L'estensione dev'essere .jpg, .jpeg o .png"
+"Image extension not valid. The image extension must end in .jpg, .jpeg or ."
+"png"
+msgstr ""
+"Estensione dell'immagine non valida. L'estensione dev'essere .jpg, .jpeg o ."
+"png"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:67
 msgid "No file selected. Please go back and select an image."
@@ -550,7 +563,10 @@ msgid ""
 "You can replace the current image with a new one. To be eligible for "
 "featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
 "in JPG or PNG."
-msgstr "Puoi sostituire l'immagine attuale con una nuova immagine. Per essere selezionabile come featured sull'iTunes Store, un podcast deve avere una cover art di 1400 x 1400 pixel nel formato JPG o PNG"
+msgstr ""
+"Puoi sostituire l'immagine attuale con una nuova immagine. Per essere "
+"selezionabile come featured sull'iTunes Store, un podcast deve avere una "
+"cover art di 1400 x 1400 pixel nel formato JPG o PNG"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/itunesimg.php:96
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:170
@@ -599,13 +615,16 @@ msgstr "Nome Utente o Password non validi. Riprova..."
 msgid ""
 "Error: It's not possible to get Podcast Generator news feed. News will be "
 "automatically disabled."
-msgstr "Errore: non è possibile caricare le news di Podcast Generator. Le news saranno disabilitate automaticamente."
+msgstr ""
+"Errore: non è possibile caricare le news di Podcast Generator. Le news "
+"saranno disabilitate automaticamente."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:19
 msgid ""
-"These information will be used both in this website and in the resulting RSS"
-" feed"
-msgstr "Queste informazioni verranno utilizzate sia nel sito web che nel feed RSS"
+"These information will be used both in this website and in the resulting RSS "
+"feed"
+msgstr ""
+"Queste informazioni verranno utilizzate sia nel sito web che nel feed RSS"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:32
 #: /Users/alberto/Sites/podcastgen/code/core/admin/podcastdetails.php:137
@@ -716,7 +735,9 @@ msgstr "Abilita FreeBox?"
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
-msgstr "FreeBox ti permette di scrivere liberamente ciò che desideri, aggiungere link o testo usando un editor visuale nell'area di amministrazione."
+msgstr ""
+"FreeBox ti permette di scrivere liberamente ciò che desideri, aggiungere "
+"link o testo usando un editor visuale nell'area di amministrazione."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:172
 msgid "Enable categories?"
@@ -734,7 +755,9 @@ msgstr "Abilita le news?"
 msgid ""
 "Displays Podcast Generator latest news in the main administration page of "
 "your podcast."
-msgstr "Mostra le ultime novità su Podcast Generator nell'area di amministrazione del tuo podcast."
+msgstr ""
+"Mostra le ultime novità su Podcast Generator nell'area di amministrazione "
+"del tuo podcast."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:212
 msgid "Enable strict episode renaming policy?"
@@ -744,7 +767,9 @@ msgstr "Abilita regole strette per rinominare automaticamente tuoi episodi?"
 msgid ""
 "The uploaded episode files will be automatically renamed using just "
 "alphanumeric characters and the current date."
-msgstr "Gli episodi caricati verranno automaticamente rinominati usando unicamente caratteri alfanumerici e la data corrente."
+msgstr ""
+"Gli episodi caricati verranno automaticamente rinominati usando unicamente "
+"caratteri alfanumerici e la data corrente."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:232
 msgid "How many recent podcasts in the home page?"
@@ -804,16 +829,21 @@ msgstr "Questa caratteristica è attiva."
 msgid ""
 "By calling periodically Podcast Generator via a cron job, you can check "
 "automatically the media folder for new episodes and regenerate the RSS feed."
-msgstr "È possibile chiamare Podcast Generator attraverso un crob job per controllare periodicamente se vi sono nuovi episodi nella cartella media e rigenerare il feed RSS."
+msgstr ""
+"È possibile chiamare Podcast Generator attraverso un crob job per "
+"controllare periodicamente se vi sono nuovi episodi nella cartella media e "
+"rigenerare il feed RSS."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:356
 msgid "Copy and paste the URL below (including your unique key):"
-msgstr "Copia e incolla l'indirizzo qui sotto (includendo la tua chiave univoca):"
+msgstr ""
+"Copia e incolla l'indirizzo qui sotto (includendo la tua chiave univoca):"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:358
-msgid ""
-"Visit the documentation for more information on how to setup a cron job"
-msgstr "Visita la documentazione per avere ulteriori informazioni in merito ai cron job"
+msgid "Visit the documentation for more information on how to setup a cron job"
+msgstr ""
+"Visita la documentazione per avere ulteriori informazioni in merito ai cron "
+"job"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:19
 #: /Users/alberto/Sites/podcastgen/code/core/admin/selecttheme.php:49
@@ -884,9 +914,11 @@ msgstr "L'autore specificato sarà ignorato."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:176
 msgid ""
-"Date and time of the episode have been modified (this might change the order"
-" of your episodes in the podcast feed)."
-msgstr "Data e ora di questo episodio sono state modificate (questo potrebbe cambiare l'ordinamento nel feed del Podcast)"
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
+msgstr ""
+"Data e ora di questo episodio sono state modificate (questo potrebbe "
+"cambiare l'ordinamento nel feed del Podcast)"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendchanges.php:188
 msgid "Processing changes..."
@@ -946,7 +978,9 @@ msgstr "File Rinominato:"
 msgid ""
 "The episode date has been set to future. This episode won't show up till "
 "then."
-msgstr "La data dell'episodio è impostata al futuro. L'episodio non verrà mostrato fino ad allora."
+msgstr ""
+"La data dell'episodio è impostata al futuro. L'episodio non verrà mostrato "
+"fino ad allora."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:343
 msgid "File sent"
@@ -970,11 +1004,15 @@ msgstr "Caricamento fallito"
 msgid ""
 "You didn't assign writing permission to the media folder and the uploaded "
 "file can't be saved on the server."
-msgstr "Non hai assegnato i permessi di scrittura alla cartella media e il file caricato non può essere salvato sul server."
+msgstr ""
+"Non hai assegnato i permessi di scrittura alla cartella media e il file "
+"caricato non può essere salvato sul server."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:360
 msgid "Your file is bigger than upload max filesize on your server."
-msgstr "Il file da caricare è più grande del limite massimo consentito dal tuo server."
+msgstr ""
+"Il file da caricare è più grande del limite massimo consentito dal tuo "
+"server."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:362
 msgid "Useful information for debugging:"
@@ -994,7 +1032,9 @@ msgstr "Sito Ufficiale di Podcast Generator"
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:374
 msgid ""
 "is not a supported extension or your filename contains forbidden characters."
-msgstr "non è un'estensione supportata o il nome del tuo file contiene caratteri proibiti."
+msgstr ""
+"non è un'estensione supportata o il nome del tuo file contiene caratteri "
+"proibiti."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/server_info.php:25
 msgid "Operating System:"
@@ -1069,7 +1109,9 @@ msgstr "Data di Pubblicazione"
 msgid ""
 "The form below reports the current time and date of the server. If you "
 "specify a date in future, your episode won't be shown till then."
-msgstr "Il form qui sotto riporta ora e data del server. Se specifichi una data in futuro, il tuo episodio non verrà mostrato fino ad allora."
+msgstr ""
+"Il form qui sotto riporta ora e data del server. Se specifichi una data in "
+"futuro, il tuo episodio non verrà mostrato fino ad allora."
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:149
 msgid "Explicit content"
@@ -1077,7 +1119,9 @@ msgstr "Contenuto esplicito"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:150
 msgid "Select YES if this episode contains explicit language or adult content"
-msgstr "Scegli Sì se questo episodio contiene linguaggio esplicito o destinato a un pubblico adulto"
+msgstr ""
+"Scegli Sì se questo episodio contiene linguaggio esplicito o destinato a un "
+"pubblico adulto"
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/upload.php:170
 msgid "Upload Episode"
@@ -1261,7 +1305,9 @@ msgstr "la possibilità di fare una donazione"
 msgid ""
 "No matter the amount you donate, your contribution will support future "
 "development and bug fixes. Thank you!"
-msgstr "Anche un piccolo contributo servirà a supportare il rilascio di nuove versioni e la correzione di bug. Grazie!"
+msgstr ""
+"Anche un piccolo contributo servirà a supportare il rilascio di nuove "
+"versioni e la correzione di bug. Grazie!"
 
 #: /Users/alberto/Sites/podcastgen/code/core/templates.php:162
 #: /Users/alberto/Sites/podcastgen/code/core/themes.php:204
@@ -1321,7 +1367,9 @@ msgstr "feed:"
 msgid ""
 "No matter the amount, your contribution will support future development and "
 "bug fixes. Thank you!"
-msgstr "Anche un piccolo contributo servirà a supportare il rilascio di nuove versioni e la correzione di bug. Grazie!"
+msgstr ""
+"Anche un piccolo contributo servirà a supportare il rilascio di nuove "
+"versioni e la correzione di bug. Grazie!"
 
 #: /Users/alberto/Sites/podcastgen/code/index.php:54
 msgid "Select a category:"
@@ -1382,7 +1430,9 @@ msgstr "Questo è FreeBox"
 msgid ""
 "From the admin area you can customize this box. For instance you can add "
 "Widgets and Buttons"
-msgstr "Dall'area di amministrazione puoi personalizzare questo box. Per esempio puoi aggiungere widget e bottoni"
+msgstr ""
+"Dall'area di amministrazione puoi personalizzare questo box. Per esempio "
+"puoi aggiungere widget e bottoni"
 
 #: /Users/alberto/Sites/podcastgen/code/setup/firstcreation.php:33
 msgid "You can optionally disable the freebox if you don't need it."
@@ -1474,7 +1524,9 @@ msgstr "Cambio i permessi di scrittura con"
 msgid ""
 "I tried to set writing permissions (chmod 777) to the directories listed "
 "above..."
-msgstr "Ho provato a cambiare i permessi di scrittura (chmod 777) per le succitate cartelle..."
+msgstr ""
+"Ho provato a cambiare i permessi di scrittura (chmod 777) per le succitate "
+"cartelle..."
 
 #: /Users/alberto/Sites/podcastgen/code/setup/set_permissions.php:132
 msgid "Reload this page"
@@ -1489,7 +1541,10 @@ msgid ""
 "...if not, you can set writing permission manually (via FTP, SSH, etc...) "
 "and make sure you have the privileges to change folder permissions on your "
 "server."
-msgstr "...in caso negativo, puoi provare a cambiare i permessi di scrittura manualmente usando FTP o SSH (assicurati di avere i privilegi necessari per questa operazione sul tuo server)."
+msgstr ""
+"...in caso negativo, puoi provare a cambiare i permessi di scrittura "
+"manualmente usando FTP o SSH (assicurati di avere i privilegi necessari per "
+"questa operazione sul tuo server)."
 
 #: /Users/alberto/Sites/podcastgen/code/setup/step3.php:17
 msgid "Choose a username and a password for the administration area:"
@@ -1519,7 +1574,9 @@ msgstr "Crea il tuo podcast!"
 msgid ""
 "You didn't enter a password or the two passwords do not correspond; please "
 "go back and type your password again..."
-msgstr "Non hai specificato la password oppure le due password non coincidono; torna indietro e riprova..."
+msgstr ""
+"Non hai specificato la password oppure le due password non coincidono; torna "
+"indietro e riprova..."
 
 #: /Users/alberto/Sites/podcastgen/code/setup/step4.php:56
 msgid "You didn't enter the username..."
