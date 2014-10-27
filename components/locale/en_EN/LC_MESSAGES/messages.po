@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2014-10-26 17:41+0100\n"
-"PO-Revision-Date: 2014-10-26 17:42+0100\n"
+"POT-Creation-Date: 2014-10-27 11:21+0100\n"
+"PO-Revision-Date: 2014-10-27 11:22+0100\n"
 "Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/code\n"
@@ -784,9 +784,7 @@ msgid "Choose among available languages *"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:349
-msgid ""
-"Look for new languages available or translate Podcast Generator into your "
-"language"
+msgid "Looking for another language?"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:354
@@ -794,7 +792,7 @@ msgid "Use cron to auto index episodes"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:355
-msgid "This feature is automatically enabled."
+msgid "This feature is enabled."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/scriptconfig.php:355
@@ -1321,6 +1319,11 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/index.php:54
 msgid "Select a category:"
+msgstr ""
+
+#: /Users/alberto/Sites/podcastgen/code/index.php:95
+#: /Users/alberto/Sites/podcastgen/code/index.php:116
+msgid "Go to episodes archive"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/pg-cron.php:42
