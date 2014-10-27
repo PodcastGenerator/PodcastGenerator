@@ -1,3 +1,8 @@
+See this online document:
+http://podcastgen.sourceforge.net/documentation/FAQ-localization
+
+--
+Extra info:
 Translations of Podcast Generator are maintained by volunteers here:
 https://www.transifex.com/projects/p/podcast-generator/
 
@@ -13,6 +18,3 @@ See existing localization as an example.
 As soon as the new folder and the aforementioned files will be created, 
 the language will automatically be available in
 admin -> Change Podcast Generator Configuration -> Podcast Generator Language
-
----------
-http://podcastgen.sourceforge.net
