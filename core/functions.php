@@ -29,7 +29,7 @@ function checkFileType ($filetype,$absoluteurl) {
 		while (($i < sizeof($podcast_filetypes)) && $isFileSupported==false) {
 			if ($filetype==$podcast_filetypes[$i]) {
 				$fileData[0]=$podcast_filetypes[$i];
-				$fileData[1]=$podcast_filetypes[$i];
+				$fileData[1]=$podcast_filemimetypes[$i];
 				$isFileSupported=TRUE;
 			}
 			$i++;
@@ -43,7 +43,7 @@ function checkFileType ($filetype,$absoluteurl) {
 		//returns bool (true if file is present in supported_media.xml)
 		$fileData[2] = $isFileSupported;
 		
-		//Array with 3 values: podcast_filetypes, podcast_filetypes, isFileSupported
+		//Array with 3 values: podcast_filetypes, podcast_filemimetypes, isFileSupported
 		return ($fileData);
 	}
 }
@@ -1258,8 +1258,8 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 
 				// Other Data from the file
 				$text_explicit = $thisPodcastEpisodeData[5];
-				$file_size = $thisPodcastEpisodeData[11];
-				$filetime = filemtime ($thisPodcastEpisode[1]);
+				$file_size = filesize($thisPodcastEpisode[1]);
+				$filetime = filemtime($thisPodcastEpisode[1]);
 				$filepubdate = date ('r', $filetime);
 				$filemimetype = $thisPodcastEpisode[4];
 				$fileDuration = $thisPodcastEpisodeData[12];
