@@ -1246,11 +1246,11 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				
 
 				//// Content Depuration (to avoid validation errors in the RSS feed)
-				$text_longdesc = stripslashes($thisPodcastEpisodeData[2]);
-				$text_longdesc = strip_tags($thisPodcastEpisodeData[2]);
 				$text_title = depurateContent($thisPodcastEpisodeData[0]); //title
 				$text_shortdesc = depurateContent($thisPodcastEpisodeData[1]); //short desc
-				$text_longdesc = depurateCDATAfield($thisPodcastEpisodeData[2]); //long desc
+				$text_longdesc = stripslashes($thisPodcastEpisodeData[2]);
+				$text_longdesc = strip_tags($text_longdesc);
+				$text_longdesc = depurateCDATAfield($text_longdesc);
 				$text_keywordspg = depurateContent($thisPodcastEpisodeData[4]); //Keywords
 				$text_keywordspg = htmlspecialchars($thisPodcastEpisodeData[4]); //convert special characters e.g. r&b -> r&amp;b
 				$text_authornamepg = depurateContent($thisPodcastEpisodeData[6]); //author's name
