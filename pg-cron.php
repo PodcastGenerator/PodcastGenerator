@@ -15,6 +15,8 @@
 if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
 ########### End
 
+ob_start(); 
+
 $startTime = time();
 
 //// Called directly throught the URL (i.e. if absoluteurl is not known)
@@ -79,4 +81,7 @@ if (isset($cronAutoRegenerateRSS) AND $cronAutoRegenerateRSS == TRUE) {
 		echo ' -- '._("Execution time (s):").' '.$tempusFugit; //Output on screen
 	}
 
+
+ob_end_flush();
+	
 ?>
