@@ -37,7 +37,7 @@ if(isUserLogged()) { //if logged
 	if (!isset($installationKey)) $installationKey = random_str(8);
 
 	// Pg cron
-	if (!isset($cronAutoIndex)) $cronAutoIndex = 0;
+	if (!isset($cronAutoIndex)) $cronAutoIndex = 1;
 	if (!isset($cronAutoRegenerateRSS)) $cronAutoRegenerateRSS = 1;
 	if (!isset($cronAutoRegenerateRSScacheTime)) $cronAutoRegenerateRSScacheTime = 21600;
 
@@ -100,9 +100,9 @@ if(isUserLogged()) { //if logged
 
 	$categoriesenabled = "'.$categoriesenabled.'";
 	
-	$cronAutoIndex = "'.$cronAutoIndex.'"; //Auto Index New Episodes via Cron
+	$cronAutoIndex = '.$cronAutoIndex.'; //Auto Index New Episodes via Cron
 	
-	$cronAutoRegenerateRSS = "'.$cronAutoRegenerateRSS.'"; //Auto regenerate RSS via Cron
+	$cronAutoRegenerateRSS = '.$cronAutoRegenerateRSS.'; //Auto regenerate RSS via Cron
 	
 	$cronAutoRegenerateRSScacheTime = '.$cronAutoRegenerateRSScacheTime.'; //Cache (in seconds)
 

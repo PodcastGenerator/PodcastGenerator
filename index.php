@@ -82,29 +82,17 @@ if (isset($_GET['p'])) {
 	
 	
 
-	elseif ($_GET['p']=="ftpfeature") {//DA METTERE IN ADMIN
+	elseif ($_GET['p']=="ftpfeature") {//To place in admin
 		include("$absoluteurl"."core/ftpfeature.php");
 	}
 
+	// Home page
 	else {
 	//show recent episodes (don't show all episodes) - no categories distinction
 		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
 		
-	/*	
-		$existingCategories = readPodcastCategories ($absoluteurl);
-		//var_dump($existingCategories); //Debug
-		
-	ksort($existingCategories);	//sort array by key alphabetically
-	for ($i = 0; $i <  count($existingCategories); $i++) {
-    $key=key($existingCategories);
-    $val=$existingCategories[$key];
-		if ($val<> ' ') {
-		   echo $key ." = ".  $val ." <br> ";
-		}
-     next($existingCategories);
-    }
-	*/	
-		
+	
+	$PG_mainbody .= '<p><a href="'.$url.'?p=archive&cat=all"><i class="fa fa-archive"></i> '._("Go to episodes archive").'</a></p>';
 		
 	}
 }
@@ -120,10 +108,12 @@ elseif (isset($_GET['name'])) {
 		
 	}
 
-
+// Home page (with no ?p= in GET)
 else { // if no p= specifies, e.g. just index.php with no GET
 //show recent episodes (don't show all episodes) - no categories distinction
 		$PG_mainbody .= showPodcastEpisodes(0,0); //parameter, is bool yes or not (all episodes?), the second parameter is the category 
+		
+		$PG_mainbody .= '<p><a href="'.$url.'?p=archive&cat=all"><i class="fa fa-archive"></i> '._("Go to episodes archive").'</a></p>';
 }
 
 
