@@ -121,7 +121,7 @@ if(isUserLogged()) {
 
 		include ("$absoluteurl"."core/admin/createconfig.php"); //regenerate config.php
 
-		$PG_mainbody .= '<p><b>'._("The information has been successfully sent.").'</b></p>';
+		$PG_mainbody .= '<p>'._("The information has been successfully sent.").'</p>';
 
 		//REGENERATE FEED ...
 		//include ("$absoluteurl"."core/admin/feedgenerate.php");
