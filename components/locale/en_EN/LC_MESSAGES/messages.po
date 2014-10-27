@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2014-10-27 11:21+0100\n"
-"PO-Revision-Date: 2014-10-27 11:22+0100\n"
+"POT-Creation-Date: 2014-10-27 11:55+0100\n"
+"PO-Revision-Date: 2014-10-27 11:55+0100\n"
 "Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: en\n"
@@ -464,7 +464,7 @@ msgid "Scan finished:"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:44
-msgid "new episode(s) added.</p>"
+msgid "new episode(s) added."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/ftpfeature.php:46
@@ -939,7 +939,7 @@ msgstr ""
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:322
 msgid ""
 "The episode date has been set to future. This episode won't show up till "
-"then.)."
+"then."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/code/core/admin/sendfile.php:343
