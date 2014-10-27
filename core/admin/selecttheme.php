@@ -85,7 +85,7 @@ if(isUserLogged()) {
 	} 
 
 	$PG_mainbody .= '<br /><br /><div class="topseparator">
-		<span class="alert">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation.php#createtheme" target="_blank">'._("See documentation").'</a></span>
+		<span class="alert">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation/FAQ-themes" target="_blank">'._("See documentation").'</a></span>
 	</div>
 		';
 
