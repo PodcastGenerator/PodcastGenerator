@@ -319,7 +319,7 @@ else $filenamechanged = $filenameWithoutExtension;
 
 			touch($filefullpath,$oracambiata);
 
-			$PG_mainbody .= "<p>"._("The episode date has been set to future. This episode won't show up till then.).")."</p>";
+			$PG_mainbody .= "<p>"._("The episode date has been set to future. This episode won't show up till then.")."</p>";
 
 			}
 
