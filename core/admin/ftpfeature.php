@@ -41,7 +41,7 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 	$episodesCounter = autoIndexingEpisodes();
 
 
-					$PG_mainbody .= '<p><b>'._("Scan finished:").'</b> '.$episodesCounter.' '._("new episode(s) added.</p>");
+					$PG_mainbody .= '<p><b>'._("Scan finished:").'</b> '.$episodesCounter.' '._("new episode(s) added.").'</p>';
 
 					$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a></p>";
 
