@@ -82,7 +82,7 @@ $categoriesenabled = "yes";
 
 $firsttimehere = "yes";
 
-$cronAutoIndex = 0; //Auto Index New Episodes via Cron
+$cronAutoIndex = 1; //Auto Index New Episodes via Cron
 
 $cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
 

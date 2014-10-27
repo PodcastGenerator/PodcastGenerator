@@ -45,10 +45,10 @@ if (isset($cronAutoIndex) AND $cronAutoIndex == TRUE AND $includedInIndexPHP == 
 } // END Auto Index new Episodes uploaded
 
 
-//// Regenerate automaticcaly RSS feed (so that episodes set to future are indexed in the main RSS feed)
+//// Regenerate automatically RSS feed (so that episodes set to future are indexed in the main RSS feed)
 if (isset($cronAutoRegenerateRSS) AND $cronAutoRegenerateRSS == TRUE) {
 	
-	// If called via index.php inclusion use the cache sistem (cache time in seconds defined in $cronAutoRegenerateRSScacheTime)
+	// If called via index.php inclusion use the cache system (cache time in seconds defined in $cronAutoRegenerateRSScacheTime)
 	if ($includedInIndexPHP == TRUE) {
 	
 		$RSSFeedURL = $absoluteurl.$feed_dir."feed.xml";
