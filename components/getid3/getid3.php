@@ -28,9 +28,11 @@ $temp_dir = ini_get('upload_tmp_dir');
 if ($temp_dir && (!is_dir($temp_dir) || !is_readable($temp_dir))) {
 	$temp_dir = '';
 }
+//Modified for PG 2.3
 if (!$temp_dir) {
-	// sys_get_temp_dir() may give inaccessible temp dir, e.g. with open_basedir on virtual hosts
-	$temp_dir = sys_get_temp_dir();
+	// sys_get_temp_dir() may give inaccessible temp dir, e.g. with open_basedir on virtual host
+	if (function_exists('sys_get_temp_dir')) $temp_dir = sys_get_temp_dir();
+	else $temp_dir = ini_get('upload_tmp_dir');
 }
 $temp_dir = @realpath($temp_dir); // see https://github.com/JamesHeinrich/getID3/pull/10
 $open_basedir = ini_get('open_basedir');
