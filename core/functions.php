@@ -1140,7 +1140,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 		<image>
 		<url>'.$url.$img_dir.'itunes_image.jpg</url>
 		<title>'.$podcast_title.'</title>
-		<link>'.$url.'</link>
+		<link>'.$podcastWebHomePage.'</link>
 		</image>
 		<itunes:summary>'.$podcast_description.'</itunes:summary>
 		<itunes:subtitle>'.$podcast_subtitle.'</itunes:subtitle>
