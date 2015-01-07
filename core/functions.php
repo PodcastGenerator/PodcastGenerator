@@ -435,9 +435,9 @@ function showPodcastEpisodes($all,$category) {
 					} 
 
 					////Title
-					$resulting_episodes .= '<h3 class="episode_title">'.$thisPodcastEpisodeData[0];
+					$resulting_episodes .= '<h3 class="episode_title"><a href="?name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'.$thisPodcastEpisodeData[0];
 					if (isItAvideo($thisPodcastEpisode[3])) $resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>'; //add video icon
-					$resulting_episodes .= '</h3>';
+					$resulting_episodes .= '</a></h3>';
 
 
 					////Date
