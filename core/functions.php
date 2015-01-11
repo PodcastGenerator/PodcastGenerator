@@ -402,7 +402,7 @@ function showPodcastEpisodes($all,$category) {
 				if (($thisPodcastEpisode[0]==TRUE AND !publishInFuture($thisPodcastEpisode[1])) OR ($thisPodcastEpisode[0]==TRUE AND publishInFuture($thisPodcastEpisode[1]) AND isUserLogged())) { 
 
 					////Parse XML data related to the episode 
-					// NB. Function parseXMLepisodeData returns: [0] episode title, [1] short description, [2] long description, [3] image associated, [4] iTunes keywords, [5] Explicit language,[6] Author's name,[7] Author's email,[8] PG category 1, [9] PG category 2, [10] PG category 3, [11] file_info_size, [12] file_info_duration, [13] file_info_bitrate, [14] file_info_frequency
+					// NB. Function parseXMLepisodeData returns: [0] episode title, [1] short description, [2] long description, [3] image associated, [4] iTunes keywords, [5] Explicit language,[6] Author's name,[7] Author's email,[8] PG category 1, [9] PG category 2, [10] PG category 3, [11] file_info_size, [12] file_info_duration, [13] file_info_bitrate, [14] file_info_frequency, [15] embedded image in mp3
 					$thisPodcastEpisodeData = parseXMLepisodeData($thisPodcastEpisode[2]);
 
 					////if category is specified as a parameter of this function
@@ -439,7 +439,6 @@ function showPodcastEpisodes($all,$category) {
 					if (isItAvideo($thisPodcastEpisode[3])) $resulting_episodes .= '&nbsp;<i class="fa fa-youtube-play"></i>'; //add video icon
 					$resulting_episodes .= '</a></h3>';
 
-
 					////Date
 					$resulting_episodes .= '<p class="episode_date">';
 					$thisEpisodeDate = filemtime($thisPodcastEpisode[1]);
@@ -454,14 +453,16 @@ function showPodcastEpisodes($all,$category) {
 					if (isUserLogged()) { 
 						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
+					
+					
+							//Show Image embedded in the mp3 file or image associated in the images/ folder from previous versions of PG (i.e. 1.4-) - Just jpg and png extension supported
+						if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.jpg')) {
+						$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
+						} 
+						else if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.png')) {
+						$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
+						}
 
-					// episode associated image (old versions)
-					/*	
-					$resulting_episodes .= '<ul class="episode_imgdesc">';
-					if(isset($text_imgpg) AND $text_imgpg!=NULL AND file_exists("$img_dir$text_imgpg")) {
-					$resulting_episodes .= "<li><img src=\"$img_dir$text_imgpg\" class=\"episode_image\" alt=\"$text_title\" /></li>";
-					}
-					*/
 
 					//// Short Description
 					$resulting_episodes .= '<p>'.$thisPodcastEpisodeData[1].'</p>';
@@ -621,13 +622,14 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
 
-					// episode associated image (old versions)
-					/*	
-					$resulting_episodes .= '<ul class="episode_imgdesc">';
-					if(isset($text_imgpg) AND $text_imgpg!=NULL AND file_exists("$img_dir$text_imgpg")) {
-					$resulting_episodes .= "<li><img src=\"$img_dir$text_imgpg\" class=\"episode_image\" alt=\"$text_title\" /></li>";
-					}
-					*/
+
+								//Show Image embedded in the mp3 file or image associated in the images/ folder from previous versions of PG (i.e. 1.4-) - Just jpg and png extension supported
+							if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.jpg')) {
+							$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
+							} 
+							else if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.png')) {
+							$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
+							}
 
 					//// Show Long description if available, otherwise, short Description
 					if ($thisPodcastEpisodeData[2] != NULL) $resulting_episodes .= '<p>'.$thisPodcastEpisodeData[2].'</p>';
@@ -1032,7 +1034,16 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 
 
 
-function retrieveMediaFileDetails ($MediaFile,$absoluteURL) {
+function retrieveMediaFileDetails ($MediaFile,$absoluteURL,$filenameWithoutExtension,$imgDir) {
+	
+	if ($filenameWithoutExtension != NULL AND $imgDir != NULL) {
+		$extraDataSent = TRUE;
+		echo 'File name no ext: '.$filenameWithoutExtension.'<br>image dir: '.$imgDir.'<br>';
+	} else {
+		$extraDataSent = FALSE;
+	}
+	
+
 	
 	require_once($absoluteURL."components/getid3/getid3.php"); //Lib to read ID3 tags in media files
 	$getID3 = new getID3; //initialize getID3 engine
@@ -1043,6 +1054,7 @@ function retrieveMediaFileDetails ($MediaFile,$absoluteURL) {
 	//$file_type = @$ThisFileInfo['fileformat'];
 	$file_bitrate =  @$ThisFileInfo['bitrate']/1000;
 	$file_freq = @$ThisFileInfo['audio']['sample_rate'];
+	$file_embedded_image = NULL;
 	
 	
 	//// Title from ID3 tags
@@ -1059,6 +1071,32 @@ function retrieveMediaFileDetails ($MediaFile,$absoluteURL) {
 		$thisFileArtistID3 = @$ThisFileInfo['tags']['id3v2']['artist'][0];
 	} elseif (isset($ThisFileInfo['tags']['id3v1']['artist'][0]) AND $ThisFileInfo['tags']['id3v1']['artist'][0] != NULL) { //ID3 v1
 		$thisFileArtistID3 = @$ThisFileInfo['tags']['id3v1']['artist'][0];
+	}
+	
+	
+	//Image embedded in the MP3 - Extract and Save
+	if($extraDataSent AND isset($ThisFileInfo['id3v2']['APIC'][0]) AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.png') AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.jpg')){
+	
+	echo "<br>ok ready<br>";
+	
+	$imageMimeType = $ThisFileInfo['id3v2']['APIC'][0]['image_mime'];
+	$imageData = $ThisFileInfo['id3v2']['APIC'][0]['data'];
+	
+	//$file_embedded_image = 'data:'.$ThisFileInfo['id3v2']['APIC'][0]['image_mime'].';charset=utf-8;base64,'.base64_encode(	$ThisFileInfo['id3v2']['APIC'][0]['data']);
+	//	echo 'Image Embedded:<br><img id="FileImage" width="150" src="'.$file_embedded_image.'" />'; 
+	
+	//Save image file extracted from ID3 v2 APIC (attached picture) tag
+	$data = 'data:'.$imageMimeType.';base64,'.base64_encode($imageData);
+	list($type, $data) = explode(';', $data);
+	list(, $data)      = explode(',', $data);
+	$data = base64_decode($data);
+
+		//choose extension between png and jpg (jpg by default)
+		if ($imageMimeType == "image/png") $thisImageExtension = "png";
+		else $thisImageExtension = "jpg";
+	
+	//write file
+	file_put_contents($absoluteURL.$imgDir.$filenameWithoutExtension.'.'.$thisImageExtension.'', $data);
 	}
 	
 	return array($ThisFileSizeInMB,$file_duration,$file_bitrate,$file_freq,$thisFileTitleID3,$thisFileArtistID3);
@@ -1229,10 +1267,9 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 					$thisEpisodeDataToWriteInXML[7] = $thisPodcastEpisodeData[6]; // Auth name
 					$thisEpisodeDataToWriteInXML[8] = $thisPodcastEpisodeData[7]; // Auth email
 					
-			
 					//Episode size and data from GETID3 from retrieveMediaFileDetails function
 					//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
-					$episodeID3 = retrieveMediaFileDetails ($thisPodcastEpisode[1],$absoluteurl);
+					$episodeID3 = retrieveMediaFileDetails ($thisPodcastEpisode[1],$absoluteurl,$thisPodcastEpisode[5],$img_dir);
 
 					//Rewrite the XML data file of this episode (including the fileInfoPG tag)
 					writeEpisodeXMLDB($thisEpisodeDataToWriteInXML,$absoluteurl,$thisPodcastEpisode[1],$thisPodcastEpisode[2],TRUE);
@@ -1280,6 +1317,19 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				$episodes_feed.= '<itunes:duration>'.$fileDuration.'</itunes:duration>
 				';
 				} 
+				
+
+				
+				//Image associated to single episode
+				if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.jpg')) {
+					$episodes_feed.= '<itunes:image href="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" />
+				';
+				} 
+				else if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.png')) {
+					$episodes_feed.= '<itunes:image href="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" />
+				';
+				}
+				
 
 
 				//// Author
@@ -1479,10 +1529,12 @@ function parseXMLepisodeData ($episodeFileXMLDB) {
 
 
 // $readID3 is a bool (true on first upload and on manual RSS regeneration)
-function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$episodeXMLDBAbsPath,$readID3) {
+function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$episodeXMLDBAbsPath,$episodeFileNameWithoutExtension,$readID3) {
+
 
 	include($absoluteurl."core/includes.php");
 	
+
 	
 	//NB. $thisEpisodeData array contains [0] $title, [1] $description, [2] $long_description, [3] $image_new_name, [4] $category (array), [5] $keywords, [6] $explicit, [7] $auth_name, [8] $auth_email
 	
@@ -1524,7 +1576,7 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 	
 	//Episode size and data from GETID3 from retrieveMediaFileDetails function
 	//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
-	$episodeID3 = retrieveMediaFileDetails ($episodeFileAbsPath,$absoluteurl);
+	$episodeID3 = retrieveMediaFileDetails ($episodeFileAbsPath,$absoluteurl,$episodeFileNameWithoutExtension,$img_dir);
 
 		$xmlfiletocreate .='
 			<fileInfoPG>';
@@ -1618,7 +1670,7 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 
 			//Episode size and data from GETID3 from retrieveMediaFileDetails function
 			//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
-			$episodeID3 = retrieveMediaFileDetails ($episodeNewNameAbsPath,$absoluteurl);
+			$episodeID3 = retrieveMediaFileDetails ($episodeNewNameAbsPath,$absoluteurl,$thisPodcastEpisode[5],$img_dir);
 
 			//// Assign title and short description (from ID3 title and artist, respectively. Or default)
 			if ($episodeID3[4]!= "") $thisEpisodeTitle = $episodeID3[4];

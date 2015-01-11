@@ -328,17 +328,13 @@ else $filenamechanged = $filenameWithoutExtension;
 			# END CHANGE DATE						
 			############################################
 
-		
 
-		
 		$thisEpisodeData = array($title,$description,$long_description,$image_new_name,$category,$keywords,$explicit,$auth_name,$auth_email);
 		
 		$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$filenamechanged.$filesuffix.'.xml'; // extension = XML
 
 		//// Creating xml file associated to episode
-		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,TRUE);
-
-
+		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,$filenamechanged.$filesuffix,TRUE);
 
 		$PG_mainbody .= "<p><b><font color=\"green\">"._("File sent")."</font></b></p>"; // If upload is successful.
 
@@ -346,12 +342,11 @@ else $filenamechanged = $filenameWithoutExtension;
 		//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
 		$episodesCounter = generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 		##########
-
-
+		
 		$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=upload\">"._("Upload another episode")."</a></p>";
 
 	}
-	else //If upload is not successfull
+	else //If upload is not successful
 	{
 
 		$PG_mainbody .= "<p><b><font color=\"red\">"._("FILE ERROR")." "._("Upload Failed")."</font></b></p>";
@@ -376,7 +371,6 @@ else {
 		<input type="button" value="'._("Back").'" class="btn btn-danger btn-small" onClick="history.back()">
 		</form>';
 }
-
 
 
 } // 002
