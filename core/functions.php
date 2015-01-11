@@ -457,10 +457,10 @@ function showPodcastEpisodes($all,$category) {
 					
 							//Show Image embedded in the mp3 file or image associated in the images/ folder from previous versions of PG (i.e. 1.4-) - Just jpg and png extension supported
 						if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.jpg')) {
-						$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
+						$resulting_episodes .= '<img class="episode_image" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
 						} 
 						else if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.png')) {
-						$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
+						$resulting_episodes .= '<img class="episode_image" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
 						}
 
 
@@ -625,10 +625,10 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 
 								//Show Image embedded in the mp3 file or image associated in the images/ folder from previous versions of PG (i.e. 1.4-) - Just jpg and png extension supported
 							if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.jpg')) {
-							$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
+							$resulting_episodes .= '<img class="episode_image" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.jpg" alt="'.$thisPodcastEpisodeData[0].'" />';
 							} 
 							else if (file_exists($absoluteurl.$img_dir.$thisPodcastEpisode[5].'.png')) {
-							$resulting_episodes .= '<img width="80%" src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
+							$resulting_episodes .= '<img class="episode_image"  src="'.$url.$img_dir.$thisPodcastEpisode[5].'.png" alt="'.$thisPodcastEpisodeData[0].'" />';
 							}
 
 					//// Show Long description if available, otherwise, short Description
