@@ -1038,7 +1038,7 @@ function retrieveMediaFileDetails ($MediaFile,$absoluteURL,$filenameWithoutExten
 	
 	if ($filenameWithoutExtension != NULL AND $imgDir != NULL) {
 		$extraDataSent = TRUE;
-		echo 'File name no ext: '.$filenameWithoutExtension.'<br>image dir: '.$imgDir.'<br>';
+	//	echo 'File name no ext: '.$filenameWithoutExtension.'<br>image dir: '.$imgDir.'<br>';
 	} else {
 		$extraDataSent = FALSE;
 	}
@@ -1075,9 +1075,7 @@ function retrieveMediaFileDetails ($MediaFile,$absoluteURL,$filenameWithoutExten
 	
 	
 	//Image embedded in the MP3 - Extract and Save
-	if($extraDataSent AND isset($ThisFileInfo['id3v2']['APIC'][0]) AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.png') AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.jpg')){
-	
-	echo "<br>ok ready<br>";
+	if($extraDataSent AND isset($ThisFileInfo['id3v2']['APIC'][0]) AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.png') AND !file_exists($absoluteURL.$imgDir.$filenameWithoutExtension.'.jpg')) {
 	
 	$imageMimeType = $ThisFileInfo['id3v2']['APIC'][0]['image_mime'];
 	$imageData = $ThisFileInfo['id3v2']['APIC'][0]['data'];
@@ -1254,26 +1252,31 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				//// If feed manually regenerated, recreate XML DB for each file when XML does not contain file data such as size, duration etc... (i.e. <fileInfoPG> tag)
 				// NB. The following function is transitional, to enable new XML tags in the file XML data introduced with PG 2.3: it can be removed in future versions.
 				// We check for data about episode size ($thisPodcastEpisodeData[11]) cause all the episodes should have it, if not, the XML was generated with a version of PG < 2.3
-				if ($manualRegeneration == TRUE AND $thisPodcastEpisodeData[11] == NULL) {
-
+				// We also check whether $thisPodcastEpisodeData[3] (image) is null. From PG 2.4 the image field can be a) a file name (for retro compatibility with older versions), b) 1 (mp3 parsed for embedded image. If image exists the file is extracted automatically in the images/ folder by the function retrieveMediaFileDetails)
+				if ($manualRegeneration AND $thisPodcastEpisodeData[11] == NULL OR $manualRegeneration AND $thisPodcastEpisodeData[3] == "") { //NB $thisPodcastEpisodeData[3] = to "" empty and not NULL (it exists but does not contain any value).
 					//// Remapping data from parseXMLepisodeData to be sent as a parameter to writeEpisodeXMLDB
 					$thisEpisodeDataToWriteInXML[0] = $thisPodcastEpisodeData[0]; // Title
 					$thisEpisodeDataToWriteInXML[1] = $thisPodcastEpisodeData[1]; // Short Desc
 					$thisEpisodeDataToWriteInXML[2] = $thisPodcastEpisodeData[2]; // Long Desc
-					$thisEpisodeDataToWriteInXML[3] = $thisPodcastEpisodeData[3]; // Image
+				
+					//Image embedded or specified in the XML file is empty (no values)
+					if ($thisPodcastEpisodeData[3] == "") $thisEpisodeDataToWriteInXML[3] = 1; // assign value of 1 (so in future it won't be processed)
+					else $thisEpisodeDataToWriteInXML[3] = $thisPodcastEpisodeData[3]; // Image
+
 					$thisEpisodeDataToWriteInXML[4] = array($thisPodcastEpisodeData[8],$thisPodcastEpisodeData[9],$thisPodcastEpisodeData[10]); // Categories
 					$thisEpisodeDataToWriteInXML[5] = $thisPodcastEpisodeData[4]; // Keywords
 					$thisEpisodeDataToWriteInXML[6] = $thisPodcastEpisodeData[5]; // Explicit
 					$thisEpisodeDataToWriteInXML[7] = $thisPodcastEpisodeData[6]; // Auth name
 					$thisEpisodeDataToWriteInXML[8] = $thisPodcastEpisodeData[7]; // Auth email
 					
-					//Episode size and data from GETID3 from retrieveMediaFileDetails function
-					//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
+//Episode size and data from GETID3 from retrieveMediaFileDetails function
+//NB retrieveMediaFileDetails returns: [0] $ThisFileSizeInMB, [1] $file_duration, [2] $file_bitrate, [3] $file_freq, [4] $thisFileTitleID3, [5] $thisFileArtistID3
 					$episodeID3 = retrieveMediaFileDetails ($thisPodcastEpisode[1],$absoluteurl,$thisPodcastEpisode[5],$img_dir);
 
-					//Rewrite the XML data file of this episode (including the fileInfoPG tag)
-					writeEpisodeXMLDB($thisEpisodeDataToWriteInXML,$absoluteurl,$thisPodcastEpisode[1],$thisPodcastEpisode[2],TRUE);
-				}
+	//Rewrite the XML data file of this episode (including the fileInfoPG tag)
+	writeEpisodeXMLDB($thisEpisodeDataToWriteInXML,$absoluteurl,$thisPodcastEpisode[1],$thisPodcastEpisode[2],$thisPodcastEpisode[5],TRUE);
+
+				} //end if $manualRegeneration
 
 					
 				//// If category is specified, show just episodes belonging to it (if the current is not, skip this loop)
@@ -1683,7 +1686,7 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 
 			$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.xml';
 			//// Creating xml file associated to episode
-			writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$episodeNewNameAbsPath,$episodeXMLDBAbsPath,TRUE);
+			writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$episodeNewNameAbsPath,$episodeXMLDBAbsPath,$episodeNewFileName.$filesuffix,TRUE);
 
 			$episodesCounter++;
 			

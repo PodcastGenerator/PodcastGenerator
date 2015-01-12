@@ -187,75 +187,6 @@ $PG_mainbody .= "<p>"._("Date and time of the episode have been modified (this m
 
 $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 
-						########################
-						######### IMAGE upload section, if image is present
-
-						if (isset($img) AND $img!=NULL) {
-
-							$PG_mainbody .= "<p><b>"._("Image present: processing...")."</b></p>";
-
-							$img_ext=explode(".",$img); // divide filename from extension
-
-							if ($img_ext[1]=="jpg" OR $img_ext[1]=="jpeg" OR $img_ext[1]=="gif"OR $img_ext[1]=="png" OR $img_ext[1]=="JPG" OR $img_ext[1]=="JPEG" OR $img_ext[1]=="GIF"OR $img_ext[1]=="PNG") { // control accepted image format
-
-								// $PG_mainbody .= "<p>"._("Original filename:")." <i>$img</i></p>";
-
-								// Assign a new name to the image
-								$uploadFile2 = $absoluteurl.$img_dir.$file_ext[0].".".$img_ext[1];
-
-
-								//move file from the temp directory to the upload directory
-								if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile2))
-								{
-
-									$image_new_name = "$file_ext[0].$img_ext[1]";
-
-									// $PG_mainbody .= ""._("File")."renamed <i>$nome_immagine</i>";
-
-									$PG_mainbody .= "<p><font color=\"green\">"._("Image sent.")."</font></p>"; // If upload is successful.
-
-
-
-								}
-
-								else { // if IMAGE upload is not successful
-
-									$image_new_name = NULL;
-
-									$PG_mainbody .= "<p><font color=\"red\">"._("Error: image NOT sent!")." "._("(ignored)")."</font></p>";
-									// $temporaneo= $_FILES['image']['tmp_name'];
-									// $PG_mainbody .= ""._("Temp file:")." $temporaneo";
-								}
-
-
-
-							}
-
-							else { // if the image extension is not valid: IGNORE the image
-
-							//	$image_new_name = NULL;
-							$image_new_name = $existentimage;
-
-								$PG_mainbody .= "<p>"._("Not valid image extension:")." "._("Accepted extensions are:")." jpg, gif, png.</p>";
-
-
-							}
-
-						} else { // if image has not been changed
-						
-						$image_new_name = $existentimage;	
-						}
-
-						########## end IMAGE upload section
-						######################
-
-						
-	
-						
-						
-						
-						
-						
 
 				//// RE-CREATING XML FILE ASSOCIATED TO EPISODE
 
@@ -264,7 +195,7 @@ $PG_mainbody .= "<p><b>"._("Processing changes...")."</b></p>";
 		$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$file_ext[0].'.xml'; // extension = XML
 
 		//// Creating xml file associated to episode
-		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,TRUE);
+		writeEpisodeXMLDB($thisEpisodeData,$absoluteurl,$filefullpath,$episodeXMLDBAbsPath,$file_ext[0],TRUE);
 						
 
 						#	$PG_mainbody .= "<p><b><font color=\"green\">"._("File")."sent</font></b></p>"; // If upload is successful.
