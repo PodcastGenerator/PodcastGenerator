@@ -425,7 +425,8 @@ function showPodcastEpisodes($all,$category) {
 						if ($episodesCounter % $numberOfEpisodesPerLine != 0 OR $episodesCounter == count($fileNamesList)) {
 							//open div with class row-fluid (theme based on bootstrap)
 							//N.B. row-fluid is a CSS class for a div containing 1 or more episodes
-							$resulting_episodes .= '<div class="row-fluid">';
+							//$resulting_episodes .= '<div class="row-fluid">';
+							$resulting_episodes .= '<div class="episode">';
 						}
 						$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
 					}

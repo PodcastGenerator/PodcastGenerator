@@ -158,3 +158,10 @@ footer a:hover {
 .episode_image {
 	width:80%;
 }
+
+.row-fluid {
+	clear:both;
+	width:100%;
+	margin:0;
+	padding:0;
+}
