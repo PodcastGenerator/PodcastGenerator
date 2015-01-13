@@ -64,19 +64,20 @@ if (file_exists($theme_path."functions.php")) {
 
 #########################
 # SET PAGE TITLE
-$page_title = $podcast_title; 
+
+$page_title_prefix = NULL;
 
 //Show category name
 if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	$existingCategories = readPodcastCategories ($absoluteurl);
 	if (isset($existingCategories[avoidXSS($_GET['cat'])])) {
 		//URL depuration (avoidXSS)
-		$page_title .= " &raquo; ".$existingCategories[avoidXSS($_GET['cat'])];
+		$page_title_prefix .= $existingCategories[avoidXSS($_GET['cat'])]." - ";
 		}	
 	}
 	//Show a generic "All episodes"
 	elseif (isset($_GET['p']) AND $_GET['p']=="archive") {
-		$page_title .= " &raquo; "._("All Episodes");
+		$page_title_prefix .= _("All Episodes")." - ";
 	}
 	
 	
@@ -85,11 +86,13 @@ if (isset($_GET['cat']) AND $_GET['cat'] != "all" AND !isset($_GET['action'])) {
 	
 		$titleOfEpisode = showSingleEpisode(avoidXSS($_GET['name']),1); //the last parameter (1) requires just the title to that function
 		
-		if ($titleOfEpisode != NULL) $page_title .= " &raquo; $titleOfEpisode";
+		if ($titleOfEpisode != NULL) $page_title_prefix .= "$titleOfEpisode - ";
 	
 	}
 	
 
+$page_title = $page_title_prefix.$podcast_title;
+	
 $theme_file_contents = str_replace("-----PG_PAGETITLE-----", $page_title, $theme_file_contents);  
 
 
