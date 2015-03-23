@@ -1169,6 +1169,11 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	$itunes_category[1] = depurateContent($itunes_category[1]);
 	$itunes_category[2] = depurateContent($itunes_category[2]);
 
+	//If a different URL is specified in config.php
+	if (isset($feed_URL_replace) AND $feed_URL_replace != NULL) 
+	{ $feed_url = $feed_URL_replace; } 
+	else { $feed_url = $url.$feed_dir."feed.xml"; }
+	
 
 	//RSS FEED HEADER
 	$head_feed = 
@@ -1178,7 +1183,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	<channel>
 		<title>'.$podcast_title.'</title>
 		<link>'.$podcastWebHomePage.'</link>
-		<atom:link href="'.$url.$feed_dir.'feed.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="'.$feed_url.'" rel="self" type="application/rss+xml" />
 		<description>'.$podcast_description.'</description>
 		<generator>Podcast Generator '.$podcastgen_version.' - http://podcastgen.sourceforge.net</generator>
 		<lastBuildDate>'.date("r").'</lastBuildDate>
