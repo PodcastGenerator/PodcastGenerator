@@ -35,13 +35,27 @@ if(isUserLogged()) {
 
 			$img_ext=explode(".",$img); // divide filename from extension
 
-			if ($img_ext[1]=="jpg" OR $img_ext[1]=="jpeg" OR $img_ext[1]=="JPG" OR $img_ext[1]=="JPEG") { // check image format
+			if (strtolower($img_ext[1])=="jpg" OR strtolower($img_ext[1])=="jpeg" OR strtolower($img_ext[1])=="png") { // check image format
 
-				$uploadFile2 = $absoluteurl.$img_dir."itunes_image.jpg";
+			
+				$iTunesCoverNameWithoutExtension = $absoluteurl.$img_dir."itunes_image.";
+			
+				$newNameiTunesCoverUploaded = $iTunesCoverNameWithoutExtension.strtolower($img_ext[1]);
 
-				if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile2))
+				//Delete previous covers
+				if (file_exists($iTunesCoverNameWithoutExtension.'jpg')) unlink($iTunesCoverNameWithoutExtension.'jpg');
+				else if (file_exists($iTunesCoverNameWithoutExtension.'png')) unlink($iTunesCoverNameWithoutExtension.'png');
+				
+				if (move_uploaded_file($_FILES['image']['tmp_name'], $newNameiTunesCoverUploaded))
 				{
 					$PG_mainbody .= "<p><b>"._("iTunes cover art replaced successfully.")."</b></p>"; // If upload is successful.
+					
+					
+					########## REGENERATE FEED
+					$episodesCounter = generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
+					##########
+					
+					
 				}
 				else { //if upload NOT successful
 
@@ -52,7 +66,7 @@ if(isUserLogged()) {
 
 			} else { // if image extension is NOT valid
 
-				$PG_mainbody .= "<p><b>"._("Image extension not valid. The image extension must end in .jpg, .jpeg or .png")."</b></p>";
+				$PG_mainbody .= "<p><b>"._("Image extension not valid. The image extension must end in .jpg or .png")."</b></p>";
 			//	$PG_mainbody .= "<p>"._("You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG.")."</p>";
 				$PG_mainbody .= '<br />
 					<form>
@@ -80,10 +94,18 @@ if(isUserLogged()) {
 
 	else { // if image is not posted open the form
 
+		if (file_exists($absoluteurl.$img_dir.'itunes_image.jpg')) {
+			$podcastCoverArt= $url.$img_dir.'itunes_image.jpg';
+		} else if (file_exists($absoluteurl.$img_dir.'itunes_image.png')) {
+			$podcastCoverArt= $url.$img_dir.'itunes_image.png';
+		}
+	
+	
+		//time() is added to the img URL so the browser doesn't cache it in the admin section
 		$PG_mainbody .= '
 			<div class="topseparator"><p>
 			'._("Current image:").'</p>
-			<p>	<img src="'.$url.$img_dir.'itunes_image.jpg" width="300" height="300" alt="'._("iTunes image").'" />
+			<p>	<img src="'.$podcastCoverArt.'?'.time().'" width="300" height="300" alt="'._("iTunes image").'" />
 			</p><br /></div>
 
 			<div class="topseparator">	

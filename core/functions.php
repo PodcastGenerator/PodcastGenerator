@@ -1174,6 +1174,13 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	{ $feed_url = $feed_URL_replace; } 
 	else { $feed_url = $url.$feed_dir."feed.xml"; }
 	
+	//iTunes Cover art (jpg or png)
+	if (file_exists($absoluteurl.$img_dir.'itunes_image.jpg')) {
+		$podcastCoverArt = $url.$img_dir.'itunes_image.jpg';
+	} else if (file_exists($absoluteurl.$img_dir.'itunes_image.png')) {
+		$podcastCoverArt = $url.$img_dir.'itunes_image.png';
+	} else { $podcastCoverArt = ""; }
+	
 
 	//RSS FEED HEADER
 	$head_feed = 
@@ -1189,9 +1196,9 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 		<lastBuildDate>'.date("r").'</lastBuildDate>
 		<language>'.$feed_language.'</language>
 		<copyright>'.$copyright.'</copyright>
-		<itunes:image href="'.$url.$img_dir.'itunes_image.jpg" />
+		<itunes:image href="'.$podcastCoverArt.'" />
 		<image>
-		<url>'.$url.$img_dir.'itunes_image.jpg</url>
+		<url>'.$podcastCoverArt.'</url>
 		<title>'.$podcast_title.'</title>
 		<link>'.$podcastWebHomePage.'</link>
 		</image>
