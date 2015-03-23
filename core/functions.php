@@ -111,7 +111,8 @@ function depurateContent($content) {
 	$content = stripslashes($content);
 	$content = str_replace('<', '&lt;', $content);
 	$content = str_replace('>', '&gt;', $content);
-	$content = str_replace('& ', '&amp; ', $content);
+	$content = str_replace('&amp;', '&', $content); //double subsitution to avoid &&&amps;
+	$content = str_replace('&', '&amp;', $content);
 	$content = str_replace('’', '&apos;', $content);
 	$content = str_replace('"', '&quot;', $content);
 	$content = str_replace('©', '&#xA9;', $content);
