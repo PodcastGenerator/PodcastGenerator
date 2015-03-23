@@ -463,7 +463,7 @@ function showPodcastEpisodes($all,$category) {
 					
 					//// Edit/Delete button for logged user (i.e. admin)
 					if (isUserLogged()) { 
-						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
+						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
 					
 					
@@ -631,7 +631,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					
 					//// Edit/Delete button for logged user (i.e. admin)
 					if (isUserLogged()) { 
-						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.$thisPodcastEpisode[5].'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
+						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
 
 
@@ -967,7 +967,7 @@ function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_di
 	$buttonsOutput = '<p>';
 	
 	//// Button "More" - in the permalink it is not show (no numeric var passed)
-	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
+	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 	
 	//// Button Watch (takes into account $enablestreaming from config.php)
 	$browserAudioVideoSupport = detectModernBrowser();
@@ -982,18 +982,18 @@ function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_di
 		//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
 		if (!detectMobileDevice()) {
 		//show button (FORCED) download using download.php
-		$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
+		$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 		} 
 		else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
 		//Write "watch" or "listen" in mobile devices.
 			if (isItAvideo($podcast_filetype) == TRUE) { 
-			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
+			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
 			}	
 			//if it's audio
 			else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
-			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
 			}	else {
-			$buttonsOutput .= '<a class="btn" href="'.$url.$upload_dir.$filenameWithoutExtension.'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
+			$buttonsOutput .= '<a class="btn" href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
 			}
 		}
 	}
