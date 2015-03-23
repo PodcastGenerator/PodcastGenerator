@@ -205,7 +205,7 @@ if(isUserLogged()) { //if logged
 		<ul>
 		<li><a href="?p=admin&amp;do=serverinfo">'._("Your server configuration").'</a></li>
 		<li><a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a></li>
-		<li><a href="http://podcastgen.sourceforge.net/documentation/#faq?ref=local-admin" target="_blank">'._("Read Documentation").'</li>
+		<li><a href="http://podcastgen.sourceforge.net/documentation/#faq?ref=local-admin" target="_blank">'._("Read Documentation").'</a></li>
 		<li><a href="http://podcastgen.sourceforge.net/support/?ref=local-admin" target="_blank">'._("Get Support").'</a></li>
 		</ul>
 	</div>';
