@@ -139,7 +139,8 @@ function avoidXSS($url) {
 	$url = filter_var($url,FILTER_SANITIZE_URL);				
 	$url = str_replace('<', '&lt;', $url);
 	$url = str_replace('>', '&gt;', $url);
-	$url = str_replace('& ', '&amp; ', $url);
+	$url = str_replace('&amp;', '&', $url); //double subsitution to avoid &&&amps;
+	$url = str_replace('&', '&amp;', $url);
 	$url = str_replace('’', '&apos;', $url);
 	$url = str_replace('"', '&quot;', $url);
 	$url = str_replace('iframe', '', $url);
