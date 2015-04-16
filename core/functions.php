@@ -441,7 +441,7 @@ function showPodcastEpisodes($all,$category) {
 							//$resulting_episodes .= '<div class="row-fluid">';
 							$resulting_episodes .= '<div class="episode">';
 						}
-						$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="col-md-6 6u episodebox">'; //open the single episode DIV
 					}
 					//If old Theme engine for <2.0 themes retro compatibility.
 					else { 
@@ -560,7 +560,7 @@ function showPodcastEpisodes($all,$category) {
 	else $thisCurrentPage = 1;
 
 	if (isset($episodesCounter) AND $episodesCounter > $episodeperpage) {
-		$finalOutputEpisodes .= '<div class="row-fluid" style="clear:both;"><p>';
+		$finalOutputEpisodes .= '<div class="row-fluid row" style="clear:both;"><p>';
 		
 		//Print page index and links
 		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
@@ -611,8 +611,8 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					//// Start constructing episode HTML output
 					
 					//Theme engine PG version >= 2.0 row-fluid
-						$resulting_episodes .= '<div class="episode row-fluid">';
-						$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="episode row-fluid row">';
+						$resulting_episodes .= '<div class="col-md-6 6u episodebox">'; //open the single episode DIV
 			
 
 					////Title
