@@ -8,3 +8,13 @@ freebox-content.txt
 rsscache_*
 
 feed.xml
+
+media/*
+
+images/*
+
+!media/index.htm
+
+!images/itunes_image.jpg
+
+!images/smiley_default_freebox.png
