@@ -3,8 +3,6 @@ categories.xml
 
 config.php
 
-*.xml
-
 freebox-content.txt
 
-rsscache_e1230b2b50361016f90defe167d7e02d
+rsscache_*
