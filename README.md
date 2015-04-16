@@ -14,8 +14,6 @@ PG has been around for a while. The project has been hosted on SourceForge [sinc
 times from Sourceforge servers](https://sourceforge.net/projects/podcastgen/files/stats/timeline?dates=2006-03-28+to+2020-01-01) and is also offered as a preinstalled package (through software bundles such as Softaculous) 
 by some of the world's leading Hosting and NAS providers.
 
-**This is the official GIT repository of the project**.
-
 
 ## Download the latest release
 Download the latest stable release on the official website:
@@ -30,4 +28,5 @@ http://podcastgen.sf.net/documentation
 ## Demo
 A fully-functional live demo of Podcast generator is available at: 
 http://podcastgen.sf.net/demo
+
 
