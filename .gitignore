@@ -6,3 +6,5 @@ config.php
 freebox-content.txt
 
 rsscache_*
+
+feed.xml
