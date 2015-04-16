@@ -441,7 +441,7 @@ function showPodcastEpisodes($all,$category) {
 							//$resulting_episodes .= '<div class="row-fluid">';
 							$resulting_episodes .= '<div class="episode">';
 						}
-						$resulting_episodes .= '<div class="col-md-6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
 					}
 					//If old Theme engine for <2.0 themes retro compatibility.
 					else { 
@@ -612,7 +612,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					
 					//Theme engine PG version >= 2.0 row-fluid
 						$resulting_episodes .= '<div class="episode row-fluid row">';
-						$resulting_episodes .= '<div class="col-md-6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
 			
 
 					////Title
