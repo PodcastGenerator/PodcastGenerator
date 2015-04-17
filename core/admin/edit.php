@@ -90,7 +90,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
 		$PG_mainbody .= '
 			<label for="title">'._("Title").' *</label>
-			<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'" /><br /><br />
+			<input input="form-control" name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'" /><br /><br />
 
 			<label for="description">'._("Short Description").' *</label>
 
@@ -166,7 +166,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				$PG_mainbody .= '
 				<label for="keywords">'._("iTunes Keywords").'</label>
 		
-				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'" value="'.$text_keywordspg.'">';
+				<input class="form-control" name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'" value="'.$text_keywordspg.'">';
 				
 				//count keywords
 				//$PG_mainbody .= '<span><input type="text" name="counttotalwords" value="0"  onkeyup="cnt(document.uploadform.keywords,this)" class="readonlyinput" readonly />'._("keywords").'</span>';
@@ -198,18 +198,19 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				<label for="auth_name">'._("Author").'</label>
 				<span class ="alert">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner").'</span><br />
 
-				
-				<input name="auth_name" type="text" id="auth_name" size="30" maxlength="255" placeholder="'._("Author's name").'" class="input-medium" value="'.$text_authornamepg.'" />
+
+
+				<input name="auth_name" type="text" id="auth_name" size="30" maxlength="255" placeholder="'._("Author's name").'" class="form-control input-medium" value="'.$text_authornamepg.'" />
 
 				
-				<input name="auth_email" type="text" id="auth_email" size="30" maxlength="255" placeholder="'._("Author's email address").'" class="input-medium" value="'.$text_authoremailpg.'" />
+				<input name="auth_email" type="text" id="auth_email" size="30" maxlength="255" placeholder="'._("Author's email address").'" class="form-control input-medium" value="'.$text_authoremailpg.'" />
 
 				</fieldset>
 				
 				
 				<br />
 				
-				<input type="submit" value="'._("Update Episode").'"  class="btn btn-success btn-large" onClick="showNotify(\''._("Updating").'\');">
+				<input type="submit" value="'._("Update Episode").'"  class="btn btn-success btn-lg btn-large" onClick="showNotify(\''._("Updating").'\');">
 				
 				<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-warning btn-medium" />
 				
