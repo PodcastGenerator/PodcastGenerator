@@ -51,7 +51,7 @@ else {
 						$text_title = depurateContent($thisPodcastEpisodeData[0]); //title
 						$thisPodcastEpisodeData[1] = depurateContent($thisPodcastEpisodeData[1]); //short desc
 						$text_shortdesc = depurateContent($thisPodcastEpisodeData[1]); //short desc
-						$text_longdesc = depurateCDATAfield($thisPodcastEpisodeData[2]); //long desc
+						$text_longdesc = depurateContent($thisPodcastEpisodeData[2]); //long desc
 						$text_keywordspg = depurateContent($thisPodcastEpisodeData[4]); //Keywords
 						$text_authornamepg = depurateContent($thisPodcastEpisodeData[6]); //author's name
 						$text_authoremailpg = $thisPodcastEpisodeData[7];

@@ -61,36 +61,10 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 		####
 
 
-
-		############### cleaning/depurate input
-		###############
-		//$title = stripslashes($title);
-		$title = strip_tags($title);
-		$title = htmlspecialchars($title); 
-
-		//$description = stripslashes($description); // no slashes on ' and "
-		$description = strip_tags($description);
-		#$description = htmlspecialchars($description); 
-
-		$long_description = stripslashes($long_description);
-		#$long_description = htmlspecialchars($long_description); // long description accepts HTML
-
-		//$keywords = stripslashes($keywords);
-		$keywords = strip_tags($keywords);
-		$keywords = htmlspecialchars($keywords);
-
-		//$auth_name = stripslashes($auth_name);
-		$auth_name = strip_tags($auth_name);
-		$auth_name = htmlspecialchars($auth_name);
-
-
-		############## end input depuration
-		##############
-
-		#### INPUT DEPURATION N.2
+		#### INPUT DEPURATION
 		$title = depurateContent($title); //title
 		$description = depurateContent($description); //short desc
-		//$long_description = depurateContent($long_description); //long desc
+		$long_description = depurateContent($long_description); //long desc
 		$keywords = depurateContent($keywords); //Keywords
 		$auth_name = depurateContent($auth_name); //author's name
 

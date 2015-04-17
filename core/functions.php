@@ -109,23 +109,35 @@ function validate_email ($address) { //validate email address
 
 function depurateContent($content) {
 	$content = stripslashes($content);
-	$content = str_replace('<', '&lt;', $content);
-	$content = str_replace('>', '&gt;', $content);
+	//$content = str_replace('<', '&lt;', $content);
+	//$content = str_replace('>', '&gt;', $content);
+	//$content = str_replace('&amp;', '&', $content); //double subsitution to avoid &&&amps;
+	//$content = str_replace('&', '&amp;', $content);
+	//$content = str_replace('’', '&apos;', $content);
+	/*
 	$content = str_replace('&amp;', '&', $content); //double subsitution to avoid &&&amps;
-	$content = str_replace('&', '&amp;', $content);
-	$content = str_replace('’', '&apos;', $content);
-	$content = str_replace('"', '&quot;', $content);
+	$content = str_replace('<', '&#60;', $content);
+	$content = str_replace('>', '&#62;', $content);
+	$content = str_replace('&', '&#38;', $content);
+	$content = str_replace('\'', '&#39;', $content);
+	$content = str_replace('’', '&#39;', $content);
+	$content = str_replace('"', '&#34;', $content);
 	$content = str_replace('©', '&#xA9;', $content);
 	$content = str_replace('&copy;', '&#xA9;', $content);
 	$content = str_replace('℗', '&#x2117;', $content);
 	$content = str_replace('™', '&#x2122;', $content);
-	//$content = htmlentities($content); //this messes up things		
+	*/
+	
+	//NB. double_encode = FALSE Will not encode existing html entities
+	$content = htmlspecialchars($content,ENT_XML1,'UTF-8',FALSE); 	
 	return $content;
 }
 
 //this is just for CDATA fields such as <itunes:summary> (long description in PG)
-function depurateCDATAfield($content) {
-	$content = str_replace(']]>', '] ] &gt;', $content);
+function iTunesSummaryLinks($content) {
+	$content = htmlspecialchars_decode($content);
+	$content = strip_tags($content,'<a>');
+	if (strpos($content,'</a>') !== false) $content = '<![CDATA['.$content.']]>'; //CDATA Field around hyperlinks
 return $content;
 }
 
@@ -1312,13 +1324,11 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				
 
 				//// Content Depuration (to avoid validation errors in the RSS feed)
+			
 				$text_title = depurateContent($thisPodcastEpisodeData[0]); //title
 				$text_shortdesc = depurateContent($thisPodcastEpisodeData[1]); //short desc
-				$text_longdesc = stripslashes($thisPodcastEpisodeData[2]);
-				$text_longdesc = strip_tags($text_longdesc);
-				$text_longdesc = depurateCDATAfield($text_longdesc);
+				$text_longdesc = iTunesSummaryLinks(depurateContent($thisPodcastEpisodeData[2]));
 				$text_keywordspg = depurateContent($thisPodcastEpisodeData[4]); //Keywords
-				$text_keywordspg = htmlspecialchars($thisPodcastEpisodeData[4]); //convert special characters e.g. r&b -> r&amp;b
 				$text_authornamepg = depurateContent($thisPodcastEpisodeData[6]); //author's name
 				$text_authoremailpg = depurateContent($thisPodcastEpisodeData[7]);
 
@@ -1334,7 +1344,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				<item>
 				<title>'.$text_title.'</title>
 				<itunes:subtitle>'.$text_shortdesc.'</itunes:subtitle>
-				<itunes:summary><![CDATA[ '.$text_longdesc.' ]]></itunes:summary>
+				<itunes:summary>'.$text_longdesc.'</itunes:summary>
 				<description>'.$text_shortdesc.'</description>
 				<link>'.$link.$singleFileName.'</link>
 				<enclosure url="'.$url.$upload_dir.$singleFileName.'" length="'.$file_size.'" type="'.$filemimetype.'"/>
@@ -1592,7 +1602,7 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 	}
 	$xmlfiletocreate .='</category3PG>
 		</categoriesPG>
-		<keywordsPG>'.$thisEpisodeData[5].'</keywordsPG>
+		<keywordsPG><![CDATA['.$thisEpisodeData[5].']]></keywordsPG>
 		<explicitPG>'.$thisEpisodeData[6].'</explicitPG>
 		<authorPG>
 		<namePG>'.$thisEpisodeData[7].'</namePG>
