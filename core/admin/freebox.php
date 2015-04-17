@@ -60,7 +60,7 @@ else {
 
 			
 			
-			<input type="submit" value="'._("Send").'" onClick="showNotify(\''._("Setting...").'\');">
+			<input type="submit" value="'._("Send").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Setting...").'\');">
 		
 
 			</form>
