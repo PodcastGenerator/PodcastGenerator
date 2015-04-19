@@ -49,3 +49,6 @@ fieldset[disabled] .btn-inverse.active {
   border-color: #777777;
 }
 
+.nav-header {
+	font-weight:bold;
+}
