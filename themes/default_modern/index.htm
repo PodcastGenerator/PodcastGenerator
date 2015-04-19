@@ -8,9 +8,8 @@
 		-----PG_METATAGS-----
 
     <!-- Le styles -->
-    <link href="style/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
 
-    <link href="style/bootstrap-responsive.css" rel="stylesheet">
 
 	-----PG_COMMONCSSLOAD-----
  	<link href="style/custom.css" rel="stylesheet">
@@ -25,44 +24,45 @@
   </head>
 
   <body>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-default">
+      <div class="navbar-header"><span class="navbar-brand">-----PG_PODCASTTITLE-----</span><a class="navbar-toggle"
+          data-toggle="collapse" data-target=".navbar-collapse">
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <span class="brand">-----PG_PODCASTTITLE-----</span>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              -----PG_MENUADMIN-----
-            </p>
-            <ul class="nav">
-              -----PG_MENUHOME-----
-             -----PG_MENUARCHIVE-----
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      
+
+            </a>
       </div>
+          
+      <div class="navbar-collapse collapse">
+          <p class="navbar-text pull-right">-----PG_MENUADMIN-----</p>
+          <ul class="nav navbar-nav">-----PG_MENUHOME----- -----PG_MENUARCHIVE-----</ul>
+      </div>
+      <!--/.navbar-collapse -->
+        
     </div>
+</div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
+      <div class="row">
 
-        <div class="span9">
-          <div class="hero-unit">
+        <div class="col-md-9">
+          <div class="jumbotron">
             <h1>-----PG_PODCASTSUBTITLE-----</h1>
             <p>-----PG_PODCASTDESC-----</p>
-			<p><span class="span2"><a class="btn btn-warning btn-large" href="-----PG2_URLRSSFEED-----">RSS &raquo;</a></span><a class="btn btn-primary btn-large" href="-----PG2_URLFORITUNES-----">iTunes &raquo;</a></p>
+			<p><span class="col-md-2"><a class="btn btn-default btn-warning btn-lg" href="-----PG2_URLRSSFEED-----">RSS &raquo;</a></span><a class="btn btn-default btn-primary btn-lg" href="-----PG2_URLFORITUNES-----">iTunes &raquo;</a></p>
           </div>
 		  
 		  -----PG_MAINBODY-----
 
         </div><!--/span-->
 		
-		<div class="span3">
+		<div class="col-md-3">
          
             
 			-----PG2_ADMINRIGHTBOX-----
@@ -87,8 +87,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
 	
 	
-	
-    <script src="js/bootstrap.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
 
   </body>
 </html>
