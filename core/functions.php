@@ -657,7 +657,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 							}
 
 					//// Show Long description if available, otherwise, short Description
-					if ($thisPodcastEpisodeData[2] != NULL) $resulting_episodes .= '<p>'.$thisPodcastEpisodeData[2].'</p>';
+					if ($thisPodcastEpisodeData[2] != NULL) $resulting_episodes .= '<p>'.html_entity_decode($thisPodcastEpisodeData[2]).'</p>';
 					else $resulting_episodes .= '<p>'.$thisPodcastEpisodeData[1].'</p>';
 					
 					/// Categories 
