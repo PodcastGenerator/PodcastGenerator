@@ -10,6 +10,10 @@
           border-radius: 6px;
 }
 
+.episode_title {
+padding-bottom:0.2em;
+}
+
 /* reviving the btn-inverse */
 .btn-inverse {
   color: #ffffff;
