@@ -69,14 +69,14 @@ else {
 
 
 
-
+$PG_mainbody .= '<div class="col-md-12">';
 $PG_mainbody .= '<h3 class="sectionTitle">'._("Edit or Delete Episode").'</h3>';
 
 							
-
+		
 		$PG_mainbody .= '
 		
-		 <div class="span5 importantSection">
+		 <div class="span5 col-md-5 importantSection">
 		<form action="?p=admin&amp;do=edit&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
 							<fieldset>
@@ -90,11 +90,11 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
 		$PG_mainbody .= '
 			<label for="title">'._("Title").' *</label>
-			<input name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'" /><br /><br />
+			<input class="form-control" style="max-width:220px;" name="title" id="title" type="text" size="50" maxlength="255" value="'.$text_title.'" /><br /><br />
 
 			<label for="description">'._("Short Description").' *</label>
 
-			<input name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
+			<input class="form-control" style="max-width:220px;" name="description" id="description" type="text" onKeyDown="limitText(this.form.description,this.form.countdown,255);" 
 			onKeyUp="limitText(this.form.description,this.form.countdown,255);" size="50" maxlength="255" value="'.$text_shortdesc.'">
 			<br />
 			<span>
@@ -122,7 +122,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 							$PG_mainbody .= '
 							<br /><br />
 							<label>'._("Change the episode date").'</label>
-							<span class ="alert">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed. If you specify a date in future, your episode won't be shown till then.").'</span><br /><br />
+							<span class="alert alert-warning">'._("The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed. If you specify a date in future, your episode won't be shown till then.").'</span><br /><br />
 							'.CreaFormData("",$episodedate,$dateformat); //dateformat is taken from config.php	
 		
 		
@@ -144,7 +144,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
 			
 			$PG_mainbody .= '
-			 <div class="span5">
+			 <div class="span5 col-md-5">
 
 				<fieldset>
 				<legend><b>'._("Extras").'</b></legend>
@@ -166,7 +166,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				$PG_mainbody .= '
 				<label for="keywords">'._("iTunes Keywords").'</label>
 		
-				<input name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'" value="'.$text_keywordspg.'">';
+				<input class="form-control" name="keywords" type="text" onkeyup="cnt(this,document.uploadform.counttotalwords)" size="50" maxlength="255" placeholder="'._("Keyword1, Keyword2 (max 12)").'" value="'.$text_keywordspg.'">';
 				
 				//count keywords
 				//$PG_mainbody .= '<span><input type="text" name="counttotalwords" value="0"  onkeyup="cnt(document.uploadform.keywords,this)" class="readonlyinput" readonly />'._("keywords").'</span>';
@@ -196,22 +196,25 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 
 
 				<label for="auth_name">'._("Author").'</label>
-				<span class ="alert">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner").'</span><br />
+				<span class="alert alert-warning">'._("You can specify a different author for this episode, otherwise the default author will be the podcast owner").'</span><br />
 
-				
-				<input name="auth_name" type="text" id="auth_name" size="30" maxlength="255" placeholder="'._("Author's name").'" class="input-medium" value="'.$text_authornamepg.'" />
-
-				
-				<input name="auth_email" type="text" id="auth_email" size="30" maxlength="255" placeholder="'._("Author's email address").'" class="input-medium" value="'.$text_authoremailpg.'" />
+				<div class="form-inline">
+				  <div class="form-group">
+				    <input name="auth_name" type="text" class="form-control input-medium" id="auth_name" maxlength="255" placeholder="'._("Author's name").'" value="'.$text_authornamepg.'">
+				  </div>
+				  <div class="form-group">
+				    <input name="auth_email" type="text" class="form-control input-medium" id="auth_email" maxlength="255" placeholder="'._("Author's email address").'" value="'.$text_authoremailpg.'">
+				  </div>
+				</div>
 
 				</fieldset>
 				
 				
 				<br />
 				
-				<input type="submit" value="'._("Update Episode").'"  class="btn btn-success btn-large" onClick="showNotify(\''._("Updating").'\');">
+				<input type="submit" value="'._("Update Episode").'"  class="btn btn-default btn-success btn-lg btn-large" onClick="showNotify(\''._("Updating").'\');">
 				
-				<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-warning btn-medium" />
+				<input type="button" id="confirmdelete" value="'._("Delete Episode").'" class="btn btn-default btn-warning btn-medium" />
 				
 				
 			
@@ -232,7 +235,7 @@ $PG_mainbody .= '<input type="hidden" name="userfile" value="'.$_GET['name'].'">
 				</form>
 				</div>
 
-				';
+				</div>';
 
 				
 						}		

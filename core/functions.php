@@ -196,7 +196,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	$outputform =  '<p>'._("Date:").'</p>'; //title
 	
 	//day
-	$outputformDAY =  "<select class=\"input-small\" name=\"" . $inName . "Day\">\n";
+	$outputformDAY =  "<select class=\"input-sm input-small\" name=\"" . $inName . "Day\">\n";
 	for($currentDay=1; $currentDay <= 31; $currentDay++)
 	{
 	$outputformDAY .=  "<option value=\"$currentDay\"";
@@ -209,7 +209,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	$outputformDAY .=  "</select>";
 
 	//mese
-	$outputformMONTH =  "<select class=\"input-small\" name=\"" . $inName . "Month\">\n";
+	$outputformMONTH =  "<select class=\"input-sm input-small\" name=\"" . $inName . "Month\">\n";
 	for($currentMonth = 1; $currentMonth <= 12; $currentMonth++)
 	{
 	$outputformMONTH .=  "<option value=\"";
@@ -224,7 +224,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	$outputformMONTH .=  "</select>";
 
 	//anno
-	$outputformYEAR =  "<select class=\"input-small\" name=\"" . $inName . "Year\">\n";
+	$outputformYEAR =  "<select class=\"input-sm input-small\" name=\"" . $inName . "Year\">\n";
 	$startYear = date( "Y", $useDate);
 	for($currentYear = $startYear - 5; $currentYear <= $startYear+5;$currentYear++)
 	{
@@ -250,7 +250,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 
 
     //ore
-	$outputform .=  "<select class=\"input-small\" name=\"" . $inName . "Hour\">\n";
+	$outputform .=  "<select class=\"input-sm input-small\" name=\"" . $inName . "Hour\">\n";
 	for($currentHour = 0; $currentHour <= 23; $currentHour++)
 	{
 	$outputform .=  "<option value=\"";
@@ -265,7 +265,7 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	$outputform .=  "</select>";
 	
 	//minuti
-	$outputform .=  "<select class=\"input-small\" name=\"" . $inName . "Minute\">\n";
+	$outputform .=  "<select class=\"input-sm input-small\" name=\"" . $inName . "Minute\">\n";
 	for($currentMinute = 0; $currentMinute <= 59; $currentMinute++)
 	{
 	$outputform .=  "<option value=\"";
@@ -286,7 +286,6 @@ function useNewThemeEngine($theme_path) //$theme_path is defined in config.php
 	
 	}
 	$outputform .=  "</select>";
-
 	
 	return $outputform;
 
@@ -453,7 +452,7 @@ function showPodcastEpisodes($all,$category) {
 							//$resulting_episodes .= '<div class="row-fluid">';
 							$resulting_episodes .= '<div class="episode">';
 						}
-						$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
 					}
 					//If old Theme engine for <2.0 themes retro compatibility.
 					else { 
@@ -477,7 +476,7 @@ function showPodcastEpisodes($all,$category) {
 					
 					//// Edit/Delete button for logged user (i.e. admin)
 					if (isUserLogged()) { 
-						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
+						$resulting_episodes .= '<p><a class="btn btn-inverse btn-xs btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
 					
 					
@@ -572,7 +571,7 @@ function showPodcastEpisodes($all,$category) {
 	else $thisCurrentPage = 1;
 
 	if (isset($episodesCounter) AND $episodesCounter > $episodeperpage) {
-		$finalOutputEpisodes .= '<div class="row-fluid" style="clear:both;"><p>';
+		$finalOutputEpisodes .= '<div class="row-fluid row" style="clear:both;"><p>';
 		
 		//Print page index and links
 		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
@@ -623,8 +622,8 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					//// Start constructing episode HTML output
 					
 					//Theme engine PG version >= 2.0 row-fluid
-						$resulting_episodes .= '<div class="episode row-fluid">';
-						$resulting_episodes .= '<div class="span6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="episode row-fluid row">';
+						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
 			
 
 					////Title
@@ -645,7 +644,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					
 					//// Edit/Delete button for logged user (i.e. admin)
 					if (isUserLogged()) { 
-						$resulting_episodes .= '<p><a class="btn btn-inverse btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
+						$resulting_episodes .= '<p><a class="btn btn-inverse btn-xs btn-mini" href="?p=admin&amp;do=edit&amp;=episode&amp;name='.urlencode($thisPodcastEpisode[5]).'.'.$thisPodcastEpisode[3].'">'._("Edit / Delete").'</a></p>';
 					}
 
 
@@ -981,13 +980,13 @@ function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_di
 	$buttonsOutput = '<p>';
 	
 	//// Button "More" - in the permalink it is not show (no numeric var passed)
-	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn" href="?name='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
+	if (is_numeric($recent_count)) $buttonsOutput .= '<a class="btn btn-default" href="?name='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-search"></i> '._("More").'</a>&nbsp;&nbsp;';
 	
 	//// Button Watch (takes into account $enablestreaming from config.php)
 	$browserAudioVideoSupport = detectModernBrowser();
 	if ($enablestreaming == "yes" AND isItAvideo($podcast_filetype) == TRUE AND $browserAudioVideoSupport[1] == TRUE AND !detectMobileDevice()) {
 	//javascript:; is added as an empty link for href
-	$buttonsOutput .= '<a href="javascript:;" class="btn"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
+	$buttonsOutput .= '<a href="javascript:;" class="btn btn-default"  onclick="$(\'#videoPlayer'.$recent_count.'\').fadeToggle();$(this).css(\'font-weight\',\'bold\');"><i class="fa fa-youtube-play"></i> '._("Watch").'</a>&nbsp;&nbsp;';
 	}
 	
 	//// Button download
@@ -996,18 +995,18 @@ function showButtons($filenameWithoutExtension,$podcast_filetype,$url,$upload_di
 		//iOS device has been reported having some trouble downloading episode using the "download.php" forced download...
 		if (!detectMobileDevice()) {
 		//show button (FORCED) download using download.php
-		$buttonsOutput .= '<a class="btn" href="'.$url.'download.php?filename='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
+		$buttonsOutput .= '<a class="btn btn-default" href="'.$url.'download.php?filename='.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> '._("Download").'</a>';
 		} 
 		else { // SHOW BUTTON DOWNLOAD THAT links directly to the file (so no problems with PHP forcing headers)
 		//Write "watch" or "listen" in mobile devices.
 			if (isItAvideo($podcast_filetype) == TRUE) { 
-			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
+			$buttonsOutput .= '<a class="btn btn-default" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-youtube-play"></i> 	'._("Watch").'</a>';
 			}	
 			//if it's audio
 			else if ($podcast_filetype=="mp3" OR $podcast_filetype=="m4a"){
-			$buttonsOutput .= '<a class="btn" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
+			$buttonsOutput .= '<a class="btn btn-default" 			href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-play"></i> 	'._("Listen").'</a>';
 			}	else {
-			$buttonsOutput .= '<a class="btn" href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
+			$buttonsOutput .= '<a class="btn btn-default" href="'.$url.$upload_dir.urlencode($filenameWithoutExtension).'.'.$podcast_filetype.'"><i class="fa fa-download"></i> 	'._("Download").'</a>';
 			}
 		}
 	}

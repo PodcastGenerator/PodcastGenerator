@@ -46,7 +46,7 @@ else {
 
 		$PG_mainbody .= '
 		
-		 <div class="span5 importantSection">
+		 <div class="span5 col-md-5 importantSection">
 			<form action="?p=admin&amp;do=upload&amp;c=ok" method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform" onsubmit="return submitForm();">
 
 			<fieldset>
@@ -115,7 +115,7 @@ else {
 
 			
 			$PG_mainbody .= '
-			 <div class="span5">
+			 <div class="span5 col-md-5">
 
 				<fieldset>
 				<legend><b>'._("Extras").'</b></legend>

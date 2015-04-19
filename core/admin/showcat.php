@@ -55,7 +55,7 @@ if (file_exists("$absoluteurl"."categories.xml")) {
 */
 
 	$PG_mainbody .= '<label for="category">'._("Categories").' *</label>
-		<span class ="alert">'._("Select up to 3 categories for your episode...").'</span>';
+		<span class="alert alert-warning">'._("Select up to 3 categories for your episode...").'</span>';
 
 	/*
 		if ($preselectcat == "yes") {
@@ -63,7 +63,7 @@ if (file_exists("$absoluteurl"."categories.xml")) {
 	}
 	*/
 	
-	$PG_mainbody .= '<br /><select name="category[]"';
+	$PG_mainbody .= '<br /><select class="form-control" style="max-width:220px" name="category[]"';
 
 	if ($n<5) { //height of the category form
 		$PG_mainbody .= 'size="'.$n.'" ';
