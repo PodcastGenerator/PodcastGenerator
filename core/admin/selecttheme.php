@@ -76,7 +76,7 @@ if(isUserLogged()) {
 
 		$PG_mainbody .= '</select><br /><br />
 
-			<input type="submit" name="'._("Change").'" value="'._("Change").'" onClick="showNotify(\''._("Setting...").'\');">
+			<input type="submit" name="'._("Change").'" value="'._("Change").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Setting...").'\');">
 
 			';
 
