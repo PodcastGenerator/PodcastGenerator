@@ -1039,8 +1039,9 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 			include ("components/player/player.php");
 			$playersOutput .= ''.$showplayercode.'<br />'; 
 			}
-		*/
+	
 		}
+		*/
 	//// END AUDIO PLAYER (MP3)
 
 
