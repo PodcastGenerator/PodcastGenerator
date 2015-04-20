@@ -27,7 +27,7 @@ if (isset($_GET['p']) AND $_GET['p']=="admin" AND isset($_GET['do']) AND $_GET['
 	fclose($fp1);
 
 	$fp = fopen("$absoluteurl"."freebox-content.txt", "a+"); //testa xml
-	fwrite($fp, "$freeboxcontent"); 
+	fwrite($fp, $freeboxcontent); 
 	fclose($fp);
 
 	$PG_mainbody .= ""._("Your freebox has been updated!")."";
