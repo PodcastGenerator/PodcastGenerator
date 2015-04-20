@@ -132,13 +132,13 @@ if (isset($_GET['p'])) if ($_GET['p']=="admin") { // if admin is called from the
 			<div class="topseparator episodebox"> 
 			<h3>'._("Episodes").'</h3>
 			<ul> 
-			<li><a href="?p=admin&do=upload">'._("Upload New Episode").'</a></li>
-			<li><a href="?p=archive&cat=all&noextras">'._("Edit / Delete Episodes").'</a></li>';
+			<li><a href="?p=admin&amp;do=upload">'._("Upload New Episode").'</a></li>
+			<li><a href="?p=archive&amp;cat=all&amp;noextras">'._("Edit / Delete Episodes").'</a></li>';
 			
 			if ($categoriesenabled == "yes") { //if categories are enabled in config.php
 
 			$PG_mainbody .= '
-				<li><a href="?p=admin&do=categories">'._("Manage categories").'</a></li>';
+				<li><a href="?p=admin&amp;do=categories">'._("Manage categories").'</a></li>';
 		} // end if categories enabled
 			
 			$PG_mainbody .= '

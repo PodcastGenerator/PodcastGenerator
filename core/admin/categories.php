@@ -66,8 +66,10 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 			natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
 
 			foreach ($arr as $key => $val) {
-				//$PG_mainbody .= "cat[" . $key . "] = " . $val . "<br>";
+				//$PG_mainbody .= "cat[" . $key . "] = " . $val . "<br>";;
 
+				$val = ampersandEntitiesConvert($val); // convert ampersands
+				
 				$PG_mainbody .= '<li style="margin-bottom:10px;">' . $val . ' ';
 
 

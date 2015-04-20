@@ -41,6 +41,7 @@ if ($add != NULL and $add != "all") { /// 000
 	// create unique and depurated id from the description (using the function renamefilestrict)
 	
 	$id = avoidXSS(renamefilestrict($add)); //deletes also accents	
+	$id = ampersandRemove($id); //ampersand create issues
 	
 	if (strlen($id) < 3) {
 	$suffix = random_str(5);

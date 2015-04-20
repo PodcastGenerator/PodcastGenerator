@@ -60,12 +60,15 @@ function checkFileType ($filetype,$absoluteurl) {
 
 function renamefilestrict ($filetorename) { // strict rename policy (just characters from a to z and numbers... no accents and other characters). This kind of renaming can have problems with some languages (e.g. oriental)
 
-	$filetorename = preg_replace("[^a-z0-9._]", "", str_replace(" ", "_", str_replace("%20", "_", strtolower(remove_accents($filetorename)))));
+	$filetorename = remove_accents($filetorename);
+	$filetorename = strtolower($filetorename);
+	$filetorename =  str_replace(array(' ', '.', ',', 'amp'), "_",$filetorename); //amp is the remaining string from &amp;
+	// \w matches alphanumeric characters and underscores + dash added
+	$filetorename = preg_replace("/[^\w-]/", "", $filetorename);
 
 	return $filetorename;
 
 }
-
 
 ########
 
@@ -138,10 +141,23 @@ function iTunesSummaryLinks($content) {
 	$content = htmlspecialchars_decode($content);
 	$content = strip_tags($content,'<a>');
 	if (strpos($content,'</a>') !== false) $content = '<![CDATA['.$content.']]>'; //CDATA Field around hyperlinks
+	$content = ampersandEntitiesConvert($content);
 return $content;
 }
 
+// to ensure compatibility of iTunes:summary and long description (support <a> tags but ampersand should be entities)
+function ampersandEntitiesConvert ($content) {
+	$content = str_replace('&amp;', '&', $content); //double subsitution to avoid &&&amps;
+	$content = str_replace('&', '&amp;', $content);
+	return $content;
+}
 
+// used in the categores ID at the moment
+function ampersandRemove ($content) {
+	$content = str_replace('&amp;', 'and', $content);
+	$content = str_replace('&', 'and;', $content);
+	return $content;
+}
 
 ########
 
@@ -657,14 +673,14 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 							}
 
 					//// Show Long description if available, otherwise, short Description
-					if ($thisPodcastEpisodeData[2] != NULL) $resulting_episodes .= '<p>'.html_entity_decode($thisPodcastEpisodeData[2]).'</p>';
+					if ($thisPodcastEpisodeData[2] != NULL) $resulting_episodes .= '<div>'.ampersandEntitiesConvert(htmlspecialchars_decode($thisPodcastEpisodeData[2])).'</div>';
 					else $resulting_episodes .= '<p>'.$thisPodcastEpisodeData[1].'</p>';
 					
 					/// Categories 
 					$resulting_episodes .= '<p><em>'._("Categories").'</em> ';	
-					if ($thisPodcastEpisodeData[8] != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$thisPodcastEpisodeData[8] .'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[8]).'</a>';
-					if ($thisPodcastEpisodeData[9] != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$thisPodcastEpisodeData[9].'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[9]).'</a>';
-					if ($thisPodcastEpisodeData[10] != "") $resulting_episodes .= ' | <a href="?p=archive&cat='.$thisPodcastEpisodeData[10].'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[10]).'</a>';
+					if ($thisPodcastEpisodeData[8] != "") $resulting_episodes .= ' | <a href="?p=archive&amp;cat='.$thisPodcastEpisodeData[8] .'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[8]).'</a>';
+					if ($thisPodcastEpisodeData[9] != "") $resulting_episodes .= ' | <a href="?p=archive&amp;cat='.$thisPodcastEpisodeData[9].'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[9]).'</a>';
+					if ($thisPodcastEpisodeData[10] != "") $resulting_episodes .= ' | <a href="?p=archive&amp;cat='.$thisPodcastEpisodeData[10].'">'.categoryNameFromID($absoluteurl,$thisPodcastEpisodeData[10]).'</a>';
 					$resulting_episodes .= '</p>';
 				
 
@@ -747,7 +763,7 @@ function readPodcastCategories ($absoluteurl) {
 			//create array containing category id as seed and description for each id
 			$catID = $singlecategory->id[0];
 			$catDescription = $singlecategory->description[0];
-			$existingCategories["$catID"] = $catDescription;
+			$existingCategories["$catID"] = depurateContent($catDescription);
 				
 			$n++;
 			}
@@ -766,7 +782,7 @@ function categoryNameFromID ($absoluteurl,$id) {
 include ("$absoluteurl"."core/admin/readXMLcategories.php");
 	if (in_array($id, $arrid)) {
 	$positionInArray = array_search($id, $arrid);
-	$catName = $arr[$positionInArray];
+	$catName = ampersandEntitiesConvert($arr[$positionInArray]);
 	return $catName;
 	} else {
 	return;
@@ -1592,24 +1608,24 @@ function writeEpisodeXMLDB ($thisEpisodeData,$absoluteurl,$episodeFileAbsPath,$e
 		<categoriesPG>
 		<category1PG>';
 	if(isset($thisEpisodeData[4][0]) AND $thisEpisodeData[4][0]!= NULL){
-		$xmlfiletocreate .=	$thisEpisodeData[4][0];
+		$xmlfiletocreate .= depurateContent($thisEpisodeData[4][0]);
 	}
 	$xmlfiletocreate .='</category1PG>
 		<category2PG>';
 	if(isset($thisEpisodeData[4][1]) AND $thisEpisodeData[4][1]!= NULL){
-		$xmlfiletocreate .=	$thisEpisodeData[4][1];
+		$xmlfiletocreate .= depurateContent($thisEpisodeData[4][1]);
 	}
 	$xmlfiletocreate .='</category2PG>
 		<category3PG>';
 	if(isset($thisEpisodeData[4][2]) AND $thisEpisodeData[4][2]!= NULL){
-		$xmlfiletocreate .=	$thisEpisodeData[4][2];
+		$xmlfiletocreate .= depurateContent($thisEpisodeData[4][2]);
 	}
 	$xmlfiletocreate .='</category3PG>
 		</categoriesPG>
 		<keywordsPG><![CDATA['.$thisEpisodeData[5].']]></keywordsPG>
 		<explicitPG>'.$thisEpisodeData[6].'</explicitPG>
 		<authorPG>
-		<namePG>'.$thisEpisodeData[7].'</namePG>
+		<namePG>'.depurateContent($thisEpisodeData[7]).'</namePG>
 		<emailPG>'.$thisEpisodeData[8].'</emailPG>
 		</authorPG>';
 	
