@@ -1031,11 +1031,15 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 			</audio>';
 			$playersOutput .= ''.$showplayercode.'<br />'; 
 
-		} else { //if no support for HTML5, then flash player just for mp3
+		} 
+		// Flash Player disabled from version 2.5
+		/* 
+		else { //if no support for HTML5, then flash player just for mp3
 			if($podcast_filetype=="mp3") { //if not mobile
 			include ("components/player/player.php");
 			$playersOutput .= ''.$showplayercode.'<br />'; 
 			}
+		*/
 		}
 	//// END AUDIO PLAYER (MP3)
 
