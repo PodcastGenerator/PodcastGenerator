@@ -359,7 +359,8 @@ $listWithLanguages = languagesList($absoluteurl,TRUE);
 		}
 
 
-		$PG_mainbody .= '<br /><br /><input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Updating").'\');"></p><br />';
+		$PG_mainbody .= '<br /><br /><input type="submit" name="'._("Send").'" class="btn btn-success btn-small" value="'._("Send").'" onClick="showNotify(\''._("Updating").'\');"></p><br />
+		</form>';
 	}
 
 }

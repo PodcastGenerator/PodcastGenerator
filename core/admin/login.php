@@ -26,7 +26,7 @@ $loginform ='
 	<input type="text" id="user" name="user" size="20" maxlength="255"><br /><br />
 	<label for="password">'._("Password").'</label><br />
 	<input type="password" id="password" name="password" size="20" maxlength="255"><br /><br />
-	<input type="submit" value="'._("Log in").'" onClick="showNotify(\''._("Logging in...").'\');">';
+	<input type="submit" value="'._("Log in").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Logging in...").'\');">';
 
 
 // logout section
@@ -85,8 +85,8 @@ if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 				<div class="topseparator">
 				<b>'._("Username or password not valid. Please try again...").'</b>
 				'.$loginform.'
-				</div>
-				</form>';
+				</form>
+				</div>';
 
 
 		}else {
@@ -98,9 +98,8 @@ if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 				<div class="topseparator">
 				<b>'._("Log in").'</b>
 				'.$loginform.'
-				</div>
-
 				</form>
+				</div>
 				';
 
 		}
