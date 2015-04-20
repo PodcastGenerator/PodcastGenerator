@@ -132,7 +132,10 @@ function depurateContent($content) {
 	*/
 	
 	//NB. double_encode = FALSE Will not encode existing html entities
-	$content = htmlspecialchars($content,ENT_XML1,'UTF-8',FALSE); 	
+	$content = htmlspecialchars($content,ENT_COMPAT,'UTF-8',FALSE); 
+	
+	
+	
 	return $content;
 }
 
