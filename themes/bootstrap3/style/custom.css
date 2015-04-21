@@ -1,0 +1,58 @@
+/*  Custom CSS for 
+	Podcast Generator
+*/
+
+.episode_image {
+	width:80%;
+	margin-bottom:10px;
+	-webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.episode_title {
+padding-bottom:0.2em;
+}
+
+/* reviving the btn-inverse */
+.btn-inverse {
+  color: #ffffff;
+  background-color: #777777;
+  border-color: #777777;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  color: #ffffff;
+  background-color: #636363;
+  border-color: #585858;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  background-image: none;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.nav-header {
+	font-weight:bold;
+}
