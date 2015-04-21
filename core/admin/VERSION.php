@@ -10,6 +10,6 @@
 
 ### HERE IS DEFINED PODCASTGEN VERSION
 
-$podcastgen_version = "2.4";
+$podcastgen_version = "2.5";
 
 ?>
