@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 2.0 Beta\n"
-"POT-Creation-Date: 2015-04-21 09:05+0100\n"
-"PO-Revision-Date: 2015-04-21 09:05+0100\n"
+"POT-Creation-Date: 2015-04-21 09:37+0100\n"
+"PO-Revision-Date: 2015-04-21 09:39+0100\n"
 "Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
 "Language-Team: Alberto Betella <beta@yellowjug.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.6\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/PodcastGenerator\n"
@@ -20,9 +20,9 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
 msgid ""
-"This is possibly the first time you have entered this page: you haven't changed your "
-"podcast details yet. You are reccommended to provide a podcast title, description, "
-"etc... Try a different theme!"
+"This is possibly the first time you have entered this page: you haven't "
+"changed your podcast details yet. You are reccommended to provide a podcast "
+"title, description, etc... Try a different theme!"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
@@ -111,9 +111,8 @@ msgid "Change Podcast Generator Configuration"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:197
-#, fuzzy
 msgid "Podcast Generator News"
-msgstr "News Archive"
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:34
 msgid "Add / Delete categories"
@@ -299,9 +298,9 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:125
 msgid ""
-"The episodes of your podcast are automatically sorted by date. Changing the date of "
-"this episode will change its order in the podcast feed. If you specify a date in "
-"future, your episode won't be shown till then."
+"The episodes of your podcast are automatically sorted by date. Changing the "
+"date of this episode will change its order in the podcast feed. If you "
+"specify a date in future, your episode won't be shown till then."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:132
@@ -347,8 +346,8 @@ msgstr ""
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:199
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:157
 msgid ""
-"You can specify a different author for this episode, otherwise the default author "
-"will be the podcast owner"
+"You can specify a different author for this episode, otherwise the default "
+"author will be the podcast owner"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:203
@@ -509,9 +508,8 @@ msgid "iTunes cover art replaced successfully."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:62
-#, fuzzy
 msgid "Error: image NOT sent!"
-msgstr "Log in error"
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:69
 msgid "Image extension not valid. The image extension must end in .jpg or .png"
@@ -536,8 +534,9 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:116
 msgid ""
-"You can replace the current image with a new one. To be eligible for featuring on "
-"iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG."
+"You can replace the current image with a new one. To be eligible for "
+"featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art "
+"in JPG or PNG."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:118
@@ -555,9 +554,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:99
-#, fuzzy
 msgid "Log in"
-msgstr "Logged out."
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29
 msgid "Logging in..."
@@ -577,9 +575,8 @@ msgstr ""
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:58
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:69
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
-#, fuzzy
 msgid "Log out"
-msgstr "Logged out."
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:86
 msgid "Username or password not valid. Please try again..."
@@ -593,7 +590,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:19
 msgid ""
-"These information will be used both in this website and in the resulting RSS feed"
+"These information will be used both in this website and in the resulting RSS "
+"feed"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:32
@@ -690,9 +688,8 @@ msgid "Enable Audio and Video web player for supported files and browsers."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:130
-#, fuzzy
 msgid "Enable Social Networks Integration?"
-msgstr "Social Networks Integration Bar"
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:131
 msgid "Display Facebook, Twitter and Google+ buttons for each episode."
@@ -704,8 +701,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:153
 msgid ""
-"Freebox allows you to write freely what you wish, add links or text through a visual "
-"editor in the admin section."
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:172
@@ -717,14 +714,13 @@ msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:192
-#, fuzzy
 msgid "Enable news display?"
-msgstr "News Archive"
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:193
 msgid ""
-"Displays Podcast Generator latest news in the main administration page of your "
-"podcast."
+"Displays Podcast Generator latest news in the main administration page of "
+"your podcast."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:212
@@ -733,8 +729,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:213
 msgid ""
-"The uploaded episode files will be automatically renamed using just alphanumeric "
-"characters and the current date."
+"The uploaded episode files will be automatically renamed using just "
+"alphanumeric characters and the current date."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:232
@@ -793,8 +789,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:355
 msgid ""
-"By calling periodically Podcast Generator via a cron job, you can check automatically "
-"the media folder for new episodes and regenerate the RSS feed."
+"By calling periodically Podcast Generator via a cron job, you can check "
+"automatically the media folder for new episodes and regenerate the RSS feed."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:356
@@ -874,8 +870,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:150
 msgid ""
-"Date and time of the episode have been modified (this might change the order of your "
-"episodes in the podcast feed)."
+"Date and time of the episode have been modified (this might change the order "
+"of your episodes in the podcast feed)."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:162
@@ -908,7 +904,9 @@ msgid "File Renamed:"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:235
-msgid "The episode date has been set to future. This episode won't show up till then."
+msgid ""
+"The episode date has been set to future. This episode won't show up till "
+"then."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:252
@@ -922,9 +920,8 @@ msgstr ""
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:266
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:272
-#, fuzzy
 msgid "FILE ERROR"
-msgstr "Log in error"
+msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265
 msgid "Upload Failed"
@@ -932,8 +929,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:267
 msgid ""
-"You didn't assign writing permission to the media folder and the uploaded file can't "
-"be saved on the server."
+"You didn't assign writing permission to the media folder and the uploaded "
+"file can't be saved on the server."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:268
@@ -956,7 +953,8 @@ msgid "Podcast Generator web page"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:282
-msgid "is not a supported extension or your filename contains forbidden characters."
+msgid ""
+"is not a supported extension or your filename contains forbidden characters."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:25
@@ -1030,8 +1028,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:97
 msgid ""
-"The form below reports the current time and date of the server. If you specify a date "
-"in future, your episode won't be shown till then."
+"The form below reports the current time and date of the server. If you "
+"specify a date in future, your episode won't be shown till then."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:149
@@ -1222,8 +1220,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:153
 msgid ""
-"No matter the amount you donate, your contribution will support future development "
-"and bug fixes. Thank you!"
+"No matter the amount you donate, your contribution will support future "
+"development and bug fixes. Thank you!"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:165
@@ -1282,8 +1280,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:194
 msgid ""
-"No matter the amount, your contribution will support future development and bug "
-"fixes. Thank you!"
+"No matter the amount, your contribution will support future development and "
+"bug fixes. Thank you!"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:54
@@ -1343,8 +1341,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:28
 msgid ""
-"From the admin area you can customize this box. For instance you can add Widgets and "
-"Buttons"
+"From the admin area you can customize this box. For instance you can add "
+"Widgets and Buttons"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:33
@@ -1413,7 +1411,8 @@ msgid "Yes! Directories have the correct writing permissions"
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:98
-msgid "You can now proceed to the last step of Podcast Generator Installation..."
+msgid ""
+"You can now proceed to the last step of Podcast Generator Installation..."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:104
@@ -1434,7 +1433,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:125
 msgid ""
-"I tried to set writing permissions (chmod 777) to the directories listed above..."
+"I tried to set writing permissions (chmod 777) to the directories listed "
+"above..."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:132
@@ -1447,8 +1447,9 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:137
 msgid ""
-"...if not, you can set writing permission manually (via FTP, SSH, etc...) and make "
-"sure you have the privileges to change folder permissions on your server."
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) "
+"and make sure you have the privileges to change folder permissions on your "
+"server."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:17
@@ -1477,8 +1478,8 @@ msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:48
 msgid ""
-"You didn't enter a password or the two passwords do not correspond; please go back "
-"and type your password again..."
+"You didn't enter a password or the two passwords do not correspond; please "
+"go back and type your password again..."
 msgstr ""
 
 #: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:56
