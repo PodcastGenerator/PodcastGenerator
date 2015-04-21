@@ -641,7 +641,7 @@ function showSingleEpisode($singleEpisode,$justTitle) {
 					//// Start constructing episode HTML output
 					
 					//Theme engine PG version >= 2.0 row-fluid
-						$resulting_episodes .= '<div class="episode row-fluid row">';
+						$resulting_episodes .= '<div class="episode">';
 						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
 			
 
