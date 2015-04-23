@@ -750,7 +750,7 @@ function divideFilenameFromExtension ($filetodivide) {
 }
 
 
-function readPodcastCategories ($absoluteurl) {
+function readPodcastCategories($absoluteurl) {
 
 	if (file_exists($absoluteurl."categories.xml")) { //if categories file exists
 
@@ -765,8 +765,42 @@ function readPodcastCategories ($absoluteurl) {
 
 			//create array containing category id as seed and description for each id
 			$catID = $singlecategory->id[0];
-			$catDescription = $singlecategory->description[0];
+			if(isset($singlecategory->title[0])){
+				$catDescription = $singlecategory->title[0];
+			}else{
+				$catDescription = $singlecategory->description[0];
+			}
 			$existingCategories["$catID"] = depurateContent($catDescription);
+				
+			$n++;
+			}
+	}
+	return $existingCategories;	
+}		
+
+
+function readPodcastCategoriesWithDescription($absoluteurl) {
+
+	if (file_exists($absoluteurl."categories.xml")) { //if categories file exists
+
+	$parser = simplexml_load_file($absoluteurl."categories.xml",'SimpleXMLElement',LIBXML_NOCDATA);
+
+	//var_dump($parser); //Debug
+
+	$existingCategories = array();
+	
+			$n = 0;
+			foreach($parser->category as $singlecategory) {
+
+			//create array containing category id as seed and description for each id
+			$catID = $singlecategory->id[0];
+			$catTitle = $singlecategory->title[0];
+			$catDescription = $singlecategory->description[0];
+			$existingCategories["$catID"] = 
+					array(
+						"title" => depurateContent($catTitle),
+						"description" => depurateContent($catDescription)
+					);
 				
 			$n++;
 			}
@@ -1185,7 +1219,31 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	
 	//include functions and variables in config.php
 	include("core/includes.php"); 
-	
+
+
+	// override specific category variables
+	if(isset($category) && $category != null){
+
+		
+		$categories = readPodcastCategoriesWithDescription($absoluteurl);
+		
+		// check if category has title attribute
+		if(isset($categories[$category]['title'])){
+			$podcast_title = $categories[$category]['title'];
+			$podcast_description = $categories[$category]['description'];
+		}
+
+		// check for jpg or png of podcastcoverart
+		$podcastCoverArt_noext = $img_dir.'itunes_image_'.$category;
+		foreach (array(".jpg",".png") as $ext ) {
+			if (file_exists($absoluteurl . $podcastCoverArt_noext.$ext)) {
+				$podcastCoverArt = $url . $podcastCoverArt_noext.$ext;
+				break;
+			}
+		}
+
+	}
+
 
 	//// Set custom web url (shown in iTunes Store), if specified in config.php
 	if (isset($feed_iTunes_LINKS_Website) AND $feed_iTunes_LINKS_Website != NULL) {
@@ -1211,13 +1269,14 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	{ $feed_url = $feed_URL_replace; } 
 	else { $feed_url = $url.$feed_dir."feed.xml"; }
 	
-	//iTunes Cover art (jpg or png)
-	if (file_exists($absoluteurl.$img_dir.'itunes_image.jpg')) {
-		$podcastCoverArt = $url.$img_dir.'itunes_image.jpg';
-	} else if (file_exists($absoluteurl.$img_dir.'itunes_image.png')) {
-		$podcastCoverArt = $url.$img_dir.'itunes_image.png';
-	} else { $podcastCoverArt = ""; }
-	
+	if(!isset($podcastCoverArt)){
+		//iTunes Cover art (jpg or png)
+		if (file_exists($absoluteurl.$img_dir.'itunes_image.jpg')) {
+			$podcastCoverArt = $url.$img_dir.'itunes_image.jpg';
+		} else if (file_exists($absoluteurl.$img_dir.'itunes_image.png')) {
+			$podcastCoverArt = $url.$img_dir.'itunes_image.png';
+		} else { $podcastCoverArt = ""; }	
+	}
 
 	//RSS FEED HEADER
 	$head_feed = 
