@@ -50,7 +50,8 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 				<br /><br />
 				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
-				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
+				<input name="addcategory" placeholder="Title" id="addcategory" type="text" size="50" maxlength="255" ><br />
+				<input name="addcategoryDescription" placeholder="Description" id="addcategoryDescription" type="text" size="50" maxlength="255" ><br />
 
 				<input type="submit" value="'._("Add").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Adding...").'\');">
 				';
@@ -106,7 +107,8 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 				<br /><br />
 				<label for="addcategory"><b>'._("Add a new category:").'</b></label><br />
-				<input name="addcategory" id="addcategory" type="text" size="50" maxlength="255" ><br />
+				<input name="addcategory" placeholder="Title" id="addcategory" type="text" size="50" maxlength="255" ><br />
+				<input name="addcategoryDescription" placeholder="Description" id="addcategoryDescription" type="text" size="50" maxlength="255" ><br />
 
 				<input type="submit" value="'._("Add").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Adding...").'\');">
 				';

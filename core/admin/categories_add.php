@@ -22,6 +22,7 @@ $PG_mainbody .= '<h3>'._("Add a category").'</h3>';
 //include ("$absoluteurl"."core/admin/readXMLcategories.php");
 
 // define variables
+$arrtitle = NULL;
 $arrdesc = NULL;
 $arrid = NULL;
 $isduplicated = NULL;
@@ -35,6 +36,12 @@ $add = stripslashes($add);
 $add = htmlspecialchars($add);
 $add = depurateContent($add);
 
+$addDescription = $_POST['addcategoryDescription']; // variable
+
+// Depurate input
+$addDescription = stripslashes($addDescription);
+$addDescription = htmlspecialchars($addDescription);
+$addDescription = depurateContent($addDescription);
 if ($add != NULL and $add != "all") { /// 000
 
 
@@ -58,10 +65,11 @@ if ($add != NULL and $add != "all") { /// 000
 			// echo $singlecategory->description[0]->tagData;
 			// echo "<br><br>";
 
-			if ($id != $singlecategory->id[0] AND $add !=$singlecategory->description[0]) { // if the id of the new category is different from the ids already present in the XML file and if the description is different (e.g. the description is compared cause the id is generated with random characters in case of conversion from japanese, corean etc...
+			if ($id != $singlecategory->id[0] AND $add !=$singlecategory->title[0] OR $id != $singlecategory->id[0] AND $add !=$singlecategory->description[0]) { // if the id of the new category is different from the ids already present in the XML file and if the description is different (e.g. the description is compared cause the id is generated with random characters in case of conversion from japanese, corean etc...
 
-			// put into the array 
-			$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
+				// put into the array 
+				$arrtitle[] .= htmlspecialchars($singlecategory->title[0]); // Encode special characters
+				$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
 				$arrid[] .= $singlecategory->id[0];
 
 			}
@@ -75,10 +83,11 @@ if ($add != NULL and $add != "all") { /// 000
 			$n++; //increment count
 		}
 //	}
-
+		
 
 	if ($isduplicated != TRUE) { // 001 if new category doesn't exist yet
-	$arrdesc[] .= $add; //Description
+	$arrtitle[] .= $add; //Description
+	$arresc[] .= $addDescription; //Description
 
 	$arrid[] .= $id; // create Id
 
@@ -89,7 +98,7 @@ if ($add != NULL and $add != "all") { /// 000
 	$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
 	<PodcastGenerator>';
 
-	foreach ($arrdesc as $key => $val) {
+	foreach ($arrtitle as $key => $val) {
 		// echo "cat[" . $key . "] = " . $val . "<br>";
 		// echo $key."<br>";
 
@@ -98,7 +107,8 @@ if ($add != NULL and $add != "all") { /// 000
 		$xmlfiletocreate .= '
 			<category>
 			<id>'.$arrid[$key].'</id>
-			<description>'.$val.'</description>
+			<title>'.$val.'</title>
+			<description>'.$arrdesc[$key].'</description>
 			</category>';
 	}
 
