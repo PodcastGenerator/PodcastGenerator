@@ -590,7 +590,7 @@ function showPodcastEpisodes($all,$category) {
 	else $thisCurrentPage = 1;
 
 	if (isset($episodesCounter) AND $episodesCounter > $episodeperpage) {
-		$finalOutputEpisodes .= '<div class="row-fluid row" style="clear:both;"><p>';
+		$finalOutputEpisodes .= '<div style="clear:both;"><p>';
 		
 		//Print page index and links
 		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
