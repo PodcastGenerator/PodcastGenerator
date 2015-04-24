@@ -18,10 +18,15 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 
 if ($categoriesenabled == "yes") { /////// if categories are enabled in config.php
 
-
 	if (isset($_GET['do']) AND $_GET['do']=="categories" AND isset($_GET['action']) AND $_GET['action']=="add") { // if add a category
 
 		include ("$absoluteurl"."core/admin/categories_add.php");
+	}
+
+	elseif (isset($_GET['do']) AND $_GET['do']=="categories" AND isset($_GET['action']) AND $_GET['action']=="update") { // if add a category
+
+		// var_dump($_POST);
+		include ("$absoluteurl"."core/admin/categories_update.php");
 	}
 
 	elseif (isset($_GET['do']) AND $_GET['do']=="categories" AND isset($_GET['action']) AND $_GET['action']=="del") { // if remove a category
@@ -54,14 +59,14 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<input name="addcategoryDescription" placeholder="Description" id="addcategoryDescription" type="text" size="50" maxlength="255" ><br />
 
 				<input type="submit" value="'._("Add").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Adding...").'\');">
-				';
+				</form>';
 			#####
 
 
 
 
-			$PG_mainbody .= "<br /><br /><p><b>"._("Delete Categories")."</b> ($n)</p>";
-			$PG_mainbody .= "<ul>";
+			$PG_mainbody .= "<br /><br /><p><b>"._("Current Categories")."</b> ($n)</p>";
+			$PG_mainbody .= '<form action="?p=admin&amp;do=categories&amp;action=update" method="POST" enctype="multipart/form-data" name="editcategoryform" id="editcategoryform"><ul>';
 
 
 			natcasesort($arr); // Natcasesort orders more naturally and is different from "sort", which is case sensitive
@@ -71,12 +76,21 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 				$val = ampersandEntitiesConvert($val); // convert ampersands
 				
-				$PG_mainbody .= '<li style="margin-bottom:10px;">' . $val . ' ';
+				//
+
+
+				$PG_mainbody .= '<li style="margin-bottom:10px;">
+				<input name="categories['.$key.'][id]"type="hidden" value="' . $arrid[$key] . '">
+				<input name="categories['.$key.'][title]" placeholder="Title" type="text" value="' . $val . '" size="30" maxlength="255" ><br />
+				<input name="categories['.$key.'][description]" placeholder="Description" type="text" value="' . $arrdesc[$key] . '" size="30" maxlength="255" ><br />
+				';
 
 
 		//		$PG_mainbody .= '<a id="confirmdelete" href="javascript:Effect.toggle(\''.$arrid[$key].'\',\'appear\');">['._("Delete").']</a></li>';
 
-				$PG_mainbody .= '<input type="button" id="confirmdelete-'.$arrid[$key].'" value="'._("Delete Category").'" class="btn btn-warning btn-mini" /></li>';
+				$PG_mainbody .= '<input type="button" id="confirmdelete-'.$arrid[$key].'" value="'._("Delete Category").'" class="btn btn-warning btn-mini" />
+				
+				</li>';
 				
 
 				$PG_mainbody .= '<div id="confirmation-'.$arrid[$key].'" style="display:none;"><b>'._("Do you really want to permanently delete this category?").'</b><p>'._("Yes").' <input type="radio" name="'._("Delete").' '.$val.'" value="yes" onClick="showNotify(\''._("Deleting...").'\');location.href=\'?p=admin&do=categories&action=del&cat='.$arrid[$key].'\';"> &nbsp;&nbsp; '._("No").' <input type="radio" name="'._("No").'" value="no" onclick="$(\'#confirmation-'.$arrid[$key].'\').fadeOut();" />
@@ -91,11 +105,8 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 
 			}
 			$PG_mainbody .= '</ul>
-			
-	
-
-			
-			';
+			<input type="submit" value="'._("Save").'" onclick="showNotify(\'Updating...\');" class="btn btn-default">
+			</form>';
 
 		} //if xml categories file doesn't exist
 		else
@@ -111,7 +122,7 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 				<input name="addcategoryDescription" placeholder="Description" id="addcategoryDescription" type="text" size="50" maxlength="255" ><br />
 
 				<input type="submit" value="'._("Add").'" class="btn btn-success btn-small" onClick="showNotify(\''._("Adding...").'\');">
-				';
+				</form>';
 		}
 
 	} //001

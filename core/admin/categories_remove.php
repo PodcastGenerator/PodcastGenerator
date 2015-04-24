@@ -91,6 +91,12 @@ foreach ($arrdesc as $key => $val) {
 	//echo $key."<br>";
 
 
+	//migrate to having a title attribute
+	if(empty($arrtitle[$key])){
+		$arrtitle[$key] = $val;
+		$val = "";
+	}
+
 	// explanation of the following if:
 	// if the category in this foreach cicle is not the one user wants to delete, then include it in the XML file... (if it is THE ONE, it doesn't include.. It Ignores it, the result will be the exclusion from the new XML file generated)
 

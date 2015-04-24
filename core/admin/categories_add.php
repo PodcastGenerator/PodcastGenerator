@@ -42,6 +42,7 @@ $addDescription = $_POST['addcategoryDescription']; // variable
 $addDescription = stripslashes($addDescription);
 $addDescription = htmlspecialchars($addDescription);
 $addDescription = depurateContent($addDescription);
+
 if ($add != NULL and $add != "all") { /// 000
 
 
@@ -87,7 +88,7 @@ if ($add != NULL and $add != "all") { /// 000
 
 	if ($isduplicated != TRUE) { // 001 if new category doesn't exist yet
 	$arrtitle[] .= $add; //Description
-	$arresc[] .= $addDescription; //Description
+	$arrdesc[] .= $addDescription; //Description
 
 	$arrid[] .= $id; // create Id
 
@@ -102,7 +103,11 @@ if ($add != NULL and $add != "all") { /// 000
 		// echo "cat[" . $key . "] = " . $val . "<br>";
 		// echo $key."<br>";
 
-
+		//migrate to having a title attribute
+		if(empty($val)){
+			$val = $arrdesc[$key];
+			$arrdesc[$key] = "";
+		}
 
 		$xmlfiletocreate .= '
 			<category>
