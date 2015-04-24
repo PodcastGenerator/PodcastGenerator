@@ -37,10 +37,18 @@ if (file_exists("$absoluteurl"."categories.xml")) {
 
 			//create array containing category id as seed and description for each id
 			$catID = $singlecategory->id[0];
-			$catDescription = $singlecategory->description[0];
+
+			if(isset($singlecategory->title[0]) && !empty($singlecategory->title[0])){
+				$catTitle = $singlecategory->title[0];
+				$catDescription = $singlecategory->description[0];
+			}else{
+				$catTitle = $singlecategory->description[0];
+				$catDescription = "";
+			}
 		//	$existingCategories[$catID] = $catDescription;
 			
-			$arr[] .= $catDescription;
+			$arr[] .= $catTitle;
+			$arrdesc[] .= $catDescription;
 			$arrid[] .= $catID;
 			
 			$n++;

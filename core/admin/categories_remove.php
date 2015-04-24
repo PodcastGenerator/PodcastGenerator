@@ -53,7 +53,8 @@ if (isset($parser->category)) {
 			// put into the array
 			//(yeah yeah I know I'm using arrays instead of XML commands... but I thought this solution, and it works...). If you have a more elegant solution (e.g. PHP native XML commands), please re-code this file and send your work to me under GPL license: beta@yellowjug.com (PS. your solution should work perfectly either with PHP 4 and 5, otherwise I won't be able to include it in the new releases of podcast generator)
 
-				$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
+			$arrtitle[] .= htmlspecialchars($singlecategory->title[0]); // Encode special characters
+			$arrdesc[] .= htmlspecialchars($singlecategory->description[0]); // Encode special characters
 			$arrid[] .= $singlecategory->id[0];
 
 		}
@@ -72,6 +73,7 @@ if (isset($parser->category)) {
 if ($existsinthefeed == "yes") { // 001 if the category already exists in the XML file proceed to delete (I use an "Ignore process")
 
 $arrdesc[] .= $rem; //Description
+$arrtitle[] .= $rem; //Description
 
 $PG_mainbody .= '<p><b>'._("Category deleted").'</b></p><p><a href="?p=admin&do=categories">'._("Back to category management").'</a>';
 
@@ -89,6 +91,12 @@ foreach ($arrdesc as $key => $val) {
 	//echo $key."<br>";
 
 
+	//migrate to having a title attribute
+	if(empty($arrtitle[$key])){
+		$arrtitle[$key] = $val;
+		$val = "";
+	}
+
 	// explanation of the following if:
 	// if the category in this foreach cicle is not the one user wants to delete, then include it in the XML file... (if it is THE ONE, it doesn't include.. It Ignores it, the result will be the exclusion from the new XML file generated)
 
@@ -97,6 +105,7 @@ foreach ($arrdesc as $key => $val) {
 		$xmlfiletocreate .= '
 			<category>
 			<id>'.$arrid[$key].'</id>
+			<title>'.$arrtitle[$key].'</title>
 			<description>'.$val.'</description>
 			</category>';
 	} ////
