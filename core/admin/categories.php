@@ -23,9 +23,8 @@ if ($categoriesenabled == "yes") { /////// if categories are enabled in config.p
 		include ("$absoluteurl"."core/admin/categories_add.php");
 	}
 
-	elseif (isset($_GET['do']) AND $_GET['do']=="categories" AND isset($_GET['action']) AND $_GET['action']=="update") { // if add a category
+	elseif (isset($_GET['do']) AND $_GET['do']=="categories" AND isset($_GET['action']) AND $_GET['action']=="update") { // if updates all categories
 
-		// var_dump($_POST);
 		include ("$absoluteurl"."core/admin/categories_update.php");
 	}
 

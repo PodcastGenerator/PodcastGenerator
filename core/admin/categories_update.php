@@ -15,7 +15,6 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 // check if user is logged in
 if (!isUserLogged()) { exit; }
 
-// var_dump($_POST['categories']);
 $categories = array();
 foreach ($_POST['categories'] as $key => $category) {
 	
@@ -34,10 +33,7 @@ foreach ($_POST['categories'] as $key => $category) {
 	$categories[$id] = array("id" => $id,"title" => $title, "description" => $description );
 }
 
-var_dump($categories);
-// exit;
-
-if (true) { /// 000
+if (!empty($categories)) { /// 000
 
 
 	$xmlfiletocreate = '<?xml version="1.0" encoding="'.$feed_encoding.'"?>
