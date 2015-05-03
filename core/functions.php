@@ -142,10 +142,22 @@ function depurateContent($content) {
 //this is just for CDATA fields such as <itunes:summary> (long description in PG)
 function iTunesSummaryLinks($content) {
 	$content = htmlspecialchars_decode($content);
-	$content = strip_tags($content,'<a>');
-	if (strpos($content,'</a>') !== false) $content = '<![CDATA['.$content.']]>'; //CDATA Field around hyperlinks
+	//tags that work in iTunes and iOS podcast app
+	$allowedTags = array("<a>","<p>","<ul>","<ol>","<li>"); 
+	$content = strip_tags($content,implode($allowedTags)); //implode = array to string
+	$tagExists = false;
+		foreach ($allowedTags as $singleTag)
+		{
+			//substr removes last character from tags, so attributes are accepted, e.g. <a> and <a href="">
+		    if (strpos($content, substr($singleTag, 0, -1)) === true) $tagExists = true;
+		}
+	if ($tagExists = true) {
+		$content = trim(preg_replace('/\s+/', ' ', $content)); //trim new lines
+		$content = '<![CDATA['.$content.']]>'; //CDATA Field
+	}
+	
 	$content = ampersandEntitiesConvert($content);
-return $content;
+	return $content;
 }
 
 // to ensure compatibility of iTunes:summary and long description (support <a> tags but ampersand should be entities)
