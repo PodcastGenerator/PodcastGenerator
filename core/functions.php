@@ -1241,7 +1241,10 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 				break;
 			}
 		}
-
+		//// Define feed filename
+		$feedfilename = $absoluteurl.$feed_dir."feed_"."$category".".xml";
+	}else{
+		$feedfilename = $absoluteurl.$feed_dir."feed.xml";
 	}
 
 
@@ -1250,9 +1253,6 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 	$podcastWebHomePage = $feed_iTunes_LINKS_Website; } 
 	else { $podcastWebHomePage = $url; }
 	
-
-	//// Define feed filename
-	$feedfilename = $absoluteurl.$feed_dir."feed.xml";
 
 	//// Rewrite the language var to adhere to ISO639
 	$feed_language = languageISO639($feed_language);
