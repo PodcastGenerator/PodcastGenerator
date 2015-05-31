@@ -30,7 +30,7 @@ if(isUserLogged()) { //if logged
 	//New vars introduced in 2.2 This avoid a notice when upgrade
 	if (!isset($feed_iTunes_LINKS_Website)) $feed_iTunes_LINKS_Website = "";
 	if (!isset($feed_URL_replace)) $feed_URL_replace = "";
-	
+	if (!isset($feed_iTunes_URL_replace)) $feed_iTunes_URL_replace = "";
 	
 	if (!isset($first_installation)) $first_installation = time();
 	//If not existing, generate 8 character key for this PG installation
@@ -114,6 +114,8 @@ if(isUserLogged()) { //if logged
 	$feed_iTunes_LINKS_Website = "'.$feed_iTunes_LINKS_Website.'";
 
 	$feed_URL_replace = "'.$feed_URL_replace.'";
+	
+	$feed_iTunes_URL_replace = "'.$feed_iTunes_URL_replace.'";
 
 	$podcast_title = "'.$podcast_title.'";
 
