@@ -115,14 +115,18 @@ $theme_file_contents = str_replace("-----PG_COMMONCSSLOAD-----", $commonCSSurl, 
 
 
 
-# SET PODCAST FEED URL
-
+// SET PODCAST FEED custom or default URL
 if (isset($feed_URL_replace) AND $feed_URL_replace != "") {
 $podcastFeedURL = $feed_URL_replace;
 $podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL); 
 } else {
 $podcastFeedURL = $url.$feed_dir.'feed.xml';
 $podcastFeedURLiTunes = str_replace("http://", "itpc://", $podcastFeedURL);
+}
+
+// If a particular URL is specified for iTunes (e.g. direct link to store) use it
+if (isset($feed_iTunes_URL_replace) AND $feed_iTunes_URL_replace != "") {
+$podcastFeedURLiTunes = $feed_iTunes_URL_replace;
 }
 
 $rightboxcontent = '<div class="rightbox">
