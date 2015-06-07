@@ -1,0 +1,21 @@
+/*  Custom CSS for 
+	Podcast Generator
+*/
+
+body {
+  padding-top: 75px;
+}
+
+.episode_image {
+	width:80%;
+	margin-bottom:10px;
+	-webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+#bs-example-navbar-collapse-1 > .navbar-right > li {
+  display: inline-flex !important;
+}
+
+
