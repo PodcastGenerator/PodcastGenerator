@@ -588,12 +588,65 @@ function showPodcastEpisodes($all,$category) {
 	} 
 
 
-	////Pagination (and links to pages)
+  ////Pagination (and links to pages)
 
-	//Calculate total number of pages
-	if (isset($episodesCounter)) $numberOfPages = ($episodesCounter / $episodeperpage);
-	if (isset($numberOfPages) AND $numberOfPages>1) $numberOfPages = ceil($numberOfPages); //round to the next integer
-	//echo $numberOfPages; // Debug
+  // Pagination helper
+  function pagin($episodesCounter, $episodeperpage, $url, $thisCurrentPage) {
+
+    $pagesToShow = ceil($episodesCounter / $episodeperpage);
+    $pagination = '<nav id="pagination-wrapper">';
+
+    // condition for the FIRST button
+    if($pagesToShow > 1) {
+      $pagination .= '<ul class="pagination">';
+      if(($thisCurrentPage-1) <= 1) {
+        $prev = 1;
+      } else {
+        $prev = $thisCurrentPage - 1;
+      }
+      $pagination .= '<li><a href="'.$url.(1).'"><i class="fa fa-step-backward"></i></a></li>';
+      $pagination .= '<li><a href="'.$url.$prev.'"><i class="fa fa-caret-left"></i></a></li>';
+
+      // condition for the pagination size
+      if($thisCurrentPage <= 4 && $thisCurrentPage != 0) {
+        if($pagesToShow == 1 || $pagesToShow == 2 || $pagesToShow == 3 || $pagesToShow == 4 || $pagesToShow == 5 ) {
+          $total_pages = $pagesToShow;
+          $i = 1;
+        } else {
+          $total_pages = 5;
+          $i = 1;
+        }
+      } else if($thisCurrentPage >= 4 && $thisCurrentPage < ($pagesToShow - 2)) {
+        $total_pages = $thisCurrentPage + 2;
+        $i = $thisCurrentPage - 2;
+      } else if($thisCurrentPage >= ($pagesToShow - 2)) {
+        $total_pages = $pagesToShow;
+        $i = $pagesToShow - 4;
+      }
+
+      for($i; $i <= $total_pages; $i++) {
+        if($thisCurrentPage == $i) {
+          $active = 'class="active"';
+        } else {
+          $active = '';
+        }
+        $pagination .= '<li '.$active.'><a title="'.$i.'"  href="'.$url.$i .'">' . $i.'</a></li>';
+      }
+
+     //condition for LAST button
+      if(($thisCurrentPage + 1) > $pagesToShow) {
+        $next = $thisCurrentPage;
+      } else {
+        $next = $thisCurrentPage + 1;
+      }
+      $pagination .= '<li><a href="'.$url.$next.'"><i class="fa fa-caret-right"></i></a></li>';
+      $pagination .= '<li><a href="'.$url.$pagesToShow.'"><i class="fa fa-step-forward"></i></a></li>';
+      $pagination .= '</ul>';
+    }
+    $pagination .= '</nav>';
+    return $pagination;
+  }
+
 
 	if (isset($_GET['p'])) $pageURLforPagination = avoidXSS(($_GET['p']));
 	else $pageURLforPagination = "home";
@@ -601,18 +654,23 @@ function showPodcastEpisodes($all,$category) {
 	if  (isset($_GET["pgn"])) $thisCurrentPage = $_GET["pgn"];
 	else $thisCurrentPage = 1;
 
-	if (isset($episodesCounter) AND $episodesCounter > $episodeperpage) {
-		$finalOutputEpisodes .= '<div style="clear:both;"><p>';
-		
-		//Print page index and links
-		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
-			if ($thisCurrentPage == $onePage) {
-				$finalOutputEpisodes .= $onePage.' | ';		
-			} else
-				$finalOutputEpisodes .= '<a href="?p='.$pageURLforPagination.$categoryURLforPagination.'&amp;pgn='.$onePage.'">'.$onePage.'</a> | ';		
-			}
-		$finalOutputEpisodes .= '</p></div>';
-		}
+	$url = '?p='.$pageURLforPagination.$categoryURLforPagination.'&amp;pgn=';
+
+    // Prepare pagination
+    if (isset($episodesCounter)) {
+        if (isset($category)) {
+            $counter = $CounterEpisodesInCategory;
+        } else {
+            $counter = $episodesCounter;
+        }
+
+        if (isset($counter) && $counter > $episodeperpage) {
+            // echo $counter.'; '.$episodeperpage.'; '.$url.'; '.$thisCurrentPage; // Debug
+            $finalOutputEpisodes .= '<nav id="pagination-wrapper">';
+            $finalOutputEpisodes .= pagin($counter, $episodeperpage, $url, $thisCurrentPage);
+            $finalOutputEpisodes .= '</nav>';
+        }
+    }
 
 	//Finally, return all the episodes to output on the web page
 	return $finalOutputEpisodes;
