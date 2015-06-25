@@ -1753,7 +1753,7 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 			else $thisEpisodeShortDesc = _("Podcast Episode");
 			
 			// Use GETID3 Title and Artist to fill title and description automatically
-			$thisEpisodeData = array($thisEpisodeTitle,$thisEpisodeShortDesc,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+			$thisEpisodeData = array($thisEpisodeTitle,$thisEpisodeShortDesc,NULL,NULL,NULL,NULL,$explicit_podcast,NULL,NULL);
 
 			$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.xml';
 			//// Creating xml file associated to episode
