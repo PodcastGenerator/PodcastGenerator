@@ -22,8 +22,8 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 	$ext = $_GET['ext'];
 		
 		// Remove slashes to avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
-		$file = str_replace(array('/', '\\'), '', $file);
-		$ext = str_replace(array('/', '\\'), '', $ext);
+		$file = basename($file);
+		$ext = basename($ext);
 
 
 	if (file_exists("$absoluteurl$upload_dir$file.$ext")) {
