@@ -20,9 +20,10 @@ if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 	$file = $_GET['file']; 
 	$ext = $_GET['ext'];
-	
-		$file = str_replace("/", "", $file); // Replace / in the filename.. avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
-		$ext = str_replace("/", "", $ext);
+		
+		// Remove slashes to avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
+		$file = str_replace(array('/', '\\'), '', $file);
+		$ext = str_replace(array('/', '\\'), '', $ext);
 
 
 	if (file_exists("$absoluteurl$upload_dir$file.$ext")) {
