@@ -19,11 +19,11 @@ if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_RE
 if (isset($_GET['file']) AND $_GET['file']!=NULL) {
 
 	$file = $_GET['file']; 
-	
-		$file = str_replace("/", "", $file); // Replace / in the filename.. avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
-
 	$ext = $_GET['ext'];
-
+		
+		// Remove slashes to avoid deleting of file outside media directory - AVOID EXPLOIT with register globals set to ON
+		$file = basename($file);
+		$ext = basename($ext);
 
 
 	if (file_exists("$absoluteurl$upload_dir$file.$ext")) {
