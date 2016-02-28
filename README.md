@@ -10,7 +10,7 @@ Visit the **official website** for more information, documentation, demo and to 
 http://podcastgen.sourceforge.net
 
 
-PG has been around for a while. The project has been hosted on SourceForge [since 2006] (https://sourceforge.net/p/podcastgen/news/2006/04/first-release/), it has been downloaded [hundreds of thousands
+PG has been around for more than a decade. The project has been hosted on SourceForge [since 2006] (https://sourceforge.net/p/podcastgen/news/2006/04/first-release/), it has been downloaded [hundreds of thousands
 times from Sourceforge servers](https://sourceforge.net/projects/podcastgen/files/stats/timeline?dates=2006-03-28+to+2020-01-01) and is also offered as a preinstalled package (through software bundles such as Softaculous) 
 by some of the world's leading Hosting and NAS providers.
 
