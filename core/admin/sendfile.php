@@ -4,12 +4,12 @@
 #
 # Created by Alberto Betella
 # http://podcastgen.sourceforge.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
-if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; } 
+if (isset($_REQUEST['GLOBALS']) OR isset($_REQUEST['absoluteurl']) OR isset($_REQUEST['amilogged']) OR isset($_REQUEST['theme_path'])) { exit; }
 ########### End
 
 
@@ -80,7 +80,7 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 
 	else {
 		$PG_mainbody .= "<p>"._("Long Description present")."</p>";
-		$long_description = str_replace("&nbsp;", " ", $long_description); 
+		$long_description = str_replace("&nbsp;", " ", $long_description);
 	}
 
 	##############
@@ -90,7 +90,7 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 
 	# $PG_mainbody .= "$keywords<br>"; /debug
 
-	if (isset($ituneskeywords) AND $ituneskeywords != NULL) { 
+	if (isset($ituneskeywords) AND $ituneskeywords != NULL) {
 		$PG_mainbody .= "<p>"._("iTunes Keywords:")." $ituneskeywords</p>";
 
 		$singlekeyword=explode(",",$keywords); // divide filename from extension
@@ -115,7 +115,7 @@ if (isset($_FILES['userfile']) AND $_FILES['userfile']!=NULL AND isset($_POST['t
 		$auth_name = NULL; //ignore author
 		$auth_email = NULL; //ignore email
 
-	} 
+	}
 
 
 }
@@ -152,7 +152,7 @@ if (isset($fileData[0])){ //avoids php notice if array [0] doesn't exist
 $podcast_filetype=$fileData[0];
 
 }else {
-	$podcast_filetype=NULL;	
+	$podcast_filetype=NULL;
 }
 
 if ($fileExtension==strtoupper($podcast_filetype)) $podcast_filetype = strtoupper($podcast_filetype); //accept also uppercase extension
@@ -190,15 +190,15 @@ else $filenamechanged = $filenameWithoutExtension;
 
 
 	$uploadFile = $upload_dir . $filenamechanged.".".$fileExtension ;
+	$uploadFileXML = $upload_dir . $filenamechanged.".xml" ;
 
-
-	while (file_exists("$uploadFile")) { //cicle: if file already exists add an incremental suffix
+	while (file_exists("$uploadFile") OR file_exists("$uploadFileXML")) { //if file already exists add an incremental suffix
 		$filesuffix++;
 
 		# $PG_mainbody .= "$filesuffix"; //debug
 
 		$uploadFile = $absoluteurl . $upload_dir . $filenamechanged . $filesuffix.".".$fileExtension ;
-
+		$uploadFileXML = $absoluteurl . $upload_dir . $filenamechanged . $filesuffix.".xml" ;
 	}
 
 
@@ -217,7 +217,7 @@ else $filenamechanged = $filenameWithoutExtension;
 
 			//print_r($_POST);
 
-			if (isset($_POST['Day']) AND isset($_POST['Month']) AND isset($_POST['Year']) AND isset($_POST['Hour']) AND isset($_POST['Minute'])) { 
+			if (isset($_POST['Day']) AND isset($_POST['Month']) AND isset($_POST['Year']) AND isset($_POST['Hour']) AND isset($_POST['Minute'])) {
 
 
 			$filefullpath = $absoluteurl.$upload_dir.$filenamechanged.$filesuffix.'.'.$fileExtension;
@@ -228,7 +228,7 @@ else $filenamechanged = $filenameWithoutExtension;
 
 	//	echo $oracambiata;
 
-			if ($oracambiata > time() AND checkdate($_POST['Month'],$_POST['Day'],$_POST['Year']) == TRUE) { 
+			if ($oracambiata > time() AND checkdate($_POST['Month'],$_POST['Day'],$_POST['Year']) == TRUE) {
 
 			touch($filefullpath,$oracambiata);
 
@@ -236,14 +236,14 @@ else $filenamechanged = $filenameWithoutExtension;
 
 			}
 
-			} 					
+			}
 
-			# END CHANGE DATE						
+			# END CHANGE DATE
 			############################################
 
 
 		$thisEpisodeData = array($title,$description,$long_description,$image_new_name,$category,$keywords,$explicit,$auth_name,$auth_email);
-		
+
 		$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$filenamechanged.$filesuffix.'.xml'; // extension = XML
 
 		//// Creating xml file associated to episode
@@ -255,7 +255,7 @@ else $filenamechanged = $filenameWithoutExtension;
 		//include ("$absoluteurl"."core/admin/feedgenerate.php"); //(re)generate XML feed
 		$episodesCounter = generatePodcastFeed(TRUE,NULL,FALSE); //Output in file
 		##########
-		
+
 		$PG_mainbody .= "<p><a href=\"$url\">"._("Go to the homepage")."</a> - <a href=\"?p=admin&do=upload\">"._("Upload another episode")."</a></p>";
 
 	}
@@ -297,7 +297,7 @@ else { //if long description is more than max characters allowed
 #### end of long desc lenght checking
 
 
-} //001 
+} //001
 else { //if file, description or title not present...
 	$PG_mainbody .= '<p>'._("Error: No file, description or title present").'
 		<br />
