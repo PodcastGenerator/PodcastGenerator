@@ -1,0 +1,1476 @@
+#
+# Translators:
+# Josh Kim <joshkkim@gmail.com>, 2014-2015
+# Josh Kim <joshkkim@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator\n"
+"POT-Creation-Date: 2015-04-21 09:37+0100\n"
+"PO-Revision-Date: 2016-02-28 11:20+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Korean (Korea) (http://www.transifex.com/albertobeta/podcast-generator/language/ko_KR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko_KR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/PodcastGenerator\n"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:125
+msgid "Welcome"
+msgstr "환영합니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
+msgid ""
+"This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are "
+"reccommended to provide a podcast title, description, etc... Try a different theme!"
+msgstr ""
+"이 페이지에 처음 방문하신 듯 합니다: 아직 팟캐스트 세부 정보를 변경하지 않았습니다. 팟캐스트 제목, 설명 등을 제공할 "
+"것을 권장합니다. 다른 테마를 시도해보세요!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
+msgid "Start now..."
+msgstr "지금 시작..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:133
+msgid "Episodes"
+msgstr "에피소드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:135
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr "새 에피소드 업로드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:136
+msgid "Edit / Delete Episodes"
+msgstr "에피소드 편집/삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:141
+msgid "Manage categories"
+msgstr "카테고리 관리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:145
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:21
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr "FTP 기능"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:145
+msgid "(Auto Indexing)"
+msgstr "(자동 색인)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:146
+msgid "Manually regenerate RSS feed"
+msgstr "수동으로 RSS 피드 생성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:154
+msgid "Themes and aspect"
+msgstr "테마 및 모양"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:156
+msgid "Change Theme"
+msgstr "테마 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:159
+msgid "Customize your FreeBox"
+msgstr "자유글상자 구성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:166
+msgid "iTunes Store Settings"
+msgstr "iTunes Store 설정"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:168
+msgid "Change iTunes Cover Art"
+msgstr "iTunes 표지 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:169
+msgid "Select or change iTunes Categories"
+msgstr "iTunes 카테고리 선택 또는 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:170
+msgid "Submit your podcast to the iTunes Store"
+msgstr "팟캐스트를 iTunes Store에 제출"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:175
+msgid "Your podcast details"
+msgstr "팟캐스트 세부 정보"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:177
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "팟캐스트 세부 정보 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:178
+msgid "Validate this feed with w3c validation service"
+msgstr "w3c 검증 서비스를 통해 이 피드를 검증"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:183
+msgid "Podcast Generator Configuration"
+msgstr "Podcast Generator 구성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:185
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "Podcast Generator 구성 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:197
+msgid "Podcast Generator News"
+msgstr "Podcast Generator 뉴스"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "카테고리 추가/삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
+msgstr "힌트: 카테고리가 필요없습니까?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:35
+msgid "Disable them"
+msgstr "비활성화시킴"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:52
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:108
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:120
+msgid "Add a new category:"
+msgstr "새로 추가할 카테고리:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:111
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:123
+msgid "Add"
+msgstr "추가"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:55
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:111
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:123
+msgid "Adding..."
+msgstr "추가하는 중..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:62
+msgid "Delete Categories"
+msgstr "카테고리 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:78
+msgid "Delete Category"
+msgstr "카테고리 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Do you really want to permanently delete this category?"
+msgstr "정말로 이 카테고리를 영구적으로 삭제하시겠습니까?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:180
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:193
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:110
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:132
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:154
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:174
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:194
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:214
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:151
+msgid "Yes"
+msgstr "예"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Delete"
+msgstr "삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Deleting..."
+msgstr "삭제하는 중..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:186
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:199
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:116
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:138
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:160
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:180
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:200
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:220
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:113
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:152
+msgid "No"
+msgstr "아니오"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:102
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:114
+msgid "Categories file doesn't exist or empty..."
+msgstr "카테고리 파일이 존재하지 않거나 비어있습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:119
+msgid "Categories disabled"
+msgstr "카테고리가 비활성화되었습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "카테고리 추가"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:117
+msgid "New category:"
+msgstr "새로운 카테고리:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:119
+msgid "Category added!"
+msgstr "카테고리가 추가됨!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:119
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:122
+msgid "Back to category management"
+msgstr "카테고리 관리로 돌아가기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:125
+msgid "The category you are trying to add already exists..."
+msgstr "추가하려는 카테고리가 이미 존재함..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:127
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:139
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:73
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:84
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:205
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:275
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:284
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:294
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:305
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:58
+msgid "Back"
+msgstr "뒤로"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:136
+msgid "Please write a category name..."
+msgstr "카테고리 이름을 입력해주세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "카테고리 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:76
+msgid "Category deleted"
+msgstr "카테고리가 삭제되었습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:121
+msgid "The category doesn't exist..."
+msgstr "카테고리가 존재하지 않음.."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "이(가) 삭제되었습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:55
+msgid "Delete other episodes"
+msgstr "다른 에피소드 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:58
+msgid "No file to delete..."
+msgstr "삭제할 파일이 없습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr "팟캐스트 편집"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:73
+msgid "Edit or Delete Episode"
+msgstr "에피소드 편집 또는 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:83
+msgid "Main information (required):"
+msgstr "기본 정보 (필수):"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:92
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:66
+msgid "Title"
+msgstr "제목"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:95
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:69
+msgid "Short Description"
+msgstr "간략 설명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:101
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:75
+msgid "characters left"
+msgstr "개의 문자가 남음"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:124
+msgid "Change the episode date"
+msgstr "에피소드 날짜 변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:125
+msgid ""
+"The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its "
+"order in the podcast feed. If you specify a date in future, your episode won't be shown till then."
+msgstr ""
+"팟캐스트의 에피소드는 날짜 기준으로 자동 정렬됩니다. 이 에피소드의 날짜를 변경할 경우, 팟캐스트 피드의 순서를 변경합"
+"니다. 향후 날짜로 지정할 경우, 에피소드가 그 날짜 이전에 나타나지 않습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:132
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:103
+msgid "Fields marked with * are required."
+msgstr "*로 표시된 필드는 필수 입력사항입니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:150
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:121
+msgid "Extras"
+msgstr "추가 설정"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:152
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:123
+msgid "Long Description"
+msgstr "상세 설명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:167
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:138
+msgid "iTunes Keywords"
+msgstr "iTunes 키워드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:169
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:140
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr "키워드1, 키워드2 (최대 12개)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:178
+msgid "Explicit content?"
+msgstr "노골적인 내용 포함?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:179
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr "이 에피소드가 노골적인 언어 또는 성인 콘텐츠를 포함할 경우 '예'를 선택하세요."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:198
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:156
+msgid "Author"
+msgstr "작성자"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:199
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:157
+msgid "You can specify a different author for this episode, otherwise the default author will be the podcast owner"
+msgstr "이 에피소드에 대해 다른 작성자를 지정할 수 있습니다. 그렇지 않으면 기본 작성자가 팟캐스트 소유자로 설정됩니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:203
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:93
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:149
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:160
+msgid "Author's name"
+msgstr "작성자명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:206
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:152
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:163
+msgid "Author's email address"
+msgstr "작성자의 이메일 주소"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:215
+msgid "Update Episode"
+msgstr "에피소드 업데이트"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:215
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:214
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:362
+msgid "Updating"
+msgstr "업데이트 중"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:217
+msgid "Delete Episode"
+msgstr "에피소드 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:224
+msgid "Do you really want to permanently delete this episode?"
+msgstr "정말로 이 에피소드를 영구적으로 삭제하시겠습니까?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:226
+msgid "YES, I am sure"
+msgstr "예, 확실합니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:23
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:43
+msgid "Generate XML feed"
+msgstr "XML 피드 생성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:24
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:44
+msgid "Manually regenerate xml feed"
+msgstr "수동으로 xml 피드 생성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:34
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "계속"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:34
+msgid "Regenerating Feed"
+msgstr "피드를 재생성하는 중"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:57
+msgid "Feed XML generated!"
+msgstr "피드 XML이 생성되었습니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:61
+msgid "All the episodes have been indexed in the feed"
+msgstr "모든 에피소드가 피드에 색인되었습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:61
+msgid "You can limit the feed to the last episodes"
+msgstr "피드를 최근 에피소드로 제한할 수 있습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:66
+msgid "episode(s) in the feed"
+msgstr "개의 에피소드가 피드에 존재함"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:24
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "자유글상자"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "자유글상자가 업데이트되었습니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr "(HTML 태그를 허용함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:118
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:214
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:362
+msgid "Send"
+msgstr "보내기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:63
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:159
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "설정..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "디렉터리에 수동으로 업로드한 팟캐스트를 검색하는 중:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "검색하는 중..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:44
+msgid "Scan finished:"
+msgstr "스캔이 완료되었습니다:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:44
+msgid "new episode(s) added."
+msgstr "개의 새 에피소드가 추가됨."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:46
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:183
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:259
+msgid "Go to the homepage"
+msgstr "홈페이지로 가기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:22
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr "iTunes 카테고리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "iTunes 카테고리 선택 또는 변경 (iTunes Store)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "iTunes 카테고리가 성공적으로 변경되었습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr "iTunes 카테고리 1"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr "iTunes 카테고리 2"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr "iTunes 카테고리 3"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:23
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:112
+msgid "iTunes cover art"
+msgstr "iTunes 표지"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr "iTunes Store에서 표시될 팟캐스트 표지"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:51
+msgid "iTunes cover art replaced successfully."
+msgstr "iTunes 표지가 성공적으로 변경되었습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:62
+msgid "Error: image NOT sent!"
+msgstr "오류: 이미지를 보내지 못했습니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:69
+msgid "Image extension not valid. The image extension must end in .jpg or .png"
+msgstr "이미지 확장자가 잘못되었습니다. 이미지 확장자는 .jpg 또는 .png로 끝나야 합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:81
+msgid "No file selected. Please go back and select an image."
+msgstr "파일을 선택하지 않았습니다. 이전으로 돌아가서 이미지를 선택해주세요."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:107
+msgid "Current image:"
+msgstr "현재 이미지:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:108
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:114
+msgid "iTunes image"
+msgstr "iTunes 이미지"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:114
+msgid "New image:"
+msgstr "새로운 이미지:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:116
+msgid ""
+"You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have "
+"1400 x 1400 pixel cover art in JPG or PNG."
+msgstr ""
+"현재 이미지를 새로운 이미지로 대체할 수 있습니다. iTunes Store에 소개되기 위해서는 팟캐스트가 JPG 또는 PNG 형식의 "
+"1400 x 1400 픽셀의 표지여야 합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:118
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:170
+msgid "Uploading..."
+msgstr "업로드하는 중..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:25
+msgid "User"
+msgstr "사용자"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:27
+msgid "Password"
+msgstr "암호"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:99
+msgid "Log in"
+msgstr "로그인"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29
+msgid "Logging in..."
+msgstr "로그인 중입니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:55
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:69
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
+msgid "Hello"
+msgstr "안녕하세요"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr "관리자화면으로 돌아가기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:57
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:58
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:69
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
+msgid "Log out"
+msgstr "로그아웃"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:86
+msgid "Username or password not valid. Please try again..."
+msgstr "사용자명 또는 암호가 잘못되었습니다. 다시 시도해주세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/pgRSSnews.php:47
+msgid "Error: It's not possible to get Podcast Generator news feed. News will be automatically disabled."
+msgstr "오류: Podcast Generator 뉴스 피드를 가져올 수 없습니다. 뉴스가 자동으로 비활성화됩니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:19
+msgid "These information will be used both in this website and in the resulting RSS feed"
+msgstr "이 정보는 웹사이트 및 생성될 RSS 피드에 사용됩니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:137
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:99
+msgid "Podcast Title"
+msgstr "팟캐스트 제목"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:32
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "이(가) 비어있습니다...(무시함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:44
+msgid "Podcast Subtitle"
+msgstr "팟캐스트 부제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "팟캐스트 설명이 너무 길어 무시합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+msgid "Max:"
+msgstr "최대:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+msgid "characters"
+msgstr "개의 문자"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+msgid "Actual Length"
+msgstr "실제 길이"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:66
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:143
+msgid "Podcast Description"
+msgstr "팟캐스트 설명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:146
+msgid "Copyright Notice"
+msgstr "저작권 공고"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "작성자의 이메일 주소가 존재하지 않거나 잘못되었습니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(무시함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:124
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:93
+msgid "The information has been successfully sent."
+msgstr "정보를 성공적으로 보냈습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:140
+msgid "Podcast Subtitle or Slogan"
+msgstr "팟캐스트 부제 또는 구호"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:163
+msgid "Feed language"
+msgstr "피드 언어"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:164
+msgid "Main language of your episodes"
+msgstr "에피소드의 기본 언어"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:191
+msgid "Explicit Podcast?"
+msgstr "노골적인 팟캐스트?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:192
+msgid "Does your podcast contain explicit language?"
+msgstr "팟캐스트가 노골적인 언어를 포함합니까?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:205
+msgid "No, it's clean"
+msgstr "아니오, 깨끗합니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:108
+msgid "Enable Audio and Video Player?"
+msgstr "오디오 및 비디오 재생기 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:109
+msgid "Enable Audio and Video web player for supported files and browsers."
+msgstr "지원하는 파일 및 브라우저에 따라 오디오 및 비디오 웹 재생기를 활성화합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:130
+msgid "Enable Social Networks Integration?"
+msgstr "소셜 네트워크 통합 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:131
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr "각 에피소드마다 페이스북, 트위터 및 구글+ 버튼을 표시합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:152
+msgid "Enable Freebox?"
+msgstr "자유글상자 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:153
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section."
+msgstr ""
+"자유글상자는 관리자 섹션에서 비쥬얼 편집기를 통해 원하는 글을 자유롭게 쓰거나, 링크 또는 텍스트를 추가할 수 있도록 합"
+"니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:172
+msgid "Enable categories?"
+msgstr "카테고리 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:173
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "카테고리 기능을 활성화하여 팟캐스트에 대한 주제별 목록을 생성합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:192
+msgid "Enable news display?"
+msgstr "뉴스 화면 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:193
+msgid "Displays Podcast Generator latest news in the main administration page of your podcast."
+msgstr "Podcast Generator에 대한 최신 소식을 팟캐스트의 메인 관리자 페이지에 표시합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:212
+msgid "Enable strict episode renaming policy?"
+msgstr "엄격한 에피소드명 변경 정책 활성화?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:213
+msgid ""
+"The uploaded episode files will be automatically renamed using just alphanumeric characters and the current date."
+msgstr "업로드된 에피소드 파일명은 영숫자 문자와 현재날짜로 자동으로 변경됩니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:232
+msgid "How many recent podcasts in the home page?"
+msgstr "홈페이지에 표시될 최근 팟캐스트 개수는?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:267
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "팟캐스트 피드에 색인될 에피소드 개수는?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:290
+msgid "All"
+msgstr "모두"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:301
+msgid "Select date format"
+msgstr "날짜 형식 선택"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Day"
+msgstr "일"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Month"
+msgstr "월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Year"
+msgstr "년"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:326
+msgid "Podcast Generator Language"
+msgstr "Podcast Generator 언어"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:327
+msgid "Choose among available languages *"
+msgstr "사용 가능한 언어 중에서 선택하세요 *"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:349
+msgid "Looking for another language?"
+msgstr "다른 언어를 찾고 계십니까?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:354
+msgid "Use cron to auto index episodes"
+msgstr "에피소드 자동 색인을 위해 cron 사용"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:355
+msgid "This feature is enabled."
+msgstr "이 기능이 활성화되었습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:355
+msgid ""
+"By calling periodically Podcast Generator via a cron job, you can check automatically the media folder for new "
+"episodes and regenerate the RSS feed."
+msgstr ""
+"cron 작업을 통해 Podcast Generator를 주기적으로 불러오면 자동으로 media 폴더에서 새로운 에피소드를 확인하고 RSS 피드"
+"를 재생성합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:356
+msgid "Copy and paste the URL below (including your unique key):"
+msgstr "URL을 아래에 복사하여 붙여넣으세요 (고유 키 포함):"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:358
+msgid "Visit the documentation for more information on how to setup a cron job"
+msgstr "cron 작업을 설정하는 방법에 대한 추가적인 정보를 얻으시려면 문서를 방문하세요"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:19
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "테마 선택"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "테마가 변경됨!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:34
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "다른 테마를 시도해보세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "이미 이 테마를 사용하고 있습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "Podcast 테마 및 모양을 변경하세요:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "변경"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "힌트: 나만의 테마를 생성하는 방법?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "문서 참조"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:77
+msgid "Long description not present; I'll use short description..."
+msgstr "상세 설명이 존재하지 않음; 간략 설명을 사용하겠습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:82
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:82
+msgid "Long Description present"
+msgstr "상세 설명이 존재함"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:94
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:94
+msgid "iTunes Keywords:"
+msgstr "iTunes 키워드:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:99
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:99
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "iTunes에 12개 이상의 키워드를 제출하였습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:109
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:109
+msgid "Author specified for this episode..."
+msgstr "이 에피소드에 지정된 작성자..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:113
+msgid "Author's email address not present or not valid."
+msgstr "작성자의 이메일 주소가 존재하지 않거나 잘못되었습니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:113
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:113
+msgid "Author will be IGNORED"
+msgstr "작성자를 무시함"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:150
+msgid ""
+"Date and time of the episode have been modified (this might change the order of your episodes in the podcast feed)."
+msgstr "에피소드의 날짜 및 시간이 변경되었습니다(이로 인해 팟캐스트 피드의 에피소드 순서가 변경될 수 있습니다)."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:162
+msgid "Processing changes..."
+msgstr "변경 사항을 처리하는 중.."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:183
+msgid "Edit other episodes"
+msgstr "다른 에피소드 편집"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:202
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:302
+msgid "Error: No file, description or title present"
+msgstr "오류: 파일, 설명 또는 제목이 존재하지 않음"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:77
+msgid "Long description not present (the short description will be used)"
+msgstr "상세 설명이 존재하지 않음 (간략 설명을 사용함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:136
+msgid "Processing episode..."
+msgstr "에피소드를 처리하는 중..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:138
+msgid "Original filename:"
+msgstr "원본 파일명:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:205
+msgid "File Renamed:"
+msgstr "파일 이름이 변경됨:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:235
+msgid "The episode date has been set to future. This episode won't show up till then."
+msgstr "에피소드 날짜가 향후로 설정되었습니다. 이 에피소드는 지정된 날짜 이전에 나타나지 않습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:252
+msgid "File sent"
+msgstr "파일을 보냈음"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:259
+msgid "Upload another episode"
+msgstr "다른 에피소드 업로드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:266
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:272
+msgid "FILE ERROR"
+msgstr "파일 오류"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265
+msgid "Upload Failed"
+msgstr "업로드를 실패하였음"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:267
+msgid "You didn't assign writing permission to the media folder and the uploaded file can't be saved on the server."
+msgstr "media 폴더에 쓰기 권한을 할당하지 않았으며 업로드된 파일을 서버에 저장할 수 없습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:268
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr "파일이 서버의 업로드 최대 파일크기를 초과했습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:270
+msgid "Useful information for debugging:"
+msgstr "디버깅을 위한 유용한 정보:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:270
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:22
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:167
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:206
+msgid "Your server configuration"
+msgstr "서버 구성"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:272
+msgid "Podcast Generator web page"
+msgstr "Podcast Generator 웹 페이지"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:282
+msgid "is not a supported extension or your filename contains forbidden characters."
+msgstr "이(가) 지원되지 않는 확장자이거나 파일명에 금지된 문자가 포함되어 있습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "운영체제:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "PHP 버전:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr "GETTEXT 확장자: 설치되지 않음 (php-gettext를 사용함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr "GETTEXT 확장자: 설치됨"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr "(양호함)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:54
+msgid "Max upload size set in the script (config.php):"
+msgstr "스크립트(config.php)에서 설정된 최대 업로드 크기:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "Your server configuration allows you to upload files up to"
+msgstr "서버구성이 파일 업로드 작업에 허용한 최대 크기:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:63
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:522
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:697
+msgid "MB"
+msgstr "MB"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:57
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:683
+msgid "Categories"
+msgstr "카테고리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:58
+msgid "Select up to 3 categories for your episode..."
+msgstr "에피소드에 대한 최대 3개의 카테고리를 선택하세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:75
+msgid "Maximum number of selectable category per single episode: "
+msgstr "단일 에피소드 당 선택 가능한 카테고리의 최대 개수:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:21
+msgid "Upload Podcast"
+msgstr "팟캐스트 업로드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:53
+msgid "Main information"
+msgstr "기본 정보"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:58
+msgid "File"
+msgstr "파일"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "- If you need to upload larger files you can use the"
+msgstr "- 더 큰 파일을 업로드해야 할 경우 다음을 사용할 수 있습니다: "
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:96
+msgid "Publication Date"
+msgstr "발행일"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:97
+msgid ""
+"The form below reports the current time and date of the server. If you specify a date in future, your episode won't "
+"be shown till then."
+msgstr ""
+"아래 양식은 서버의 현재 시간 및 날짜를 보고합니다. 향후 날짜로 지정할 경우, 그 날짜 이전에 에피소드를 표시하지 않습니"
+"다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:149
+msgid "Explicit content"
+msgstr "노골적인 내용"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:150
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr "이 에피소드가 노골적인 언어 또는 성인 콘텐츠를 포함할 경우 '예'를 선택하세요."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:170
+msgid "Upload Episode"
+msgstr "에피소드 업로드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Jan"
+msgstr "1월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Feb"
+msgstr "2월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Mar"
+msgstr "3월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Apr"
+msgstr "4월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "May"
+msgstr "5월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Jun"
+msgstr "6월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Jul"
+msgstr "7월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Aug"
+msgstr "8월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Sep"
+msgstr "9월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Oct"
+msgstr "10월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Nov"
+msgstr "11월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Dec"
+msgstr "12월"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:215
+msgid "Date:"
+msgstr "날짜:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:268
+msgid "Time:"
+msgstr "시간:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:408
+msgid "No episodes here yet..."
+msgstr "아직 여기에 에피소드가 없습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:498
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:666
+msgid "Edit / Delete"
+msgstr "편집 / 삭제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:521
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:696
+msgid "Filetype:"
+msgstr "파일 유형:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:522
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:697
+msgid "Size:"
+msgstr "크기:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:525
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:700
+msgid "Duration:"
+msgstr "재생시간:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:525
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:700
+msgid "m"
+msgstr "m"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:528
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:703
+msgid "kbps"
+msgstr "kbps"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:528
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:703
+msgid "Hz"
+msgstr "Hz"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1002
+msgid "More"
+msgstr "더 보기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1008
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1022
+msgid "Watch"
+msgstr "시청"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1017
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1028
+msgid "Download"
+msgstr "다운로드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1026
+msgid "Listen"
+msgstr "듣기"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1049
+msgid "Your browser does not support the audio player"
+msgstr "브라우저가 오디오 재생기를 지원하지 않습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1074
+msgid "Your browser does not support the video player"
+msgstr "브라우저가 비디오 재생기를 지원하지 않습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1741
+msgid "Podcast Episode"
+msgstr "팟캐스트 에피소드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:37
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:265
+msgid "Admin"
+msgstr "관리자"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:41
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:18
+msgid "Failed to open theme file"
+msgstr "테마 파일 열지 못했습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:80
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:273
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:280
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:70
+msgid "All Episodes"
+msgstr "모든 에피소드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:130
+msgid "feed"
+msgstr "피드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:131
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:132
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:171
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:172
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "피드 링크를 복사하여 해당 프로그램에 붙여넣으세요"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:134
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:174
+msgid "Subscribe to this podcast with iTunes"
+msgstr "이 팟캐스트를 iTunes로 구독"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:151
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:192
+msgid "Support Podcast Generator"
+msgstr "Podcast Generator 지원"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:152
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:193
+msgid "if you like Podcast Generator please consider"
+msgstr "Podcast Generator를 좋아하신다면"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:152
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:193
+msgid " making a donation"
+msgstr " 기부를 고려해주세요"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:153
+msgid "No matter the amount you donate, your contribution will support future development and bug fixes. Thank you!"
+msgstr "귀하의 기여는 기부금액에 관계없이 향후 개발 및 오류 해결을 지원합니다. 감사합니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:165
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:204
+msgid "Help"
+msgstr "도움말"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:168
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:207
+msgid "Check for updates"
+msgstr "업데이트 확인"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:169
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:208
+msgid "Read Documentation"
+msgstr "문서 "
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:170
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:209
+msgid "Get Support"
+msgstr "지원 "
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:234
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:261
+msgid "Home"
+msgstr "홈"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:251
+msgid "Archive"
+msgstr "보관함"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269
+msgid "Powered by"
+msgstr "서비스 제공자: "
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:22
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269
+msgid ", an open source podcast publishing solution"
+msgstr ", 오픈 소스 팟캐스트 출판 솔루션"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:47
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:263
+msgid "Podcast Archive"
+msgstr "팟캐스트 보관함"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:170
+msgid "feed:"
+msgstr "피드:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:194
+msgid "No matter the amount, your contribution will support future development and bug fixes. Thank you!"
+msgstr "귀하의 기여는 기부금액에 관계없이 향후 개발 및 오류 해결을 지원합니다. 감사합니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:54
+msgid "Select a category:"
+msgstr "카테고리 선택:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:95
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:116
+msgid "Go to episodes archive"
+msgstr "에피소드 보관함으로 이동"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:44
+msgid "new episodes added"
+msgstr "새로운 에피소드가 추가됨"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:71
+msgid "RSS feed regenerated:"
+msgstr "RSS 피드가 재생성됨:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:71
+msgid "episodes"
+msgstr "에피소드"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:81
+msgid "Execution time (s):"
+msgstr "실행 횟수:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "Config.php 파일이 이미 존재합니다!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:17
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr "설치를 진행하기 전에 이 파일을 삭제해주세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:101
+msgid "Subtitle"
+msgstr "부제"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:103
+msgid "A little description of your podcast."
+msgstr "팟캐스트에 대한 간략한 설명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:117
+msgid "Your copyright notice"
+msgstr "저작권 공고"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "자유글상자 내용이 이미 존재합니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr "여기는 자유글상자입니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:28
+msgid "From the admin area you can customize this box. For instance you can add Widgets and Buttons"
+msgstr "관리자 페이지에서 이 상자를 구성할 수 있습니다. 예를 들어 위젯 및 버튼을 추가할 수 있습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr "자유글상자가 필요없을 경우 비활성화를 선택할 수 있습니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr "카테고리 파일이 이미 존재합니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr "미분류됨"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:22
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:32
+msgid "Setup"
+msgstr "설정"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:50
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:54
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:56
+msgid "Step"
+msgstr "단계"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:51
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr "안녕하세요? 팟캐스트 설정이 3단계 밖에 남지 않았습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "지그 폴더 권한을 확인하는 중"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "미디어 디렉터리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:49
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "(은)는 쓰기가 가능합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:54
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "(은)는 쓰기가 불가능합니다."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:67
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:72
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Images 디렉터리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:85
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:90
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "루트 디렉터리"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr "예! 디렉터리에 올바른 쓰기 권한이 설정되어 있습니다"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:98
+msgid "You can now proceed to the last step of Podcast Generator Installation..."
+msgstr "이제 Podcast Generator 설치의 마지막 단계로 진행할 수 있습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:104
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step1.php:59
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:30
+msgid "Next"
+msgstr "다음"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "쓰기 권한 설정을 시도해보세요:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:113
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:117
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "다음에 쓰기 권한을 설정하는 중:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:125
+msgid "I tried to set writing permissions (chmod 777) to the directories listed above..."
+msgstr "위에 열거된 디렉터리에 쓰기 권한(chmod 777) 설정을 시도해봤습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "이 페이지를 새로 고침"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr "그리고 스크립트 설정을 진행할 수 있는지 확인하세요."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:137
+msgid ""
+"...if not, you can set writing permission manually (via FTP, SSH, etc...) and make sure you have the privileges to "
+"change folder permissions on your server."
+msgstr ""
+"...그렇지 않다면 (FTP, SSH 등을 통해) 쓰기 권한을 수동으로 설정할 수 있으며 서버 상의 폴더 권한을 변경할 수 있는 특권"
+"이 있는지를 확인하세요."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr "관리자 페이지에 대한 사용자명 및 암호를 선택하세요:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:18
+msgid "Username"
+msgstr "사용자명"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:22
+msgid "Password:"
+msgstr "암호:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr "암호를 재입력해주세요:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr "설치가 성공적으로 완료되었습니다..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr "팟캐스트로 바로가기!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:48
+msgid ""
+"You didn't enter a password or the two passwords do not correspond; please go back and type your password again..."
+msgstr "암호를 입력하지 않았거나 두 암호가 일치하지 않습니다; 이전으로 돌아가서 암호를 다시 입력하세요..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:56
+msgid "You didn't enter the username..."
+msgstr "사용자명을 입력하지 않았습니다..."

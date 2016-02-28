@@ -1,0 +1,1299 @@
+#
+# Translators:
+# Fabio Seixas Vaz <tecnoshopp.aevolution@gmail.com>, 2015
+# Mauricio Zanetti <mmz@team.inter.net>, 2015
+# Thiago Mielgo <thiago.mielgo@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator\n"
+"POT-Creation-Date: 2015-04-21 09:37+0100\n"
+"PO-Revision-Date: 2016-02-28 11:23+0100\n"
+"Last-Translator: Alberto Betella <beta@yellowjug.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/albertobeta/podcast-generator/language/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SearchPath-0: /Users/alberto/Sites/podcastgen/PodcastGenerator\n"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:125
+msgid "Welcome"
+msgstr "Bem-vindo!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
+msgid "This is possibly the first time you have entered this page: you haven't changed your podcast details yet. You are reccommended to provide a podcast title, description, etc... Try a different theme!"
+msgstr "Essa é provavelmente a primeira vez que você acessa esta página: você ainda não mudou os detalhes de seu podcast. Recomendamos que você insira título, descrição, etc..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:126
+msgid "Start now..."
+msgstr "Começar já..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:133
+msgid "Episodes"
+msgstr "Episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:135 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:45
+msgid "Upload New Episode"
+msgstr "Carregar Novo Episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:136
+msgid "Edit / Delete Episodes"
+msgstr "Editar / Apagar Episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:141
+msgid "Manage categories"
+msgstr "Gerenciar categorias"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:145 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:21 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "FTP Feature"
+msgstr "FTP"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:145
+msgid "(Auto Indexing)"
+msgstr "(Indexação Automática)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:146
+msgid "Manually regenerate RSS feed"
+msgstr "Recriar o feed RSS manualmente"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:154
+msgid "Themes and aspect"
+msgstr "Temas e aspectos"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:156
+msgid "Change Theme"
+msgstr "Mudar tema"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:159
+msgid "Customize your FreeBox"
+msgstr "Customize sua Freebox"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:166
+msgid "iTunes Store Settings"
+msgstr "Configurações da iTunes Store"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:168
+msgid "Change iTunes Cover Art"
+msgstr "Mudar a capa do iTunes (Cover Art)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:169
+msgid "Select or change iTunes Categories"
+msgstr "Selecione ou modifique as categorias do iTunes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:170
+msgid "Submit your podcast to the iTunes Store"
+msgstr "Submeter ao iTunes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:175
+msgid "Your podcast details"
+msgstr "Detalhes de seu podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:177 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:18
+msgid "Change your podcast details"
+msgstr "Mudar detalhes do podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:178
+msgid "Validate this feed with w3c validation service"
+msgstr "Validar este feed"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:183
+msgid "Podcast Generator Configuration"
+msgstr "Configurações da conta"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:185 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:18
+msgid "Change Podcast Generator Configuration"
+msgstr "Mudar configurações da sua conta"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/admin.php:197
+msgid "Podcast Generator News"
+msgstr "Novidades"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:34
+msgid "Add / Delete categories"
+msgstr "Adicionar / Apagar categorias"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:35
+msgid "Hint: You don't need categories?"
+msgstr "Dica: Será que você não precisa de categorias?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:35
+msgid "Disable them"
+msgstr "Desabilite"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:52 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:108 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:120
+msgid "Add a new category:"
+msgstr "Adicionar nova categoria:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:55 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:111 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:123
+msgid "Add"
+msgstr "Adicionar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:55 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:111 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:123
+msgid "Adding..."
+msgstr "Adicionando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:62
+msgid "Delete Categories"
+msgstr "Apagar Categorias"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:78
+msgid "Delete Category"
+msgstr "Apagar categoria"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Do you really want to permanently delete this category?"
+msgstr "Deseja apagar permanentemente esta categoria?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:180 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:193
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:110 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:132
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:154 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:174
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:194 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:214 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:151
+msgid "Yes"
+msgstr "Sim"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Delete"
+msgstr "Apagar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81
+msgid "Deleting..."
+msgstr "Apagando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:81 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:186 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:199
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:116 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:138
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:160 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:180
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:200 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:220 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:113
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:152
+msgid "No"
+msgstr "Não"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:102 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:114
+msgid "Categories file doesn't exist or empty..."
+msgstr "Arquivo de categorias não existe ou está vazio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories.php:119
+msgid "Categories disabled"
+msgstr "Categorias desabilitadas"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:19
+msgid "Add a category"
+msgstr "Adicionar categoria"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:117
+msgid "New category:"
+msgstr "Nova categoria:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:119
+msgid "Category added!"
+msgstr "Categoria adicionada!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:119 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:76
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:122
+msgid "Back to category management"
+msgstr "Voltar ao gerenciamento de categorias"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:125
+msgid "The category you are trying to add already exists..."
+msgstr "Essa categoria já existe"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:127 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:139
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:73 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:84 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:194
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:205 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:275 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:284
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:294 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:305 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:50
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:58
+msgid "Back"
+msgstr "Voltar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_add.php:136
+msgid "Please write a category name..."
+msgstr "Por favor escreva um nome para a categoria..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:22
+msgid "Delete a category"
+msgstr "Apagar categoria"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:76
+msgid "Category deleted"
+msgstr "Categoria apagada"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/categories_remove.php:121
+msgid "The category doesn't exist..."
+msgstr "Categoria inexistente"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:31
+msgid "has been deleted"
+msgstr "foi apagado(a)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:55
+msgid "Delete other episodes"
+msgstr "Apagar outros episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/delete.php:58
+msgid "No file to delete..."
+msgstr "Nenhum arquivo para apagar..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:21
+msgid "Edit podcast"
+msgstr "Editar episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:73
+msgid "Edit or Delete Episode"
+msgstr "Editar ou Apagar Episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:83
+msgid "Main information (required):"
+msgstr "Informação principal (necessário):"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:92 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:66
+msgid "Title"
+msgstr "Título"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:95 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:69
+msgid "Short Description"
+msgstr "Resumo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:101 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:75
+msgid "characters left"
+msgstr "caracteres restantes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:124
+msgid "Change the episode date"
+msgstr "Mudar a data do episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:125
+msgid "The episodes of your podcast are automatically sorted by date. Changing the date of this episode will change its order in the podcast feed. If you specify a date in future, your episode won't be shown till then."
+msgstr "Os episódios de seu podcast são automaticamente ordenadas por data. Alterar a data deste episódio vai alterar a sua ordem no feed de podcast. Se você especificar uma data no futuro, o seu episódio não será mostrado até então."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:132 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:103
+msgid "Fields marked with * are required."
+msgstr "Campos marcados com * são obrigatórios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:150 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:121
+msgid "Extras"
+msgstr "Extras"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:152 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:123
+msgid "Long Description"
+msgstr "Descrição"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:167 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:138
+msgid "iTunes Keywords"
+msgstr "iTunes Keywords"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:169 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:140
+msgid "Keyword1, Keyword2 (max 12)"
+msgstr "Keyword1, Keyword2 (max 12)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:178
+msgid "Explicit content?"
+msgstr "Linguagem explícita?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:179
+msgid "Select YES if this episode contains explicit language or adult content."
+msgstr "Escolha SIM caso o episódio contenha linguagem explícita ou conteúdo adulto"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:198 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:156
+msgid "Author"
+msgstr "Autor"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:199 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:157
+msgid "You can specify a different author for this episode, otherwise the default author will be the podcast owner"
+msgstr "Você pode especificar um autor para esse episódio, caso contrário, o autor padrão será atribuído"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:203 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:93 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:149
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:160
+msgid "Author's name"
+msgstr "Nome do autor"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:206 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:152 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:163
+msgid "Author's email address"
+msgstr "E-mail do autor"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:215
+msgid "Update Episode"
+msgstr "Atualizar episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:215 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:214 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:362
+msgid "Updating"
+msgstr "Atualizando"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:217
+msgid "Delete Episode"
+msgstr "Apagar episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:224
+msgid "Do you really want to permanently delete this episode?"
+msgstr "Deseja realmente apagar este episódio?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/edit.php:226
+msgid "YES, I am sure"
+msgstr "SIM, tenho certeza"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:23 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:43
+msgid "Generate XML feed"
+msgstr "Gerar feed XML"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:24 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:44
+msgid "Manually regenerate xml feed"
+msgstr "Recriar feed manualmente"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:34 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:34
+msgid "Continue"
+msgstr "Continuar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:34
+msgid "Regenerating Feed"
+msgstr "Recriando feed"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:57
+msgid "Feed XML generated!"
+msgstr "Feed XML gerado!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:61
+msgid "All the episodes have been indexed in the feed"
+msgstr "Todos os episódios foram indexados"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:61
+msgid "You can limit the feed to the last episodes"
+msgstr "Você pode limitar o feed aos últimos episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/feedgenerate.php:66
+msgid "episode(s) in the feed"
+msgstr "episódio(s) no feed"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:24 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:40
+msgid "FreeBox"
+msgstr "FreeBox"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:33
+msgid "Your freebox has been updated!"
+msgstr "Sua freebox foi atualizada!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:51
+msgid "(HTML tags accepted)"
+msgstr "(Tags HTML aceitas)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:63 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:159 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:118
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:214 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:362
+msgid "Send"
+msgstr "Enviar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/freebox.php:63 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:159 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:79
+msgid "Setting..."
+msgstr "Configurando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:22
+msgid "Looking for manually uploaded podcast into directory:"
+msgstr "Verificando podcasts carregados manualmente:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:34
+msgid "Searching..."
+msgstr "Buscando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:44
+msgid "Scan finished:"
+msgstr "Verificação completa:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:44
+msgid "new episode(s) added."
+msgstr "Novo(s) episódio(s) inserido(s)."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/ftpfeature.php:46 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:183 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:259
+msgid "Go to the homepage"
+msgstr "Vá para a Página Inicial"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:22 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:76
+msgid "iTunes categories"
+msgstr "Categorias do iTunes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:23
+msgid "Select or change iTunes Categories (iTunes Store)"
+msgstr "Selecione ou mude as categorias do iTubes (iTunes Store)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:41
+msgid "iTunes Categories successfully changed..."
+msgstr "Categorias do iTunes alteradas com sucesso..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:81
+msgid "iTunes Category 1"
+msgstr "iTunes Categoria 1"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:110
+msgid "iTunes Category 2"
+msgstr "iTunes Categoria 2"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunescategories.php:136
+msgid "iTunes Category 3"
+msgstr "iTunes Categoria 3"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:23 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:112
+msgid "iTunes cover art"
+msgstr "Capa do Itunes (Cover art)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:24
+msgid "Podcast cover that will be displayed in the iTunes Store"
+msgstr "A capa do Podcast será exibida na iTunes Store."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:51
+msgid "iTunes cover art replaced successfully."
+msgstr "Capa do iTunes substituída com sucesso."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:62
+msgid "Error: image NOT sent!"
+msgstr "Erro: imagem NÃO enviada!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:69
+msgid "Image extension not valid. The image extension must end in .jpg or .png"
+msgstr "A extensão do arquivo de imagem não é válida. A imagem deve ter a extensão .jpg ou .png"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:81
+msgid "No file selected. Please go back and select an image."
+msgstr "Nenhum arquivo selecionado. Por favor, volte e selecione uma imagem."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:107
+msgid "Current image:"
+msgstr "Imagem atual:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:108 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:114
+msgid "iTunes image"
+msgstr "Imagem do iTunes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:114
+msgid "New image:"
+msgstr "Nova imagem:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:116
+msgid "You can replace the current image with a new one. To be eligible for featuring on iTunes Store, a podcast must have 1400 x 1400 pixel cover art in JPG or PNG."
+msgstr "Para ser elegível para apresentação na iTunes Store, um podcast deve ter uma capa (cover art) de 1400 x 1400 pixels, em JPG ou PNG."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/itunesimg.php:118 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:170
+msgid "Uploading..."
+msgstr "Carregando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:25
+msgid "User"
+msgstr "Usuário"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:27
+msgid "Password"
+msgstr "Senha"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:99
+msgid "Log in"
+msgstr "Logar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:29
+msgid "Logging in..."
+msgstr "Logando..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:55 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:69 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
+msgid "Hello"
+msgstr "Olá!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:57
+msgid "Back to Admin"
+msgstr "Voltar para Admin"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:57 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:58 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:69
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34
+msgid "Log out"
+msgstr "Log out"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/login.php:86
+msgid "Username or password not valid. Please try again..."
+msgstr "Nome de usuário ou senha não válido. Por favor, tente novamente..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/pgRSSnews.php:47
+msgid "Error: It's not possible to get Podcast Generator news feed. News will be automatically disabled."
+msgstr "Erro: Não é possível pegar os avisos do feed do Gerador de Podcast. Avisos serão automaticamente desativados."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:19
+msgid "These information will be used both in this website and in the resulting RSS feed"
+msgstr "Essas informações serão utilizadas no site e no RSS feed resultante."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:32 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:137
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:99
+msgid "Podcast Title"
+msgstr "Título do Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:32 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:44
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:66 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:80
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:93
+msgid "is empty... (it will be ignored)"
+msgstr "está vazio... (isso será ignorado)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:44
+msgid "Podcast Subtitle"
+msgstr "Subtítulo do Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+msgid "The podcast description is too long and will be ignored."
+msgstr "A descrição do podcast é muito longa e será ignorada."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62
+msgid "Max:"
+msgstr "Max:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+msgid "characters"
+msgstr "Caracteres"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:62 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:192 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:292
+msgid "Actual Length"
+msgstr "Duração atual"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:66 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:143
+msgid "Podcast Description"
+msgstr "Descrição do Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:80 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:146
+msgid "Copyright Notice"
+msgstr "Aviso de Direitos Autorais"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:109
+msgid "Author's email address not present or not valid"
+msgstr "Endereço de e-mail do autor não está presente ou válido."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:109
+msgid "(it will be ignored)"
+msgstr "(isso será ignorado)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:124 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:93
+msgid "The information has been successfully sent."
+msgstr "A informação foi enviada com sucesso."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:140
+msgid "Podcast Subtitle or Slogan"
+msgstr "Sub-título ou Slogan do Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:163
+msgid "Feed language"
+msgstr "Idioma do Feed"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:164
+msgid "Main language of your episodes"
+msgstr "Idioma principal dos seus episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:191
+msgid "Explicit Podcast?"
+msgstr "Podcast Explícito?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:192
+msgid "Does your podcast contain explicit language?"
+msgstr "Seu podcast contém linguagem explícita?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/podcastdetails.php:205
+msgid "No, it's clean"
+msgstr "Não, está limpo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:108
+msgid "Enable Audio and Video Player?"
+msgstr "Ativar Reprodutor de Áudio e Vídeo?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:109
+msgid "Enable Audio and Video web player for supported files and browsers."
+msgstr "Ativar reprodutor de Áudio e Vídeo para arquivos e navegadores suportados."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:130
+msgid "Enable Social Networks Integration?"
+msgstr "Ativar integração às Redes Sociais?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:131
+msgid "Display Facebook, Twitter and Google+ buttons for each episode."
+msgstr "Exibir botões do Facebook, Twitter e Google+ em cada episódio."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:152
+msgid "Enable Freebox?"
+msgstr "Ativar Caixa Livre?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:153
+msgid "Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section."
+msgstr "A Caixa Livre permite que escreva livremente o que quiser, adicione links ou textos através de um editor visual na seção administrativa."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:172
+msgid "Enable categories?"
+msgstr "Ativar categorias?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:173
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "Ativar categoria para montar listas temáticas dos seus podcasts."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:192
+msgid "Enable news display?"
+msgstr "Ativar exibição de avisos?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:193
+msgid "Displays Podcast Generator latest news in the main administration page of your podcast."
+msgstr "Gerador de Podcast exibe últimas notícias na página principal do seu podcast."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:212
+msgid "Enable strict episode renaming policy?"
+msgstr "Ativar renomeação rigorosa da política?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:213
+msgid "The uploaded episode files will be automatically renamed using just alphanumeric characters and the current date."
+msgstr "Os episódios carregados serão automaticamente renomeados utilizados apenas caracteres alphanuméricos e a data atual."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:232
+msgid "How many recent podcasts in the home page?"
+msgstr "Quantos podcasts recentes na página inicial?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:267
+msgid "How many episodes indexed in the podcast feeds?"
+msgstr "Quantos podcasts arquivados no feed do podcast?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:290
+msgid "All"
+msgstr "Todos"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:301
+msgid "Select date format"
+msgstr "Seleciona formato da data"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Day"
+msgstr "Dia"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Month"
+msgstr "Mês"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:307 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:311
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:315
+msgid "Year"
+msgstr "Ano"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:326
+msgid "Podcast Generator Language"
+msgstr "Idioma Gerador de Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:327
+msgid "Choose among available languages *"
+msgstr "Escolha entre os idiomas disponíveis *"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:349
+msgid "Looking for another language?"
+msgstr "À procura de outro idioma?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:354
+msgid "Use cron to auto index episodes"
+msgstr "Usar o cron para auto indexar episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:355
+msgid "This feature is enabled."
+msgstr "Esse recurso está ativado."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:355
+msgid "By calling periodically Podcast Generator via a cron job, you can check automatically the media folder for new episodes and regenerate the RSS feed."
+msgstr "Chamando o Gerador de Podcast periodicamente através do Cron você pode checar a pasta de mídia para novos episódios e gerar novamente o feed RSS."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:356
+msgid "Copy and paste the URL below (including your unique key):"
+msgstr "Copie e cole o URL abaixo (incluindo sua chave original):"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/scriptconfig.php:358
+msgid "Visit the documentation for more information on how to setup a cron job"
+msgstr "Veja a documentação para maiores informações sobre como configurar o cron."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:19 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:49
+msgid "Theme Selection"
+msgstr "Seleção de Tema"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:33
+msgid "Theme changed!"
+msgstr "Tema alterado!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:34 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:39
+msgid "Try another theme..."
+msgstr "Tente outro tema:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:38
+msgid "You are already using this theme"
+msgstr "Você já está utilizando esse tema:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:48
+msgid "Change Podcast Generator theme and aspect:"
+msgstr "Alterar tema e aspecto do Gerador de Podcast:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:79
+msgid "Change"
+msgstr "Alterar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:88
+msgid "Hint: How to create your own theme?"
+msgstr "Dica: Como criar o seu próprio tema?"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/selecttheme.php:88
+msgid "See documentation"
+msgstr "Veja a documentação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:77
+msgid "Long description not present; I'll use short description..."
+msgstr "A descrição longa não está presente: Utilizarei a descrição curta..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:82 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:82
+msgid "Long Description present"
+msgstr "Descrição longa presente:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:94 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:94
+msgid "iTunes Keywords:"
+msgstr "Palavras-Chave do iTunes:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:99 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:99
+msgid "You submitted more than 12 keywords for iTunes..."
+msgstr "Você submeteu mais do que 12 palavras-chave para o iTunes..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:109 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:109
+msgid "Author specified for this episode..."
+msgstr "Author especificado para esse episódio..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:113
+msgid "Author's email address not present or not valid."
+msgstr "E-mail do autor não está presente ou não é válido."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:113 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:113
+msgid "Author will be IGNORED"
+msgstr "Autor será IGNORADO"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:150
+msgid "Date and time of the episode have been modified (this might change the order of your episodes in the podcast feed)."
+msgstr "Data e horário do episódio foram modificados (isso pode mudar a ordem dos seus episódios no feed do podcast)."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:162
+msgid "Processing changes..."
+msgstr "Processando mudanças..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:183
+msgid "Edit other episodes"
+msgstr "Edite outros episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendchanges.php:202 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:302
+msgid "Error: No file, description or title present"
+msgstr "Erro: Não há arquivo, descrição ou título presente"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:77
+msgid "Long description not present (the short description will be used)"
+msgstr "A descrição longa não está presente (a descrição curta será utilizada)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:136
+msgid "Processing episode..."
+msgstr "Processando episódio..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:138
+msgid "Original filename:"
+msgstr "Nome Original do Arquivo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:205
+msgid "File Renamed:"
+msgstr "Arquivo renomeado:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:235
+msgid "The episode date has been set to future. This episode won't show up till then."
+msgstr "Este episódio teve sua data configurada para o futuro. Ele não será exibido até então."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:252
+msgid "File sent"
+msgstr "Arquivo enviado"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:259
+msgid "Upload another episode"
+msgstr "Fazer upload de outro episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:266 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:272
+msgid "FILE ERROR"
+msgstr "ERRO NO ARQUIVO"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:265
+msgid "Upload Failed"
+msgstr "Falha no upload"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:267
+msgid "You didn't assign writing permission to the media folder and the uploaded file can't be saved on the server."
+msgstr "Você não atribuiu a permissão de escrita para a pasta de mídia e o arquivo carregado não pode ser salvo no servidor."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:268
+msgid "Your file is bigger than upload max filesize on your server."
+msgstr "Seu arquivo é maior do que o limite de upload de arquivos no seu servidor."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:270
+msgid "Useful information for debugging:"
+msgstr "Informações úteis para depuração:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:270 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:22 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:167
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:206
+msgid "Your server configuration"
+msgstr "Configuração do servidor"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:272
+msgid "Podcast Generator web page"
+msgstr "Página de Geração de Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/sendfile.php:282
+msgid "is not a supported extension or your filename contains forbidden characters."
+msgstr "Página do Gerador de Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:25
+msgid "Operating System:"
+msgstr "Sistema Operacional:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:28
+msgid "PHP Version:"
+msgstr "Versão PHP: "
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:35
+msgid "GETTEXT extension: not installed (php-gettext will be used)"
+msgstr "Extensão GETTEXT: não instalado (php-gettext será utilizado)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:36
+msgid "GETTEXT extension: installed"
+msgstr "Extensão GETTEXT: instalado"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:42
+msgid "(this is good)"
+msgstr "(isso é bom)"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:54
+msgid "Max upload size set in the script (config.php):"
+msgstr "Tamanho definido de carregamento máximo no script (config.php):"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:63 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "Your server configuration allows you to upload files up to"
+msgstr "A configuração do seu servidor permite que carregue arquivos até"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/server_info.php:63 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:522
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:697
+msgid "MB"
+msgstr "MB"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:57 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:683
+msgid "Categories"
+msgstr "Categorias"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:58
+msgid "Select up to 3 categories for your episode..."
+msgstr "Selecione no máximo 3 categorias para seu episódio..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/showcat.php:75
+msgid "Maximum number of selectable category per single episode: "
+msgstr "Número máximo de categorias selecionáveis por cada episódio:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:21
+msgid "Upload Podcast"
+msgstr "Carregar Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:53
+msgid "Main information"
+msgstr "Informação principal"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:58
+msgid "File"
+msgstr "Arquivo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:62
+msgid "- If you need to upload larger files you can use the"
+msgstr "- Se precisa carregar arquivos maiores você pode usar o"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:96
+msgid "Publication Date"
+msgstr "Data da Publicação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:97
+msgid "The form below reports the current time and date of the server. If you specify a date in future, your episode won't be shown till then."
+msgstr "Os episódios de seu podcast são automaticamente ordenadas por data. Alteração da data de este episódio vai alterar a sua ordem no feed de podcast . Se você especificar uma data no futuro , o seu episódio não será mostrado até então."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:149
+msgid "Explicit content"
+msgstr "Conteúdo explícito"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:150
+msgid "Select YES if this episode contains explicit language or adult content"
+msgstr "Selecione SIM se esse episódio contém linguagem explícita ou conteúdo adulto"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/admin/upload.php:170
+msgid "Upload Episode"
+msgstr "Carregar Episódio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Jan"
+msgstr "Janeiro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Feb"
+msgstr "Fevereiro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:205
+msgid "Mar"
+msgstr "Março"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Apr"
+msgstr "Abril"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "May"
+msgstr "Maio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Jun"
+msgstr "Junho"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Jul"
+msgstr "Julho"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:206
+msgid "Aug"
+msgstr "Agosto"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Sep"
+msgstr "Setembro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Oct"
+msgstr "Outubro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Nov"
+msgstr "Novembro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:207
+msgid "Dec"
+msgstr "Dezembro"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:215
+msgid "Date:"
+msgstr "Data:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:268
+msgid "Time:"
+msgstr "Hora:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:408
+msgid "No episodes here yet..."
+msgstr "Nenhum episódio aqui ainda ..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:498 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:666
+msgid "Edit / Delete"
+msgstr "Editar / Apagar"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:521 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:696
+msgid "Filetype:"
+msgstr "Tipo de arquivo:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:522 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:697
+msgid "Size:"
+msgstr "Tamanho:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:525 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:700
+msgid "Duration:"
+msgstr "Duração"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:525 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:700
+msgid "m"
+msgstr "min."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:528 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:703
+msgid "kbps"
+msgstr "kbps"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:528 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:703
+msgid "Hz"
+msgstr "Hz"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1002
+msgid "More"
+msgstr "Mais"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1008 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1022
+msgid "Watch"
+msgstr "Assitir"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1017 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1028
+msgid "Download"
+msgstr "Download"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1026
+msgid "Listen"
+msgstr "Ouvir"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1049
+msgid "Your browser does not support the audio player"
+msgstr "Seu navegador não suporta o leitor de áudio"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1074
+msgid "Your browser does not support the video player"
+msgstr "Seu navegador não suporta o player de vídeo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/functions.php:1741
+msgid "Podcast Episode"
+msgstr "Título do Podcast"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:34 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:37 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:265
+msgid "Admin"
+msgstr "Admin"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:41 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:18
+msgid "Failed to open theme file"
+msgstr "Não pudemos abrir o arquivo de temas"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:80 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:273 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:280
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:70
+msgid "All Episodes"
+msgstr "Todos os Episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:130
+msgid "feed"
+msgstr "feed"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:131 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:132 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:171
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:172
+msgid "Copy the feed link and paste it into your aggregator"
+msgstr "Copie o link do feed e cole em seu agregador"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:134 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:174
+msgid "Subscribe to this podcast with iTunes"
+msgstr "Assinar este podcast via iTunes"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:151 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:192
+msgid "Support Podcast Generator"
+msgstr "Suporte do Podcast Generator"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:152 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:193
+msgid "if you like Podcast Generator please consider"
+msgstr "Se você gosta do Podcast Generator, por favor, considere uma doação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:152 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:193
+msgid " making a donation"
+msgstr "fazendo uma doação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:153
+msgid "No matter the amount you donate, your contribution will support future development and bug fixes. Thank you!"
+msgstr "Não importa o tamanho da sua doação! ela contruirá para futuros desenvolvimentos e correções de bugs. Obrigado!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:165 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:204
+msgid "Help"
+msgstr "Ajuda"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:168 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:207
+msgid "Check for updates"
+msgstr "Verificar atualizações"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:169 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:208
+msgid "Read Documentation"
+msgstr "Leia a Documentação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:170 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:209
+msgid "Get Support"
+msgstr "Suporte"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:234 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:261
+msgid "Home"
+msgstr "Home"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:251
+msgid "Archive"
+msgstr "Arquivo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269
+msgid "Powered by"
+msgstr "Powered by"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:22
+msgid "Podcast Generator"
+msgstr "Elite Hospedagem de Podcasts"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/templates.php:299 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:269
+msgid ", an open source podcast publishing solution"
+msgstr ", uma plataforma de publicação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:47 /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:263
+msgid "Podcast Archive"
+msgstr "Arquivo de podcasts"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:170
+msgid "feed:"
+msgstr "feed:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/core/themes.php:194
+msgid "No matter the amount, your contribution will support future development and bug fixes. Thank you!"
+msgstr "Não importa a quantidade, a sua contribuição vai apoiar o desenvolvimento e futuras correções de bugs. Obrigado!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:54
+msgid "Select a category:"
+msgstr "Selecione uma categoria:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:95 /Users/alberto/Sites/podcastgen/PodcastGenerator/index.php:116
+msgid "Go to episodes archive"
+msgstr "Ir para o arquivo de episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:44
+msgid "new episodes added"
+msgstr " Novo episódio adicionado"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:71
+msgid "RSS feed regenerated:"
+msgstr "Feed RSS gerado novamente:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:71
+msgid "episodes"
+msgstr "Episódios"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/pg-cron.php:81
+msgid "Execution time (s):"
+msgstr "Hora(s) de execução:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:17 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:29
+msgid "Config.php file already exists!"
+msgstr "Arquivo Config.php já existe!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:17 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:29
+msgid "Please delete this file before proceeding with the installation..."
+msgstr "Por favor, apague esse arquivo antes de prosseguir com a instalação..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:101
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:103
+msgid "A little description of your podcast."
+msgstr "Uma pequena descrição do seu podcast."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreateconfig.php:117
+msgid "Your copyright notice"
+msgstr "O aviso de Direitos Autorais"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:21
+msgid "Freebox text already exists..."
+msgstr "O texto da Caixa Livre já existe..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:28
+msgid "This is FREEBOX"
+msgstr "Essa é a Caixa Livre"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:28
+msgid "From the admin area you can customize this box. For instance you can add Widgets and Buttons"
+msgstr "Da área administrativa você pode customizar essa caixa. Em instantes, você pode adicionar Widgets e Botões."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:33
+msgid "You can optionally disable the freebox if you don't need it."
+msgstr "Você pode desabilitar a caixa livre caso não precise dela."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:53
+msgid "Categories file already exists..."
+msgstr "Categoria do arquivo já existe..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/firstcreation.php:60
+msgid "Uncategorized"
+msgstr "Sem categoria"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:22 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:32
+msgid "Setup"
+msgstr "Instalação"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:50 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:54 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:56
+msgid "Step"
+msgstr "Passo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/index.php:51
+msgid "Howdy! You are just 3 steps away to setup your podcast..."
+msgstr "Olá! Você está a apenas três passos para configurar seu podcast..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:39
+msgid "Now checking folders permissions"
+msgstr "Checando pemissões de pastas"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:49 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:54 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:113
+msgid "Media Directory"
+msgstr "Diretório de Mídia"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:49 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:67 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:85
+msgid "is writable"
+msgstr "é editável"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:54 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:72 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:90
+msgid "is NOT writable"
+msgstr "NÃO é editável"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:67 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:72 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:117
+msgid "Images Directory"
+msgstr "Diretório de Imagens"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:85 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:90 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:121
+msgid "Root Directory"
+msgstr "Diretório Raiz"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:97
+msgid "Yes! Directories have the correct writing permissions"
+msgstr "Sim! Diretórios etem permissões de escrita corretas"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:98
+msgid "You can now proceed to the last step of Podcast Generator Installation..."
+msgstr "Você pode seguir agora para o último passo da Instalação do Gerador de Podcast..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:104 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step1.php:59 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:30
+msgid "Next"
+msgstr "Próximo"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:110
+msgid "Try to set writing permission:"
+msgstr "Tente definir a permissão de escrita:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:113 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:117 /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:121
+msgid "Setting writing permission to"
+msgstr "Definindo permissão de escrita para"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:125
+msgid "I tried to set writing permissions (chmod 777) to the directories listed above..."
+msgstr "Tentei definir permissões de escrita (chmod 777) para os diretórios listados abaixo..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:132
+msgid "Reload this page"
+msgstr "Recarregue esta página"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:136
+msgid "and see if you can proceed with the installation of the script."
+msgstr "e veja se pode seguir com a instalação do script."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/set_permissions.php:137
+msgid "...if not, you can set writing permission manually (via FTP, SSH, etc...) and make sure you have the privileges to change folder permissions on your server."
+msgstr "...se não, você pode definir a permissão de escrita manualmente (via FTP, SSH, etc...) e certifique-se que tem os privilégios para alterar permissões de pasta em seu servidor."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:17
+msgid "Choose a username and a password for the administration area:"
+msgstr "Escolha um usuário e uma senha para a área administrativa:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:18
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:22
+msgid "Password:"
+msgstr "Senha:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step3.php:26
+msgid "Please type again your password:"
+msgstr "Por favor digite sua senha novamente:"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:43
+msgid "Installation completed successfully..."
+msgstr "Instalação completada com sucesso..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:44
+msgid "Go right to your podcast!"
+msgstr "Vá direto ao seu podcast!"
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:48
+msgid "You didn't enter a password or the two passwords do not correspond; please go back and type your password again..."
+msgstr "Você não inseriu a senha ou as duas senhas não correspondem; por favor volte e digite sua senha novamente..."
+
+#: /Users/alberto/Sites/podcastgen/PodcastGenerator/setup/step4.php:56
+msgid "You didn't enter the username..."
+msgstr "Você não inseriu o nome de usuário..."

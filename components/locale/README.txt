@@ -14,7 +14,7 @@ in admin -> Change your podcast details -> Feed Language
 To enable a localization of Podcast Generator add a folder called according to the
 IEFT language code (e.g. en_EN), which contains a sub-folder LC_MESSAGES
 that include two files "messages.po" and "messages.mo" (localizations).
-See existing localization as an example. 
+See existing localizations as an example. 
 As soon as the new folder and the aforementioned files will be created, 
 the language will automatically be available in
 admin -> Change Podcast Generator Configuration -> Podcast Generator Language
