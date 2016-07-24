@@ -8,6 +8,8 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+header('Content-type: application/xml');
+
 ob_start(); 
 
 ########### Security code, avoids cross-site scripting (Register Globals ON)
