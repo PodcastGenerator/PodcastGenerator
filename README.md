@@ -7,7 +7,7 @@ the upload of episodes to its submission to the iTunes store.
 
 
 Visit the **official website** for more information, documentation, demo and to download the latest stable release:
-http://podcastgen.sourceforge.net
+http://podcastgenerator.net
 
 
 PG has been around for more than a decade. The project has been hosted on SourceForge [since 2006] (https://sourceforge.net/p/podcastgen/news/2006/04/first-release/), it has been downloaded [hundreds of thousands
