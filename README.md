@@ -17,16 +17,16 @@ by some of the world's leading Hosting and NAS providers.
 
 ## Download the latest release
 Download the latest stable release on the official website:
-http://podcastgen.sf.net/download
+http://podcastgenerator.net/download
 
 
 ## Documentation
 A comprehensive documentation is available at: 
-http://podcastgen.sf.net/documentation
+http://podcastgenerator.net/documentation
 
 
 ## Demo
 A fully-functional live demo of Podcast generator is available at: 
-http://podcastgen.sf.net/demo
+http://podcastgenerator.net/demo
 
 
