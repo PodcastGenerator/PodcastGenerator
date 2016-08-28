@@ -68,7 +68,7 @@ if(isUserLogged()) { //if logged
 
 	$username = "'.$username.'";
 
-	$userpassword = "'.$userpassword.'";
+	$userpassword = \''.$userpassword.'\';
 
 	$max_upload_form_size = "'.$max_upload_form_size.'"; //e.g.: "30000000" (about 30MB)
 

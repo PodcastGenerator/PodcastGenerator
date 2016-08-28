@@ -46,7 +46,7 @@ if(isset($_GET['action']) AND $_GET['action'] == "logout" ){
 
 // check if user is already logged in 
 
-if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword){ //if so, keep displaying the page
+if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND password_verify($_SESSION["password_session"],$userpassword)){ //if so, keep displaying the page
 
 
 if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
@@ -62,7 +62,7 @@ if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 	
 }else{
 
-	if(isset($_POST["user"]) AND $_POST["user"]==$username AND isset($_POST["password"]) AND md5($_POST["password"])==$userpassword){ //if user and pwd are valid
+	if(isset($_POST["user"]) AND $_POST["user"]==$username AND isset($_POST["password"]) AND password_verify($_POST["password"],$userpassword)){ //if user and pwd are valid
 
 	if (!useNewThemeEngine($theme_path)) { //if is not new theme engine
 		$PG_mainbody .= '<div class="episode">

@@ -48,7 +48,7 @@ $theme_path = "themes/default_modern/";
 
 $username = "'.$user.'";
 
-$userpassword = "'.md5($pwd).'";
+$userpassword = \''.password_hash($pwd,PASSWORD_BCRYPT).'\';
 
 $max_upload_form_size = "104857600"; //e.g.: "30000000" (about 30MB)
 

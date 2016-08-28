@@ -1547,10 +1547,10 @@ function isUserLogged () {
 	//// Security code (Register Globals ON)
 	if (isset($_REQUEST['GLOBALS'])) { exit; } 
 	
-	//read user and md5 pwd from config.php
+	//read user and bcrypt pwd from config.php
 	if (file_exists("config.php")) include("config.php"); 
-	//compare sessions to stored user and md5 pwd
-	if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND md5($_SESSION["password_session"])==$userpassword) { return TRUE; }
+	//compare sessions to stored user and bcrypt pwd
+	if(isset($_SESSION["user_session"]) AND $_SESSION["user_session"]==$username AND password_verify($_SESSION["password_session"],$userpassword)) { return TRUE; }
 	else { return FALSE; }
 }
 
