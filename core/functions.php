@@ -332,13 +332,6 @@ function displaySocialNetworkButtons($fullURL,$text_title,$fb,$tw,$gp) {
 		
 	$construct_output = '<br />'; //space above
 
-	//FB Like Button
-	if ($fb == TRUE) {
-		$construct_output .= '
-		<iframe src="//www.facebook.com/plugins/like.php?href='.$fullURL.'&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=361488987252256" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
-		';
-	}
-
 	//TWITTER Button
 	if ($tw == TRUE) {
 		$construct_output.= '
@@ -361,6 +354,15 @@ function displaySocialNetworkButtons($fullURL,$text_title,$fb,$tw,$gp) {
 		</script>
 		';
 	}
+
+
+	//FB Like Button
+	if ($fb == TRUE) {
+		$construct_output .= '
+		<iframe src="https://www.facebook.com/plugins/like.php?href='.$fullURL.'&width=79&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId=379539238761383" width="100" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+		';
+	}
+
 
 	return $construct_output;
 }
