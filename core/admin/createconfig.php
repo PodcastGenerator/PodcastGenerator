@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -46,7 +46,7 @@ if(isUserLogged()) { //if logged
 
 	#################################################################
 	# Podcast Generator
-	# http://podcastgen.sourceforge.net
+	# http://www.podcastgenerator.net
 	# developed by Alberto Betella
 	#
 	# Config.php file created automatically - v.'.$podcastgen_version.'

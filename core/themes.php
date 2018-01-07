@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -204,9 +204,9 @@ if(isUserLogged()) { //if logged
 		<b>'._("Help").'</b>
 		<ul>
 		<li><a href="?p=admin&amp;do=serverinfo">'._("Your server configuration").'</a></li>
-		<li><a href="http://podcastgen.sourceforge.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a></li>
-		<li><a href="http://podcastgen.sourceforge.net/documentation/#faq?ref=local-admin" target="_blank">'._("Read Documentation").'</a></li>
-		<li><a href="http://podcastgen.sourceforge.net/support/?ref=local-admin" target="_blank">'._("Get Support").'</a></li>
+		<li><a href="http://www.podcastgenerator.net/checkforupdates.php?v='.$podcastgen_version.'" target="_blank">'._("Check for updates").'</a></li>
+		<li><a href="http://www.podcastgenerator.net/documentation/#faq?ref=local-admin" target="_blank">'._("Read Documentation").'</a></li>
+		<li><a href="http://www.podcastgenerator.net/support/?ref=local-admin" target="_blank">'._("Get Support").'</a></li>
 		</ul>
 	</div>';
 
@@ -266,7 +266,7 @@ if (isUserLogged()) { //if you are logged do not display freebox
 
 	#FOOTER
 
-	$definefooter = _("Powered by").' <a href="http://podcastgen.sourceforge.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution");
+	$definefooter = _("Powered by").' <a href="http://www.podcastgenerator.net" title="'._("Podcast Generator")._(", an open source podcast publishing solution").'">'._("Podcast Generator").'</a>'._(", an open source podcast publishing solution");
 
 	$theme_file_contents = str_replace("-----PG_FOOTER-----", $definefooter, $theme_file_contents);
 

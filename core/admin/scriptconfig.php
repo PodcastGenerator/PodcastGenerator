@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -346,7 +346,7 @@ $listWithLanguages = languagesList($absoluteurl,TRUE);
 		}
 		$PG_mainbody .= '</select>
 		
-				<p><a href="http://podcastgen.sourceforge.net/documentation/FAQ-localization" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Looking for another language?").'</a></p>
+				<p><a href="http://www.podcastgenerator.net/documentation/FAQ-localization" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Looking for another language?").'</a></p>
 		';	
 
 
@@ -355,7 +355,7 @@ $listWithLanguages = languagesList($absoluteurl,TRUE);
 			<p><span class="alert">'._("This feature is enabled.")." "._("By calling periodically Podcast Generator via a cron job, you can check automatically the media folder for new episodes and regenerate the RSS feed.").'</span></p>
 			<p>'._("Copy and paste the URL below (including your unique key):").'</p>
 			<input type="text" name="cronURL" value="'.$url.'pg-cron.php?key='.$installationKey.'" style="width:80%;" readonly>
-			<p><a href="http://podcastgen.sourceforge.net/documentation/FAQ-cron-job" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Visit the documentation for more information on how to setup a cron job").'</a></p>';
+			<p><a href="http://www.podcastgenerator.net/documentation/FAQ-cron-job" target="_blank"><i class="fa fa-hand-o-right"></i> '._("Visit the documentation for more information on how to setup a cron job").'</a></p>';
 		}
 
 

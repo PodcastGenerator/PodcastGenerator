@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -269,7 +269,7 @@ else $filenamechanged = $filenameWithoutExtension;
 
 		$PG_mainbody .= "<p><b>"._("Useful information for debugging:")."</b> <a href=\"?p=admin&amp;do=serverinfo\">"._("Your server configuration")."</a></p>";
 
-		$PG_mainbody .= "<p>"._("FILE ERROR")." <a href=\"http://podcastgen.sourceforge.net/\" target=\"_blank\">"._("Podcast Generator web page")."</a></p>";
+		$PG_mainbody .= "<p>"._("FILE ERROR")." <a href=\"http://www.podcastgenerator.net/\" target=\"_blank\">"._("Podcast Generator web page")."</a></p>";
 
 		$PG_mainbody .= '<p><form>
 			<input type="button" value="'._("Back").'" class="btn btn-danger btn-small" onClick="history.back()">

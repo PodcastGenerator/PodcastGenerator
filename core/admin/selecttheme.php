@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -85,7 +85,7 @@ if(isUserLogged()) {
 	} 
 
 	$PG_mainbody .= '<br /><br /><div class="topseparator">
-		<span class="alert">'._("Hint: How to create your own theme?").' <a href="http://podcastgen.sourceforge.net/documentation/FAQ-themes" target="_blank">'._("See documentation").'</a></span>
+		<span class="alert">'._("Hint: How to create your own theme?").' <a href="http://www.podcastgenerator.net/documentation/FAQ-themes" target="_blank">'._("See documentation").'</a></span>
 	</div>
 		';
 

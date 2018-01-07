@@ -1,2 +1,2 @@
 See this online document:
-http://podcastgen.sourceforge.net/documentation/FAQ-localization
+http://www.podcastgenerator.net/documentation/FAQ-localization

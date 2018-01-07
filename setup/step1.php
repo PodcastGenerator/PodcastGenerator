@@ -4,7 +4,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################

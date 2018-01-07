@@ -3,7 +3,7 @@
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella
-# http://podcastgen.sourceforge.net
+# http://www.podcastgenerator.net
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
@@ -1243,7 +1243,7 @@ function generatePodcastFeed ($outputInFile,$category,$manualRegeneration) {
 		<link>'.$podcastWebHomePage.'</link>
 		<atom:link href="'.$feed_url.'" rel="self" type="application/rss+xml" />
 		<description>'.$podcast_description.'</description>
-		<generator>Podcast Generator '.$podcastgen_version.' - http://podcastgen.sourceforge.net</generator>
+		<generator>Podcast Generator '.$podcastgen_version.' - http://www.podcastgenerator.net</generator>
 		<lastBuildDate>'.date("r").'</lastBuildDate>
 		<language>'.$feed_language.'</language>
 		<copyright>'.$copyright.'</copyright>
