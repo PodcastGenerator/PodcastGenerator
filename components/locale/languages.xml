@@ -242,6 +242,11 @@
 	</language>
 
 	<language>
+		<id>tr_TR</id>
+		<description>Türkçe</description>
+	</language>
+
+	<language>
 		<id>uk_UA</id>
 		<description>Українська</description>
 	</language>
