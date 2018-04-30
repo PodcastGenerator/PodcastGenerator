@@ -1070,6 +1070,18 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 					  			'._("Your browser does not support the audio player").'
 											</audio>';
 		   }
+		   if($podcast_filetype=="m4a") { 
+		   		$showplayercode =	'<audio style="width:80%;" controls preload="none">
+					  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.ogg" type="audio/mp4">
+					  			'._("Your browser does not support the audio player").'
+											</audio>';
+		   }
+		   if($podcast_filetype=="mp4") { 
+		   		$showplayercode =	'<audio style="width:80%;" controls preload="none">
+					  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.ogg" type="audio/mp4">
+					  			'._("Your browser does not support the audio player").'
+											</audio>';
+		   }
 		   $playersOutput .= ''.$showplayercode.'<br />';
 		}
 		// Flash Player disabled from version 2.5
