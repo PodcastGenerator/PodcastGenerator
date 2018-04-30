@@ -1056,15 +1056,22 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 	
 	$browserAudioVideoSupport = detectModernBrowser();
 	
-	//// AUDIO PLAYER (MP3)
-		if ($browserAudioVideoSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
-		$showplayercode =	'<audio style="width:80%;" controls preload="none">
-			  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.mp3" type="audio/mpeg">
-			'._("Your browser does not support the audio player").'
-			</audio>';
-			$playersOutput .= ''.$showplayercode.'<br />'; 
-
-		} 
+	//// AUDIO PLAYER
+		if ($browserAudioVideoSupport[0] == TRUE) { //if browser supports HTML5
+		   if($podcast_filetype=="mp3") { 
+		   		$showplayercode =	'<audio style="width:80%;" controls preload="none">
+					  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.mp3" type="audio/mpeg">
+					  			'._("Your browser does not support the audio player").'
+											</audio>';
+		   }
+		   if($podcast_filetype=="ogg") { 
+		   		$showplayercode =	'<audio style="width:80%;" controls preload="none">
+					  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.ogg" type="audio/ogg">
+					  			'._("Your browser does not support the audio player").'
+											</audio>';
+		   }
+		   $playersOutput .= ''.$showplayercode.'<br />';
+		}
 		// Flash Player disabled from version 2.5
 		/* 
 		else { //if no support for HTML5, then flash player just for mp3
@@ -1073,7 +1080,6 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 			$playersOutput .= ''.$showplayercode.'<br />'; 
 			}
 	
-		}
 		*/
 	//// END AUDIO PLAYER (MP3)
 
