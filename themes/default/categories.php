@@ -15,6 +15,15 @@
         <?php
         include "jumbotron.php";
         ?>
+        <ul>
+            <?php
+            foreach ($categories as $item) {
+                echo "<li><a href=\"categories.php?cat=".$item->id."\">".$item->description."</a></li>";
+            }
+            ?>
+        </ul>
+        <hr>
+        <a href="categories.php?cat=all">All Episodes</a>
     </div>
 </body>
 
