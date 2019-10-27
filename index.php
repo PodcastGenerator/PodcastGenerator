@@ -1,6 +1,3 @@
 <?php
-if(!file_exists("config.php")) {
-    header("Location: setup/");
-    die();
-}
+require "core/include.php";
 ?>
