@@ -1,0 +1,116 @@
+<?php
+function randomString($length = 8) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+function createconf($username, $password) {
+    require "../core/globs.php";
+    $installtime = time();
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // Replace config stuff
+    $url = str_replace("setup/step2.php?create=1", "", $url);
+    $absoluteurl = realpath("../")."/";
+    $userpassword = password_hash($password, PASSWORD_DEFAULT);
+    // Escape password
+    $userpassword = str_replace("\$", "\\\$", $userpassword);
+    $installation_key = randomString();
+
+    $config = "<?php
+\$podcastgen_version = $version; // Version
+
+\$first_installation = $installtime;
+
+\$installation_key = \"$installation_key\";
+
+\$url = \"$url\";
+
+\$absoluteurl = \"$absoluteurl\"; // The location on the server
+
+\$theme_path = \"themes/default/\";
+
+\$username = \"$username\";
+
+\$userpassword = \"$userpassword\";
+
+\$max_upload_form_size = \"104857600\"; //e.g.: \"30000000\" (about 30MB)
+
+\$upload_dir = \"media/\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
+
+\$img_dir = \"images/\"; // (Trailing slash required). Set chmod 755
+
+\$feed_dir = \"\"; // Where to create feed.xml (empty value = root directory). Set chmod 755
+
+\$max_recent = 4; // How many file to show in the home page
+
+\$recent_episode_in_feed = \"All\"; // How many file to show in the XML feed (1,2,5 etc.. or \"All\")
+
+\$episodeperpage = 10;
+
+\$enablestreaming = \"yes\"; // Enable mp3 streaming? (\"yes\" or \"no\")
+
+\$dateformat = \"d-m-Y\"; // d-m-Y OR m-d-Y OR Y-m-d
+
+\$freebox = \"yes\"; // enable freely customizable box
+
+\$enablehelphints = \"yes\";
+
+\$enablepgnewsinadmin = \"yes\";
+
+\$strictfilenamepolicy = \"yes\"; // strictly rename files (just characters A to Z and numbers) 
+
+\$categoriesenabled = \"yes\";
+
+\$firsttimehere = \"yes\";
+
+\$cronAutoIndex = 1; //Auto Index New Episodes via Cron
+
+\$cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
+
+\$cronAutoRegenerateRSScacheTime = 21600; //Cache (in seconds)
+
+#####################
+# XML Feed stuff
+
+\$feed_iTunes_LINKS_Website = \"\";
+
+\$feed_URL_replace = \"\";
+
+\$podcast_title = \"Podcast Title\";
+
+\$podcast_description = \"A little description of your podcast.\";
+
+\$author_name = \"Podcast Generator User\";
+
+\$author_email = \"podcastgenerator@exapmle.com\";
+
+\$itunes_category[0] = \"Arts\"; // iTunes categories (mainCategory:subcategory)
+\$itunes_category[1] = \"\";
+\$itunes_category[2] = \"\";
+
+\$link = \$url.\"?name=\"; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
+
+\$feed_language = \"en\";
+
+\$copyright = \"All rights reserved\";   // Your copyright notice (e.g CC-BY)
+
+\$feed_encoding = \"utf-8\";
+
+\$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\", \"no\" or \"clean\")
+
+// END OF CONFIG
+";
+    $f = fopen("../config.php", 'w');
+    fwrite($f, $config);
+    fclose($f);
+    // Check if file exists
+    if(file_exists("../config.php")) {
+        return true;
+    }
+    return false;
+}
