@@ -10,7 +10,7 @@ function randomString($length = 8) {
 }
 
 function createconf($username, $password) {
-    require "../globs.php";
+    require "../core/misc/globs.php";
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Replace config stuff
