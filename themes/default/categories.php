@@ -4,6 +4,7 @@
 <head>
     <title><?php echo $config["podcast_title"]; ?></title>
     <link rel="stylesheet" href="<?php echo $config["theme_path"]; ?>style/bootstrap.css">
+    <meta charset="utf-8">
 </head>
 
 <body>
