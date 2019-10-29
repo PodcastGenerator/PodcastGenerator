@@ -13,6 +13,7 @@ require "../core/include_admin.php";
 
 <body>
     <?php
+    include "js.php";
     include "navbar.php";
     ?>
     <br>
