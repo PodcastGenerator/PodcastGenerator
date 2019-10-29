@@ -8,6 +8,52 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Episodes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="episodes_upload.php">Upload New Episodes</a>
+                    <a class="dropdown-item" href="episodes_edit.php">Edit / Delete Episode</a>
+                    <a class="dropdown-item" href="episodes_manage_cats.php">Manage categories</a>
+                    <a class="dropdown-item" href="episodes_ftp_feature.php">FTP Feature (Auto Indexing)</a>
+                    <a class="dropdown-item" href="episodes_regenerate.php">Manually regenerate RSS feed</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Themes and aspect
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="theme_change.php">Change Theme</a>
+                    <a class="dropdown-item" href="theme_freebox.php">Customize your Freebox</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Podcast Platform Settings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="store_cover.php">Change Cover Art</a>
+                    <a class="dropdown-item" href="store_cat.php">Change Podcast Category</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Podcast Details
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="podcast_details.php">Change Podcast details</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Podcast Generator
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="pg_config.php">Change Podcast Generator Config</a>
+                </div>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
