@@ -64,7 +64,7 @@ require "../core/include_admin.php";
                     <hr>
                     <div class="form-group">
                         Long Description:<br>
-                        <textarea name="losgdesc"></textarea><br>
+                        <textarea name="longdesc"></textarea><br>
                     </div>
                     <div class="form-group">
                         iTunes Keywords:<br>
