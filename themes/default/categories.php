@@ -14,6 +14,7 @@
     <br>
     <div class="container">
         <?php
+        include "js.php";
         include "jumbotron.php";
         ?>
         <ul>
