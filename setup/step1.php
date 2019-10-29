@@ -50,7 +50,7 @@ if(file_exists($scripts.$testfile)) {
     <head>
         <title>Podcast Generator - Step 1</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
     <body>
         <div class="container">

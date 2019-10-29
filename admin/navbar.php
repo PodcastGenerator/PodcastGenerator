@@ -8,8 +8,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">Logout</a>
+                <a class="nav-link" href="logout.php">Logout - <?php echo $_SESSION["username"]; ?></a>
             </li>
         </ul>
     </div>

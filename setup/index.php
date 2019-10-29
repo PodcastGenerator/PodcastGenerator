@@ -6,7 +6,7 @@ require "securitycheck.php";
     <head>
         <title>Podcast Generator - Setup</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
     <body>
         <div class="container">
