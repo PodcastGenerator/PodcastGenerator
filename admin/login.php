@@ -28,7 +28,7 @@ if(isset($_GET["login"])) {
     <head>
         <title><?php echo $config["podcast_title"]; ?> - Admin</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
     <body>
         <div class="container">
