@@ -1,6 +1,96 @@
 <?php
 require "checkLogin.php";
 require "../core/include_admin.php";
+
+if(isset($_GET["upload"])) {
+    // CHeck if all fields are set
+    $req_fields = [
+        $_POST["title"],
+        $_POST["shortdesc"],
+        $_POST["category"],
+        $_POST["date"],
+        $_POST["time"],
+        $_POST["explicit"],
+        $_POST["authorname"],
+        $_POST["authoremail"]
+    ];
+    // Check if fields are missing
+    for($i = 0; $i < sizeof($req_fields); $i++) {
+        if(empty($req_fields[$i])) {
+            $error = "Missing fields";
+            goto error;
+        }
+    }
+
+    // Check if the user selected too much episodes
+    if(sizeof($_POST["category"]) > 3) {
+        $error = "Too much categories selected";
+        goto error;
+    }
+
+    // Check author e-mail
+    if(isset($_POST["authoremail"])) {
+        if(!filter_var($_POST["authoremail"], FILTER_VALIDATE_EMAIL)) {
+            $error = "Invalid Author E-Mail provided";
+            goto error;
+        }
+    }
+
+    if(strlen($_POST["shortdesc"]) > 255) {
+        $error = "Size of the 'Short Description' exceeded";
+        goto error;
+    }
+
+    $targetfile = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . basename($_FILES["file"]["name"]);
+    if(file_exists($targetfile)) {
+        $i = 1;
+        while(file_exists($targetfile)) {
+            $targetfile = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . $i . "-" . basename($_FILES["file"]["name"]);
+            $i++;
+        }
+    }
+    if($_FILES["file"]["size"] > intval($config["max_upload_form_size"])) {
+        $error = "File is too big, maximum filesize is: " . round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0);
+        goto error;
+    }
+
+    $validTypes = simplexml_load_file("../components/supported_media/supported_media.xml");
+    $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
+    $validFileExt = false;
+    foreach ($validTypes->mediaFile as $item) {
+        if($fileextension == $item->extension) {
+            $validFileExt = true;
+            break;
+        }
+    }
+    if(!$validFileExt) {
+        $error = "Invalid file extension";
+        goto error;
+    }
+
+    if(!move_uploaded_file($_FILES["file"]["tmp_name"], $targetfile)) {
+        $error = "The file upload was not successfully";
+        goto error;
+    }
+
+    $validMimeType = false;
+    foreach ($validTypes->mediaFile as $item) {
+        if(mime_content_type($targetfile) == $item->mimetype) {
+            $validMimeType = true;
+            break;
+        }
+    }
+
+    if(!$validMimeType) {
+        $error = "Invalid mime type, are you actually uploading a $fileextension file?";
+        // Delete the file if the mime type is invalid
+        unlink($targetfile);
+        goto error;
+    }
+
+    error:
+    echo("");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,29 +109,34 @@ require "../core/include_admin.php";
     <br>
     <div class="container">
         <h1>Upload Episode</h1>
-        <form>
+        <?php
+        if(isset($error)) {
+            echo "<strong><p style='color: #e74c3c;'>$error</p></strong>";
+        }
+        ?>
+        <form action="episodes_upload.php?upload=1" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h3>Main Informations</h3>
                     <hr>
                     <div class="form-group">
                         File*:<br>
-                        <input type="file" name="file"><br>
-                        <small>Your server configuration allows you to upload files up to <?php echo $config["max_upload_form_size"]; ?>. If your file is bigger or you have otehr problems use the FTP feature</small><br>
+                        <input type="file" name="file" required><br>
+                        <small>Your server configuration allows you to upload files up to around <?php echo round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0); ?> MB. If your file is bigger or you have other problems use the FTP feature</small><br>
                     </div>
                     <div class="form-group">
                         Title*:<br>
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
                         Short Description*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()">
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255 characters remaining</i>
                     </div>
                     <div class="form-group">
                         Category*:<br>
                         <small>You can select up to 3 categories</small><br>
-                        <select name="category" multiple>
+                        <select name="category[ ]" multiple>
                             <?php
                             $categories = simplexml_load_file("../categories.xml");
                             foreach ($categories as $item) {
@@ -54,9 +149,9 @@ require "../core/include_admin.php";
                         Publication Date:<br>
                         <small>If you select a date in the future, it will be published then</small><br>
                         Date*:<br>
-                        <input name="date" type="date" value="<?php echo date("Y-m-d"); ?>"><br>
+                        <input name="date" type="date" value="<?php echo date("Y-m-d"); ?>" required><br>
                         Time*:<br>
-                        <input name="time" type="time" value="<?php echo date("H:i"); ?>"><br>
+                        <input name="time" type="time" value="<?php echo date("H:i"); ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
