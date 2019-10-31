@@ -82,6 +82,8 @@ function createconf($username, $password) {
 
 \$podcast_title = \"Podcast Title\";
 
+\$podcast_subtitle = \"Subtitle\";
+
 \$podcast_description = \"A little description of your podcast.\";
 
 \$author_name = \"Podcast Generator User\";
