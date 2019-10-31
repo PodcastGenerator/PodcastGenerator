@@ -88,6 +88,37 @@ if(isset($_GET["upload"])) {
         goto error;
     }
 
+    // Get audio metadata (duration, bitrate etc)
+
+    // Go and actually generate the episode
+    // It easier to not dynamically generate the file
+    $episodefeed = "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<PodcastGenerator>
+	<episode>
+	    <titlePG><![CDATA[".$_POST["title"]."]]></titlePG>
+	    <shortdescPG><![CDATA[".$_POST["shortdesc"]."]]></shortdescPG>
+	    <longdescPG><![CDATA[".$_POST["longdesc"]."]]></longdescPG>
+	    <imgPG></imgPG>
+	    <categoriesPG>
+	        <category1PG>".$_POST["category"][0]."</category1PG>
+	        <category2PG>".$_POST["category"][1]."</category2PG>
+	        <category3PG>".$_POST["category"][2]."</category3PG>
+	    </categoriesPG>
+	    <keywordsPG><![CDATA[".$_POST["keywords"]."]]></keywordsPG>
+	    <explicitPG>".$_POST["explicit"]."</explicitPG>
+	    <authorPG>
+	        <namePG>".$_POST["authorname"]."</namePG>
+	        <emailPG>".$_POST["authoremail"]."</emailPG>
+	    </authorPG>
+	    <fileInfoPG>
+	        <size>".intval($_FILES["file"]["size"] / 1000 / 1000)."</size>
+	        <duration>".$duration."</duration>
+	        <bitrate>".$bitrate."</bitrate>
+	        <frequency>".$frequency."</frequency>
+	    </fileInfoPG>
+	</episode>
+</PodcastGenerator>";
+
     error:
     echo("");
 }
