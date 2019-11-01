@@ -88,6 +88,11 @@ if(isset($_GET["upload"])) {
         goto error;
     }
 
+    // Get datetime
+    $datetime = strtotime($_POST["date"] . " " . $_POST["time"]);
+    // Set file date to this date
+    touch($targetfile, $datetime);
+
     // Get audio metadata (duration, bitrate etc)
 
     // Go and actually generate the episode

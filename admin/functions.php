@@ -34,7 +34,7 @@ function generateRSS() {
         
         <itunes:category text=\"Arts\"></itunes:category>
         ";
-        // Get episodes
+        // Get episodes ordered by pub date
 
 }
 
