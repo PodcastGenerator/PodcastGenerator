@@ -94,6 +94,12 @@ if(isset($_GET["upload"])) {
     touch($targetfile, $datetime);
 
     // Get audio metadata (duration, bitrate etc)
+    require "../components/getid3/getid3.php";
+    $getID3 = new getID3;
+    $fileinfo = $getID3->analyze($targetfile);
+    $duration = $fileinfo["playtime_string"];           // Get duration
+    $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate
+    $frequency = $fileinfo["audio"]["sample_rate"];     // Frequency
 
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
@@ -118,11 +124,12 @@ if(isset($_GET["upload"])) {
 	    <fileInfoPG>
 	        <size>".intval($_FILES["file"]["size"] / 1000 / 1000)."</size>
 	        <duration>".$duration."</duration>
-	        <bitrate>".$bitrate."</bitrate>
+	        <bitrate>".substr(strval($bitrate), 0, 3)."</bitrate>
 	        <frequency>".$frequency."</frequency>
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>";
+    echo $episodefeed;
 
     error:
     echo("");
