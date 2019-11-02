@@ -34,7 +34,36 @@ function generateRSS() {
         
         <itunes:category text=\"Arts\"></itunes:category>
         ";
+        // Get supported file extensions
+        $supported_extensions = array();
+        $supported_extensions_xml = simplexml_load_file("../components/supported_media/supported_media.xml");
+        foreach ($supported_extensions_xml->mediaFile->extension as $item) {
+            array_push($supported_extensions, $item);
+        }
         // Get episodes ordered by pub date
+        $files = array();
+        if($handle = opendir("../" . $config["upload_dir"])) {
+            while(false !== ($entry = readdir($handle))) {
+                // Sort out all files with invalid file extensions
+                if(in_array(pathinfo("../" . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
+                    array_push($files, [
+                        "filename" => $entry,
+                        "lastModified" => filemtime("../" . $config["upload_dir"] . $entry)
+                    ]);
+                }
+            }
+        }
+        // Bubble sort files
+        for($i = 0; $i < sizeof($files) - 1; $i++) {
+            for($j = 0; $j < sizeof($files)-$i-1; $j++) {
+                if($files[$j]["lastModified"] > $files[$j + 1]["lastModified"]) {
+                    $old = $files[$j + 1]["lastModified"];
+                    $files[$j + 1]["lastModified"] = $files[$j]["lastModified"];
+                    $files[$j]["lastModified"] = $old;
+                }
+            }
+        }
+        var_dump($files);
 
 }
 

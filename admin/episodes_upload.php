@@ -49,6 +49,7 @@ if(isset($_GET["upload"])) {
             $i++;
         }
     }
+    $targetfile_without_ext = "../" . $config["upload_dir"] . pathinfo($targetfile, PATHINFO_FILENAME);
     if($_FILES["file"]["size"] > intval($config["max_upload_form_size"])) {
         $error = "File is too big, maximum filesize is: " . round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0);
         goto error;
@@ -129,7 +130,7 @@ if(isset($_GET["upload"])) {
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>";
-    echo $episodefeed;
+    file_put_contents($targetfile_without_ext . ".xml", $episodefeed);
 
     error:
     echo("");
