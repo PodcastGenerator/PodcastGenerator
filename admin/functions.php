@@ -63,6 +63,15 @@ function generateRSS() {
                 }
             }
         }
+        // Pop files from the future
+        $realfiles = array();
+        for($i = 0; $i < sizeof($files); $i++) {
+            if(time() > $files[$i]["lastModified"]) {
+                array_push($realfiles, $files[$i]); 
+            }
+        }
+        $files = $realfiles;
+        unset($realfiles);
         var_dump($files);
 
 }
