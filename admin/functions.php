@@ -8,7 +8,8 @@ function generateRSS()
     global $config, $version;
     // Set the feed header with relevant podcast informations
     $feedhead = "<?xml version=\"1.0\" encoding=\"" . $config["feed_encoding"] . "\"?>
-	<!-- generator=\"Podcast Generator " . $version . "\"
+    <!-- generator=\"Podcast Generator " . $version . "\" -->
+    <rss xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" xml:lang=\"en\" version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
 	<channel>
 		<title>" . $config["podcast_title"] . "</title>
 		<link>" . $config["url"] . "</link>
@@ -78,24 +79,34 @@ function generateRSS()
         $original_full_filepath = $config["url"] . $config["upload_dir"] . $files[$i]["filename"];
         $file = simplexml_load_file("../" . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
         $item = '
-				<item>
-					<title><![CDATA[' . $file->episode->titlePG . ']]></title>
-					<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
-					<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
-					<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
-					<link>' . $original_full_filepath . '</link>
-					<enclosure url="' . $original_full_filepath . '" length="' . filesize("../" . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type("../" . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
-					<guid>' . $config["url"] . '?name=' . $files[$i]["filename"] . '</guid>
-					<itunes:duration>' . $file->fileInfoPG->duration . '</itunes:duration>
-					<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
-					<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
-					<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
-					<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
-					<pubDate>' . date("r", $files[$i]["lastModified"]) . '</pubDate>
-                </item>';
+		<item>
+			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
+			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
+			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
+			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
+			<link>' . $original_full_filepath . '</link>
+			<enclosure url="' . $original_full_filepath . '" length="' . filesize("../" . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type("../" . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
+			<guid>' . $config["url"] . '?name=' . $files[$i]["filename"] . '</guid>
+			<itunes:duration>' . $file->fileInfoPG->duration . '</itunes:duration>
+			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
+			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
+			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
+			<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
+			<pubDate>' . date("r", $files[$i]["lastModified"]) . '</pubDate>
+        </item>';
         // Push XML to the real XML
         array_push($items, $item);
     }
+    // Close the tags
+    $feedfooter = '
+    </channel>
+    </rss>';
+    // Generate the actual XML
+    $xml = $feedhead;
+    for ($i = 0; $i < sizeof($items); $i++) {
+        $xml .= $items[$i];
+    }
+    // Append footer
+    $xml .= $feedfooter;
+    return file_put_contents("../feed.xml", $xml);
 }
-
-generateRSS();
