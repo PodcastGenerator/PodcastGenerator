@@ -1,6 +1,6 @@
 <?php
-require "checkLogin.php";
-require "../core/include_admin.php";
+require_once "checkLogin.php";
+require_once "../core/include_admin.php";
 
 function generateRSS()
 {
