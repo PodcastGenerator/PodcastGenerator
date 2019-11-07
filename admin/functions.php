@@ -1,5 +1,4 @@
 <?php
-require_once "checkLogin.php";
 require_once "../core/include_admin.php";
 
 function generateRSS()
