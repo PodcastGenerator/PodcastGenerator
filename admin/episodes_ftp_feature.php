@@ -71,6 +71,7 @@ if (isset($_GET["start"])) {
         file_put_contents("../" . $config["upload_dir"] . date("Y-m-d") . "-" . pathinfo($new_files[$i], PATHINFO_FILENAME) . ".xml", $episodefeed);
         // Regenarte RSS feed
         generateRSS();
+        $success = "New episodes were added";
     }
 }
 ?>
@@ -94,6 +95,9 @@ if (isset($_GET["start"])) {
         <?php
         if (!isset($_GET["start"])) {
             echo '<a href="episodes_ftp_feature.php?start=1" class="btn btn-success">Begin<a>';
+        }
+        if(isset($success)) {
+            echo "<p>$success</p>";
         }
         ?>
     </div>
