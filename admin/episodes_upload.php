@@ -133,6 +133,7 @@ if(isset($_GET["upload"])) {
 </PodcastGenerator>";
     file_put_contents($targetfile_without_ext . ".xml", $episodefeed);
     generateRSS();
+    $success = true;
 
     error:
     echo("");
@@ -156,6 +157,9 @@ if(isset($_GET["upload"])) {
     <div class="container">
         <h1>Upload Episode</h1>
         <?php
+        if(isset($success)) {
+            echo "<strong><p style='color: #2ecc71;'>".$_POST["title"]." uploaded successfully</p></strong>";
+        }
         if(isset($error)) {
             echo "<strong><p style='color: #e74c3c;'>$error</p></strong>";
         }
