@@ -1,6 +1,7 @@
 <?php
 require "checkLogin.php";
 require "../core/include_admin.php";
+require "functions.php";
 
 if(isset($_GET["upload"])) {
     // CHeck if all fields are set
@@ -41,11 +42,11 @@ if(isset($_GET["upload"])) {
         goto error;
     }
 
-    $targetfile = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . basename($_FILES["file"]["name"]);
+    $targetfile = "../" . $config["upload_dir"] . $_POST["date"] . "-" . basename($_FILES["file"]["name"]);
     if(file_exists($targetfile)) {
         $i = 1;
         while(file_exists($targetfile)) {
-            $targetfile = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . $i . "-" . basename($_FILES["file"]["name"]);
+            $targetfile = "../" . $config["upload_dir"] . $_POST["date"] . "-" . $i . "-" . basename($_FILES["file"]["name"]);
             $i++;
         }
     }
@@ -131,6 +132,7 @@ if(isset($_GET["upload"])) {
 	</episode>
 </PodcastGenerator>";
     file_put_contents($targetfile_without_ext . ".xml", $episodefeed);
+    generateRSS();
 
     error:
     echo("");

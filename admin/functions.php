@@ -55,7 +55,7 @@ function generateRSS()
         }
     }
     // Bubble sort files
-    for ($i = 0; $i < sizeof($files) - 1; $i++) {
+    /*for ($i = 0; $i < sizeof($files) - 1; $i++) {
         for ($j = 0; $j < sizeof($files) - $i - 1; $j++) {
             if ($files[$j]["lastModified"] > $files[$j + 1]["lastModified"]) {
                 $old = $files[$j + 1]["lastModified"];
@@ -63,7 +63,17 @@ function generateRSS()
                 $files[$j]["lastModified"] = $old;
             }
         }
+    }*/
+    do {
+        $swapped = false;
+        for($i = 0, $c = sizeof($files) - 1; $i < $c; $i++) {
+            if($files[$i]["lastModified"] < $files[$i + 1]["lastModified"]) {
+                list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
+                $swapped = true;
+            }
+        }
     }
+    while($swapped);
     // Pop files from the future
     $realfiles = array();
     for ($i = 0; $i < sizeof($files); $i++) {
