@@ -60,7 +60,7 @@ if (isset($_GET["start"])) {
 	</episode>
 </PodcastGenerator>";
         // Select new filenames (with date)
-        $new_filename = "../" . $config["upload_dir"] . date("Y-m-d") . "_" . $new_files[$i];
+        $new_filename = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . $new_files[$i];
         $appendix = 0;
         while (file_exists($new_filename)) {
             $new_filename = "../" . $config["upload_dir"] . date("Y-m-d") . "-" . $appendix . "-" . basename($new_files[$i]);
@@ -68,7 +68,7 @@ if (isset($_GET["start"])) {
         }
         rename("../" . $config["upload_dir"] . $new_files[$i], $new_filename);
         // Write XML file
-        file_put_contents("../" . $config["upload_dir"] . date("Y-m-d") . "_" . pathinfo($new_files[$i], PATHINFO_FILENAME) . ".xml", $episodefeed);
+        file_put_contents("../" . $config["upload_dir"] . date("Y-m-d") . "-" . pathinfo($new_files[$i], PATHINFO_FILENAME) . ".xml", $episodefeed);
         // Regenarte RSS feed
         generateRSS();
     }
