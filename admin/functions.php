@@ -53,16 +53,7 @@ function generateRSS()
             }
         }
     }
-    // Bubble sort files
-    /*for ($i = 0; $i < sizeof($files) - 1; $i++) {
-        for ($j = 0; $j < sizeof($files) - $i - 1; $j++) {
-            if ($files[$j]["lastModified"] > $files[$j + 1]["lastModified"]) {
-                $old = $files[$j + 1]["lastModified"];
-                $files[$j + 1]["lastModified"] = $files[$j]["lastModified"];
-                $files[$j]["lastModified"] = $old;
-            }
-        }
-    }*/
+    
     do {
         $swapped = false;
         for($i = 0, $c = sizeof($files) - 1; $i < $c; $i++) {
