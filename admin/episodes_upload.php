@@ -1,7 +1,6 @@
 <?php
 require "checkLogin.php";
 require "../core/include_admin.php";
-require "functions.php";
 
 if(isset($_GET["upload"])) {
     // CHeck if all fields are set

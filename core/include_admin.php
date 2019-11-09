@@ -14,3 +14,4 @@ if(strlen($config["userpassword"]) == 32) {
     header("Location: ../core/misc/passwordconverter.php");
     die();
 }
+include "feed.php";

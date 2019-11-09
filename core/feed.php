@@ -1,6 +1,4 @@
 <?php
-require_once "../core/include_admin.php";
-
 function generateRSS()
 {
     // Make variables available in this scope

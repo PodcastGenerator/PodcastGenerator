@@ -1,7 +1,7 @@
 <?php
 require "checkLogin.php";
 require "../core/include_admin.php";
-require "functions.php";
+
 generateRSS();
 ?>
 <!DOCTYPE html>
