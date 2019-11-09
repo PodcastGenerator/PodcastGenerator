@@ -9,6 +9,7 @@ for ($i = 0; $i < sizeof($episodes); $i++) {
 // Check if episode was not found
 if (sizeof($correctepisode) == 0) {
     echo "Episode not found";
+    goto end;
 }
 echo '<div class="col-lg-12">';
 echo '  <h1>' . $correctepisode["episode"]["titlePG"] . '</h1>';                                                                              // Headline
@@ -24,3 +25,6 @@ echo '  <audio controls>';
 echo '      <source src="' . $config["upload_dir"] . $correctepisode["episode"]["filename"] . '" type="' . mime_content_type($config["upload_dir"] . $correctepisode["episode"]["filename"]) . '">';
 echo '  </audio>';
 echo '</div>';
+
+end:
+echo "";

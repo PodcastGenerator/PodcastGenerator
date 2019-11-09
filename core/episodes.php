@@ -29,6 +29,10 @@ function getEpisodes()
         // We need to get the CDATA in plaintext
         $xml = simplexml_load_file($_config["upload_dir"] . pathinfo("../" . $_config["upload_dir"] .$episodes[$i], PATHINFO_FILENAME) . ".xml", null, LIBXML_NOCDATA);
         foreach ($xml as $item) {
+            // Skip episodes from the future
+            if(filemtime($_config["upload_dir"] . $episodes[$i]) > time()) {
+                break;
+            }
             $append_array = [
                 "episode" => [
                     "titlePG" => $item->titlePG,
