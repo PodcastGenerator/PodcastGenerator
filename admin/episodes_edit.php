@@ -96,7 +96,7 @@ if(isset($_GET["edit"])) {
 	        <emailPG>".$_POST["authoremail"]."</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
-	        <size>".filesize($targetfile)."</size>
+	        <size>".intval(filesize($targetfile) / 1000 / 1000)."</size>
 	        <duration>".$duration."</duration>
 	        <bitrate>".substr(strval($bitrate), 0, 3)."</bitrate>
 	        <frequency>".$frequency."</frequency>
