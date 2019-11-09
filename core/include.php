@@ -2,6 +2,7 @@
 include "misc/security.php";
 include "misc/configsystem.php";
 include "misc/globs.php";
+include "episodes.php";
 // Until Podcast Generator 3.0 passwords were stored in MD5, which is inseucre since 2005
 // This file is wizard to convert old password to a more secure algorithim
 $config = getConfig("config.php");

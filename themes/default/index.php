@@ -17,6 +17,19 @@
         <?php
         include "jumbotron.php";
         ?>
+        <div class="row">
+            <?php
+            // IF name was passed, do this instead
+            if(isset($_GET["name"])) {
+                include 'singleepisode.php';
+            }
+            else {
+                include 'listepisodes.php';
+            }
+            ?>
+        </div>
+        <hr>
+        <p>Powered by <a href="http://podcastgenerator.net">Podcast Generator</a>, an open source podcast publishing solution | Theme based on <a href="https://getbootstrap.org">Bootstrap</a></p>
     </div>
 </body>
 
