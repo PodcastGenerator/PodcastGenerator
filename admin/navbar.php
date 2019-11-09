@@ -14,7 +14,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="episodes_upload.php">Upload New Episodes</a>
-                    <a class="dropdown-item" href="episodes_edit.php">Edit / Delete Episode</a>
+                    <a class="dropdown-item" href="../index.php">Edit / Delete Episode</a>
                     <a class="dropdown-item" href="episodes_manage_cats.php">Manage categories</a>
                     <a class="dropdown-item" href="episodes_ftp_feature.php">FTP Feature (Auto Indexing)</a>
                     <a class="dropdown-item" href="episodes_regenerate.php">Manually regenerate RSS feed</a>
