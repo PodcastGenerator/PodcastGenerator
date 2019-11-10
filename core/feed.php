@@ -30,8 +30,13 @@ function generateRSS()
 			<itunes:email>" . $config["author_email"] . "</itunes:email>
         	</itunes:owner>
         	<itunes:explicit>" . $config["explicit_podcast"] . "</itunes:explicit>
-		<itunes:category text=\"Arts\"></itunes:category>
-        ";
+		<itunes:category text=\"" . $config["itunes_category[0]"] . "\"></itunes:category>\n";
+    if($config["itunes_category[1]"] != "") {
+        $feedhead .= "		<itunes:category text=\"" . $config["itunes_category[1]"] . "\"></itunes:category>\n";
+    }
+    if($config["itunes_category[2]"] != "") {
+        $feedhead .= "		<itunes:category text=\"" . $config["itunes_category[2]"] . "\"></itunes:category>\n";
+    }
     // Get supported file extensions
     $supported_extensions = array();
     $supported_extensions_xml = simplexml_load_file("../components/supported_media/supported_media.xml");
@@ -51,17 +56,16 @@ function generateRSS()
             }
         }
     }
-    
+
     do {
         $swapped = false;
-        for($i = 0, $c = sizeof($files) - 1; $i < $c; $i++) {
-            if($files[$i]["lastModified"] < $files[$i + 1]["lastModified"]) {
+        for ($i = 0, $c = sizeof($files) - 1; $i < $c; $i++) {
+            if ($files[$i]["lastModified"] < $files[$i + 1]["lastModified"]) {
                 list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
                 $swapped = true;
             }
         }
-    }
-    while($swapped);
+    } while ($swapped);
     // Pop files from the future
     $realfiles = array();
     for ($i = 0; $i < sizeof($files); $i++) {

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PodcastGenerator>
+    <category>
+        <id>Arts</id>
+        <description>Arts</description>
+    </category>
+    <category>
+        <id>Arts:Books</id>
+        <description>Arts:Books</description>
+    </category>
+    <category>
+        <id>Arts:Design</id>
+        <description>Arts:Design</description>
+    </category>
+    <category>
+        <id>Arts:Fashion &amp; Beauty</id>
+        <description>Arts:Fashion &amp; Beauty</description>
+    </category>
+    <category>
+        <id>Arts:Food</id>
+        <description>Arts:Food</description>
+    </category>
+    <category>
+        <id>Arts:Performing Arts</id>
+        <description>Arts:Performing Arts</description>
+    </category>
+    <category>
+        <id>Arts:Visual Arts</id>
+        <description>Arts:Visual Arts</description>
+    </category>
+
+    <category>
+        <id>Business</id>
+        <description>Business</description>
+    </category>
+    <category>
+        <id>Business:Careers</id>
+        <description>Business:Careers</description>
+    </category>
+    <category>
+        <id>Business:Entrepreneurship</id>
+        <description>Business:Entrepreneurship</description>
+    </category>
+    <category>
+        <id>Business:Investing</id>
+        <description>Business:Investing</description>
+    </category>
+    <category>
+        <id>Business:Management</id>
+        <description>Business:Management</description>
+    </category>
+    <category>
+        <id>Business:Marketing</id>
+        <description>Business:Marketing</description>
+    </category>
+    <category>
+        <id>Business:Non-Profit</id>
+        <description>Business:Non-Profit</description>
+    </category>
+
+    <category>
+        <id>Comedy</id>
+        <description>Comedy</description>
+    </category>
+    <category>
+        <id>Comedy:Comedy Interviews</id>
+        <description>Comedy:Comedy Interviews</description>
+    </category>
+    <category>
+        <id>Comedy:Improv</id>
+        <description>Comedy:Improv</description>
+    </category>
+    <category>
+        <id>Comedy:Stand-Up</id>
+        <description>Comedy:Stand-Up</description>
+    </category>
+
+    <category>
+        <id>Education</id>
+        <description>Education</description>
+    </category>
+    <category>
+        <id>Education:Courses</id>
+        <description>Education:Courses</description>
+    </category>
+    <category>
+        <id>Education:How To</id>
+        <description>Education:How To</description>
+    </category>
+    <category>
+        <id>Education:Language Learning</id>
+        <description>Education:Language Learning</description>
+    </category>
+    <category>
+        <id>Education:Self-Improvement</id>
+        <description>Education:Self-Improvement</description>
+    </category>
+
+    <category>
+        <id>Fiction</id>
+        <description>Fiction</description>
+    </category>
+    <category>
+        <id>Fiction:Comedy Fiction</id>
+        <description>Fiction:Comedy Fiction</description>
+    </category>
+    <category>
+        <id>Fiction:Drama</id>
+        <description>Fiction:Drama</description>
+    </category>
+    <category>
+        <id>Fiction:Science Fiction</id>
+        <description>Fiction:Science Fiction</description>
+    </category>
+
+    <category>
+        <id>Government</id>
+        <description>Government</description>
+    </category>
+
+    <category>
+        <id>History</id>
+        <description>History</description>
+    </category>
+
+    <category>
+        <id>Health &amp; Fitness</id>
+        <description>Health &amp; Fitness</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Alternative Health</id>
+        <description>Health &amp; Fitness:Alternative Health</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Fitness</id>
+        <description>Health &amp; Fitness:Fitness</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Medicine</id>
+        <description>Health &amp; Fitness:Medicine</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Mental Health</id>
+        <description>Health &amp; Fitness:Mental Health</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Nutrition</id>
+        <description>Health &amp; Fitness:Nutrition</description>
+    </category>
+    <category>
+        <id>Health &amp; Fitness:Sexuality</id>
+        <description>Health &amp; Fitness:Sexuality</description>
+    </category>
+
+    <category>
+        <id>Kids &amp; Family</id>
+        <description>Kids &amp; Family</description>
+    </category>
+    <category>
+        <id>Kids &amp; Family:Education for Kids</id>
+        <description>Kids &amp; Family:Education for Kids</description>
+    </category>
+    <category>
+        <id>Kids &amp; Family:Parenting</id>
+        <description>Kids &amp; Family:Parenting</description>
+    </category>
+    <category>
+        <id>Kids &amp; Family:Pets &amp; Animals</id>
+        <description>Kids &amp; Family:Pets &amp; Animals</description>
+    </category>
+    <category>
+        <id>Kids &amp; Family:Stories for Kids</id>
+        <description>Kids &amp; Family:Stories for Kids</description>
+    </category>
+
+    <category>
+        <id>Leisure</id>
+        <description>Leisure</description>
+    </category>
+    <category>
+        <id>Leisure:Animation &amp; Manga</id>
+        <description>Leisure:Animation &amp; Manga</description>
+    </category>
+    <category>
+        <id>Leisure:Automotive</id>
+        <description>Leisure:Automotive</description>
+    </category>
+    <category>
+        <id>Leisure:Aviation</id>
+        <description>Leisure:Aviation</description>
+    </category>
+    <category>
+        <id>Leisure:Crafts</id>
+        <description>Leisure:Crafts</description>
+    </category>
+    <category>
+        <id>Leisure:Games</id>
+        <description>Leisure:Games</description>
+    </category>
+    <category>
+        <id>Leisure:Hobbies</id>
+        <description>Leisure:Hobbies</description>
+    </category>
+    <category>
+        <id>Leisure:Home &amp; Garden</id>
+        <description>Leisure:Home &amp; Garden</description>
+    </category>
+    <category>
+        <id>Leisure:Video Games</id>
+        <description>Leisure:Video Games</description>
+    </category>
+
+    <category>
+        <id>Music</id>
+        <description>Music</description>
+    </category>
+    <category>
+        <id>Music:Music Commentary</id>
+        <description>Music:Music Commentary</description>
+    </category>
+    <category>
+        <id>Music:Music History</id>
+        <description>Music:Music History</description>
+    </category>
+    <category>
+        <id>Music:Music Interviews</id>
+        <description>Music:Music Interviews</description>
+    </category>
+
+
+    <category>
+        <id>News</id>
+        <description>News</description>
+    </category>
+    <category>
+        <id>News:Business News</id>
+        <description>News:Business News</description>
+    </category>
+    <category>
+        <id>News:Daily News</id>
+        <description>News:Daily News</description>
+    </category>
+    <category>
+        <id>News:Entertainment News</id>
+        <description>News:Entertainment News</description>
+    </category>
+    <category>
+        <id>News:News Commentary</id>
+        <description>News:News Commentary</description>
+    </category>
+    <category>
+        <id>News:Politics</id>
+        <description>News:Politics</description>
+    </category>
+    <category>
+        <id>News:Sports News</id>
+        <description>News:Sports News</description>
+    </category>
+    <category>
+        <id>News:Tech News</id>
+        <description>News:Tech News</description>
+    </category>
+
+    <category>
+        <id>Religion &amp; Spirituality</id>
+        <description>Religion &amp; Spirituality</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Buddhism</id>
+        <description>Religion &amp; Spirituality:Buddhism</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Christianity</id>
+        <description>Religion &amp; Spirituality:Christianity</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Hinduism</id>
+        <description>Religion &amp; Spirituality:Hinduism</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Islam</id>
+        <description>Religion &amp; Spirituality:Islam</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Judaism</id>
+        <description>Religion &amp; Spirituality:Judaism</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Religion</id>
+        <description>Religion &amp; Spirituality:Religion</description>
+    </category>
+    <category>
+        <id>Religion &amp; Spirituality:Spirituality</id>
+        <description>Religion &amp; Spirituality:Spirituality</description>
+    </category>
+
+    <category>
+        <id>Science</id>
+        <description>Science</description>
+    </category>
+    <category>
+        <id>Science:Documentary</id>
+        <description>Science:Documentary</description>
+    </category>
+    <category>
+        <id>Science:Personal Journals</id>
+        <description>Science:Personal Journals</description>
+    </category>
+    <category>
+        <id>Science:Philosophy</id>
+        <description>Science:Philosophy</description>
+    </category>
+    <category>
+        <id>Science:Places &amp; Travel</id>
+        <description>Science:Places &amp; Travel</description>
+    </category>
+    <category>
+        <id>ScienceRelationships:</id>
+        <description>Science:Relationships</description>
+    </category>
+
+    <category>
+        <id>Sports</id>
+        <description>Sports</description>
+    </category>
+    <category>
+        <id>Sports:Baseball</id>
+        <description>Sports:Baseball</description>
+    </category>
+    <category>
+        <id>Sports:Basketball</id>
+        <description>Sports:Basketball</description>
+    </category>
+    <category>
+        <id>Sports:Cricket</id>
+        <description>Sports:Cricket</description>
+    </category>
+    <category>
+        <id>Sports:Fantasy Sports</id>
+        <description>Sports:Fantasy Sports</description>
+    </category>
+    <category>
+        <id>Sports:Football</id>
+        <description>Sports:Football</description>
+    </category>
+    <category>
+        <id>Sports:Golf</id>
+        <description>Sports:Golf</description>
+    </category>
+    <category>
+        <id>Sports:Hockey</id>
+        <description>Sports:Hockey</description>
+    </category>
+    <category>
+        <id>Sports:Rugby</id>
+        <description>Sports:Rugby</description>
+    </category>
+    <category>
+        <id>Sports:Running</id>
+        <description>Sports:Running</description>
+    </category>
+    <category>
+        <id>Sports:Soccer</id>
+        <description>Sports:Soccer</description>
+    </category>
+    <category>
+        <id>Sports:Swimming</id>
+        <description>Sports:Swimming</description>
+    </category>
+    <category>
+        <id>Sports:Tennis</id>
+        <description>Sports:Tennis</description>
+    </category>
+    <category>
+        <id>Sports:Volleyball</id>
+        <description>Sports:Volleyball</description>
+    </category>
+    <category>
+        <id>Sports:Wilderness</id>
+        <description>Sports:Wilderness</description>
+    </category>
+    <category>
+        <id>Sports:Wrestling</id>
+        <description>Sports:Wrestling</description>
+    </category>
+
+    <category>
+        <id>Technology</id>
+        <description>Technology</description>
+    </category>
+
+    <category>
+        <id>True Crime</id>
+        <description>True Crime</description>
+    </category>
+
+    <category>
+        <id>TV &amp; Film</id>
+        <description>TV &amp; Film</description>
+    </category>
+    <category>
+        <id>TV &amp; Film:After Shows</id>
+        <description>TV &amp; Film:After Shows</description>
+    </category>
+    <category>
+        <id>TV &amp; Film:Film History</id>
+        <description>TV &amp; Film:Film History</description>
+    </category>
+    <category>
+        <id>TV &amp; Film:Film Interviews</id>
+        <description>TV &amp; Film:Film Interviews</description>
+    </category>
+    <category>
+        <id>TV &amp; Film:Film Reviews</id>
+        <description>TV &amp; Film:Film Reviews</description>
+    </category>
+    <category>
+        <id>TV &amp; Film:TV Reviews</id>
+        <description>TV &amp; Film:TV Reviews</description>
+    </category>
+
+</PodcastGenerator>
