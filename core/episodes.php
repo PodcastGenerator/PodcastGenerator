@@ -23,6 +23,16 @@ function getEpisodes()
             }*/
         }
     }
+    // Bubble sort files according to their pubDate
+    do {
+        $swapped = false;
+        for($i = 0, $c = sizeof($episodes) -1; $i < $c; $i++) {
+            if(filemtime($_config["upload_dir"] . $episodes[$i]) < filemtime($_config["upload_dir"] . $episodes[$i+1])) {
+                list($episodes[$i+1], $episodes[$i]) = array($episodes[$i], $episodes[$i + 1]);
+                $swapped = true;
+            }
+        }
+    } while($swapped);
     // Get XML data for the certain episodes
     $episodes_data = array();
     for ($i = 0; $i < sizeof($episodes); $i++) {
