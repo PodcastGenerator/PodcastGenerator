@@ -17,10 +17,6 @@ function getEpisodes()
             if(in_array(pathinfo($_config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions) && file_exists($_config["upload_dir"] . pathinfo($_config["upload_dir"] . $entry, PATHINFO_FILENAME) . ".xml")) {
                 array_push($episodes, $entry);
             }
-            /*// Check if XML exist
-            if (pathinfo($_config["upload_dir"] . $entry, PATHINFO_EXTENSION) == "xml") {
-                array_push($episodes, $_config["upload_dir"] . pathinfo("../" . $_config["upload_dir"] . $entry, PATHINFO_FILENAME));
-            }*/
         }
     }
     // Bubble sort files according to their pubDate
