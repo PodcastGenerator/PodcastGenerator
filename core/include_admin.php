@@ -15,3 +15,4 @@ if(strlen($config["userpassword"]) == 32) {
     die();
 }
 include "feed.php";
+include "freebox.php";
