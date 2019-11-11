@@ -35,7 +35,7 @@ else {
     ?>
     <br>
     <div class="container">
-        <h1>Change Podcast Titles</h1>
+        <h1>Change Podcast Details</h1>
         <form action="podcast_details.php?edit=1" method="POST">
             Podcast Title:<br>
             <input type="text" name="podcast_title" value="<?php echo $config["podcast_title"]; ?>" class="txt"><br>
