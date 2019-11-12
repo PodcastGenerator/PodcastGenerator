@@ -12,8 +12,8 @@ require "securitycheck.php";
         <div class="container">
             <h1>Podcast Generator - Setup</h1>
             <p>
-                Howdy to Podcast Generator <?php echo $version; ?>!<br>
-                Thanks for choosing this software, have a cookie 🍪!<br>
+                Howdy and welcome to Podcast Generator <?php echo $version; ?>!<br>
+                Thanks for choosing a <a href="http://emilengler.com" target="_blank">Emil Engler</a> and <a href="http://betella.net" target="_blank">Alberto Betella</a> software, have a cookie 🍪!<br>
                 Unfortunaly the rewrite does not include a translation system yet, it will be added later on.<br>
                 This is Free and Open Source Software<br>
                 <br>

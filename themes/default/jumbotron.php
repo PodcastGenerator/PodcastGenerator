@@ -10,7 +10,16 @@
         <div class="jumbotron">
             <h1 class="display-4"><?php echo $config["podcast_title"]; ?></h1>
             <p class="lead"><?php echo $config["podcast_description"]; ?></p>
-            <small>TODO: Add buttons here</small>
+            <?php
+            foreach($buttons as $item) {
+                if(!isset($item->protocol)) {
+                    echo '<a class="'.$item->class.'" href="external.php?name='.$item->name.'">'.$item->name.'</a> ';
+                }
+                else {
+                    echo '<a class="'.$item->class.'" href="external.php?name='.$item->name.'">'.$item->name.'</a> ';
+                }
+            }
+            ?>
         </div>
     </div>
     <?php

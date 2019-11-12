@@ -27,6 +27,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="theme_change.php">Change Theme</a>
                     <a class="dropdown-item" href="theme_freebox.php">Customize your Freebox</a>
+                    <a class="dropdown-item" href="theme_buttons.php">Change Buttons</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
