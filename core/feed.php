@@ -1,5 +1,5 @@
 <?php
-function generateRSS()
+function generateRSS($path = "../")
 {
     // Make variables available in this scope
     global $config, $version;
@@ -31,27 +31,27 @@ function generateRSS()
         	</itunes:owner>
         	<itunes:explicit>" . $config["explicit_podcast"] . "</itunes:explicit>
 		<itunes:category text=\"" . $config["itunes_category[0]"] . "\"></itunes:category>\n";
-    if($config["itunes_category[1]"] != "") {
+    if ($config["itunes_category[1]"] != "") {
         $feedhead .= "		<itunes:category text=\"" . $config["itunes_category[1]"] . "\"></itunes:category>\n";
     }
-    if($config["itunes_category[2]"] != "") {
+    if ($config["itunes_category[2]"] != "") {
         $feedhead .= "		<itunes:category text=\"" . $config["itunes_category[2]"] . "\"></itunes:category>\n";
     }
     // Get supported file extensions
     $supported_extensions = array();
-    $supported_extensions_xml = simplexml_load_file("../components/supported_media/supported_media.xml");
+    $supported_extensions_xml = simplexml_load_file($path . "components/supported_media/supported_media.xml");
     foreach ($supported_extensions_xml->mediaFile->extension as $item) {
         array_push($supported_extensions, $item);
     }
     // Get episodes ordered by pub date
     $files = array();
-    if ($handle = opendir("../" . $config["upload_dir"])) {
+    if ($handle = opendir($path . $config["upload_dir"])) {
         while (false !== ($entry = readdir($handle))) {
             // Sort out all files with invalid file extensions
-            if (in_array(pathinfo("../" . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
+            if (in_array(pathinfo($path . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
                 array_push($files, [
                     "filename" => $entry,
-                    "lastModified" => filemtime("../" . $config["upload_dir"] . $entry)
+                    "lastModified" => filemtime($path . $config["upload_dir"] . $entry)
                 ]);
             }
         }
@@ -79,7 +79,7 @@ function generateRSS()
     $items = array();
     for ($i = 0; $i < sizeof($files); $i++) {
         $original_full_filepath = $config["url"] . $config["upload_dir"] . $files[$i]["filename"];
-        $file = simplexml_load_file("../" . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
+        $file = simplexml_load_file($path . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
@@ -87,7 +87,7 @@ function generateRSS()
 			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
 			<link>' . $original_full_filepath . '</link>
-			<enclosure url="' . $original_full_filepath . '" length="' . filesize("../" . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type("../" . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
+			<enclosure url="' . $original_full_filepath . '" length="' . filesize($path . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type($path . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
 			<guid>' . $config["url"] . '?name=' . $files[$i]["filename"] . '</guid>
 			<itunes:duration>' . $file->fileInfoPG->duration . '</itunes:duration>
 			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
@@ -110,5 +110,5 @@ function generateRSS()
     }
     // Append footer
     $xml .= $feedfooter;
-    return file_put_contents("../feed.xml", $xml);
+    return file_put_contents($path . "feed.xml", $xml);
 }
