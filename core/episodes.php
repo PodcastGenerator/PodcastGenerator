@@ -1,5 +1,5 @@
 <?php
-function getEpisodes()
+function getEpisodes($category = null)
 {
     $_config = getConfig("config.php");
     $supported_extensions = simplexml_load_file("components/supported_media/supported_media.xml");
@@ -70,5 +70,17 @@ function getEpisodes()
         }
     }
     unset($_config);
-    return $episodes_data;
+    if($category == null || $category == "all") {
+        return $episodes_data;
+    }
+    // Pop out non matching categories
+    $realepisodes = array();
+    foreach ($episodes_data as $item) {
+        $categories = array();
+        array_push($categories, $item["episode"]["categoriesPG"]["category1PG"][0], $item["episode"]["categoriesPG"]["category2PG"][0], $item["episode"]["categoriesPG"]["category3PG"][0]);
+        if(in_array($category, $categories)) {
+            array_push($realepisodes, $item);
+        }
+    }
+    return $realepisodes;
 }
