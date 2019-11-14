@@ -57,7 +57,10 @@ function getConfig($path = "config.php") {
             continue;
 
         preg_match('/\$(.+?) = ["]{0,1}(.+?)["]{0,1};/', $lines[$i], $output_array);
-        // CHeck if $output_array[2] is "
+        if(sizeof($output_array) != 3) {
+            continue;
+        }
+        // Check if $output_array[2] is "
         if($output_array[2] != "\"")
             $configmap[$output_array[1]] = $output_array[2];
         else
