@@ -26,13 +26,13 @@ if(isset($_GET["login"])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $config["podcast_title"]; ?> - Admin</title>
+        <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
     <body>
         <div class="container">
-            <h1><?php echo $config["podcast_title"]; ?> - Login</h1>
+            <h1><?php echo htmlspecialchars($config["podcast_title"]); ?> - Login</h1>
             <?php
             if(isset($error)) {
                 echo "<strong><p style='color: red;'>$error</p></strong>";

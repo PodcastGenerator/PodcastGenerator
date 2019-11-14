@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="<?php echo $config["feed_language"]; ?>">
+<html lang="en">
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?></title>
-    <link rel="stylesheet" href="<?php echo $config["theme_path"]; ?>style/bootstrap.css">
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?></title>
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/bootstrap.css">
     <meta charset="utf-8">
 </head>
 

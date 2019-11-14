@@ -6,7 +6,7 @@ require "../core/include_admin.php";
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Admin</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>

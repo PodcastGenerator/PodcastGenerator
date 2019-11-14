@@ -22,7 +22,7 @@ if(isset($_GET["change"])) {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Customize Freebox</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Customize Freebox</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>

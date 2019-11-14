@@ -47,7 +47,7 @@ if(isset($_GET["add"])) {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Admin</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -71,7 +71,7 @@ if(isset($_GET["add"])) {
             <?php
             $cats_xml = simplexml_load_file("../categories.xml");
             foreach ($cats_xml as $item) {
-                echo "<li><a href=\"" . $config["url"] . "index.php?cat=" . $item->id . "\">" . $item->description . "</a> <a class=\"btn btn-sm btn-danger\" href=\"episodes_manage_cats.php?del=" . $item->id . "\">Delete</a></li>";
+                echo "<li><a href=\"" . htmlspecialchars($config["url"]) . "index.php?cat=" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</a> <a class=\"btn btn-sm btn-danger\" href=\"episodes_manage_cats.php?del=" . htmlspecialchars($item->id) . "\">Delete</a></li>";
             }
             ?>
         </ul>

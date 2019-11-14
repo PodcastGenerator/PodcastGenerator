@@ -8,7 +8,7 @@ generateRSS();
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Regenerate Feed</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Regenerate Feed</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>

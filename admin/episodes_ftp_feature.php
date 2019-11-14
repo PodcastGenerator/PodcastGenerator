@@ -79,7 +79,7 @@ if (isset($_GET["start"])) {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - FTP Feature</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - FTP Feature</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>

@@ -8,15 +8,15 @@
     }
     ?>
         <div class="jumbotron">
-            <h1 class="display-4"><?php echo $config["podcast_title"]; ?></h1>
-            <p class="lead"><?php echo $config["podcast_description"]; ?></p>
+            <h1 class="display-4"><?php echo htmlspecialchars($config["podcast_title"]); ?></h1>
+            <p class="lead"><?php echo htmlspecialchars($config["podcast_description"]); ?></p>
             <?php
             foreach($buttons as $item) {
                 if(!isset($item->protocol)) {
-                    echo '<a class="'.$item->class.'" href="external.php?name='.$item->name.'">'.$item->name.'</a> ';
+                    echo '<a class="'.htmlspecialchars($item->class).'" href="external.php?name='.htmlspecialchars($item->name).'">'.htmlspecialchars($item->name).'</a> ';
                 }
                 else {
-                    echo '<a class="'.$item->class.'" href="external.php?name='.$item->name.'">'.$item->name.'</a> ';
+                    echo '<a class="'.htmlspecialchars($item->class).'" href="external.php?name='.htmlspecialchars($item->name).'">'.htmlspecialchars($item->name).'</a> ';
                 }
             }
             ?>

@@ -24,7 +24,7 @@ echo "";
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Select Podcast Category</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Select Podcast Category</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -49,10 +49,10 @@ echo "";
                 <?php
                 foreach ($categories as $item) {
                     if($config["itunes_category[0]"] == $item->id) {
-                        echo '<option value="'.$item->id.'" selected>'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
                     }
                     else {
-                        echo '<option value="'.$item->id.'">'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
                     }
                 }
                 ?>
@@ -69,10 +69,10 @@ echo "";
                 }
                 foreach ($categories as $item) {
                     if($config["itunes_category[1]"] == $item->id) {
-                        echo '<option value="'.$item->id.'" selected>'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
                     }
                     else {
-                        echo '<option value="'.$item->id.'">'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
                     }
                 }
                 ?>
@@ -89,10 +89,10 @@ echo "";
                 }
                 foreach ($categories as $item) {
                     if($config["itunes_category[2]"] == $item->id) {
-                        echo '<option value="'.$item->id.'" selected>'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
                     }
                     else {
-                        echo '<option value="'.$item->id.'">'.$item->description.'</option>';
+                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
                     }
                 }
                 ?>

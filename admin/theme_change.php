@@ -35,7 +35,7 @@ if(isset($_GET["change"])) {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Admin</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -58,14 +58,14 @@ if(isset($_GET["change"])) {
                 echo '<div class="card">';
                 echo '<img src="../' . $themes[$i][0] . 'preview.png" class="card-img-top">';
                 echo '<div class="card-body">';
-                echo '<h3>'.$json->name.'</h3>';
-                echo '<p>Description: '.$json->description.'</p>';
-                echo '<p>Author: '.$json->author.'</p>';
-                echo '<p>Theme Version: '.$json->version.'</p>';
-                echo '<p>Credits: '.$json->credits.'</p>';
+                echo '<h3>'.htmlspecialchars($json->name).'</h3>';
+                echo '<p>Description: '.htmlspecialchars($json->description).'</p>';
+                echo '<p>Author: '.htmlspecialchars($json->author).'</p>';
+                echo '<p>Theme Version: '.htmlspecialchars($json->version).'</p>';
+                echo '<p>Credits: '.htmlspecialchars($json->credits).'</p>';
                 echo '<hr>';
                 // Check if this theme is the used theme and or not
-                if($themes[$i][0] == $config["theme_path"]) {
+                if($themes[$i][0] == htmlspecialchars($config["theme_path"])) {
                     echo '<small>This theme is currently in use</small>';
                 }
                 else {

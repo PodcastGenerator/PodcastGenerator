@@ -18,7 +18,7 @@ else {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Podcast Details</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Podcast Details</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <style>
@@ -38,17 +38,17 @@ else {
         <h1>Change Podcast Details</h1>
         <form action="podcast_details.php?edit=1" method="POST">
             Podcast Title:<br>
-            <input type="text" name="podcast_title" value="<?php echo $config["podcast_title"]; ?>" class="txt"><br>
+            <input type="text" name="podcast_title" value="<?php echo htmlspecialchars($config["podcast_title"]); ?>" class="txt"><br>
             Podcast Subtitle or Slogan:<br>
-            <input type="text" name="podcast_subtitle" value="<?php echo $config["podcast_subtitle"]; ?>" class="txt"><br>
+            <input type="text" name="podcast_subtitle" value="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>" class="txt"><br>
             Podcast Description:<br>
-            <input type="text" name="podcast_description" value="<?php echo $config["podcast_description"]; ?>" class="txt"><br>
+            <input type="text" name="podcast_description" value="<?php echo htmlspecialchars($config["podcast_description"]); ?>" class="txt"><br>
             Copyright Notice:<br>
-            <input type="text" name="copyright" value="<?php echo $config["copyright"]; ?>" class="txt"><br>
+            <input type="text" name="copyright" value="<?php echo htmlspecialchars($config["copyright"]); ?>" class="txt"><br>
             Author name:<br>
-            <input type="text" name="author_name" value="<?php echo $config["author_name"]; ?>" class="txt"><br>
+            <input type="text" name="author_name" value="<?php echo htmlspecialchars($config["author_name"]); ?>" class="txt"><br>
             Author E-Mail address:<br>
-            <input type="text" name="author_email" value="<?php echo $config["author_email"]; ?>" class="txt"><br>
+            <input type="text" name="author_email" value="<?php echo htmlspecialchars($config["author_email"]); ?>" class="txt"><br>
             Feed language: (main language of your podcast)<br>
             <select name="feed_language">
                 <option value="af">Afrikanns</option>

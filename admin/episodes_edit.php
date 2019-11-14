@@ -118,7 +118,7 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Edit Episode</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Edit Episode</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -131,18 +131,18 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
     <br>
     <div class="container">
         <h3>Edit Episode</h3>
-        <form action="episodes_edit.php?name=<?php echo $_GET["name"]; ?>&edit=1" method="POST">
+        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
             <div class="row">
                 <div class="col-6">
                     <h3>Main Informations</h3>
                     <hr>
                     <div class="form-group">
                         Title*:<br>
-                        <input type="text" name="title" class="form-control" value="<?php echo $episode->episode->titlePG; ?>" required>
+                        <input type="text" name="title" class="form-control" value="<?php echo htmlspecialchars($episode->episode->titlePG); ?>" required>
                     </div>
                     <div class="form-group">
                         Short Description*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo $episode->episode->shortdescPG; ?>" maxlength="255" oninput="shortDescCheck()" required>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo htmlspecialchars($episode->episode->shortdescPG); ?>" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255 characters remaining</i>
                     </div>
                     <div class="form-group">
@@ -155,10 +155,10 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
                             $selected_cats = array(strval($episode->episode->categoriesPG->category1PG), strval($episode->episode->categoriesPG->category2PG), strval($episode->episode->categoriesPG->category3PG));
                             foreach ($categories as $item) {
                                 if(in_array($item->id, $selected_cats)) {
-                                    echo "<option value=\"" . $item->id . "\" selected>" . $item->description . "</option>";
+                                    echo "<option value=\"" . htmlspecialchars($item->id) . "\" selected>" . htmlspecialchars($item->description) . "</option>";
                                 }
                                 else {
-                                    echo "<option value=\"" . $item->id . "\">" . $item->description . "</option>";
+                                    echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
                                 }
                             }
                             ?>
@@ -178,11 +178,11 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
                     <hr>
                     <div class="form-group">
                         Long Description:<br>
-                        <textarea name="longdesc"><?php echo $episode->episode->longdescPG; ?></textarea><br>
+                        <textarea name="longdesc"><?php echo htmlspecialchars($episode->episode->longdescPG); ?></textarea><br>
                     </div>
                     <div class="form-group">
                         iTunes Keywords:<br>
-                        <input type="text" name="itunesKeywords" value="<?php echo $episode->episode->keywordsPG; ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
+                        <input type="text" name="itunesKeywords" value="<?php echo htmlspecialchars($episode->episode->keywordsPG); ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
                     </div>
                     <div class="form-group">
                         Explicit content:<br>
@@ -190,8 +190,8 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
                     </div>
                     <div class="form-group">
                         Author*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo $episode->episode->authorPG->namePG; ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo $episode->episode->authorPG->emailPG; ?>"><br>
+                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="Edit Episode">
                 </div>
@@ -199,7 +199,7 @@ $episode = simplexml_load_file("../" . $config["upload_dir"] . pathinfo("../" . 
         </form>
         <hr>
         <h3>Delete Episode</h3>
-        <a href="episodes_edit.php?name=<?php echo $_GET["name"]; ?>&delete=1" class="btn btn-danger">Delete</a>
+        <a href="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&delete=1" class="btn btn-danger">Delete</a>
     </div>
     <script type="text/javascript">
         function shortDescCheck() {

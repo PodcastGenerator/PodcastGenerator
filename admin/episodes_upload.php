@@ -142,7 +142,7 @@ if(isset($_GET["upload"])) {
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Upload Episode</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Upload Episode</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -157,7 +157,7 @@ if(isset($_GET["upload"])) {
         <h1>Upload Episode</h1>
         <?php
         if(isset($success)) {
-            echo "<strong><p style='color: #2ecc71;'>".$_POST["title"]." uploaded successfully</p></strong>";
+            echo "<strong><p style='color: #2ecc71;'>".htmlspecialchars($_POST["title"])." uploaded successfully</p></strong>";
         }
         if(isset($error)) {
             echo "<strong><p style='color: #e74c3c;'>$error</p></strong>";
@@ -171,7 +171,7 @@ if(isset($_GET["upload"])) {
                     <div class="form-group">
                         File*:<br>
                         <input type="file" name="file" required><br>
-                        <small>Your server configuration allows you to upload files up to around <?php echo round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0); ?> MB. If your file is bigger or you have other problems use the FTP feature</small><br>
+                        <small>Your server configuration allows you to upload files up to around <?php echo htmlspecialchars(round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0)); ?> MB. If your file is bigger or you have other problems use the FTP feature</small><br>
                     </div>
                     <div class="form-group">
                         Title*:<br>
@@ -189,7 +189,7 @@ if(isset($_GET["upload"])) {
                             <?php
                             $categories = simplexml_load_file("../categories.xml");
                             foreach ($categories as $item) {
-                                echo "<option value=\"" . $item->id . "\">" . $item->description . "</option>";
+                                echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
                             }
                             ?>
                         </select>
@@ -220,8 +220,8 @@ if(isset($_GET["upload"])) {
                     </div>
                     <div class="form-group">
                         Author*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo $config["author_name"]; ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo $config["author_email"]; ?>"><br>
+                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="Upload episode">
                 </div>

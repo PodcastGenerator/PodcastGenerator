@@ -73,7 +73,7 @@ error: echo "";
 <html>
 
 <head>
-    <title><?php echo $config["podcast_title"]; ?> - Admin</title>
+    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
 </head>
@@ -95,7 +95,7 @@ error: echo "";
         <?php
         if (!isset($_GET["name"])) {
             foreach ($buttons as $item) {
-                echo '<a href="theme_buttons.php?name=' . $item->name . '">' . $item->name . '</a><br>';
+                echo '<a href="theme_buttons.php?name=' . htmlspecialchars($item->name) . '">' . htmlspecialchars($item->name) . '</a><br>';
             }
         } else {
             $btn = null;
@@ -105,19 +105,19 @@ error: echo "";
                 }
             }
             ?>
-            <form action="theme_buttons.php?edit=1&name=<?php echo $_GET["name"]; ?>" method="POST">
+            <form action="theme_buttons.php?edit=1&name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
                 Name (needs to be unique):<br>
-                <input type="text" name="name" value="<?php echo $btn->name; ?>"><br>
+                <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
                 Link (where it should point to):<br>
-                <input type="text" name="href" value="<?php echo $btn->href; ?>"><br>
+                <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
                 CSS Classes (depends on theme, you can use <a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a> in the default theme):<br>
-                <input type="text" name="class" value="<?php echo $btn->class; ?>"><br>
+                <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 Protocol (Leave it blank if you don't know what you are doing)<br>
-                <input type="text" name="protocol" value="<?php echo $btn->protocol; ?>"><br><br>
+                <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
                 <input type="submit" value="Submit" class="btn btn-success">
             </form>
             <hr>
-            <a href="theme_buttons.php?del=1&name=<?php echo $_GET["name"]; ?>" class="btn btn-danger">Delete Button</a>
+            <a href="theme_buttons.php?del=1&name=<?php echo htmlspecialchars($_GET["name"]); ?>" class="btn btn-danger">Delete Button</a>
         <?php
         }
         ?>
@@ -126,15 +126,15 @@ error: echo "";
             ?>
             <hr>
             <h3>Add Button</h3>
-            <form action="theme_buttons.php?add=1&name=<?php echo $_GET["name"]; ?>" method="POST">
+            <form action="theme_buttons.php?add=1&name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
                 Name (needs to be unique):<br>
-                <input type="text" name="name" value="<?php echo $btn->name; ?>"><br>
+                <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
                 Link (where it should point to):<br>
-                <input type="text" name="href" value="<?php echo $btn->href; ?>"><br>
+                <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
                 CSS Classes (depends on theme, you can use <a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a> in the default theme):<br>
-                <input type="text" name="class" value="<?php echo $btn->class; ?>"><br>
+                <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 Protocol (Leave it blank if you don't know what you are doing)<br>
-                <input type="text" name="protocol" value="<?php echo $btn->protocol; ?>"><br><br>
+                <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
                 <input type="submit" value="Submit" class="btn btn-success">
             </form>
         <?php
