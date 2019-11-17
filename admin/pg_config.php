@@ -43,13 +43,6 @@ if (isset($_GET["edit"])) {
             How many recent episodes in the homepage?<br>
             <input type="number" name="max_recent" value="4" min="1"><br>
             <hr>
-            Select a date format:<br>
-            <select name="dateformat">
-                <option value="d-m-Y">Date / Month / Year</option>
-                <option value="m-d-Y">Month / Day / Year</option>
-                <option value="y-m-d" selected>Year / Month / Day</option>
-            </select>
-            <hr>
             Use cron to regenerate the RSS feed:<br>
             <input type="text" value="<?php echo htmlspecialchars($config["url"]) . "pg-cron.php?key=" . htmlspecialchars($config["installation_key"]); ?>" style="width: 100%;" readonly><br>
             <hr>

@@ -53,8 +53,6 @@ function createconf($username, $password) {
 
 \$enablestreaming = \"yes\"; // Enable mp3 streaming? (\"yes\" or \"no\")
 
-\$dateformat = \"d-m-Y\"; // d-m-Y OR m-d-Y OR Y-m-d
-
 \$freebox = \"yes\"; // enable freely customizable box
 
 \$enablehelphints = \"yes\";
