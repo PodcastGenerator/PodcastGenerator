@@ -75,9 +75,14 @@ function generateRSS($path = "../")
     }
     $files = $realfiles;
     unset($realfiles);
+    // Set a maximum amount of episodes generated in the feed
+    $maxEpisodes = sizeof($files);
+    if(strtolower($config["recent_episode_in_feed"]) != "all") {
+        $maxEpisodes = intval($config["recent_episode_in_feed"]);
+    }
     // Items (Episodes) in XML
     $items = array();
-    for ($i = 0; $i < sizeof($files); $i++) {
+    for ($i = 0; $i < $maxEpisodes; $i++) {
         $original_full_filepath = $config["url"] . $config["upload_dir"] . $files[$i]["filename"];
         $file = simplexml_load_file($path . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
         $item = '
