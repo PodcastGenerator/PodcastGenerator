@@ -21,10 +21,11 @@ if (isset($_SESSION["username"])) {
 echo '  <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($correctepisode["episode"]["filename"]) . '">Download</a><br>';              // Buttons
 echo '  <small>Filetype: ' . htmlspecialchars(strtoupper(pathinfo($_config["upload_dir"] . $correctepisode["episode"]["filename"], PATHINFO_EXTENSION))) . '
                 - Size: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . ' m (' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["frequency"]) . ' Hz)</small><br>';
-echo '  <audio controls>';
-echo '      <source src="' . htmlspecialchars($config["upload_dir"] . $correctepisode["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $correctepisode["episode"]["filename"])) . '">';
-echo '  </audio>';
+if (strtolower($config["enablestreaming"]) == "yes") {
+    echo '  <audio controls>';
+    echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $episodes[$i]["episode"]["filename"])) . '">';
+    echo '  </audio>';
+}
 echo '</div>';
 
-end:
-echo "";
+end: echo "";
