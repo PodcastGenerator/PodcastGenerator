@@ -55,15 +55,11 @@ function createconf($username, $password) {
 
 \$freebox = \"yes\"; // enable freely customizable box
 
-\$enablehelphints = \"yes\";
-
 \$enablepgnewsinadmin = \"yes\";
 
 \$strictfilenamepolicy = \"yes\"; // strictly rename files (just characters A to Z and numbers) 
 
 \$categoriesenabled = \"yes\";
-
-\$firsttimehere = \"yes\";
 
 \$cronAutoIndex = 1; //Auto Index New Episodes via Cron
 
