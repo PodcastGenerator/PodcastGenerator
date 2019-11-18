@@ -2,6 +2,8 @@
 require "core/include.php";
 if (isset($_GET["name"])) {
     $buttons = getButtons("./");
+    // Regenerate feed on every access (just for the case)
+    generateRSS("./");
     foreach ($buttons as $item) {
         if ($_GET["name"] == $item->name) {
             if (!isset($item->protocol)) {

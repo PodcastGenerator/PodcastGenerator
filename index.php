@@ -1,8 +1,6 @@
 <?php
 session_start();
 require "core/include.php";
-// Regenerate RSS feed on every page access
-generateRSS("./");
 $episodes = getEpisodes(null);
 
 if(strtolower($config["max_recent"]) != "all") {
