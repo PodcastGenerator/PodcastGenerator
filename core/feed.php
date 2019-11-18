@@ -47,6 +47,10 @@ function generateRSS($path = "../")
     $files = array();
     if ($handle = opendir($path . $config["upload_dir"])) {
         while (false !== ($entry = readdir($handle))) {
+            // Sort out all files which have no XML file
+            if(!file_exists($path . $config["upload_dir"] . pathinfo($config["upload_dir"] . $entry, PATHINFO_FILENAME) . ".xml")) {
+                continue;
+            }
             // Sort out all files with invalid file extensions
             if (in_array(pathinfo($path . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
                 array_push($files, [
