@@ -2,7 +2,7 @@
 require "checkLogin.php";
 require "../core/include_admin.php";
 
-if(isset($_GET["upload"])) {
+if (isset($_GET["upload"])) {
     // CHeck if all fields are set
     $req_fields = [
         $_POST["title"],
@@ -15,42 +15,50 @@ if(isset($_GET["upload"])) {
         $_POST["authoremail"]
     ];
     // Check if fields are missing
-    for($i = 0; $i < sizeof($req_fields); $i++) {
-        if(empty($req_fields[$i])) {
+    for ($i = 0; $i < sizeof($req_fields); $i++) {
+        if (empty($req_fields[$i])) {
             $error = "Missing fields";
             goto error;
         }
     }
 
     // Check if the user selected too much episodes
-    if(sizeof($_POST["category"]) > 3) {
+    if (sizeof($_POST["category"]) > 3) {
         $error = "Too much categories selected";
         goto error;
     }
 
     // Check author e-mail
-    if(isset($_POST["authoremail"])) {
-        if(!filter_var($_POST["authoremail"], FILTER_VALIDATE_EMAIL)) {
+    if (isset($_POST["authoremail"])) {
+        if (!filter_var($_POST["authoremail"], FILTER_VALIDATE_EMAIL)) {
             $error = "Invalid Author E-Mail provided";
             goto error;
         }
     }
 
-    if(strlen($_POST["shortdesc"]) > 255) {
+    if (strlen($_POST["shortdesc"]) > 255) {
         $error = "Size of the 'Short Description' exceeded";
         goto error;
     }
 
+    // Skip files if they are not strictly named
+    if ($config["strictfilenamepolicy"] == "yes") {
+        if (!preg_match('/^[\w.]+$/', basename($_FILES["file"]["name"]))) {
+            $error = "Invalid filename, only A-Z, a-z, underscores and dots are permitted";
+            goto error;
+        }
+    }
+
     $targetfile = "../" . $config["upload_dir"] . $_POST["date"] . "-" . basename($_FILES["file"]["name"]);
-    if(file_exists($targetfile)) {
+    if (file_exists($targetfile)) {
         $i = 1;
-        while(file_exists($targetfile)) {
+        while (file_exists($targetfile)) {
             $targetfile = "../" . $config["upload_dir"] . $_POST["date"] . "-" . $i . "-" . basename($_FILES["file"]["name"]);
             $i++;
         }
     }
     $targetfile_without_ext = "../" . $config["upload_dir"] . pathinfo($targetfile, PATHINFO_FILENAME);
-    if($_FILES["file"]["size"] > intval($config["max_upload_form_size"])) {
+    if ($_FILES["file"]["size"] > intval($config["max_upload_form_size"])) {
         $error = "File is too big, maximum filesize is: " . round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0);
         goto error;
     }
@@ -59,30 +67,30 @@ if(isset($_GET["upload"])) {
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
     $validFileExt = false;
     foreach ($validTypes->mediaFile as $item) {
-        if($fileextension == $item->extension) {
+        if ($fileextension == $item->extension) {
             $validFileExt = true;
             break;
         }
     }
-    if(!$validFileExt) {
+    if (!$validFileExt) {
         $error = "Invalid file extension";
         goto error;
     }
 
-    if(!move_uploaded_file($_FILES["file"]["tmp_name"], $targetfile)) {
+    if (!move_uploaded_file($_FILES["file"]["tmp_name"], $targetfile)) {
         $error = "The file upload was not successfully";
         goto error;
     }
 
     $validMimeType = false;
     foreach ($validTypes->mediaFile as $item) {
-        if(mime_content_type($targetfile) == $item->mimetype) {
+        if (mime_content_type($targetfile) == $item->mimetype) {
             $validMimeType = true;
             break;
         }
     }
 
-    if(!$validMimeType) {
+    if (!$validMimeType) {
         $error = "Invalid mime type, are you actually uploading a $fileextension file?";
         // Delete the file if the mime type is invalid
         unlink($targetfile);
@@ -107,26 +115,26 @@ if(isset($_GET["upload"])) {
     $episodefeed = "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[".$_POST["title"]."]]></titlePG>
-	    <shortdescPG><![CDATA[".$_POST["shortdesc"]."]]></shortdescPG>
-	    <longdescPG><![CDATA[".$_POST["longdesc"]."]]></longdescPG>
+	    <titlePG><![CDATA[" . $_POST["title"] . "]]></titlePG>
+	    <shortdescPG><![CDATA[" . $_POST["shortdesc"] . "]]></shortdescPG>
+	    <longdescPG><![CDATA[" . $_POST["longdesc"] . "]]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
-	        <category1PG>".$_POST["category"][0]."</category1PG>
-	        <category2PG>".$_POST["category"][1]."</category2PG>
-	        <category3PG>".$_POST["category"][2]."</category3PG>
+	        <category1PG>" . $_POST["category"][0] . "</category1PG>
+	        <category2PG>" . $_POST["category"][1] . "</category2PG>
+	        <category3PG>" . $_POST["category"][2] . "</category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA[".$_POST["keywords"]."]]></keywordsPG>
-	    <explicitPG>".$_POST["explicit"]."</explicitPG>
+	    <keywordsPG><![CDATA[" . $_POST["keywords"] . "]]></keywordsPG>
+	    <explicitPG>" . $_POST["explicit"] . "</explicitPG>
 	    <authorPG>
-	        <namePG>".$_POST["authorname"]."</namePG>
-	        <emailPG>".$_POST["authoremail"]."</emailPG>
+	        <namePG>" . $_POST["authorname"] . "</namePG>
+	        <emailPG>" . $_POST["authoremail"] . "</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
-	        <size>".intval($_FILES["file"]["size"] / 1000 / 1000)."</size>
-	        <duration>".$duration."</duration>
-	        <bitrate>".substr(strval($bitrate), 0, 3)."</bitrate>
-	        <frequency>".$frequency."</frequency>
+	        <size>" . intval($_FILES["file"]["size"] / 1000 / 1000) . "</size>
+	        <duration>" . $duration . "</duration>
+	        <bitrate>" . substr(strval($bitrate), 0, 3) . "</bitrate>
+	        <frequency>" . $frequency . "</frequency>
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>";
@@ -134,8 +142,7 @@ if(isset($_GET["upload"])) {
     generateRSS();
     $success = true;
 
-    error:
-    echo("");
+    error: echo ("");
 }
 ?>
 <!DOCTYPE html>
@@ -156,10 +163,10 @@ if(isset($_GET["upload"])) {
     <div class="container">
         <h1>Upload Episode</h1>
         <?php
-        if(isset($success)) {
-            echo "<strong><p style='color: #2ecc71;'>".htmlspecialchars($_POST["title"])." uploaded successfully</p></strong>";
+        if (isset($success)) {
+            echo "<strong><p style='color: #2ecc71;'>" . htmlspecialchars($_POST["title"]) . " uploaded successfully</p></strong>";
         }
-        if(isset($error)) {
+        if (isset($error)) {
             echo "<strong><p style='color: #e74c3c;'>$error</p></strong>";
         }
         ?>

@@ -25,6 +25,12 @@ if (isset($_GET["start"])) {
     require "../components/getid3/getid3.php";
     // Generate XML from audio file (with mostly empty values)
     for ($i = 0; $i < sizeof($new_files); $i++) {
+        // Skip files if they are not strictly named
+        if($config["strictfilenamepolicy"] == "yes") {
+            if(!preg_match('/^[\w.]+$/', $new_files[$i])) {
+                continue;
+            }
+        }
         // Get audio metadata (duration, bitrate etc)
         $getID3 = new getID3;
         $fileinfo = $getID3->analyze("../" . $config["upload_dir"] . $new_files[$i]);
