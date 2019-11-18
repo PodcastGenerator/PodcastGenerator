@@ -55,8 +55,6 @@ function createconf($username, $password) {
 
 \$freebox = \"yes\"; // enable freely customizable box
 
-\$enablepgnewsinadmin = \"yes\";
-
 \$strictfilenamepolicy = \"yes\"; // strictly rename files (just characters A to Z and numbers) 
 
 \$categoriesenabled = \"yes\";
@@ -65,14 +63,8 @@ function createconf($username, $password) {
 
 \$cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
 
-\$cronAutoRegenerateRSScacheTime = 21600; //Cache (in seconds)
-
 #####################
 # XML Feed stuff
-
-\$feed_iTunes_LINKS_Website = \"\";
-
-\$feed_URL_replace = \"\";
 
 \$podcast_title = \"Podcast Title\";
 
