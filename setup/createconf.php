@@ -80,7 +80,7 @@ function createconf($username, $password) {
 \$itunes_category[1] = \"\";
 \$itunes_category[2] = \"\";
 
-\$link = \$url.\"?name=\"; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
+\$link = \"?name=\"; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
 
 \$feed_language = \"en\";
 

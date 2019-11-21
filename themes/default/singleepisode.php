@@ -1,7 +1,7 @@
 <?php
 $correctepisode = array();
 for ($i = 0; $i < sizeof($episodes); $i++) {
-    if ($episodes[$i]["episode"]["filename"] == $_GET["name"]) {
+    if ($episodes[$i]["episode"]["filename"] == $_GET[$link]) {
         $correctepisode = $episodes[$i];
         break;
     }

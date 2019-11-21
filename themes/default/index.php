@@ -20,7 +20,7 @@
         <div class="row">
             <?php
             // IF name was passed, do this instead
-            if(isset($_GET["name"])) {
+            if(isset($_GET[$link])) {
                 include 'singleepisode.php';
             }
             else {
