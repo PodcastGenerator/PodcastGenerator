@@ -55,6 +55,8 @@ function createconf($username, $password) {
 
 \$freebox = \"yes\"; // enable freely customizable box
 
+\$enablepgnewsinadmin = \"yes\";
+
 \$strictfilenamepolicy = \"yes\"; // strictly rename files (just characters A to Z and numbers) 
 
 \$categoriesenabled = \"yes\";
