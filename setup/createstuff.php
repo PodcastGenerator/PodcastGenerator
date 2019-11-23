@@ -13,6 +13,12 @@ function createstuff() {
         <href>feed.xml</href>
         <class>btn btn-warning</class>
     </button>
+    <button>
+        <name>iTunes</name>
+        <href>feed.xml</href>
+        <class>btn btn-primary</class>
+        <protocol>itpc</protocol>
+    </button>
 </PodcastGenerator>';
         file_put_contents("../buttons.xml", $content);
     }
