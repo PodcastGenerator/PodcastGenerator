@@ -13,7 +13,7 @@ for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     echo '  <a class="btn btn-outline-primary btn-sm" href="index.php?' . $link . '=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">More</a>
                 <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">Download</a><br>';                      // Buttons
     echo '  <small>Filetype: ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
-                - Size: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["duration"]) . ' m (' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["frequency"]) . ' Hz)</small>';
+                - Size: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["duration"]) . ' m (' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["frequency"]) . ' Hz)</small><br>';
     if (strtolower($config["enablestreaming"]) == "yes") {
         echo '  <audio controls>';
         echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($item[$i]["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $item[$i]["episode"]["filename"])) . '">';

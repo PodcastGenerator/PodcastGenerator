@@ -38,6 +38,7 @@ if(isset($_GET["change"])) {
     <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 
 <body>
