@@ -13,6 +13,15 @@ if(strtolower($config["max_recent"]) != "all") {
     $episodes = array_slice($episodes, 0, $config["max_recent"]);
 }
 
+$splitted_episodes = array_chunk($episodes, intval($config["episodeperpage"]));
+$episode_chunk = null;
+if(isset($_GET["page"])) {
+    $episode_chunk = $splitted_episodes[intval(($_GET["page"]) - 1)];
+}
+else {
+    $episode_chunk = $splitted_episodes[0];
+}
+
 $buttons = getButtons("./");
 require $config["theme_path"]."index.php";
 ?>
