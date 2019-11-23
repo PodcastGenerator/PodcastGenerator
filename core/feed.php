@@ -16,7 +16,7 @@ function generateRSS($path = "../")
 		<lastBuildDate>" . date("r") . "</lastBuildDate>
 		<language>" . substr($config["feed_language"], 0, 2) . "</language>
 		<copyright>" . $config["copyright"] . "</copyright>
-		<itunes:image href=\"" . $config["url"] . $config["img_dir"] . "itunes_image.jpg\" />
+		<itunes:image href=\"" . $config["url"] . $config["img_dir"] . "itunes_cover.jpg\" />
 		<image>
 			<url>" . $config["url"] . $config["img_dir"] . "itunes_image.jpg</url>
 			<title>" . $config["podcast_title"] . "</title>
