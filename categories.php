@@ -14,5 +14,6 @@ $link = str_replace("?", "", $config["link"]);
 $link = str_replace("=", "", $link);
 $link = str_replace("\$url", "", $link);
 
+$buttons = getButtons("./");
 require $config["theme_path"]."categories.php";
 ?>
