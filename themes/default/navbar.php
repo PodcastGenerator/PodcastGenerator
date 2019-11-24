@@ -8,9 +8,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="categories.php">Categories</a>
-            </li>
+            <?php
+            if (strtolower($config["categoriesenabled"]) == "yes") {
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.php">Categories</a>
+                </li>
+            <?php
+            }
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="admin/">Admin</a>
             </li>

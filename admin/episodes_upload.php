@@ -3,11 +3,10 @@ require "checkLogin.php";
 require "../core/include_admin.php";
 
 if (isset($_GET["upload"])) {
-    // CHeck if all fields are set
+    // CHeck if all fields are set (except "category")
     $req_fields = [
         $_POST["title"],
         $_POST["shortdesc"],
-        $_POST["category"],
         $_POST["date"],
         $_POST["time"],
         $_POST["explicit"],
@@ -22,9 +21,21 @@ if (isset($_GET["upload"])) {
         }
     }
 
+    // Check if categories are even enabled and then do uncategorized
+    if(strtolower($config["categoriesenabled"]) != "yes") {
+        $_POST["category"] = array();
+        array_push($_POST["category"], "uncategorized");
+    }
+
     // Check if the user selected too much episodes
     if (sizeof($_POST["category"]) > 3) {
         $error = "Too much categories selected";
+        goto error;
+    }
+
+    // CHeck if the user has selected no categories
+    if(sizeof($_POST["category"]) <= 0) {
+        $error = "No category selected";
         goto error;
     }
 
@@ -152,7 +163,7 @@ if (isset($_GET["upload"])) {
     <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Upload Episode</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -190,18 +201,24 @@ if (isset($_GET["upload"])) {
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255 characters remaining</i>
                     </div>
-                    <div class="form-group">
-                        Category*:<br>
-                        <small>You can select up to 3 categories</small><br>
-                        <select name="category[ ]" multiple>
-                            <?php
-                            $categories = simplexml_load_file("../categories.xml");
-                            foreach ($categories as $item) {
-                                echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
+                    <?php
+                    if (strtolower($config["categoriesenabled"]) == "yes") {
+                        ?>
+                        <div class="form-group">
+                            Category*:<br>
+                            <small>You can select up to 3 categories</small><br>
+                            <select name="category[ ]" multiple>
+                                <?php
+                                    $categories = simplexml_load_file("../categories.xml");
+                                    foreach ($categories as $item) {
+                                        echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
+                                    }
+                                    ?>
+                            </select>
+                        </div>
+                    <?php
+                    }
+                    ?>
                     <div class="form-group">
                         Publication Date:<br>
                         <small>If you select a date in the future, it will be published then</small><br>

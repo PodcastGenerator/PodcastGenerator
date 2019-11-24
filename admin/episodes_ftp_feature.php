@@ -46,7 +46,7 @@ if (isset($_GET["start"])) {
 	    <longdescPG><![CDATA[]]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
-	        <category1PG></category1PG>
+	        <category1PG>uncategorized</category1PG>
 	        <category2PG></category2PG>
 	        <category3PG></category3PG>
 	    </categoriesPG>

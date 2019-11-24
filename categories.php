@@ -1,5 +1,10 @@
 <?php
 require "core/include.php";
+// Kill the connection if categories are disabled
+if(strtolower($config["categoriesenabled"]) != "yes") {
+    header("Location: index.php");
+    die();
+}
 $categories = simplexml_load_file("categories.xml");
 $episodes = getEpisodes($_GET["cat"]);
 $episode_chunk = $episodes;
