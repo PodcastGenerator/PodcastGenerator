@@ -1,5 +1,5 @@
 <?php
-function generateRSS($legacy = null)
+function generateRSS()
 {
     // Make variables available in this scope
     global $config, $version;

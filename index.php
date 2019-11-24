@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "core/include.php";
-generateRSS("./");
+generateRSS();
 $episodes = getEpisodes(null);
 
 // When calling name
