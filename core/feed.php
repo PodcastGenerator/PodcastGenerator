@@ -1,8 +1,12 @@
 <?php
-function generateRSS($path = "../")
+function generateRSS($legacy = null)
 {
     // Make variables available in this scope
     global $config, $version;
+    // Create path if it doesn't exist
+    if(!is_dir($config["absoluteurl"] . $config["feed_dir"])) {
+        mkdir($config["absoluteurl"] . $config["feed_dir"]);
+    }
     // Set the feed header with relevant podcast informations
     $feedhead = "<?xml version=\"1.0\" encoding=\"" . $config["feed_encoding"] . "\"?>
     <!-- generator=\"Podcast Generator " . $version . "\" -->
@@ -39,23 +43,23 @@ function generateRSS($path = "../")
     }
     // Get supported file extensions
     $supported_extensions = array();
-    $supported_extensions_xml = simplexml_load_file($path . "components/supported_media/supported_media.xml");
+    $supported_extensions_xml = simplexml_load_file($config["absoluteurl"] . "components/supported_media/supported_media.xml");
     foreach ($supported_extensions_xml->mediaFile->extension as $item) {
         array_push($supported_extensions, $item);
     }
     // Get episodes ordered by pub date
     $files = array();
-    if ($handle = opendir($path . $config["upload_dir"])) {
+    if ($handle = opendir($config["absoluteurl"] . $config["upload_dir"])) {
         while (false !== ($entry = readdir($handle))) {
             // Sort out all files which have no XML file
-            if(!file_exists($path . $config["upload_dir"] . pathinfo($config["upload_dir"] . $entry, PATHINFO_FILENAME) . ".xml")) {
+            if(!file_exists($config["absoluteurl"] . $config["upload_dir"] . pathinfo($config["upload_dir"] . $entry, PATHINFO_FILENAME) . ".xml")) {
                 continue;
             }
             // Sort out all files with invalid file extensions
-            if (in_array(pathinfo($path . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
+            if (in_array(pathinfo($config["absoluteurl"] . $config["upload_dir"] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
                 array_push($files, [
                     "filename" => $entry,
-                    "lastModified" => filemtime($path . $config["upload_dir"] . $entry)
+                    "lastModified" => filemtime($config["absoluteurl"] . $config["upload_dir"] . $entry)
                 ]);
             }
         }
@@ -91,7 +95,7 @@ function generateRSS($path = "../")
         $link = str_replace("=", "", $link);
         $link = str_replace("\$url", "", $link);
         $original_full_filepath = $config["url"] . $config["upload_dir"] . $files[$i]["filename"];
-        $file = simplexml_load_file($path . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
+        $file = simplexml_load_file($config["absoluteurl"] . $config["upload_dir"] . pathinfo($config["upload_dir"] . $files[$i]["filename"], PATHINFO_FILENAME) . ".xml");
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
@@ -99,7 +103,7 @@ function generateRSS($path = "../")
 			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
 			<link>' . $original_full_filepath . '</link>
-			<enclosure url="' . $original_full_filepath . '" length="' . filesize($path . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type($path . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
+			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config["absoluteurl"] . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
 			<guid>' . $config["url"] . "?" . $link . "=" . $files[$i]["filename"] . '</guid>
 			<itunes:duration>' . $file->fileInfoPG->duration . '</itunes:duration>
 			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
@@ -122,5 +126,5 @@ function generateRSS($path = "../")
     }
     // Append footer
     $xml .= $feedfooter;
-    return file_put_contents($path . "feed.xml", $xml);
+    return file_put_contents($config["absoluteurl"] . $config["feed_dir"] .  "feed.xml", $xml);
 }
