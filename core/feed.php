@@ -105,7 +105,7 @@ function generateRSS()
 			<link>' . $original_full_filepath . '</link>
 			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config["absoluteurl"] . $config["upload_dir"] . $files[$i]["filename"]) . '" type="' . mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $files[$i]["filename"]) . '"></enclosure>
 			<guid>' . $config["url"] . "?" . $link . "=" . $files[$i]["filename"] . '</guid>
-			<itunes:duration>' . $file->fileInfoPG->duration . '</itunes:duration>
+			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
 			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
 			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
 			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
