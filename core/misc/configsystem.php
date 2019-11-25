@@ -43,7 +43,7 @@ function updateConfig($path, $key, $value) {
     return true;
 }
 
-// This function allows to get config strings
+/*// This function allows to get config strings
 function getConfig($path = "config.php") {
     $configmap = array();
     $content = file_get_contents($path);
@@ -69,4 +69,45 @@ function getConfig($path = "config.php") {
     // Pop first (<?php) element
     unset($configmap[""]);
     return $configmap;
+}*/
+function getConfig($path = "config.php") {
+    require $path;
+    $config = [
+        "podcastgen_version" => $podcastgen_version,
+        "first_installation" => $first_installation,
+        "installation_key" => $installation_key,
+        "url" => $url,
+        "absoluteurl" => $absoluteurl,
+        "theme_path" => $theme_path,
+        "username" => $username,
+        "userpassword" => $userpassword,
+        "max_upload_form_size" => $max_upload_form_size,
+        "upload_dir" => $upload_dir,
+        "img_dir" => $img_dir,
+        "feed_dir" => $feed_dir,
+        "max_recent" => $max_recent,
+        "recent_episode_in_feed" => $recent_episode_in_feed,
+        "episodeperpage" => $episodeperpage,
+        "enablestreaming" => $enablestreaming,
+        "freebox" => $freebox,
+        "enablepgnewsinadmin" => $enablepgnewsinadmin,
+        "strictfilenamepolicy" => $strictfilenamepolicy,
+        "categoriesenabled" => $categoriesenabled,
+        "cronAutoIndex" => $cronAutoIndex,
+        "cronAutoRegenerateRSS" => $cronAutoRegenerateRSS,
+        "podcast_title" => $podcast_title,
+        "podcast_subtitle" => $podcast_subtitle,
+        "podcast_description" => $podcast_description,
+        "author_name" => $author_name,
+        "author_email" => $author_email,
+        "itunes_category[0]" => $itunes_category[0],
+        "itunes_category[1]" => $itunes_category[1],
+        "itunes_category[2]" => $itunes_category[2],
+        "link" => $link,
+        "feed_language" => $feed_language,
+        "copyright" => $copyright,
+        "feed_encoding" => $feed_encoding,
+        "explicit_podcast" => $explicit_podcast
+    ];
+    return $config;
 }

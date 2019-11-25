@@ -18,6 +18,7 @@ function createconf($username, $password) {
     $absoluteurl = realpath("../")."/";
     $userpassword = password_hash($password, PASSWORD_DEFAULT);
     // Escape password
+    $userpassword = str_replace("\$", "\\\$", $userpassword);
     $installation_key = randomString();
 
     $config = "<?php
