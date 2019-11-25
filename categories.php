@@ -6,7 +6,10 @@ if(strtolower($config["categoriesenabled"]) != "yes") {
     die();
 }
 $categories = simplexml_load_file("categories.xml");
-$episodes = getEpisodes($_GET["cat"]);
+$episodes = null;
+if(isset($_GET["cat"])) {
+    $episodes = getEpisodes($_GET["cat"]);
+}
 $episode_chunk = $episodes;
 
 // Backwards comp

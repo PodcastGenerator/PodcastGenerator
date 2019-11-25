@@ -15,7 +15,7 @@ if(strlen($config["userpassword"]) == 32) {
     die();
 }
 // Check if theme is compatible
-if (!file_exists("../" . $config["theme_path"] . "theme.json")) {
+if (!file_exists($config["theme_path"] . "theme.json")) {
     // Fallback to defalt theme if incompatible
-    updateConfig("../config.php", "theme_path", "themes/default/");
+    updateConfig("config.php", "theme_path", "themes/default/");
 }

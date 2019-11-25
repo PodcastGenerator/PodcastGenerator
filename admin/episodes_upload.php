@@ -39,6 +39,13 @@ if (isset($_GET["upload"])) {
         goto error;
     }
 
+    // Fill up empty categories (to avoid warnings)
+    for($i = 0; $i < 3; $i++) {
+        if(!isset($_POST["category"][$i])) {
+            $_POST["category"][$i] = "";
+        }
+    }
+
     // Check author e-mail
     if (isset($_POST["authoremail"])) {
         if (!filter_var($_POST["authoremail"], FILTER_VALIDATE_EMAIL)) {
@@ -135,7 +142,7 @@ if (isset($_GET["upload"])) {
 	        <category2PG>" . $_POST["category"][1] . "</category2PG>
 	        <category3PG>" . $_POST["category"][2] . "</category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA[" . $_POST["keywords"] . "]]></keywordsPG>
+	    <keywordsPG><![CDATA[" . $_POST["itunesKeywords"] . "]]></keywordsPG>
 	    <explicitPG>" . $_POST["explicit"] . "</explicitPG>
 	    <authorPG>
 	        <namePG>" . $_POST["authorname"] . "</namePG>
