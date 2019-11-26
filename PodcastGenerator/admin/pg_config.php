@@ -52,7 +52,7 @@ if (isset($_GET["edit"])) {
             ?>
             <hr>
             Use cron to regenerate the RSS feed:<br>
-            <input type="text" value="<?php echo htmlspecialchars($config["url"]) . "pg-cron.php?key=" . htmlspecialchars($config["installation_key"]); ?>" style="width: 100%;" readonly><br>
+            <input type="text" value="<?php echo htmlspecialchars($config["url"]) . "pg-cron.php?key=" . htmlspecialchars($config["installationKey"]); ?>" style="width: 100%;" readonly><br>
             <hr>
             <input type="submit" value="Submit" class="btn btn-success"><br>
         </form>

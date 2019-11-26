@@ -19,14 +19,14 @@ function createconf($username, $password) {
     $userpassword = password_hash($password, PASSWORD_DEFAULT);
     // Escape password
     $userpassword = str_replace("\$", "\\\$", $userpassword);
-    $installation_key = randomString();
+    $installationKey = randomString();
 
     $config = "<?php
 \$podcastgen_version = $version; // Version
 
 \$first_installation = $installtime;
 
-\$installation_key = \"$installation_key\";
+\$installationKey = \"$installationKey\";
 
 \$url = \"$url\";
 

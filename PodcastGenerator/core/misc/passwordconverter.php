@@ -9,6 +9,7 @@ if(!strlen($config["userpassword"]) == 32) {
 if(isset($_GET["convert"])) {
     $p = $_POST;
     $newpassword = password_hash($p["password"], PASSWORD_DEFAULT);
+    $newpassword = str_replace("\$", "\\\$", $newpassword);
     if(md5($p["password"]) != $config["userpassword"]) {
         $error = "Password is not correct";
     }
