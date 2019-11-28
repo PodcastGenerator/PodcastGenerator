@@ -2,7 +2,7 @@
 require "configsystem.php";
 $config = getConfig("../../config.php");
 // Check if the hash is MD5
-if(!strlen($config["userpassword"]) == 32) {
+if(strlen($config["userpassword"]) != 32) {
     header("Location: ../../index.php");
     die("Password is already secure");
 }
@@ -12,13 +12,14 @@ if(isset($_GET["convert"])) {
     $newpassword = str_replace("\$", "\\\$", $newpassword);
     if(md5($p["password"]) != $config["userpassword"]) {
         $error = "Password is not correct";
+        goto error;
     }
-    if(!isset($error)) {
-        updateConfig("../../config.php", "userpassword", $newpassword);
-        header("Location: ../../index.php");
-        die("Password updated");
-    }
+    updateConfig("../../config.php", "userpassword", $newpassword);
+    header("Location: ../../index.php");
+    die("Password updated");
 }
+error:
+echo "";
 ?>
 <!DOCTYPE html>
 <html>
