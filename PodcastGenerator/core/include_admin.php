@@ -17,3 +17,5 @@ if(strlen($config["userpassword"]) == 32) {
 }
 include "feed.php";
 include "freebox.php";
+include "backwards.php";
+backwards_2_7_to_3_0($config["absoluteurl"]);
