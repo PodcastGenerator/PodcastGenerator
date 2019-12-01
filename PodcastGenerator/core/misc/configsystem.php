@@ -43,7 +43,7 @@ function updateConfig($path, $key, $value) {
     return true;
 }
 
-/*// This function allows to get config strings
+// This function allows to get config strings
 function getConfig($path = "config.php") {
     $configmap = array();
     $content = file_get_contents($path);
@@ -60,16 +60,25 @@ function getConfig($path = "config.php") {
         if(sizeof($output_array) != 3) {
             continue;
         }
+        // Cut of escape chars if there are any
         // Check if $output_array[2] is "
-        if($output_array[2] != "\"")
+        if($output_array[2] != "\"") {
+            $output_array[2] = str_replace("\\", "", $output_array[2]);
             $configmap[$output_array[1]] = $output_array[2];
-        else
+        }
+        else {
             $configmap[$output_array[1]] = "";
+        }
     }
     // Pop first (<?php) element
     unset($configmap[""]);
     return $configmap;
-}*/
+}
+
+function unsetConfig($path = "config.php") {
+
+}
+/*
 function getConfig($path = "config.php") {
     require $path;
     $config = [
@@ -110,4 +119,4 @@ function getConfig($path = "config.php") {
         "explicit_podcast" => $explicit_podcast
     ];
     return $config;
-}
+}*/
