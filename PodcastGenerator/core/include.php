@@ -3,7 +3,7 @@ include "misc/security.php";
 include "misc/configsystem.php";
 include "misc/globs.php";
 include "episodes.php";
-include "feed.php";
+include "feed_generator.php";
 include "buttons.php";
 include "freebox.php";
 include "backwards.php";
