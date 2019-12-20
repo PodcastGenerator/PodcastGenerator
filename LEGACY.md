@@ -1,13 +1,14 @@
 # Legacy
-The old versions of Podcast Generator (Before 3.0) are called legacy.
-This page should be used as an archive! (It contains release notes)
-Use this versions at your own risk as they are no longer maintained.
+The old versions of Podcast Generator (Before 3.0) are called legacy.<br>
+This page should be used as an archive! (It contains release notes)<br>
+Use this versions at your own risk as they are no longer maintained.<br>
 
 ## 2.7
-Hash: `b17c2ace9bae42d0eab9371b7ed93cee09f35f21`
-[Download](https://github.com/albertobeta/PodcastGenerator/archive/b17c2ace9bae42d0eab9371b7ed93cee09f35f21.zip)
-Release Date: 2018-01-07
+Hash: `b17c2ace9bae42d0eab9371b7ed93cee09f35f21`<br>
+[Download](https://github.com/albertobeta/PodcastGenerator/archive/b17c2ace9bae42d0eab9371b7ed93cee09f35f21.zip)<br>
+Release Date: 2018-01-07<br>
 ### Release note
+```
 **Changelog:**
 - Bug fixes;
 - Added new localizations including Chinese and Turkish
@@ -18,12 +19,13 @@ Release Date: 2018-01-07
 
 **News**
 [🚀 A brand-new and more modern version of Podcast Generator is expected in 2018](https://github.com/albertobeta/PodcastGenerator/issues/36#issuecomment-341741130)
-
+```
 ## 2.6
-Hash: `22abe96c65e7e21ba9484b81aba756e1923fb803`
-[Download](https://github.com/albertobeta/PodcastGenerator/archive/22abe96c65e7e21ba9484b81aba756e1923fb803.zip)
-Release Date: 2016-02-28
+Hash: `22abe96c65e7e21ba9484b81aba756e1923fb803`<br>
+[Download](https://github.com/albertobeta/PodcastGenerator/archive/22abe96c65e7e21ba9484b81aba756e1923fb803.zip)<br>
+Release Date: 2016-02-28<br>
 ### Release note
+```
 **Changelog:**
 - Fixed a potential security issue with files deletion (thanks to Kacper Szurek);
 - Fixed a bug concerning the upload of files which have the same name but different extensions;
@@ -34,11 +36,13 @@ Release Date: 2016-02-28
 **Instructions:**
 - [Installation](http://podcastgen.sourceforge.net/documentation/installation)
 - [Upgrade](http://podcastgen.sourceforge.net/documentation/upgrade)
+```
 ## 2.5
-Hash: `44b24d13d3a3218ba86cde7013ca7203457b6fb3`
-[Download](https://github.com/albertobeta/PodcastGenerator/archive/44b24d13d3a3218ba86cde7013ca7203457b6fb3.zip)
-Release date: 2015-04-21
+Hash: `44b24d13d3a3218ba86cde7013ca7203457b6fb3`<br>
+[Download](https://github.com/albertobeta/PodcastGenerator/archive/44b24d13d3a3218ba86cde7013ca7203457b6fb3.zip)<br>
+Release date: 2015-04-21<br>
 ### Release note
+```
 Changelog:
 - Minor bug fixes
 - Improvements in the feed interoperability
@@ -47,3 +51,4 @@ Changelog:
 Instructions: 
 - [Installation](http://podcastgen.sourceforge.net/documentation/installation)
 - [Upgrade](http://podcastgen.sourceforge.net/documentation/upgrade)
+```
