@@ -15,7 +15,7 @@ if(isset($_GET["upload"])) {
     }
 
     // Now everything is cool and the file can uploaded
-    if(!move_uploaded_file($_FILES["file"]["tmp_name"], "../" . $config["img_dir"] . "itunes_cover.jpg")) {
+    if(!move_uploaded_file($_FILES["file"]["tmp_name"], "../" . $config["img_dir"] . "itunes_image.jpg")) {
         $error = "File was not uploaded";
         goto error;
     }
@@ -55,7 +55,7 @@ if(isset($_GET["upload"])) {
         }
         ?>
         <h3>Current Cover</h3>
-        <img src="../images/itunes_cover.jpg" style="max-height: 350px; max-width: 350px;">
+        <img src="../images/itunes_image.jpg" style="max-height: 350px; max-width: 350px;">
         <hr>
         <h3>Upload new cover</h3>
         <form action="store_cover.php?upload=1" method="POST" enctype="multipart/form-data">
