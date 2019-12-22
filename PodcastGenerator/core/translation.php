@@ -1,10 +1,8 @@
 <?php
 // Set language
-putenv('LC_ALL=en_EN');
-setlocale(LC_ALL, 'en_EN');
-
-// Specifiy location of translation sets
-bindtextdomain("PodcastGenerator", $config["absoluteurl"].'components/locale');
-
-// Choose domain
-textdomain("PodcastGenerator");
+putenv("LANG=" . $config["scriptlang"]);
+setlocale(LC_ALL, $config["scriptlang"]);
+$domain = "messages";
+bindtextdomain($domain, $config["absoluteurl"]."components/locale");
+bind_textdomain_codeset($domain, 'UTF-8');
+textdomain($domain);
