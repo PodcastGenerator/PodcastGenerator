@@ -1,7 +1,7 @@
 <?php
 function backwards_2_7_to_3_0($absoluteurl) {
     // Quit if version is not 2.7
-    if($config["podcastgen_version"] != "2.7") {
+    if($config['podcastgen_version'] != '2.7') {
         return;
     }
     // Delete useless stuff that is no longer supported/required
@@ -39,5 +39,5 @@ function backwards_2_7_to_3_0($absoluteurl) {
         array_map('unlink', glob($absoluteurl . $dirsToDelete[$i]."/*.*"));
         rmdir($absoluteurl . $dirsToDelete[$i]);
     }
-    updateConfig($absoluteurl . "config.php", "podcastgen_version", $version);
+    updateConfig($absoluteurl . 'config.php', 'podcastgen_version', $version);
 }
