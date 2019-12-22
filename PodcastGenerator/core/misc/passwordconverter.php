@@ -1,23 +1,24 @@
 <?php
-require "configsystem.php";
-$config = getConfig("../../config.php");
+// TODO: Port the entire file to the backwards comp. function
+require 'configsystem.php';
+$config = getConfig('../../config.php');
 // Check if the hash is MD5
-if(strlen($config["userpassword"]) != 32) {
-    header("Location: ../../index.php");
-    die("Password is already secure");
+if(strlen($config['userpassword']) != 32) {
+    header('Location: ../../index.php');
+    die('Password is already secure');
 }
-if(isset($_GET["convert"])) {
+if(isset($_GET['convert'])) {
     $p = $_POST;
-    $newpassword = password_hash($p["password"], PASSWORD_DEFAULT);
-    $newpassword = str_replace("\$", "\\\$", $newpassword);
-    if(md5($p["password"]) != $config["userpassword"]) {
-        $error = "Password is not correct";
+    $newpassword = password_hash($p['password'], PASSWORD_DEFAULT);
+    $newpassword = str_replace('$', '\$', $newpassword);
+    if(md5($p['password']) != $config['userpassword']) {
+        $error = 'Password is not correct';
         goto error;
     }
-    updateConfig("../../config.php", "userpassword", $newpassword);
+    updateConfig('../../config.php', 'userpassword', $newpassword);
     sleep(0.5);
-    header("Refresh:0");
-    die("Password updated");
+    header('Refresh:0');
+    die('Password updated');
 }
 error:
 echo "";
@@ -32,7 +33,7 @@ echo "";
         <p>
             <?php
             if(isset($error)) {
-                echo "<strong><p style=\"color: red;\">$error</p></strong>";
+                echo '<strong><p style="color: red;">'.$error.'</p></strong>';
             }
             ?>
             The way your pasword is stored, is broken for over 14 years as of 2019.<br>

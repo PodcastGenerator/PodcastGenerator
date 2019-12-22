@@ -8,31 +8,31 @@ function updateConfig($path, $key, $value) {
         if(strlen($lines[$i]) == 0)
             continue;
         // Skip comment lines
-        if($lines[$i][0] == "/" || $lines[$i][0] == "#")
+        if($lines[$i][0] == '/' || $lines[$i][0] == '#')
             continue;
 
         // Get the actual key
         if(substr($lines[$i], 1, strlen($key)) == $key) {
             // Get the comment first
-            $comment = strpos($lines[$i], ";");
+            $comment = strpos($lines[$i], ';');
             if($comment) {
                 $comment = substr($lines[$i], $comment);
                 // Cut away semicolon
                 $comment = substr($comment, 1);
             }
-            $lines[$i] = "\$".$key." = ";
+            $lines[$i] = '$'.$key.' = ';
             // Add qoutes if it is a string
-            if(gettype($value) == "string") {
-                $lines[$i] .= "\"$value\";";
+            if(gettype($value) == 'string') {
+                $lines[$i] .= '"'.$value.'";';
             }
             else {
-                $lines[$i] .= "$value;";
+                $lines[$i] .= $value.';';
             }
             // Append comment
             $lines[$i] .= $comment;
         }
     }
-    $configStr = "";
+    $configStr = '';
     for($i = 0; $i < sizeof($lines); $i++) {
         $configStr .= $lines[$i]."\n";
     }
@@ -44,7 +44,7 @@ function updateConfig($path, $key, $value) {
 }
 
 // This function allows to get config strings
-function getConfig($path = "config.php") {
+function getConfig($path = 'config.php') {
     $configmap = array();
     $content = file_get_contents($path);
     $lines = explode("\n", $content);
@@ -53,7 +53,7 @@ function getConfig($path = "config.php") {
         if(strlen($lines[$i]) == 0)
             continue;
         // Skip comment and php lines
-        if($lines[$i][0] == "/" || $lines[$i][0] == "#")
+        if($lines[$i][0] == '/' || $lines[$i][0] == '#')
             continue;
 
         preg_match('/\$(.+?) = ["]{0,1}(.+?)["]{0,1};/', $lines[$i], $output_array);
@@ -62,12 +62,12 @@ function getConfig($path = "config.php") {
         }
         // Cut of escape chars if there are any
         // Check if $output_array[2] is "
-        if($output_array[2] != "\"") {
-            $output_array[2] = str_replace("\\", "", $output_array[2]);
+        if($output_array[2] != '"') {
+            $output_array[2] = str_replace("\\", '', $output_array[2]);
             $configmap[$output_array[1]] = $output_array[2];
         }
         else {
-            $configmap[$output_array[1]] = "";
+            $configmap[$output_array[1]] = '';
         }
     }
     // Pop first (<?php) element
@@ -75,6 +75,7 @@ function getConfig($path = "config.php") {
     return $configmap;
 }
 
+// TODO: Implement this!
 function unsetConfig($path = "config.php") {
 
 }
