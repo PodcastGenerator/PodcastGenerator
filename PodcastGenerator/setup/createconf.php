@@ -28,6 +28,8 @@ function createconf($username, $password) {
 
 \$installationKey = \"$installationKey\";
 
+\$scriptlang = \"C.UTF-8\";
+
 \$url = \"$url\";
 
 \$absoluteurl = \"$absoluteurl\"; // The location on the server
