@@ -1,12 +1,12 @@
 <?php
-require "checkLogin.php";
-require "../core/include_admin.php";
+require 'checkLogin.php';
+require '../core/include_admin.php';
 
-if(isset($_GET["edit"])) {
+if(isset($_GET['edit'])) {
     foreach ($_POST as $key => $value) {
-        updateConfig("../config.php", $key, $value);
+        updateConfig('../config.php', $key, $value);
     }
-    header("Location: podcast_details.php");
+    header('Location: podcast_details.php');
     die();
 }
 
@@ -18,7 +18,7 @@ else {
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Podcast Details</title>
+    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Podcast Details'); ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <style>
@@ -27,31 +27,31 @@ else {
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config["url"]; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
 </head>
 
 <body>
     <?php
-    include "js.php";
-    include "navbar.php";
+    include 'js.php';
+    include 'navbar.php';
     ?>
     <br>
     <div class="container">
-        <h1>Change Podcast Details</h1>
+        <h1><?php echo _('Change Podcast Details'); ?></h1>
         <form action="podcast_details.php?edit=1" method="POST">
-            Podcast Title:<br>
-            <input type="text" name="podcast_title" value="<?php echo htmlspecialchars($config["podcast_title"]); ?>" class="txt"><br>
-            Podcast Subtitle or Slogan:<br>
-            <input type="text" name="podcast_subtitle" value="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>" class="txt"><br>
-            Podcast Description:<br>
-            <input type="text" name="podcast_description" value="<?php echo htmlspecialchars($config["podcast_description"]); ?>" class="txt"><br>
-            Copyright Notice:<br>
-            <input type="text" name="copyright" value="<?php echo htmlspecialchars($config["copyright"]); ?>" class="txt"><br>
-            Author name:<br>
-            <input type="text" name="author_name" value="<?php echo htmlspecialchars($config["author_name"]); ?>" class="txt"><br>
-            Author E-Mail address:<br>
-            <input type="text" name="author_email" value="<?php echo htmlspecialchars($config["author_email"]); ?>" class="txt"><br>
-            Feed language: (main language of your podcast)<br>
+            <?php echo _('Podcast Title'); ?>:<br>
+            <input type="text" name="podcast_title" value="<?php echo htmlspecialchars($config['podcast_title']); ?>" class="txt"><br>
+            <?php echo _('Podcast Subtitle or Slogan'); ?>:<br>
+            <input type="text" name="podcast_subtitle" value="<?php echo htmlspecialchars($config['podcast_subtitle']); ?>" class="txt"><br>
+            <?php echo _('Podcast Description'); ?>:<br>
+            <input type="text" name="podcast_description" value="<?php echo htmlspecialchars($config['podcast_description']); ?>" class="txt"><br>
+            <?php echo _('Copyright Notice'); ?>:<br>
+            <input type="text" name="copyright" value="<?php echo htmlspecialchars($config['copyright']); ?>" class="txt"><br>
+            <?php echo _('Author Name'); ?>:<br>
+            <input type="text" name="author_name" value="<?php echo htmlspecialchars($config['author_name']); ?>" class="txt"><br>
+            <?php echo _('Author E-Mail Address'); ?>:<br>
+            <input type="text" name="author_email" value="<?php echo htmlspecialchars($config['author_email']); ?>" class="txt"><br>
+            <?php echo _('Feed Language'); ?>: (<?php echo _('Main language of your podcast'); ?>)<br>
             <select name="feed_language">
                 <option value="af">Afrikanns</option>
                 <option value="sq">Albanian</option>
@@ -127,10 +127,10 @@ else {
                 <option value="cy">Welsh</option>
                 <option value="xh">Xhosa</option>
             </select><br>
-            Explicit Podcast:<br>
-            <input type="radio" name="explicit" value="yes"> Yes <input type="radio" name="explicit" value="no" checked> No<br>
+            <?php echo _('Explicit Podcast'); ?>:<br>
+            <input type="radio" name="explicit" value="yes"> <?php echo _('Yes'); ?> <input type="radio" name="explicit" value="no" checked> <?php echo _('No'); ?><br>
             <br>
-            <input type="submit" value="Submit" class="btn btn-success">
+            <input type="submit" value="<?php echo _("Submit") ?>" class="btn btn-success">
         </form>
     </div>
 </body>

@@ -1,13 +1,13 @@
 <?php
-require "checkLogin.php";
-require "../core/include_admin.php";
+require 'checkLogin.php';
+require '../core/include_admin.php';
 
 // Get all themes
 $themes = array();
-$themes_in_dir = glob("../themes" . "/*", GLOB_ONLYDIR);
+$themes_in_dir = glob('../themes' . '/*', GLOB_ONLYDIR);
 $realthemes = array();
 for ($i = 0; $i < sizeof($themes_in_dir); $i++) {
-    array_push($themes, [substr($themes_in_dir[$i], 3) . "/", json_decode(file_get_contents($themes_in_dir[$i] . "/theme.json"))]);
+    array_push($themes, [substr($themes_in_dir[$i], 3) . '/', json_decode(file_get_contents($themes_in_dir[$i] . '/theme.json'))]);
 }
 // Check if the theme is compatible
 for ($i = 0; $i < sizeof($themes); $i++) {
@@ -19,12 +19,12 @@ for ($i = 0; $i < sizeof($themes); $i++) {
 $themes = $realthemes;
 unset($realthemes);
 
-if(isset($_GET["change"])) {
-    if($_GET["change"] > sizeof($themes)) {
+if(isset($_GET['change'])) {
+    if($_GET['change'] > sizeof($themes)) {
         goto error;
     }
-    updateConfig("../config.php", "theme_path", $themes[$_GET["change"]][0]);
-    header("Location: theme_change.php");
+    updateConfig('../config.php', 'theme_path', $themes[$_GET['change']][0]);
+    header('Location: theme_change.php');
     die();
 
     error:
@@ -35,23 +35,23 @@ if(isset($_GET["change"])) {
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config["podcast_title"]); ?> - Admin</title>
+    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Theme Change') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config["url"]; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
 </head>
 
 <body>
     <?php
-    include "js.php";
-    include "navbar.php";
+    include 'js.php';
+    include 'navbar.php';
     ?>
     <br>
     <div class="container">
-        <h1>Change theme</h1>
-        <small>You can upload themes to your <code>themes/</code> folder</small>
-        <h3>Installed themes</h3>
+        <h1><?php echo _('Change theme'); ?></h1>
+        <small><?php echo _('You can upload themes to your %s folder', '<code>themes/</code>'); ?></small>
+        <h3><?php echo _('Installed themes'); ?></h3>
         <div class="row">
             <?php
             for ($i = 0; $i < sizeof($themes); $i++) {
@@ -67,11 +67,11 @@ if(isset($_GET["change"])) {
                 echo '<p>Credits: '.htmlspecialchars($json->credits).'</p>';
                 echo '<hr>';
                 // Check if this theme is the used theme and or not
-                if($themes[$i][0] == htmlspecialchars($config["theme_path"])) {
-                    echo '<small>This theme is currently in use</small>';
+                if($themes[$i][0] == htmlspecialchars($config['theme_path'])) {
+                    echo '<small>'._('This theme is currently in use').'</small>';
                 }
                 else {
-                    echo '<a href="theme_change.php?change='.$i.'" class="btn btn-success">Switch theme</a>';
+                    echo '<a href="theme_change.php?change='.$i.'" class="btn btn-success">'._('Switch theme').'</a>';
                 }
                 echo '</div>';
                 echo '</div>';
