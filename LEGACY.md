@@ -2,6 +2,8 @@
 The old versions of Podcast Generator (Before 3.0) are called legacy.<br>
 This page should be used as an archive! (It contains release notes)<br>
 Use this versions at your own risk as they are no longer maintained.<br>
+Because of some naming cnflicts with branches, the old tags got deleted and re-tagged with the version prefix.<br>
+So if you want to checkout version 2.7 for example, do `git checkout v2.7` instead of `git checkout 2.7`<br>
 
 ## 2.7
 Hash: `b17c2ace9bae42d0eab9371b7ed93cee09f35f21`<br>
