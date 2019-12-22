@@ -22,7 +22,7 @@ function createconf($username, $password) {
     $installationKey = randomString();
 
     $config = "<?php
-\$podcastgen_version = $version; // Version
+\$podcastgen_version = \"$version\"; // Version
 
 \$first_installation = $installtime;
 
