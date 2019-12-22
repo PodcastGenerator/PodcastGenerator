@@ -1,3 +1,3 @@
 <?php
 $version = '3.0';
-$news_url = 'https://www.emilengler.com/pg/news.html';
+$news_url = 'https://podcastgenerator.github.io/news/';
