@@ -23,6 +23,11 @@ else {
     $episode_chunk = $splitted_episodes[0];
 }
 
+// Some translation strings
+$more = _('More');
+$download = _('Download');
+$editdelete = _('Edit/Delete (Admin)');
+
 $buttons = getButtons('./');
 require $config['theme_path']."index.php";
 ?>

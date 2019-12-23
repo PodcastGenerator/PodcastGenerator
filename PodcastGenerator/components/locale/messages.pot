@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 05:20+0100\n"
+"POT-Creation-Date: 2019-12-23 14:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -265,6 +265,10 @@ msgstr ""
 
 #: PodcastGenerator/admin/episodes_upload.php:257
 msgid "Author E-Mail"
+msgstr ""
+
+#: PodcastGenerator/admin/episodes_upload.php:259
+msgid "Upload episode"
 msgstr ""
 
 #: PodcastGenerator/admin/index.php:29
@@ -538,4 +542,16 @@ msgstr ""
 
 #: PodcastGenerator/admin/theme_freebox.php:57
 msgid "Content"
+msgstr ""
+
+#: PodcastGenerator/index.php:27
+msgid "More"
+msgstr ""
+
+#: PodcastGenerator/index.php:28
+msgid "Download"
+msgstr ""
+
+#: PodcastGenerator/index.php:29
+msgid "Edit/Delete (Admin)"
 msgstr ""

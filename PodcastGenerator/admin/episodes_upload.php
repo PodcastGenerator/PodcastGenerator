@@ -256,7 +256,7 @@ if (isset($_GET['upload'])) {
                         <input type="text" class="form-control" name="authorname" placeholder="<?php echo _('Author Name'); ?>" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?php echo _('Author E-Mail'); ?>" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
                     </div>
-                    <input type="submit" class="btn btn-success btn-lg" value="Upload episode">
+                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>
             </div>
         </form>
