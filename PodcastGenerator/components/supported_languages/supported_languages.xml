@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PodcastGenerator>
+	<language>
+		<code>en_US</code>
+		<name>English</name>
+	</language>
+	<language>
+		<code>de_DE</code>
+		<name>Deutsch</name>
+	</language>
+</PodcastGenerator>

@@ -1,29 +1,49 @@
 <?php
 require "securitycheck.php";
-require "createconf.php";
-require "createstuff.php";
+session_start();
 
-if(isset($_GET["create"])) {
-    $p = $_POST;
-    if(empty($p["username"]) || empty($p["password"]) || empty($p["password2"])) {
-        $error = "Emtyp fields";
-    }
-    if(!isset($error)) {
-        if($p["password"] != $p["password2"]) {
-            $error = "Passwords don't match";
-        }
-        // Now create the config file
-        if(!isset($error)) {
-            if(createconf($p["username"], $p["password"]))
-                $success = true;
-            else
-                $error = "Failure while creating the config file";
-            if(createstuff())
-                $success = true;
-            else
-                $error = "Failure while creating categories file";
-        }
-    }
+// Dirs
+$media = "../media/";
+$images = "../images/";
+$scripts = "../";
+
+$media_write = false;
+$images_write = false;
+$scripts_write = false;
+
+$testfile = "test.txt";
+
+// Creating all testfiles
+// TODO Loop this and put the strings in arrays
+// Checking media
+$f = fopen($media.$testfile, 'w');
+fwrite($f, "test");
+fclose($f);
+
+// Now create test file for images
+$f = fopen($images.$testfile, 'w');
+fwrite($f, "test");
+fclose($f);
+
+// Now do this with the root
+$f = fopen($scripts.$testfile, 'w');
+fwrite($f, "test");
+fclose($f);
+
+// Now verify if the files actually exists
+if(file_exists($media.$testfile)) {
+    unlink($media.$testfile);
+    $media_write = true;
+}
+
+if(file_exists($images.$testfile)) {
+    unlink($images.$testfile);
+    $images_write = true;
+}
+
+if(file_exists($scripts.$testfile)) {
+    unlink($scripts.$testfile);
+    $scripts_write = true;
 }
 ?>
 <!DOCTYPE html>
@@ -37,33 +57,32 @@ if(isset($_GET["create"])) {
         <div class="container">
             <h1>Podcast Generator - Step 2</h1>
             <p>
-                We are now creating the admin account for the admin area.<br>
-                <form method="POST" action="step2.php?create=1">
-                    <div class="form-group">
-                        <label for="username">Enter Username:</label>
-                        <input type="text" class="form-control" name="username" id="username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Enter Password:</label>
-                        <input type="password" class="form-control" name="password" id="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="password2">Repeat Password:</label>
-                        <input type="password" class="form-control" name="password2" id="password2" name="password2">
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
-                <br>
+                We are now checking of our data direcotires are writable so you can actual store the data.<br>
                 <?php
-                if(isset($error)) {
-                    echo "<strong><p style=\"color: red;\">Error: $error</p>";
+                if($media_write)
+                    echo "<p style=\"color: green;\">Media is writeable</p>";
+                else
+                    echo "<p style=\"color: red;\">Media is not writeable</p>";
+                if($images_write)
+                    echo "<p style=\"color: green;\">Images is writeable</p>";
+                else
+                    echo "<p style=\"color: red;\">Images is not writeable</p>";
+                if($scripts_write)
+                    echo "<p style=\"color: green;\">Scripts is writeable</p>";
+                else
+                    echo "<p style=\"color: red;\">Scripts is not writeable</p>";
+                // Try to adjust file permissions
+                if(!$media_write || !$images_write || !$scripts_write) {
+                    echo "<p>Try to adjust file permissions</p>";
+                    chmod("$media_directory", 0777);
+                    chmod("$images_directory", 0777);
+                    chmod("$script_directory", 0777);
+                    echo "<strong><p style=\"color: red;\">Please <a href=\"step1.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
                 }
-                if(isset($success)) {
-                    header("Location: ../index.php");
-                    die();
+                else {
+                    echo "<a href=\"step3.php\" class=\"btn btn-success\">Continue</a>";
                 }
                 ?>
-                
                 <br>
             </p>
         </div>

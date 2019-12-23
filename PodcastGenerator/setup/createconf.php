@@ -1,4 +1,5 @@
 <?php
+session_start();
 function randomString($length = 8) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -28,7 +29,7 @@ function createconf($username, $password) {
 
 \$installationKey = \"$installationKey\";
 
-\$scriptlang = \"C.UTF-8\";
+\$scriptlang = \"".$_SESSION['lang']."\";
 
 \$url = \"$url\";
 
