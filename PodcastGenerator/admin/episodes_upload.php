@@ -198,7 +198,7 @@ if (isset($_GET['upload'])) {
                     <div class="form-group">
                         <?php echo _('File'); ?>*:<br>
                         <input type="file" name="file" required><br>
-                        <small><?php echo _('Your server configuration allows you to upload files up to around %s MB. If your file is bigger or you have other problems use the FTP feature', htmlspecialchars(round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0))); ?></small><br>
+                        <small><?php echo sprintf('Your server configuration allows you to upload files up to around %s MB. If your file is bigger or you have other problems use the FTP feature', strval(htmlspecialchars(round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0)))); ?></small><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>

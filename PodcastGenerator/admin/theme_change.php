@@ -50,7 +50,7 @@ if(isset($_GET['change'])) {
     <br>
     <div class="container">
         <h1><?php echo _('Change theme'); ?></h1>
-        <small><?php echo _('You can upload themes to your %s folder', '<code>themes/</code>'); ?></small>
+        <small><?php echo sprintf('You can upload themes to your %s folder', '<code>themes/</code>'); ?></small>
         <h3><?php echo _('Installed themes'); ?></h3>
         <div class="row">
             <?php

@@ -112,7 +112,7 @@ error: echo "";
                 <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
                 <?php echo _('Link (where it should point to)'); ?> :<br>
                 <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
-                <?php echo _('CSS Classes (depends on theme, you can use %s in the default theme)', '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
+                <?php echo sprintf('CSS Classes (depends on theme, you can use %s in the default theme)', '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
                 <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
                 <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
@@ -133,7 +133,7 @@ error: echo "";
                 <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
                 <?php echo _('Link (where it should point to)'); ?>:<br>
                 <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
-                <?php echo _('CSS Classes (depends on theme, you can use %s in the default theme)', '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
+                <?php echo sprintf('CSS Classes (depends on theme, you can use %s in the default theme)', '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
                 <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
                 <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
