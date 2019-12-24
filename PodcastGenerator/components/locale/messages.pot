@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 14:19+0100\n"
+"POT-Creation-Date: 2019-12-24 22:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,6 +159,7 @@ msgstr ""
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:50
 #: PodcastGenerator/admin/episodes_manage_cats.php:64
+#: PodcastGenerator/admin/navbar.php:18
 msgid "Manage categories"
 msgstr ""
 
@@ -232,11 +233,6 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: PodcastGenerator/admin/episodes_upload.php:201
-#, php-format
-msgid "Your server configuration allows you to upload files up to around %s MB. If your file is bigger or you have other problems use the FTP feature"
-msgstr ""
-
 #: PodcastGenerator/admin/episodes_upload.php:210
 #: PodcastGenerator/admin/episodes_upload.php:268
 msgid "characters remaining"
@@ -291,6 +287,76 @@ msgstr ""
 msgid "Sign In"
 msgstr ""
 
+#: PodcastGenerator/admin/navbar.php:3
+msgid "Toggle navigation"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:16
+msgid "Upload New Episodes"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:17
+msgid "Edit / Delete Episode"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:19
+msgid "FTP Feature (Auto Indexing)"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:20
+msgid "Manually regenerate RSS feed"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:25
+msgid "Themes and aspect"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:28
+msgid "Change Theme"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:29
+msgid "Customize your Freebox"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:30
+#: PodcastGenerator/admin/theme_buttons.php:90
+msgid "Change Buttons"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:35
+msgid "Podcast Platform Settings"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:38
+msgid "Change Cover Art"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:39
+msgid "Change Podcast Category"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:44
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast Details"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:47
+msgid "Change Podcast details"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:52
+msgid "Podcast Generator"
+msgstr ""
+
+#: PodcastGenerator/admin/navbar.php:55
+msgid "Change Podcast Generator Config"
+msgstr ""
+
 #: PodcastGenerator/admin/pg_config.php:17
 msgid "Podcast Generator Configuration"
 msgstr ""
@@ -342,10 +408,6 @@ msgstr ""
 #: PodcastGenerator/admin/theme_buttons.php:119
 #: PodcastGenerator/admin/theme_buttons.php:140
 msgid "Submit"
-msgstr ""
-
-#: PodcastGenerator/admin/podcast_details.php:21
-msgid "Podcast Details"
 msgstr ""
 
 #: PodcastGenerator/admin/podcast_details.php:40
@@ -457,10 +519,6 @@ msgstr ""
 msgid "Theme Buttons"
 msgstr ""
 
-#: PodcastGenerator/admin/theme_buttons.php:90
-msgid "Change Buttons"
-msgstr ""
-
 #: PodcastGenerator/admin/theme_buttons.php:91
 msgid "Click on the button you wish to edit"
 msgstr ""
@@ -473,12 +531,6 @@ msgstr ""
 #: PodcastGenerator/admin/theme_buttons.php:113
 #: PodcastGenerator/admin/theme_buttons.php:134
 msgid "Link (where it should point to)"
-msgstr ""
-
-#: PodcastGenerator/admin/theme_buttons.php:115
-#: PodcastGenerator/admin/theme_buttons.php:136
-#, php-format
-msgid "CSS Classes (depends on theme, you can use %s in the default theme)"
 msgstr ""
 
 #: PodcastGenerator/admin/theme_buttons.php:117
@@ -500,11 +552,6 @@ msgstr ""
 
 #: PodcastGenerator/admin/theme_change.php:52
 msgid "Change theme"
-msgstr ""
-
-#: PodcastGenerator/admin/theme_change.php:53
-#, php-format
-msgid "You can upload themes to your %s folder"
 msgstr ""
 
 #: PodcastGenerator/admin/theme_change.php:54
@@ -554,4 +601,8 @@ msgstr ""
 
 #: PodcastGenerator/index.php:29
 msgid "Edit/Delete (Admin)"
+msgstr ""
+
+#: PodcastGenerator/index.php:30
+msgid "Categories"
 msgstr ""

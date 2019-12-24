@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <a class="navbar-brand" href="index.php">Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="<?php echo _('Toggle navigation'); ?>">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -10,49 +10,49 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Episodes
+                    <?php echo _('Episodes'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="episodes_upload.php">Upload New Episodes</a>
-                    <a class="dropdown-item" href="../index.php">Edit / Delete Episode</a>
-                    <a class="dropdown-item" href="episodes_manage_cats.php">Manage categories</a>
-                    <a class="dropdown-item" href="episodes_ftp_feature.php">FTP Feature (Auto Indexing)</a>
-                    <a class="dropdown-item" href="episodes_regenerate.php">Manually regenerate RSS feed</a>
+                    <a class="dropdown-item" href="episodes_upload.php"><?php echo _('Upload New Episodes'); ?></a>
+                    <a class="dropdown-item" href="../index.php"><?php echo _('Edit / Delete Episode'); ?></a>
+                    <a class="dropdown-item" href="episodes_manage_cats.php"><?php echo _('Manage categories'); ?></a>
+                    <a class="dropdown-item" href="episodes_ftp_feature.php"><?php echo _('FTP Feature (Auto Indexing)'); ?></a>
+                    <a class="dropdown-item" href="episodes_regenerate.php"><?php echo _('Manually regenerate RSS feed'); ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Themes and aspect
+                    <?php echo _('Themes and aspect'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="theme_change.php">Change Theme</a>
-                    <a class="dropdown-item" href="theme_freebox.php">Customize your Freebox</a>
-                    <a class="dropdown-item" href="theme_buttons.php">Change Buttons</a>
+                    <a class="dropdown-item" href="theme_change.php"><?php echo _('Change Theme'); ?></a>
+                    <a class="dropdown-item" href="theme_freebox.php"><?php echo _('Customize your Freebox'); ?></a>
+                    <a class="dropdown-item" href="theme_buttons.php"><?php echo _('Change Buttons'); ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Podcast Platform Settings
+                    <?php echo _('Podcast Platform Settings'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="store_cover.php">Change Cover Art</a>
-                    <a class="dropdown-item" href="store_cat.php">Change Podcast Category</a>
+                    <a class="dropdown-item" href="store_cover.php"><?php _('Change Cover Art'); ?></a>
+                    <a class="dropdown-item" href="store_cat.php"><?php echo _('Change Podcast Category'); ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Podcast Details
+                    <?php echo _('Podcast Details'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="podcast_details.php">Change Podcast details</a>
+                    <a class="dropdown-item" href="podcast_details.php"><?php echo _('Change Podcast details'); ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Podcast Generator
+                    <?php echo _('Podcast Generator'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="pg_config.php">Change Podcast Generator Config</a>
+                    <a class="dropdown-item" href="pg_config.php"><?php echo _('Change Podcast Generator Config'); ?></a>
                 </div>
             </li>
         </ul>

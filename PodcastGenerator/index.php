@@ -27,6 +27,7 @@ else {
 $more = _('More');
 $download = _('Download');
 $editdelete = _('Edit/Delete (Admin)');
+$categories = _('Categories');
 
 $buttons = getButtons('./');
 require $config['theme_path']."index.php";
