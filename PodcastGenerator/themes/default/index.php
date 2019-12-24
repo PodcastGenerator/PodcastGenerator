@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <title><?php echo htmlspecialchars($config["podcast_title"]); ?></title>
