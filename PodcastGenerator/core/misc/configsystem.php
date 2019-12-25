@@ -11,7 +11,11 @@ function updateConfig($path, $key, $value) {
         if($lines[$i][0] == '/' || $lines[$i][0] == '#')
             continue;
 
-        // Get the actual key
+        // Remove tab at the beginning
+        if($lines[$i][0] == "\t")
+            $lines[$i] = substr($lines[$i], 1);
+
+            // Get the actual key
         if(substr($lines[$i], 1, strlen($key)) == $key) {
             // Get the comment first
             $comment = strpos($lines[$i], ';');
@@ -55,6 +59,9 @@ function getConfig($path = 'config.php') {
         // Skip comment and php lines
         if($lines[$i][0] == '/' || $lines[$i][0] == '#')
             continue;
+        // Remove tab at the beginning
+        if($lines[$i][0] == "\t")
+            $lines[$i] = substr($lines[$i], 1);
 
         preg_match('/\$(.+?) = ["]{0,1}(.+?)["]{0,1};/', $lines[$i], $output_array);
         if(sizeof($output_array) != 3) {
