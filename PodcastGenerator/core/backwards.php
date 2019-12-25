@@ -21,13 +21,11 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'setup/firstcreateconfig.php',
         'setup/set_path.php',
         'setup/set_permissions.php',
-        'setup/step3.php',
         'setup/step4.php'
     ];
     $dirsToDelete = [
         'components/js',
         'components/lastRSS',
-        'components/locale',
         'components/php-gettext',
         'core/admin',
         'setup/style'
