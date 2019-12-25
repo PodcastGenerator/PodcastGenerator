@@ -18,11 +18,6 @@ if(strlen($config['userpassword']) == 32) {
     header('Location: core/misc/passwordconverter.php');
     die();
 }
-// Check if theme is compatible
-if (!file_exists($config['theme_path'] . 'theme.json')) {
-    // Fallback to defalt theme if incompatible
-    updateConfig('config.php', 'theme_path', 'themes/default/');
-}
 
 // Do backwards comp
 backwards_2_7_to_3_0($config["absoluteurl"]);
