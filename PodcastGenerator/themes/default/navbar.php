@@ -12,7 +12,7 @@
             if (strtolower($config["categoriesenabled"]) == "yes") {
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="categories.php">Categories</a>
+                    <a class="nav-link" href="categories.php"><?php echo $categories; ?></a>
                 </li>
             <?php
             }
