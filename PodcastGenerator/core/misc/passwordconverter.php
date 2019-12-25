@@ -16,7 +16,7 @@ if(isset($_GET['convert'])) {
         goto error;
     }
     updateConfig('../../config.php', 'userpassword', $newpassword);
-    sleep(0.5);
+    sleep(1);
     header('Refresh:0');
     die('Password updated');
 }
