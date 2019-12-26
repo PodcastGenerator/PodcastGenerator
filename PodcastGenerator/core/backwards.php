@@ -53,9 +53,15 @@ function backwards_2_7_to_3_0($absoluteurl) {
     for($i = 0; $i < sizeof($varsToUnset); $i++) {
         unsetConfig('config.php', $varsToUnset[$i]);
     }
-    // Remove tabs in the config
+    // Remove tabs and copyright notice in the config
     $c = file_get_contents('config.php');
     $c = str_replace("\t", '', $c);
+    $c = str_replace("#################################################################
+# Podcast Generator
+# http://www.podcastgenerator.net
+# developed by Alberto Betella
+#
+# Config.php file created automatically - v.2.7", "", $c);
     file_put_contents('config.php', $c);
     // Update theme
     updateConfig('config.php', 'theme_path', 'themes/default/');
