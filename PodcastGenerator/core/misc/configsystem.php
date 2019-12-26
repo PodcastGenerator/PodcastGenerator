@@ -15,7 +15,7 @@ function updateConfig($path, $key, $value) {
         if($lines[$i][0] == "\t")
             $lines[$i] = substr($lines[$i], 1);
 
-            // Get the actual key
+        // Get the actual key
         if(substr($lines[$i], 1, strlen($key)) == $key) {
             // Get the comment first
             $comment = strpos($lines[$i], ';');
@@ -36,9 +36,13 @@ function updateConfig($path, $key, $value) {
             $lines[$i] .= $comment;
         }
     }
+    // Finally format the config file and make it "beatiful"
     $configStr = '';
     for($i = 0; $i < sizeof($lines); $i++) {
-        $configStr .= $lines[$i]."\n";
+        if($lines[$i] == '')
+            continue;
+        // Skip empty lines
+        $configStr .= $lines[$i]."\n\n";
     }
     // Write to the actual config
     if(!file_put_contents($path, $configStr)) {
