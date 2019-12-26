@@ -15,7 +15,7 @@ function createconf($username, $password) {
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Replace config stuff
-    $url = str_replace("setup/step2.php?create=1", "", $url);
+    $url = str_replace("setup/step3.php?create=1", "", $url);
     $absoluteurl = realpath("../")."/";
     $userpassword = password_hash($password, PASSWORD_DEFAULT);
     // Escape password
