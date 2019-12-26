@@ -30,6 +30,14 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'core/admin',
         'setup/style'
     ];
+    $varsToUnset = [
+        'enablesocialnetworks',
+        'dateformat',
+        'enablehelphints',
+        'cronAutoRegenerateRSScacheTime',
+        'feed_iTunes_LINKS_Website',
+        'feed_URL_replace'
+    ];
     // Delete files
     for($i = 0; $i < sizeof($filesToDelete); $i++) {
         if(file_exists($absoluteurl . $filesToDelete[$i])) {
@@ -40,6 +48,10 @@ function backwards_2_7_to_3_0($absoluteurl) {
     for($i = 0; $i < sizeof($dirsToDelete); $i++) {
         array_map('unlink', glob($absoluteurl . $dirsToDelete[$i]."/*.*"));
         rmdir($absoluteurl . $dirsToDelete[$i]);
+    }
+    // Unset variables in config
+    for($i = 0; $i < sizeof($varsToUnset); $i++) {
+        unsetConfig('config.php', $varsToUnset[$i]);
     }
     // Remove tabs in the config
     $c = file_get_contents('config.php');
