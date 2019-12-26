@@ -57,10 +57,15 @@ function backwards_2_7_to_3_0($absoluteurl) {
     $c = file_get_contents('config.php');
     $c = str_replace("\t", '', $c);
     $c = str_replace("#################################################################
+
 # Podcast Generator
+
 # http://www.podcastgenerator.net
+
 # developed by Alberto Betella
+
 #
+
 # Config.php file created automatically - v.2.7", "", $c);
     file_put_contents('config.php', $c);
     // Update theme
