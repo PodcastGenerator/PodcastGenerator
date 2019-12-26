@@ -83,8 +83,35 @@ function getConfig($path = 'config.php') {
 }
 
 // TODO: Implement this!
-function unsetConfig($path = "config.php") {
+function unsetConfig($path = "config.php", $key) {
+    $content = file_get_contents($path);
+    $lines = explode("\n", $content);
+    for($i = 0; $i < sizeof($lines); $i++) {
+        // Skip empty lines
+        if(strlen($lines[$i]) == 0)
+            continue;
+        // Skip comment lines
+        if($lines[$i][0] == '/' || $lines[$i][0] == '#')
+            continue;
 
+        // Remove tab at the beginning
+        if($lines[$i][0] == "\t")
+            $lines[$i] = substr($lines[$i], 1);
+
+        // Get the actual key
+        if(substr($lines[$i], 1, strlen($key)) == $key) {
+            unset($lines[$i]);
+        }
+    }
+    $configStr = '';
+    for($i = 0; $i < sizeof($lines); $i++) {
+        $configStr .= $lines[$i]."\n";
+    }
+    // Write to the actual config
+    if(!file_put_contents($path, $configStr)) {
+        return false;
+    }
+    return true;
 }
 /*
 function getConfig($path = "config.php") {
