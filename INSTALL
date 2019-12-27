@@ -1,0 +1,10 @@
+INSTALL
+====================
+Install from scratch
+==========
+To install PodcastGenerator, upload the content of the "PodcastGenerator" directory to the desired location on your webserver.
+Then open up the website and run the installer.
+
+Upgrade from 2.7
+==========
+Copy the content of the "PodcastGenerator" directory to your webserver. Overwrite all files if it is asked for.
