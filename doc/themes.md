@@ -12,7 +12,6 @@ In the theme directory, create the following files:
 * theme.json
 
 The first two files are actually files where the user interacts directly with. The first one is the start page and the second one lists all categories.
-A good way to create a new theme is to base it upon the *base* theme in the `themes/base` folder.
 The preview.png file is just a screenshot of the theme and theme.json includes some meta data.
 The `theme.json` looks like this:
 ```
