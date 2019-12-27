@@ -22,7 +22,7 @@
             ?>
             <ul>
                 <?php
-                    foreach ($categories as $item) {
+                    foreach ($categories_xml as $item) {
                         echo "<li><a href=\"categories.php?cat=" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</a></li>";
                     }
                     ?>

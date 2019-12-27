@@ -5,7 +5,7 @@ if(strtolower($config['categoriesenabled']) != 'yes') {
     header('Location: index.php');
     die();
 }
-$categories = simplexml_load_file('categories.xml');
+$categories_xml = simplexml_load_file('categories.xml');
 $episodes = null;
 if(isset($_GET['cat'])) {
     $episodes = getEpisodes($_GET['cat']);
