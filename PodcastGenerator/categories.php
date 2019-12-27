@@ -17,6 +17,12 @@ $link = str_replace('?', '', $config['link']);
 $link = str_replace('=', '', $link);
 $link = str_replace('$url', '', $link);
 
+// Some translation strings
+$more = _('More');
+$download = _('Download');
+$editdelete = _('Edit/Delete (Admin)');
+$categories = _('Categories');
+
 $buttons = getButtons('./');
 require $config['theme_path'].'categories.php';
 ?>
