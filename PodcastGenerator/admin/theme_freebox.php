@@ -13,7 +13,7 @@ if (isset($_GET['enable'])) {
     die();
 }
 
-if(isset($_GET['change'])) {
+if (isset($_GET['change'])) {
     updateFreebox('../', $_POST['content']);
     header('Location: theme_freebox.php');
     die();
@@ -39,17 +39,22 @@ if(isset($_GET['change'])) {
     <div class="container">
         <h1><?php echo _('Customize Freebox'); ?></h1>
         <h3><?php echo _('Current Freebox'); ?></h3>
+        <?php
+        if (getFreebox('../') != null) {
+            echo '
         <div class="card">
             <div class="card-body">
-                <?php echo getFreebox('../'); ?>
+                ' . getFreebox('../') . '
             </div>
-        </div>
+        </div>';
+        }
+        ?>
         <h3><?php echo _('Enable / Disable Freebox'); ?></h3>
         <?php
         if (getFreebox('../') == null) {
-            echo '<a href="theme_freebox.php?enable=1" class="btn btn-success">'._('Enable Freebox').'</a>';
+            echo '<a href="theme_freebox.php?enable=1" class="btn btn-success">' . _('Enable Freebox') . '</a>';
         } else {
-            echo '<a href="theme_freebox.php?disable=1" class="btn btn-danger">'._('Disable Freebox').'</a>';
+            echo '<a href="theme_freebox.php?disable=1" class="btn btn-danger">' . _('Disable Freebox') . '</a>';
         }
         ?>
         <h3><?php echo _('Change Freebox content'); ?></h3>
