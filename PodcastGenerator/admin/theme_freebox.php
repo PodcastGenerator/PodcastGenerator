@@ -38,10 +38,10 @@ if (isset($_GET['change'])) {
     <br>
     <div class="container">
         <h1><?php echo _('Customize Freebox'); ?></h1>
-        <h3><?php echo _('Current Freebox'); ?></h3>
         <?php
         if (getFreebox('../') != null) {
             echo '
+        <h3>' . _('Current Freebox') . '</h3>
         <div class="card">
             <div class="card-body">
                 ' . getFreebox('../') . '
