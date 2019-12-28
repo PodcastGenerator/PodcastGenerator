@@ -69,10 +69,10 @@ if (isset($_GET['upload'])) {
 
     $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . basename($_FILES['file']['name']);
     if (file_exists($targetfile)) {
-        $i = 1;
+        $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . $i . '-' . basename($_FILES['file']['name']);
-            $i++;
+            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . $appendix . '-' . basename($_FILES['file']['name']);
+            $appendix++;
         }
     }
     $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
