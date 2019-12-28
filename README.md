@@ -12,6 +12,10 @@ http://podcastgenerator.net
 Download the latest stable release on the official website:
 http://podcastgenerator.net/download
 
+## Contribute
+Everyone is most welcome to contribute code, test, reviews, (translations)[https://www.transifex.com/albertobeta/podcast-generator/] and other stuff.
+Also feature requests are welcome. For this please open an issue on GitHub.
+
 ## Demo
 A fully-functional live demo of Podcast generator is available at: 
 http://podcastgenerator.net/demo
