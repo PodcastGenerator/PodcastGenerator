@@ -88,6 +88,8 @@ $buttons_xml = '<?xml version="1.0" encoding="utf-8"?>
     updateConfig($absoluteurl . 'config.php', 'theme_path', 'themes/default/');
     // Update version
     updateConfig($absoluteurl . 'config.php', 'podcastgen_version', $version);
+    // Re-Enable $enablepgnewsinadmin
+    updateConfig($absoluteurl . 'config.php', 'enablepgnewsinadmin', 'yes');
     sleep(0.5);
     header('Location: index.php');
     die();
