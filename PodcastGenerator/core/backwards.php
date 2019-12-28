@@ -51,10 +51,10 @@ function backwards_2_7_to_3_0($absoluteurl) {
     }
     // Unset variables in config
     for($i = 0; $i < sizeof($varsToUnset); $i++) {
-        unsetConfig('config.php', $varsToUnset[$i]);
+        unsetConfig($absoluteurl . 'config.php', $varsToUnset[$i]);
     }
     // Remove tabs and copyright notice in the config
-    $c = file_get_contents('config.php');
+    $c = file_get_contents($absoluteurl . 'config.php');
     $c = str_replace("\t", '', $c);
     $c = str_replace("#################################################################
 
@@ -67,9 +67,25 @@ function backwards_2_7_to_3_0($absoluteurl) {
 #
 
 # Config.php file created automatically - v.2.7", "", $c);
-    file_put_contents('config.php', $c);
+    file_put_contents($absoluteurl . 'config.php', $c);
+    // Create buttons
+$buttons_xml = '<?xml version="1.0" encoding="utf-8"?>
+<PodcastGenerator>
+    <button>
+        <name>RSS</name>
+        <href>feed.xml</href>
+        <class>btn btn-warning</class>
+    </button>
+    <button>
+        <name>iTunes</name>
+        <href>feed.xml</href>
+        <class>btn btn-primary</class>
+        <protocol>itpc</protocol>
+    </button>
+</PodcastGenerator>';
+    file_put_contents($absoluteurl . 'buttons.xml', $buttons_xml);
     // Update theme
-    updateConfig('config.php', 'theme_path', 'themes/default/');
+    updateConfig($absoluteurl . 'config.php', 'theme_path', 'themes/default/');
     // Update version
     updateConfig($absoluteurl . 'config.php', 'podcastgen_version', $version);
     sleep(0.5);
