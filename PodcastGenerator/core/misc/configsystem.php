@@ -94,7 +94,6 @@ function getConfig($path = 'config.php')
     return $configmap;
 }
 
-// TODO: Implement this!
 function unsetConfig($path = "config.php", $key)
 {
     $content = file_get_contents($path);
