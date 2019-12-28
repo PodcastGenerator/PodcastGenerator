@@ -60,6 +60,7 @@ if(isset($_GET["create"])) {
                     echo "<strong><p style=\"color: red;\">Error: $error</p>";
                 }
                 if(isset($success)) {
+                    session_destroy();
                     header("Location: ../index.php");
                     die();
                 }
