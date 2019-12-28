@@ -67,7 +67,7 @@ if (isset($_GET['start'])) {
         // Select new filenames (with date) if not already exsits
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
-        if(sizeof($output_array) == 0) {
+        if (sizeof($output_array) == 0) {
             $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
             $appendix = 1;
             while (file_exists($new_filename)) {

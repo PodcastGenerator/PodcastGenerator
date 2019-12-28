@@ -19,19 +19,18 @@
         include "js.php";
         include "jumbotron.php";
         if (!isset($_GET["cat"])) {
-            ?>
+        ?>
             <ul>
                 <?php
-                    foreach ($categories_xml as $item) {
-                        echo "<li><a href=\"categories.php?cat=" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</a></li>";
-                    }
-                    ?>
+                foreach ($categories_xml as $item) {
+                    echo "<li><a href=\"categories.php?cat=" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</a></li>";
+                }
+                ?>
             </ul>
             <hr>
             <a href="categories.php?cat=all">All Episodes</a>
         <?php
-        }
-        else {
+        } else {
             include 'listepisodes.php';
         }
         ?>

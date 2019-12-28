@@ -44,11 +44,10 @@ if (isset($_GET['edit'])) {
             <hr>
             <?php echo _('How many recent episodes in the homepage?'); ?><br>
             <?php
-            if(strtolower($config['max_recent']) == 'all') {
-                echo '<input type="number" name="max_recent" value="4" min="1"> <input type="radio" value="all" name="max_recent"> '._('All').'<br>';
-            }
-            else {
-                echo '<input type="radio" value="all" name="max_recent" checked> '._('All').'<br>';
+            if (strtolower($config['max_recent']) == 'all') {
+                echo '<input type="number" name="max_recent" value="4" min="1"> <input type="radio" value="all" name="max_recent"> ' . _('All') . '<br>';
+            } else {
+                echo '<input type="radio" value="all" name="max_recent" checked> ' . _('All') . '<br>';
             }
             ?>
             <hr>

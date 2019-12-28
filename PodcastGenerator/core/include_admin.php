@@ -1,6 +1,6 @@
 <?php
 // This file is intended to be only used in the admin directory
-if(!file_exists('../config.php')) {
+if (!file_exists('../config.php')) {
     header('Location: ../setup/');
     die();
 }
@@ -18,7 +18,7 @@ include 'backwards.php';
 // Load translations
 include 'translation.php';
 // Check if the hash is MD5
-if(strlen($config['userpassword']) == 32) {
+if (strlen($config['userpassword']) == 32) {
     header('Location: ../core/misc/passwordconverter.php');
     die();
 }

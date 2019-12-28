@@ -1,9 +1,10 @@
 <?php
-function backwards_2_7_to_3_0($absoluteurl) {
+function backwards_2_7_to_3_0($absoluteurl)
+{
     global $config;
     global $version;
     // Quit if version is not 2.7
-    if($config['podcastgen_version'] != '2.7') {
+    if ($config['podcastgen_version'] != '2.7') {
         return;
     }
     // Delete useless stuff that is no longer supported/required
@@ -58,27 +59,27 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'feed_URL_replace'
     ];
     // Delete files
-    for($i = 0; $i < sizeof($filesToDelete); $i++) {
-        if(file_exists($absoluteurl . $filesToDelete[$i])) {
+    for ($i = 0; $i < sizeof($filesToDelete); $i++) {
+        if (file_exists($absoluteurl . $filesToDelete[$i])) {
             unlink($absoluteurl . $filesToDelete[$i]);
         }
     }
     // Delete directories
-    for($i = 0; $i < sizeof($dirsToDelete); $i++) {
-        array_map('unlink', glob($absoluteurl . $dirsToDelete[$i]."/*.*"));
+    for ($i = 0; $i < sizeof($dirsToDelete); $i++) {
+        array_map('unlink', glob($absoluteurl . $dirsToDelete[$i] . "/*.*"));
         rmdir($absoluteurl . $dirsToDelete[$i]);
     }
     // Delete languages
-    for($i = 0; $i < sizeof($langsToDelete); $i++) {
-        array_map('unlink', glob($absoluteurl . 'components/locale/' . $langsToDelete[$i]."/LC_MESSAGES/*.*"));
+    for ($i = 0; $i < sizeof($langsToDelete); $i++) {
+        array_map('unlink', glob($absoluteurl . 'components/locale/' . $langsToDelete[$i] . "/LC_MESSAGES/*.*"));
         rmdir($absoluteurl . 'components/locale/' . $langsToDelete[$i] . '/LC_MESSAGES');
         rmdir($absoluteurl . 'components/locale/' . $langsToDelete[$i]);
     }
-    if(in_array($config['scriptlang'], $langsToDelete)) {
+    if (in_array($config['scriptlang'], $langsToDelete)) {
         updateConfig($absoluteurl . 'config.php', 'scriptlang', 'en_US');
     }
     // Unset variables in config
-    for($i = 0; $i < sizeof($varsToUnset); $i++) {
+    for ($i = 0; $i < sizeof($varsToUnset); $i++) {
         unsetConfig($absoluteurl . 'config.php', $varsToUnset[$i]);
     }
     // Remove tabs and copyright notice in the config
@@ -97,7 +98,7 @@ function backwards_2_7_to_3_0($absoluteurl) {
 # Config.php file created automatically - v.2.7", "", $c);
     file_put_contents($absoluteurl . 'config.php', $c);
     // Create buttons
-$buttons_xml = '<?xml version="1.0" encoding="utf-8"?>
+    $buttons_xml = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
     <button>
         <name>RSS</name>

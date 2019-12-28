@@ -90,8 +90,8 @@ error: echo "";
         <h1><?php echo _('Change Buttons'); ?></h1>
         <small><?php echo _('Click on the button you wish to edit'); ?></small><br>
         <?php
-        if(isset($error)) {
-            echo '<strong><p style="color: red;">'.$error.'</p></strong>';
+        if (isset($error)) {
+            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
         }
         ?>
         <?php
@@ -106,7 +106,7 @@ error: echo "";
                     $btn = $item;
                 }
             }
-            ?>
+        ?>
             <form action="theme_buttons.php?edit=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
                 <?php echo _('Name (needs to be unique)'); ?>:<br>
                 <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
@@ -125,7 +125,7 @@ error: echo "";
         ?>
         <?php
         if (!isset($_GET['name'])) {
-            ?>
+        ?>
             <hr>
             <h3><?php echo _('Add Button'); ?></h3>
             <form action="theme_buttons.php?add=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">

@@ -4,8 +4,8 @@ require '../core/include_admin.php';
 
 $categories = simplexml_load_file('../components/itunes_categories/itunes_categories.xml');
 
-if(isset($_GET['edit'])) {
-    if(empty($_POST['cat1'])) {
+if (isset($_GET['edit'])) {
+    if (empty($_POST['cat1'])) {
         $error = _('Category 1 needs to be set');
         goto error;
     }
@@ -17,8 +17,7 @@ if(isset($_GET['edit'])) {
     die();
 }
 
-error:
-echo "";
+error: echo "";
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,8 +40,8 @@ echo "";
         <h1><?php echo _('Select Podcast Categories'); ?></h1>
         <small><?php echo _('Select or change Podcast Categories (for iTunes)'); ?></small>
         <?php
-        if(isset($error)) {
-            echo '<strong><p style="color: red;">'.$error.'</p></strong>';
+        if (isset($error)) {
+            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
         }
         ?>
         <form action="store_cat.php?edit=1" method="POST">
@@ -50,11 +49,10 @@ echo "";
             <select name="cat1">
                 <?php
                 foreach ($categories as $item) {
-                    if($config["itunes_category[0]"] == $item->id) {
-                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
-                    }
-                    else {
-                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
+                    if ($config["itunes_category[0]"] == $item->id) {
+                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
+                    } else {
+                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
                     }
                 }
                 ?>
@@ -63,18 +61,16 @@ echo "";
             <h3><?php echo _('Category') ?> 2:</h3>
             <select name="cat2">
                 <?php
-                if($config["itunes_category[1]"] == "") {
+                if ($config["itunes_category[1]"] == "") {
                     echo '<option value="null" selected></option>';
-                }
-                else {
+                } else {
                     echo '<option value="null"></option>';
                 }
                 foreach ($categories as $item) {
-                    if($config["itunes_category[1]"] == $item->id) {
-                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
-                    }
-                    else {
-                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
+                    if ($config["itunes_category[1]"] == $item->id) {
+                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
+                    } else {
+                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
                     }
                 }
                 ?>
@@ -83,18 +79,16 @@ echo "";
             <h3><?php echo _('Category'); ?> 3:</h3>
             <select name="cat3">
                 <?php
-                if($config["itunes_category[2]"] == "") {
+                if ($config["itunes_category[2]"] == "") {
                     echo '<option value="null" selected></option>';
-                }
-                else {
+                } else {
                     echo '<option value="null"></option>';
                 }
                 foreach ($categories as $item) {
-                    if($config["itunes_category[2]"] == $item->id) {
-                        echo '<option value="'.htmlspecialchars($item->id).'" selected>'.htmlspecialchars($item->description).'</option>';
-                    }
-                    else {
-                        echo '<option value="'.htmlspecialchars($item->id).'">'.htmlspecialchars($item->description).'</option>';
+                    if ($config["itunes_category[2]"] == $item->id) {
+                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
+                    } else {
+                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
                     }
                 }
                 ?>

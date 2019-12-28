@@ -2,15 +2,13 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if(isset($_GET['edit'])) {
+if (isset($_GET['edit'])) {
     foreach ($_POST as $key => $value) {
         updateConfig('../config.php', $key, $value);
     }
     header('Location: podcast_details.php');
     die();
-}
-
-else {
+} else {
     generateRSS();
 }
 ?>

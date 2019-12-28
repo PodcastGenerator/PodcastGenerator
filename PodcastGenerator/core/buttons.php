@@ -1,4 +1,5 @@
 <?php
-function getButtons($path = '../') {
+function getButtons($path = '../')
+{
     return simplexml_load_file($path . 'buttons.xml');
 }

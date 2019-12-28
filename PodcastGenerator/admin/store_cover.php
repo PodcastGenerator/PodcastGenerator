@@ -2,31 +2,29 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if(isset($_GET['upload'])) {
+if (isset($_GET['upload'])) {
     // Check if file is too big
-    if($_FILES['file']['size'] > $config['max_upload_form_size']) {
+    if ($_FILES['file']['size'] > $config['max_upload_form_size']) {
         $error = _('File is too big');
     }
     $imagesize = getimagesize($_FILES['file']['tmp_name']);
     // Verify if image is a square
-    if($imagesize[0] / $imagesize[1] != 1) {
+    if ($imagesize[0] / $imagesize[1] != 1) {
         $error = _('Image is not quadratic');
         goto error;
     }
 
     // Now everything is cool and the file can uploaded
-    if(!move_uploaded_file($_FILES['file']['tmp_name'], '../' . $config['img_dir'] . 'itunes_image.jpg')) {
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], '../' . $config['img_dir'] . 'itunes_image.jpg')) {
         $error = _('File was not uploaded');
         goto error;
-    }
-    else {
+    } else {
         // Wait a few seconds so the upload can finish
         sleep(3);
         header('Location: store_cover.php');
         die();
     }
-    error:
-    echo "";
+    error: echo "";
 }
 ?>
 <!DOCTYPE html>
@@ -50,8 +48,8 @@ if(isset($_GET['upload'])) {
         <h1><?php echo _('Change Cover'); ?></h1>
         <p><?php echo _('The cover art will be displayed in the podcast readers.'); ?></p>
         <?php
-        if(isset($error)) {
-            echo '<strong><p style="color: red;">'.$error.'</p></strong>';
+        if (isset($error)) {
+            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
         }
         ?>
         <h3><?php echo _('Current Cover'); ?></h3>

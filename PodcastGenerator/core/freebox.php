@@ -10,4 +10,3 @@ function getFreebox($path = null) {
 function updateFreebox($path = null, $content) {
     return file_put_contents($path . 'freebox-content.txt', $content);
 }
-?>

@@ -22,7 +22,7 @@ if (isset($_GET['upload'])) {
     }
 
     // Check if categories are even enabled and then do uncategorized
-    if(strtolower($config['categoriesenabled']) != 'yes') {
+    if (strtolower($config['categoriesenabled']) != 'yes') {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
     }
@@ -34,14 +34,14 @@ if (isset($_GET['upload'])) {
     }
 
     // CHeck if the user has selected no categories
-    if(sizeof($_POST['category']) <= 0) {
+    if (sizeof($_POST['category']) <= 0) {
         $error = _('No category selected');
         goto error;
     }
 
     // Fill up empty categories (to avoid warnings)
-    for($i = 0; $i < 3; $i++) {
-        if(!isset($_POST['category'][$i])) {
+    for ($i = 0; $i < 3; $i++) {
+        if (!isset($_POST['category'][$i])) {
             $_POST['category'][$i] = '';
         }
     }
@@ -187,7 +187,7 @@ if (isset($_GET['upload'])) {
             echo '<strong><p style="color: #2ecc71;">' . htmlspecialchars($_POST['title']) . ' ' . _('uploaded successfully') . '</p></strong>';
         }
         if (isset($error)) {
-            echo '<strong><p style="color: #e74c3c;">'.$error.'</p></strong>';
+            echo '<strong><p style="color: #e74c3c;">' . $error . '</p></strong>';
         }
         ?>
         <form action="episodes_upload.php?upload=1" method="POST" enctype="multipart/form-data">
@@ -211,17 +211,17 @@ if (isset($_GET['upload'])) {
                     </div>
                     <?php
                     if (strtolower($config['categoriesenabled']) == 'yes') {
-                        ?>
+                    ?>
                         <div class="form-group">
                             <?php echo _('Category'); ?>*:<br>
                             <small><?php echo _('You can select up to 3 categories'); ?></small><br>
                             <select name="category[ ]" multiple>
                                 <?php
-                                    $categories = simplexml_load_file('../categories.xml');
-                                    foreach ($categories as $item) {
-                                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                                    }
-                                    ?>
+                                $categories = simplexml_load_file('../categories.xml');
+                                foreach ($categories as $item) {
+                                    echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                     <?php

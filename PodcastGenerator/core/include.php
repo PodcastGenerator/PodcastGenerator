@@ -14,7 +14,7 @@ include 'backwards.php';
 // Load translation
 include 'translation.php';
 // Check if the hash is MD5
-if(strlen($config['userpassword']) == 32) {
+if (strlen($config['userpassword']) == 32) {
     header('Location: core/misc/passwordconverter.php');
     die();
 }

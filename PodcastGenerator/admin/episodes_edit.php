@@ -20,7 +20,7 @@ if (isset($_GET['delete'])) {
 }
 
 // Edit episode
-if(isset($_GET['edit'])) {
+if (isset($_GET['edit'])) {
     // CHeck if all fields are set
     $req_fields = [
         $_POST['title'],
@@ -33,28 +33,28 @@ if(isset($_GET['edit'])) {
         $_POST['authoremail']
     ];
     // Check if fields are missing
-    for($i = 0; $i < sizeof($req_fields); $i++) {
-        if(empty($req_fields[$i])) {
+    for ($i = 0; $i < sizeof($req_fields); $i++) {
+        if (empty($req_fields[$i])) {
             $error = _('Missing fields');
             goto error;
         }
     }
 
     // Check if the user selected too much episodes
-    if(sizeof($_POST['category']) > 3) {
+    if (sizeof($_POST['category']) > 3) {
         $error = _('Too much categories selected');
         goto error;
     }
 
     // Check author e-mail
-    if(isset($_POST['authoremail'])) {
-        if(!filter_var($_POST['authoremail'], FILTER_VALIDATE_EMAIL)) {
+    if (isset($_POST['authoremail'])) {
+        if (!filter_var($_POST['authoremail'], FILTER_VALIDATE_EMAIL)) {
             $error = _('Invalid Author E-Mail provided');
             goto error;
         }
     }
 
-    if(strlen($_POST['shortdesc']) > 255) {
+    if (strlen($_POST['shortdesc']) > 255) {
         $error = _("Size of the 'Short Description' exceeded");
         goto error;
     }
@@ -79,37 +79,36 @@ if(isset($_GET['edit'])) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA['.$_POST['title'].']]></titlePG>
-	    <shortdescPG><![CDATA['.$_POST['shortdesc'].']]></shortdescPG>
-	    <longdescPG><![CDATA['.$_POST['longdesc'].']]></longdescPG>
+	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
+	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
+	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
-	        <category1PG>'.$_POST['category'][0].'</category1PG>
-	        <category2PG>'.$_POST['category'][1].'</category2PG>
-	        <category3PG>'.$_POST['category'][2].'</category3PG>
+	        <category1PG>' . $_POST['category'][0] . '</category1PG>
+	        <category2PG>' . $_POST['category'][1] . '</category2PG>
+	        <category3PG>' . $_POST['category'][2] . '</category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA['.$_POST['keywords'].']]></keywordsPG>
-	    <explicitPG>'.$_POST['explicit'].'</explicitPG>
+	    <keywordsPG><![CDATA[' . $_POST['keywords'] . ']]></keywordsPG>
+	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
 	    <authorPG>
-	        <namePG>'.$_POST['authorname'].'</namePG>
-	        <emailPG>'.$_POST['authoremail'].'</emailPG>
+	        <namePG>' . $_POST['authorname'] . '</namePG>
+	        <emailPG>' . $_POST['authoremail'] . '</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
-	        <size>'.intval(filesize($targetfile) / 1000 / 1000).'</size>
-	        <duration>'.$duration.'</duration>
-	        <bitrate>'.substr(strval($bitrate), 0, 3).'</bitrate>
-	        <frequency>'.$frequency.'</frequency>
+	        <size>' . intval(filesize($targetfile) / 1000 / 1000) . '</size>
+	        <duration>' . $duration . '</duration>
+	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
+	        <frequency>' . $frequency . '</frequency>
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>';
     file_put_contents('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     // Redirect if success
-    header('Location: ../index.php?name='.$_GET['name'].'');
+    header('Location: ../index.php?name=' . $_GET['name'] . '');
     die();
 
-    error:
-    echo("");
+    error: echo ("");
 }
 // Get episode data
 $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
@@ -156,10 +155,9 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                             // Fill in selected categories
                             $selected_cats = array(strval($episode->episode->categoriesPG->category1PG), strval($episode->episode->categoriesPG->category2PG), strval($episode->episode->categoriesPG->category3PG));
                             foreach ($categories as $item) {
-                                if(in_array($item->id, $selected_cats)) {
+                                if (in_array($item->id, $selected_cats)) {
                                     echo "<option value=\"" . htmlspecialchars($item->id) . "\" selected>" . htmlspecialchars($item->description) . "</option>";
-                                }
-                                else {
+                                } else {
                                     echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
                                 }
                             }
