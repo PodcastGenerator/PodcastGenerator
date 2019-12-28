@@ -24,27 +24,29 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'setup/step4.php',
         'components/locale/README.txt'
     ];
+    $langsToDelete = [
+        'cs_CS',
+        'ee_ET',
+        'en_EN',
+        'es_EN',
+        'fr_FR',
+        'it_IT',
+        'ja_JA',
+        'ko_KR',
+        'nb_NO',
+        'nl_NL',
+        'pl_PL',
+        'pt_BR',
+        'ru_RU',
+        'sk_SK',
+        'zh_CN'
+    ];
     $dirsToDelete = [
         'components/js',
         'components/lastRSS',
         'components/php-gettext',
         'core/admin',
         'setup/style',
-        'components/locale/cs_CS',
-        'components/locale/ee_ET',
-        'components/locale/en_EN',
-        'components/locale/es_ES',
-        'components/locale/fr_FR',
-        'components/locale/it_IT',
-        'components/locale/ja_JA',
-        'components/locale/ko_KR',
-        'components/locale/nb_NO',
-        'components/locale/nl_NL',
-        'components/locale/pl_PL',
-        'components/locale/pt_BR',
-        'components/locale/ru_RU',
-        'components/locale/sk_SK',
-        'components/locale/zh_CN'
     ];
     $varsToUnset = [
         'enablesocialnetworks',
@@ -64,6 +66,14 @@ function backwards_2_7_to_3_0($absoluteurl) {
     for($i = 0; $i < sizeof($dirsToDelete); $i++) {
         array_map('unlink', glob($absoluteurl . $dirsToDelete[$i]."/*.*"));
         rmdir($absoluteurl . $dirsToDelete[$i]);
+    }
+    // Delete languages
+    for($i = 0; $i < sizeof($langsToDelete); $i++) {
+        array_map('unlink', glob($absoluteurl . 'components/locale/' . $langsToDelete[$i]."/*.*"));
+        rmdir($absoluteurl . 'components/locale/' . $langsToDelete[$i]);
+    }
+    if(in_array($config['scriptlang'], $langsToDelete)) {
+        updateConfig($absoluteurl . 'config.php', 'scriptlang', 'en_US');
     }
     // Unset variables in config
     for($i = 0; $i < sizeof($varsToUnset); $i++) {
