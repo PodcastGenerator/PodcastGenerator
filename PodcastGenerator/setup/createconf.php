@@ -1,4 +1,12 @@
 <?php
+############################################################
+# PODCAST GENERATOR
+#
+# Created by Alberto Betella and Emil Engler
+# http://www.podcastgenerator.net
+# 
+# This is Free Software released under the GNU/GPL License.
+############################################################
 session_start();
 function randomString($length = 8) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

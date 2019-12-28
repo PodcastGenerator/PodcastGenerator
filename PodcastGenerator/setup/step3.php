@@ -1,4 +1,12 @@
 <?php
+############################################################
+# PODCAST GENERATOR
+#
+# Created by Alberto Betella and Emil Engler
+# http://www.podcastgenerator.net
+# 
+# This is Free Software released under the GNU/GPL License.
+############################################################
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";

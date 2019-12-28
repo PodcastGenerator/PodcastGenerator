@@ -1,4 +1,12 @@
 <?php
+############################################################
+# PODCAST GENERATOR
+#
+# Created by Alberto Betella and Emil Engler
+# http://www.podcastgenerator.net
+# 
+# This is Free Software released under the GNU/GPL License.
+############################################################
 // TODO: Port the entire file to the backwards comp. function
 require 'configsystem.php';
 $config = getConfig('../../config.php');

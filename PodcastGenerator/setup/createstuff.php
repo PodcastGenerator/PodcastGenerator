@@ -1,4 +1,12 @@
 <?php
+############################################################
+# PODCAST GENERATOR
+#
+# Created by Alberto Betella and Emil Engler
+# http://www.podcastgenerator.net
+# 
+# This is Free Software released under the GNU/GPL License.
+############################################################
 // Create other files, do this silent
 function createstuff() {
     if(!file_exists("../freebox-content.txt")) {
