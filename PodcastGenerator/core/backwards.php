@@ -21,14 +21,30 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'setup/firstcreateconfig.php',
         'setup/set_path.php',
         'setup/set_permissions.php',
-        'setup/step4.php'
+        'setup/step4.php',
+        'components/locale/README.txt'
     ];
     $dirsToDelete = [
         'components/js',
         'components/lastRSS',
         'components/php-gettext',
         'core/admin',
-        'setup/style'
+        'setup/style',
+        'components/locale/cs_CS',
+        'components/locale/ee_ET',
+        'components/locale/en_EN',
+        'components/locale/es_ES',
+        'components/locale/fr_FR',
+        'components/locale/it_IT',
+        'components/locale/ja_JA',
+        'components/locale/ko_KR',
+        'components/locale/nb_NO',
+        'components/locale/nl_NL',
+        'components/locale/pl_PL',
+        'components/locale/pt_BR',
+        'components/locale/ru_RU',
+        'components/locale/sk_SK',
+        'components/locale/zh_CN'
     ];
     $varsToUnset = [
         'enablesocialnetworks',
