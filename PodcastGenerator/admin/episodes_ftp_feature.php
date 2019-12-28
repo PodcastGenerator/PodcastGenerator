@@ -64,16 +64,21 @@ if (isset($_GET['start'])) {
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>';
-        // Select new filenames (with date)
-        $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
-        $appendix = 0;
-        while (file_exists($new_filename)) {
-            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
-            $appendix++;
+        // Select new filenames (with date) if not already exsits
+        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
+        $fname = $new_files[$i];
+        if(sizeof($output_array) == 0) {
+            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
+            $appendix = 1;
+            while (file_exists($new_filename)) {
+                $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
+                $appendix++;
+            }
+            rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
+            $fname = $new_filename;
         }
-        rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
         // Write XML file
-        file_put_contents('../' . $config['upload_dir'] . date('Y-m-d') . '-' . pathinfo($new_files[$i], PATHINFO_FILENAME) . '.xml', $episodefeed);
+        file_put_contents('../' . $config['upload_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);
         // Regenarte RSS feed
         generateRSS();
         $success = _('New episodes were added');
