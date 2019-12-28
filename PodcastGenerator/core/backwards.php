@@ -28,10 +28,10 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'cs_CS',
         'ee_ET',
         'en_EN',
-        'es_EN',
+        'es_ES',
         'fr_FR',
         'it_IT',
-        'ja_JA',
+        'ja_JP',
         'ko_KR',
         'nb_NO',
         'nl_NL',
@@ -39,6 +39,7 @@ function backwards_2_7_to_3_0($absoluteurl) {
         'pt_BR',
         'ru_RU',
         'sk_SK',
+        'tr_TR',
         'zh_CN'
     ];
     $dirsToDelete = [
