@@ -69,7 +69,8 @@ function backwards_2_7_to_3_0($absoluteurl) {
     }
     // Delete languages
     for($i = 0; $i < sizeof($langsToDelete); $i++) {
-        array_map('unlink', glob($absoluteurl . 'components/locale/' . $langsToDelete[$i]."/*.*"));
+        array_map('unlink', glob($absoluteurl . 'components/locale/' . $langsToDelete[$i]."/LC_MESSAGES/*.*"));
+        rmdir($absoluteurl . 'components/locale/' . $langsToDelete[$i] . '/LC_MESSAGES');
         rmdir($absoluteurl . 'components/locale/' . $langsToDelete[$i]);
     }
     if(in_array($config['scriptlang'], $langsToDelete)) {
