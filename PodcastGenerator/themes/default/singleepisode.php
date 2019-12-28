@@ -8,7 +8,7 @@ for ($i = 0; $i < sizeof($episodes); $i++) {
 }
 // Check if episode was not found
 if (sizeof($correctepisode) == 0) {
-    echo "Episode not found";
+    echo _('Episode does not exist');
     goto end;
 }
 
