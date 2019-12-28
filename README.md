@@ -19,3 +19,6 @@ Also feature requests are welcome. For this please open an issue on GitHub.
 ## Demo
 A fully-functional live demo of Podcast generator is available at: 
 http://podcastgenerator.net/demo
+
+## Copyright
+This repository includes PHP getID3 written by James Heinrich and Bootstrap from Twitter, Inc. and The Bootstrap Authors
