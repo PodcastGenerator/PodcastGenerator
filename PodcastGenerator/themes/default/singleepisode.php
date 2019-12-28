@@ -11,6 +11,18 @@ if (sizeof($correctepisode) == 0) {
     echo "Episode not found";
     goto end;
 }
+
+// Get mime
+$mime = mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
+$type = '';
+$metadata = '';
+if (substr($mime, 0, 5) == 'video') {
+    $type = 'video';
+} elseif (substr($mime, 0, 5) == 'audio' || $mime = 'application/ogg') {
+    $type = 'audio';
+    $metadata = '(' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["frequency"]) . ' Hz)';
+}
+
 echo '<div class="col-lg-12">';
 echo '  <h1>' . htmlspecialchars($correctepisode["episode"]["titlePG"]) . '</h1>';                                                                              // Headline
 echo '  <small>' . htmlspecialchars($correctepisode["episode"]["moddate"]) . '</small><br>';                                                                    // Pub Date
@@ -20,11 +32,17 @@ if (isset($_SESSION["username"])) {
 }
 echo '  <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($correctepisode["episode"]["filename"]) . '">Download</a><br>';              // Buttons
 echo '  <small>Filetype: ' . htmlspecialchars(strtoupper(pathinfo($config["upload_dir"] . $correctepisode["episode"]["filename"], PATHINFO_EXTENSION))) . '
-                - Size: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . ' m (' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["frequency"]) . ' Hz)</small><br>';
+                - Size: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
 if (strtolower($config["enablestreaming"]) == "yes") {
-    echo '  <audio controls>';
-    echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $episodes[$i]["episode"]["filename"])) . '">';
-    echo '  </audio>';
+    if ($type == 'audio') {
+        echo '  <audio controls>';
+        echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $episodes[$i]["episode"]["filename"])) . '">';
+        echo '  </audio>';
+    } elseif ($type == 'video') {
+        echo '  <video controls width="250">';
+        echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($correctepisode["episode"]["filename"]) . '" type="' . $mime . '">';
+        echo '  </video>';
+    }
 }
 echo '</div>';
 
