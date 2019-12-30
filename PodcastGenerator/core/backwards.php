@@ -58,14 +58,6 @@ function backwards_2_7_to_3_0($absoluteurl)
         'core/admin',
         'setup/style',
     ];
-    $varsToUnset = [
-        'enablesocialnetworks',
-        'dateformat',
-        'enablehelphints',
-        'cronAutoRegenerateRSScacheTime',
-        'feed_iTunes_LINKS_Website',
-        'feed_URL_replace'
-    ];
     // Delete files
     for ($i = 0; $i < sizeof($filesToDelete); $i++) {
         if (file_exists($absoluteurl . $filesToDelete[$i])) {
@@ -86,25 +78,84 @@ function backwards_2_7_to_3_0($absoluteurl)
     if (in_array($config['scriptlang'], $langsToDelete)) {
         updateConfig($absoluteurl . 'config.php', 'scriptlang', 'en_US');
     }
-    // Unset variables in config
-    for ($i = 0; $i < sizeof($varsToUnset); $i++) {
-        unsetConfig($absoluteurl . 'config.php', $varsToUnset[$i]);
-    }
-    // Remove tabs and copyright notice in the config
-    $c = file_get_contents($absoluteurl . 'config.php');
-    $c = str_replace("\t", '', $c);
-    $c = str_replace("#################################################################
+    $config = getConfig($absoluteurl . 'config.php');
+    file_put_contents($absoluteurl . 'config.php',
+    $config = "<?php
+\$podcastgen_version = \"3.0\"; // Version
 
-# Podcast Generator
+\$first_installation = ".$config['first_installation'].";
 
-# http://www.podcastgenerator.net
+\$installationKey = \"".$config['installationKey']."\";
 
-# developed by Alberto Betella
+\$scriptlang = \"".$config['scriptlang']."\";
 
-#
+\$url = \"".$config['url']."\";
 
-# Config.php file created automatically - v.2.7", "", $c);
-    file_put_contents($absoluteurl . 'config.php', $c);
+\$absoluteurl = \"".$config['absoluteurl']."\"; // The location on the server
+
+\$theme_path = \"themes/default/\";
+
+\$username = \"".$config['username']."\";
+
+\$userpassword = \"".$config['userpassword']."\";
+
+\$max_upload_form_size = \"".$config['max_upload_form_size']."\"; //e.g.: \"30000000\" (about 30MB)
+
+\$upload_dir = \"".$config['upload_dir']."\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
+
+\$img_dir = \"".$config['upload_dir']."\"; // (Trailing slash required). Set chmod 755
+
+\$feed_dir = \"".$config['feed_dir']."\"; // Where to create feed.xml (empty value = root directory). Set chmod 755
+
+\$max_recent = ".$config['max_recent']."; // How many file to show in the home page
+
+\$recent_episode_in_feed = \"".$config['recent_episode_in_feed']."\"; // How many file to show in the XML feed (1,2,5 etc.. or \"All\")
+
+\$episodeperpage = ".$config['episodeperpage'].";
+
+\$enablestreaming = \"".$config['enablestreaming']."\"; // Enable mp3 streaming? (\"yes\" or \"no\")
+
+\$freebox = \"".$config['freebox']."\"; // enable freely customizable box
+
+\$enablepgnewsinadmin = \"".$config['enablepgnewsinadmin']."\";
+
+\$strictfilenamepolicy = \"".$config['strictfilenamepolicy']."\"; // strictly rename files (just characters A to Z and numbers) 
+
+\$categoriesenabled = \"".$config['categoriesenabled']."\";
+
+\$cronAutoIndex = ".$config['cronAutoIndex']."; //Auto Index New Episodes via Cron
+
+\$cronAutoRegenerateRSS = ".$config['cronAutoRegenerateRSS']."; //Auto regenerate RSS via Cron
+
+#####################
+# XML Feed stuff
+
+\$podcast_title = \"".$config['podcast_title']."\";
+
+\$podcast_subtitle = \"".$config['podcast_subtitle']."\";
+
+\$podcast_description = \"".$config['podcast_description']."\";
+
+\$author_name = \"".$config['author_name']."\";
+
+\$author_email = \"".$config['author_email']."\";
+
+\$itunes_category[0] = \"".$config['itunes_category[0]']."\"; // iTunes categories (mainCategory:subcategory)
+\$itunes_category[1] = \"".$config['itunes_category[1]']."\";
+\$itunes_category[2] = \"".$config['itunes_category[2]']."\";
+
+\$link = \"".$config['link']."\"; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
+
+\$feed_language = \"".$config['feed_language']."\";
+
+\$copyright = \"".$config['copyright']."\";   // Your copyright notice (e.g CC-BY)
+
+\$feed_encoding = \"".$config['feed_encoding']."\";
+
+\$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\", \"no\" or \"clean\")
+
+// END OF CONFIG
+");
     // Create buttons
     $buttons_xml = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
@@ -121,12 +172,6 @@ function backwards_2_7_to_3_0($absoluteurl)
     </button>
 </PodcastGenerator>';
     file_put_contents($absoluteurl . 'buttons.xml', $buttons_xml);
-    // Update theme
-    updateConfig($absoluteurl . 'config.php', 'theme_path', 'themes/default/');
-    // Update version
-    updateConfig($absoluteurl . 'config.php', 'podcastgen_version', $version);
-    // Re-Enable $enablepgnewsinadmin
-    updateConfig($absoluteurl . 'config.php', 'enablepgnewsinadmin', 'yes');
     sleep(0.5);
     header('Location: index.php');
     die();
