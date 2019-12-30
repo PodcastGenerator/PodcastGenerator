@@ -73,5 +73,13 @@
 		<extension>m4v</extension>
 		<mimetype>video/x-m4v</mimetype>
 	</mediaFile>
+	<mediaFile>
+		<extension>pdf</extension>
+		<mimetype>application/pdf</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>epub</extension>
+		<mimetype>application/epub+zip</mimetype>
+	</mediaFile>
 
 </PodcastGenerator>
