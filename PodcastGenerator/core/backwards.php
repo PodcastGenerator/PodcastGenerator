@@ -97,7 +97,7 @@ function backwards_2_7_to_3_0($absoluteurl)
 
 \$username = \"".$config['username']."\";
 
-\$userpassword = \"".$config['userpassword']."\";
+\$userpassword = \"".str_replace('$', '\$', $config['userpassword'])."\";
 
 \$max_upload_form_size = \"".$config['max_upload_form_size']."\"; //e.g.: \"30000000\" (about 30MB)
 
