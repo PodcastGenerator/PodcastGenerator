@@ -102,7 +102,7 @@ function createconf($username, $password) {
 
 \$feed_encoding = \"utf-8\";
 
-\$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\", \"no\" or \"clean\")
+\$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
 // END OF CONFIG
 ";

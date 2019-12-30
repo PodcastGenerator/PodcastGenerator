@@ -152,7 +152,7 @@ function backwards_2_7_to_3_0($absoluteurl)
 
 \$feed_encoding = \"".$config['feed_encoding']."\";
 
-\$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\", \"no\" or \"clean\")
+\$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
 // END OF CONFIG
 ");
