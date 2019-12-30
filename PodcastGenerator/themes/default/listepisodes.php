@@ -18,10 +18,10 @@ for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     echo '  <small>' . htmlspecialchars($item[$i]["episode"]["shortdescPG"]) . '</small><br>';                                                                // Short description
     // Display edit button if admin is logged in
     if (isset($_SESSION["username"])) {
-        echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">Edit/Delete (Admin)</a>';
+        echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">'.$editdelete.'</a>';
     }
-    echo '  <a class="btn btn-outline-primary btn-sm" href="index.php?' . $link . '=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">More</a>
-                <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">Download</a><br>';                      // Buttons
+    echo '  <a class="btn btn-outline-primary btn-sm" href="index.php?' . $link . '=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">'.$more.'</a>
+                <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">'.$download.'</a><br>';                      // Buttons
     echo '  <small>Filetype: ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
                 - Size: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
     if (strtolower($config["enablestreaming"]) == "yes") {
