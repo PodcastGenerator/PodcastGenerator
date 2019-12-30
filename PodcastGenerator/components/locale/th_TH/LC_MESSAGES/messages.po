@@ -1,0 +1,616 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Podcast Generator Translation Team
+# This file is distributed under the same license as the Podcast Generator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# albertobeta <beta@yellowjug.com>, 2019
+# MR. Private Satansat <psatansat@gmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator 3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-24 22:47+0100\n"
+"PO-Revision-Date: 2019-12-23 12:41+0000\n"
+"Last-Translator: MR. Private Satansat <psatansat@gmail.com>, 2019\n"
+"Language-Team: Thai (Thailand) (https://www.transifex.com/albertobeta/teams/14574/th_TH/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th_TH\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: PodcastGenerator/admin/episodes_edit.php:6
+msgid "No name given"
+msgstr "ยังไม่มีชื่อ"
+
+#: PodcastGenerator/admin/episodes_edit.php:9
+msgid "Episode does not exist"
+msgstr "ไม่พบ Episode"
+
+#: PodcastGenerator/admin/episodes_edit.php:38
+#: PodcastGenerator/admin/episodes_upload.php:19
+#: PodcastGenerator/admin/login.php:11
+msgid "Missing fields"
+msgstr "การกรอกข้อมูลไม่ถูกต้อง"
+
+#: PodcastGenerator/admin/episodes_edit.php:45
+#: PodcastGenerator/admin/episodes_upload.php:32
+msgid "Too much categories selected"
+msgstr "มีรายการมากเกินไป "
+
+#: PodcastGenerator/admin/episodes_edit.php:52
+#: PodcastGenerator/admin/episodes_upload.php:52
+msgid "Invalid Author E-Mail provided"
+msgstr "ยังไม่มี E-Mail ของผู้ดำเนินรายการ"
+
+#: PodcastGenerator/admin/episodes_edit.php:58
+#: PodcastGenerator/admin/episodes_upload.php:58
+msgid "Size of the 'Short Description' exceeded"
+msgstr "ข้อความยาวเกินกำหนด"
+
+#: PodcastGenerator/admin/episodes_edit.php:121
+#: PodcastGenerator/admin/episodes_edit.php:135
+#: PodcastGenerator/admin/episodes_edit.php:198
+msgid "Edit Episode"
+msgstr "แก้ไข Episode"
+
+#: PodcastGenerator/admin/episodes_edit.php:139
+#: PodcastGenerator/admin/episodes_upload.php:196
+msgid "Main Informations"
+msgstr "ข้อมูลหลัก"
+
+#: PodcastGenerator/admin/episodes_edit.php:142
+#: PodcastGenerator/admin/episodes_upload.php:204
+msgid "Title"
+msgstr "ชื่อ"
+
+#: PodcastGenerator/admin/episodes_edit.php:146
+#: PodcastGenerator/admin/episodes_upload.php:208
+msgid "Short Description"
+msgstr "คำบรรยาย"
+
+#: PodcastGenerator/admin/episodes_edit.php:148
+msgid " characters remaining"
+msgstr " อักขระที่เพิ่มได้ "
+
+#: PodcastGenerator/admin/episodes_edit.php:151
+#: PodcastGenerator/admin/episodes_upload.php:216
+#: PodcastGenerator/admin/store_cat.php:49
+#: PodcastGenerator/admin/store_cat.php:63
+#: PodcastGenerator/admin/store_cat.php:83
+msgid "Category"
+msgstr "รายการ"
+
+#: PodcastGenerator/admin/episodes_edit.php:152
+#: PodcastGenerator/admin/episodes_upload.php:217
+msgid "You can select up to 3 categories"
+msgstr "สามารถเลือกได้ 3 รายการ"
+
+#: PodcastGenerator/admin/episodes_edit.php:170
+#: PodcastGenerator/admin/episodes_upload.php:231
+msgid "Publication Date"
+msgstr "วันที่เผยแพร่"
+
+#: PodcastGenerator/admin/episodes_edit.php:171
+#: PodcastGenerator/admin/episodes_upload.php:232
+msgid "If you select a date in the future, it will be published then"
+msgstr "รายการจะถูกเผยแพร่ตามเวลาที่กำหนด"
+
+#: PodcastGenerator/admin/episodes_edit.php:172
+#: PodcastGenerator/admin/episodes_upload.php:233
+msgid "Date"
+msgstr "วันที่ "
+
+#: PodcastGenerator/admin/episodes_edit.php:174
+#: PodcastGenerator/admin/episodes_upload.php:235
+msgid "Time"
+msgstr "เวลา "
+
+#: PodcastGenerator/admin/episodes_edit.php:179
+#: PodcastGenerator/admin/episodes_upload.php:240
+msgid "Extra Informations"
+msgstr "ข้อมูลเพิ่มเติม "
+
+#: PodcastGenerator/admin/episodes_edit.php:182
+#: PodcastGenerator/admin/episodes_upload.php:243
+msgid "Long Description"
+msgstr "ข้อความบรรยาย"
+
+#: PodcastGenerator/admin/episodes_edit.php:186
+#: PodcastGenerator/admin/episodes_upload.php:247
+msgid "iTunes Keywords"
+msgstr "คำสำคัญใน iTunes"
+
+#: PodcastGenerator/admin/episodes_edit.php:190
+#: PodcastGenerator/admin/episodes_upload.php:251
+msgid "Explicit content"
+msgstr "เนื้อหาเฉพาะ"
+
+#: PodcastGenerator/admin/episodes_edit.php:194
+#: PodcastGenerator/admin/episodes_upload.php:255
+msgid "Author"
+msgstr "ผู้ดำเนินรายการ"
+
+#: PodcastGenerator/admin/episodes_edit.php:203
+msgid "Delete Episode"
+msgstr "ลบ episode"
+
+#: PodcastGenerator/admin/episodes_edit.php:210
+msgid "\" characters remaining\""
+msgstr " อักขระที่เหลือ"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:79
+msgid "New episodes were added"
+msgstr "episode ใหม่ถูกเพิ่มแล้ว"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:88
+msgid "FTP Feature"
+msgstr "ความสามารถของ FTP"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:102
+msgid "FTP Auto Indexing"
+msgstr "จัดเรียงข้อมูลอัตโนมัติผ่าน FTP"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:105
+msgid "Begin"
+msgstr "เริ่ม"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:28
+msgid "Category already exists"
+msgstr "มีรายการอยู่แล้ว"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:50
+#: PodcastGenerator/admin/episodes_manage_cats.php:64
+#: PodcastGenerator/admin/navbar.php:18
+msgid "Manage categories"
+msgstr "จัดการรายการ"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:65
+msgid "Add category"
+msgstr "เพิ่มรายการ"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:67
+#: PodcastGenerator/admin/episodes_manage_cats.php:68
+msgid "Category Name"
+msgstr "ชื่อรายการ "
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:69
+msgid "Add"
+msgstr "เพิ่ม"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:71
+msgid "Current Categories"
+msgstr "รายการทั้งหมด "
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:76
+msgid "Delete"
+msgstr "ลบ"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:11
+msgid "Regenerate Feed"
+msgstr "สร้าง Feed"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:25
+msgid "Successfully regenrated RSS feed"
+msgstr "สร้าง RSS feed แล้ว"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:26
+msgid "Return"
+msgstr "ตกลง"
+
+#: PodcastGenerator/admin/episodes_upload.php:38
+msgid "No category selected"
+msgstr "ยังไม่ได้เลือกรายการ"
+
+#: PodcastGenerator/admin/episodes_upload.php:65
+msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr "ชื่อไฟล์ไม่ถูกต้อง, อักขระที่ใช้ได้ คือ  A-Z, a-z, _ และ ."
+
+#: PodcastGenerator/admin/episodes_upload.php:80
+msgid "File is too big, maximum filesize is: "
+msgstr "ไฟล์ใหญ่เกินไป!! ขนาดไฟล์ที่อนุญาตต้องไม่เกิน "
+
+#: PodcastGenerator/admin/episodes_upload.php:94
+msgid "Invalid file extension"
+msgstr "ชนิดของไฟล์ไม่ถูกต้อง"
+
+#: PodcastGenerator/admin/episodes_upload.php:99
+msgid "The file upload was not successfully"
+msgstr "ส่งไฟล์ไม่สำเร็จ! "
+
+#: PodcastGenerator/admin/episodes_upload.php:112
+msgid "Invalid mime type, are you actually uploading a"
+msgstr "mime type ไม่ถูกต้อง"
+
+#: PodcastGenerator/admin/episodes_upload.php:170
+#: PodcastGenerator/admin/episodes_upload.php:184
+msgid "Upload Episode"
+msgstr "Upload Episode"
+
+#: PodcastGenerator/admin/episodes_upload.php:187
+msgid "uploaded successfully"
+msgstr "ส่งไฟล์สำเร็จแล้ว"
+
+#: PodcastGenerator/admin/episodes_upload.php:199
+msgid "File"
+msgstr "ไฟล์"
+
+#: PodcastGenerator/admin/episodes_upload.php:210
+#: PodcastGenerator/admin/episodes_upload.php:268
+msgid "characters remaining"
+msgstr "อักขระที่เหลือ"
+
+#: PodcastGenerator/admin/episodes_upload.php:252
+#: PodcastGenerator/admin/pg_config.php:35
+#: PodcastGenerator/admin/pg_config.php:39
+#: PodcastGenerator/admin/pg_config.php:43
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "Yes"
+msgstr "ใช่"
+
+#: PodcastGenerator/admin/episodes_upload.php:252
+#: PodcastGenerator/admin/pg_config.php:35
+#: PodcastGenerator/admin/pg_config.php:39
+#: PodcastGenerator/admin/pg_config.php:43
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "No"
+msgstr "ไม่ใช่"
+
+#: PodcastGenerator/admin/episodes_upload.php:256
+#: PodcastGenerator/admin/podcast_details.php:50
+msgid "Author Name"
+msgstr "ชื่อผู้ดำเนินรายการ"
+
+#: PodcastGenerator/admin/episodes_upload.php:257
+msgid "Author E-Mail"
+msgstr "E-Mail ของผู้ดำเนินรายการ"
+
+#: PodcastGenerator/admin/episodes_upload.php:259
+msgid "Upload episode"
+msgstr "เพิ่มตอนใหม่"
+
+#: PodcastGenerator/admin/index.php:29
+msgid "Welcome to your Podcast Generator Admin Interface"
+msgstr "ยินดีต้อนรับสู่หน้าสำหรับผู้ดูแลระบบของ Podcast Generator "
+
+#: PodcastGenerator/admin/login.php:20
+msgid "Invalid username or password"
+msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+
+#: PodcastGenerator/admin/login.php:44
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
+
+#: PodcastGenerator/admin/login.php:46
+msgid "Password"
+msgstr "รหัสผ่าน"
+
+#: PodcastGenerator/admin/login.php:49
+msgid "Sign In"
+msgstr "เข้าสู่ระบบ"
+
+#: PodcastGenerator/admin/navbar.php:3
+msgid "Toggle navigation"
+msgstr "การนำทาง"
+
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr "Episode"
+
+#: PodcastGenerator/admin/navbar.php:16
+msgid "Upload New Episodes"
+msgstr "เพิ่ม Episodes ใหม่"
+
+#: PodcastGenerator/admin/navbar.php:17
+msgid "Edit / Delete Episode"
+msgstr "แก้ไข / ลบ Episodes"
+
+#: PodcastGenerator/admin/navbar.php:19
+msgid "FTP Feature (Auto Indexing)"
+msgstr "ใช้ความสามารถของ FTP จัดเรียงข้อมูลโดยอัตโนมัติ"
+
+#: PodcastGenerator/admin/navbar.php:20
+msgid "Manually regenerate RSS feed"
+msgstr "สร้าง RSS feed"
+
+#: PodcastGenerator/admin/navbar.php:25
+msgid "Themes and aspect"
+msgstr "Theme และมุมมอง"
+
+#: PodcastGenerator/admin/navbar.php:28
+msgid "Change Theme"
+msgstr "เปลี่ยน theme"
+
+#: PodcastGenerator/admin/navbar.php:29
+msgid "Customize your Freebox"
+msgstr "ปรับแต่งกล่องข้อความ"
+
+#: PodcastGenerator/admin/navbar.php:30
+#: PodcastGenerator/admin/theme_buttons.php:90
+msgid "Change Buttons"
+msgstr "เปลี่ยนปุ่ม"
+
+#: PodcastGenerator/admin/navbar.php:35
+msgid "Podcast Platform Settings"
+msgstr "ตั้งค่า Platform ของ Podcast"
+
+#: PodcastGenerator/admin/navbar.php:38
+msgid "Change Cover Art"
+msgstr "เปลี่ยนภาพปก"
+
+#: PodcastGenerator/admin/navbar.php:39
+msgid "Change Podcast Category"
+msgstr "เปลี่ยนประเภทรายการของ Podcast"
+
+#: PodcastGenerator/admin/navbar.php:44
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast Details"
+msgstr "รายละเอียดของ Podcast"
+
+#: PodcastGenerator/admin/navbar.php:47
+msgid "Change Podcast details"
+msgstr "เปลี่ยนรายละเอียดของ Podcast"
+
+#: PodcastGenerator/admin/navbar.php:52
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#: PodcastGenerator/admin/navbar.php:55
+msgid "Change Podcast Generator Config"
+msgstr "กำหนดคุณสมบัติของ Podcast Generator"
+
+#: PodcastGenerator/admin/pg_config.php:17
+msgid "Podcast Generator Configuration"
+msgstr "คุณสมบัติของ Podcast Generator"
+
+#: PodcastGenerator/admin/pg_config.php:31
+msgid "Change Podcast Generator Configuration"
+msgstr "กำหนดคุณสมบัติของ Podcast Generator"
+
+#: PodcastGenerator/admin/pg_config.php:33
+msgid "Enable Audio and Video Player"
+msgstr "เปิด Audio and Video Player"
+
+#: PodcastGenerator/admin/pg_config.php:34
+msgid "Enable streaming in web browser"
+msgstr "เปิดการ streaming ใน web browser"
+
+#: PodcastGenerator/admin/pg_config.php:37
+#: PodcastGenerator/admin/theme_freebox.php:50
+msgid "Enable Freebox"
+msgstr "ใช้กล่องข้อความ"
+
+#: PodcastGenerator/admin/pg_config.php:38
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"คุณสามารถเพิ่มข้อมูลในกล่องข้อความได้โดยใช้ visual editor ในหน้าดูแลระบบ"
+
+#: PodcastGenerator/admin/pg_config.php:41
+msgid "Enable categories"
+msgstr "เปิดการแบ่งรายการ"
+
+#: PodcastGenerator/admin/pg_config.php:42
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "การแบ่งรายการ เป็นการจัดกลุ่มให้กับ podcast"
+
+#: PodcastGenerator/admin/pg_config.php:45
+msgid "How many recent episodes in the homepage?"
+msgstr "ระบุจำนวนรายการล่าสุดที่ต้องการแสดงในหน้าแรก"
+
+#: PodcastGenerator/admin/pg_config.php:48
+#: PodcastGenerator/admin/pg_config.php:51
+msgid "All"
+msgstr "ทั้งหมด"
+
+#: PodcastGenerator/admin/pg_config.php:55
+msgid "Use cron to regenerate the RSS feed"
+msgstr "สร้าง RSS feed ด้วย cron"
+
+#: PodcastGenerator/admin/pg_config.php:58
+#: PodcastGenerator/admin/podcast_details.php:133
+#: PodcastGenerator/admin/theme_buttons.php:119
+#: PodcastGenerator/admin/theme_buttons.php:140
+msgid "Submit"
+msgstr "ส่ง"
+
+#: PodcastGenerator/admin/podcast_details.php:40
+msgid "Change Podcast Details"
+msgstr "เปลี่ยนรายละเอียดของ Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:42
+msgid "Podcast Title"
+msgstr "ชื่อของ Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:44
+msgid "Podcast Subtitle or Slogan"
+msgstr "คำโปรยหรือ Slogan ของ podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:46
+msgid "Podcast Description"
+msgstr "คำบรรยายของ Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:48
+msgid "Copyright Notice"
+msgstr "สงวนลิขสิทธิ์"
+
+#: PodcastGenerator/admin/podcast_details.php:52
+msgid "Author E-Mail Address"
+msgstr "E-Mail Address ของผู้ดำเนินรายการ"
+
+#: PodcastGenerator/admin/podcast_details.php:54
+msgid "Feed Language"
+msgstr "ภาษาของ Feed"
+
+#: PodcastGenerator/admin/podcast_details.php:54
+msgid "Main language of your podcast"
+msgstr "ภาษาหลักของ Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:130
+msgid "Explicit Podcast"
+msgstr "มีเนื้อหาเฉพาะหรือไม่"
+
+#: PodcastGenerator/admin/store_cat.php:9
+msgid "Category 1 needs to be set"
+msgstr "ต้องมีรายการอย่างน้อย 1 รายการ"
+
+#: PodcastGenerator/admin/store_cat.php:27
+msgid "Select Podcast Category"
+msgstr "เลือกรายการของ Podcast"
+
+#: PodcastGenerator/admin/store_cat.php:41
+msgid "Select Podcast Categories"
+msgstr "เลือกรายการของ Podcast"
+
+#: PodcastGenerator/admin/store_cat.php:42
+msgid "Select or change Podcast Categories (for iTunes)"
+msgstr "เลือกหรือเปลี่ยนประเภทรายการของ Podcast (สำหรับ iTunes)"
+
+#: PodcastGenerator/admin/store_cat.php:103
+#: PodcastGenerator/admin/theme_freebox.php:59
+msgid "Save"
+msgstr "บันทึก"
+
+#: PodcastGenerator/admin/store_cover.php:8
+msgid "File is too big"
+msgstr "ไฟล์ใหญ่เกินกว่าที่กำหนด"
+
+#: PodcastGenerator/admin/store_cover.php:13
+msgid "Image is not quadratic"
+msgstr "ขนาดของภาพไม่เหมาะสม"
+
+#: PodcastGenerator/admin/store_cover.php:19
+msgid "File was not uploaded"
+msgstr "ยังไม่มีการเพิ่มไฟล์"
+
+#: PodcastGenerator/admin/store_cover.php:36
+msgid "Store Cover"
+msgstr "เพิ่มภาพปก"
+
+#: PodcastGenerator/admin/store_cover.php:50
+msgid "Change Cover"
+msgstr "เปลี่ยนภาพปก"
+
+#: PodcastGenerator/admin/store_cover.php:51
+msgid "The cover art will be displayed in the podcast readers."
+msgstr "ภาพปกจะถูกแสดงใน Podcast reader"
+
+#: PodcastGenerator/admin/store_cover.php:57
+msgid "Current Cover"
+msgstr "ภาพปกปัจจุบัน"
+
+#: PodcastGenerator/admin/store_cover.php:60
+msgid "Upload new cover"
+msgstr "เพิ่มภาพปกใหม่"
+
+#: PodcastGenerator/admin/store_cover.php:62
+msgid "Select file"
+msgstr "เลือกไฟล์"
+
+#: PodcastGenerator/admin/store_cover.php:64
+msgid "Upload"
+msgstr "เพิ่มไฟล์"
+
+#: PodcastGenerator/admin/theme_buttons.php:16
+msgid "Item exists"
+msgstr "มีชื่อนี้อยู่แล้ว"
+
+#: PodcastGenerator/admin/theme_buttons.php:21
+msgid "Name, Link and CSS Class needs to be set"
+msgstr "ต้องกำหนดชื่อ, Link และ CSS Class "
+
+#: PodcastGenerator/admin/theme_buttons.php:76
+msgid "Theme Buttons"
+msgstr "ปุ่มของทีม"
+
+#: PodcastGenerator/admin/theme_buttons.php:91
+msgid "Click on the button you wish to edit"
+msgstr "กดปุ่มที่ต้องการแก้ไข"
+
+#: PodcastGenerator/admin/theme_buttons.php:111
+#: PodcastGenerator/admin/theme_buttons.php:132
+msgid "Name (needs to be unique)"
+msgstr "ชื่อ (ต้องไม่ซ้ำกับชื่อที่มีอยู่)"
+
+#: PodcastGenerator/admin/theme_buttons.php:113
+#: PodcastGenerator/admin/theme_buttons.php:134
+msgid "Link (where it should point to)"
+msgstr "Link (จุดเชื่อมโยงที่ต้องการใช้)"
+
+#: PodcastGenerator/admin/theme_buttons.php:117
+#: PodcastGenerator/admin/theme_buttons.php:138
+msgid "Protocol (Leave it blank if you don't know what you are doing)"
+msgstr "Protocol (ปล่อยว่างไว้หากไม่แน่ใจว่าต้องระบุค่าอย่างไร)"
+
+#: PodcastGenerator/admin/theme_buttons.php:122
+msgid "Delete Button"
+msgstr "ลบปุ่ม"
+
+#: PodcastGenerator/admin/theme_buttons.php:130
+msgid "Add Button"
+msgstr "เพิ่มปุ่ม"
+
+#: PodcastGenerator/admin/theme_change.php:38
+msgid "Theme Change"
+msgstr "Theme ถูกเปลี่ยนแล้ว"
+
+#: PodcastGenerator/admin/theme_change.php:52
+msgid "Change theme"
+msgstr "เปลี่ยน Theme"
+
+#: PodcastGenerator/admin/theme_change.php:54
+msgid "Installed themes"
+msgstr "Theme ที่ติดตั้งแล้ว"
+
+#: PodcastGenerator/admin/theme_change.php:71
+msgid "This theme is currently in use"
+msgstr "Theme นี้ถูกใช้อยู่"
+
+#: PodcastGenerator/admin/theme_change.php:74
+msgid "Switch theme"
+msgstr "สลับ Theme"
+
+#: PodcastGenerator/admin/theme_freebox.php:26
+#: PodcastGenerator/admin/theme_freebox.php:40
+msgid "Customize Freebox"
+msgstr "ปรับแต่งกล่องข้อความ"
+
+#: PodcastGenerator/admin/theme_freebox.php:41
+msgid "Current Freebox"
+msgstr "รูปแบบกล่องข้อความปัจจุบัน"
+
+#: PodcastGenerator/admin/theme_freebox.php:47
+msgid "Enable / Disable Freebox"
+msgstr "ใช้ / ไม่ใช้กล่องข้อความ"
+
+#: PodcastGenerator/admin/theme_freebox.php:52
+msgid "Disable Freebox"
+msgstr "ไม่ใช้กล่องข้อความ"
+
+#: PodcastGenerator/admin/theme_freebox.php:55
+msgid "Change Freebox content"
+msgstr "เปลี่ยนข้อความในกล่องข้อความ"
+
+#: PodcastGenerator/admin/theme_freebox.php:57
+msgid "Content"
+msgstr "ข้อความ"
+
+#: PodcastGenerator/index.php:27
+msgid "More"
+msgstr "ข้อมูลเพิ่มเติม"
+
+#: PodcastGenerator/index.php:28
+msgid "Download"
+msgstr "Download"
+
+#: PodcastGenerator/index.php:29
+msgid "Edit/Delete (Admin)"
+msgstr "แก้ไข / ลบ (ผู้ดูแล)"
+
+#: PodcastGenerator/index.php:30
+msgid "Categories"
+msgstr "รายการ"

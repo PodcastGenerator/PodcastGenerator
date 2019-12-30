@@ -8,4 +8,24 @@
 		<code>de_DE</code>
 		<name>Deutsch</name>
 	</language>
+	<language>
+		<code>fr_FR</code>
+		<name>Français</name>
+	</language>
+	<language>
+		<code>hu_HU</code>
+		<name>Magyar</name>
+	</language>
+	<language>
+		<code>ro_RO</code>
+		<name>Română</name>
+	</language>
+	<language>
+		<code>sv_SE</code>
+		<name>Svenska</name>
+	</language>
+	<language>
+		<code>th_TH</code>
+		<name>ไทย</name>
+	</language>
 </PodcastGenerator>
