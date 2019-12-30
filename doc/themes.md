@@ -25,3 +25,10 @@ The `theme.json` looks like this:
 }
 ```
 The `version` field is the current **theme** version. The **pg_versions** array says with which PG Versions this theme is compatible.
+## The PHP part
+Themes indeed do some PHP stuff but not too complicated stuff. This is done mostly to display episodes and categories.
+However you don't really need PHP knowledge when creating a theme. Just edit the stuff that is provided by echo.
+If you need any help with creating themes, feel free to open an issue here on GitHub :)
+## How to create a theme
+Unfortunately, this documentation isn't really good. The best way to start is learning by doing. Copy the `themes/default` folder to `themes/yourname`.
+And make some modifications to it so you get a feeling on how the theme system works.
