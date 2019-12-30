@@ -35,7 +35,7 @@
                     <?php echo _('Podcast Platform Settings'); ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="store_cover.php"><?php _('Change Cover Art'); ?></a>
+                    <a class="dropdown-item" href="store_cover.php"><?php echo _('Change Cover Art'); ?></a>
                     <a class="dropdown-item" href="store_cat.php"><?php echo _('Change Podcast Category'); ?></a>
                 </div>
             </li>
