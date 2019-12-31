@@ -85,7 +85,7 @@ if(file_exists($scripts.$testfile)) {
                     chmod("$media_directory", 0777);
                     chmod("$images_directory", 0777);
                     chmod("$script_directory", 0777);
-                    echo "<strong><p style=\"color: red;\">Please <a href=\"step1.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
+                    echo "<strong><p style=\"color: red;\">Please <a href=\"step2.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
                 }
                 else {
                     echo "<a href=\"step3.php\" class=\"btn btn-success\">Continue</a>";
