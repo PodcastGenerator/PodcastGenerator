@@ -25,11 +25,3 @@ $config = getConfig('../config.php');
 include 'backwards.php';
 // Load translations
 include 'translation.php';
-// Check if the hash is MD5
-if (strlen($config['userpassword']) == 32) {
-    header('Location: ../core/misc/passwordconverter.php');
-    die();
-}
-
-// Do backwards comp
-backwards_2_7_to_3_0($config['absoluteurl']);
