@@ -9,6 +9,17 @@
 ############################################################
 session_start();
 require 'core/include.php';
+
+// Backwards compatibility: Redirect pre-3.0 archive pages to
+// categories.php.
+if(isset($_GET['p'])) {
+    if($_GET['p'] == 'archive') {
+        $redirect_url = $config['url'] . 'categories.php?cat=' . $_GET['cat'];
+        header('Location: ' . $redirect_url);
+        die();
+    }
+}
+
 generateRSS();
 $episodes = getEpisodes(null);
 
