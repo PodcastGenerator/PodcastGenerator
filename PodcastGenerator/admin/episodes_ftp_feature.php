@@ -12,6 +12,7 @@ require '../core/include_admin.php';
 
 if (isset($_GET['start'])) {
     $new_files = array();
+    $mimetypes = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
     // Get all files and check if they have an XML file associated
     if ($handle = opendir('../' . $config['upload_dir'])) {
         while (false !== ($entry = readdir($handle))) {
@@ -25,6 +26,17 @@ if (isset($_GET['start'])) {
             }
             // Check if an XML file for that episode exists
             if (file_exists('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+                continue;
+            }
+            // Skip invalid mime types
+            $validExtension = false;
+            foreach ($mimetypes->mediaFile as $item) {
+                if (mime_content_type('../' . $config['upload_dir'] . $entry) == $item->mimetype) {
+                    $validExtension = true;
+                    break;
+                }
+            }
+            if(!$validExtension) {
                 continue;
             }
             array_push($new_files, $entry);
