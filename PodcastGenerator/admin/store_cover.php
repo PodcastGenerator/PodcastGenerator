@@ -15,6 +15,12 @@ if (isset($_GET['upload'])) {
     if ($_FILES['file']['size'] > $config['max_upload_form_size']) {
         $error = _('File is too big');
     }
+    // Check mime type
+    if(mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
+        $error = _('Image is not a JPEG');
+        goto error;
+    }
+
     $imagesize = getimagesize($_FILES['file']['tmp_name']);
     // Verify if image is a square
     if ($imagesize[0] / $imagesize[1] != 1) {
