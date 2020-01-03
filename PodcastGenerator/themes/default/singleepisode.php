@@ -12,6 +12,12 @@ if (sizeof($correctepisode) == 0) {
     goto end;
 }
 
+// Check if file is readable
+if (!is_readable($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"])) {
+    echo _('File cannot be read due to a permission error');
+    goto end;
+}
+
 // Get mime
 $mime = mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
 $type = '';

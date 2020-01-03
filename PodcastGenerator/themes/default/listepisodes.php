@@ -2,6 +2,10 @@
 // List episodes
 for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     $item = $episode_chunk;
+    // Check if file is readable
+    if(!is_readable($config["absoluteurl"] . $config["upload_dir"] . $item[$i]["episode"]["filename"])) {
+        continue;
+    }
     $mime = mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $item[$i]["episode"]["filename"]);
     $type = '';
     $metadata =  '';

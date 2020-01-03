@@ -28,6 +28,10 @@ if (isset($_GET['start'])) {
             if (file_exists('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
+            // CHeck if the file is readable
+            if (!is_readable('../' . $config['upload_dir'] . $entry)) {
+                continue;
+            }
             // Skip invalid mime types
             $validExtension = false;
             foreach ($mimetypes->mediaFile as $item) {

@@ -104,6 +104,10 @@ function generateRSS()
         $link = str_replace('$url', '', $link);
         $original_full_filepath = $config['url'] . $config['upload_dir'] . $files[$i]['filename'];
         $file = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
+        // Skip files with no read permission
+        if (!is_readable($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'])) {
+            continue;
+        }
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
