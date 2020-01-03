@@ -22,3 +22,4 @@ include 'backwards.php';
 // Load translation
 include 'translation.php';
 // Do backwards comp
+backwards_3_0_to_3_1($config['absoluteurl']);
