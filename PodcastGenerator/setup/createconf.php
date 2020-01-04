@@ -69,7 +69,7 @@ function createconf($username, $password) {
 
 \$enablepgnewsinadmin = \"yes\";
 
-\$strictfilenamepolicy = \"yes\"; // strictly rename files (just characters A to Z and numbers) 
+\$strictfilenamepolicy = \"no\"; // strictly rename files (just characters A to Z and numbers) 
 
 \$categoriesenabled = \"yes\";
 
