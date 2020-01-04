@@ -81,7 +81,7 @@ if (isset($_GET['add'])) {
             <?php
             $cats_xml = simplexml_load_file('../categories.xml');
             foreach ($cats_xml as $item) {
-                echo '<li><a href="' . htmlspecialchars($config["url"]) . 'index.php?cat=' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</a> <a class="btn btn-sm btn-danger" href="episodes_manage_cats.php?del=' . htmlspecialchars($item->id) . '">' . _('Delete') . '</a></li>';
+                echo '<li><a href="' . htmlspecialchars($config["url"]) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</a> <a class="btn btn-sm btn-danger" href="episodes_manage_cats.php?del=' . htmlspecialchars($item->id) . '">' . _('Delete') . '</a></li>';
             }
             ?>
         </ul>

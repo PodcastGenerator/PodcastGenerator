@@ -10,7 +10,7 @@
 require 'core/include.php';
 // Kill the connection if categories are disabled
 if(strtolower($config['categoriesenabled']) != 'yes') {
-    header('Location: index.php');
+    header('Location: '.$config['indexfile']);
     die();
 }
 $categories_xml = simplexml_load_file('categories.xml');

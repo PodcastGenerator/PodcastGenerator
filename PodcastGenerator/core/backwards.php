@@ -59,6 +59,8 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$cronAutoRegenerateRSS = ".$config['cronAutoRegenerateRSS']."; //Auto regenerate RSS via Cron
 
+\$indexfile = \"index.php\";    // Path of the index file
+
 #####################
 # XML Feed stuff
 

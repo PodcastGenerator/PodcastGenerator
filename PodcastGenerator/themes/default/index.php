@@ -33,7 +33,7 @@
         echo '<nav>';
         echo '  <ul class="pagination">';
         for ($j = 0; $j < sizeof($splitted_episodes); $j++) {
-            echo '  <li class="page-item"><a class="page-link" href="index.php?page=' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
+            echo '  <li class="page-item"><a class="page-link" href="'.$config['indexfile'].'?page=' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
         }
         echo '  </ul>';
         echo '</nav>';

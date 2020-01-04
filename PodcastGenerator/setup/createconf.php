@@ -70,6 +70,8 @@ function createconf() {
 
 \$cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
 
+\$indexfile = \"index.php\";    // Path of the index file
+
 #####################
 # XML Feed stuff
 

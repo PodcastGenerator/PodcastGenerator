@@ -113,7 +113,7 @@ if (isset($_GET['edit'])) {
     file_put_contents('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     // Redirect if success
-    header('Location: ../index.php?name=' . $_GET['name'] . '');
+    header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
     die();
 
     error: echo ("");

@@ -9,6 +9,7 @@
 ############################################################
 require "../core/misc/globs.php";
 if(file_exists("../config.php")) {
+    // TODO config indexfile
     header("Location: ../index.php");
     die();
 }
