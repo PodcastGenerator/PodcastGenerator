@@ -19,8 +19,8 @@ if (isset($_GET['login'])) {
         $error = _('Missing fields');
         goto esc;
     }
-    if ($_POST['username'] == $config['username'] && password_verify($_POST['password'], $config['userpassword'])) {
-        $_SESSION['username'] = $config['username'];
+    if (checkLogin($_POST['username'], $_POST['password'])) {
+        $_SESSION['username'] = $_POST['username'];
         header('Location: index.php');
         die();
     } else {

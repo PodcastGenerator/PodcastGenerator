@@ -8,7 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 // Create other files, do this silent
-function createstuff() {
+function createstuff($username, $password) {
     if(!file_exists("../freebox-content.txt")) {
         $freebox_text = "<p>This is a Freebox. You can put any valid HTML in here. Or disable this feature if you don't need it.</p>";
         file_put_contents("../freebox-content.txt", $freebox_text);
@@ -41,6 +41,12 @@ function createstuff() {
         if(file_put_contents("../categories.xml", $catfile)) {
             return true;
         }
+    }
+    if(!file_exists("../users.json")) {
+        $users_json = '{
+    "'.$username.'": "'.password_hash($password, PASSWORD_DEFAULT).'"
+}';
+    file_put_contents("../users.json", $users_json);
     }
     else
         return true;

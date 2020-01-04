@@ -18,16 +18,13 @@ function randomString($length = 8) {
     return $randomString;
 }
 
-function createconf($username, $password) {
+function createconf() {
     require "../core/misc/globs.php";
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Replace config stuff
     $url = str_replace("setup/step3.php?create=1", "", $url);
     $absoluteurl = realpath("../")."/";
-    $userpassword = password_hash($password, PASSWORD_DEFAULT);
-    // Escape password
-    $userpassword = str_replace("\$", "\\\$", $userpassword);
     $installationKey = randomString();
 
     $config = "<?php
@@ -44,10 +41,6 @@ function createconf($username, $password) {
 \$absoluteurl = \"$absoluteurl\"; // The location on the server
 
 \$theme_path = \"themes/default/\";
-
-\$username = \"$username\";
-
-\$userpassword = \"$userpassword\";
 
 \$max_upload_form_size = \"104857600\"; //e.g.: \"30000000\" (about 30MB)
 
