@@ -10,6 +10,7 @@
 include 'misc/security.php';
 include 'misc/configsystem.php';
 include 'misc/globs.php';
+include 'misc/functions.php';
 include 'episodes.php';
 include 'feed_generator.php';
 include 'buttons.php';

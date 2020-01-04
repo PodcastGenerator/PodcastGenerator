@@ -105,8 +105,9 @@ function generateRSS()
         $original_full_filepath = $config['url'] . $config['upload_dir'] . $files[$i]['filename'];
         $file = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
         // Skip files with no read permission
-        if (!is_readable($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'])) {
-            continue;
+        $mimetype = getmime($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']);
+        if(!$mimetype) {
+            $mimetype = null;
         }
         $item = '
 		<item>
@@ -115,7 +116,7 @@ function generateRSS()
 			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
 			<link>' . $original_full_filepath . '</link>
-			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . mime_content_type($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '"></enclosure>
+			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>
 			<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>
 			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
 			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>

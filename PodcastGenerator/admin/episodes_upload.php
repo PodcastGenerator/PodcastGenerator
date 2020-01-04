@@ -108,16 +108,16 @@ if (isset($_GET['upload'])) {
         goto error;
     }
 
-    // Check if file is readable
-    // TODO port the entirue is_readable stuff to a function which returns the mime type and a false if the file isn't readable
-    if (!is_readable($targetfile)) {
-        $error = _('The file is not readable due to a permission error');
+    $mimetype = getmime($targetfile);
+
+    if(!$mimetype) {
+        $error = _('The uploaded file is not readable (permission error)');
         goto error;
     }
 
     $validMimeType = false;
     foreach ($validTypes->mediaFile as $item) {
-        if (mime_content_type($targetfile) == $item->mimetype) {
+        if ($mimetype == $item->mimetype) {
             $validMimeType = true;
             break;
         }

@@ -12,14 +12,10 @@ if (sizeof($correctepisode) == 0) {
     goto end;
 }
 
-// Check if file is readable
-if (!is_readable($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"])) {
-    echo _('File cannot be read due to a permission error');
-    goto end;
-}
-
 // Get mime
-$mime = mime_content_type($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
+$mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
+if(!$mime)
+    $mime = null;
 $type = '';
 $metadata = '';
 if (substr($mime, 0, 5) == 'video') {
@@ -46,7 +42,7 @@ if ($type != 'invalid') {
 if (strtolower($config["enablestreaming"]) == "yes") {
     if ($type == 'audio') {
         echo '  <audio controls>';
-        echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '" type="' . mime_content_type(htmlspecialchars($config["upload_dir"] . $episodes[$i]["episode"]["filename"])) . '">';
+        echo '      <source src="' . htmlspecialchars($config["upload_dir"]) . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '" type="' . $mime . '">';
         echo '  </audio>';
     } elseif ($type == 'video') {
         echo '  <video controls width="250">';

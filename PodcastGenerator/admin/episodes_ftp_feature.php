@@ -28,14 +28,18 @@ if (isset($_GET['start'])) {
             if (file_exists('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
-            // CHeck if the file is readable
-            if (!is_readable('../' . $config['upload_dir'] . $entry)) {
+            
+            // Get mime type
+            $mimetype = getmime('../' . $config['upload_dir'] . $entry);
+
+            // Continue if file isn't readable
+            if(!$mimetype)
                 continue;
-            }
+
             // Skip invalid mime types
             $validExtension = false;
             foreach ($mimetypes->mediaFile as $item) {
-                if (mime_content_type('../' . $config['upload_dir'] . $entry) == $item->mimetype) {
+                if ($mimetype == $item->mimetype) {
                     $validExtension = true;
                     break;
                 }
