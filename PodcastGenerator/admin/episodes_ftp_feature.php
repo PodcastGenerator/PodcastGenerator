@@ -51,7 +51,9 @@ if (isset($_GET['start'])) {
         }
     }
     require '../components/getid3/getid3.php';
+
     // Generate XML from audio file (with mostly empty values)
+    $num_added = 0;
     for ($i = 0; $i < sizeof($new_files); $i++) {
         // Skip files if they are not strictly named
         if ($config['strictfilenamepolicy'] == 'yes') {
@@ -107,10 +109,14 @@ if (isset($_GET['start'])) {
         }
         // Write XML file
         file_put_contents('../' . $config['upload_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);
-        // Regenarte RSS feed
+        $num_added++;
+    }
+    if ($num_added) {
+        // Regenerate RSS feed
         generateRSS();
-        $success = _('New episodes were added');
-        sleep(0.2);
+        $success = sprintf(_('Added %d new episode(s)'), $num_added);
+    } else {
+        $success = _('No new episodes were found');
     }
 }
 ?>
