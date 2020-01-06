@@ -37,7 +37,7 @@ if (isset($_GET['upload'])) {
 
     // Check if the user selected too much episodes
     if (sizeof($_POST['category']) > 3) {
-        $error = _('Too much categories selected');
+        $error = _('Too many categories selected (max: 3)');
         goto error;
     }
 
@@ -124,7 +124,7 @@ if (isset($_GET['upload'])) {
     }
 
     if (!$validMimeType) {
-        $error = _('Invalid mime type, are you actually uploading a')  . ' ' . $fileextension;
+        $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $fileextension);
         // Delete the file if the mime type is invalid
         unlink($targetfile);
         goto error;
