@@ -41,12 +41,6 @@ if (isset($_GET['upload'])) {
         goto error;
     }
 
-    // CHeck if the user has selected no categories
-    if (sizeof($_POST['category']) <= 0) {
-        $error = _('No category selected');
-        goto error;
-    }
-
     // Fill up empty categories (to avoid warnings)
     for ($i = 0; $i < 3; $i++) {
         if (!isset($_POST['category'][$i])) {
@@ -228,7 +222,7 @@ if (isset($_GET['upload'])) {
                     if (strtolower($config['categoriesenabled']) == 'yes') {
                     ?>
                         <div class="form-group">
-                            <?php echo _('Category'); ?>*:<br>
+                            <?php echo _('Category'); ?>:<br>
                             <small><?php echo _('You can select up to 3 categories'); ?></small><br>
                             <select name="category[ ]" multiple>
                                 <?php

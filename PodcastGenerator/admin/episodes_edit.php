@@ -33,7 +33,6 @@ if (isset($_GET['edit'])) {
     $req_fields = [
         $_POST['title'],
         $_POST['shortdesc'],
-        $_POST['category'],
         $_POST['date'],
         $_POST['time'],
         $_POST['explicit'],
@@ -140,6 +139,10 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
     <br>
     <div class="container">
         <h3><?php echo _('Edit Episode'); ?></h3>
+        <?php
+        if ($error) {
+            echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
+        } ?>
         <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
             <div class="row">
                 <div class="col-6">
@@ -155,7 +158,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <i id="shortdesc_counter">255<?php echo _(' characters remaining'); ?></i>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Category'); ?>*:<br>
+                        <?php echo _('Category'); ?>:<br>
                         <small><?php echo _('You can select up to 3 categories'); ?></small><br>
                         <select name="category[ ]" multiple>
                             <?php
