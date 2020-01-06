@@ -30,7 +30,7 @@ generateRSS();
     ?>
     <br>
     <div class="container">
-        <h1 style='color: green;'><?php echo _('Successfully regenrated RSS feed'); ?></h1>
+        <h1 style='color: green;'><?php echo _('Successfully regenerated RSS feed'); ?></h1>
         <a href="index.php"><?php echo _('Return'); ?></a>
     </div>
 </body>

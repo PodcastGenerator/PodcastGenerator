@@ -50,7 +50,7 @@ if (isset($_GET['edit'])) {
 
     // Check if the user selected too much episodes
     if (sizeof($_POST['category']) > 3) {
-        $error = _('Too much categories selected');
+        $error = _('Too many categories selected (max: 3)');
         goto error;
     }
 
@@ -143,7 +143,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
         <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
             <div class="row">
                 <div class="col-6">
-                    <h3><?php echo _('Main Informations'); ?></h3>
+                    <h3><?php echo _('Main Information'); ?></h3>
                     <hr>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>
@@ -182,7 +182,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?php echo _('Extra Informations'); ?></h3>
+                    <h3><?php echo _('Extra Information'); ?></h3>
                     <hr>
                     <div class="form-group">
                         <?php echo _('Long Description'); ?>:<br>
@@ -193,7 +193,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <input type="text" name="itunesKeywords" value="<?php echo htmlspecialchars($episode->episode->keywordsPG); ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Explicit content'); ?>:<br>
+                        <?php echo _('Explicit Content'); ?>:<br>
                         <input type="radio" value="yes" name="explicit" <?php if($episode->episode->explicitPG == 'yes') { echo 'checked'; } ?>> Yes <input type="radio" value="no" name="explicit" <?php if($episode->episode->explicitPG == 'no') { echo 'checked'; } ?>> No<br>
                     </div>
                     <div class="form-group">
@@ -201,7 +201,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
                     </div>
-                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Edit Episode'); ?>">
+                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Save Changes'); ?>">
                 </div>
             </div>
         </form>
