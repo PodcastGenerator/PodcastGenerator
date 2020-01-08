@@ -109,6 +109,10 @@ function generateRSS()
         if(!$mimetype) {
             $mimetype = null;
         }
+        $authorname = null;
+        if(isset($$file->episode->authorPG->namePG))  {
+            $authorname = ' (' . $file->episode->authorPG->namePG . ')';
+        }
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
@@ -119,7 +123,7 @@ function generateRSS()
 			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>
 			<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>
 			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
-			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
+			<author>' . $file->episode->authorPG->emailPG . $authorname . '</author>
 			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
 			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
 			<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
