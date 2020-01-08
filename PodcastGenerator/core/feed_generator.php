@@ -20,34 +20,34 @@ function generateRSS()
     <!-- generator="Podcast Generator ' . $version . '" -->
     <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="' . $config['scriptlang'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>' . $config['podcast_title'] . '</title>
+		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
 		<atom:link href="' . $config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />
-		<description>' . $config['podcast_description'] . '</description>
+		<description>' . htmlspecialchars($config['podcast_description']) . '</description>
 		<generator>Podcast Generator ' . $version . ' - http://www.podcastgenerator.net</generator>
 		<lastBuildDate>' . date('r') . '</lastBuildDate>
 		<language>' . substr($config['feed_language'], 0, 2) . '</language>
-		<copyright>' . $config['copyright'] . '</copyright>
+		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
 		<itunes:image href="' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg" />
 		<image>
 			<url>' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg</url>
-			<title>' . $config['podcast_title'] . '</title>
+			<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 			<link>' . $config['url'] . '</link>
 		</image>
-		<itunes:summary>' . $config['podcast_description'] . '</itunes:summary>
-		<itunes:subtitle>' . $config['podcast_subtitle'] . '</itunes:subtitle>
-		<itunes:author>' . $config['author_name'] . '</itunes:author>
+		<itunes:summary>' . htmlspecialchars($config['podcast_description']) . '</itunes:summary>
+		<itunes:subtitle>' . htmlspecialchars($config['podcast_subtitle']) . '</itunes:subtitle>
+		<itunes:author>' . htmlspecialchars($config['author_name']) . '</itunes:author>
 		<itunes:owner>
-			<itunes:name>' . $config['author_name'] . '</itunes:name>
-			<itunes:email>' . $config['author_email'] . '</itunes:email>
+			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
+			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
         	</itunes:owner>
         	<itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
-		<itunes:category text="' . $config['itunes_category[0]'] . '"></itunes:category>'."\n";
+		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>'."\n";
     if ($config['itunes_category[1]'] != '') {
-        $feedhead .= '		<itunes:category text="' . $config['itunes_category[1]'] . '"></itunes:category>'."\n";
+        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>'."\n";
     }
     if ($config['itunes_category[2]'] != '') {
-        $feedhead .= '		<itunes:category text="' . $config['itunes_category[2]'] . '"></itunes:category>'."\n";
+        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>'."\n";
     }
     // Get supported file extensions
     $supported_extensions = array();
