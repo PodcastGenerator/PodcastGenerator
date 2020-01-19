@@ -67,13 +67,17 @@ if (isset($_GET['start'])) {
         $duration = $fileinfo['playtime_string'];           // Get duration
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
+        // These are meta tags by the audio file. If not set, use default
+        $title = $fileinfo['tags']['id3v2']['title'][0] != null ? $fileinfo['tags']['id3v2']['title'][0] : pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME);
+        $comment = $fileinfo['tags']['id3v2']['comment'][0] != null ? $fileinfo['tags']['id3v2']['comment'][0] : "";
+        $author_name = $fileinfo['tags']['id3v2']['artist'][0] != null ? $fileinfo['tags']['id3v2']['artist'][0] : "";
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME) . ']]></titlePG>
-	    <shortdescPG><![CDATA[]]></shortdescPG>
-	    <longdescPG><![CDATA[]]></longdescPG>
+	    <titlePG><![CDATA[' . $title . ']]></titlePG>
+	    <shortdescPG><![CDATA['.$comment.']]></shortdescPG>
+	    <longdescPG><![CDATA['.$comment.']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>uncategorized</category1PG>
@@ -83,7 +87,7 @@ if (isset($_GET['start'])) {
 	    <keywordsPG><![CDATA[]]></keywordsPG>
 	    <explicitPG>' . $config['explicit_podcast'] . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . $config['author_name'] . '</namePG>
+	        <namePG>' . $author_name . '</namePG>
 	        <emailPG>' . $config['author_email'] . '</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
