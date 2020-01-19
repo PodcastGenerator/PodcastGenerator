@@ -38,8 +38,8 @@ function createstuff($username, $password) {
     <description>Uncategorized</description>
     </category>
 </PodcastGenerator>';
-        if(file_put_contents("../categories.xml", $catfile)) {
-            return true;
+        if(!file_put_contents("../categories.xml", $catfile)) {
+            return false;
         }
     }
     if(!file_exists("../users.json")) {
