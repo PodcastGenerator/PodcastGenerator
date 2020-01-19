@@ -28,7 +28,7 @@
                 ?>
             </ul>
             <hr>
-            <a href="categories.php?cat=all">All Episodes</a>
+            <a href="categories.php?cat=all"><?php echo _('All Episodes'); ?></a>
         <?php
         } else {
             include 'listepisodes.php';
