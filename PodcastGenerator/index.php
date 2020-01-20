@@ -20,7 +20,6 @@ if(isset($_GET['p'])) {
     }
 }
 
-generateRSS();
 $episodes = getEpisodes(null);
 
 // When calling name
