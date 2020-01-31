@@ -62,6 +62,10 @@ if (isset($_GET['edit'])) {
             <?php echo _('Use cron to regenerate the RSS feed'); ?>:<br>
             <input type="text" value="<?php echo htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']); ?>" style="width: 100%;" readonly><br>
             <hr>
+            <?php echo _('Password Protection for the web pages'); ?>:<br>
+            <small><?php echo _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not'); ?></small><br>
+            <input type="text" name="podcastPassword" value="<?php echo $config['podcastPassword']; ?>"><br>
+            <hr>
             <input type="submit" value="<?php echo _("Submit"); ?>" class="btn btn-success"><br>
         </form>
     </div>

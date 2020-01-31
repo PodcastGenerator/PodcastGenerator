@@ -13,6 +13,14 @@ if(strtolower($config['categoriesenabled']) != 'yes') {
     header('Location: '.$config['indexfile']);
     die();
 }
+// Check for password
+if($config['podcastPassword'] != "") {
+    session_start();
+    if(!isset($_SESSION['password'])) {
+        header('Location: auth.php');
+        die(_('Authentication required'));
+    }
+}
 $categories_xml = simplexml_load_file('categories.xml');
 $episodes = null;
 if(isset($_GET['cat'])) {

@@ -9,6 +9,13 @@
 ############################################################
 session_start();
 require 'core/include.php';
+// Check if a password is set
+if($config['podcastPassword'] != "") {
+    if(!isset($_SESSION['password'])) {
+        header('Location: auth.php');
+        die(_('Authentication required'));
+    }
+}
 
 // Backwards compatibility: Redirect pre-3.0 archive pages to
 // categories.php.

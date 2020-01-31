@@ -72,6 +72,8 @@ function createconf() {
 
 \$indexfile = \"index.php\";    // Path of the index file
 
+\$podcastPassword = \"\";       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
+
 #####################
 # XML Feed stuff
 
