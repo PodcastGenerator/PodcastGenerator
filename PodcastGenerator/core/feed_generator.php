@@ -104,6 +104,10 @@ function generateRSS()
         $link = str_replace('$url', '', $link);
         $original_full_filepath = $config['url'] . $config['upload_dir'] . $files[$i]['filename'];
         $file = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
+        $authorname = null;
+        if(isset($$file->episode->authorPG->namePG))  {
+            $authorname = ' (' . $file->episode->authorPG->namePG . ')';
+        }
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
@@ -114,7 +118,7 @@ function generateRSS()
 			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . mime_content_type($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '"></enclosure>
 			<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>
 			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
-			<author>' . $file->episode->authorPG->emailPG . ' (' . $file->episode->authorPG->namePG . ')' . '</author>
+			<author>' . $file->episode->authorPG->emailPG . $authorname . '</author>
 			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
 			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
 			<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
