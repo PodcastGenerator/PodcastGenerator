@@ -31,7 +31,7 @@ $episode_chunk = $episodes;
 // Backwards comp
 $link = str_replace('?', '', $config['link']);
 $link = str_replace('=', '', $link);
-$link = str_replace('$url', '', $link);
+$link = str_replace('$url."', '', $link);
 
 // Some translation strings
 $more = _('More');
