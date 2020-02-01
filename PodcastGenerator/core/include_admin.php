@@ -33,3 +33,4 @@ if (strlen($config['userpassword']) == 32) {
 
 // Do backwards comp
 backwards_2_7_to_3_0($config['absoluteurl']);
+backwards_3_0_to_3_0_1($config["absoluteurl"]);
