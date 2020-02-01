@@ -50,15 +50,6 @@ if (isset($_GET['edit'])) {
             <small><?php echo _('Enable categories feature to make thematic lists of your podcasts.'); ?></small><br>
             <input type="radio" name="categoriesenabled" value="yes" checked> <?php echo _('Yes'); ?> <input type="radio" name="categoriesenabled" value="no"> <?php echo _('No'); ?><br>
             <hr>
-            <?php echo _('How many recent episodes in the homepage?'); ?><br>
-            <?php
-            if (strtolower($config['max_recent']) == 'all') {
-                echo '<input type="number" name="max_recent" value="4" min="1"> <input type="radio" value="all" name="max_recent"> ' . _('All') . '<br>';
-            } else {
-                echo '<input type="radio" value="all" name="max_recent" checked> ' . _('All') . '<br>';
-            }
-            ?>
-            <hr>
             <?php echo _('Use cron to regenerate the RSS feed'); ?>:<br>
             <input type="text" value="<?php echo htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']); ?>" style="width: 100%;" readonly><br>
             <hr>
