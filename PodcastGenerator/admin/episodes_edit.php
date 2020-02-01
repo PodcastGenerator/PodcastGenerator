@@ -82,6 +82,10 @@ if (isset($_GET['edit'])) {
     $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate
     $frequency = $fileinfo["audio"]["sample_rate"];     // Frequency
 
+    // Automatically fill an empty long description with the contents
+    // of the short description.
+    $long_desc = empty($_POST['longdesc']) ? $_POST['shortdesc'] : $_POST['longdesc'];
+
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
@@ -89,7 +93,7 @@ if (isset($_GET['edit'])) {
 	<episode>
 	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
+	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>' . $_POST['category'][0] . '</category1PG>
