@@ -181,7 +181,7 @@ function backwards_3_0_to_3_0_1($absoluteurl)
 {
     global $config;
     global $version;
-    if($version != '3.0') {
+    if($config['podcastgen_version'] != '3.0') {
         return;
     }
     $config = "<?php
