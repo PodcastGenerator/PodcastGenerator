@@ -10,6 +10,16 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
+// Fetch ID3 tags.  Try ID3V2, then ID3V1, before falling back
+// to the specific default value.
+function getID3Tag($fileinfo, $tagName, $defaultValue = null) {
+    return ($fileinfo['tags']['id3v2'][$tagName][0] != null
+            ? $fileinfo['tags']['id3v2'][$tagName][0]
+            : ($fileinfo['tags']['id3v1'][$tagName][0] != null
+               ? $fileinfo['tags']['id3v1'][$tagName][0]
+               : $defaultValue));
+}
+
 if (isset($_GET['start'])) {
     $new_files = array();
     $mimetypes = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
@@ -67,10 +77,9 @@ if (isset($_GET['start'])) {
         $duration = $fileinfo['playtime_string'];           // Get duration
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
-        // These are meta tags by the audio file. If not set, use default
-        $title = $fileinfo['tags']['id3v2']['title'][0] != null ? $fileinfo['tags']['id3v2']['title'][0] : pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME);
-        $comment = $fileinfo['tags']['id3v2']['comment'][0] != null ? $fileinfo['tags']['id3v2']['comment'][0] : "";
-        $author_name = $fileinfo['tags']['id3v2']['artist'][0] != null ? $fileinfo['tags']['id3v2']['artist'][0] : $config['author_name'];
+        $title = getID3Tag($fileinfo, 'title', pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME));
+        $comment = getID3Tag($fileinfo, 'comment', '');
+        $author_name = getID3Tag($fileinfo, 'artist', $config['author']);
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
