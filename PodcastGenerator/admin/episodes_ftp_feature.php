@@ -70,7 +70,7 @@ if (isset($_GET['start'])) {
         // These are meta tags by the audio file. If not set, use default
         $title = $fileinfo['tags']['id3v2']['title'][0] != null ? $fileinfo['tags']['id3v2']['title'][0] : pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME);
         $comment = $fileinfo['tags']['id3v2']['comment'][0] != null ? $fileinfo['tags']['id3v2']['comment'][0] : "";
-        $author_name = $fileinfo['tags']['id3v2']['artist'][0] != null ? $fileinfo['tags']['id3v2']['artist'][0] : "";
+        $author_name = $fileinfo['tags']['id3v2']['artist'][0] != null ? $fileinfo['tags']['id3v2']['artist'][0] : $config['author_name'];
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
