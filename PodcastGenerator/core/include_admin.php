@@ -26,5 +26,7 @@ $config = getConfig('../config.php');
 include 'backwards.php';
 // Load translations
 include 'translation.php';
+// Load users
+include $config['absoluteurl'].'users.php';
 // Do backwards comp
 backwards_3_0_to_3_1($config['absoluteurl']);

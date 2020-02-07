@@ -36,6 +36,7 @@ else if (isset($_GET['delete'])) {
         $error = _('Unknown error while deleting user');
         goto error;
     } else {
+        header("Cache-Control: no-cache, must-revalidate");
         header('Location: pg_users.php');
         die();
     }
@@ -50,6 +51,7 @@ else if (isset($_GET['create'])) {
         $error = _('Error while creating user');
         goto error;
     }
+    header("Cache-Control: no-cache, must-revalidate");
     header('Location: pg_users.php');
     die();
 }
@@ -73,6 +75,7 @@ else if (isset($_GET['create'])) {
     <br>
     <div class="container">
         <h1><?php echo _('Manage users'); ?></h1>
+        <small><?php echo _('If the list seems outdated, please refresh the site a few times'); ?></small>
         <?php
         // If no GETS are set, display all users
         if (sizeof($_GET) == 0) {
@@ -125,7 +128,8 @@ else if (isset($_GET['create'])) {
         }
         ?>
         <?php
-        error: echo '<p style="color: red;">' . $error . '</p>';
+        error:
+        echo '<p style="color: red;">' . $error . '</p>';
         ?>
     </div>
 </body>

@@ -42,11 +42,12 @@ function createstuff($username, $password) {
             return false;
         }
     }
-    if(!file_exists("../users.json")) {
-        $users_json = '{
+    if(!file_exists("../users.php")) {
+        $users_php = '<?php
+$users_json = \'{
     "'.$username.'": "'.password_hash($password, PASSWORD_DEFAULT).'"
-}';
-    file_put_contents("../users.json", $users_json);
+}\';';
+    file_put_contents("../users.php", $users_php);
     }
     else
         return true;
