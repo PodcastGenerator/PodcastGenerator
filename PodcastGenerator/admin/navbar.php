@@ -59,6 +59,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+                <a class="nav-link" href="<?php echo $config['url']; ?>" target="_blank"><?php echo _('View Podcast'); ?></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout - <?php echo $_SESSION["username"]; ?></a>
             </li>
         </ul>
