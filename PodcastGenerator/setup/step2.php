@@ -65,7 +65,7 @@ if(file_exists($scripts.$testfile)) {
         <div class="container">
             <h1>Podcast Generator - Step 2</h1>
             <p>
-                We are now checking of our data direcotires are writable so you can actual store the data.<br>
+                We are now checking if our data direcotires are writable so you can actual store the data.<br>
                 <?php
                 if($media_write)
                     echo "<p style=\"color: green;\">Media is writeable</p>";
