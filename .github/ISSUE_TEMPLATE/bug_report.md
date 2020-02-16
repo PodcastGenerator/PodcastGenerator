@@ -12,7 +12,14 @@ assignees: ''
 **System Information**
 Podcast Generator Version: 
 Webserver: 
-PHP Version: 
+PHP Version:
+
+**Podcast Generator Config**
+<!-- PLEASE POST YOUR CONFIG HERE: https://podcastgenerator.github.io/tools/secure_config.html 
+ and then post the output down below. Otherwise you could leak sensitive data -->
+```
+INSERT THE **CENSORED** CONFIG HERE
+```  
 
 **Expected behavior**
 <!-- What do you get? -->
