@@ -53,6 +53,9 @@ $more = _('More');
 $download = _('Download');
 $editdelete = _('Edit/Delete (Admin)');
 $categories = _('Categories');
+$filetype = _('Filetype');
+$size = _('Size');
+$duration = _('Duration');
 
 $buttons = getButtons('./');
 require $config['theme_path']."index.php";

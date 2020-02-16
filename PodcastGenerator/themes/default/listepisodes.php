@@ -3,7 +3,7 @@
 for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     $item = $episode_chunk;
     $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $item[$i]["episode"]["filename"]);
-    if(!$mime)
+    if (!$mime)
         continue;
     $type = '';
     $metadata =  '';
@@ -27,8 +27,8 @@ for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     echo '  <a class="btn btn-outline-primary btn-sm" href="' . $config['indexfile'] . '?' . $link . '=' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">' . $more . '</a>
                 <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($item[$i]["episode"]["filename"]) . '">' . $download . '</a><br>';                      // Buttons
     if ($type != 'invalid') {
-        echo '  <small>Filetype: ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
-                - Size: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
+        echo '  <small>' . $filetype . ': ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
+                - ' . $size . ': ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["size"]) . ' MB - ' . $duration . ': ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
     }
     if (strtolower($config["enablestreaming"]) == "yes") {
         if ($type == 'audio') {

@@ -14,7 +14,7 @@ if (sizeof($correctepisode) == 0) {
 
 // Get mime
 $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
-if(!$mime)
+if (!$mime)
     $mime = null;
 $type = '';
 $metadata = '';
@@ -36,8 +36,8 @@ if (isset($_SESSION["username"])) {
 }
 echo '  <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($correctepisode["episode"]["filename"]) . '">' . $download . '</a><br>';              // Buttons
 if ($type != 'invalid') {
-    echo '  <small>Filetype: ' . htmlspecialchars(strtoupper(pathinfo($config["upload_dir"] . $correctepisode["episode"]["filename"], PATHINFO_EXTENSION))) . '
-                - Size: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - Duration: ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
+    echo '  <small>' . $filetype . ': ' . htmlspecialchars(strtoupper(pathinfo($config["upload_dir"] . $correctepisode["episode"]["filename"], PATHINFO_EXTENSION))) . '
+                - ' . $size . ': ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - ' . $duration . ': ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
 }
 if (strtolower($config["enablestreaming"]) == "yes") {
     if ($type == 'audio') {
