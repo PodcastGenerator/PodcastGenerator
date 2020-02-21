@@ -117,7 +117,7 @@ function generateRSS()
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
 			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
-			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
+			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
 			<link>' . $original_full_filepath . '</link>
 			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>
