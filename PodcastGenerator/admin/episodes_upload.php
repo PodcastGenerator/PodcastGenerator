@@ -29,14 +29,13 @@ if (isset($_GET['upload'])) {
         }
     }
 
-    // Check if categories are even enabled and then do uncategorized
-    if (strtolower($config['categoriesenabled']) != 'yes') {
+    // If no categories were selected, add the 'uncategorized'
+    // category.  Otherwise, ensure that no more than three categories
+    // were actually selected.
+    if (sizeof($_POST['category']) == 0) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    }
-
-    // Check if the user selected too much episodes
-    if (sizeof($_POST['category']) > 3) {
+    } else if (sizeof($_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }
@@ -218,24 +217,18 @@ if (isset($_GET['upload'])) {
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255 <?php echo _('characters remaining'); ?></i>
                     </div>
-                    <?php
-                    if (strtolower($config['categoriesenabled']) == 'yes') {
-                    ?>
-                        <div class="form-group">
-                            <?php echo _('Category'); ?>:<br>
-                            <small><?php echo _('You can select up to 3 categories'); ?></small><br>
-                            <select name="category[ ]" multiple>
-                                <?php
-                                $categories = simplexml_load_file('../categories.xml');
-                                foreach ($categories as $item) {
-                                    echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    <?php
-                    }
-                    ?>
+                    <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
+                        <?php echo _('Category'); ?>:<br>
+                        <small><?php echo _('You can select up to 3 categories'); ?></small><br>
+                        <select name="category[ ]" multiple>
+                            <?php
+                            $categories = simplexml_load_file('../categories.xml');
+                            foreach ($categories as $item) {
+                                echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <?php echo _('Publication Date'); ?>:<br>
                         <small><?php echo _('If you select a date in the future, it will be published then'); ?></small><br>

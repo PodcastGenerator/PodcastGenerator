@@ -47,8 +47,13 @@ if (isset($_GET['edit'])) {
         }
     }
 
-    // Check if the user selected too much episodes
-    if (sizeof($_POST['category']) > 3) {
+    // If no categories were selected, add the 'uncategorized'
+    // category.  Otherwise, ensure that no more than three categories
+    // were actually selected.
+    if (sizeof($_POST['category']) == 0) {
+        $_POST['category'] = array();
+        array_push($_POST['category'], 'uncategorized');
+    } else if (sizeof($_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }
@@ -161,7 +166,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo htmlspecialchars($episode->episode->shortdescPG); ?>" maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter">255<?php echo _(' characters remaining'); ?></i>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
                         <?php echo _('Category'); ?>:<br>
                         <small><?php echo _('You can select up to 3 categories'); ?></small><br>
                         <select name="category[ ]" multiple>
