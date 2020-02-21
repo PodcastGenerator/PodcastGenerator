@@ -14,6 +14,16 @@ if (isset($_SESSION['username'])) {
 }
 require '../core/include_admin.php';
 
+if(isset($_GET['deleteReset'])) {
+    if(file_exists("reset.php")) {
+        unlink("reset.php");
+    }
+}
+
+if(file_exists("reset.php")) {
+    die(_('Login disabled for security reasons'));
+}
+
 if (isset($_GET['login'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = _('Missing fields');
@@ -53,6 +63,7 @@ if (isset($_GET['login'])) {
             <input type="text" name="username"><br>
             <?php echo _('Password'); ?>:<br>
             <input type="password" name="password"><br>
+            <small><a href="forgot.php"><?php echo _('Forgot Password?'); ?></a></small><br>
             <br>
             <input type="submit" value="<?php echo _('Sign In'); ?>" class="btn btn-success">
         </form>
