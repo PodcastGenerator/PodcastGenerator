@@ -76,7 +76,7 @@ function getConfig($path = 'config.php')
         if ($lines[$i][0] == "\t")
             $lines[$i] = substr($lines[$i], 1);
 
-        preg_match('/\$(.+?) = ["]{0,1}(.+?)["]{0,1};/', $lines[$i], $output_array);
+        preg_match('/\$(.+?) = ["\']{0,1}(.+?)["\']{0,1};/', $lines[$i], $output_array);
         if (sizeof($output_array) != 3) {
             continue;
         }
