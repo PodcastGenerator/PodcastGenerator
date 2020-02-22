@@ -18,7 +18,7 @@
             }
             ?>
             <li class="nav-item">
-                <a class="nav-link" href="admin/">Admin</a>
+                <a class="nav-link" href="admin/" target="_blank">Admin</a>
             </li>
         </ul>
     </div>
