@@ -110,7 +110,7 @@ function generateRSS()
             $mimetype = null;
         }
         $authorname = null;
-        if(isset($$file->episode->authorPG->namePG))  {
+        if(isset($file->episode->authorPG->namePG))  {
             $authorname = ' (' . $file->episode->authorPG->namePG . ')';
         }
         $item = '
