@@ -40,7 +40,7 @@ function generateRSS()
 		<itunes:owner>
 			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
 			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
-        	</itunes:owner>
+        </itunes:owner>
         	<itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
 		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>'."\n";
     if ($config['itunes_category[1]'] != '') {
