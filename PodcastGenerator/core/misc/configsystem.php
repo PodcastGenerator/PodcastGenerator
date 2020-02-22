@@ -76,17 +76,28 @@ function getConfig($path = 'config.php')
         if ($lines[$i][0] == "\t")
             $lines[$i] = substr($lines[$i], 1);
 
-        preg_match('/\$(.+?) = ["\']{0,1}(.+?)["\']{0,1};/', $lines[$i], $output_array);
-        if (sizeof($output_array) != 3) {
-            continue;
+        preg_match('/\$(.+?) = ["\'](.+?)["\'];/', $lines[$i], $strout);    // Get all strings
+        preg_match('/\$(.+?) = ([^"\']+);/', $lines[$i], $nonstr); // Get all non strings
+        if (sizeof($nonstr) == 3) {
+            // Cut of escape chars if there are any
+            // Check if $nonstr[2] is "
+            if ($nonstr[2] != '"') {
+                $nonstr[2] = str_replace("\\", '', $nonstr[2]);
+                $configmap[$nonstr[1]] = $nonstr[2];
+            } else {
+                $configmap[$nonstr[1]] = '';
+            }
         }
-        // Cut of escape chars if there are any
-        // Check if $output_array[2] is "
-        if ($output_array[2] != '"') {
-            $output_array[2] = str_replace("\\", '', $output_array[2]);
-            $configmap[$output_array[1]] = $output_array[2];
-        } else {
-            $configmap[$output_array[1]] = '';
+        elseif (sizeof($strout) == 3) {
+            if ($strout[2] != '"') {
+                $strout[2] = str_replace("\\", '', $strout[2]);
+                $configmap[$strout[1]] = $strout[2];
+            } else {
+                $configmap[$strout[1]] = '';
+            }
+        }
+        else {
+            continue;
         }
     }
     // Pop first (<?php) element
