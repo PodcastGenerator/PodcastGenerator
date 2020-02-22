@@ -134,7 +134,7 @@ if (isset($_GET['edit'])) {
                 <option value="xh">Xhosa</option>
             </select><br>
             <?php echo _('Explicit Podcast'); ?>:<br>
-            <input type="radio" name="explicit_podcast" value="yes"> <?php echo _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" checked> <?php echo _('No'); ?><br>
+            <input type="radio" name="explicit_podcast" value="yes" <?php echo $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?php echo _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?php echo $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?php echo _('No'); ?><br>
             <br>
             <input type="submit" value="<?php echo _("Submit") ?>" class="btn btn-success">
         </form>
