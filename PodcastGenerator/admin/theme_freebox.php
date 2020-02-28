@@ -65,11 +65,17 @@ if (isset($_GET['change'])) {
             echo '<a href="theme_freebox.php?disable=1" class="btn btn-danger">' . _('Disable Freebox') . '</a>';
         }
         ?>
-        <h3><?php echo _('Change Freebox content'); ?></h3>
         <form action="theme_freebox.php?change=1" method="POST">
-            <?php echo _('Content'); ?>:<br>
-            <textarea rows="10" cols="100" name="content"><?php echo htmlspecialchars(getFreebox('../')); ?></textarea><br><br>
-            <input type="submit" value="<?php echo _('Save'); ?>" class="btn btn-success">
+            <?php
+            if (getFreebox('../') != null) {
+            ?>
+                <h3><?php echo _('Change Freebox content'); ?></h3>
+                <?php echo _('Content'); ?>:<br>
+                <textarea rows="10" cols="100" name="content"><?php echo htmlspecialchars(getFreebox('../')); ?></textarea><br><br>
+                <input type="submit" value="<?php echo _('Save'); ?>" class="btn btn-success">
+            <?php
+            }
+            ?>
         </form>
     </div>
 </body>
