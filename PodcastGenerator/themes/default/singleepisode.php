@@ -22,7 +22,7 @@ if (substr($mime, 0, 5) == 'video') {
     $type = 'video';
 } elseif (substr($mime, 0, 5) == 'audio' || $mime == 'application/ogg') {
     $type = 'audio';
-    $metadata = '(' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($item[$i]["episode"]["fileInfoPG"]["frequency"]) . ' Hz)';
+    $metadata = '(' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["bitrate"]) . ' kbps ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["frequency"]) . ' Hz)';
 } else {
     $type = 'invalid';
 }
