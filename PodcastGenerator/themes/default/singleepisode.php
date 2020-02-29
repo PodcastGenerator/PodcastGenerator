@@ -32,9 +32,9 @@ echo '  <h1>' . htmlspecialchars($correctepisode["episode"]["titlePG"]) . '</h1>
 echo '  <small>' . htmlspecialchars($correctepisode["episode"]["moddate"]) . '</small><br>';                                                                    // Pub Date
 echo '  <small>' . htmlspecialchars($correctepisode["episode"]["shortdescPG"]) . '</small><br>';                                                                // Short description
 if (isset($_SESSION["username"])) {
-    echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . htmlspecialchars($episodes[$i]["episode"]["filename"]) . '">' . $editdelete . '</a>';
+    echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $episodes[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
 }
-echo '  <a class="btn btn-outline-success btn-sm" href="media/' . htmlspecialchars($correctepisode["episode"]["filename"]) . '">' . $download . '</a><br>';              // Buttons
+echo '  <a class="btn btn-outline-success btn-sm" href="media/' . $correctepisode["episode"]["filename"] . '">' . $download . '</a><br>';              // Buttons
 if ($type != 'invalid') {
     echo '  <small>' . $filetype . ': ' . htmlspecialchars(strtoupper(pathinfo($config["upload_dir"] . $correctepisode["episode"]["filename"], PATHINFO_EXTENSION))) . '
                 - ' . $size . ': ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["size"]) . ' MB - ' . $duration . ': ' . htmlspecialchars($correctepisode["episode"]["fileInfoPG"]["duration"]) . 'm ' . $metadata . '</small><br>';
