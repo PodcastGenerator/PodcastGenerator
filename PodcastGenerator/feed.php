@@ -18,6 +18,6 @@ if($config['podcastPassword'] != "") {
 header('Content-Type: application/xml');
 generateRSS();
 sleep(0.01);
-$xml = file_get_contents($config['absoluteurl'] . $config['feed_dir']);
+$xml = file_get_contents($config['absoluteurl'] . $config['feed_dir']) . '/feed.xml';
 echo $xml;
 ?>
