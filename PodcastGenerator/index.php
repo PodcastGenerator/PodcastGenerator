@@ -10,7 +10,7 @@
 session_start();
 require 'core/include.php';
 // Check if a password is set
-if($config['podcastPassword'] != "") {
+if(isset($config, $config['podcastPassword']) && $config['podcastPassword'] != "") {
     if(!isset($_SESSION['password'])) {
         header('Location: auth.php');
         die(_('Authentication required'));
@@ -43,9 +43,8 @@ $splitted_episodes = array_chunk($episodes, intval($config['episodeperpage']));
 $episode_chunk = null;
 if(isset($_GET['page'])) {
     $episode_chunk = $splitted_episodes[intval(($_GET['page']) - 1)];
-}
-else {
-    $episode_chunk = $splitted_episodes[0];
+} else {
+    $episode_chunk = (count($splitted_episodes) > 0) ? $splitted_episodes[0] : [];
 }
 
 // Some translation strings
