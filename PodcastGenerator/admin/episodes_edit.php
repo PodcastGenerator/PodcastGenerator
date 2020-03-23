@@ -93,31 +93,35 @@ if (isset($_GET['edit'])) {
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
-<PodcastGenerator>
-	<episode>
-	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
-	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
-	    <imgPG></imgPG>
-	    <categoriesPG>
-	        <category1PG>' . $_POST['category'][0] . '</category1PG>
-	        <category2PG>' . $_POST['category'][1] . '</category2PG>
-	        <category3PG>' . $_POST['category'][2] . '</category3PG>
-	    </categoriesPG>
-	    <keywordsPG><![CDATA[' . $_POST['keywords'] . ']]></keywordsPG>
-	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
-	    <authorPG>
-	        <namePG>' . $_POST['authorname'] . '</namePG>
-	        <emailPG>' . $_POST['authoremail'] . '</emailPG>
-	    </authorPG>
-	    <fileInfoPG>
-	        <size>' . intval(filesize($targetfile) / 1000 / 1000) . '</size>
-	        <duration>' . $duration . '</duration>
-	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
-	        <frequency>' . $frequency . '</frequency>
-	    </fileInfoPG>
-	</episode>
-</PodcastGenerator>';
+    <PodcastGenerator>
+    <episode>
+        <episodePG><![CDATA['. $_POST['episodenumber'].']]></episodePG>
+        <seasonPG><![CDATA['. $_POST['seasonnumber'].']]></seasonPG>
+        <typePG><![CDATA['. $_POST['episodetype'].']]></typePG>
+        <blockPG><![CDATA['. $_POST['episodeblock'].']]></blockPG>
+        <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
+        <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
+        <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
+        <imgPG></imgPG>
+        <categoriesPG>
+            <category1PG>' . $_POST['category'][0] . '</category1PG>
+            <category2PG>' . $_POST['category'][1] . '</category2PG>
+            <category3PG>' . $_POST['category'][2] . '</category3PG>
+        </categoriesPG>
+        <keywordsPG><![CDATA[' . $_POST['itunesKeywords'] . ']]></keywordsPG>
+        <explicitPG>' . $_POST['explicit'] . '</explicitPG>
+        <authorPG>
+            <namePG>' . $_POST['authorname'] . '</namePG>
+            <emailPG>' . $_POST['authoremail'] . '</emailPG>
+        </authorPG>
+        <fileInfoPG>
+            <size>' . intval(filesize($targetfile) / 1000 / 1000) . '</size>
+            <duration>' . $duration . '</duration>
+            <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
+            <frequency>' . $frequency . '</frequency>
+        </fileInfoPG>
+    </episode>
+    </PodcastGenerator>';
     file_put_contents('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     // Redirect if success
@@ -149,7 +153,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
     <div class="container">
         <h3><?php echo _('Edit Episode'); ?></h3>
         <?php
-        if ($error) {
+        if (isset($error) && $error) {
             echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
         } ?>
         <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
@@ -212,6 +216,23 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <?php echo _('Author'); ?>*:<br>
                         <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
+                    </div>
+                    <div class="form-group">
+                        <?php echo _('Episode Number'); ?>:<br>
+                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>" value="<?php echo htmlspecialchars($episode->episode->episodePG); ?>">
+                        <?php echo _('Season Number'); ?>:<br>
+                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>" value="<?php echo htmlspecialchars($episode->episode->seasonPG); ?>">
+                        <?php echo _('Episode Type'); ?>:<br>
+                        <select name="episodetype">
+                            <option value="full" selected>Normal Episode</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="bonus">Bonus</option>
+                        </select><br>
+                        <?php echo _('Episode Status'); ?>:<br>
+                        <select name="episodeblock">
+                            <option value="No" selected>Avaliable</option>
+                            <option value="Yes">Blocked</option>
+                        </select><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Save Changes'); ?>">
                 </div>
