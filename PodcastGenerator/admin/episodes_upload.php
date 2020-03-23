@@ -32,8 +32,8 @@ if (isset($_GET['upload'])) {
     // If no categories were selected, add the 'uncategorized'
     // category.  Otherwise, ensure that no more than three categories
     // were actually selected.
-    if (sizeof($_POST['category']) == 0) {
-        $_POST['category'] = array();
+    if (!isset($_POST['category']) || sizeof($_POST['category']) == 0) {
+        $_POST['category'] = [];
         array_push($_POST['category'], 'uncategorized');
     } else if (sizeof($_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
@@ -141,6 +141,7 @@ if (isset($_GET['upload'])) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
+	    <numberPG><![CDATA['. $_POST['episodenumber'].']]></numberPG>
 	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
@@ -257,6 +258,10 @@ if (isset($_GET['upload'])) {
                         <?php echo _('Author'); ?>*:<br>
                         <input type="text" class="form-control" name="authorname" placeholder="<?php echo _('Author Name'); ?>" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?php echo _('Author E-Mail'); ?>" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
+                    </div>
+                    <div class="form-group">
+                        <?php echo _('Episode Number'); ?>:<br>
+                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>"><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>

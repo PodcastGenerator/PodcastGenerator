@@ -117,6 +117,7 @@ function generateRSS()
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
+			<itunes:episode><![CDATA[' . $file->episode->numberPG . ']]></itunes:episode>
 			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
 			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
