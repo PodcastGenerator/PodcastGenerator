@@ -141,7 +141,8 @@ if (isset($_GET['upload'])) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <numberPG><![CDATA['. $_POST['episodenumber'].']]></numberPG>
+	    <episodePG><![CDATA['. $_POST['episodenumber'].']]></episodePG>
+	    <seasonPG><![CDATA['. $_POST['episodenumber'].']]></seasonPG>
 	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
@@ -262,6 +263,8 @@ if (isset($_GET['upload'])) {
                     <div class="form-group">
                         <?php echo _('Episode Number'); ?>:<br>
                         <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>"><br>
+                        <?php echo _('Season Number'); ?>:<br>
+                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>"><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>
