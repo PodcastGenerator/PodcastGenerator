@@ -128,8 +128,10 @@ else if (isset($_GET['create'])) {
         }
         ?>
         <?php
-        error:
-        echo '<p style="color: red;">' . $error . '</p>';
+        if(isset($error) && $error) {
+            error:
+            echo '<p style="color: red;">' . $error . '</p>';
+        }
         ?>
     </div>
 </body>
