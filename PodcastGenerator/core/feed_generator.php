@@ -12,8 +12,9 @@ function generateRSS()
     // Make variables available in this scope
     global $config, $version;
     // Create path if it doesn't exist
-    if(!is_dir($config['absoluteurl'] . $config['feed_dir'])) {
-        mkdir($config['absoluteurl'] . $config['feed_dir']);
+    $feed_dir = (isset($config['feed_dir'])) ? $config['feed_dir'] :  '';
+    if (!is_dir($config['absoluteurl'] . $feed_dir) ){
+        mkdir($config['absoluteurl'] . $feed_dir);
     }
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
@@ -43,10 +44,10 @@ function generateRSS()
         </itunes:owner>
         <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
 		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>'."\n";
-    if ($config['itunes_category[1]'] != '') {
+    if (isset($config['itunes_category[1]']) && $config['itunes_category[1]'] != '') {
         $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>'."\n";
     }
-    if ($config['itunes_category[2]'] != '') {
+    if (isset($config['itunes_category[1]']) && $config['itunes_category[2]'] != '') {
         $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>'."\n";
     }
     // Get supported file extensions
@@ -143,5 +144,5 @@ function generateRSS()
     }
     // Append footer
     $xml .= $feedfooter;
-    return file_put_contents($config['absoluteurl'] . $config['feed_dir'] .  'feed.xml', $xml);
+    return file_put_contents($config['absoluteurl'] . $feed_dir .  'feed.xml', $xml);
 }
