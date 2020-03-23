@@ -119,6 +119,8 @@ function generateRSS()
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
 			<itunes:episode><![CDATA[' . $file->episode->episodePG . ']]></itunes:episode>
 			<itunes:season><![CDATA[' . $file->episode->seasonPG . ']]></itunes:episode>
+			<itunes:episodeType><![CDATA[' . $file->episode->typePG . ']]></itunes:episode>
+			<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:episode>
 			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
 			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>

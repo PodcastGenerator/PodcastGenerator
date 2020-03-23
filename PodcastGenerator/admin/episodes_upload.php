@@ -142,7 +142,9 @@ if (isset($_GET['upload'])) {
 <PodcastGenerator>
 	<episode>
 	    <episodePG><![CDATA['. $_POST['episodenumber'].']]></episodePG>
-	    <seasonPG><![CDATA['. $_POST['episodenumber'].']]></seasonPG>
+	    <seasonPG><![CDATA['. $_POST['seasonnumber'].']]></seasonPG>
+	    <typePG><![CDATA['. $_POST['episodetype'].']]></typePG>
+	    <blockPG><![CDATA['. $_POST['episodeblock'].']]></blockPG>
 	    <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
@@ -262,9 +264,20 @@ if (isset($_GET['upload'])) {
                     </div>
                     <div class="form-group">
                         <?php echo _('Episode Number'); ?>:<br>
-                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>"><br>
+                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>">
                         <?php echo _('Season Number'); ?>:<br>
-                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>"><br>
+                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>">
+                        <?php echo _('Episode Type'); ?>:<br>
+                        <select name="episodetype">
+                            <option value="full" selected>Normal Episode</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="bonus">Bonus</option>
+                        </select><br>
+                        <?php echo _('Episode Status'); ?>:<br>
+                        <select name="episodeblock">
+                            <option value="No" selected>Avaliable</option>
+                            <option value="Yes">Blocked</option>
+                        </select><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>
