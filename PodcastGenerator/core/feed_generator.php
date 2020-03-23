@@ -53,8 +53,8 @@ function generateRSS()
     // Get supported file extensions
     $supported_extensions = array();
     $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    foreach ($supported_extensions_xml->mediaFile->extension as $item) {
-        array_push($supported_extensions, $item);
+    foreach ($supported_extensions_xml->mediaFile as $item) {
+        array_push($supported_extensions, (string)$item->extension);
     }
     // Get episodes ordered by pub date
     $files = array();
@@ -117,10 +117,19 @@ function generateRSS()
         $item = '
 		<item>
 			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
-			<itunes:episode><![CDATA[' . $file->episode->episodePG . ']]></itunes:episode>
-			<itunes:season><![CDATA[' . $file->episode->seasonPG . ']]></itunes:episode>
-			<itunes:episodeType><![CDATA[' . $file->episode->typePG . ']]></itunes:episode>
-			<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:episode>
+			';
+
+        if ($file->episode->episodePG == '') {
+            $item .= '<itunes:episode>' . $file->episode->episodePG . '</itunes:episode>
+            ';
+        }
+        if ($file->episode->seasonPG == '') {
+            $item .= '<itunes:season>' . $file->episode->seasonPG . '</itunes:season>';
+        }
+
+        $item .= '
+			<itunes:episodeType>' . $file->episode->typePG . '</itunes:episodeType>
+			<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:block>
 			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
 			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
 			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
