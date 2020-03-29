@@ -129,7 +129,7 @@ if (isset($_GET['upload'])) {
     touch($targetfile, $datetime);
 
     // Get audio metadata (duration, bitrate etc)
-    require '../components/getid3/getid3.php';
+    require_once '../components/getid3/getid3.php';
     $getID3 = new getID3;
     $fileinfo = $getID3->analyze($targetfile);
     $duration = $fileinfo['playtime_string'];           // Get duration
