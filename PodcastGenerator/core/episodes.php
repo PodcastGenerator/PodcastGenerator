@@ -82,6 +82,7 @@ function getEpisodes($category = null)
                         'frequency' => $item->fileInfoPG->frequency
                     ],
                     'filename' => $episode,
+                    'fileid' => pathinfo('../' . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
                     'moddate' => date('Y-m-d', filemtime($_config['upload_dir'] . $episode))
                 ]
             ];
