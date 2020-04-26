@@ -22,6 +22,10 @@ if (isset($no_episodes)) {
         echo '<div class="col-lg-6">';
         echo '  <h1><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h1>';
         echo '  <small>' . $item[$i]["episode"]["moddate"] . '</small><br>';
+        // Check for image
+        if ($item[$i]["episode"]["imgPG"] != "") {
+            echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+        }
         echo '  <small>' . $item[$i]["episode"]["shortdescPG"] . '</small><br>';
         // Display edit button if admin is logged in
         if (isset($_SESSION["username"])) {

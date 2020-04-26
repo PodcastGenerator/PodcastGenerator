@@ -30,6 +30,10 @@ if (substr($mime, 0, 5) == 'video') {
 echo '<div class="col-lg-12">';
 echo '  <h1>' . $correctepisode["episode"]["titlePG"] . '</h1>';
 echo '  <small>' . $correctepisode["episode"]["moddate"] . '</small><br>';
+// Check for image
+if ($item[$i]["episode"]["imgPG"] != "") {
+    echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+}
 echo '  <small>' . $correctepisode["episode"]["shortdescPG"] . '</small><br>';
 if (isset($_SESSION["username"])) {
     echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $episodes[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
