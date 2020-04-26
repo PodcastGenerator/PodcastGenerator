@@ -23,8 +23,18 @@ if (isset($no_episodes)) {
         echo '  <h1><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h1>';
         echo '  <small>' . $item[$i]["episode"]["moddate"] . '</small><br>';
         // Check for image
+        // The imgPG value has the highest priority
         if ($item[$i]["episode"]["imgPG"] != "") {
             echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+        } elseif (
+            file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg') ||
+            $config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png'
+        ) {
+            // TODO Really ugly code, needs to be done more beatiful
+            $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png') ?
+                $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png' :
+                $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
+            echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $filename . '"><br>';
         }
         echo '  <small>' . $item[$i]["episode"]["shortdescPG"] . '</small><br>';
         // Display edit button if admin is logged in
