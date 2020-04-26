@@ -167,14 +167,9 @@ if (isset($_GET['upload'])) {
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
     // Write image if set
     if (isset($fileinfo["comments"]["picture"])) {
-        $img_filename = $config["absoluteurl"] . $config["img_dir"] . pathinfo($targetfile, PATHINFO_FILENAME) . '.' . explode("/", $fileinfo["comments"]["picture"][0]["image_mime"])[1];
-        $finalname = $img_filename;
-        $index = 1;
-        while(file_exists($img_filename)) {
-            $finalname = $img_filename . '_' . strval($index);
-            $index++;
-        }
-        file_put_contents($finalname, $fileinfo["comments"]["picture"][0]["data"]);
+        $imgext = ($fileinfo["comments"]["picture"][0]["image_mime"] == "image/png") ? 'png' : 'jpg';
+        $img_filename = $config["absoluteurl"] . $config["img_dir"] . pathinfo($targetfile, PATHINFO_FILENAME) . '.' . $imgext;
+        file_put_contents($img_filename, $fileinfo["comments"]["picture"][0]["data"]);
     }
     generateRSS();
     $success = true;
