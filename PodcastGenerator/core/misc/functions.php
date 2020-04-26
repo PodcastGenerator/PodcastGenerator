@@ -1,7 +1,9 @@
 <?php
+// When this file is included, config MUST be included first!
 function getmime($filename)
 {
-    require_once '../components/getid3/getid3.php';
+    global $config;
+    require_once $config['absoluteurl'] . 'components/getid3/getid3.php';
     // Check if file is even readable
     if(!is_readable($filename))
         return false;
