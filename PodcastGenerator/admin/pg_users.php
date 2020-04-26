@@ -76,7 +76,7 @@ else if (isset($_GET['create'])) {
     <br>
     <div class="container">
         <h1><?php echo _('Manage users'); ?></h1>
-        <small><?php echo _('It may take a few seconds until the changes are visible'); ?></small>
+        <small><?php echo _('It may take a few seconds until the changes are visible'); ?></small><br>
         <?php
         if (isset($_GET['userchange'])) {
             echo '<strong style="color: green;">' . _('User changed successfully') . '</strong>';
@@ -136,7 +136,9 @@ else if (isset($_GET['create'])) {
             }
             ?>
         <?php
-            error: echo '<p style="color: red;">' . $error . '</p>';
+            error: if (isset($error)) {
+                echo '<p style="color: red;">' . $error . '</p>';
+            }
         }
         ?>
     </div>
