@@ -33,16 +33,16 @@ echo '  <small>' . $correctepisode["episode"]["moddate"] . '</small><br>';
 // Check for image
 
 // The imgPG value has the highest priority
-if ($item[$i]["episode"]["imgPG"] != "") {
-    echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+if ($correctepisode["episode"]["imgPG"] != "") {
+    echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $correctepisode["episode"]["imgPG"] . '"><br>';
 } elseif (
-    file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg') ||
-    $config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png'
+    file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg') ||
+    $config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png'
 ) {
     // TODO Really ugly code, needs to be done more beatiful
-    $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png') ?
-        $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png' :
-        $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
+    $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png') ?
+        $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png' :
+        $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
     echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $filename . '"><br>';
 }
 echo '  <small>' . $correctepisode["episode"]["shortdescPG"] . '</small><br>';
