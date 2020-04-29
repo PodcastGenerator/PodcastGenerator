@@ -85,9 +85,9 @@ if (isset($_GET['start'])) {
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . $title . ']]></titlePG>
-	    <shortdescPG><![CDATA[' . $comment . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . $comment . ']]></longdescPG>
+	    <titlePG><![CDATA[' . htmlspecialchars($title) . ']]></titlePG>
+	    <shortdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></shortdescPG>
+	    <longdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>uncategorized</category1PG>
@@ -95,10 +95,10 @@ if (isset($_GET['start'])) {
 	        <category3PG></category3PG>
 	    </categoriesPG>
 	    <keywordsPG><![CDATA[]]></keywordsPG>
-	    <explicitPG>' . $config['explicit_podcast'] . '</explicitPG>
+	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . $author_name . '</namePG>
-	        <emailPG>' . $config['author_email'] . '</emailPG>
+	        <namePG>' . htmlspecialchars($author_name) . '</namePG>
+	        <emailPG>' . htmlspecialchars($config['author_email']) . '</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
 	        <size>' . intval(filesize('../' . $config['upload_dir'] . $new_files[$i]) / 1000 / 1000) . '</size>
