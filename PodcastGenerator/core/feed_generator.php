@@ -16,9 +16,9 @@ function generateRSS()
         mkdir($config['absoluteurl'] . $config['feed_dir']);
     }
     // Set the feed header with relevant podcast informations
-    $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
+    $feedhead = '<?xml version="2.0" encoding="' . $config['feed_encoding'] . '"?>
     <!-- generator="Podcast Generator ' . $version . '" -->
-    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="' . $config['scriptlang'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xml:lang="' . $config['scriptlang'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
