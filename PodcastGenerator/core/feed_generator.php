@@ -120,17 +120,17 @@ function generateRSS()
         }
         $item = '
 		<item>
-			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
-			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
-			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
-			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
+			<title>' . $file->episode->titlePG . '</title>
+			<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>
+			<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>
+			<description>' . $file->episode->shortdescPG . '</description>
 			<link>' . $original_full_filepath . '</link>
 			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>
 			<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>
 			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
 			<author>' . $author . '</author>
 			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
-			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
+			<itunes:keywords>' . $file->episode->keywordsPG . '</itunes:keywords>
 			<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
 			<pubDate>' . date("r", $files[$i]["lastModified"]) . '</pubDate>
         </item>'."\n";
