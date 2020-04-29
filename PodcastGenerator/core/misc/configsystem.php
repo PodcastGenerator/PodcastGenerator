@@ -36,7 +36,10 @@ function updateConfig($path, $key, $value)
             $lines[$i] = '$' . $key . ' = ';
             // Add quotes if it is a string
             if (gettype($value) == 'string') {
-                $lines[$i] .= '"' . $value . '";';
+                if ($value == 'null')
+                    $lines[$i] .= '"";';
+                else
+                    $lines[$i] .= '"' . $value . '";';
             } else {
                 $lines[$i] .= $value . ';';
             }
@@ -87,12 +90,11 @@ function getConfig($path = 'config.php')
             } else {
                 $configmap[$nonstr[1]] = '';
             }
-        }
-        elseif (sizeof($strout) == 3) {
+        } elseif (sizeof($strout) == 3) {
             if ($strout[2] != '"') {
                 $strout[2] = str_replace("\\", '', $strout[2]);
                 $configmap[$strout[1]] = $strout[2];
-            // Make the string empty on errors
+                // Make the string empty on errors
             } else {
                 $configmap[$strout[1]] = '';
             }
@@ -100,8 +102,7 @@ function getConfig($path = 'config.php')
         // If the string is empty
         elseif (sizeof($strout) == 2) {
             $configmap[$strout[1]] = '';
-        }
-        else {
+        } else {
             continue;
         }
     }
