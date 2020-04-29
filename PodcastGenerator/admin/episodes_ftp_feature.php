@@ -10,7 +10,7 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-// Fetch ID3 tags.  Try ID3V2, then ID3V1, before falling back
+// Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null) {
     return ($fileinfo['tags']['id3v2'][$tagName][0] != null
