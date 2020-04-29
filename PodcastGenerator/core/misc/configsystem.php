@@ -8,7 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 // This function updates the config
-function updateConfig($path, $key, $value)
+function updateConfig($path, $key, $value, $eval_null = false)
 {
     $content = file_get_contents($path);
     $lines = explode("\n", $content);
@@ -36,7 +36,7 @@ function updateConfig($path, $key, $value)
             $lines[$i] = '$' . $key . ' = ';
             // Add quotes if it is a string
             if (gettype($value) == 'string') {
-                if ($value == 'null')
+                if ($value == 'null' && $eval_null)
                     $lines[$i] .= '"";';
                 else
                     $lines[$i] .= '"' . $value . '";';
