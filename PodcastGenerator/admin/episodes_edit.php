@@ -23,6 +23,7 @@ if (isset($_GET['delete'])) {
     unlink('../' . $config['upload_dir'] . $_GET['name']);
     // Delete the XML file
     unlink('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+    generateRSS();
     header('Location: '.$config['url'].$config['indexfile']);
     die();
 }
