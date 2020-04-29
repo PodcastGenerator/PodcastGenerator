@@ -34,7 +34,7 @@ function updateConfig($path, $key, $value)
                 $comment = substr($comment, 1);
             }
             $lines[$i] = '$' . $key . ' = ';
-            // Add qoutes if it is a string
+            // Add quotes if it is a string
             if (gettype($value) == 'string') {
                 $lines[$i] .= '"' . $value . '";';
             } else {
@@ -44,7 +44,7 @@ function updateConfig($path, $key, $value)
             $lines[$i] .= $comment;
         }
     }
-    // Finally format the config file and make it "beatiful"
+    // Finally format the config file and make it "beautiful"
     $configStr = '';
     for ($i = 0; $i < sizeof($lines); $i++) {
         if ($lines[$i] == '')
