@@ -41,7 +41,7 @@ function generateRSS()
 			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
 			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
         </itunes:owner>
-        <itunes:explicit>' . $config['explicit'] . '</itunes:explicit>
+        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
 		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>' . "\n";
     if ($config['itunes_category[1]'] != '') {
         $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>' . "\n";
@@ -117,6 +117,15 @@ function generateRSS()
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Check if this episode has a cover art
+        $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
+        $has_cover = false;
+        if (!empty($file->episode->imgPG))
+            $has_cover = $file->episode->imgPG;
+        elseif (file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.jpg') || file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png')) {
+            $ext = file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png') ? '.png' : '.jpg';
+            $has_cover = $config['url'] . $config['img_dir'] . $basename . $ext;
+        }
         $indent = "\t\t\t";
         $linebreak = "\n";
         $item = '
@@ -124,7 +133,7 @@ function generateRSS()
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
         $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
-        if (!empty($file->episode->longdescPG)) {
+        if ($file->episode->longdescPG == "<![CDATA[]]>") {
             $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
         }
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
@@ -134,14 +143,16 @@ function generateRSS()
         $item .= $indent . '<author>' . $author . '</author>' . $linebreak;
         if (!empty($file->episode->authorPG->namePG)) {
             $item .= $indent . '<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>' . $linebreak;
-        }
-        else {
+        } else {
             $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
         }
-        if (!empty($file->episode->keywordsPG)) {
+        if ($file->episode->keywordsPG == "<![CDATA[]]>") {
             $item .= $indent . '<itunes:keywords>' . $file->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
         }
         $item .= $indent . '<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>' . $linebreak;
+        // If image is set
+        if ($has_cover)
+            $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
         $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
         $item .= "\t\t</item>\n";
         // Push XML to the real XML
