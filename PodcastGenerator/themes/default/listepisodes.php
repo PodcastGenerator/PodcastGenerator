@@ -25,7 +25,7 @@ if (isset($no_episodes)) {
         // Check for image
         // The imgPG value has the highest priority
         if ($item[$i]["episode"]["imgPG"] != "") {
-            echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+            echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
         } elseif (
             file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg') ||
             $config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png'
@@ -34,7 +34,7 @@ if (isset($no_episodes)) {
             $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png') ?
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png' :
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
-            echo '  <img style="max-width: inherit; max-height: inherit;" src="' . $filename . '"><br>';
+            echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $filename . '"><br>';
         }
         echo '  <small>' . $item[$i]["episode"]["shortdescPG"] . '</small><br>';
         // Display edit button if admin is logged in
