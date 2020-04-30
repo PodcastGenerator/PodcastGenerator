@@ -28,7 +28,7 @@ if (isset($no_episodes)) {
             echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
         } elseif (
             file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg') ||
-            $config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png'
+            file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png')
         ) {
             // TODO Really ugly code, needs to be done more beatiful
             $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png') ?

@@ -37,7 +37,7 @@ if ($correctepisode["episode"]["imgPG"] != "") {
     echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $correctepisode["episode"]["imgPG"] . '"><br>';
 } elseif (
     file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg') ||
-    $config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png'
+    file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')
 ) {
     // TODO Really ugly code, needs to be done more beatiful
     $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png') ?
