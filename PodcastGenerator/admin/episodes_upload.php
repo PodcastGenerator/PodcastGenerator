@@ -77,10 +77,6 @@ if (isset($_GET['upload'])) {
         }
     }
     $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
-    if ($_FILES['file']['size'] > intval($config['max_upload_form_size'])) {
-        $error = _('File is too big, maximum filesize is: ') . round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0);
-        goto error;
-    }
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
@@ -212,7 +208,6 @@ if (isset($_GET['upload'])) {
                     <div class="form-group">
                         <?php echo _('File'); ?>*:<br>
                         <input type="file" name="file" required><br>
-                        <small><?php echo sprintf('Your server configuration allows you to upload files up to around %s MB. If your file is bigger or you have other problems use the FTP feature', strval(htmlspecialchars(round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0)))); ?></small><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>

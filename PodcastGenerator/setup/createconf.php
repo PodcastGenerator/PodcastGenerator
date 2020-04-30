@@ -42,8 +42,6 @@ function createconf() {
 
 \$theme_path = \"themes/default/\";
 
-\$max_upload_form_size = \"104857600\"; //e.g.: \"30000000\" (about 30MB)
-
 \$upload_dir = \"media/\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
 
 \$img_dir = \"images/\"; // (Trailing slash required). Set chmod 755

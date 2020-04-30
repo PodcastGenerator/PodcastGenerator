@@ -31,8 +31,6 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$theme_path = \"".$config['theme_path']."\";
 
-\$max_upload_form_size = \"".$config['max_upload_form_size']."\"; //e.g.: \"30000000\" (about 30MB)
-
 \$upload_dir = \"".$config['upload_dir']."\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
 
 \$img_dir = \"".$config['img_dir']."\"; // (Trailing slash required). Set chmod 755

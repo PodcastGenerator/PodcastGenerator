@@ -11,10 +11,6 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['upload'])) {
-    // Check if file is too big
-    if ($_FILES['file']['size'] > $config['max_upload_form_size']) {
-        $error = _('File is too big');
-    }
     // Check mime type
     if(mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
         $error = _('Image is not a JPEG');
