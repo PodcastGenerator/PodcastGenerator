@@ -6,7 +6,35 @@
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/bootstrap.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>">
+    <meta name="author" content="<?php echo htmlspecialchars($config["author_name"]); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!--    Add meta propreties for social cards, depends if it's for the main page ou a single episode
+            TODO : manage imgPG to match with the singleepisode image instead of generic iTunes image-->
+    <?php
+    // IF name was passed, do this instead
+    if (isset($_GET[$link])) {
+        $correctepisode = array();
+        for ($i = 0; $i < sizeof($episodes); $i++) {
+            if ($episodes[$i]["episode"]["filename"] == $_GET[$link]) {
+                $correctepisode = $episodes[$i];
+                break;
+            }
+        }
+        echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>';
+        echo '<meta property="og:type" content="article"/>';
+        echo '<meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>';
+        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg"/>';
+        echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
+    } else {
+        echo '<meta property="og:title" content="' . $config["podcast_title"] . ' "/>';
+        echo '<meta property="og:type" content="article"/>';
+        echo '<meta property="og:url" content="' . $config["url"] . '"/>';
+        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg"/>';
+        echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
+    }
+    ?>    
 </head>
 
 <body>
