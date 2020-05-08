@@ -22,17 +22,17 @@
                 break;
             }
         }
-        echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>';
-        echo '<meta property="og:type" content="article"/>';
-        echo '<meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>';
-        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>';
-        echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
+        echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>' . "\n";
+        echo '    <meta property="og:type" content="article"/>';
+        echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>' . "\n";
+        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>' . "\n";
+        echo '    <meta property="og:description" content="' . $config["podcast_description"] . ' "/>' . "\n";
     } else {
-        echo '<meta property="og:title" content="' . $config["podcast_title"] . ' "/>';
-        echo '<meta property="og:type" content="article"/>';
-        echo '<meta property="og:url" content="' . $config["url"] . '"/>';
-        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>';
-        echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
+        echo '    <meta property="og:title" content="' . $config["podcast_title"] . ' "/>' . "\n";
+        echo '    <meta property="og:type" content="article"/>' . "\n";
+        echo '    <meta property="og:url" content="' . $config["url"] . '"/>' . "\n";
+        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>' . "\n";
+        echo '    <meta property="og:description" content="' . $config["podcast_description"] . ' "/>' . "\n";
     }
     ?>    
 </head>
