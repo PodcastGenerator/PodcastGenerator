@@ -25,13 +25,13 @@
         echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>';
         echo '<meta property="og:type" content="article"/>';
         echo '<meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>';
-        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg"/>';
+        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>';
         echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
     } else {
         echo '<meta property="og:title" content="' . $config["podcast_title"] . ' "/>';
         echo '<meta property="og:type" content="article"/>';
         echo '<meta property="og:url" content="' . $config["url"] . '"/>';
-        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg"/>';
+        echo '<meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>';
         echo '<meta property="og:description" content="' . $config["podcast_description"] . ' "/>';
     }
     ?>    
