@@ -9,9 +9,8 @@
     <meta name="description" content="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>">
     <meta name="author" content="<?php echo htmlspecialchars($config["author_name"]); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    
-    <!--    Add meta propreties for social cards, depends if it's for the main page ou a single episode
-            TODO : manage imgPG to match with the singleepisode image instead of generic iTunes image-->
+
+    <!--    Add meta propreties for social cards, depends if it's for the main page ou a single episode -->
     <?php
     // IF name was passed, do this instead
     if (isset($_GET[$link])) {
@@ -22,19 +21,33 @@
                 break;
             }
         }
-        echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>' . "\n";
-        echo '    <meta property="og:type" content="article"/>' . "\n";
-        echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>' . "\n";
-        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>' . "\n";
-        echo '    <meta property="og:description" content="' . $config["podcast_description"] . ' "/>' . "\n";
+        $img = $config["url"] . $config["img_dir"] . 'itunes_image.jpg';
+        // The imgPG value has the highest priority
+        if ($correctepisode["episode"]["imgPG"] != "") {
+            $img = $correctepisode["episode"]["imgPG"];
+        } elseif (
+            file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg') ||
+            file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')
+        ) {
+            // TODO Really ugly code, needs to be done more beatiful
+            $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png') ?
+                $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png' :
+                $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
+            $img = $filename;
+        }
+        echo '<meta property="og:title" content="' . $config["podcast_title"] . ' - ' . $correctepisode["episode"]["titlePG"] . '" />' . "\n";
+        echo '    <meta property="og:type" content="article" />' . "\n";
+        echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . '" />' . "\n";
+        echo '    <meta property="og:image" content="' . $img .'" />' . "\n";
+        echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
     } else {
-        echo '    <meta property="og:title" content="' . $config["podcast_title"] . ' "/>' . "\n";
-        echo '    <meta property="og:type" content="article"/>' . "\n";
-        echo '    <meta property="og:url" content="' . $config["url"] . '"/>' . "\n";
-        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>' . "\n";
-        echo '    <meta property="og:description" content="' . $config["podcast_description"] . ' "/>' . "\n";
+        echo '    <meta property="og:title" content="' . $config["podcast_title"] . '" />' . "\n";
+        echo '    <meta property="og:type" content="article" />' . "\n";
+        echo '    <meta property="og:url" content="' . $config["url"] . '" />' . "\n";
+        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg" />' . "\n";
+        echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
     }
-    ?>    
+    ?>
 </head>
 
 <body>
