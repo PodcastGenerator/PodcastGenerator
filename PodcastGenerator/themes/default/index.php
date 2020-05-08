@@ -23,7 +23,7 @@
             }
         }
         echo '<meta property="og:title" content="' . $config ["podcast_title"] . $correctepisode["episode"]["titlePG"] . ' "/>' . "\n";
-        echo '    <meta property="og:type" content="article"/>';
+        echo '    <meta property="og:type" content="article"/>' . "\n";
         echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . ' "/>' . "\n";
         echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg "/>' . "\n";
         echo '    <meta property="og:description" content="' . $config["podcast_description"] . ' "/>' . "\n";
