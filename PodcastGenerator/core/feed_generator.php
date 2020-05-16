@@ -52,8 +52,8 @@ function generateRSS()
     // Get supported file extensions
     $supported_extensions = array();
     $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    foreach ($supported_extensions_xml->mediaFile->extension as $item) {
-        array_push($supported_extensions, $item);
+    foreach ($supported_extensions_xml->mediaFile as $item) {
+        array_push($supported_extensions, strval($item->extension));
     }
     // Get episodes ordered by pub date
     $files = array();
