@@ -24,8 +24,12 @@ if (isset($_GET['delete'])) {
     // Delete the XML file
     unlink('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
     // Delete the image file if it exists
-    unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
-    unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
+    if(file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
+    file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png'))
+    {
+        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
+        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
+    }
     generateRSS();
     header('Location: '.$config['url'].$config['indexfile']);
     die();
