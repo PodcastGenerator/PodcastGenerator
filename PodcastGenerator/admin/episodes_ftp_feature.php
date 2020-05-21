@@ -113,9 +113,11 @@ if (isset($_GET['start'])) {
         $fname = $new_files[$i];
         if (sizeof($output_array) == 0) {
             $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
+            $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
                 $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
+                $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
             rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
