@@ -27,7 +27,7 @@ if (isset($_GET['p'])) {
     }
 }
 
-$episodes = getEpisodes(null);
+$episodes = getEpisodes(null, $config);
 
 // When calling name
 // Backwards comp

@@ -7,10 +7,9 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function getEpisodes($category = null)
+function getEpisodes($category = null, $_config)
 {
-    $_config = getConfig('config.php');
-    $supported_extensions = simplexml_load_file('components/supported_media/supported_media.xml');
+    $supported_extensions = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
     $realsupported_extensions = array();
     foreach ($supported_extensions as $item) {
         array_push($realsupported_extensions, $item->extension);
@@ -23,15 +22,15 @@ function getEpisodes($category = null)
     // timestamps.
     $now_time = time();
     $episodes_mtimes = array();
-    if ($handle = opendir($_config['upload_dir'])) {
+    if ($handle = opendir($_config['absoluteurl'] . $_config['upload_dir'])) {
         while (false !== ($entry = readdir($handle))) {
             // If the file is a 'real' file, has a linked XML file,
             // and isn't from the future, add its name and
             // modification time to our array.
-            $this_entry = $_config['upload_dir'] . $entry;
+            $this_entry = $_config['absoluteurl'] . $_config['upload_dir'] . $entry;
             $this_mtime = filemtime($this_entry);
             if (in_array(pathinfo($this_entry, PATHINFO_EXTENSION), $supported_extensions)
-                && file_exists($_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
+                && file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
                 && $this_mtime <= $now_time) {
                 array_push($episodes_mtimes, [$entry, $this_mtime]);
             }
@@ -46,8 +45,8 @@ function getEpisodes($category = null)
     for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
         $episode = $episodes_mtimes[$i][0];
         // We need to get the CDATA in plaintext.
-        $xml_file_name = pathinfo('../' . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
-        $xml = simplexml_load_file($_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
+        $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
+        $xml = simplexml_load_file($_config['absoluteurl'] . $_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
         foreach ($xml as $item) {
             // If we are filtering by category, we can omit episodes
             // that lack the desired category.
@@ -82,8 +81,8 @@ function getEpisodes($category = null)
                         'frequency' => $item->fileInfoPG->frequency
                     ],
                     'filename' => $episode,
-                    'fileid' => pathinfo('../' . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
-                    'moddate' => date('Y-m-d', filemtime($_config['upload_dir'] . $episode))
+                    'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
+                    'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
                 ]
             ];
             array_push($episodes_data, $append_array);
