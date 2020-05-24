@@ -69,6 +69,7 @@ if (isset($_GET['upload'])) {
     }
 
     $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . basename($_FILES['file']['name']);
+    $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
@@ -76,8 +77,6 @@ if (isset($_GET['upload'])) {
             $appendix++;
         }
     }
-    // Replace spaces
-    $targetfile = str_replace(' ', '_', $targetfile);
     $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
