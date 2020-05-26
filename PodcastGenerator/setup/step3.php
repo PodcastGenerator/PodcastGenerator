@@ -10,7 +10,8 @@
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";
-session_start();
+if(!isset($_SESSION))
+    session_start();
 
 if(isset($_GET["create"])) {
     $p = $_POST;
