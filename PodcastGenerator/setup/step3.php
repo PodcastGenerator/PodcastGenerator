@@ -33,6 +33,11 @@ if(isset($_GET["create"])) {
             else
                 $error = "Failure while creating categories file";
         }
+        if($success) {
+            session_destroy();
+            header("Location: ../index.php");
+            die();
+        }
     }
 }
 ?>
@@ -67,11 +72,6 @@ if(isset($_GET["create"])) {
                 <?php
                 if(isset($error)) {
                     echo "<strong><p style=\"color: red;\">Error: $error</p>";
-                }
-                if(isset($success)) {
-                    session_destroy();
-                    header("Location: ../index.php");
-                    die();
                 }
                 ?>
                 
