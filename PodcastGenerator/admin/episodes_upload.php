@@ -11,22 +11,29 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['upload'])) {
-    // CHeck if all fields are set (except "category")
-    $req_fields = [
-        $_POST['title'],
-        $_POST['shortdesc'],
-        $_POST['date'],
-        $_POST['time'],
-        $_POST['explicit'],
-        $_POST['authorname'],
-        $_POST['authoremail']
-    ];
-    // Check if fields are missing
-    for ($i = 0; $i < sizeof($req_fields); $i++) {
-        if (empty($req_fields[$i])) {
-            $error = _('Missing fields');
-            goto error;
-        }
+    if(empty($_POST['title'])) {
+        $error = _('Empty title');
+        goto error;
+    }
+    else if(empty($_POST['shortdesc'])) {
+        $error = _('Empty Short Description');
+        goto error;
+    }
+    else if(empty($_POST['date'])) {
+        $error = _('Empty Date');
+        goto error;
+    }
+    else if(empty($_POST['time'])) {
+        $error = _('Empty explicit value');
+        goto error;
+    }
+    else if(empty($_POST['authorname'])) {
+        $error = _('Empty author name');
+        goto error;
+    }
+    else if(empty($_POST['authoremail'])) {
+        $error = _('Empty author email');
+        goto error;
     }
 
     // If no categories were selected, add the 'uncategorized'
