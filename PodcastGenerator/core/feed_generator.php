@@ -43,10 +43,10 @@ function generateRSS()
         </itunes:owner>
         <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
 		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>' . "\n";
-    if ($config['itunes_category[1]'] != '') {
+    if ($config['itunes_category[1]'] != '' || $config['itunes_category[1]'] == 'null') {
         $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>' . "\n";
     }
-    if ($config['itunes_category[2]'] != '') {
+    if ($config['itunes_category[2]'] != '' || $config['itunes_category[1]'] == 'null') {
         $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>' . "\n";
     }
     // Get supported file extensions
