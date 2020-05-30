@@ -10,7 +10,7 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if (isset($_GET['upload'])) {
+if (sizeof($_POST) > 0) {
     // CHeck if all fields are set (except "category")
     $req_fields = [
         $_POST['title'],
@@ -202,7 +202,7 @@ if (isset($_GET['upload'])) {
             echo '<strong><p style="color: #e74c3c;">' . $error . '</p></strong>';
         }
         ?>
-        <form action="episodes_upload.php?upload=1" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h3><?php echo _('Main Informations'); ?></h3>

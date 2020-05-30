@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
 }
 
 // Edit episode
-if (isset($_GET['edit'])) {
+if (sizeof($_POST) > 0) {
     // CHeck if all fields are set
     $req_fields = [
         $_POST['title'],
@@ -160,7 +160,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
         if ($error) {
             echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
         } ?>
-        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
+        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
             <div class="row">
                 <div class="col-6">
                     <h3><?php echo _('Main Information'); ?></h3>
