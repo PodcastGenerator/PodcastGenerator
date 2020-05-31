@@ -26,7 +26,7 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$url = \"".$config['url']."\";
 
-\$absoluteurl = \"".$config['url']."\"; // The location on the server
+\$absoluteurl = \"".$config['absoluteurl']."\"; // The location on the server
 
 \$theme_path = \"".$config['theme_path']."\";
 
