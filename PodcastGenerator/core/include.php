@@ -10,6 +10,12 @@
 include 'misc/security.php';
 include 'misc/configsystem.php';
 include 'misc/globs.php';
+if($version == '3.0' || $version == '3.0.1')
+{
+    // Backwards compatibity
+    include 'backwards.php';
+    backwards_3_0_to_3_1($config['absoluteurl']);
+}
 include 'episodes.php';
 include 'feed_generator.php';
 include 'buttons.php';
@@ -19,11 +25,7 @@ include 'freebox.php';
 $config = getConfig('config.php');
 // Load useful functions
 include 'misc/functions.php';
-// Backwards compatibity
-include 'backwards.php';
 // Load translation
 include 'translation.php';
 // Load users
 include $config['absoluteurl'].'users.php';
-// Do backwards comp
-backwards_3_0_to_3_1($config['absoluteurl']);
