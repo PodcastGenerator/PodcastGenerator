@@ -15,7 +15,6 @@ function backwards_3_0_to_3_1($absoluteurl)
     if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')) {
         return;
     }
-    // Create users.json
     $config_php = "<?php
 \$podcastgen_version = \"3.1\"; // Version
 
@@ -91,8 +90,9 @@ function backwards_3_0_to_3_1($absoluteurl)
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
-    $users_json = '{
+    $users_json = '<?php
+$users_json = \'{
     "'.$config['username'].'": "'.$config['userpassword'].'"
-}';
-    file_put_contents($absoluteurl . 'users.json', $users_json);
+}\'';
+    file_put_contents($absoluteurl . 'users.php', $users_json);
 }
