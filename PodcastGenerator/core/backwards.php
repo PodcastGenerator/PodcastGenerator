@@ -12,7 +12,7 @@ function backwards_3_0_to_3_1($absoluteurl)
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if($config['podcastgen_version'] != '3.0') {
+    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')) {
         return;
     }
     // Create users.json
