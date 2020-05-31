@@ -93,6 +93,6 @@ function backwards_3_0_to_3_1($absoluteurl)
     $users_json = '<?php
 $users_json = \'{
     "'.$config['username'].'": "'.$config['userpassword'].'"
-}\'';
+}\';';
     file_put_contents($absoluteurl . 'users.php', $users_json);
 }
