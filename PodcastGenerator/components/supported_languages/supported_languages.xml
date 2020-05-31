@@ -8,4 +8,8 @@
 		<code>de_DE</code>
 		<name>Deutsch</name>
 	</language>
+	<language>
+		<code>es_ES</code>
+		<name>Español</name>
+	</language>
 </PodcastGenerator>
