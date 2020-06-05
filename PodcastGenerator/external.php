@@ -10,7 +10,6 @@
 require 'core/include.php';
 if (isset($_GET['name'])) {
     $buttons = getButtons('./');
-    generateRSS();
     foreach ($buttons as $item) {
         if ($_GET['name'] == $item->name) {
             if (!isset($item->protocol)) {

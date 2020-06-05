@@ -1,0 +1,5 @@
+*.jpg
+*.jpeg
+*.gif
+*.png
+!itunes_image.jpg

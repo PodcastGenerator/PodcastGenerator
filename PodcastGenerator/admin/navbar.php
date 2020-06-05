@@ -17,6 +17,7 @@
                     <a class="dropdown-item" href="../<?php echo $config['indexfile']; ?>"><?php echo _('Edit / Delete Episode'); ?></a>
                     <a class="dropdown-item" href="episodes_manage_cats.php"><?php echo _('Manage categories'); ?></a>
                     <a class="dropdown-item" href="episodes_ftp_feature.php"><?php echo _('FTP Feature (Auto Indexing)'); ?></a>
+                    <a class="dropdown-item" href="episodes_bulk.php"><?php echo _('Bulk download episodes'); ?></a>
                     <a class="dropdown-item" href="episodes_regenerate.php"><?php echo _('Manually regenerate RSS feed'); ?></a>
                 </div>
             </li>

@@ -30,6 +30,21 @@ if (substr($mime, 0, 5) == 'video') {
 echo '<div class="col-lg-12">';
 echo '  <h1>' . $correctepisode["episode"]["titlePG"] . '</h1>';
 echo '  <small>' . $correctepisode["episode"]["moddate"] . '</small><br>';
+// Check for image
+
+// The imgPG value has the highest priority
+if ($correctepisode["episode"]["imgPG"] != "") {
+    echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $correctepisode["episode"]["imgPG"] . '"><br>';
+} elseif (
+    file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg') ||
+    file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')
+) {
+    // TODO Really ugly code, needs to be done more beatiful
+    $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png') ?
+        $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png' :
+        $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
+    echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $filename . '"><br>';
+}
 echo '  <small>' . $correctepisode["episode"]["shortdescPG"] . '</small><br>';
 if (isset($_SESSION["username"])) {
     echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $episodes[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';

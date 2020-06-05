@@ -10,7 +10,7 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if (isset($_GET['upload'])) {
+if (sizeof($_POST) > 0) {
     // CHeck if all fields are set (except "category")
     $req_fields = [
         $_POST['title'],
@@ -69,18 +69,16 @@ if (isset($_GET['upload'])) {
     }
 
     $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . basename($_FILES['file']['name']);
+    $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
             $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . $appendix . '-' . basename($_FILES['file']['name']);
+            $targetfile = str_replace(' ', '_', $targetfile);
             $appendix++;
         }
     }
     $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
-    if ($_FILES['file']['size'] > intval($config['max_upload_form_size'])) {
-        $error = _('File is too big, maximum filesize is: ') . round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0);
-        goto error;
-    }
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
@@ -103,7 +101,7 @@ if (isset($_GET['upload'])) {
 
     $mimetype = getmime($targetfile);
 
-    if(!$mimetype) {
+    if (!$mimetype) {
         $error = _('The uploaded file is not readable (permission error)');
         goto error;
     }
@@ -129,7 +127,7 @@ if (isset($_GET['upload'])) {
     touch($targetfile, $datetime);
 
     // Get audio metadata (duration, bitrate etc)
-    require '../components/getid3/getid3.php';
+    require_once '../components/getid3/getid3.php';
     $getID3 = new getID3;
     $fileinfo = $getID3->analyze($targetfile);
     $duration = $fileinfo['playtime_string'];           // Get duration
@@ -150,15 +148,15 @@ if (isset($_GET['upload'])) {
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
-	        <category1PG>' . $_POST['category'][0] . '</category1PG>
-	        <category2PG>' . $_POST['category'][1] . '</category2PG>
-	        <category3PG>' . $_POST['category'][2] . '</category3PG>
+	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
+	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
+	        <category3PG>' . htmlspecialchars($_POST['category'][2]) . '</category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA[' . $_POST['itunesKeywords'] . ']]></keywordsPG>
+	    <keywordsPG><![CDATA[' . htmlspecialchars($_POST['itunesKeywords']) . ']]></keywordsPG>
 	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . $_POST['authorname'] . '</namePG>
-	        <emailPG>' . $_POST['authoremail'] . '</emailPG>
+	        <namePG>' . htmlspecialchars($_POST['authorname']) . '</namePG>
+	        <emailPG>' . htmlspecialchars($_POST['authoremail']) . '</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
 	        <size>' . intval($_FILES['file']['size'] / 1000 / 1000) . '</size>
@@ -169,6 +167,12 @@ if (isset($_GET['upload'])) {
 	</episode>
 </PodcastGenerator>';
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
+    // Write image if set
+    if (isset($fileinfo["comments"]["picture"])) {
+        $imgext = ($fileinfo["comments"]["picture"][0]["image_mime"] == "image/png") ? 'png' : 'jpg';
+        $img_filename = $config["absoluteurl"] . $config["img_dir"] . pathinfo($targetfile, PATHINFO_FILENAME) . '.' . $imgext;
+        file_put_contents($img_filename, $fileinfo["comments"]["picture"][0]["data"]);
+    }
     generateRSS();
     $success = true;
 
@@ -202,7 +206,7 @@ if (isset($_GET['upload'])) {
             echo '<strong><p style="color: #e74c3c;">' . $error . '</p></strong>';
         }
         ?>
-        <form action="episodes_upload.php?upload=1" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h3><?php echo _('Main Informations'); ?></h3>
@@ -210,7 +214,6 @@ if (isset($_GET['upload'])) {
                     <div class="form-group">
                         <?php echo _('File'); ?>*:<br>
                         <input type="file" name="file" required><br>
-                        <small><?php echo sprintf('Your server configuration allows you to upload files up to around %s MB. If your file is bigger or you have other problems use the FTP feature', strval(htmlspecialchars(round(intval($config["max_upload_form_size"]) / 1000 / 1000, 0)))); ?></small><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>

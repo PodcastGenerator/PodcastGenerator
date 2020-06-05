@@ -8,7 +8,8 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require "securitycheck.php";
-session_start();
+if(!isset($_SESSION))
+    session_start();
 
 // Dirs
 $media = "../media/";

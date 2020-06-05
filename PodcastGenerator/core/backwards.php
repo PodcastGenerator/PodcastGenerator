@@ -12,10 +12,9 @@ function backwards_3_0_to_3_1($absoluteurl)
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if($config['podcastgen_version'] != '3.0') {
+    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')) {
         return;
     }
-    // Create users.json
     $config_php = "<?php
 \$podcastgen_version = \"3.1\"; // Version
 
@@ -27,11 +26,9 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$url = \"".$config['url']."\";
 
-\$absoluteurl = \"".$config['url']."\"; // The location on the server
+\$absoluteurl = \"".$config['absoluteurl']."\"; // The location on the server
 
 \$theme_path = \"".$config['theme_path']."\";
-
-\$max_upload_form_size = \"".$config['max_upload_form_size']."\"; //e.g.: \"30000000\" (about 30MB)
 
 \$upload_dir = \"".$config['upload_dir']."\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
 
@@ -93,8 +90,9 @@ function backwards_3_0_to_3_1($absoluteurl)
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
-    $users_json = '{
-    "'.$config['username'].'": "'.$config['userpassword'].'"
-}';
-    file_put_contents($absoluteurl . 'users.json', $users_json);
+    $users_json = '<?php
+$users_json = \'{
+    "'.$config['username'].'": "'.str_replace("\$", "\\\$", $config['userpassword']).'"
+}\';';
+    file_put_contents($absoluteurl . 'users.php', $users_json);
 }

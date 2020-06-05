@@ -29,7 +29,11 @@ if (isset($_GET['del'])) {
 if (isset($_GET['add'])) {
     $cats_xml = simplexml_load_file('../categories.xml');
     $description = $_POST['categoryname'];
-    $id = strtolower(str_replace(' ', '_', $description));
+    // These chars should be replaced with an underscore
+    $chars_to_replace = [' ', '&', '"', '\'', '<', '>'];
+    $id = $description;
+    for($i = 0; $i < sizeof($chars_to_replace); $i++)
+        $id = strtolower(str_replace($chars_to_replace[$i], '_', $id));
     // Check if this episode already exists
     foreach ($cats_xml as $item) {
         if ($item->id == $id) {
@@ -42,7 +46,7 @@ if (isset($_GET['add'])) {
         foreach ($cats_xml as $item) {
             if (!isset($item->id) && !isset($item->description)) {
                 $item->addChild('id', $id);
-                $item->addChild('description', $description);
+                $item->addChild('description', htmlspecialchars($description));
                 break;
             }
         }

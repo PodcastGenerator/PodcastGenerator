@@ -23,12 +23,20 @@ if (isset($_GET['delete'])) {
     unlink('../' . $config['upload_dir'] . $_GET['name']);
     // Delete the XML file
     unlink('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+    // Delete the image file if it exists
+    if(file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
+    file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png'))
+    {
+        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
+        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
+    }
+    generateRSS();
     header('Location: '.$config['url'].$config['indexfile']);
     die();
 }
 
 // Edit episode
-if (isset($_GET['edit'])) {
+if (sizeof($_POST) > 0) {
     // CHeck if all fields are set
     $req_fields = [
         $_POST['title'],
@@ -79,7 +87,7 @@ if (isset($_GET['edit'])) {
     touch($targetfile, $datetime);
 
     // Get audio metadata (duration, bitrate etc)
-    require '../components/getid3/getid3.php';
+    require_once '../components/getid3/getid3.php';
     $getID3 = new getID3;
     $fileinfo = $getID3->analyze($targetfile);
     $duration = $fileinfo["playtime_string"];           // Get duration
@@ -93,35 +101,35 @@ if (isset($_GET['edit'])) {
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
-    <PodcastGenerator>
-    <episode>
-        <episodePG><![CDATA['. $_POST['episodenumber'].']]></episodePG>
-        <seasonPG><![CDATA['. $_POST['seasonnumber'].']]></seasonPG>
-        <typePG><![CDATA['. $_POST['episodetype'].']]></typePG>
-        <blockPG><![CDATA['. $_POST['episodeblock'].']]></blockPG>
-        <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
-        <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
-        <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
-        <imgPG></imgPG>
-        <categoriesPG>
-            <category1PG>' . $_POST['category'][0] . '</category1PG>
-            <category2PG>' . $_POST['category'][1] . '</category2PG>
-            <category3PG>' . $_POST['category'][2] . '</category3PG>
-        </categoriesPG>
-        <keywordsPG><![CDATA[' . $_POST['itunesKeywords'] . ']]></keywordsPG>
-        <explicitPG>' . $_POST['explicit'] . '</explicitPG>
-        <authorPG>
-            <namePG>' . $_POST['authorname'] . '</namePG>
-            <emailPG>' . $_POST['authoremail'] . '</emailPG>
-        </authorPG>
-        <fileInfoPG>
-            <size>' . intval(filesize($targetfile) / 1000 / 1000) . '</size>
-            <duration>' . $duration . '</duration>
-            <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
-            <frequency>' . $frequency . '</frequency>
-        </fileInfoPG>
-    </episode>
-    </PodcastGenerator>';
+<PodcastGenerator>
+  <episode>
+      <episodePG><![CDATA['. $_POST['episodenumber'].']]></episodePG>
+      <seasonPG><![CDATA['. $_POST['seasonnumber'].']]></seasonPG>
+      <typePG><![CDATA['. $_POST['episodetype'].']]></typePG>
+      <blockPG><![CDATA['. $_POST['episodeblock'].']]></blockPG>
+      <titlePG><![CDATA[' . $_POST['title'] . ']]></titlePG>
+      <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
+      <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
+      <imgPG></imgPG>
+      <categoriesPG>
+          <category1PG>' . $_POST['category'][0] . '</category1PG>
+          <category2PG>' . $_POST['category'][1] . '</category2PG>
+          <category3PG>' . $_POST['category'][2] . '</category3PG>
+      </categoriesPG>
+      <keywordsPG><![CDATA[' . $_POST['itunesKeywords'] . ']]></keywordsPG>
+      <explicitPG>' . $_POST['explicit'] . '</explicitPG>
+      <authorPG>
+          <namePG>' . $_POST['authorname'] . '</namePG>
+          <emailPG>' . $_POST['authoremail'] . '</emailPG>
+      </authorPG>
+      <fileInfoPG>
+          <size>' . intval(filesize($targetfile) / 1000 / 1000) . '</size>
+          <duration>' . $duration . '</duration>
+          <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
+          <frequency>' . $frequency . '</frequency>
+      </fileInfoPG>
+  </episode>
+</PodcastGenerator>';
     file_put_contents('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     // Redirect if success
@@ -156,7 +164,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
         if (isset($error) && $error) {
             echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
         } ?>
-        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>&edit=1" method="POST">
+        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
             <div class="row">
                 <div class="col-6">
                     <h3><?php echo _('Main Information'); ?></h3>

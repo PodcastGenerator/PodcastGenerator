@@ -15,11 +15,11 @@ function generateRSS()
     $feed_dir = (isset($config['feed_dir'])) ? $config['feed_dir'] :  '';
     if (!is_dir($config['absoluteurl'] . $feed_dir) ){
         mkdir($config['absoluteurl'] . $feed_dir);
-    }
+
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
     <!-- generator="Podcast Generator ' . $version . '" -->
-    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xml:lang="' . $config['scriptlang'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xml:lang="' . $config['feed_language'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
@@ -43,25 +43,25 @@ function generateRSS()
 			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
         </itunes:owner>
         <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
-		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>'."\n";
-    if (!empty($config['itunes_category[1]'])) {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>'."\n";
+		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>' . "\n";
+    if ($config['itunes_category[1]'] != '' || $config['itunes_category[1]'] == 'null') {
+        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>' . "\n";
     }
-    if (!empty($config['itunes_category[2]'])) {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>'."\n";
+    if ($config['itunes_category[2]'] != '' || $config['itunes_category[1]'] == 'null') {
+        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>' . "\n";
     }
     // Get supported file extensions
     $supported_extensions = array();
     $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
     foreach ($supported_extensions_xml->mediaFile as $item) {
-        array_push($supported_extensions, (string)$item->extension);
+        array_push($supported_extensions, strval($item->extension));
     }
     // Get episodes ordered by pub date
     $files = array();
     if ($handle = opendir($config['absoluteurl'] . $config['upload_dir'])) {
         while (false !== ($entry = readdir($handle))) {
             // Sort out all files which have no XML file
-            if(!file_exists($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+            if (!file_exists($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
             // Sort out all files with invalid file extensions
@@ -94,7 +94,7 @@ function generateRSS()
     unset($realfiles);
     // Set a maximum amount of episodes generated in the feed
     $maxEpisodes = sizeof($files);
-    if(strtolower($config['recent_episode_in_feed']) != 'all') {
+    if (strtolower($config['recent_episode_in_feed']) != 'all') {
         $maxEpisodes = intval($config['recent_episode_in_feed']);
     }
     // Items (Episodes) in XML
@@ -103,53 +103,70 @@ function generateRSS()
         $link = str_replace('?', '', $config['link']);
         $link = str_replace('=', '', $link);
         $link = str_replace('$url', '', $link);
-        $original_full_filepath = $config['url'] . $config['upload_dir'] . $files[$i]['filename'];
+        $original_full_filepath = $config['url'] . $config['upload_dir'] . str_replace(' ', '%20', $files[$i]['filename']);
         $file = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
         // Skip files with no read permission
         $mimetype = getmime($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']);
-        if(!$mimetype) {
+        if (!$mimetype) {
             $mimetype = null;
         }
-        $authorname = null;
-        if(isset($file->episode->authorPG->namePG))  {
-            $authorname = ' (' . $file->episode->authorPG->namePG . ')';
+        $author = null;
+        if (!empty($file->episode->authorPG->emailPG)) {
+            $author = $file->episode->authorPG->emailPG;
+            if (!empty($file->episode->authorPG->namePG))
+                $author .= ' (' . $file->episode->authorPG->namePG . ')';
+        } else {
+            $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Check if this episode has a cover art
+        $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
+        $has_cover = false;
+        if (!empty($file->episode->imgPG))
+            $has_cover = $file->episode->imgPG;
+        elseif (file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.jpg') || file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png')) {
+            $ext = file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png') ? '.png' : '.jpg';
+            $has_cover = $config['url'] . $config['img_dir'] . $basename . $ext;
+        }
+        $indent = "\t\t\t";
+        $linebreak = "\n";
         $item = '
-		<item>
-			<title><![CDATA[' . $file->episode->titlePG . ']]></title>
-			';
-
-        if ($file->episode->episodePG == '') {
-            $item .= '<itunes:episode>' . $file->episode->episodePG . '</itunes:episode>
-            ';
+        <item>' . "\n";
+        $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
+        $item .= $indent . '<itunes:episode>' . $file->episode->episodePG . '</itunes:episode>' . $linebreak;
+        $item .= $indent . '<itunes:episodeType>' . $file->episode->typePG . '</itunes:episodeType>' . $linebreak;
+			  $item .= $indent . '<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:block>' . $linebreak;
+        $item .= $indent . '<itunes:season>' . $file->episode->seasonPG . '</itunes:season>' . $linebreak;
+        $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
+        $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
+        if ($file->episode->longdescPG == "<![CDATA[]]>") {
+            $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
         }
-        if ($file->episode->seasonPG == '') {
-            $item .= '<itunes:season>' . $file->episode->seasonPG . '</itunes:season>';
+        $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
+        $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
+        $item .= $indent . '<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>' . $linebreak;
+        $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
+        $item .= $indent . '<author>' . $author . '</author>' . $linebreak;
+        if (!empty($file->episode->authorPG->namePG)) {
+            $item .= $indent . '<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>' . $linebreak;
+        } else {
+            $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
         }
-
-        $item .= '
-			<itunes:episodeType>' . $file->episode->typePG . '</itunes:episodeType>
-			<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:block>
-			<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>
-			<itunes:summary>' . $file->episode->longdescPG . '</itunes:summary>
-			<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>
-			<link>' . $original_full_filepath . '</link>
-			<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>
-			<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>
-			<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>
-			<author>' . $file->episode->authorPG->emailPG . $authorname . '</author>
-			<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>
-			<itunes:keywords><![CDATA[' . $file->episode->keywordsPG . ']]></itunes:keywords>
-			<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>
-			<pubDate>' . date("r", $files[$i]["lastModified"]) . '</pubDate>
-        </item>'."\n";
+        if ($file->episode->keywordsPG == "<![CDATA[]]>") {
+            $item .= $indent . '<itunes:keywords>' . $file->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
+        }
+        $item .= $indent . '<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>' . $linebreak;
+        // If image is set
+        if ($has_cover)
+            $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
+        $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
+        $item .= "\t\t</item>\n";
         // Push XML to the real XML
         array_push($items, $item);
     }
     // Close the tags
     $feedfooter = '
     </channel>
-    </rss>'."\n";
+    </rss>' . "\n";
     // Generate the actual XML
     $xml = $feedhead;
     for ($i = 0; $i < sizeof($items); $i++) {

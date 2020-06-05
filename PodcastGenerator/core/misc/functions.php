@@ -1,10 +1,16 @@
 <?php
+// When this file is included, config MUST be included first!
 function getmime($filename)
 {
+    global $config;
+    require_once $config['absoluteurl'] . 'components/getid3/getid3.php';
     // Check if file is even readable
     if(!is_readable($filename))
         return false;
-    return mime_content_type($filename);
+    // Analyze file to dtermine mime type
+    $getID3 = new getID3;
+    $fileinfo = $getID3->analyze($filename);
+    return $fileinfo["mime_type"];
 }
 
 function checkLogin($username, $password_plain)

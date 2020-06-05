@@ -10,14 +10,15 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-// Fetch ID3 tags.  Try ID3V2, then ID3V1, before falling back
+// Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
 // to the specific default value.
-function getID3Tag($fileinfo, $tagName, $defaultValue = null) {
+function getID3Tag($fileinfo, $tagName, $defaultValue = null)
+{
     return ($fileinfo['tags']['id3v2'][$tagName][0] != null
-            ? $fileinfo['tags']['id3v2'][$tagName][0]
-            : ($fileinfo['tags']['id3v1'][$tagName][0] != null
-               ? $fileinfo['tags']['id3v1'][$tagName][0]
-               : $defaultValue));
+        ? $fileinfo['tags']['id3v2'][$tagName][0]
+        : ($fileinfo['tags']['id3v1'][$tagName][0] != null
+            ? $fileinfo['tags']['id3v1'][$tagName][0]
+            : $defaultValue));
 }
 
 if (isset($_GET['start'])) {
@@ -38,12 +39,12 @@ if (isset($_GET['start'])) {
             if (file_exists('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
-            
+
             // Get mime type
             $mimetype = getmime('../' . $config['upload_dir'] . $entry);
 
             // Continue if file isn't readable
-            if(!$mimetype)
+            if (!$mimetype)
                 continue;
 
             // Skip invalid mime types
@@ -54,13 +55,13 @@ if (isset($_GET['start'])) {
                     break;
                 }
             }
-            if(!$validExtension) {
+            if (!$validExtension) {
                 continue;
             }
             array_push($new_files, $entry);
         }
     }
-    require '../components/getid3/getid3.php';
+    require_once '../components/getid3/getid3.php';
 
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
@@ -84,9 +85,9 @@ if (isset($_GET['start'])) {
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . $title . ']]></titlePG>
-	    <shortdescPG><![CDATA['.$comment.']]></shortdescPG>
-	    <longdescPG><![CDATA['.$comment.']]></longdescPG>
+	    <titlePG><![CDATA[' . htmlspecialchars($title) . ']]></titlePG>
+	    <shortdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></shortdescPG>
+	    <longdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>uncategorized</category1PG>
@@ -94,10 +95,10 @@ if (isset($_GET['start'])) {
 	        <category3PG></category3PG>
 	    </categoriesPG>
 	    <keywordsPG><![CDATA[]]></keywordsPG>
-	    <explicitPG>' . $config['explicit_podcast'] . '</explicitPG>
+	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . $author_name . '</namePG>
-	        <emailPG>' . $config['author_email'] . '</emailPG>
+	        <namePG>' . htmlspecialchars($author_name) . '</namePG>
+	        <emailPG>' . htmlspecialchars($config['author_email']) . '</emailPG>
 	    </authorPG>
 	    <fileInfoPG>
 	        <size>' . intval(filesize('../' . $config['upload_dir'] . $new_files[$i]) / 1000 / 1000) . '</size>
@@ -112,13 +113,21 @@ if (isset($_GET['start'])) {
         $fname = $new_files[$i];
         if (sizeof($output_array) == 0) {
             $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
+            $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
                 $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
+                $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
             rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
             $fname = $new_filename;
+        }
+        // Write image if set
+        if (isset($fileinfo['comments']['picture'])) {
+            $imgext = ($fileinfo['comments']['picture'][0]['image_mime'] == 'image/png') ? 'png' : 'jpg';
+            $img_filename = $config['absoluteurl'] . $config['img_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.' . $imgext;
+            file_put_contents($img_filename, $fileinfo['comments']['picture'][0]['data']);
         }
         // Write XML file
         file_put_contents('../' . $config['upload_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);

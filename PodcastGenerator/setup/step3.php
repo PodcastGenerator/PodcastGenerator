@@ -10,7 +10,8 @@
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";
-session_start();
+if(!isset($_SESSION))
+    session_start();
 
 if(isset($_GET["create"])) {
     $p = $_POST;
@@ -31,6 +32,11 @@ if(isset($_GET["create"])) {
                 $success = true;
             else
                 $error = "Failure while creating categories file";
+        }
+        if($success) {
+            session_destroy();
+            header("Location: ../index.php");
+            die();
         }
     }
 }
@@ -66,11 +72,6 @@ if(isset($_GET["create"])) {
                 <?php
                 if(isset($error)) {
                     echo "<strong><p style=\"color: red;\">Error: $error</p>";
-                }
-                if(isset($success)) {
-                    session_destroy();
-                    header("Location: ../index.php");
-                    die();
                 }
                 ?>
                 

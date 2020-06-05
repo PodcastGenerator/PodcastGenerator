@@ -19,15 +19,15 @@ if(!empty($config['podcastPassword]'])) {
 
 // Backwards compatibility: Redirect pre-3.0 archive pages to
 // categories.php.
-if(isset($_GET['p'])) {
-    if($_GET['p'] == 'archive') {
+if (isset($_GET['p'])) {
+    if ($_GET['p'] == 'archive') {
         $redirect_url = $config['url'] . 'categories.php?cat=' . $_GET['cat'];
         header('Location: ' . $redirect_url);
         die();
     }
 }
 
-$episodes = getEpisodes(null);
+$episodes = getEpisodes(null, $config);
 
 // When calling name
 // Backwards comp
@@ -35,27 +35,34 @@ $link = str_replace('?', '', $config['link']);
 $link = str_replace('=', '', $link);
 $link = str_replace('$url."', '', $link);
 
-if(strtolower($config['max_recent']) != 'all') {
-    $episodes = array_slice($episodes, 0, $config['max_recent']);
+if (sizeof($episodes) > 0) {
+    if (strtolower($config['max_recent']) != 'all') {
+        $episodes = array_slice($episodes, 0, $config['max_recent']);
+    }
+
+    $splitted_episodes = array_chunk($episodes, intval($config['episodeperpage']));
+    $episode_chunk = null;
+    if (isset($_GET['page'])) {
+        $episode_chunk = $splitted_episodes[intval(($_GET['page']) - 1)];
+    } else {
+        $episode_chunk = $splitted_episodes[0];
+    }
+
+    // Some translation strings
+    $more = _('More');
+    $download = _('Download');
+    $editdelete = _('Edit/Delete (Admin)');
+    $filetype = _('Filetype');
+    $size = _('Size');
+    $duration = _('Duration');
 }
 
-$splitted_episodes = array_chunk($episodes, intval($config['episodeperpage']));
-$episode_chunk = null;
-if(isset($_GET['page'])) {
-    $episode_chunk = $splitted_episodes[intval(($_GET['page']) - 1)];
-} else {
-    $episode_chunk = (count($splitted_episodes) > 0) ? $splitted_episodes[0] : [];
+else {
+    $no_episodes = _('No episodes uploaded yet');
 }
 
-// Some translation strings
-$more = _('More');
-$download = _('Download');
-$editdelete = _('Edit/Delete (Admin)');
+// These translation strings are always required
 $categories = _('Categories');
-$filetype = _('Filetype');
-$size = _('Size');
-$duration = _('Duration');
 
 $buttons = getButtons('./');
-require $config['theme_path']."index.php";
-?>
+require $config['theme_path'] . "index.php";

@@ -40,15 +40,15 @@ if (isset($_GET['edit'])) {
         <form action="pg_config.php?edit=1" method="POST">
             <?php echo _('Enable Audio and Video Player'); ?>:<br>
             <small><?php echo _('Enable streaming in web browser'); ?></small><br>
-            <input type="radio" name="enablestreaming" value="yes" checked> <?php echo _('Yes'); ?> <input type="radio" name="enablestreaming" value="no"> <?php echo _('No'); ?><br>
+            <input type="radio" name="enablestreaming" value="yes" <?php if($config['enablestreaming'] == 'yes') { echo 'checked'; } ?>> <?php echo _('Yes'); ?> <input type="radio" name="enablestreaming" value="no" <?php if($config['enablestreaming'] != 'yes') { echo 'checked'; } ?>> <?php echo _('No'); ?><br>
             <hr>
             <?php echo _('Enable Freebox'); ?>:<br>
             <small><?php echo _('Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.'); ?></small><br>
-            <input type="radio" name="freebox" value="yes" checked> <?php echo _('Yes'); ?> <input type="radio" name="freebox" value="no"> <?php echo _('No'); ?><br>
+            <input type="radio" name="freebox" value="yes" <?php if($config['freebox'] == 'yes') { echo 'checked'; } ?>> <?php echo _('Yes'); ?> <input type="radio" name="freebox" value="no" <?php if($config['freebox'] != 'yes') { echo 'checked'; } ?>> <?php echo _('No'); ?><br>
             <hr>
             <?php echo _('Enable categories'); ?>:<br>
             <small><?php echo _('Enable categories feature to make thematic lists of your podcasts.'); ?></small><br>
-            <input type="radio" name="categoriesenabled" value="yes" checked> <?php echo _('Yes'); ?> <input type="radio" name="categoriesenabled" value="no"> <?php echo _('No'); ?><br>
+            <input type="radio" name="categoriesenabled" value="yes" <?php if($config['categoriesenabled'] == 'yes') { echo 'checked'; } ?>> <?php echo _('Yes'); ?> <input type="radio" name="categoriesenabled" value="no" <?php if($config['categoriesenabled'] != 'yes') { echo 'checked'; } ?>> <?php echo _('No'); ?><br>
             <hr>
             <?php echo _('Use cron to regenerate the RSS feed'); ?>:<br>
             <input type="text" value="<?php echo htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']); ?>" style="width: 100%;" readonly><br>

@@ -24,7 +24,7 @@ if($config['podcastPassword'] != "") {
 $categories_xml = simplexml_load_file('categories.xml');
 $episodes = null;
 if(isset($_GET['cat'])) {
-    $episodes = getEpisodes($_GET['cat']);
+    $episodes = getEpisodes($_GET['cat'], $config);
 }
 $episode_chunk = $episodes;
 
@@ -37,6 +37,9 @@ $link = str_replace('$url."', '', $link);
 $more = _('More');
 $download = _('Download');
 $editdelete = _('Edit/Delete (Admin)');
+$filetype = _('Filetype');
+$size = _('Size');
+$duration = _('Duration');
 $categories = _('Categories');
 
 $buttons = getButtons('./');

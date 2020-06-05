@@ -5,6 +5,6 @@
 chmod 775 PodcastGenerator
 chmod 775 PodcastGenerator/media
 chmod 775 PodcastGenerator/images
-chown emil:www-data PodcastGenerator
-chown emil:www-data PodcastGenerator/media
-chown emil:www-data PodcastGenerator/images
+chown $USER:www-data PodcastGenerator
+chown $USER:www-data PodcastGenerator/media
+chown $USER:www-data PodcastGenerator/images

@@ -18,8 +18,8 @@ if (isset($_GET['edit'])) {
         goto error;
     }
     updateConfig('../config.php', 'itunes_category[0]', $_POST['cat1']);
-    updateConfig('../config.php', 'itunes_category[1]', $_POST['cat2']);
-    updateConfig('../config.php', 'itunes_category[2]', $_POST['cat3']);
+    updateConfig('../config.php', 'itunes_category[1]', $_POST['cat2'], true);
+    updateConfig('../config.php', 'itunes_category[2]', $_POST['cat3'], true);
     generateRSS();
     header('Location: store_cat.php');
     die();

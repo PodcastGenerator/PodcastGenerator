@@ -57,31 +57,35 @@ if (isset($_GET['change'])) {
     <br>
     <div class="container">
         <h1><?php echo _('Change theme'); ?></h1>
-        <small><?php echo sprintf('You can upload themes to your %s folder', '<code>themes/</code>'); ?></small>
+        <small><?php echo sprintf(_('You can upload themes to your %s folder'), '<code>themes/</code>'); ?></small>
         <h3><?php echo _('Installed themes'); ?></h3>
         <div class="row">
             <?php
-            for ($i = 0; $i < sizeof($themes); $i++) {
-                $json = $themes[$i][1];
-                echo '<div class="col-lg-6">';
-                echo '<div class="card">';
-                echo '<img src="../' . $themes[$i][0] . 'preview.png" class="card-img-top">';
-                echo '<div class="card-body">';
-                echo '<h3>' . htmlspecialchars($json->name) . '</h3>';
-                echo '<p>Description: ' . htmlspecialchars($json->description) . '</p>';
-                echo '<p>Author: ' . htmlspecialchars($json->author) . '</p>';
-                echo '<p>Theme Version: ' . htmlspecialchars($json->version) . '</p>';
-                echo '<p>Credits: ' . htmlspecialchars($json->credits) . '</p>';
-                echo '<hr>';
-                // Check if this theme is the used theme and or not
-                if ($themes[$i][0] == htmlspecialchars($config['theme_path'])) {
-                    echo '<small>' . _('This theme is currently in use') . '</small>';
-                } else {
-                    echo '<a href="theme_change.php?change=' . $i . '" class="btn btn-success">' . _('Switch theme') . '</a>';
+            if (sizeof($themes) == 0) {
+                echo '<div class="col-lg-6"><p>' . _('No compatible themes installed') . '</p></div>';
+            } else {
+                for ($i = 0; $i < sizeof($themes); $i++) {
+                    $json = $themes[$i][1];
+                    echo '<div class="col-lg-6">';
+                    echo '<div class="card">';
+                    echo '<img src="../' . $themes[$i][0] . 'preview.png" class="card-img-top">';
+                    echo '<div class="card-body">';
+                    echo '<h3>' . htmlspecialchars($json->name) . '</h3>';
+                    echo '<p>Description: ' . htmlspecialchars($json->description) . '</p>';
+                    echo '<p>Author: ' . htmlspecialchars($json->author) . '</p>';
+                    echo '<p>Theme Version: ' . htmlspecialchars($json->version) . '</p>';
+                    echo '<p>Credits: ' . htmlspecialchars($json->credits) . '</p>';
+                    echo '<hr>';
+                    // Check if this theme is the used theme and or not
+                    if ($themes[$i][0] == htmlspecialchars($config['theme_path'])) {
+                        echo '<small>' . _('This theme is currently in use') . '</small>';
+                    } else {
+                        echo '<a href="theme_change.php?change=' . $i . '" class="btn btn-success">' . _('Switch theme') . '</a>';
+                    }
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
             }
             ?>
         </div>
