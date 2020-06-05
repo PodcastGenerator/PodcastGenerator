@@ -10,7 +10,7 @@
 session_start();
 require 'core/include.php';
 // Check if a password is set
-if(isset($config, $config['podcastPassword']) && $config['podcastPassword'] != "") {
+if(!empty($config['podcastPassword]'])) {
     if(!isset($_SESSION['password'])) {
         header('Location: auth.php');
         die(_('Authentication required'));
