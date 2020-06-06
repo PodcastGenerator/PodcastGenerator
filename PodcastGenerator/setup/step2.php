@@ -62,38 +62,39 @@ if(file_exists($scripts.$testfile)) {
         <meta charset="utf-8">
         <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
-    <body>
-        <div class="container">
-            <h1>Podcast Generator - Step 2</h1>
-            <p>
-                We are now checking if our data direcotires are writable so you can actual store the data.<br>
-                <?php
-                if($media_write)
-                    echo "<p style=\"color: green;\">Media is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Media is not writeable</p>";
-                if($images_write)
-                    echo "<p style=\"color: green;\">Images is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Images is not writeable</p>";
-                if($scripts_write)
-                    echo "<p style=\"color: green;\">Scripts is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Scripts is not writeable</p>";
-                // Try to adjust file permissions
-                if(!$media_write || !$images_write || !$scripts_write) {
-                    echo "<p>Try to adjust file permissions</p>";
-                    chmod("$media_directory", 0777);
-                    chmod("$images_directory", 0777);
-                    chmod("$script_directory", 0777);
-                    echo "<strong><p style=\"color: red;\">Please <a href=\"step2.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
-                }
-                else {
-                    echo "<a href=\"step3.php\" class=\"btn btn-success\">Continue</a>";
-                }
-                ?>
-                <br>
-            </p>
+    <body class="bg-light">
+        <div class="container m-auto">
+            <div class="align-items-center justify-content-md-center p-3 row vh-100">
+                <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
+                    <h2>Podcast Generator - <small>Step 2</small></h2>
+                    <p><small>We are now checking if our data direcotires are writable so you can actual store the data.</small></p>
+                    <?php
+                    if($media_write)
+                        echo "<p style=\"color: green;\">Media is writeable</p>";
+                    else
+                        echo "<p style=\"color: red;\">Media is not writeable</p>";
+                    if($images_write)
+                        echo "<p style=\"color: green;\">Images is writeable</p>";
+                    else
+                        echo "<p style=\"color: red;\">Images is not writeable</p>";
+                    if($scripts_write)
+                        echo "<p style=\"color: green;\">Scripts is writeable</p>";
+                    else
+                        echo "<p style=\"color: red;\">Scripts is not writeable</p>";
+                    // Try to adjust file permissions
+                    if(!$media_write || !$images_write || !$scripts_write) {
+                        echo "<p>Try to adjust file permissions</p>";
+                        chmod("$media_directory", 0777);
+                        chmod("$images_directory", 0777);
+                        chmod("$script_directory", 0777);
+                        echo "<strong><p style=\"color: red;\">Please <a href=\"step2.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
+                    }
+                    else {
+                        echo "<a href=\"step3.php\" class=\"btn btn-success btn-block\">Continue</a>";
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </body>
 </html>

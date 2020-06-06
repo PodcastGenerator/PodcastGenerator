@@ -50,23 +50,31 @@ if (isset($_GET['login'])) {
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
 </head>
 
-<body>
-    <div class="container">
-        <h1><?php echo htmlspecialchars($config['podcast_title']); ?> - Login</h1>
-        <?php
-        if (isset($error)) {
-            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
-        }
-        ?>
-        <form action="login.php?login=1" method="POST">
-            <?php echo _('Username'); ?>:<br>
-            <input type="text" name="username"><br>
-            <?php echo _('Password'); ?>:<br>
-            <input type="password" name="password"><br>
-            <small><a href="forgot.php"><?php echo _('Forgot Password?'); ?></a></small><br>
-            <br>
-            <input type="submit" value="<?php echo _('Sign In'); ?>" class="btn btn-success">
-        </form>
+<body class="bg-light">
+    <div class="container m-auto">
+        <div class="align-items-center justify-content-md-center p-3 row vh-100">
+            <div class="col-xl-5 col-lg-5 col-md-10 col-sm-12 bg-white p-4">
+                <h2><?php echo htmlspecialchars($config['podcast_title']); ?> - Login</h2>
+                <?php
+                if (isset($error)) {
+                    echo '<strong><p style="color: red;">' . $error . '</p></strong>';
+                }
+                ?>
+                <form action="login.php?login=1" method="POST">
+                <div class="form-group">
+                    <?php echo _('Username'); ?>:<br>
+                    <input class="form-control" type="text" name="username">
+                </div>
+                <div class="form-group">
+                    <?php echo _('Password'); ?>:<br>
+                    <input class="form-control" type="password" name="password"><br>
+                    <small><a href="forgot.php"><?php echo _('Forgot Password?'); ?></a></small><br>
+                    <br>
+                    <input type="submit" value="<?php echo _('Sign In'); ?>" class="btn btn-success">
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 
