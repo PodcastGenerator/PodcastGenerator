@@ -1,7 +1,9 @@
 <?php
-require '../users.php';
+require '../core/misc/configsystem.php';
+require '../core/misc/functions.php';
 
-$users = json_decode($users_json, true);
+$config = getConfig('../config.php');
+$users = getUsers();
 
 if(isset($_GET['reset'])) {
     if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2'])) {
@@ -18,9 +20,7 @@ if(isset($_GET['reset'])) {
     }
     // No errors, continue
     $users[$_POST['username']] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $users_php = '<?php
-$users_json = \''.json_encode($users).'\';';
-    $ret = file_put_contents("../users.php", $users_php);
+    $ret = updateConfig('../config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
     if(!$ret) {
         $error = 'Unknown error. Be sure the file the users.php file is writable';
         goto error;
