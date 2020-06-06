@@ -19,6 +19,7 @@ if($version == '3.0' || $version == '3.0.1')
     // Backwards compatibity
     include 'backwards.php';
     backwards_3_0_to_3_1($config['absoluteurl']);
+    die("Please refresh");
 }
 include 'episodes.php';
 include 'feed_generator.php';
