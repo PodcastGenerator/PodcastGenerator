@@ -28,5 +28,3 @@ $config = getConfig('config.php');
 include 'misc/functions.php';
 // Load translation
 include 'translation.php';
-// Load users
-include $config['absoluteurl'].'users.php';

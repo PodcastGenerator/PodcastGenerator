@@ -18,7 +18,7 @@ function randomString($length = 8) {
     return $randomString;
 }
 
-function createconf() {
+function createconf($username, $password) {
     require "../core/misc/globs.php";
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -26,6 +26,7 @@ function createconf() {
     $url = str_replace("setup/step3.php?create=1", "", $url);
     $absoluteurl = realpath("../")."/";
     $installationKey = randomString();
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     $config = "<?php
 \$podcastgen_version = \"$version\"; // Version
@@ -98,6 +99,8 @@ function createconf() {
 \$feed_encoding = \"utf-8\";
 
 \$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
+
+\$users_json = \"{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}\";
 
 // END OF CONFIG
 ";

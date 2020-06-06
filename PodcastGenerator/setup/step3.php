@@ -24,11 +24,11 @@ if(isset($_GET["create"])) {
         }
         // Now create the config file
         if(!isset($error)) {
-            if(createconf())
+            if(createconf($p["username"], $p["password"]))
                 $success = true;
             else
                 $error = "Failure while creating the config file";
-            if(createstuff($p["username"], $p["password"]))
+            if(createstuff())
                 $success = true;
             else
                 $error = "Failure while creating categories file";
