@@ -46,7 +46,7 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$freebox = \"".$config['freebox']."\"; // enable freely customizable box
 
-\$enablepgnewsinadmin = \"".$config['enablepgnemsinadmin']."\";
+\$enablepgnewsinadmin = \"".$config['enablepgnewsinadmin']."\";
 
 \$strictfilenamepolicy = \"".$config['strictfilenamepolicy']."\"; // strictly rename files (just characters A to Z and numbers) 
 
