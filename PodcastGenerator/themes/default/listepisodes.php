@@ -19,9 +19,11 @@ if (isset($no_episodes)) {
             $type = 'invalid';
         }
 
-        echo '<div class="col-lg-6">';
-        echo '  <h1><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h1>';
-        echo '  <small>' . $item[$i]["episode"]["moddate"] . '</small><br>';
+        echo '  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">'; 
+        echo '  <div class="card h-100">';
+        echo '  <div class="card-body">';
+        echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';
+        echo '  <p class="card-text"><small class="text-muted">' . $item[$i]["episode"]["moddate"] . '</small><p>';
         // Check for image
         // The imgPG value has the highest priority
         if ($item[$i]["episode"]["imgPG"] != "") {
@@ -36,7 +38,7 @@ if (isset($no_episodes)) {
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
             echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $filename . '"><br>';
         }
-        echo '  <small>' . $item[$i]["episode"]["shortdescPG"] . '</small><br>';
+        echo '  <p class="card-text"><small>' . $item[$i]["episode"]["shortdescPG"] . '</small></p>';
         // Display edit button if admin is logged in
         if (isset($_SESSION["username"])) {
             echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $item[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
@@ -44,9 +46,11 @@ if (isset($no_episodes)) {
         echo '  <a class="btn btn-outline-primary btn-sm" href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $more . '</a>
                 <a class="btn btn-outline-success btn-sm" href="media/' . $item[$i]["episode"]["filename"] . '">' . $download . '</a><br>';
         if ($type != 'invalid') {
-            echo '  <small>' . $filetype . ': ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
-                - ' . $size . ': ' . $item[$i]["episode"]["fileInfoPG"]["size"] . ' MB - ' . $duration . ': ' . $item[$i]["episode"]["fileInfoPG"]["duration"] . 'm ' . $metadata . '</small><br>';
+            echo '  <small style="font-size:65%" class="text-muted">' . $filetype . ': ' . strtoupper(pathinfo($config["upload_dir"] . $item[$i]["episode"]["filename"], PATHINFO_EXTENSION)) . '
+                - ' . $size . ': ' . $item[$i]["episode"]["fileInfoPG"]["size"] . ' MB - ' . $duration . ': ' . $item[$i]["episode"]["fileInfoPG"]["duration"] . 'm ' . $metadata . '</small>';
         }
+        echo '</div>';
+        echo '<div style="background-color: #f1f3f4;" class="card-footer">';
         if (strtolower($config["enablestreaming"]) == "yes") {
             if ($type == 'audio') {
                 echo '  <audio controls>';
@@ -58,6 +62,8 @@ if (isset($no_episodes)) {
                 echo '  </video>';
             }
         }
+        echo '</div>';
+        echo '</div>';
         echo '</div>';
     }
 }
