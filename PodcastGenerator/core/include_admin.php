@@ -14,7 +14,8 @@ if (!file_exists('../config.php')) {
 }
 include 'misc/configsystem.php';
 include 'misc/globs.php';
-if($version == '3.0' || $version == '3.0.1')
+$config = getConfig('config.php');
+if($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')
 {
     // Backwards compatibity
     include 'backwards.php';
@@ -27,7 +28,6 @@ include 'buttons.php';
 include 'freebox.php';
 // Until Podcast Generator 3.0 passwords were stored in MD5, which is inseucre since 2005
 // This file is wizard to convert old password to a more secure algorithim
-$config = getConfig('../config.php');
 // Load useful functions
 include 'misc/functions.php';
 // Load translations
