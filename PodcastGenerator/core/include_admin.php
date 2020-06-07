@@ -14,7 +14,7 @@ if (!file_exists('../config.php')) {
 }
 include 'misc/configsystem.php';
 include 'misc/globs.php';
-$config = getConfig('config.php');
+$config = getConfig('../config.php');
 if($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')
 {
     // Backwards compatibity
