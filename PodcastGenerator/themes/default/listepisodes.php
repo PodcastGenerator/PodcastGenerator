@@ -10,7 +10,7 @@ if (isset($no_episodes)) {
             continue;
         $type = '';
         $metadata =  '';
-        if (substr($mime, 0, 5) == 'video') {
+        if (substr($mime, 0, 5) == 'video') { 
             $type = 'video';
         } elseif (substr($mime, 0, 5) == 'audio' || $mime == 'application/ogg') {
             $type = 'audio';
@@ -21,13 +21,10 @@ if (isset($no_episodes)) {
 
         echo '  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">'; 
         echo '  <div class="card h-100">';
-        echo '  <div class="card-body">';
-        echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';
-        echo '  <p class="card-text"><small class="text-muted">' . $item[$i]["episode"]["moddate"] . '</small><p>';
-        // Check for image
+                // Check for image
         // The imgPG value has the highest priority
         if ($item[$i]["episode"]["imgPG"] != "") {
-            echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $item[$i]["episode"]["imgPG"] . '"><br>';
+            echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $item[$i]["episode"]["imgPG"] . '">';
         } elseif (
             file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg') ||
             file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png')
@@ -36,12 +33,15 @@ if (isset($no_episodes)) {
             $filename = file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png') ?
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png' :
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
-            echo '  <img style="max-width: 100%; max-height: 100%;" src="' . $filename . '"><br>';
-        }
+            echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $filename . '">';
+        }     
+        echo '  <div class="card-body">';
+        echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';   
+        echo '  <p><i class="fa fa-calendar" aria-hidden="true"></i> <small class="text-muted">' . $item[$i]["episode"]["moddate"] . '</small></p> ';
         echo '  <p class="card-text"><small>' . $item[$i]["episode"]["shortdescPG"] . '</small></p>';
         // Display edit button if admin is logged in
         if (isset($_SESSION["username"])) {
-            echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $item[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
+            echo '  <a class="btn btn-danger btn-sm" href="admin/episodes_edit.php?name=' . $item[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
         }
         echo '  <a class="btn btn-outline-primary btn-sm" href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $more . '</a>
                 <a class="btn btn-outline-success btn-sm" href="media/' . $item[$i]["episode"]["filename"] . '">' . $download . '</a><br>';
