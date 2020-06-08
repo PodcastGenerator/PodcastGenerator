@@ -15,8 +15,8 @@ function getmime($filename)
 
 function checkLogin($username, $password_plain)
 {
-    global $users_json;
-    $users =  json_decode($users_json, true);
+    global $config;
+    $users =  json_decode($config['users_json'], true);
     foreach($users as $uname => $password_hash) {
         if($username == $uname) {
             // This is the correct user, now verify password
@@ -29,45 +29,35 @@ function checkLogin($username, $password_plain)
 function addUser($username, $password_plain)
 {
     global $config;
-    global $users_json;
-    $users =  json_decode($users_json, true);
+    $users =  json_decode($config['users_json'], true);
     // Check if user exists
     if(array_key_exists($username, $users))
         return false;
     $users[$username] = password_hash($password_plain, PASSWORD_DEFAULT);
-    $users_php = '<?php
-$users_json = \''.json_encode($users).'\';';
-    return file_put_contents($config['absoluteurl'] . 'users.php', $users_php);
+    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
 }
 
 function deleteUser($username)
 {
     global $config;
-    global $users_json;
-    $users =  json_decode($users_json, true);
+    $users =  json_decode($config['users_json'], true);
     unset($users[$username]);
-    $users_php = '<?php
-$users_json = \''.json_encode($users).'\';';
-    return file_put_contents($config['absoluteurl'] . 'users.php', $users_php);
+    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
 }
 
 function changeUserPassword($username, $new_password_plain)
 {
     global $config;
-    global $users_json;
-    $users = json_decode($users_json, true);
+    $users = json_decode($config['users_json'], true);
     // Check if user exists
     if(!array_key_exists($username, $users))
         return false;
     $users[$username] = password_hash($new_password_plain, PASSWORD_DEFAULT);
-    $users_php = '<?php
-$users_json = \''.json_encode($users).'\';';
-    return file_put_contents($config['absoluteurl'] . 'users.php', $users_php);
+    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
 }
 
 function getUsers()
 {
     global $config;
-    global $users_json;
-    return json_decode($users_json, true);
+    return json_decode($config['users_json'], true);
 }

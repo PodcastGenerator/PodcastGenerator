@@ -161,7 +161,7 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
     <div class="container">
         <h3><?php echo _('Edit Episode'); ?></h3>
         <?php
-        if (isset($error) && $error) {
+        if (isset($error)) {
             echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
         } ?>
         <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">

@@ -46,7 +46,7 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$freebox = \"".$config['freebox']."\"; // enable freely customizable box
 
-\$enablepgnewsinadmin = \"".$config['enablepgnemsinadmin']."\";
+\$enablepgnewsinadmin = \"".$config['enablepgnewsinadmin']."\";
 
 \$strictfilenamepolicy = \"".$config['strictfilenamepolicy']."\"; // strictly rename files (just characters A to Z and numbers) 
 
@@ -87,12 +87,9 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
+\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";
+
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
-    $users_json = '<?php
-$users_json = \'{
-    "'.$config['username'].'": "'.str_replace("\$", "\\\$", $config['userpassword']).'"
-}\';';
-    file_put_contents($absoluteurl . 'users.php', $users_json);
 }
