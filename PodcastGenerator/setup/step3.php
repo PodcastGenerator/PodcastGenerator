@@ -48,35 +48,35 @@ if(isset($_GET["create"])) {
         <meta charset="utf-8">
         <link rel="stylesheet" href="../core/bootstrap/style.css">
     </head>
-    <body>
-        <div class="container">
-            <h1>Podcast Generator - Step 3</h1>
-            <p>
-                We are now creating the admin account for the admin area.<br>
-                <form method="POST" action="step3.php?create=1">
-                    <div class="form-group">
-                        <label for="username">Enter Username:</label>
-                        <input type="text" class="form-control" name="username" id="username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Enter Password:</label>
-                        <input type="password" class="form-control" name="password" id="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="password2">Repeat Password:</label>
-                        <input type="password" class="form-control" name="password2" id="password2" name="password2">
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
-                <br>
-                <?php
-                if(isset($error)) {
-                    echo "<strong><p style=\"color: red;\">Error: $error</p>";
-                }
-                ?>
-                
-                <br>
-            </p>
+    <body class="bg-light">
+        <div class="container m-auto">
+            <div class="align-items-center justify-content-md-center p-3 row vh-100">
+                <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
+                    <h2>Podcast Generator - <small>Step 3</small></h2>
+                    <p><small>We are now creating the admin account for the admin area.</small></p>
+                    <form method="POST" action="step3.php?create=1">
+                        <div class="form-group">
+                            <label for="username">Enter Username:</label>
+                            <input type="text" class="form-control" name="username" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Enter Password:</label>
+                            <input type="password" class="form-control" name="password" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Repeat Password:</label>
+                            <input type="password" class="form-control" name="password2" id="password2" name="password2">
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                    </form>
+                    <?php
+                    if(isset($error)) {
+                        echo "<strong><p style=\"color: red;\">Error: $error</p>";
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </body>
 </html>
