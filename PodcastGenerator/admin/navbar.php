@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container"> 
     <a class="navbar-brand" href="index.php">Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="<?php echo _('Toggle navigation'); ?>">
         <span class="navbar-toggler-icon"></span>
@@ -6,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="../index.php">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,12 +60,10 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo $config['url']; ?>" target="_blank"><?php echo _('View Podcast'); ?></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout.php">Logout - <?php echo $_SESSION["username"]; ?></a>
+            <li class="nav-item nav-pills">
+                <a class="nav-link active p-1" href="logout.php">Logout - <?php echo $_SESSION["username"]; ?></a>
             </li>
         </ul>
     </div>
+</div>
 </nav>
