@@ -28,7 +28,7 @@ require "securitycheck.php";
                 ?>
                     <div class="alert alert-danger" role="alert">
                         WARNING!: You use a development version of Podcast Generator!<br>
-                            Please use a release version rather than this. You can find them <a class="alert-link" href="https://github.com/PodcastGenerator/PodcastGenerator/releases" target="_blank">here</a>
+                        Please use a release version rather than this. You can find them <a class="alert-link" href="https://github.com/PodcastGenerator/PodcastGenerator/releases" target="_blank">here</a>
                     </div>
                 <?php
                 }
