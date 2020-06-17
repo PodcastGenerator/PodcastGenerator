@@ -10,7 +10,7 @@ if (isset($no_episodes)) {
             continue;
         $type = '';
         $metadata =  '';
-        if (substr($mime, 0, 5) == 'video') { 
+        if (substr($mime, 0, 5) == 'video') {
             $type = 'video';
         } elseif (substr($mime, 0, 5) == 'audio' || $mime == 'application/ogg') {
             $type = 'audio';
