@@ -3,6 +3,6 @@
     "description": "The Light theme, simple and modern",
     "version": "3.1",
     "pg_versions": ["3.1"],
-    "author": "Emil Engler, with some help from Manoliu Lucian",
+    "author": "Emil Engler, Manoliu Lucian",
     "credits": "Bootstrap"
 }
