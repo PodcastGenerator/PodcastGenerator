@@ -71,7 +71,7 @@
             ?>
         </div>
         <?php
-        if (!isset($no_episodes)) {
+        if (!isset($no_episodes) && sizeof($episodes) > intval($config['episodeperpage'])) {
             echo '<nav>';
             echo '  <ul class="pagination">';
             for ($j = 0; $j < sizeof($splitted_episodes); $j++) {
