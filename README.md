@@ -23,3 +23,8 @@ http://podcastgenerator.net/demo
 ## Copyright
 This repository includes PHP getID3 written by James Heinrich and Bootstrap from Twitter, Inc. and The Bootstrap Authors.
 Thanks to Font Awesome for several fonts and stylesheets.
+
+## Docker
+To run this in docker 
+``` docker-compose -f docker-compose.yaml up --build -d```
+it will be accessible on (localhost:3045)[http://localhost:3045/] 

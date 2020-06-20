@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  podcastgenerator:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+     - target: 80
+       published: 3045
+       protocol: tcp
+       mode: host
+    volumes:
+     - ./PodcastGenerator/appdata:/app/PodcastGenerator/appdata
