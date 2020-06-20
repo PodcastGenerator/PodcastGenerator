@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row">
     <?php
     if (getFreebox() == null) {
@@ -18,6 +19,16 @@
             }
         }
         ?>
+    </div>
+    <div class="search-container" style="margin-bottom: 2rem;">
+        <form action="search.php" class="form-inline">
+            <div class="form-group" style="width: 80%;">
+                <input type="text" class="form-control" placeholder="Search.." name="search" style="width: 98%;">
+            </div>
+            <div class="form-group" style="width: 20%;">
+                <button type="submit" class="btn btn-info" style="width: 100%;"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
     </div>
 </div>
 <?php
