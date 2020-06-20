@@ -27,7 +27,14 @@ if (isset($_GET['p'])) {
     }
 }
 
-$episodes = getEpisodes(null, $config);
+$episodes = null;
+// Testing if search
+if(isset($_GET['search']) && $_GET['search'] !== "") {
+    $episodes = searchEpisodes($_GET['search'], $config);
+}
+else {
+    $episodes = getEpisodes(null, $config);
+}
 
 // When calling name
 // Backwards comp
@@ -58,10 +65,16 @@ if (sizeof($episodes) > 0) {
 }
 
 else {
-    $no_episodes = _('No episodes uploaded yet');
+    if (isset($_GET['search'])) {
+        $no_episodes = _('No episodes found with that search term');
+    }
+    else {
+        $no_episodes = _('No episodes uploaded yet');
+    }
 }
 
 // These translation strings are always required
+$search = _('Search');
 $categories = _('Categories');
 
 $buttons = getButtons('./');
