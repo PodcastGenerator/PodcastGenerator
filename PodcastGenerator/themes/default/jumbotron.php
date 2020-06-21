@@ -20,7 +20,7 @@
         ?>
     </div>
     <div class="search-container" style="margin-bottom: 2rem;">
-        <form action="search.php" class="form-inline">
+        <form action="index.php" class="form-inline">
             <div class="form-group" style="width: 80%;">
                 <input type="text" class="form-control" placeholder="Search.." name="search" style="width: 98%;">
             </div>
