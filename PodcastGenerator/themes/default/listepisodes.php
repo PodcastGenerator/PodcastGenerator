@@ -19,9 +19,9 @@ if (isset($no_episodes)) {
             $type = 'invalid';
         }
 
-        echo '  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">'; 
+        echo '  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">';
         echo '  <div class="card h-100">';
-                // Check for image
+        // Check for image
         // The imgPG value has the highest priority
         if ($item[$i]["episode"]["imgPG"] != "") {
             echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $item[$i]["episode"]["imgPG"] . '">';
@@ -34,9 +34,9 @@ if (isset($no_episodes)) {
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png' :
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
             echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $filename . '">';
-        }     
+        }
         echo '  <div class="card-body">';
-        echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';   
+        echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';
         echo '  <p><i class="fa fa-calendar" aria-hidden="true"></i> <small class="text-muted">' . $item[$i]["episode"]["moddate"] . '</small></p> ';
         echo '  <p class="card-text"><small>' . $item[$i]["episode"]["shortdescPG"] . '</small></p>';
         // Display edit button if admin is logged in

@@ -20,7 +20,7 @@ require "securitycheck.php";
 
 <body class="bg-light">
     <div class="container m-auto">
-    <div class="align-items-center justify-content-md-center p-3 row vh-100">
+        <div class="align-items-center justify-content-md-center p-3 row vh-100">
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
                 <h2>Podcast Generator - Setup</h2>
                 <?php
@@ -40,8 +40,8 @@ require "securitycheck.php";
                     <hr>
                     <a href="step1.php" class="btn btn-block btn-success">Begin Installation</a>
                 </p>
-            </div>  
-        </div>     
+            </div>
+        </div>
     </div>
 </body>
 

@@ -11,13 +11,13 @@ require 'securitycheck.php';
 session_start();
 $languages = simplexml_load_file('../components/supported_languages/supported_languages.xml');
 $supported_codes = array();
-foreach($languages as $item) {
+foreach ($languages as $item) {
     array_push($supported_codes, $item->code);
 }
 
-if(isset($_GET['done'])) {
+if (isset($_GET['done'])) {
     // Use english as fallback language, if no valid language was provided
-    if(!in_array($_POST['lang'], $supported_codes)) {
+    if (!in_array($_POST['lang'], $supported_codes)) {
         $_POST['lang'] = 'en_US';
     }
     $_SESSION['lang'] = $_POST['lang'];
@@ -40,19 +40,19 @@ if(isset($_GET['done'])) {
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
                 <h2>Podcast Generator - <small>Step 1</small></h2>
                 <p class="lead">Please choose a language</p>
-                    <form action="step1.php?done=1" method="POST">
-                        <select class="custom-select mb-4" name="lang">
-                            <?php
-                            foreach ($languages as $item) {
-                                echo '<option value=' . $item->code . '>' . $item->name . '</option>'."\n";
-                            }
-                            ?>
-                        </select>
-                        <input type="submit" value="Submit" class="btn btn-success mb-3 btn-block">
-                    </form>
-                    <small>If your desired language can't be choosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
+                <form action="step1.php?done=1" method="POST">
+                    <select class="custom-select mb-4" name="lang">
+                        <?php
+                        foreach ($languages as $item) {
+                            echo '<option value=' . $item->code . '>' . $item->name . '</option>' . "\n";
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" value="Submit" class="btn btn-success mb-3 btn-block">
+                </form>
+                <small>If your desired language can't be choosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
             </div>
-        </div>       
+        </div>
     </div>
 </body>
 

@@ -32,7 +32,7 @@ echo '  <div class="card mb-5">';
 echo '  <div class="row no-gutters">';
 // Check for image
 // The imgPG value has the highest priority
-if ($correctepisode["episode"]["imgPG"] != "") {    
+if ($correctepisode["episode"]["imgPG"] != "") {
     echo '  <div class="col-md-4">';
     echo '  <img class="card-img" src="' . $correctepisode["episode"]["imgPG"] . '">';
     echo '  </div>';

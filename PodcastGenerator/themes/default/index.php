@@ -5,8 +5,8 @@
     <title><?php echo htmlspecialchars($config["podcast_title"]); ?></title>
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/bootstrap.css">
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/custom.css">
-    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/font-awesome.min.css"> 
-       
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/font-awesome.min.css">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>">
@@ -41,7 +41,7 @@
         echo '<meta property="og:title" content="' . $config["podcast_title"] . ' - ' . $correctepisode["episode"]["titlePG"] . '" />' . "\n";
         echo '    <meta property="og:type" content="article" />' . "\n";
         echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . '" />' . "\n";
-        echo '    <meta property="og:image" content="' . $img .'" />' . "\n";
+        echo '    <meta property="og:image" content="' . $img . '" />' . "\n";
         echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
     } else {
         echo '    <meta property="og:title" content="' . $config["podcast_title"] . '" />' . "\n";
