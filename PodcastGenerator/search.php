@@ -60,4 +60,9 @@ else {
 
 $buttons = getButtons('./');
 require $config['theme_path'].'index.php';
+
+// These translation strings are always required
+$categories = _('Categories');
+
+$buttons = getButtons('./');
 ?>
