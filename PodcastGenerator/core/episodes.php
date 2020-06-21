@@ -7,7 +7,7 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function getEpisodes($category = null, $_config)
+function setupEpisodes($_config)
 {
     $supported_extensions = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
     $realsupported_extensions = array();
@@ -31,7 +31,7 @@ function getEpisodes($category = null, $_config)
             $this_mtime = filemtime($this_entry);
             if (in_array(pathinfo($this_entry, PATHINFO_EXTENSION), $supported_extensions)
                 && file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
-                && $this_mtime <= $now_time) {
+                && ($this_mtime <= $now_time || isset($_SESSION["username"]))) {
                 array_push($episodes_mtimes, [$entry, $this_mtime]);
             }
         }
@@ -39,7 +39,12 @@ function getEpisodes($category = null, $_config)
 
     // Sort entries according to their pubDates.
     usort($episodes_mtimes, 'compare_mtimes');
+    return $episodes_mtimes;
+}
 
+function getEpisodes($category = null, $_config)
+{
+    $episodes_mtimes = setupEpisodes($_config);
     // Get XML data for the episodes of interest.
     $episodes_data = array();
     for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
@@ -95,37 +100,7 @@ function getEpisodes($category = null, $_config)
 function searchEpisodes($name = "", $_config)
 {
     $name = strtolower($name);
-    $supported_extensions = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    $realsupported_extensions = array();
-    foreach ($supported_extensions as $item) {
-        array_push($realsupported_extensions, $item->extension);
-    }
-    $supported_extensions = $realsupported_extensions;
-    unset($realsupported_extensions);
-
-    // Get episodes names and pubDates (which are the file
-    // modification times).  We'll ignore files with future
-    // timestamps.
-    $now_time = time();
-    $episodes_mtimes = array();
-    if ($handle = opendir($_config['absoluteurl'] . $_config['upload_dir'])) {
-        while (false !== ($entry = readdir($handle))) {
-            // If the file is a 'real' file, has a linked XML file,
-            // and isn't from the future, add its name and
-            // modification time to our array.
-            $this_entry = $_config['absoluteurl'] . $_config['upload_dir'] . $entry;
-            $this_mtime = filemtime($this_entry);
-            if (in_array(pathinfo($this_entry, PATHINFO_EXTENSION), $supported_extensions)
-                && file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
-                && $this_mtime <= $now_time) {
-                array_push($episodes_mtimes, [$entry, $this_mtime]);
-            }
-        }
-    }
-
-    // Sort entries according to their pubDates.
-    usort($episodes_mtimes, 'compare_mtimes');
-    
+    $episodes_mtimes = setupEpisodes($_config);
     // Check if name is a category and replace
     $cats_xml = simplexml_load_file('categories.xml');
     foreach ($cats_xml as $item) {
@@ -133,8 +108,6 @@ function searchEpisodes($name = "", $_config)
             $name = strval($item->id[0]);
         }
     }
-    
-    
     // Get XML data for the episodes of interest.
     $episodes_data = array();
     for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
@@ -143,19 +116,15 @@ function searchEpisodes($name = "", $_config)
         $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
         $xml = simplexml_load_file($_config['absoluteurl'] . $_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
         foreach ($xml as $item) {
-            // If we are filtering by category, we can omit episodes
-            // that lack the desired category.
-            if ($name != "") {
-                if (strpos(strtolower($item->titlePG), $name) === false
-                    && strpos(strtolower($item->shortdescPG[0]), $name) === false
-                    && strpos(strtolower($item->longdescPG[0]), $name) === false
-                    && strpos(strtolower($item->categoriesPG->category1PG[0]), $name) === false
-                    && strpos(strtolower($item->categoriesPG->category2PG[0]), $name) === false
-                    && strpos(strtolower($item->categoriesPG->category3PG[0]), $name) === false
-                    && strpos(strtolower($item->keywordsPG[0]), $name) === false
-                    && strpos(strtolower($item->authorPG->namePG[0]), $name) === false) {
-                    continue;
-                }
+            if (strpos(strtolower($item->titlePG), $name) === false
+                && strpos(strtolower($item->shortdescPG[0]), $name) === false
+                && strpos(strtolower($item->longdescPG[0]), $name) === false
+                && strpos(strtolower($item->categoriesPG->category1PG[0]), $name) === false
+                && strpos(strtolower($item->categoriesPG->category2PG[0]), $name) === false
+                && strpos(strtolower($item->categoriesPG->category3PG[0]), $name) === false
+                && strpos(strtolower($item->keywordsPG[0]), $name) === false
+                && strpos(strtolower($item->authorPG->namePG[0]), $name) === false) {
+                continue;
             }
             $append_array = [
                 'episode' => [
