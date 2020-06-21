@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row">
     <?php
     if (getFreebox() == null) {
@@ -26,7 +25,7 @@
                 <input type="text" class="form-control" placeholder="Search.." name="search" style="width: 98%;">
             </div>
             <div class="form-group" style="width: 20%;">
-                <button type="submit" class="btn btn-info" style="width: 100%;"><i class="fa fa-search"></i></button>
+                <button type="submit" class="btn btn-info" style="width: 100%;"><div style="-webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg);">&#9906;</div></button>
             </div>
         </form>
     </div>
