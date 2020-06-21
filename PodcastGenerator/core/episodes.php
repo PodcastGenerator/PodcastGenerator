@@ -31,7 +31,7 @@ function setupEpisodes($_config)
             $this_mtime = filemtime($this_entry);
             if (in_array(pathinfo($this_entry, PATHINFO_EXTENSION), $supported_extensions)
                 && file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
-                && ($this_mtime <= $now_time || isset($_SESSION["username"]))) {
+                && ($this_mtime <= $now_time || isset($_SESSION['username']))) {
                 array_push($episodes_mtimes, [$entry, $this_mtime]);
             }
         }
