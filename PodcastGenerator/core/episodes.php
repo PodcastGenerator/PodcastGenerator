@@ -42,6 +42,39 @@ function setupEpisodes($_config)
     return $episodes_mtimes;
 }
 
+function arrayEpisode($item, $episode, $_config)
+{
+    $append_array = [
+        'episode' => [
+            'titlePG' => $item->titlePG,
+            'shortdescPG' => $item->shortdescPG,
+            'longdescPG' => $item->longdescPG,
+            'imgPG' => $item->imgPG,
+            'categoriesPG' => [
+                'category1PG' => $item->categoriesPG->category1PG,
+                'category2PG' => $item->categoriesPG->category2PG,
+                'category3PG' => $item->categoriesPG->category3PG
+            ],
+            'keywordsPG' => $item->keywordsPG,
+            'explicitPG' => $item->explicitPG,
+            'authorPG' => [
+                'namePG' => $item->authorPG->namePG,
+                'emailPG' => $item->authorPG->emailPG
+            ],
+            'fileInfoPG' => [
+                'size' => $item->fileInfoPG->size,
+                'duration' => $item->fileInfoPG->duration,
+                'bitrate' => $item->fileInfoPG->bitrate,
+                'frequency' => $item->fileInfoPG->frequency
+            ],
+            'filename' => $episode,
+            'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
+            'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
+        ]
+    ];
+    return $append_array;
+}
+
 function getEpisodes($category = null, $_config)
 {
     $episodes_mtimes = setupEpisodes($_config);
@@ -62,34 +95,7 @@ function getEpisodes($category = null, $_config)
                     continue;
                 }
             }
-            $append_array = [
-                'episode' => [
-                    'titlePG' => $item->titlePG,
-                    'shortdescPG' => $item->shortdescPG,
-                    'longdescPG' => $item->longdescPG,
-                    'imgPG' => $item->imgPG,
-                    'categoriesPG' => [
-                        'category1PG' => $item->categoriesPG->category1PG,
-                        'category2PG' => $item->categoriesPG->category2PG,
-                        'category3PG' => $item->categoriesPG->category3PG
-                    ],
-                    'keywordsPG' => $item->keywordsPG,
-                    'explicitPG' => $item->explicitPG,
-                    'authorPG' => [
-                        'namePG' => $item->authorPG->namePG,
-                        'emailPG' => $item->authorPG->emailPG
-                    ],
-                    'fileInfoPG' => [
-                        'size' => $item->fileInfoPG->size,
-                        'duration' => $item->fileInfoPG->duration,
-                        'bitrate' => $item->fileInfoPG->bitrate,
-                        'frequency' => $item->fileInfoPG->frequency
-                    ],
-                    'filename' => $episode,
-                    'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
-                    'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
-                ]
-            ];
+            $append_array = arrayEpisode($item, $episode, $_config);
             array_push($episodes_data, $append_array);
         }
     }
@@ -126,34 +132,7 @@ function searchEpisodes($name = "", $_config)
                 && strpos(strtolower($item->authorPG->namePG[0]), $name) === false) {
                 continue;
             }
-            $append_array = [
-                'episode' => [
-                    'titlePG' => $item->titlePG,
-                    'shortdescPG' => $item->shortdescPG,
-                    'longdescPG' => $item->longdescPG,
-                    'imgPG' => $item->imgPG,
-                    'categoriesPG' => [
-                        'category1PG' => $item->categoriesPG->category1PG,
-                        'category2PG' => $item->categoriesPG->category2PG,
-                        'category3PG' => $item->categoriesPG->category3PG
-                    ],
-                    'keywordsPG' => $item->keywordsPG,
-                    'explicitPG' => $item->explicitPG,
-                    'authorPG' => [
-                        'namePG' => $item->authorPG->namePG,
-                        'emailPG' => $item->authorPG->emailPG
-                    ],
-                    'fileInfoPG' => [
-                        'size' => $item->fileInfoPG->size,
-                        'duration' => $item->fileInfoPG->duration,
-                        'bitrate' => $item->fileInfoPG->bitrate,
-                        'frequency' => $item->fileInfoPG->frequency
-                    ],
-                    'filename' => $episode,
-                    'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
-                    'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
-                ]
-            ];
+            $append_array = arrayEpisode($item, $episode, $_config);
             array_push($episodes_data, $append_array);
         }
     }
