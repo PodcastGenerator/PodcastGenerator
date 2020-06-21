@@ -7,11 +7,11 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+session_start();
 require 'core/include.php';
 
 // Check for password
 if($config['podcastPassword'] != "") {
-    session_start();
     if(!isset($_SESSION['password'])) {
         header('Location: auth.php');
         die(_('Authentication required'));
