@@ -58,9 +58,6 @@ else {
     $no_episodes = _('No episodes found with that search term.');
 }
 
-// These translation strings are always required
-$categories = _('Categories');
-
 $buttons = getButtons('./');
 require $config['theme_path'].'index.php';
 ?>
