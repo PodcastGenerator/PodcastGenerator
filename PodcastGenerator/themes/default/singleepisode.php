@@ -48,6 +48,12 @@ if ($correctepisode["episode"]["imgPG"] != "") {
     echo '  <img class="card-img" src="' . $filename . '">';
     echo '  </div>';
 }
+// If no cover art, we use itunes_image.jpg
+else {
+    echo '  <div class="col-md-4">';
+    echo '  <img class="card-img" src="' . $config["url"] . $config["img_dir"] . "itunes_image.jpg" . '">';
+    echo '  </div>';
+}
 echo '  <div class="col">';
 echo '  <div class="card-body">';
 echo '  <h4>' . $correctepisode["episode"]["titlePG"] . '</h4>';
