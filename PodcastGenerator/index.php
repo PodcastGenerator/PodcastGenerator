@@ -29,7 +29,7 @@ if (isset($_GET['p'])) {
 
 $episodes = null;
 // Testing if search
-if(isset($_GET['search']) && $_GET['search'] !== "" && strtolower($_GET['search']) !== "all") {
+if(isset($_GET['search']) && $_GET['search'] !== "") {
     $episodes = searchEpisodes($_GET['search'], $config);
 }
 else {
