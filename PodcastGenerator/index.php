@@ -74,6 +74,7 @@ else {
 }
 
 // These translation strings are always required
+$search = _('Search');
 $categories = _('Categories');
 
 $buttons = getButtons('./');
