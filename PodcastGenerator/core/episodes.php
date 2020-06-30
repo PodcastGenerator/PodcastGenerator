@@ -95,8 +95,7 @@ function getEpisodes($category = null, $_config)
                     continue;
                 }
             }
-            $append_array = arrayEpisode($item, $episode, $_config);
-            array_push($episodes_data, $append_array);
+            array_push($episodes_data, arrayEpisode($item, $episode, $_config));
         }
     }
     unset($_config);
@@ -123,17 +122,16 @@ function searchEpisodes($name = "", $_config)
         $xml = simplexml_load_file($_config['absoluteurl'] . $_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
         foreach ($xml as $item) {
             if (strpos(strtolower($item->titlePG), $name) === false
-                && strpos(strtolower($item->shortdescPG[0]), $name) === false
-                && strpos(strtolower($item->longdescPG[0]), $name) === false
-                && strpos(strtolower($item->categoriesPG->category1PG[0]), $name) === false
-                && strpos(strtolower($item->categoriesPG->category2PG[0]), $name) === false
-                && strpos(strtolower($item->categoriesPG->category3PG[0]), $name) === false
-                && strpos(strtolower($item->keywordsPG[0]), $name) === false
-                && strpos(strtolower($item->authorPG->namePG[0]), $name) === false) {
+                && strpos(strtolower($item->shortdescPG), $name) === false
+                && strpos(strtolower($item->longdescPG), $name) === false
+                && strpos(strtolower($item->categoriesPG->category1PG), $name) === false
+                && strpos(strtolower($item->categoriesPG->category2PG), $name) === false
+                && strpos(strtolower($item->categoriesPG->category3PG), $name) === false
+                && strpos(strtolower($item->keywordsPG), $name) === false
+                && strpos(strtolower($item->authorPG->namePG), $name) === false) {
                 continue;
             }
-            $append_array = arrayEpisode($item, $episode, $_config);
-            array_push($episodes_data, $append_array);
+            array_push($episodes_data, arrayEpisode($item, $episode, $_config));
         }
     }
     unset($_config);
