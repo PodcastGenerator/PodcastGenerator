@@ -89,9 +89,9 @@ function getEpisodes($category = null, $_config)
             // If we are filtering by category, we can omit episodes
             // that lack the desired category.
             if ($category != null && $category != 'all') {
-                if ($item->categoriesPG->category1PG[0] != $category 
-                    && $item->categoriesPG->category2PG[0] != $category
-                    && $item->categoriesPG->category3PG[0] != $category) {
+                if ($item->categoriesPG->category1PG != $category 
+                    && $item->categoriesPG->category2PG != $category
+                    && $item->categoriesPG->category3PG != $category) {
                     continue;
                 }
             }
@@ -109,8 +109,8 @@ function searchEpisodes($name = "", $_config)
     // Check if name is a category and replace
     $cats_xml = simplexml_load_file('categories.xml');
     foreach ($cats_xml as $item) {
-        if ($name === strtolower($item->description[0])) {
-            $name = strval($item->id[0]);
+        if ($name === strtolower($item->description)) {
+            $name = strval($item->id);
         }
     }
     // Get XML data for the episodes of interest.
