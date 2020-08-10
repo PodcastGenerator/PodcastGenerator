@@ -69,7 +69,7 @@ if (file_exists($scripts . $testfile)) {
         <div class="align-items-center justify-content-md-center p-3 row vh-100">
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
                 <h2>Podcast Generator - <small>Step 2</small></h2>
-                <p><small>We are now checking if our data direcotires are writable so you can actual store the data.</small></p>
+                <p><small>We are now checking if our data directories are writable so you can actual store the data.</small></p>
                 <?php
                 if ($media_write)
                     echo "<p style=\"color: green;\">Media is writeable</p>";
