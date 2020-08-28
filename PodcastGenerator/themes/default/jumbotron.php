@@ -19,6 +19,16 @@
         }
         ?>
     </div>
+    <div class="search-container" style="margin-bottom: 2rem;">
+        <form action="index.php" class="form-inline">
+            <div class="form-group" style="width: 80%;">
+                <input type="text" class="form-control" placeholder="<?php echo $search; ?>.." name="search" style="width: 98%;">
+            </div>
+            <div class="form-group" style="width: 20%;">
+                <button type="submit" class="btn btn-info" style="width: 100%;"><div style="-webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg);">&#9906;</div></button>
+            </div>
+        </form>
+    </div>
 </div>
 <?php
 if (getFreebox() != null) {

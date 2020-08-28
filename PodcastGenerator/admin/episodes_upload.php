@@ -32,10 +32,11 @@ if (sizeof($_POST) > 0) {
     // If no categories were selected, add the 'uncategorized'
     // category.  Otherwise, ensure that no more than three categories
     // were actually selected.
-    if (!isset($_POST['category']) || sizeof($_POST['category']) == 0) {
-        $_POST['category'] = [];
+
+    if (sizeof((array)$_POST['category']) == 0) {
+        $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } else if (sizeof($_POST['category']) > 3) {
+    } else if (sizeof((array)$_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }

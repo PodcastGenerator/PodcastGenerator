@@ -1,8 +1,8 @@
 {
-    "name": "default",
-    "description": "The default theme, simple and modern",
+    "name": "Light",
+    "description": "The Light theme, simple and modern",
     "version": "3.1",
     "pg_versions": ["3.1"],
-    "author": "Emil Engler",
+    "author": "Emil Engler, Manoliu Lucian",
     "credits": "Bootstrap"
 }
