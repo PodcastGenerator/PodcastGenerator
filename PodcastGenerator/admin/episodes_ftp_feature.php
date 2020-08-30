@@ -72,6 +72,9 @@ if (isset($_GET['start'])) {
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
     for ($i = 0; $i < sizeof($new_files); $i++) {
+        // ensure the filename is in UTF-8 encoding
+        $new_files[$i] = mb_convert_encoding($new_files[$i], 'UTF-8', mb_detect_encoding($new_files[$i]));
+
         // Get audio metadata (duration, bitrate etc)
         $getID3 = new getID3;
         $fileinfo = $getID3->analyze('../' . $config['upload_dir'] . $new_files[$i]);

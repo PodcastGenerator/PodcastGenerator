@@ -59,6 +59,9 @@ if (sizeof($_POST) > 0) {
     }
 
     $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
+    // ensure the filename is in UTF-8 encoding
+    $targetfile = mb_convert_encoding($targetfile, 'UTF-8', mb_detect_encoding($targetfile));
+
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
