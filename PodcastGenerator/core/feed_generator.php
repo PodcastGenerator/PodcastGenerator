@@ -12,9 +12,10 @@ function generateRSS()
     // Make variables available in this scope
     global $config, $version;
     // Create path if it doesn't exist
-    if (!is_dir($config['absoluteurl'] . $config['feed_dir'])) {
-        mkdir($config['absoluteurl'] . $config['feed_dir']);
-    }
+    $feed_dir = (isset($config['feed_dir'])) ? $config['feed_dir'] :  '';
+    if (!is_dir($config['absoluteurl'] . $feed_dir) ){
+        mkdir($config['absoluteurl'] . $feed_dir);
+
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
     <!-- generator="Podcast Generator ' . $version . '" -->
@@ -131,6 +132,10 @@ function generateRSS()
         $item = '
         <item>' . "\n";
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
+        $item .= $indent . '<itunes:episode>' . $file->episode->episodePG . '</itunes:episode>' . $linebreak;
+        $item .= $indent . '<itunes:episodeType>' . $file->episode->typePG . '</itunes:episodeType>' . $linebreak;
+			  $item .= $indent . '<itunes:block><![CDATA[' . $file->episode->blockPG . ']]></itunes:block>' . $linebreak;
+        $item .= $indent . '<itunes:season>' . $file->episode->seasonPG . '</itunes:season>' . $linebreak;
         $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
         if ($file->episode->longdescPG == "<![CDATA[]]>") {
@@ -169,5 +174,5 @@ function generateRSS()
     }
     // Append footer
     $xml .= $feedfooter;
-    return file_put_contents($config['absoluteurl'] . $config['feed_dir'] .  'feed.xml', $xml);
+    return file_put_contents($config['absoluteurl'] . $feed_dir .  'feed.xml', $xml);
 }

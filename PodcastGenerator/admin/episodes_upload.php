@@ -32,6 +32,7 @@ if (sizeof($_POST) > 0) {
     // If no categories were selected, add the 'uncategorized'
     // category.  Otherwise, ensure that no more than three categories
     // were actually selected.
+
     if (sizeof((array)$_POST['category']) == 0) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
@@ -260,6 +261,23 @@ if (sizeof($_POST) > 0) {
                         <?php echo _('Author'); ?>*:<br>
                         <input type="text" class="form-control" name="authorname" placeholder="<?php echo _('Author Name'); ?>" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?php echo _('Author E-Mail'); ?>" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
+                    </div>
+                    <div class="form-group">
+                        <?php echo _('Episode Number'); ?>:<br>
+                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>">
+                        <?php echo _('Season Number'); ?>:<br>
+                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>">
+                        <?php echo _('Episode Type'); ?>:<br>
+                        <select name="episodetype">
+                            <option value="full" selected>Normal Episode</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="bonus">Bonus</option>
+                        </select><br>
+                        <?php echo _('Episode Status'); ?>:<br>
+                        <select name="episodeblock">
+                            <option value="No" selected>Avaliable</option>
+                            <option value="Yes">Blocked</option>
+                        </select><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>

@@ -221,6 +221,23 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
                     </div>
+                    <div class="form-group">
+                        <?php echo _('Episode Number'); ?>:<br>
+                        <input type="text" class="form-control" name="episodenumber" placeholder="<?php echo _('Episode Number'); ?>" value="<?php echo htmlspecialchars($episode->episode->episodePG); ?>">
+                        <?php echo _('Season Number'); ?>:<br>
+                        <input type="text" class="form-control" name="seasonnumber" placeholder="<?php echo _('Season Number'); ?>" value="<?php echo htmlspecialchars($episode->episode->seasonPG); ?>">
+                        <?php echo _('Episode Type'); ?>:<br>
+                        <select name="episodetype">
+                            <option value="full" selected>Normal Episode</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="bonus">Bonus</option>
+                        </select><br>
+                        <?php echo _('Episode Status'); ?>:<br>
+                        <select name="episodeblock">
+                            <option value="No" selected>Avaliable</option>
+                            <option value="Yes">Blocked</option>
+                        </select><br>
+                    </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Save Changes'); ?>">
                 </div>
             </div>
