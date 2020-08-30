@@ -66,12 +66,12 @@ if (sizeof($_POST) > 0) {
         }
     }
 
-    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . basename($_FILES['file']['name']);
+    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . $appendix . '-' . basename($_FILES['file']['name']);
+            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['file']['name']);
             $targetfile = str_replace(' ', '_', $targetfile);
             $appendix++;
         }

@@ -112,11 +112,11 @@ if (isset($_GET['start'])) {
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
         if (sizeof($output_array) == 0) {
-            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
+            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
-                $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
+                $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]);
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
