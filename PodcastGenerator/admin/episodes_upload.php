@@ -58,14 +58,6 @@ if (sizeof($_POST) > 0) {
         goto error;
     }
 
-    // Skip files if they are not strictly named
-    if ($config['strictfilenamepolicy'] == 'yes') {
-        if (!preg_match('/^[\-\w.\x7f-\xff ]+$/', basename($_FILES['file']['name']))) {
-            $error = _('Invalid filename, only A-Z, a-z, underscores, dashes and dots are permitted. Along with language specific characters and accents.');
-            goto error;
-        }
-    }
-
     $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {

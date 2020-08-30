@@ -48,8 +48,6 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$enablepgnewsinadmin = \"".$config['enablepgnewsinadmin']."\";
 
-\$strictfilenamepolicy = \"".$config['strictfilenamepolicy']."\"; // strictly rename files (just characters A to Z and numbers) 
-
 \$categoriesenabled = \"".$config['categoriesenabled']."\";
 
 \$cronAutoIndex = ".$config['cronAutoIndex']."; //Auto Index New Episodes via Cron

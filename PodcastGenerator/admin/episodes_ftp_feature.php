@@ -72,12 +72,6 @@ if (isset($_GET['start'])) {
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
     for ($i = 0; $i < sizeof($new_files); $i++) {
-        // Skip files if they are not strictly named
-        if ($config['strictfilenamepolicy'] == 'yes') {
-            if (!preg_match('/^[\-\w.\x7f-\xff ]+$/', $new_files[$i])) {
-                continue;
-            }
-        }
         // Get audio metadata (duration, bitrate etc)
         $getID3 = new getID3;
         $fileinfo = $getID3->analyze('../' . $config['upload_dir'] . $new_files[$i]);
