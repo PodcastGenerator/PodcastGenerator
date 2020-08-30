@@ -79,7 +79,7 @@ if (isset($_GET['start'])) {
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
         $title = getID3Tag($fileinfo, 'title', pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME));
-        $comment = getID3Tag($fileinfo, 'comment', '');
+        $comment = getID3Tag($fileinfo, 'comment', $title);
         $author_name = getID3Tag($fileinfo, 'artist', $config['author']);
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
