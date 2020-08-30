@@ -14,11 +14,17 @@ require '../core/include_admin.php';
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
-    return ($fileinfo['tags']['id3v2'][$tagName][0] != null
-        ? $fileinfo['tags']['id3v2'][$tagName][0]
-        : ($fileinfo['tags']['id3v1'][$tagName][0] != null
-            ? $fileinfo['tags']['id3v1'][$tagName][0]
-            : $defaultValue));
+    if(isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
+            $fileinfo['tags']['id3v2'][$tagName][0])
+        return $fileinfo['tags']['id3v2'][$tagName][0];
+    else
+    {
+        if(isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
+                $fileinfo['tags']['id3v1'][$tagName][0])
+            return $fileinfo['tags']['id3v1'][$tagName][0];
+        else
+            return $defaultValue;
+    }
 }
 
 if (isset($_GET['start'])) {
@@ -80,7 +86,7 @@ if (isset($_GET['start'])) {
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
         $title = getID3Tag($fileinfo, 'title', pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME));
         $comment = getID3Tag($fileinfo, 'comment', $title);
-        $author_name = getID3Tag($fileinfo, 'artist', $config['author']);
+        $author_name = getID3Tag($fileinfo, 'artist', '');
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
@@ -97,7 +103,7 @@ if (isset($_GET['start'])) {
 	    <keywordsPG><![CDATA[]]></keywordsPG>
 	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
-	        <namePG></namePG>
+	        <namePG>'. $author_name .'</namePG>
 	        <emailPG></emailPG>
 	    </authorPG>
 	    <fileInfoPG>
