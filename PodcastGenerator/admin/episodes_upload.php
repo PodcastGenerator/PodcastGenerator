@@ -17,9 +17,7 @@ if (sizeof($_POST) > 0) {
         $_POST['shortdesc'],
         $_POST['date'],
         $_POST['time'],
-        $_POST['explicit'],
-        $_POST['authorname'],
-        $_POST['authoremail']
+        $_POST['explicit']
     ];
     // Check if fields are missing
     for ($i = 0; $i < sizeof($req_fields); $i++) {
@@ -48,7 +46,7 @@ if (sizeof($_POST) > 0) {
     }
 
     // Check author e-mail
-    if (isset($_POST['authoremail'])) {
+    if (!empty($_POST['authoremail'])) {
         if (!filter_var($_POST['authoremail'], FILTER_VALIDATE_EMAIL)) {
             $error = _('Invalid Author E-Mail provided');
             goto error;
@@ -68,17 +66,18 @@ if (sizeof($_POST) > 0) {
         }
     }
 
-    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . basename($_FILES['file']['name']);
+    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '-' . $appendix . '-' . basename($_FILES['file']['name']);
+            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['file']['name']);
             $targetfile = str_replace(' ', '_', $targetfile);
             $appendix++;
         }
     }
-    $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
+    $targetfile = strtolower($targetfile);
+    $targetfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME));
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
@@ -258,8 +257,8 @@ if (sizeof($_POST) > 0) {
                     </div>
                     <div class="form-group">
                         <?php echo _('Author'); ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="<?php echo _('Author Name'); ?>" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="<?php echo _('Author E-Mail'); ?>" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
+                        <input type="text" class="form-control" name="authorname" placeholder="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
                     </div>
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>

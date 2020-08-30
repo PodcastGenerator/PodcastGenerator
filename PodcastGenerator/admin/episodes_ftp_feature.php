@@ -14,11 +14,17 @@ require '../core/include_admin.php';
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
-    return ($fileinfo['tags']['id3v2'][$tagName][0] != null
-        ? $fileinfo['tags']['id3v2'][$tagName][0]
-        : ($fileinfo['tags']['id3v1'][$tagName][0] != null
-            ? $fileinfo['tags']['id3v1'][$tagName][0]
-            : $defaultValue));
+    if(isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
+            $fileinfo['tags']['id3v2'][$tagName][0])
+        return $fileinfo['tags']['id3v2'][$tagName][0];
+    else
+    {
+        if(isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
+                $fileinfo['tags']['id3v1'][$tagName][0])
+            return $fileinfo['tags']['id3v1'][$tagName][0];
+        else
+            return $defaultValue;
+    }
 }
 
 if (isset($_GET['start'])) {
@@ -79,8 +85,8 @@ if (isset($_GET['start'])) {
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
         $title = getID3Tag($fileinfo, 'title', pathinfo('../' . $config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME));
-        $comment = getID3Tag($fileinfo, 'comment', '');
-        $author_name = getID3Tag($fileinfo, 'artist', $config['author']);
+        $comment = getID3Tag($fileinfo, 'comment', $title);
+        $author_name = getID3Tag($fileinfo, 'artist', '');
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
@@ -97,8 +103,8 @@ if (isset($_GET['start'])) {
 	    <keywordsPG><![CDATA[]]></keywordsPG>
 	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . htmlspecialchars($author_name) . '</namePG>
-	        <emailPG>' . htmlspecialchars($config['author_email']) . '</emailPG>
+	        <namePG>'. $author_name .'</namePG>
+	        <emailPG></emailPG>
 	    </authorPG>
 	    <fileInfoPG>
 	        <size>' . intval(filesize('../' . $config['upload_dir'] . $new_files[$i]) / 1000 / 1000) . '</size>
@@ -108,18 +114,19 @@ if (isset($_GET['start'])) {
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>';
-        // Select new filenames (with date) if not already exsits
+        // Select new filenames (with date) if not already exists
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
         if (sizeof($output_array) == 0) {
-            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $new_files[$i];
+            $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
-                $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '-' . $appendix . '-' . basename($new_files[$i]);
+                $new_filename = '../' . $config['upload_dir'] . date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]);
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
+            $new_filename = strtolower($new_filename);
             rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
             $fname = $new_filename;
         }
