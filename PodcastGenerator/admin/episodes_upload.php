@@ -62,8 +62,8 @@ if (sizeof($_POST) > 0) {
 
     // Skip files if they are not strictly named
     if ($config['strictfilenamepolicy'] == 'yes') {
-        if (!preg_match('/^[\w.]+$/', basename($_FILES['file']['name']))) {
-            $error = _('Invalid filename, only A-Z, a-z, underscores and dots are permitted');
+        if (!preg_match('/^[\-\w.\x7f-\xff ]+$/', basename($_FILES['file']['name']))) {
+            $error = _('Invalid filename, only A-Z, a-z, underscores, dashes and dots are permitted. Along with language specific characters and accents.');
             goto error;
         }
     }

@@ -68,7 +68,7 @@ if (isset($_GET['start'])) {
     for ($i = 0; $i < sizeof($new_files); $i++) {
         // Skip files if they are not strictly named
         if ($config['strictfilenamepolicy'] == 'yes') {
-            if (!preg_match('/^[\w.]+$/', $new_files[$i])) {
+            if (!preg_match('/^[\-\w.\x7f-\xff ]+$/', $new_files[$i])) {
                 continue;
             }
         }
