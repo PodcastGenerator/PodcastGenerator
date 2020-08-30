@@ -108,7 +108,7 @@ if (isset($_GET['start'])) {
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>';
-        // Select new filenames (with date) if not already exsits
+        // Select new filenames (with date) if not already exists
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
         if (sizeof($output_array) == 0) {
