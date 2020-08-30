@@ -120,6 +120,7 @@ if (isset($_GET['start'])) {
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
+            $new_filename = strtolower($new_filename);
             rename('../' . $config['upload_dir'] . $new_files[$i], $new_filename);
             $fname = $new_filename;
         }

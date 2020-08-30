@@ -76,7 +76,8 @@ if (sizeof($_POST) > 0) {
             $appendix++;
         }
     }
-    $targetfile_without_ext = '../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
+    $targetfile = strtolower($targetfile);
+    $targetfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME));
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
