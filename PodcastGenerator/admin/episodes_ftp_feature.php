@@ -85,7 +85,7 @@ if (isset($_GET['start'])) {
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . htmlspecialchars($title) . ']]></titlePG>
+	    <titlePG><![CDATA[' . htmlspecialchars($title, ENT_NOQUOTES) . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></longdescPG>
 	    <imgPG></imgPG>

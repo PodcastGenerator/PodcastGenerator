@@ -103,7 +103,7 @@ if (sizeof($_POST) > 0) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . htmlspecialchars($_POST['title']) . ']]></titlePG>
+	    <titlePG><![CDATA[' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . ']]></titlePG>
 	    <shortdescPG><![CDATA[' . htmlspecialchars($_POST['shortdesc']) . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . htmlspecialchars($long_desc) . ']]></longdescPG>
 	    <imgPG></imgPG>
