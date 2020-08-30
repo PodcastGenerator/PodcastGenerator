@@ -7,16 +7,16 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_0_to_3_1($absoluteurl)
+function backwards_3_1_to_3_2($absoluteurl)
 {
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')) {
+    if(!($config['podcastgen_version'] == '3.1')) {
         return;
     }
     $config_php = "<?php
-\$podcastgen_version = \"3.1\"; // Version
+\$podcastgen_version = \"3.2\"; // Version
 
 \$first_installation = ".$config['first_installation'].";
 
@@ -73,6 +73,9 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$author_email = \"".$config['author_email']."\";
 
+# The e-amil of the technical admin of the podcast
+\$webmaster = \"".$config['author_email']."\";
+
 \$itunes_category[0] = \"".$config['itunes_category[0]']."\"; // iTunes categories (mainCategory:subcategory)
 \$itunes_category[1] = \"".$config['itunes_category[1]']."\";
 \$itunes_category[2] = \"".$config['itunes_category[2]']."\";
@@ -87,7 +90,7 @@ function backwards_3_0_to_3_1($absoluteurl)
 
 \$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
-\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";
+\$users_json = \"".$config['users_json']."\";
 
 // END OF CONFIG
 ";

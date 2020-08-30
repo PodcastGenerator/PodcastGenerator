@@ -28,6 +28,8 @@ function generateRSS()
 		<lastBuildDate>' . date('r') . '</lastBuildDate>
 		<language>' . substr($config['feed_language'], 0, 2) . '</language>
 		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
+		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
+		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>
 		<itunes:image href="' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg" />
 		<image>
 			<url>' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg</url>
