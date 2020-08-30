@@ -97,8 +97,8 @@ if (isset($_GET['start'])) {
 	    <keywordsPG><![CDATA[]]></keywordsPG>
 	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
-	        <namePG>' . htmlspecialchars($author_name) . '</namePG>
-	        <emailPG>' . htmlspecialchars($config['author_email']) . '</emailPG>
+	        <namePG></namePG>
+	        <emailPG></emailPG>
 	    </authorPG>
 	    <fileInfoPG>
 	        <size>' . intval(filesize('../' . $config['upload_dir'] . $new_files[$i]) / 1000 / 1000) . '</size>
