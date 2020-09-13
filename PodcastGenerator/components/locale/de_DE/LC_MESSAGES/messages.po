@@ -23,6 +23,13 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: Missing translations
+msgid "All Episodes"
+msgstr "Alle Episoden"
+
+msgid "Uncategorized"
+msgstr "Nicht kategorisiert"
+
 #: PodcastGenerator/admin/episodes_bulk.php:37
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"

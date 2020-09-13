@@ -35,7 +35,7 @@ function createstuff() {
 <PodcastGenerator>
     <category>
     <id>uncategorized</id>
-    <description>Uncategorized</description>
+    <description>'._('Uncategorized').'</description>
     </category>
 </PodcastGenerator>';
         if(!file_put_contents("../categories.xml", $catfile)) {
