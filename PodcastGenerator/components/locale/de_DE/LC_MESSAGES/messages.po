@@ -23,10 +23,11 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Missing translations
+#: PodcastGenerator/themes/default/categories.php:27
 msgid "All Episodes"
 msgstr "Alle Episoden"
 
+#: PodcastGenerator/setup/createstuff.php:38 
 msgid "Uncategorized"
 msgstr "Nicht kategorisiert"
 
