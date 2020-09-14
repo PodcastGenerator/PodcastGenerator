@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
+#: PodcastGenerator/themes/default/categories.php:27
+msgid "All Episodes"
+msgstr "All Episodes"
+
+#: PodcastGenerator/setup/createstuff.php:38 
+msgid "Uncategorized"
+msgstr "Uncategorized"
+
 #: PodcastGenerator/admin/episodes_bulk.php:37
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"

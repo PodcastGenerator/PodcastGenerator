@@ -24,6 +24,14 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: PodcastGenerator/themes/default/categories.php:27
+msgid "All Episodes"
+msgstr ""
+
+#: PodcastGenerator/setup/createstuff.php:38 
+msgid "Uncategorized"
+msgstr ""
+
 #: PodcastGenerator/admin/episodes_bulk.php:37
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"
