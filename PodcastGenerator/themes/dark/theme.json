@@ -1,0 +1,8 @@
+{
+    "name": "Dark",
+    "description": "Darkness is power! Darth Vader. Satan. Homelander.",
+    "version": "1.0.0",
+    "pg_versions": ["3.2"],
+    "author": "Emil Engler, Manoliu Lucian",
+    "credits": "Bootstrap"
+}
