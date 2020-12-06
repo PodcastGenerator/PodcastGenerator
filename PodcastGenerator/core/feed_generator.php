@@ -133,8 +133,8 @@ function generateRSS()
         $item = '
         <item>' . "\n";
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
-        $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
-        $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
+        $item .= $indent . '<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
+        $item .= $indent . '<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>' . $linebreak;
         if ($file->episode->longdescPG != "") {
             $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
         }

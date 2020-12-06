@@ -91,16 +91,16 @@ if (isset($_GET['start'])) {
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . htmlspecialchars($title, ENT_NOQUOTES) . ']]></titlePG>
-	    <shortdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . htmlspecialchars($comment) . ']]></longdescPG>
+	    <titlePG>' . htmlspecialchars($title, ENT_NOQUOTES) . '</titlePG>
+	    <shortdescPG><![CDATA[' . $comment . ']]></shortdescPG>
+	    <longdescPG><![CDATA[' . $comment . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>uncategorized</category1PG>
 	        <category2PG></category2PG>
 	        <category3PG></category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA[]]></keywordsPG>
+	    <keywordsPG></keywordsPG>
 	    <explicitPG>' . htmlspecialchars($config['explicit_podcast']) . '</explicitPG>
 	    <authorPG>
 	        <namePG>'. $author_name .'</namePG>
