@@ -138,16 +138,16 @@ if (sizeof($_POST) > 0) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <titlePG><![CDATA[' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . ']]></titlePG>
-	    <shortdescPG><![CDATA[' . htmlspecialchars($_POST['shortdesc']) . ']]></shortdescPG>
-	    <longdescPG><![CDATA[' . htmlspecialchars($_POST['longdesc']) . ']]></longdescPG>
+	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
+	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
+	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
 	        <category3PG>' . htmlspecialchars($_POST['category'][2]) . '</category3PG>
 	    </categoriesPG>
-	    <keywordsPG><![CDATA[' . htmlspecialchars($_POST['itunesKeywords']) . ']]></keywordsPG>
+	    <keywordsPG>' . htmlspecialchars($_POST['itunesKeywords']) . '</keywordsPG>
 	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
 	    <authorPG>
 	        <namePG>' . htmlspecialchars($_POST['authorname']) . '</namePG>
