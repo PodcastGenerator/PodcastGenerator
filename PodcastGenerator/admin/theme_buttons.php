@@ -136,15 +136,15 @@ error: echo "";
         ?>
             <hr>
             <h3><?php echo _('Add Button'); ?></h3>
-            <form action="theme_buttons.php?add=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
+            <form action="theme_buttons.php?add=1" method="POST">
                 <?php echo _('Name (needs to be unique)'); ?>:<br>
-                <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
+                <input type="text" name="name" value=""><br>
                 <?php echo _('Link (where it should point to)'); ?>:<br>
-                <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
+                <input type="text" name="href" value=""><br>
                 <?php echo sprintf(_('CSS Classes (depends on theme, you can use %s in the default theme)'), '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
-                <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
+                <input type="text" name="class" value=""><br>
                 <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
-                <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
+                <input type="text" name="protocol" value=""><br><br>
                 <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success">
             </form>
         <?php
