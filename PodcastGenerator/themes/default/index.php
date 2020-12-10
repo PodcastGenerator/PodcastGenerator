@@ -43,6 +43,9 @@
         echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . '" />' . "\n";
         echo '    <meta property="og:image" content="' . $img . '" />' . "\n";
         echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
+        if (strtolower($config["enablestreaming"]) == "yes" && ($type == 'audio' || $type == 'video')) {
+            echo '    <meta property="og:' . $type . '" src="' . $config["upload_dir"] . $correctepisode["episode"]["filename"] . '" />' . "\n";
+        }
     } else {
         echo '    <meta property="og:title" content="' . $config["podcast_title"] . '" />' . "\n";
         echo '    <meta property="og:type" content="article" />' . "\n";
