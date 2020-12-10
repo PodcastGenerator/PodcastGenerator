@@ -55,7 +55,7 @@
                 $type = 'audio';
             }
             if ($type == 'audio' || $type == 'video') {
-                echo '    <meta property="og:' . $type . '" content="' . $config["upload_dir"] . $correctepisode["episode"]["filename"] . '" />' . "\n";
+                echo '    <meta property="og:' . $type . '" content="' . $config["url"] . $config["upload_dir"] . $correctepisode["episode"]["filename"] . '" />' . "\n";
                 if ($mime) {
                     echo '    <meta property="og:' . $type . ':type" content="' . $mime . '" />' . "\n";
                 }
