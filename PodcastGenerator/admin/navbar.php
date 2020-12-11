@@ -55,6 +55,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="pg_config.php"><?php echo _('Change Podcast Generator Config'); ?></a>
                     <a class="dropdown-item" href="pg_users.php"><?php echo _('Manage users'); ?></a>
+                    <a class="dropdown-item" href="pg_integrations.php"><?php echo _('Manage integrations'); ?></a>
                 </div>
             </li>
         </ul>
