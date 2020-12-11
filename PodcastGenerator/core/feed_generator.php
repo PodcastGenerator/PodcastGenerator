@@ -11,11 +11,11 @@ function itunes_category($categoryName)
 {
     $cat_seg = explode(':', $categoryName, 2);
         if (count($cat_seg) > 1) {
-            $output .= '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
+            $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
             $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
             $output .= '		</itunes:category>' . "\n";
         } else {
-            $output .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"/>' . "\n";
+            $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
         }
     return $output;
 }
