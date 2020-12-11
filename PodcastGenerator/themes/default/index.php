@@ -12,7 +12,7 @@
     <meta name="description" content="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>">
     <meta name="author" content="<?php echo htmlspecialchars($config["author_name"]); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="alternate" type="application/rss+xml" title="Subscribe to <?php echo htmlspecialchars($config["podcast_title"]); ?>" href="feed.php">
+    <link rel="alternate" type="application/rss+xml" title="Subscribe to <?php echo htmlspecialchars($config["podcast_title"]); ?>" href="feed.xml">
 
     <!--    Add meta propreties for social cards, depends if it's for the main page ou a single episode -->
     <?php
