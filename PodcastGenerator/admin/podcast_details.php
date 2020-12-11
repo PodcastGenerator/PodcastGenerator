@@ -18,6 +18,7 @@ if (isset($_GET['edit'])) {
     die();
 } else {
     generateRSS();
+    pingServices();
 }
 ?>
 <!DOCTYPE html>

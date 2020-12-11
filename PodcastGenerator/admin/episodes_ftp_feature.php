@@ -143,6 +143,7 @@ if (isset($_GET['start'])) {
     if ($num_added) {
         // Regenerate RSS feed
         generateRSS();
+        pingServices();
         $success = sprintf(_('Added %d new episode(s)'), $num_added);
     } else {
         $success = _('No new episodes were found');
