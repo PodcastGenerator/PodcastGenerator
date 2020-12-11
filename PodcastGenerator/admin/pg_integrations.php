@@ -45,6 +45,17 @@ if (isset($_GET['edit'])) {
         } ?>
         <form action="pg_integrations.php?edit=1" method="POST">
             <section>
+                <h2><?= _('Podcast Index'); ?>:</h2>
+                <?= _('API key') ?>:<br>
+                <input type="text" name="pi_api_key" value="<?= htmlspecialchars($config['pi_api_key']); ?>"><br>
+                <?= _('API secret') ?>:<br>
+                <input type="password" name="pi_api_secret" value="<?= htmlspecialchars($config['pi_api_secret']) ?>"><br>
+                <?= _('Podcast ID') ?>:<br>
+                <small><?= _('Enter the ID number for your show in Podcast Index or click "Add Show" to add your show to the index') ?></small><br>
+                <input type="text" name="pi_podcast_id" value="<?= $config['pi_podcast_id'] ?>"><br>
+                <hr>
+            </section>
+            <section>
                 <h2><?= _('WebSub') ?>:</h2>
                 <?= _('Server address') ?>:<br>
                 <small><?= _('This is the full address of the WebSub hub to alert when the podcast is updated.') ?></small><br>
