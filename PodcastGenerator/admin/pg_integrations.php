@@ -12,8 +12,51 @@ require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
     foreach ($_POST as $key => $value) {
-        updateConfig('../config.php', $key, $value);
+        if ($key[0] != '_') {
+            updateConfig('../config.php', $key, $value);
+        } else if ($key == '_register') {
+            $register = $value;
+        }
     }
+
+    if (isset($register)) {
+        switch ($register) {
+            case 'podcast-index':
+                if ($config['pi_podcast_id']) {
+                    $error = _('Already registered with Podcast Index');
+                    goto error;
+                }
+                require_once('../vendor/autoload.php');
+                try {
+                    $client = new PodcastIndex\Client([
+                        'app' => 'PodcastGenerator/' . $version,
+                        'key' => $config['pi_api_key'],
+                        'secret' => $config['pi_api_secret']
+                    ]);
+                    /** @var PodcastIndex\Response */
+                    $response = $client->add->byFeedUrl($config['url'] . $config['feed_dir'] . 'feed.xml');
+                    if ($response->code() >= 400) {
+                        $error = _('API error') . ': ' . $response->reason();
+                        goto error;
+                    }
+                    $result = $response->json();
+                    if ($result->status && $result->status != 'false' && $result->feedId) {
+                        updateConfig('../config.php', 'pi_podcast_id', $result->feedId);
+                    }
+                }
+                catch (Exception $e) {
+                    $error = $e->getMessage();
+                    goto error;
+                }
+            break;
+
+            default:
+                $error = _('Unsupported service') . ': ' . $register;
+                goto error;
+            break;
+        }
+    }
+
     header('Location: pg_integrations.php');
     die();
 
@@ -47,12 +90,15 @@ if (isset($_GET['edit'])) {
             <section>
                 <h2><?= _('Podcast Index'); ?>:</h2>
                 <?= _('API key') ?>:<br>
-                <input type="text" name="pi_api_key" value="<?= htmlspecialchars($config['pi_api_key']); ?>"><br>
+                <input type="text" name="pi_api_key" value="<?= htmlspecialchars($config['pi_api_key']) ?>"><br>
                 <?= _('API secret') ?>:<br>
                 <input type="password" name="pi_api_secret" value="<?= htmlspecialchars($config['pi_api_secret']) ?>"><br>
                 <?= _('Podcast ID') ?>:<br>
                 <small><?= _('Enter the ID number for your show in Podcast Index or click "Add Show" to add your show to the index') ?></small><br>
-                <input type="text" name="pi_podcast_id" value="<?= $config['pi_podcast_id'] ?>"><br>
+                <input type="text" name="pi_podcast_id" value="<?= $config['pi_podcast_id'] ?>">
+                <?php if (!$config['pi_podcast_id']) { ?>
+                    <button type="submit" name="_register" value="podcast-index" class="btn btn-sm btn-secondary"><?= _('Add Show') ?></button>
+                <?php } ?><br>
                 <hr>
             </section>
             <section>
