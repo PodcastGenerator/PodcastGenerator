@@ -105,6 +105,11 @@ function createconf($username, $password) {
 
 \$users_json = \"{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}\";
 
+#####################
+# WebSub
+
+\$websub_server = \"https://pubsubhubbub.appspot.com/\";
+
 // END OF CONFIG
 ";
     $f = fopen("../config.php", 'w');

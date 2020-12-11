@@ -92,6 +92,11 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$users_json = \"".$config['users_json']."\";
 
+#####################
+# WebSub
+
+\$websub_server = \"\";
+
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
