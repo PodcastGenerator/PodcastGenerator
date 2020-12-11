@@ -23,7 +23,7 @@ function pingWebSub()
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => $data,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded')
+        CURLOPT_HTTPHEADER => array('Content-Type: application/x-www-form-urlencoded')
     );
     try {
         $handle = curl_init();
