@@ -214,7 +214,8 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                     </div>
                     <div class="form-group">
                         <?php echo _('Explicit Content'); ?>:<br>
-                        <input type="radio" value="yes" name="explicit" <?php if($episode->episode->explicitPG == 'yes') { echo 'checked'; } ?>> Yes <input type="radio" value="no" name="explicit" <?php if($episode->episode->explicitPG == 'no') { echo 'checked'; } ?>> No<br>
+                        <label><input type="radio" value="yes" name="explicit" <?php if($episode->episode->explicitPG == 'yes') { echo 'checked'; } ?>> <?php echo _('Yes'); ?></label>
+                        <label><input type="radio" value="no" name="explicit" <?php if($episode->episode->explicitPG == 'no') { echo 'checked'; } ?>> <?php echo _('No'); ?></label><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Author'); ?>*:<br>

@@ -253,7 +253,8 @@ if (sizeof($_POST) > 0) {
                     </div>
                     <div class="form-group">
                         <?php echo _('Explicit content'); ?>:<br>
-                        <input type="radio" value="yes" name="explicit"> <?php echo _('Yes'); ?> <input type="radio" value="no" name="explicit" checked> <?php echo _('No'); ?><br>
+                        <label><input type="radio" value="yes" name="explicit"> <?php echo _('Yes'); ?></label>
+                        <label><input type="radio" value="no" name="explicit" checked> <?php echo _('No'); ?></label><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Author'); ?>*:<br>
