@@ -165,9 +165,11 @@ function generateRSS()
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
         if (!empty($file->episode->episodeNumPG)) {
             $item .= $indent . '<itunes:episode>' . $file->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
+            $item .= $indent . '<podcast:episode>' . $file->episode->episodeNumPG . '</podcast:episode>' . $linebreak;
         }
         if (!empty($file->episode->seasonNumPG)) {
             $item .= $indent . '<itunes:season>' . $file->episode->seasonNumPG . '</itunes:season>' . $linebreak;
+            $item .= $indent . '<podcast:season>' . $file->episode->seasonNumPG . '</podcast:season>' . $linebreak;
         }
         $item .= $indent . '<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>' . $linebreak;
