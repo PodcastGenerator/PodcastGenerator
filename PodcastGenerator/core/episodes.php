@@ -50,6 +50,8 @@ function arrayEpisode($item, $episode, $_config)
         'episode' => [
             'guid' => $item->guid,
             'titlePG' => $item->titlePG,
+            'episodeNumPG' => $item->episodeNumPG,
+            'seasonNumPG' => $item->seasonNumPG,
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
             'imgPG' => $item->imgPG,
