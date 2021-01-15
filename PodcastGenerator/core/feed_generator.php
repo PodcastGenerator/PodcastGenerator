@@ -142,9 +142,9 @@ function generateRSS()
         $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
         $item .= $indent . '<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>' . $linebreak;
         $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
-        $item .= $indent . '<author>' . $author . '</author>' . $linebreak;
+        $item .= $indent . '<author>' . htmlspecialchars($author) . '</author>' . $linebreak;
         if (!empty($file->episode->authorPG->namePG)) {
-            $item .= $indent . '<itunes:author>' . $file->episode->authorPG->namePG . '</itunes:author>' . $linebreak;
+            $item .= $indent . '<itunes:author>' . htmlspecialchars($file->episode->authorPG->namePG) . '</itunes:author>' . $linebreak;
         } else {
             $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
         }
