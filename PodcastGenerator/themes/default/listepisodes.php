@@ -35,9 +35,9 @@ if (isset($no_episodes)) {
                 $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
             echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $filename . '">';
         }
-        // If no cover art, we use itunes_image.jpg
+        // If no episode cover art, we use the global feed covert art
         else {
-            echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $config["url"] . $config["img_dir"] . "itunes_image.jpg" . '">';
+            echo '  <img class="card-img-top mb-1" style="max-width: 100%; max-height: 100%;" src="' . $config["url"] . $config["img_dir"] . $config['podcast_cover'] . '">';
         }
         echo '  <div class="card-body">';
         echo '  <h5><a href="' . $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] . '">' . $item[$i]["episode"]["titlePG"] . '</a></h5>';
