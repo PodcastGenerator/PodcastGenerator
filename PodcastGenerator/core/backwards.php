@@ -69,6 +69,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$podcast_description = \"".$config['podcast_description']."\";
 
+\$podcast_cover = \"".$config['podcast_cover']."\";
+
 \$author_name = \"".$config['author_name']."\";
 
 \$author_email = \"".$config['author_email']."\";
