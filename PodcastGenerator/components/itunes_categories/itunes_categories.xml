@@ -299,24 +299,65 @@
         <description>Science</description>
     </category>
     <category>
-        <id>Science:Documentary</id>
-        <description>Science:Documentary</description>
+        <id>Science:Astronomy</id>
+        <description>Science:Astronomy</description>
     </category>
     <category>
-        <id>Science:Personal Journals</id>
-        <description>Science:Personal Journals</description>
+        <id>Science:Chemistry</id>
+        <description>Science:Chemistry</description>
     </category>
     <category>
-        <id>Science:Philosophy</id>
-        <description>Science:Philosophy</description>
+        <id>Science:Earth Sciences</id>
+        <description>Science:Earth Sciences</description>
     </category>
     <category>
-        <id>Science:Places &amp; Travel</id>
-        <description>Science:Places &amp; Travel</description>
+        <id>Science:Life Sciences</id>
+        <description>Science:Life Sciences</description>
     </category>
     <category>
-        <id>ScienceRelationships:</id>
-        <description>Science:Relationships</description>
+        <id>Science:Mathematics</id>
+        <description>Science:Mathematics</description>
+    </category>
+    <category>
+        <id>Science:Natural Sciences</id>
+        <description>Science:Natural Sciences</description>
+    </category>
+    <category>
+        <id>Science:Nature</id>
+        <description>Science:Nature</description>
+    </category>
+    <category>
+        <id>Science:Physics</id>
+        <description>Science:Physics</description>
+    </category>
+    <category>
+        <id>Science:Social Sciences</id>
+        <description>Science:Social Sciences</description>
+    </category>
+    
+    <category>
+        <id>Society &amp; Culture</id>
+        <description>Society &amp; Culture</description>
+    </category>
+    <category>
+        <id>Society &amp; Culture:Documentary</id>
+        <description>Society &amp; Culture:Documentary</description>
+    </category>
+    <category>
+        <id>Society &amp; Culture:Personal Journals</id>
+        <description>Society &amp; Culture:Personal Journals</description>
+    </category>
+    <category>
+        <id>Society &amp; Culture:Philosophy</id>
+        <description>Society &amp; Culture:Philosophy</description>
+    </category>
+    <category>
+        <id>Society &amp; Culture:Places &amp; Travel</id>
+        <description>Society &amp; Culture:Places &amp; Travel</description>
+    </category>
+    <category>
+        <id>Society &amp; Culture:Relationships</id>
+        <description>Society &amp; Culture:Relationships</description>
     </category>
 
     <category>
