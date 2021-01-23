@@ -1,4 +1,4 @@
-<?php
+ƒi<?php
 ############################################################
 # PODCAST GENERATOR
 #
@@ -7,6 +7,19 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+function itunes_category($categoryName)
+{
+    $cat_seg = explode(':', $categoryName, 2);
+        if (count($cat_seg) > 1) {
+            $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
+            $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
+            $output .= '		</itunes:category>' . "\n";
+        } else {
+            $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
+        }
+    return $output;
+}
+
 function generateRSS()
 {
     // Make variables available in this scope
@@ -30,9 +43,9 @@ function generateRSS()
 		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
 		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
 		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>
-		<itunes:image href="' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg" />
+		<itunes:image href="' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '" />
 		<image>
-			<url>' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg</url>
+			<url>' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '</url>
 			<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 			<link>' . $config['url'] . '</link>
 		</image>
@@ -43,13 +56,16 @@ function generateRSS()
 			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
 			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
         </itunes:owner>
-        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
-		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>' . "\n";
+        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>' . "\n";
+    $feedhead .= itunes_category($config['itunes_category[0]']);
     if ($config['itunes_category[1]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>' . "\n";
+        $feedhead .= itunes_category($config['itunes_category[1]']);
     }
     if ($config['itunes_category[2]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>' . "\n";
+        $feedhead .= itunes_category($config['itunes_category[2]']);
+    }
+    if ($config['websub_server'] && $config['websub_server'] != 'null') {
+        $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
     }
     // Get supported file extensions
     $supported_extensions = array();
@@ -119,6 +135,8 @@ function generateRSS()
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Generate GUID if a pregenerated GUID is missing for the episode
+        $guid = isset($file->episode->guid) ? $file->episode->guid : $config['url'] . "?" . $link . "=" . $files[$i]['filename'];
         // Check if this episode has a cover art
         $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
         $has_cover = false;
@@ -133,6 +151,12 @@ function generateRSS()
         $item = '
         <item>' . "\n";
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
+        if (!empty($file->episode->episodeNumPG)) {
+            $item .= $indent . '<itunes:episode>' . $file->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
+        }
+        if (!empty($file->episode->seasonNumPG)) {
+            $item .= $indent . '<itunes:season>' . $file->episode->seasonNumPG . '</itunes:season>' . $linebreak;
+        }
         $item .= $indent . '<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>' . $linebreak;
         if ($file->episode->longdescPG != "") {
@@ -140,7 +164,7 @@ function generateRSS()
         }
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
         $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
-        $item .= $indent . '<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>' . $linebreak;
+        $item .= $indent . '<guid>' . $guid . '</guid>' . $linebreak;
         $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
         $item .= $indent . '<author>' . $author . '</author>' . $linebreak;
         if (!empty($file->episode->authorPG->namePG)) {
