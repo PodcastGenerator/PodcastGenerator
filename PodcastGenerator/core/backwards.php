@@ -69,6 +69,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$podcast_description = \"".$config['podcast_description']."\";
 
+\$podcast_cover = \"".$config['podcast_cover']."\";
+
 \$author_name = \"".$config['author_name']."\";
 
 \$author_email = \"".$config['author_email']."\";
@@ -91,6 +93,11 @@ function backwards_3_1_to_3_2($absoluteurl)
 \$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
 \$users_json = \"".$config['users_json']."\";
+
+#####################
+# WebSub
+
+\$websub_server = \"\";
 
 // END OF CONFIG
 ";
