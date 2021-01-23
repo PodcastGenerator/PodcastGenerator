@@ -82,6 +82,8 @@ function createconf($username, $password) {
 
 \$podcast_description = \"A little description of your podcast.\";
 
+\$podcast_cover = \"itunes_image.jpg\";
+
 \$author_name = \"Podcast Generator User\";
 
 \$author_email = \"podcastgenerator@example.com\";
@@ -104,6 +106,11 @@ function createconf($username, $password) {
 \$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
 \$users_json = \"{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}\";
+
+#####################
+# WebSub
+
+\$websub_server = \"https://pubsubhubbub.appspot.com/\";
 
 // END OF CONFIG
 ";
