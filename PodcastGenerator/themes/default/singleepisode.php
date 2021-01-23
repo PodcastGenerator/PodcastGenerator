@@ -48,10 +48,10 @@ if ($correctepisode["episode"]["imgPG"] != "") {
     echo '  <img class="card-img" src="' . $filename . '">';
     echo '  </div>';
 }
-// If no cover art, we use itunes_image.jpg
+// If no episode cover art, we use the global feed covert art
 else {
     echo '  <div class="col-md-4">';
-    echo '  <img class="card-img" src="' . $config["url"] . $config["img_dir"] . "itunes_image.jpg" . '">';
+    echo '  <img class="card-img" src="' . $config["url"] . $config["img_dir"] . $config['podcast_cover'] . '">';
     echo '  </div>';
 }
 echo '  <div class="col">';
