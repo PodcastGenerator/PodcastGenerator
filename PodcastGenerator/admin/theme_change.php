@@ -28,6 +28,7 @@ $themes = $realthemes;
 unset($realthemes);
 
 if (isset($_GET['change'])) {
+    checkToken();
     if ($_GET['change'] > sizeof($themes)) {
         goto error;
     }
@@ -80,7 +81,10 @@ if (isset($_GET['change'])) {
                     if ($themes[$i][0] == htmlspecialchars($config['theme_path'])) {
                         echo '<small>' . _('This theme is currently in use') . '</small>';
                     } else {
-                        echo '<a href="theme_change.php?change=' . $i . '" class="btn btn-success">' . _('Switch theme') . '</a>';
+                        echo '<form action="theme_change.php?change=' . $i . '" method="POST">';
+                        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '"';
+                        echo '<input class="btn btn-success" type="submit" value="' . _('Switch theme') . '">';
+                        echo '</form>';
                     }
                     echo '</div>';
                     echo '</div>';

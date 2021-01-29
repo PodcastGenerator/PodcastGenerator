@@ -13,6 +13,7 @@ require '../core/include_admin.php';
 $buttons = getButtons();
 
 if (isset($_GET['add'])) {
+    checkToken();
     $exists = false;
     foreach ($buttons as $item) {
         if ($item->name == $_GET['name']) {
@@ -47,6 +48,7 @@ if (isset($_GET['add'])) {
     header('Location: theme_buttons.php');
     die();
 } else if (isset($_GET['edit'])) {
+    checkToken();
     // Find item
     foreach ($buttons as $item) {
         if ($item->name == $_GET['name']) {
@@ -62,6 +64,7 @@ if (isset($_GET['add'])) {
     header('Location: theme_buttons.php');
     die();
 } else if (isset($_GET['del'])) {
+    checkToken();
     // Find item
     foreach ($buttons as $item) {
         if ($item->name == $_GET['name']) {
@@ -124,10 +127,14 @@ error: echo "";
                 <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
                 <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                 <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success">
             </form>
             <hr>
-            <a href="theme_buttons.php?del=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" class="btn btn-danger"><?php echo _('Delete Button'); ?></a>
+            <form action="theme_buttons.php?del=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+                <input class="btn btn-danger" type="submit" value="<?php echo _('Delete Button'); ?>">
+            </form>
         <?php
         }
         ?>
@@ -145,6 +152,7 @@ error: echo "";
                 <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
                 <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
                 <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                 <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success">
             </form>
         <?php

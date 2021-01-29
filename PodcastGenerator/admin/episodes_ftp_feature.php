@@ -28,6 +28,7 @@ function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 }
 
 if (isset($_GET['start'])) {
+    checkToken();
     $new_files = array();
     $mimetypes = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
     // Get all files and check if they have an XML file associated
@@ -170,7 +171,10 @@ if (isset($_GET['start'])) {
         <h1><?php echo _('FTP Auto Indexing'); ?></h1>
         <?php
         if (!isset($_GET['start'])) {
-            echo '<a href="episodes_ftp_feature.php?start=1" class="btn btn-success">' . _('Begin') . '<a>';
+            echo '<form action="episodes_ftp_feature.php?start=1" method="POST">';
+            echo '<input type="hidden" name="token" value="' . $_SESSION['token']  . '">';
+            echo '<input class="btn btn-success" type="submit" value="' . _('Begin') . '">';
+            echo '</form>';
         }
         if (isset($success)) {
             echo '<p>' . htmlspecialchars($success) . '</p>';

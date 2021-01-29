@@ -31,6 +31,7 @@ if (isset($_GET['login'])) {
     }
     if (checkLogin($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
+        $_SESSION['token'] = randomString(32);
         header('Location: index.php');
         die();
     } else {

@@ -12,6 +12,7 @@ require '../core/include_admin.php';
 
 // If episode is deleted
 if (isset($_GET['del'])) {
+    checkToken();
     $cats_xml = simplexml_load_file('../categories.xml');
     // Get index of item
     foreach ($cats_xml as $item) {
@@ -27,6 +28,7 @@ if (isset($_GET['del'])) {
 }
 // If episode is added
 if (isset($_GET['add'])) {
+    checkToken();
     $cats_xml = simplexml_load_file('../categories.xml');
     $description = $_POST['categoryname'];
     // These chars should be replaced with an underscore
@@ -78,17 +80,20 @@ if (isset($_GET['add'])) {
         <form action="episodes_manage_cats.php?add=1" method="POST">
             <?php echo _('Category Name'); ?>:<br>
             <input type="text" name="categoryname" placeholder="<?php echo _('Category Name'); ?>"><br><br>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _('Add'); ?>" class="btn btn-success"><br><br>
         </form>
         <h3><?php _('Current Categories'); ?></h3>
-        <ul>
-            <?php
-            $cats_xml = simplexml_load_file('../categories.xml');
-            foreach ($cats_xml as $item) {
-                echo '<li><a href="' . htmlspecialchars($config["url"]) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</a> <a class="btn btn-sm btn-danger" href="episodes_manage_cats.php?del=' . htmlspecialchars($item->id) . '">' . _('Delete') . '</a></li>';
-            }
-            ?>
-        </ul>
+        <?php
+        $cats_xml = simplexml_load_file('../categories.xml');
+        foreach($cats_xml as $item) {
+            echo '<form action="episodes_manage_cats.php?del=' . htmlspecialchars($item->id) . '" method="POST">';
+            echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+            echo '<a href="' . htmlspecialchars($config['url']) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</a> ';
+            echo '<input class="btn btn-sm btn-danger" type="submit" value="' . _('Delete')  . '">';
+            echo '</form><br>';
+        }
+        ?>
     </div>
 </body>
 

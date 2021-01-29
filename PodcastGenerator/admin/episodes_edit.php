@@ -19,6 +19,7 @@ if (!file_exists('../' . $config['upload_dir'] . $_GET['name'])) {
 
 // Delete episode
 if (isset($_GET['delete'])) {
+    checkToken();
     // Delete the audio file
     unlink('../' . $config['upload_dir'] . $_GET['name']);
     // Delete the XML file
@@ -37,6 +38,7 @@ if (isset($_GET['delete'])) {
 
 // Edit episode
 if (sizeof($_POST) > 0) {
+    checkToken();
     // CHeck if all fields are set
     $req_fields = [
         $_POST['title'],
@@ -222,13 +224,17 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
                     </div>
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Save Changes'); ?>">
                 </div>
             </div>
         </form>
         <hr>
         <h3><?php echo _('Delete Episode'); ?></h3>
-        <a href="episodes_edit.php?name=<?php echo htmlspecialchars($_GET['name']); ?>&delete=1" class="btn btn-danger">Delete</a>
+        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET['name']); ?>&delete=1" method="POST">
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+            <input type="submit" class="btn btn-danger" value="<?php echo _('Delete'); ?>">
+        </form>
     </div>
     <script type="text/javascript">
         function shortDescCheck() {

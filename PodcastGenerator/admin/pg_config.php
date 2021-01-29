@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
+    checkToken();
     foreach ($_POST as $key => $value) {
         updateConfig('../config.php', $key, $value);
     }
@@ -57,6 +58,7 @@ if (isset($_GET['edit'])) {
             <small><?php echo _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not'); ?></small><br>
             <input type="text" name="podcastPassword" value="<?php echo $config['podcastPassword']; ?>"><br>
             <hr>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _("Submit"); ?>" class="btn btn-success"><br>
         </form>
     </div>

@@ -14,6 +14,7 @@ $users = getUsers();
 
 // Change password case
 if (isset($_GET['change'])) {
+    checkToken();
     if (!changeUserPassword($_GET['change'], $_POST['password'])) {
         $error = _('Error while changing password');
         goto error;
@@ -24,6 +25,7 @@ if (isset($_GET['change'])) {
 }
 // Delete user case
 else if (isset($_GET['delete'])) {
+    checkToken();
     // Check if the deleted user is the logged in user
     // Don't permit to delete the logged in user
     if ($_GET['delete'] == $_SESSION['username']) {
@@ -45,6 +47,7 @@ else if (isset($_GET['delete'])) {
 }
 // Create user case
 else if (isset($_GET['create'])) {
+    checkToken();
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = _('Missing fields');
         goto error;
@@ -101,6 +104,7 @@ else if (isset($_GET['create'])) {
                     <?php echo _('Password') ?>:<br>
                     <input type="password" name="password"><br>
                     <br>
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                     <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success"><br>
                 </form>
             <?php
@@ -120,6 +124,7 @@ else if (isset($_GET['create'])) {
                     <?php echo _('Repeat new password'); ?><br>
                     <input type="password" name="password2"><br>
                     <br>
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                     <input type="submit" value="<?php echo _('Change'); ?>" class="btn btn-success">
                 </form>
                 <hr>
@@ -129,7 +134,10 @@ else if (isset($_GET['create'])) {
                 if ($_GET['username'] == $_SESSION['username']) {
                     echo '<p>' . _('You cannot delete yourself') . '</p>';
                 } else {
-                    echo '<a href="pg_users.php?delete=' . $_GET['username'] . '" class="btn btn-danger">Delete</a>';
+                    echo '<form action="pg_users.php?delete=' . $_GET['username'] . '" method="POST">';
+                    echo '<input type="hidden" name="token" value="' . $_SESSION['token' ]. '">';
+                    echo '<input class="btn btn-danger" type="submit" value="' . _('Delete') . '">';
+                    echo '</form>';
                 }
                 ?>
             <?php
