@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (sizeof($_POST) > 0) {
+    checkToken();
     // CHeck if all fields are set (except "category")
     $req_fields = [
         $_POST['title'],
@@ -261,6 +262,7 @@ if (sizeof($_POST) > 0) {
                         <input type="text" class="form-control" name="authorname" placeholder="<?php echo _('Author Name'); ?>" value="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?php echo _('Author E-Mail'); ?>" value="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
                     </div>
+                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                     <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
                 </div>
             </div>

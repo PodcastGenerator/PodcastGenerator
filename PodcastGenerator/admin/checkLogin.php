@@ -8,7 +8,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 session_start();
-if(!isset($_SESSION['username'])) {
+if(!isset($_SESSION['username']) || !isset($_SESSION['token'])) {
     header('Location: login.php');
     die();
 }

@@ -61,3 +61,20 @@ function getUsers()
     global $config;
     return json_decode($config['users_json'], true);
 }
+
+function randomString($length = 8)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+function checkToken()
+{
+    if(!isset($_POST['token']) || ($_POST['token'] != $_SESSION['token']))
+        die("Potential CSRF attack");
+}

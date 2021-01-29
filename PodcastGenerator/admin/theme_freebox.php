@@ -11,17 +11,20 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['disable'])) {
+    checkToken();
     updateConfig('../config.php', 'freebox', 'no');
     header('Location: theme_freebox.php');
     die();
 }
 if (isset($_GET['enable'])) {
+    checkToken();
     updateConfig('../config.php', 'freebox', 'yes');
     header('Location: theme_freebox.php');
     die();
 }
 
 if (isset($_GET['change'])) {
+    checkToken();
     updateFreebox('../', $_POST['content']);
     header('Location: theme_freebox.php');
     die();
@@ -60,9 +63,15 @@ if (isset($_GET['change'])) {
         <h3><?php echo _('Enable / Disable Freebox'); ?></h3>
         <?php
         if (getFreebox('../') == null) {
-            echo '<a href="theme_freebox.php?enable=1" class="btn btn-success">' . _('Enable Freebox') . '</a>';
+            echo '<form action="theme_freebox.php?enable=1" method="POST">';
+            echo '<input type="hidden" name="token" value=' . $_SESSION['token'] . '>';
+            echo '<input class="btn btn-success" type="submit" value="' . _('Enable Freebox') . '">';
+            echo '</form>';
         } else {
-            echo '<a href="theme_freebox.php?disable=1" class="btn btn-danger">' . _('Disable Freebox') . '</a>';
+            echo '<form action="theme_freebox.php?disable=1" method="POST">';
+            echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
+            echo '<input class="btn btn-danger" type="submit" value="' . _('Disable Freebox') . '">';
+            echo '</form>';
         }
         ?>
         <form action="theme_freebox.php?change=1" method="POST">
@@ -72,6 +81,7 @@ if (isset($_GET['change'])) {
                 <h3><?php echo _('Change Freebox content'); ?></h3>
                 <?php echo _('Content'); ?>:<br>
                 <textarea rows="10" cols="100" name="content"><?php echo htmlspecialchars(getFreebox('../')); ?></textarea><br><br>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                 <input type="submit" value="<?php echo _('Save'); ?>" class="btn btn-success">
             <?php
             }
