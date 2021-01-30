@@ -94,7 +94,5 @@ function backwards_3_0_to_3_1_1($absoluteurl)
     else
         $config_php .= "\$users_json = \"".$config['users_json']."\"\n";
 
-// END OF CONFIG
-";
     file_put_contents($absoluteurl . 'config.php', $config_php);
 }
