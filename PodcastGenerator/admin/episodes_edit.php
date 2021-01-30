@@ -13,7 +13,10 @@ require '../core/include_admin.php';
 if (!isset($_GET['name'])) {
     die(_('No name given'));
 }
-if (!file_exists('../' . $config['upload_dir'] . $_GET['name'])) {
+
+checkPath($_GET['name']);
+
+if (!file_exists($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) {
     die(_('Episode does not exist'));
 }
 
@@ -21,15 +24,15 @@ if (!file_exists('../' . $config['upload_dir'] . $_GET['name'])) {
 if (isset($_GET['delete'])) {
     checkToken();
     // Delete the audio file
-    unlink('../' . $config['upload_dir'] . $_GET['name']);
+    unlink($config['absoluteurl'] . $config['upload_dir'] . $_GET['name']);
     // Delete the XML file
-    unlink('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+    unlink($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
     // Delete the image file if it exists
-    if(file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
-    file_exists('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png'))
+    if(file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
+    file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png'))
     {
-        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
-        unlink('../' . $config['img_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoulteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
     }
     generateRSS();
     header('Location: '.$config['url'].$config['indexfile']);
@@ -81,7 +84,7 @@ if (sizeof($_POST) > 0) {
         goto error;
     }
 
-    $targetfile = '../' . $config['upload_dir'] . $_GET['name'];
+    $targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
 
     // Get datetime
     $datetime = strtotime($_POST["date"] . ' ' . $_POST['time']);
@@ -128,7 +131,7 @@ if (sizeof($_POST) > 0) {
 	    </fileInfoPG>
 	</episode>
 </PodcastGenerator>';
-    file_put_contents('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
+    file_put_contents($config['absoluteurl'] . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     // Redirect if success
     header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
@@ -137,7 +140,7 @@ if (sizeof($_POST) > 0) {
     error: echo ("");
 }
 // Get episode data
-$episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+$episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
 ?>
 <!DOCTYPE html>
 <html>
@@ -198,9 +201,9 @@ $episode = simplexml_load_file('../' . $config['upload_dir'] . pathinfo('../' . 
                         <?php echo _('Publication Date'); ?>:<br>
                         <small><?php echo _('If you select a date in the future, it will be published then'); ?></small><br>
                         <?php echo _('Date'); ?>*:<br>
-                        <input name="date" type="date" value="<?php echo date('Y-m-d', filemtime('../' . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
+                        <input name="date" type="date" value="<?php echo date('Y-m-d', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
                         <?php echo _('Time'); ?>*:<br>
-                        <input name="time" type="time" value="<?php echo date('H:i', filemtime('../' . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
+                        <input name="time" type="time" value="<?php echo date('H:i', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
