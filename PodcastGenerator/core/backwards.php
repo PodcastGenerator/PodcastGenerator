@@ -93,8 +93,11 @@ function backwards_3_0_to_3_1_1($absoluteurl)
 
     if($config['podcastgen_version'] != '3.1')
         $config_php .= "\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";\n";
-    else
-        $config_php .= "\$users_json = \"".$config['users_json']."\"\n";
+    else {
+        $users_json = str_replace("\$", "\\\$", $config['users_json']);
+        $users_json = str_replace("\"", "\\\"", $users_json);
+        $config_php .= "\$users_json = \"".$users_json."\";\n";
+    }
 
     file_put_contents($absoluteurl . 'config.php', $config_php);
 }
