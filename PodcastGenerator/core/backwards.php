@@ -12,7 +12,7 @@ function backwards_3_0_to_3_1_1($absoluteurl)
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1') || $config['podcastgen_version']) {
+    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1' || $config['podcastgen_version'] == '3.1')) {
         return;
     }
     $config_php = "<?php
@@ -87,7 +87,12 @@ function backwards_3_0_to_3_1_1($absoluteurl)
 
 \$explicit_podcast = \"".$config['explicit_podcast']."\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
 
-\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";
+";
+
+    if($config['podcastgen_version'] != '3.1')
+        $config_php .= "\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";\n";
+    else
+        $config_php .= "\$users_json = \"".$config['users_json']."\"\n";
 
 // END OF CONFIG
 ";
