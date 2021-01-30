@@ -82,5 +82,5 @@ function checkToken()
 function checkPath($path)
 {
     if(preg_match('/\.\./', $path) === 1)
-        die("Potential espace attack");
+        die("Potential escape attack");
 }
