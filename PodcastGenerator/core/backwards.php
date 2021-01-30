@@ -7,16 +7,16 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_0_to_3_1($absoluteurl)
+function backwards_3_0_to_3_1_1($absoluteurl)
 {
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1')) {
+    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1') || $config['podcastgen_version']) {
         return;
     }
     $config_php = "<?php
-\$podcastgen_version = \"3.1\"; // Version
+\$podcastgen_version = \"3.1.1\"; // Version
 
 \$first_installation = ".$config['first_installation'].";
 
