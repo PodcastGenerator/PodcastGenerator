@@ -78,3 +78,9 @@ function checkToken()
     if(!isset($_POST['token']) || ($_POST['token'] != $_SESSION['token']))
         die("Potential CSRF attack");
 }
+
+function checkPath($path)
+{
+    if(preg_match('/\.\./', $path) === 1)
+        die("Potential espace attack");
+}
