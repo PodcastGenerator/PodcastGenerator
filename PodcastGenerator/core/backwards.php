@@ -9,6 +9,8 @@
 ############################################################
 function backwards_3_1_to_3_2($absoluteurl)
 {
+    session_start();
+    session_destroy();
     global $config;
     global $version;
     // Quit if version is not 3.0
