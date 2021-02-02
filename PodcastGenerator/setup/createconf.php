@@ -108,7 +108,7 @@ function createconf($username, $password) {
 #####################
 # WebSub
 
-\$websub_server = \"https://pubsubhubbub.appspot.com/\";
+\$websub_server = \"\";
 
 // END OF CONFIG
 ";
