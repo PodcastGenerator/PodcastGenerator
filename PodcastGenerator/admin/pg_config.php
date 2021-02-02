@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
+    checkToken();
     foreach ($_POST as $key => $value) {
         updateConfig('../config.php', $key, $value);
     }
@@ -61,6 +62,7 @@ if (isset($_GET['edit'])) {
             <small><?php echo _('This is the full address of the WebSub hub to alert when the podcast is updated.'); ?></small><br>
             <input type="text" name="websub_server" value="<?php echo htmlspecialchars($config['websub_server']); ?>"><br>
             <hr>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _("Submit"); ?>" class="btn btn-success"><br>
         </form>
     </div>

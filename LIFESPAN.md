@@ -6,5 +6,4 @@ During that time the current version gets security updates.
 | Version   | Release   | End of Life   |
 | ----------| ----------| --------------|
 | 3.0       | 2019-12-31| 2020-05-31    |
-| 3.1       | 2020-05-31| 2020-12-31    |
-| 3.2       | 2020-12-31| 2021-05-31    |
+| 3.1       | 2020-05-31| 2020-05-31    |

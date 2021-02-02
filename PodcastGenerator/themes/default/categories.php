@@ -26,8 +26,8 @@
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action" href="categories.php?cat=all"><?php echo _('All Episodes'); ?></a>
                     <?php
-                    foreach ($categories_xml as $item) {
-                        echo "<a class='list-group-item list-group-item-action' href=\"categories.php?cat=" . $item->id . "\">" . $item->description . "</a>";
+                    foreach ($categories_arr as $key => $value) {
+                        echo "<a class='list-group-item list-group-item-action' href=\"categories.php?cat=" . $key . "\">" . $value . "</a>";
                     }
                     ?>
                 </div>

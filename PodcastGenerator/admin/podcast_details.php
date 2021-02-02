@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
+    checkToken();
     foreach ($_POST as $key => $value) {
         updateConfig('../config.php', $key, $value);
     }
@@ -137,6 +138,7 @@ if (isset($_GET['edit'])) {
             <?php echo _('Explicit Podcast'); ?>:<br>
             <input type="radio" name="explicit_podcast" value="yes" <?php echo $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?php echo _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?php echo $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?php echo _('No'); ?><br>
             <br>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _("Submit") ?>" class="btn btn-success">
         </form>
     </div>

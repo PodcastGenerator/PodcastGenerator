@@ -22,6 +22,14 @@ if($config['podcastPassword'] != "") {
     }
 }
 $categories_xml = simplexml_load_file('categories.xml');
+$categories_arr = array();
+
+foreach($categories_xml as $item)
+{
+    $categories_arr["$item->id"] = "$item->description";
+}
+ksort($categories_arr);
+
 $episodes = null;
 if(isset($_GET['cat'])) {
     $episodes = getEpisodes($_GET['cat'], $config);

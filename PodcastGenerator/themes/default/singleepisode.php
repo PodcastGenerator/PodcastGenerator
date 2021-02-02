@@ -59,6 +59,9 @@ echo '  <div class="card-body">';
 echo '  <h4>' . $correctepisode["episode"]["titlePG"] . '</h4>';
 echo '  <p><i class="fa fa-calendar" aria-hidden="true"></i> <small class="text-muted">' . $correctepisode["episode"]["moddate"] . '</small></p>';
 echo '  <p class="card-text"><small>' . $correctepisode["episode"]["shortdescPG"] . '</small></p>';
+if(isset($correctepisode["episode"]["longdescPG"])) {
+    echo '  <p class="card-text">' . $correctepisode["episode"]["longdescPG"] . '</small></p>';
+}
 if (isset($_SESSION["username"])) {
     echo '  <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=' . $episodes[$i]["episode"]["filename"] . '">' . $editdelete . '</a>';
 }

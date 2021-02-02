@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['upload'])) {
+    checkToken();
     // Check mime type
     if(mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
         $error = _('Image is not a JPEG');
@@ -69,6 +70,7 @@ if (isset($_GET['upload'])) {
         <form action="store_cover.php?upload=1" method="POST" enctype="multipart/form-data">
             <?php echo _('Select file'); ?>:<br>
             <input type="file" name="file"><br><br>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _('Upload'); ?>" class="btn btn-success">
         </form>
     </div>

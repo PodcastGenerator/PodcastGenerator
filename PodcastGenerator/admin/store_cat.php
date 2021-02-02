@@ -13,6 +13,7 @@ require '../core/include_admin.php';
 $categories = simplexml_load_file('../components/itunes_categories/itunes_categories.xml');
 
 if (isset($_GET['edit'])) {
+    checkToken();
     if (empty($_POST['cat1'])) {
         $error = _('Category 1 needs to be set');
         goto error;
@@ -103,6 +104,7 @@ error: echo "";
                 ?>
             </select>
             <hr>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _('Save') ?>" class="btn btn-success"><br>
         </form>
     </div>
