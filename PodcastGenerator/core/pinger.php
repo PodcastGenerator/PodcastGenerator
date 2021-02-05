@@ -13,6 +13,11 @@ function pingWebSub()
     global $config;
     // Exit early if no WebSub service isn't set up
     if (!$config['websub_server']) { return; }
+    // Log an error and exit early if cURL is unavailable
+    if (!function_exists('curl_init')) {
+        error_log("cURL functions are not available.", 0);
+        return false;
+    }
     // Ping it
     $data = array(
         'hub.mode' => 'publish',
@@ -27,12 +32,18 @@ function pingWebSub()
     );
     try {
         $handle = curl_init();
-        curl_setopt_array($handle, $opts);
-        $result = curl_exec($handle);
+        if (function_exists('curl_setopt_array')) {
+            curl_setopt_array($handle, $opts);
+        } else {
+            foreach ($opts as $opt => $val)
+                curl_setopt($handle, $opt, $val);
+        }
+        return curl_exec($handle);
     }
     catch (Exception $e) {
         // write a warning to stderr, but don't blow anything up
         error_log($e, 0);
+        return false;
     }
     finally {
         if ($handle) curl_close($handle);
