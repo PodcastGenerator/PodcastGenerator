@@ -44,24 +44,6 @@
         echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . '" />' . "\n";
         echo '    <meta property="og:image" content="' . $img . '" />' . "\n";
         echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
-        if (strtolower($config["enablestreaming"]) == "yes") {
-            // Get mime
-            $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
-            if (!$mime)
-                $mime = null;
-            $type = '';
-            if (substr($mime, 0, 5) == 'video') {
-                $type = 'video';
-            } elseif (substr($mime, 0, 5) == 'audio' || $mime == 'application/ogg') {
-                $type = 'audio';
-            }
-            if ($type == 'audio' || $type == 'video') {
-                echo '    <meta property="og:' . $type . '" content="' . $config["url"] . $config["upload_dir"] . $correctepisode["episode"]["filename"] . '" />' . "\n";
-                if ($mime) {
-                    echo '    <meta property="og:' . $type . ':type" content="' . $mime . '" />' . "\n";
-                }
-            }
-        }
     } else {
         echo '    <meta property="og:title" content="' . $config["podcast_title"] . '" />' . "\n";
         echo '    <meta property="og:type" content="article" />' . "\n";

@@ -11,6 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 generateRSS();
+pingServices();
 ?>
 <!DOCTYPE html>
 <html>

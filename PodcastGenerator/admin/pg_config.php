@@ -58,6 +58,10 @@ if (isset($_GET['edit'])) {
             <small><?php echo _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not'); ?></small><br>
             <input type="text" name="podcastPassword" value="<?php echo $config['podcastPassword']; ?>"><br>
             <hr>
+            <?php echo _('WebSub server'); ?>:<br>
+            <small><?php echo _('This is the full address of the WebSub hub to alert when the podcast is updated.'); ?></small><br>
+            <input type="text" name="websub_server" value="<?php echo htmlspecialchars($config['websub_server']); ?>"><br>
+            <hr>
             <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input type="submit" value="<?php echo _("Submit"); ?>" class="btn btn-success"><br>
         </form>

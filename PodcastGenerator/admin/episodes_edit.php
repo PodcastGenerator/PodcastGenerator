@@ -35,6 +35,7 @@ if (isset($_GET['delete'])) {
         unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoulteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
     }
     generateRSS();
+    pingServices();
     header('Location: '.$config['url'].$config['indexfile']);
     die();
 }
@@ -133,6 +134,7 @@ if (sizeof($_POST) > 0) {
 </PodcastGenerator>';
     file_put_contents($config['absoluteurl'] . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
+    pingServices();
     // Redirect if success
     header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
     die();

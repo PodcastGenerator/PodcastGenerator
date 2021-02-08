@@ -22,6 +22,7 @@ if (isset($_GET['edit'])) {
     updateConfig('../config.php', 'itunes_category[1]', $_POST['cat2'], true);
     updateConfig('../config.php', 'itunes_category[2]', $_POST['cat3'], true);
     generateRSS();
+    pingServices();
     header('Location: store_cat.php');
     die();
 }

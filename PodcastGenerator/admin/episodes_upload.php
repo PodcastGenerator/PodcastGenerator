@@ -170,6 +170,7 @@ if (sizeof($_POST) > 0) {
         file_put_contents($img_filename, $fileinfo["comments"]["picture"][0]["data"]);
     }
     generateRSS();
+    pingServices();
     $success = true;
 
     error: echo ('');
