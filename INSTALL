@@ -98,42 +98,23 @@ The next steps assume that you will be using the default html folder provided by
 
 13. Move PodcastGenerator from the unzipped directory PodcastGenerator-3.1.1 to var/www/html:
 
-`sudo mv /var/www/html/PodcastGenerator-3.1.1/PodcastGenerator /var/www/html`
+`sudo mv /var/www/html/PodcastGenerator-3.1.1/PodcastGenerator/* /var/www/html`
 
 14. Cleanup by removing unneccessary files:
-`sudo rm -rf v3.1.1.zip`
-
-`sudo rm -rf PodcastGenerator-3.1.1`
+`sudo rm -rf PodcastGenerator-3.1.1/ v3.1.1.zip`
 
 15. Change ownership of the installation files:
 
 `sudo chown -R www-data:www-data /var/www/html`
 
-16. Change directory:
+16. Navigate to the IP or local host address of the machine in a web browser:
 
-`cd /var/www/html/PodcastGenerator`
-[//]: NOT SURE IF THIS IS ACTUALLY NEEDED
-[//]: Change ownership of the following files:
-[//]: sudo chown -R www-data:www-data media/
-[//]: sudo chown -R www-data:www-data images/
+`ip.address.in.browser`
 
-[//]: Change the permissions of the following files:
-[//]: sudo chmod 775 media/
-[//]: sudo chmod 775 images/
-[//]: sudo chmod -R 664 media
-[//]: sudo chmod -R 664 images
+17. Select "Begin Installation"
+18. Delete setup folder after a successful installation
 
-[//]: Change ownership and permissions of the following files:
-[//]: sudo chown www-data:www-data config.php
-[//]: sudo chmod 664 config.php
+`sudo rm -rf /var/www/html/setup
 
-17. Navigate to the IP or local host address of the machine in a web browser:
-
-`ip.address.in.browser/setup`
-
-18. Select "Begin Installation"
-19. Delete setup folder after a successful installation
-
-`sudo rm -rf /var/www/html/PodcastGenerator/setup
-
-20. Enjoy your installation of Podcast Generator! Consider spreading the word about the software or [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator). If your self-hosted instance gets to be too much to handle or if the installation/maintainance/security seems too intimidating, please consider using our [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/). Free accounts are availble for students and Non-profits and other users start with a free trial and have the option to upgrade to a full featured hosted plan starting at $12.99/month (USD). 
+### ALL DONE!
+Enjoy your installation of Podcast Generator! Consider spreading the word about the software or [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator). If your self-hosted instance gets to be too much to handle or if the installation/maintainance/security seems too intimidating, please consider using our [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/). Free accounts are availble for students and Non-profits and other users start with a free trial and have the option to upgrade to a full featured hosted plan starting at $12.99/month (USD). 
