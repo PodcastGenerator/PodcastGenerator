@@ -1,7 +1,7 @@
 INSTALL
 ====================
-Install from scratch
-==========
+Install from scratch - Basic
+====================
 
 1. Download the latest version of Podcast Generator;
 2. Unzip the zip package containing the script;
@@ -18,3 +18,100 @@ MAKE A BACKUP OF YOUR ENTIRE PODCAST GENERATOR FOLDER BEFORE UPGRADING!!!!!
 2. Upload it to your web server, allow to overwrite files.
 3. Point your web browser to the URL corresponding to the location where Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen). You will be redirected to a password converter;
 4. Enjoy!
+
+INSTALL
+====================
+Install from scratch - Detailed
+====================
+*******
+Install Podcast Generator on Ubuntu 20.04 
+Please read this through entirely before using.
+[//]: https://github.com/PodcastGenerator/PodcastGenerator/issues/272
+*******
+This guide assumes there is a fresh install of Ubuntu 20.04.3 and that the user initially logs into the server as the root user.
+
+### Access Your Server
+1. Open your local machine or login via ssh:
+
+2. Create a system user:
+
+`adduser replace_with_your_username`
+
+3. Add the new user to the sudo group:
+
+`usermod -aG sudo replace_with_your_username`
+
+4. Login with user:
+
+`su replace_with_your_username`
+
+5. Add port 22 and 80 to the firewall rules and enable:
+
+`sudo ufw allow 80`
+
+`sudo ufw allow 22`
+
+`sudo ufw enable`
+
+`sudo ufw status`
+
+All active rules should then be shown.
+
+6. Update system:
+
+`sudo apt update && sudo apt upgrade`
+
+7. Install PHP and unzip:
+
+`sudo apt install php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip`
+
+8. Confirm PHP version:
+
+`php --version`
+
+Output should look like:
+
+```PHP 7.2.24-0ubuntu0.18.04.6 (cli) (built: May 26 2020 13:09:11) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.2.24-0ubuntu0.18.04.6, Copyright (c) 1999-2018, by Zend Technologies)
+```
+
+### Install Podcast Generator
+The next steps assume that you will be using the default html folder provided by the apache install and no other virtual hosts are present.
+
+9. Navigate to the folder where PodcastGenerator will be installed:
+
+`cd /var/www/html`
+
+10. Remove index.html:
+
+`sudo rm -rf index.html`
+
+11. Download the latest release: (replace url with the current release)
+
+`sudo wget https://github.com/albertobeta/PodcastGenerator/archive/v3.1.1.zip`
+
+12. Unzip PodcastGenerator: Replace with current release version
+
+`sudo unzip v3.1.1.zip`
+
+13. Move PodcastGenerator from the unzipped directory PodcastGenerator-3.1.1 to var/www/html:
+
+`sudo mv /var/www/html/PodcastGenerator-3.1.1/PodcastGenerator/* /var/www/html`
+
+14. Cleanup by removing unneccessary files:
+`sudo rm -rf PodcastGenerator-3.1.1/ v3.1.1.zip`
+
+15. Change ownership of the installation files: (NOTE, this is for Ubuntu. If you are using BSD,RHEL,CENTOS,etc. Ownership may be different on different opperating systems.)
+
+`sudo chown -R www-data:www-data /var/www/html`
+
+16. Navigate to the IP or local host address of the machine in a web browser:
+
+`ip.address.in.browser`
+
+17. Select "Begin Installation"
+
+### ALL DONE!
+Enjoy your installation of Podcast Generator! Consider spreading the word about the software or [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator). If your self-hosted instance gets to be too much to handle or if the installation/maintainance/security seems too intimidating, please consider using our [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/). Free accounts are availble for students and Non-profits and other users start with a free trial and have the option to upgrade to a full featured hosted plan starting at $12.99/month (USD). 
