@@ -46,6 +46,7 @@ function arrayEpisode($item, $episode, $_config)
 {
     $append_array = [
         'episode' => [
+            'guid' => $item->guid,
             'titlePG' => $item->titlePG,
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
@@ -207,6 +208,22 @@ function indexEpisodes($_config)
                 continue;
             }
         }
+        // Select new filenames (with date) if not already exists
+        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
+        $fname = $new_files[$i];
+        if (sizeof($output_array) == 0) {
+            $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
+            $new_filename = str_replace(' ', '_', $new_filename);
+            $appendix = 1;
+            while (file_exists($new_filename)) {
+                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]);
+                $new_filename = str_replace(' ', '_', $new_filename);
+                $appendix++;
+            }
+            $new_filename = strtolower($new_filename);
+            rename($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], $new_filename);
+            $fname = $new_filename;
+        }
         // Get audio metadata (duration, bitrate etc)
         $getID3 = new getID3;
         $fileinfo = $getID3->analyze($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i]);
@@ -217,9 +234,14 @@ function indexEpisodes($_config)
         $comment = getID3Tag($fileinfo, 'comment', $title);
         $author_name = getID3Tag($fileinfo, 'artist', '');
 
+        $link = str_replace('?', '', $config['link']);
+        $link = str_replace('=', '', $link);
+        $link = str_replace('$url', '', $link);
+
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
         <episode>
+            <guid>' . htmlspecialchars($config['url'] . "?" . $link . "=" . basename($fname)) . '</guid>
             <titlePG>' . htmlspecialchars($title, ENT_NOQUOTES) . '</titlePG>
             <shortdescPG><![CDATA[' . $comment . ']]></shortdescPG>
             <longdescPG><![CDATA[' . $comment . ']]></longdescPG>
@@ -243,22 +265,6 @@ function indexEpisodes($_config)
             </fileInfoPG>
         </episode>
 </PodcastGenerator>';
-        // Select new filenames (with date) if not already exists
-        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
-        $fname = $new_files[$i];
-        if (sizeof($output_array) == 0) {
-            $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
-            $new_filename = str_replace(' ', '_', $new_filename);
-            $appendix = 1;
-            while (file_exists($new_filename)) {
-                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]);
-                $new_filename = str_replace(' ', '_', $new_filename);
-                $appendix++;
-            }
-            $new_filename = strtolower($new_filename);
-            rename($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], $new_filename);
-            $fname = $new_filename;
-        }
         // Write image if set
         if (isset($fileinfo['comments']['picture'])) {
             $imgext = ($fileinfo['comments']['picture'][0]['image_mime'] == 'image/png') ? 'png' : 'jpg';

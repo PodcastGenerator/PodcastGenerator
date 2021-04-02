@@ -122,6 +122,8 @@ function generateRSS()
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Generate GUID if a pregenerated GUID is missing for the episode
+        $guid = isset($file->episode->guid) ? $file->episode->guid : $config['url'] . "?" . $link . "=" . $files[$i]['filename'];
         // Check if this episode has a cover art
         $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
         $has_cover = false;
@@ -143,7 +145,7 @@ function generateRSS()
         }
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
         $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
-        $item .= $indent . '<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>' . $linebreak;
+        $item .= $indent . '<guid>' . $guid . '</guid>' . $linebreak;
         $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
         $item .= $indent . '<author>' . htmlspecialchars($author) . '</author>' . $linebreak;
         if (!empty($file->episode->authorPG->namePG)) {

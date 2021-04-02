@@ -85,6 +85,10 @@ if (sizeof($_POST) > 0) {
         goto error;
     }
 
+    $link = str_replace('?', '', $config['link']);
+    $link = str_replace('=', '', $link);
+    $link = str_replace('$url', '', $link);
+
     $targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
 
     // Get datetime
@@ -103,12 +107,16 @@ if (sizeof($_POST) > 0) {
     // Automatically fill an empty long description with the contents
     // of the short description.
     $long_desc = empty($_POST['longdesc']) ? $_POST['shortdesc'] : $_POST['longdesc'];
-        
+
+    // Regenerate GUID if it is missing from POST data
+    $guid = empty($_POST['guid']) ? $config['url'] . "?" . $link . "=" . $_GET['name'] : $_POST['guid'];
+
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
+	    <guid>' . htmlspecialchars($guid) . '</guid>
 	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
@@ -172,6 +180,7 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
                 <div class="col-6">
                     <h3><?php echo _('Main Information'); ?></h3>
                     <hr>
+                    <input type="hidden" name="guid" value="<?php echo htmlspecialchars($episode->episode->guid); ?>">
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>
                         <input type="text" name="title" class="form-control" value="<?php echo htmlspecialchars($episode->episode->titlePG); ?>" required>
