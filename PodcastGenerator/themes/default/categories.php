@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/bootstrap.css">
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/custom.css">
     <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/dark.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
