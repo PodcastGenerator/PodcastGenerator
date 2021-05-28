@@ -233,14 +233,14 @@ function indexEpisodes($_config)
         $comment = getID3Tag($fileinfo, 'comment', $title);
         $author_name = getID3Tag($fileinfo, 'artist', '');
 
-        $link = str_replace('?', '', $config['link']);
+        $link = str_replace('?', '', $_config['link']);
         $link = str_replace('=', '', $link);
         $link = str_replace('$url', '', $link);
 
         $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
         <episode>
-            <guid>' . htmlspecialchars($config['url'] . "?" . $link . "=" . basename($fname)) . '</guid>
+            <guid>' . htmlspecialchars($_config['url'] . "?" . $link . "=" . basename($fname)) . '</guid>
             <titlePG>' . htmlspecialchars($title, ENT_NOQUOTES) . '</titlePG>
             <shortdescPG><![CDATA[' . $comment . ']]></shortdescPG>
             <longdescPG><![CDATA[' . $comment . ']]></longdescPG>
