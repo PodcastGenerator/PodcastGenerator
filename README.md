@@ -1,5 +1,13 @@
 # Podcast Generator
 
+```
+May 2021: Approximately one and a half year have passed since I took over the
+Podcast Generator project from Alberto. However I feel no longer able to
+maintain this project, at least not on my own due to shift of interest as well
+as lack of time. If anyone wants to help out please let me know under the
+E-Mail provided on my GitHub profile.
+```
+
 Podcast Generator (PG) is an open source Content Management System written in PHP 
 and specifically designed for podcast publishing. It provides the user with the tools 
 to easily manage all of the aspects related to the publication of a podcast, from 
