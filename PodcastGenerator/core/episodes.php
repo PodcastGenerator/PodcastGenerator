@@ -216,21 +216,20 @@ function indexEpisodes($_config)
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
-                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]);
+                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . strtolower(date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]));
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
-            $new_filename = strtolower($new_filename);
             rename($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], $new_filename);
             $fname = $new_filename;
         }
         // Get audio metadata (duration, bitrate etc)
         $getID3 = new getID3;
-        $fileinfo = $getID3->analyze($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i]);
+        $fileinfo = $getID3->analyze($fname);
         $duration = $fileinfo['playtime_string'];           // Get duration
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
-        $title = getID3Tag($fileinfo, 'title', pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], PATHINFO_FILENAME));
+        $title = getID3Tag($fileinfo, 'title', pathinfo($fname, PATHINFO_FILENAME));
         $comment = getID3Tag($fileinfo, 'comment', $title);
         $author_name = getID3Tag($fileinfo, 'artist', '');
 
@@ -258,7 +257,7 @@ function indexEpisodes($_config)
                 <emailPG></emailPG>
             </authorPG>
             <fileInfoPG>
-                <size>' . intval(filesize($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i]) / 1000 / 1000) . '</size>
+                <size>' . intval(filesize($fname) / 1000 / 1000) . '</size>
                 <duration>' . $duration . '</duration>
                 <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
                 <frequency>' . $frequency . '</frequency>
