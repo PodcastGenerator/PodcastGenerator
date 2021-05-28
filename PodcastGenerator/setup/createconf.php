@@ -86,7 +86,7 @@ function createconf($username, $password) {
 
 \$author_email = \"podcastgenerator@example.com\";
 
-# The e-amil of the technical admin of the podcast
+# The e-mail of the technical admin of the podcast
 \$webmaster = \"podcastadmin@example.com\";
 
 \$itunes_category[0] = \"Arts\"; // iTunes categories (mainCategory:subcategory)
