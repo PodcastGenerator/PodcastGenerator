@@ -124,6 +124,60 @@ if (sizeof($_POST) > 0) {
         unlink($targetfile);
         goto error;
     }
+    // add the Episode Cover
+    $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' .basename($_FILES['episodecover']['name']);
+    $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
+
+    if (file_exists($episodecoverfile)) {
+        $appendix = 1;
+        while(file_exists($episodecoverfile)) {
+            $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['episodecover']['name']);
+            $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
+            $appendix++;
+        }
+    }
+    $episodecoverfile = strtolower($episodecoverfile);
+    $episodecoverfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($episodecoverfile, PATHINFO_FILENAME));
+
+    $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
+    $validCoverFileExt = false;
+    foreach ($validTypes->mediaFile as $item) {
+        if ($coverfileextension == $item->extension) {
+            $validCoverFileExt = true;
+            break;
+        }
+    }
+    if (!$validCoverFileExt) {
+        $error = _('Invalid Cover file extension');
+        goto error;
+    }
+
+    if (!move_uploaded_file($_FILES['episodecover']['tmp_name'], $episodecoverfile)) {
+        $error = _('The Cover file upload was not successfully');
+        goto error;
+    }
+
+    $covermimetype = getmime($episodecoverfile);
+
+    if (!$covermimetype) {
+        $error = _('The uploaded Cover file is not readable (permission error)');
+        goto error;
+    }
+
+    $validCoverMimeType = false;
+    foreach ($validTypes->mediaFile as $item) {
+        if ($mimetype == $item->mimetype) {
+            $validCoverMimeType = true;
+            break;
+        }
+    }
+
+    if (!$validCoverMimeType) {
+        $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $coverfileextension);
+        // Delete the file if the mime type is invalid
+        unlink($episodecoverfile);
+        goto error;
+    }    
 
     // Get datetime
     $datetime = strtotime($_POST['date'] . ' ' . $_POST['time']);
@@ -147,7 +201,7 @@ if (sizeof($_POST) > 0) {
 	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
-	    <imgPG></imgPG>
+	    <imgPG>' . htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile)) .'</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
@@ -216,6 +270,10 @@ if (sizeof($_POST) > 0) {
                     <div class="form-group">
                         <?php echo _('File'); ?>*:<br>
                         <input type="file" name="file" required><br>
+                    </div>
+                    <div class="form-group">
+                        <?php echo _('Episode Cover');?>:<br>
+                        <input type="file" name="episodecover"><br>
                     </div>
                     <div class="form-group">
                         <?php echo _('Title'); ?>*:<br>

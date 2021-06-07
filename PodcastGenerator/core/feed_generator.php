@@ -160,6 +160,7 @@ function generateRSS()
         // If image is set
         if ($has_cover)
             $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
+            $item .= $indent . '<googleplay:image href="' . $has_cover . '" />' . $linebreak;
         $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
         $item .= "\t\t</item>\n";
         // Push XML to the real XML
