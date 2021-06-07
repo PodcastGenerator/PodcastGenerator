@@ -91,6 +91,70 @@ if (sizeof($_POST) > 0) {
 
     $targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
 
+    // Get episode data
+    $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+
+    $episodecoverfileURL = htmlspecialchars($episode->episode->imgPG);
+    print_r($episodecoverfileURL);
+    if (!empty($_FILES['episodecover']['name'])) {
+        $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' .basename($_FILES['episodecover']['name']);
+        $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
+
+        if (file_exists($episodecoverfile)) {
+            $appendix = 1;
+            while(file_exists($episodecoverfile)) {
+                $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['episodecover']['name']);
+                $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
+                $appendix++;
+            }
+        }
+        $episodecoverfile = strtolower($episodecoverfile);
+        $episodecoverfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($episodecoverfile, PATHINFO_FILENAME));
+
+        $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
+        $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
+        $validCoverFileExt = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if ($coverfileextension == $item->extension) {
+                $validCoverFileExt = true;
+                break;
+            }
+        }
+        if (!$validCoverFileExt) {
+            $error = _('Invalid Cover file extension');
+            goto error;
+        }
+
+        if (!move_uploaded_file($_FILES['episodecover']['tmp_name'], $episodecoverfile)) {
+            $error = _('The Cover file upload was not successfully');
+            goto error;
+        }
+
+        $covermimetype = getmime($episodecoverfile);
+
+        if (!$covermimetype) {
+            $error = _('The uploaded Cover file is not readable (permission error)');
+            goto error;
+        }
+
+        $validCoverMimeType = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if ($covermimetype == $item->mimetype) {
+                $validCoverMimeType = true;
+                break;
+            }
+        }
+
+        if (!$validCoverMimeType) {
+            $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $coverfileextension);
+            // Delete the file if the mime type is invalid
+            unlink($episodecoverfile);
+            goto error;
+        }
+
+        $episodecoverfileURL = htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile));
+    }
+
     // Get datetime
     $datetime = strtotime($_POST["date"] . ' ' . $_POST['time']);
     // Set file date to this date
@@ -120,7 +184,7 @@ if (sizeof($_POST) > 0) {
 	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
-	    <imgPG></imgPG>
+	    <imgPG>' . $episodecoverfileURL . '</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
@@ -175,7 +239,7 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
         if (isset($error)) {
             echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
         } ?>
-        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
+        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h3><?php echo _('Main Information'); ?></h3>
@@ -220,6 +284,13 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
                 <div class="col-6">
                     <h3><?php echo _('Extra Information'); ?></h3>
                     <hr>
+                    <div class="form-group">
+                            <?php echo _('Current Cover'); ?>:<br>
+                            <img src="<?php echo  htmlspecialchars($episode->episode->imgPG);?>" style="max-height: 150px; max-width: 150px;">
+                            <hr>
+                            <?php echo _('Upload new cover'); ?>:<br>
+                            <input type="file" name="episodecover"><br>
+                    </div>
                     <div class="form-group">
                         <?php echo _('Long Description'); ?>:<br>
                         <textarea name="longdesc"><?php echo htmlspecialchars($episode->episode->longdescPG); ?></textarea><br>
