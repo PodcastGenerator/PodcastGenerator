@@ -58,6 +58,10 @@
 		<mimetype>image/jpeg</mimetype>
 	</mediaFile>
 	<mediaFile>
+		<extension>png</extension>
+		<mimetype>image/png</mimetype>
+	</mediaFile>
+	<mediaFile>
 		<extension>aif</extension>
 		<mimetype>audio/x-aiff</mimetype>
 	</mediaFile>
