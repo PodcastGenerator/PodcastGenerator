@@ -7,6 +7,19 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+function itunes_category($categoryName)
+{
+    $cat_seg = explode(':', $categoryName, 2);
+        if (count($cat_seg) > 1) {
+            $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
+            $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
+            $output .= '		</itunes:category>' . "\n";
+        } else {
+            $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
+        }
+    return $output;
+}
+
 function generateRSS()
 {
     // Make variables available in this scope
@@ -43,13 +56,13 @@ function generateRSS()
 			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
 			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
         </itunes:owner>
-        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>
-		<itunes:category text="' . htmlspecialchars($config['itunes_category[0]']) . '"></itunes:category>' . "\n";
+        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>' . "\n";
+    $feedhead .= itunes_category($config['itunes_category[0]']);
     if ($config['itunes_category[1]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[1]']) . '"></itunes:category>' . "\n";
+        $feedhead .= itunes_category($config['itunes_category[1]']);
     }
     if ($config['itunes_category[2]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= '		<itunes:category text="' . htmlspecialchars($config['itunes_category[2]']) . '"></itunes:category>' . "\n";
+        $feedhead .= itunes_category($config['itunes_category[2]']);
     }
     if ($config['websub_server'] != '') {
         $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
