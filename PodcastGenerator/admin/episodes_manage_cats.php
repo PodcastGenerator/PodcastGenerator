@@ -56,16 +56,19 @@ if (isset($_GET['add'])) {
     $cats_xml->asXML('../categories.xml');
     header('Location: episodes_manage_cats.php');
 }
+
+$cats_xml = simplexml_load_file('../categories.xml');
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Manage categories'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Manage categories') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -75,25 +78,22 @@ if (isset($_GET['add'])) {
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Manage categories'); ?></h1>
-        <h3><?php echo _('Add category'); ?></h3>
+        <h1><?= _('Manage categories') ?></h1>
+        <h3><?= _('Add category') ?></h3>
         <form action="episodes_manage_cats.php?add=1" method="POST">
-            <?php echo _('Category Name'); ?>:<br>
-            <input type="text" name="categoryname" placeholder="<?php echo _('Category Name'); ?>"><br><br>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" value="<?php echo _('Add'); ?>" class="btn btn-success"><br><br>
+            <?= _('Category Name') ?>:<br>
+            <input type="text" name="categoryname" placeholder="<?= _('Category Name') ?>"><br><br>
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" value="<?= _('Add') ?>" class="btn btn-success"><br><br>
         </form>
         <h3><?php _('Current Categories'); ?></h3>
-        <?php
-        $cats_xml = simplexml_load_file('../categories.xml');
-        foreach($cats_xml as $item) {
-            echo '<form action="episodes_manage_cats.php?del=' . htmlspecialchars($item->id) . '" method="POST">';
-            echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
-            echo '<a href="' . htmlspecialchars($config['url']) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</a> ';
-            echo '<input class="btn btn-sm btn-danger" type="submit" value="' . _('Delete')  . '">';
-            echo '</form><br>';
-        }
-        ?>
+        <?php foreach($cats_xml as $item) { ?>
+            <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->id) ?>" method="POST">
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <a href="<?= htmlspecialchars($config['url']) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></a> 
+            <input class="btn btn-sm btn-danger" type="submit" value="<?= _('Delete')  ?>">
+            </form><br>
+        <?php } ?>
     </div>
 </body>
 

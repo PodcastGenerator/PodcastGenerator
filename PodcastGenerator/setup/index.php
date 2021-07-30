@@ -34,7 +34,7 @@ require "securitycheck.php";
                 }
                 ?>
                 <p>
-                    Howdy and welcome to Podcast Generator <?php echo $version; ?>!<br>
+                    Howdy and welcome to Podcast Generator <?= $version ?>!<br>
                     Thanks for choosing a <a href="http://emilengler.com" target="_blank">Emil Engler</a> and <a href="http://betella.net" target="_blank">Alberto Betella</a> software, have a cookie 🍪!<br>
                     This is Free and Open Source Software
                     <hr>

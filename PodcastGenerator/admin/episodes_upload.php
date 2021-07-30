@@ -178,18 +178,21 @@ if (sizeof($_POST) > 0) {
     pingServices();
     $success = true;
 
-    error: echo ('');
+    error:
+
+
+    $categories = simplexml_load_file('../categories.xml');
 }
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Upload Episode'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Upload Episode') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -200,76 +203,71 @@ if (sizeof($_POST) > 0) {
     <br>
     <div class="container">
         <h1><?php _('Upload Episode'); ?></h1>
-        <?php
-        if (isset($success)) {
-            echo '<strong><p style="color: #2ecc71;">' . htmlspecialchars($_POST['title']) . ' ' . _('uploaded successfully') . '</p></strong>';
-        }
-        if (isset($error)) {
-            echo '<strong><p style="color: #e74c3c;">' . $error . '</p></strong>';
-        }
-        ?>
+        <?php if (isset($success)) { ?>
+            <strong><p style="color: #2ecc71;"><?= htmlspecialchars($_POST['title']) . ' ' . _('uploaded successfully') ?></p></strong>
+        <?php } ?>
+        <?php if (isset($error)) { ?>
+            <strong><p style="color: #e74c3c;"><?= $error ?></p></strong>
+        <?php } ?>
         <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
-                    <h3><?php echo _('Main Informations'); ?></h3>
+                    <h3><?= _('Main Informations') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?php echo _('File'); ?>*:<br>
+                        <?= _('File') ?>*:<br>
                         <input type="file" name="file" required><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Title'); ?>*:<br>
+                        <?= _('Title') ?>*:<br>
                         <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Short Description'); ?>*:<br>
+                        <?= _('Short Description') ?>*:<br>
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter">255 <?php echo _('characters remaining'); ?></i>
+                        <i id="shortdesc_counter">255 <?= _('characters remaining') ?></i>
                     </div>
-                    <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
-                        <?php echo _('Category'); ?>:<br>
-                        <small><?php echo _('You can select up to 3 categories'); ?></small><br>
+                    <div class="form-group" style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
+                        <?= _('Category') ?>:<br>
+                        <small><?= _('You can select up to 3 categories') ?></small><br>
                         <select name="category[ ]" multiple>
-                            <?php
-                            $categories = simplexml_load_file('../categories.xml');
-                            foreach ($categories as $item) {
-                                echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                            }
-                            ?>
+                            <?php foreach ($categories as $item) { ?>
+                                <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Publication Date'); ?>:<br>
-                        <small><?php echo _('If you select a date in the future, it will be published then'); ?></small><br>
-                        <?php echo _('Date'); ?>*:<br>
-                        <input name="date" type="date" value="<?php echo date("Y-m-d"); ?>" required><br>
-                        <?php echo _('Time'); ?>*:<br>
-                        <input name="time" type="time" value="<?php echo date("H:i"); ?>" required><br>
+                        <?= _('Publication Date') ?>:<br>
+                        <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
+                        <?= _('Date') ?>*:<br>
+                        <input name="date" type="date" value="<?= date("Y-m-d") ?>" required><br>
+                        <?= _('Time') ?>*:<br>
+                        <input name="time" type="time" value="<?= date("H:i") ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?php echo _('Extra Informations'); ?></h3>
+                    <h3><?= _('Extra Informations') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?php echo _('Long Description'); ?>:<br>
+                        <?= _('Long Description') ?>:<br>
                         <textarea name="longdesc"></textarea><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('iTunes Keywords'); ?>:<br>
+                        <?= _('iTunes Keywords') ?>:<br>
                         <input type="text" name="itunesKeywords" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Explicit content'); ?>:<br>
-                        <label><input type="radio" value="yes" name="explicit"> <?php echo _('Yes'); ?></label>
-                        <label><input type="radio" value="no" name="explicit" checked> <?php echo _('No'); ?></label><br>
+                        <?= _('Explicit content') ?>:<br>
+                        <label><input type="radio" value="yes" name="explicit"> <?= _('Yes') ?></label>
+                        <label><input type="radio" value="no" name="explicit" checked> <?= _('No') ?></label><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Author'); ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
+                        <?= _('Author') ?>*:<br>
+                        <input type="text" class="form-control" name="authorname" placeholder="<?= htmlspecialchars($config["author_name"]) ?>"><br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="<?= htmlspecialchars($config["author_email"]) ?>"><br>
                     </div>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="submit" class="btn btn-success btn-lg" value="<?= _('Upload episode') ?>">
                 </div>
             </div>
         </form>
@@ -278,7 +276,7 @@ if (sizeof($_POST) > 0) {
         function shortDescCheck() {
             let shortdesc = document.getElementById("shortdesc").value;
             let maxlength = 255;
-            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + " " + <?php echo '"' . _('characters remaining') . '"' ?>;
+            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + " " + <?= '"' . _('characters remaining') . '"' ?>;
         }
     </script>
 </body>

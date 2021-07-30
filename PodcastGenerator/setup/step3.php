@@ -72,11 +72,9 @@ if (isset($_GET["create"])) {
                     <hr>
                     <button type="submit" class="btn btn-success btn-block">Submit</button>
                 </form>
-                <?php
-                if (isset($error)) {
-                    echo "<strong><p style=\"color: red;\">Error: $error</p>";
-                }
-                ?>
+                <?php if (isset($error)) { ?>
+                    <strong><p style="color: red;">Error: <?= $error ?></p>
+                <?php } ?>
             </div>
         </div>
     </div>

@@ -30,27 +30,24 @@ if(isset($_GET['login'])) {
 }
 
 error:
-echo '';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo _('Password required'); ?></title>
+        <title><?= _('Password required') ?></title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="core/bootstrap/style.css">
     </head>
     <body>
         <div class="container">
-            <h1 style="color: #ff0000;"><?php echo $config['podcast_title']; ?> - <?php echo _('Password required'); ?></h1>
-            <?php
-            if(isset($error)) {
-                echo '<p style="color: #ff0000;">'.$error.'</p>';
-            }
-            ?>
+            <h1 style="color: #ff0000;"><?= $config['podcast_title']; ?> - <?= _('Password required') ?></h1>
+            <?php if(isset($error)) { ?>
+                <p style="color: #ff0000;"><?= $error ?></p>
+            <?php } ?>
             <form action="auth.php?login=1" method="POST">
-                <?php echo _('Enter Password'); ?>:<br>
+                <?= _('Enter Password') ?>:<br>
                 <input type="password" name="password"><br><br>
-                <input type="submit" value="<?php echo _('Login'); ?>" class="btn btn-success">
+                <input type="submit" value="<?= _('Login') ?>" class="btn btn-success">
             </form>
         </div>
     </body>

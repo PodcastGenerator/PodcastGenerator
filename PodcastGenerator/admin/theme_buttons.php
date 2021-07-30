@@ -78,17 +78,28 @@ if (isset($_GET['add'])) {
     die();
 }
 
-error: echo "";
+error:
+
+$name = null;
+$btn = null;
+if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+    foreach ($buttons as $item) {
+        if ($item->name == $name) {
+            $btn = $item;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Theme Buttons'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Theme Buttons') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -98,42 +109,32 @@ error: echo "";
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Change Buttons'); ?></h1>
-        <small><?php echo _('Click on the button you wish to edit'); ?></small><br>
-        <?php
-        if (isset($error)) {
-            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
-        }
-        ?>
-        <?php
-        if (!isset($_GET['name'])) {
-            foreach ($buttons as $item) {
-                echo '<a href="theme_buttons.php?name=' . htmlspecialchars($item->name) . '">' . htmlspecialchars($item->name) . '</a><br>';
-            }
-        } else {
-            $btn = null;
-            foreach ($buttons as $item) {
-                if ($item->name == $_GET['name']) {
-                    $btn = $item;
-                }
-            }
-        ?>
-            <form action="theme_buttons.php?edit=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
-                <?php echo _('Name (needs to be unique)'); ?>:<br>
-                <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
-                <?php echo _('Link (where it should point to)'); ?> :<br>
-                <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
-                <?php echo sprintf(_('CSS Classes (depends on theme, you can use %s in the default theme)'), '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
-                <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
-                <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
-                <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
-                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success">
+        <h1><?= _('Change Buttons') ?></h1>
+        <small><?= _('Click on the button you wish to edit') ?></small><br>
+        <?php if (isset($error)) { ?>
+            <strong><p style="color: red;"><?= $error ?></p></strong>
+        <?php } ?>
+        <?php if ($name == null) { ?>
+            <?php foreach ($buttons as $item) { ?>
+                <a href="theme_buttons.php?name=<?= htmlspecialchars($item->name) ?>"><?= htmlspecialchars($item->name) ?></a><br>
+            <?php } ?>
+        <?php } else { ?>
+            <form action="theme_buttons.php?edit=1&name=<?= htmlspecialchars($name) ?>" method="POST">
+                <?= _('Name (needs to be unique)') ?>:<br>
+                <input type="text" name="name" value="<?= htmlspecialchars($btn->name) ?>"><br>
+                <?= _('Link (where it should point to)') ?> :<br>
+                <input type="text" name="href" value="<?= htmlspecialchars($btn->href) ?>"><br>
+                <?= sprintf(_('CSS Classes (depends on theme, you can use %s in the default theme)'), '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>') ?>:<br>
+                <input type="text" name="class" value="<?= htmlspecialchars($btn->class) ?>"><br>
+                <?= _("Protocol (Leave it blank if you don't know what you are doing)") ?>:<br>
+                <input type="text" name="protocol" value="<?= htmlspecialchars($btn->protocol) ?>"><br><br>
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success">
             </form>
             <hr>
-            <form action="theme_buttons.php?del=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
-                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                <input class="btn btn-danger" type="submit" value="<?php echo _('Delete Button'); ?>">
+            <form action="theme_buttons.php?del=1&name=<?= htmlspecialchars($_GET['name']) ?>" method="POST">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <input class="btn btn-danger" type="submit" value="<?= _('Delete Button') ?>">
             </form>
         <?php
         }
@@ -142,18 +143,18 @@ error: echo "";
         if (!isset($_GET['name'])) {
         ?>
             <hr>
-            <h3><?php echo _('Add Button'); ?></h3>
-            <form action="theme_buttons.php?add=1&name=<?php echo htmlspecialchars($_GET['name']); ?>" method="POST">
-                <?php echo _('Name (needs to be unique)'); ?>:<br>
-                <input type="text" name="name" value="<?php echo htmlspecialchars($btn->name); ?>"><br>
-                <?php echo _('Link (where it should point to)'); ?>:<br>
-                <input type="text" name="href" value="<?php echo htmlspecialchars($btn->href); ?>"><br>
-                <?php echo sprintf(_('CSS Classes (depends on theme, you can use %s in the default theme)'), '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>'); ?>:<br>
-                <input type="text" name="class" value="<?php echo htmlspecialchars($btn->class); ?>"><br>
-                <?php echo _("Protocol (Leave it blank if you don't know what you are doing)"); ?>:<br>
-                <input type="text" name="protocol" value="<?php echo htmlspecialchars($btn->protocol); ?>"><br><br>
-                <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success">
+            <h3><?= _('Add Button') ?></h3>
+            <form action="theme_buttons.php?add=1&name=<?= htmlspecialchars($_GET['name']) ?>" method="POST">
+                <?= _('Name (needs to be unique)') ?>:<br>
+                <input type="text" name="name" value="<?= htmlspecialchars($btn->name) ?>"><br>
+                <?= _('Link (where it should point to)') ?>:<br>
+                <input type="text" name="href" value="<?= htmlspecialchars($btn->href) ?>"><br>
+                <?= sprintf(_('CSS Classes (depends on theme, you can use %s in the default theme)'), '<a href="https://getbootstrap.com/docs/4.3/components/buttons/">bootstrap</a>') ?>:<br>
+                <input type="text" name="class" value="<?= htmlspecialchars($btn->class) ?>"><br>
+                <?= _("Protocol (Leave it blank if you don't know what you are doing)") ?>:<br>
+                <input type="text" name="protocol" value="<?= htmlspecialchars($btn->protocol) ?>"><br><br>
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success">
             </form>
         <?php
         }

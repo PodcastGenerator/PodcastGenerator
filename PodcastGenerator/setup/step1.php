@@ -42,11 +42,9 @@ if (isset($_GET['done'])) {
                 <p class="lead">Please choose a language</p>
                 <form action="step1.php?done=1" method="POST">
                     <select class="custom-select mb-4" name="lang">
-                        <?php
-                        foreach ($languages as $item) {
-                            echo '<option value=' . $item->code . '>' . $item->name . '</option>' . "\n";
-                        }
-                        ?>
+                        <?php foreach ($languages as $item) { ?>
+                            <option value='<?= $item->code ?>'><?= $item->name ?></option>
+                        <?php } ?>
                     </select>
                     <input type="submit" value="Submit" class="btn btn-success mb-3 btn-block">
                 </form>

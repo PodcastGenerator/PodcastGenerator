@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <a class="navbar-brand" href="index.php">Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="<?php echo _('Toggle navigation'); ?>">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="<?= _('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -10,61 +10,61 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo _('Episodes'); ?>
+                    <?= _('Episodes') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="episodes_upload.php"><?php echo _('Upload New Episodes'); ?></a>
-                    <a class="dropdown-item" href="../<?php echo $config['indexfile']; ?>"><?php echo _('Edit / Delete Episode'); ?></a>
-                    <a class="dropdown-item" href="episodes_manage_cats.php"><?php echo _('Manage categories'); ?></a>
-                    <a class="dropdown-item" href="episodes_ftp_feature.php"><?php echo _('FTP Feature (Auto Indexing)'); ?></a>
-                    <a class="dropdown-item" href="episodes_bulk.php"><?php echo _('Bulk download episodes'); ?></a>
-                    <a class="dropdown-item" href="episodes_regenerate.php"><?php echo _('Manually regenerate RSS feed'); ?></a>
+                    <a class="dropdown-item" href="episodes_upload.php"><?= _('Upload New Episodes') ?></a>
+                    <a class="dropdown-item" href="../<?= $config['indexfile']; ?>"><?= _('Edit / Delete Episode') ?></a>
+                    <a class="dropdown-item" href="episodes_manage_cats.php"><?= _('Manage categories') ?></a>
+                    <a class="dropdown-item" href="episodes_ftp_feature.php"><?= _('FTP Feature (Auto Indexing)') ?></a>
+                    <a class="dropdown-item" href="episodes_bulk.php"><?= _('Bulk download episodes') ?></a>
+                    <a class="dropdown-item" href="episodes_regenerate.php"><?= _('Manually regenerate RSS feed') ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo _('Themes and aspect'); ?>
+                    <?= _('Themes and aspect') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="theme_change.php"><?php echo _('Change Theme'); ?></a>
-                    <a class="dropdown-item" href="theme_freebox.php"><?php echo _('Customize your Freebox'); ?></a>
-                    <a class="dropdown-item" href="theme_buttons.php"><?php echo _('Change Buttons'); ?></a>
+                    <a class="dropdown-item" href="theme_change.php"><?= _('Change Theme') ?></a>
+                    <a class="dropdown-item" href="theme_freebox.php"><?= _('Customize your Freebox') ?></a>
+                    <a class="dropdown-item" href="theme_buttons.php"><?= _('Change Buttons') ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo _('Podcast Platform Settings'); ?>
+                    <?= _('Podcast Platform Settings') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="store_cover.php"><?php echo _('Change Cover Art'); ?></a>
-                    <a class="dropdown-item" href="store_cat.php"><?php echo _('Change Podcast Category'); ?></a>
+                    <a class="dropdown-item" href="store_cover.php"><?= _('Change Cover Art') ?></a>
+                    <a class="dropdown-item" href="store_cat.php"><?= _('Change Podcast Category') ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo _('Podcast Details'); ?>
+                    <?= _('Podcast Details') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="podcast_details.php"><?php echo _('Change Podcast details'); ?></a>
+                    <a class="dropdown-item" href="podcast_details.php"><?= _('Change Podcast details') ?></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo _('Podcast Generator'); ?>
+                    <?= _('Podcast Generator') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="pg_config.php"><?php echo _('Change Podcast Generator Config'); ?></a>
-                    <a class="dropdown-item" href="pg_users.php"><?php echo _('Manage users'); ?></a>
-                    <a class="dropdown-item" href="pg_integrations.php"><?php echo _('Manage integrations'); ?></a>
+                    <a class="dropdown-item" href="pg_config.php"><?= _('Change Podcast Generator Config') ?></a>
+                    <a class="dropdown-item" href="pg_users.php"><?= _('Manage users') ?></a>
+                    <a class="dropdown-item" href="pg_integrations.php"><?= _('Manage integrations') ?></a>
                 </div>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo $config['url']; ?>" target="_blank"><?php echo _('View Podcast'); ?></a>
+                <a class="nav-link" href="<?= $config['url']; ?>" target="_blank"><?= _('View Podcast') ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">Logout - <?php echo $_SESSION["username"]; ?></a>
+                <a class="nav-link" href="logout.php">Logout - <?= $_SESSION["username"] ?></a>
             </li>
         </ul>
     </div>

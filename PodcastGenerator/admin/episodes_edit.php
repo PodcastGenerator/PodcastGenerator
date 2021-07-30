@@ -147,20 +147,27 @@ if (sizeof($_POST) > 0) {
     header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
     die();
 
-    error: echo ("");
+    error:
 }
 // Get episode data
 $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+// Fill in selected categories
+$categories = simplexml_load_file("../categories.xml");
+$selected_cats = array(
+    strval($episode->episode->categoriesPG->category1PG),
+    strval($episode->episode->categoriesPG->category2PG),
+    strval($episode->episode->categoriesPG->category3PG)
+);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']) . ' - ' . _('Edit Episode'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']) . ' - ' . _('Edit Episode') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -170,91 +177,85 @@ $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . 
     ?>
     <br>
     <div class="container">
-        <h3><?php echo _('Edit Episode'); ?></h3>
-        <?php
-        if (isset($error)) {
-            echo '<p style="color: red;"><strong>' . $error . '</strong></p>';
-        } ?>
-        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET["name"]); ?>" method="POST">
+        <h3><?= _('Edit Episode') ?></h3>
+        <?php if (isset($error)) { ?>
+            <p style="color: red;"><strong><?= $error ?></strong></p>
+        <?php } ?>
+        <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>" method="POST">
             <div class="row">
                 <div class="col-6">
-                    <h3><?php echo _('Main Information'); ?></h3>
+                    <h3><?= _('Main Information') ?></h3>
                     <hr>
-                    <input type="hidden" name="guid" value="<?php echo htmlspecialchars($episode->episode->guid); ?>">
+                    <input type="hidden" name="guid" value="<?= htmlspecialchars($episode->episode->guid) ?>">
                     <div class="form-group">
-                        <?php echo _('Title'); ?>*:<br>
-                        <input type="text" name="title" class="form-control" value="<?php echo htmlspecialchars($episode->episode->titlePG); ?>" required>
+                        <?= _('Title') ?>*:<br>
+                        <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($episode->episode->titlePG) ?>" required>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Short Description'); ?>*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?php echo htmlspecialchars($episode->episode->shortdescPG); ?>" maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter">255<?php echo _(' characters remaining'); ?></i>
+                        <?= _('Short Description') ?>*:<br>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>" maxlength="255" oninput="shortDescCheck()" required>
+                        <i id="shortdesc_counter">255<?= _(' characters remaining') ?></i>
                     </div>
-                    <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
-                        <?php echo _('Category'); ?>:<br>
-                        <small><?php echo _('You can select up to 3 categories'); ?></small><br>
+                    <div class="form-group" style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
+                        <?= _('Category') ?>:<br>
+                        <small><?= _('You can select up to 3 categories') ?></small><br>
                         <select name="category[ ]" multiple>
-                            <?php
-                            $categories = simplexml_load_file("../categories.xml");
-                            // Fill in selected categories
-                            $selected_cats = array(strval($episode->episode->categoriesPG->category1PG), strval($episode->episode->categoriesPG->category2PG), strval($episode->episode->categoriesPG->category3PG));
-                            foreach ($categories as $item) {
-                                if (in_array($item->id, $selected_cats)) {
-                                    echo "<option value=\"" . htmlspecialchars($item->id) . "\" selected>" . htmlspecialchars($item->description) . "</option>";
-                                } else {
-                                    echo "<option value=\"" . htmlspecialchars($item->id) . "\">" . htmlspecialchars($item->description) . "</option>";
-                                }
-                            }
-                            ?>
+                            <?php foreach ($categories as $item) { ?>
+                                <?php if (in_array($item->id, $selected_cats)) { ?>
+                                    <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                                <?php } else { ?>
+                                    <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                                <?php } ?>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Publication Date'); ?>:<br>
-                        <small><?php echo _('If you select a date in the future, it will be published then'); ?></small><br>
-                        <?php echo _('Date'); ?>*:<br>
-                        <input name="date" type="date" value="<?php echo date('Y-m-d', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
-                        <?php echo _('Time'); ?>*:<br>
-                        <input name="time" type="time" value="<?php echo date('H:i', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])); ?>" required><br>
+                        <?= _('Publication Date') ?>:<br>
+                        <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
+                        <?= _('Date') ?>*:<br>
+                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) ?>" required><br>
+                        <?= _('Time') ?>*:<br>
+                        <input name="time" type="time" value="<?= date('H:i', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?php echo _('Extra Information'); ?></h3>
+                    <h3><?= _('Extra Information') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?php echo _('Long Description'); ?>:<br>
-                        <textarea name="longdesc"><?php echo htmlspecialchars($episode->episode->longdescPG); ?></textarea><br>
+                        <?= _('Long Description') ?>:<br>
+                        <textarea name="longdesc"><?= htmlspecialchars($episode->episode->longdescPG) ?></textarea><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('iTunes Keywords'); ?>:<br>
-                        <input type="text" name="itunesKeywords" value="<?php echo htmlspecialchars($episode->episode->keywordsPG); ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
+                        <?= _('iTunes Keywords') ?>:<br>
+                        <input type="text" name="itunesKeywords" value="<?= htmlspecialchars($episode->episode->keywordsPG) ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Explicit Content'); ?>:<br>
-                        <label><input type="radio" value="yes" name="explicit" <?php if($episode->episode->explicitPG == 'yes') { echo 'checked'; } ?>> <?php echo _('Yes'); ?></label>
-                        <label><input type="radio" value="no" name="explicit" <?php if($episode->episode->explicitPG == 'no') { echo 'checked'; } ?>> <?php echo _('No'); ?></label><br>
+                        <?= _('Explicit Content') ?>:<br>
+                        <label><input type="radio" value="yes" name="explicit" <?= $episode->episode->explicitPG == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?></label>
+                        <label><input type="radio" value="no" name="explicit" <?= $episode->episode->explicitPG == 'no' ? 'checked' : '' ?>> <?= _('No') ?></label><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Author'); ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?php echo htmlspecialchars($episode->episode->authorPG->namePG); ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?php echo htmlspecialchars($episode->episode->authorPG->emailPG); ?>"><br>
+                        <?= _('Author') ?>*:<br>
+                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>"><br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?= htmlspecialchars($episode->episode->authorPG->emailPG) ?>"><br>
                     </div>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Save Changes'); ?>">
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="submit" class="btn btn-success btn-lg" value="<?= _('Save Changes') ?>">
                 </div>
             </div>
         </form>
         <hr>
-        <h3><?php echo _('Delete Episode'); ?></h3>
-        <form action="episodes_edit.php?name=<?php echo htmlspecialchars($_GET['name']); ?>&delete=1" method="POST">
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" class="btn btn-danger" value="<?php echo _('Delete'); ?>">
+        <h3><?= _('Delete Episode') ?></h3>
+        <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET['name']) ?>&delete=1" method="POST">
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
         </form>
     </div>
     <script type="text/javascript">
         function shortDescCheck() {
             let shortdesc = document.getElementById("shortdesc").value;
             let maxlength = 255;
-            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + <?php echo _('" characters remaining"'); ?>;
+            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + <?= _('" characters remaining"') ?>;
         }
         shortDescCheck();
     </script>
