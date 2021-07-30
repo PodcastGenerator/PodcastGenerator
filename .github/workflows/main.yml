@@ -1,0 +1,24 @@
+name: Build and package Podcast Generator
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Take advantage of the fact that GitHub will zip everything up in an
+    # individual upload-artifact action. This means we don't have to rely on
+    # another action to build the zip package.
+    - name: Upload build
+      uses: actions/upload-artifact@v2
+      with:
+        name: PodcastGenerator
+        path: |
+          *
+          **/*
+          !.git
+          !.github
