@@ -3,7 +3,7 @@
 function getmime($filename)
 {
     global $config;
-    require_once $config['absoluteurl'] . 'components/getid3/getid3.php';
+    require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
     // Check if file is even readable
     if(!is_readable($filename))
         return false;
