@@ -1,18 +1,18 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 include 'misc/security.php';
 include 'misc/configsystem.php';
 include 'misc/globs.php';
 $config = getConfig('config.php');
-if($config['podcastgen_version'] != $version)
-{
+if ($config['podcastgen_version'] != $version) {
     // Backwards compatibity
     include 'backwards.php';
     backwards_3_1_to_3_2($config['absoluteurl']);

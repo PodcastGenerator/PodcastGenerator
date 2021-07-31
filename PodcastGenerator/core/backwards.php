@@ -1,10 +1,11 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 function backwards_3_1_to_3_2($absoluteurl)
@@ -14,7 +15,7 @@ function backwards_3_1_to_3_2($absoluteurl)
     global $config;
     global $version;
     // Quit if version is not 3.1 or 3.1.1
-    if(!($config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1')) {
+    if (!($config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1')) {
         return;
     }
     $config_php = "<?php

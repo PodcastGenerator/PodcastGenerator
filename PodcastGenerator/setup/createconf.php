@@ -1,14 +1,16 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 session_start();
-function randomString($length = 8) {
+function randomString($length = 8)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -18,7 +20,8 @@ function randomString($length = 8) {
     return $randomString;
 }
 
-function createconf($username, $password) {
+function createconf($username, $password)
+{
     require "../core/misc/globs.php";
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -116,7 +119,7 @@ function createconf($username, $password) {
     fwrite($f, $config);
     fclose($f);
     // Check if file exists
-    if(file_exists("../config.php")) {
+    if (file_exists("../config.php")) {
         return true;
     }
     return false;

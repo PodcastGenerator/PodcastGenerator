@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -24,7 +24,7 @@ if (isset($_GET['change'])) {
     }
 }
 // Delete user case
-else if (isset($_GET['delete'])) {
+elseif (isset($_GET['delete'])) {
     checkToken();
     // Check if the deleted user is the logged in user
     // Don't permit to delete the logged in user
@@ -46,7 +46,7 @@ else if (isset($_GET['delete'])) {
     }
 }
 // Create user case
-else if (isset($_GET['create'])) {
+elseif (isset($_GET['create'])) {
     checkToken();
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = _('Missing fields');
@@ -88,7 +88,7 @@ else if (isset($_GET['create'])) {
             <strong style="color: red;"><?= _('User deleted successfully') ?></strong>
         <?php } else { ?>
             <?php if (sizeof($_GET) == 0) { /* If no GETS are set, display all users */ ?>
-                <h3><? _('List of users') ?></h3>
+                <h3><?= _('List of users') ?></h3>
                 <ul>
                 <?php foreach ($users as $username => $password) { ?>
                     <li><a href="pg_users.php?username=<?= $username ?>"><?= $username ?></a></li>

@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -12,9 +12,10 @@ require '../core/include_admin.php';
 
 $curl_str = "curl";
 $episodes = getEpisodes(null, $config);
-if(sizeof($episodes) == 0)
+if (sizeof($episodes) == 0) {
     $curl_str = "No episodes found";
-for($i = 0; $i < sizeof($episodes); $i++) {
+}
+for ($i = 0; $i < sizeof($episodes); $i++) {
     $filename = $episodes[$i]["episode"]["filename"];
     $curl_str .= " -O " . $config['url'] . $config['upload_dir'] . $filename;
 }

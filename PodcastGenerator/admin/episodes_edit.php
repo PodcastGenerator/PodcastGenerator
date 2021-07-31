@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -28,9 +28,8 @@ if (isset($_GET['delete'])) {
     // Delete the XML file
     unlink($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
     // Delete the image file if it exists
-    if(file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
-    file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png'))
-    {
+    if (file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
+    file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png')) {
         unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
         unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoulteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
     }
@@ -67,7 +66,7 @@ if (sizeof($_POST) > 0) {
     if (sizeof($_POST['category']) == 0) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } else if (sizeof($_POST['category']) > 3) {
+    } elseif (sizeof($_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }
@@ -98,7 +97,7 @@ if (sizeof($_POST) > 0) {
 
     // Get audio metadata (duration, bitrate etc)
     require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
-    $getID3 = new getID3;
+    $getID3 = new getID3();
     $fileinfo = $getID3->analyze($targetfile);
     $duration = $fileinfo["playtime_string"];           // Get duration
     $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate

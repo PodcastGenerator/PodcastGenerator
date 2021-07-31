@@ -4,16 +4,16 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if(isset($_GET['start'])) {
+if (isset($_GET['start'])) {
     checkToken();
     $num_added = indexEpisodes($config);
-    if($num_added) {
+    if ($num_added) {
         generateRSS();
         pingServices();
         $success = sprintf(_('Added %d new episode(s)'), $num_added);

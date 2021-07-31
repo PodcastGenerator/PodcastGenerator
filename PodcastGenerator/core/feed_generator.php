@@ -1,22 +1,23 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 function itunes_category($categoryName)
 {
     $cat_seg = explode(':', $categoryName, 2);
-        if (count($cat_seg) > 1) {
-            $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
-            $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
-            $output .= '		</itunes:category>' . "\n";
-        } else {
-            $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
-        }
+    if (count($cat_seg) > 1) {
+        $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
+        $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
+        $output .= '		</itunes:category>' . "\n";
+    } else {
+        $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
+    }
     return $output;
 }
 
@@ -130,8 +131,9 @@ function generateRSS()
         $author = null;
         if (!empty($file->episode->authorPG->emailPG)) {
             $author = $file->episode->authorPG->emailPG;
-            if (!empty($file->episode->authorPG->namePG))
+            if (!empty($file->episode->authorPG->namePG)) {
                 $author .= ' (' . $file->episode->authorPG->namePG . ')';
+            }
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
@@ -140,9 +142,9 @@ function generateRSS()
         // Check if this episode has a cover art
         $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
         $has_cover = false;
-        if (!empty($file->episode->imgPG))
+        if (!empty($file->episode->imgPG)) {
             $has_cover = $file->episode->imgPG;
-        elseif (file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.jpg') || file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png')) {
+        } elseif (file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.jpg') || file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png')) {
             $ext = file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png') ? '.png' : '.jpg';
             $has_cover = $config['url'] . $config['img_dir'] . $basename . $ext;
         }
@@ -171,8 +173,9 @@ function generateRSS()
         }
         $item .= $indent . '<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>' . $linebreak;
         // If image is set
-        if ($has_cover)
+        if ($has_cover) {
             $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
+        }
         $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
         $item .= "\t\t</item>\n";
         // Push XML to the real XML

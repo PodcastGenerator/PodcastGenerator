@@ -9,15 +9,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $config['indexfile'] ?>">Home</a>
                 </li>
-                <?php
-                if (strtolower($config["categoriesenabled"]) == "yes") {
-                ?>
+                <?php if (strtolower($config["categoriesenabled"]) == "yes") { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="categories.php"><?= $categories ?></a>
                     </li>
-                <?php
-                }
-                ?>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="admin/" target="_blank">Admin</a>
                 </li>

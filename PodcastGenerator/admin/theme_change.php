@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -64,7 +64,8 @@ if (isset($_GET['change'])) {
             <?php if (sizeof($themes) == 0) { ?>
                 <div class="col-lg-6"><p><?= _('No compatible themes installed') ?></p></div>
             <?php } else { ?>
-                <?php for ($i = 0; $i < sizeof($themes); $i++) { $json = $themes[$i][1]; ?>
+                <?php for ($i = 0; $i < sizeof($themes); $i++) {
+        $json = $themes[$i][1]; ?>
                     <div class="col-lg-6">
                         <div class="card">
                             <img src="../<?= $themes[$i][0] ?>preview.png" class="card-img-top">
@@ -86,7 +87,8 @@ if (isset($_GET['change'])) {
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php
+    } ?>
             <?php } ?>
         </div>
     </div>

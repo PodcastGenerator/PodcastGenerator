@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -34,7 +34,7 @@ if (sizeof($_POST) > 0) {
     if (empty($_POST['category'])) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } else if (isset($_POST['category']) && sizeof((array)$_POST['category']) > 3) {
+    } elseif (isset($_POST['category']) && sizeof((array)$_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }
@@ -132,7 +132,7 @@ if (sizeof($_POST) > 0) {
 
     // Get audio metadata (duration, bitrate etc)
     require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
-    $getID3 = new getID3;
+    $getID3 = new getID3();
     $fileinfo = $getID3->analyze($targetfile);
     $duration = $fileinfo['playtime_string'];           // Get duration
     $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate

@@ -1,22 +1,23 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'core/include.php';
 // Kill the connection if categories are disabled
-if(strtolower($config['categoriesenabled']) != 'yes') {
+if (strtolower($config['categoriesenabled']) != 'yes') {
     header('Location: '.$config['indexfile']);
     die();
 }
 // Check for password
-if($config['podcastPassword'] != "") {
+if ($config['podcastPassword'] != "") {
     session_start();
-    if(!isset($_SESSION['password'])) {
+    if (!isset($_SESSION['password'])) {
         header('Location: auth.php');
         die(_('Authentication required'));
     }
@@ -24,14 +25,13 @@ if($config['podcastPassword'] != "") {
 $categories_xml = simplexml_load_file('categories.xml');
 $categories_arr = array();
 
-foreach($categories_xml as $item)
-{
+foreach ($categories_xml as $item) {
     $categories_arr["$item->id"] = "$item->description";
 }
 ksort($categories_arr);
 
 $episodes = null;
-if(isset($_GET['cat'])) {
+if (isset($_GET['cat'])) {
     $episodes = getEpisodes($_GET['cat'], $config);
 }
 $episode_chunk = $episodes;
@@ -52,4 +52,3 @@ $categories = _('Categories');
 
 $buttons = getButtons('./');
 require $config['theme_path'].'categories.php';
-?>

@@ -10,8 +10,9 @@ $loggedin = isset($_SESSION["username"]);
 for ($i = 0; $i < sizeof($episode_chunk); $i++) {
     $item = $episode_chunk;
     $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $item[$i]["episode"]["filename"]);
-    if (!$mime)
+    if (!$mime) {
         continue;
+    }
     $type = '';
     $metadata =  '';
     if (substr($mime, 0, 5) == 'video') {
@@ -25,15 +26,13 @@ for ($i = 0; $i < sizeof($episode_chunk); $i++) {
 
     if ($item[$i]["episode"]["imgPG"] != "") {
         $coverimage = $item[$i]["episode"]["imgPG"];
-    } else if (file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg')) {
+    } elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg')) {
         $coverimage = $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.jpg';
-    } else if (file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png')) {
+    } elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png')) {
         $coverimage = $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png';
     } else {
         $coverimage = $config["url"] . $config["img_dir"] . "itunes_image.jpg";
-    }
-
-    ?>
+    } ?>
 
     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">
         <div class="card h-100">

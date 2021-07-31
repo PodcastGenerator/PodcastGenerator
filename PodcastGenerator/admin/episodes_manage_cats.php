@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -34,8 +34,9 @@ if (isset($_GET['add'])) {
     // These chars should be replaced with an underscore
     $chars_to_replace = [' ', '&', '"', '\'', '<', '>'];
     $id = $description;
-    for($i = 0; $i < sizeof($chars_to_replace); $i++)
+    for ($i = 0; $i < sizeof($chars_to_replace); $i++) {
         $id = strtolower(str_replace($chars_to_replace[$i], '_', $id));
+    }
     // Check if this episode already exists
     foreach ($cats_xml as $item) {
         if ($item->id == $id) {
@@ -87,7 +88,7 @@ $cats_xml = simplexml_load_file('../categories.xml');
             <input type="submit" value="<?= _('Add') ?>" class="btn btn-success"><br><br>
         </form>
         <h3><?php _('Current Categories'); ?></h3>
-        <?php foreach($cats_xml as $item) { ?>
+        <?php foreach ($cats_xml as $item) { ?>
             <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->id) ?>" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <a href="<?= htmlspecialchars($config['url']) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></a> 

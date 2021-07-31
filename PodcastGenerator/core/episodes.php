@@ -1,10 +1,11 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 function setupEpisodes($_config)
@@ -143,16 +144,16 @@ function searchEpisodes($name = "", $_config)
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
-    if(isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
-            $fileinfo['tags']['id3v2'][$tagName][0])
+    if (isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
+            $fileinfo['tags']['id3v2'][$tagName][0]) {
         return $fileinfo['tags']['id3v2'][$tagName][0];
-    else
-    {
-        if(isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
-                $fileinfo['tags']['id3v1'][$tagName][0])
+    } else {
+        if (isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
+                $fileinfo['tags']['id3v1'][$tagName][0]) {
             return $fileinfo['tags']['id3v1'][$tagName][0];
-        else
+        } else {
             return $defaultValue;
+        }
     }
 }
 
@@ -180,8 +181,9 @@ function indexEpisodes($_config)
             $mimetype = getmime($_config['absoluteurl'] . $_config['upload_dir'] . $entry);
 
             // Continue if file isn't readable
-            if (!$mimetype)
+            if (!$mimetype) {
                 continue;
+            }
 
             // Skip invalid mime types
             $validExtension = false;
@@ -224,7 +226,7 @@ function indexEpisodes($_config)
             $fname = $new_filename;
         }
         // Get audio metadata (duration, bitrate etc)
-        $getID3 = new getID3;
+        $getID3 = new getID3();
         $fileinfo = $getID3->analyze($fname);
         $duration = $fileinfo['playtime_string'];           // Get duration
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate

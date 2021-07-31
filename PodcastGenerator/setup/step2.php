@@ -4,12 +4,13 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require "securitycheck.php";
-if (!isset($_SESSION))
+if (!isset($_SESSION)) {
     session_start();
+}
 
 // Dirs
 $media = "../media/";
@@ -55,10 +56,12 @@ if (file_exists($scripts . $testfile)) {
     $scripts_write = true;
 }
 
-function textColor($success) {
+function textColor($success)
+{
     return $success ? 'green' : 'red';
 }
-function isIsNot($success) {
+function isIsNot($success)
+{
     return $success ? 'is' : 'is not';
 }
 ?>

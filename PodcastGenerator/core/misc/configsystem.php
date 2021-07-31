@@ -1,10 +1,11 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 // This function updates the config
@@ -14,15 +15,18 @@ function updateConfig($path, $key, $value, $eval_null = false)
     $lines = explode("\n", $content);
     for ($i = 0; $i < sizeof($lines); $i++) {
         // Skip empty lines
-        if (strlen($lines[$i]) == 0)
+        if (strlen($lines[$i]) == 0) {
             continue;
+        }
         // Skip comment lines
-        if ($lines[$i][0] == '/' || $lines[$i][0] == '#')
+        if ($lines[$i][0] == '/' || $lines[$i][0] == '#') {
             continue;
+        }
 
         // Remove tab at the beginning
-        if ($lines[$i][0] == "\t")
+        if ($lines[$i][0] == "\t") {
             $lines[$i] = substr($lines[$i], 1);
+        }
 
         // Get the actual key
         if (substr($lines[$i], 1, strlen($key)) == $key) {
@@ -36,10 +40,11 @@ function updateConfig($path, $key, $value, $eval_null = false)
             $lines[$i] = '$' . $key . ' = ';
             // Add quotes if it is a string
             if (gettype($value) == 'string') {
-                if ($value == 'null' && $eval_null)
+                if ($value == 'null' && $eval_null) {
                     $lines[$i] .= '"";';
-                else
+                } else {
                     $lines[$i] .= '"' . $value . '";';
+                }
             } else {
                 $lines[$i] .= $value . ';';
             }
@@ -50,8 +55,9 @@ function updateConfig($path, $key, $value, $eval_null = false)
     // Finally format the config file and make it "beautiful"
     $configStr = '';
     for ($i = 0; $i < sizeof($lines); $i++) {
-        if ($lines[$i] == '')
+        if ($lines[$i] == '') {
             continue;
+        }
         // Skip empty lines
         $configStr .= $lines[$i] . "\n\n";
     }
@@ -70,14 +76,17 @@ function getConfig($path = 'config.php')
     $lines = explode("\n", $content);
     for ($i = 0; $i < sizeof($lines); $i++) {
         // Skip empty lines
-        if (strlen($lines[$i]) == 0)
+        if (strlen($lines[$i]) == 0) {
             continue;
+        }
         // Skip comment and php lines
-        if ($lines[$i][0] == '/' || $lines[$i][0] == '#')
+        if ($lines[$i][0] == '/' || $lines[$i][0] == '#') {
             continue;
+        }
         // Remove tab at the beginning
-        if ($lines[$i][0] == "\t")
+        if ($lines[$i][0] == "\t") {
             $lines[$i] = substr($lines[$i], 1);
+        }
 
         preg_match('/\$(.+?) = ["\'](.+?)?["\'];/', $lines[$i], $strout);    // Get all strings
         preg_match('/\$(.+?) = ([^"\']+);/', $lines[$i], $nonstr); // Get all non strings
@@ -94,7 +103,7 @@ function getConfig($path = 'config.php')
             if ($strout[2] != '"') {
                 $strout[2] = str_replace("\\", '', $strout[2]);
                 $configmap[$strout[1]] = $strout[2];
-                // Make the string empty on errors
+            // Make the string empty on errors
             } else {
                 $configmap[$strout[1]] = '';
             }
@@ -117,15 +126,18 @@ function unsetConfig($path = "config.php", $key)
     $lines = explode("\n", $content);
     for ($i = 0; $i < sizeof($lines); $i++) {
         // Skip empty lines
-        if (strlen($lines[$i]) == 0)
+        if (strlen($lines[$i]) == 0) {
             continue;
+        }
         // Skip comment lines
-        if ($lines[$i][0] == '/' || $lines[$i][0] == '#')
+        if ($lines[$i][0] == '/' || $lines[$i][0] == '#') {
             continue;
+        }
 
         // Remove tab at the beginning
-        if ($lines[$i][0] == "\t")
+        if ($lines[$i][0] == "\t") {
             $lines[$i] = substr($lines[$i], 1);
+        }
 
         // Get the actual key
         if (substr($lines[$i], 1, strlen($key)) == $key) {

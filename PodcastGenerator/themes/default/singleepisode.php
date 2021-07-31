@@ -14,8 +14,9 @@ if (sizeof($correctepisode) == 0) {
 
 // Get mime
 $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
-if (!$mime)
+if (!$mime) {
     $mime = null;
+}
 $type = '';
 $metadata = '';
 if (substr($mime, 0, 5) == 'video') {
@@ -29,9 +30,9 @@ if (substr($mime, 0, 5) == 'video') {
 
 if ($correctepisode["episode"]["imgPG"] != "") {
     $coverimage = $correctepisode["episode"]["imgPG"];
-} else if (file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg')) {
+} elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg')) {
     $coverimage = $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
-} else if (file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')) {
+} elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')) {
     $coverimage = $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png';
 } else {
     $coverimage = $config["url"] . $config["img_dir"] . "itunes_image.jpg";
@@ -51,7 +52,7 @@ if ($correctepisode["episode"]["imgPG"] != "") {
                     <p><i class="fa fa-calendar" aria-hidden="true"></i> <small class="text-muted"><?= $correctepisode["episode"]["moddate"] ?></small></p>
                     <p class="card-text"><small><?= $correctepisode["episode"]["shortdescPG"] ?></small></p>
 
-                    <?php if(isset($correctepisode["episode"]["longdescPG"])) { ?>
+                    <?php if (isset($correctepisode["episode"]["longdescPG"])) { ?>
                         <p class="card-text"><?= $correctepisode["episode"]["longdescPG"] ?></small></p>
                     <?php } ?>
                     <?php if (isset($_SESSION["username"])) { ?>

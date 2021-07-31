@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -13,7 +13,7 @@ require '../core/include_admin.php';
 if (isset($_GET['upload'])) {
     checkToken();
     // Check mime type
-    if(mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
+    if (mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
         $error = _('Image is not a JPEG');
         goto error;
     }

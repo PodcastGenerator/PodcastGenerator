@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -47,7 +47,7 @@ if (isset($_GET['add'])) {
     $buttons->asXML('../buttons.xml');
     header('Location: theme_buttons.php');
     die();
-} else if (isset($_GET['edit'])) {
+} elseif (isset($_GET['edit'])) {
     checkToken();
     // Find item
     foreach ($buttons as $item) {
@@ -63,7 +63,7 @@ if (isset($_GET['add'])) {
     $buttons->asXML('../buttons.xml');
     header('Location: theme_buttons.php');
     die();
-} else if (isset($_GET['del'])) {
+} elseif (isset($_GET['del'])) {
     checkToken();
     // Find item
     foreach ($buttons as $item) {
@@ -136,12 +136,8 @@ if (isset($_GET['name'])) {
                 <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                 <input class="btn btn-danger" type="submit" value="<?= _('Delete Button') ?>">
             </form>
-        <?php
-        }
-        ?>
-        <?php
-        if (!isset($_GET['name'])) {
-        ?>
+        <?php } ?>
+        <?php if (!isset($_GET['name'])) { ?>
             <hr>
             <h3><?= _('Add Button') ?></h3>
             <form action="theme_buttons.php?add=1&name=<?= htmlspecialchars($_GET['name']) ?>" method="POST">
@@ -156,9 +152,7 @@ if (isset($_GET['name'])) {
                 <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                 <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success">
             </form>
-        <?php
-        }
-        ?>
+        <?php } ?>
     </div>
 </body>
 
