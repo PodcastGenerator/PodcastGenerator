@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Podcast Generator Coding Style" namespace="PodcastGenerator\CS\Standard">
+    <exclude name="Generic.Files.LineEndings" />
+    <rule ref="PSR12">
+        <type>warning</type>
+    </rule>
+</ruleset>
