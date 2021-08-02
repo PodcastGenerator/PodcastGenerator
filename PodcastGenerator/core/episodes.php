@@ -199,7 +199,7 @@ function indexEpisodes($_config)
             array_push($new_files, $entry);
         }
     }
-    require_once $_config['absoluteurl'] . 'components/getid3/getid3.php';
+    require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
 
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
