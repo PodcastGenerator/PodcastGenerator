@@ -176,10 +176,10 @@ if (sizeof($_POST) > 0) {
     $success = true;
 
     error:
-
-
-    $categories = simplexml_load_file('../categories.xml');
 }
+
+$categories = simplexml_load_file('../categories.xml');
+
 ?>
 <!DOCTYPE html>
 <html>
