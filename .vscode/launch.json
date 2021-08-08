@@ -9,8 +9,9 @@
             "type": "php",
             "request": "launch",
             "runtimeArgs": [
-                "-dxdebug.mode=debug",
+                "-dxdebug.mode=debug,develop,trace",
                 "-dxdebug.start_with_request=yes",
+                "-dxdebug.idekey=vscode",
                 "-S",
                 "localhost:8088"
             ],
@@ -21,7 +22,8 @@
                 "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
                 "uriFormat": "http://localhost:%s",
                 "action": "openExternally"
-            }
+            },
+            "log": true
         }
     ]
 }
