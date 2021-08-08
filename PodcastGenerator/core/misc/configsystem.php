@@ -13,7 +13,7 @@ function updateConfig($path, $key, $value, $eval_null = false)
 {
     $content = file_get_contents($path);
     $lines = explode("\n", $content);
-    for ($i = 0; $i < sizeof($lines); $i++) {
+    for ($i = 0; $i < count($lines); $i++) {
         // Skip empty lines
         if (strlen($lines[$i]) == 0) {
             continue;
@@ -54,7 +54,7 @@ function updateConfig($path, $key, $value, $eval_null = false)
     }
     // Finally format the config file and make it "beautiful"
     $configStr = '';
-    for ($i = 0; $i < sizeof($lines); $i++) {
+    for ($i = 0; $i < count($lines); $i++) {
         if ($lines[$i] == '') {
             continue;
         }
@@ -74,7 +74,7 @@ function getConfig($path = 'config.php')
     $configmap = array();
     $content = file_get_contents($path);
     $lines = explode("\n", $content);
-    for ($i = 0; $i < sizeof($lines); $i++) {
+    for ($i = 0; $i < count($lines); $i++) {
         // Skip empty lines
         if (strlen($lines[$i]) == 0) {
             continue;
@@ -90,7 +90,7 @@ function getConfig($path = 'config.php')
 
         preg_match('/\$(.+?) = ["\'](.+?)?["\'];/', $lines[$i], $strout);    // Get all strings
         preg_match('/\$(.+?) = ([^"\']+);/', $lines[$i], $nonstr); // Get all non strings
-        if (sizeof($nonstr) == 3) {
+        if (count($nonstr) == 3) {
             // Cut of escape chars if there are any
             // Check if $nonstr[2] is "
             if ($nonstr[2] != '"') {
@@ -99,7 +99,7 @@ function getConfig($path = 'config.php')
             } else {
                 $configmap[$nonstr[1]] = '';
             }
-        } elseif (sizeof($strout) == 3) {
+        } elseif (count($strout) == 3) {
             if ($strout[2] != '"') {
                 $strout[2] = str_replace("\\", '', $strout[2]);
                 $configmap[$strout[1]] = $strout[2];
@@ -109,7 +109,7 @@ function getConfig($path = 'config.php')
             }
         }
         // If the string is empty
-        elseif (sizeof($strout) == 2) {
+        elseif (count($strout) == 2) {
             $configmap[$strout[1]] = '';
         } else {
             continue;
@@ -124,7 +124,7 @@ function unsetConfig($path = "config.php", $key)
 {
     $content = file_get_contents($path);
     $lines = explode("\n", $content);
-    for ($i = 0; $i < sizeof($lines); $i++) {
+    for ($i = 0; $i < count($lines); $i++) {
         // Skip empty lines
         if (strlen($lines[$i]) == 0) {
             continue;
@@ -145,7 +145,7 @@ function unsetConfig($path = "config.php", $key)
         }
     }
     $configStr = '';
-    for ($i = 0; $i < sizeof($lines); $i++) {
+    for ($i = 0; $i < count($lines); $i++) {
         $configStr .= $lines[$i] . "\n";
     }
     // Write to the actual config

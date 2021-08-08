@@ -94,7 +94,7 @@ function generateRSS()
 
     do {
         $swapped = false;
-        for ($i = 0, $c = sizeof($files) - 1; $i < $c; $i++) {
+        for ($i = 0, $c = count($files) - 1; $i < $c; $i++) {
             if ($files[$i]['lastModified'] < $files[$i + 1]['lastModified']) {
                 list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
                 $swapped = true;
@@ -103,7 +103,7 @@ function generateRSS()
     } while ($swapped);
     // Pop files from the future
     $realfiles = array();
-    for ($i = 0; $i < sizeof($files); $i++) {
+    for ($i = 0; $i < count($files); $i++) {
         if (time() > $files[$i]['lastModified']) {
             array_push($realfiles, $files[$i]);
         }
@@ -111,7 +111,7 @@ function generateRSS()
     $files = $realfiles;
     unset($realfiles);
     // Set a maximum amount of episodes generated in the feed
-    $maxEpisodes = sizeof($files);
+    $maxEpisodes = count($files);
     if (strtolower($config['recent_episode_in_feed']) != 'all') {
         $maxEpisodes = intval($config['recent_episode_in_feed']);
     }
@@ -187,7 +187,7 @@ function generateRSS()
     </rss>' . "\n";
     // Generate the actual XML
     $xml = $feedhead;
-    for ($i = 0; $i < sizeof($items); $i++) {
+    for ($i = 0; $i < count($items); $i++) {
         $xml .= $items[$i];
     }
     // Append footer

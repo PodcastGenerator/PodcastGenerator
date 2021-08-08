@@ -87,7 +87,7 @@ elseif (isset($_GET['create'])) {
         <?php } elseif (isset($_GET['userdelete'])) { ?>
             <strong style="color: red;"><?= _('User deleted successfully') ?></strong>
         <?php } else { ?>
-            <?php if (sizeof($_GET) == 0) { /* If no GETS are set, display all users */ ?>
+            <?php if (count($_GET) == 0) { /* If no GETS are set, display all users */ ?>
                 <h3><?= _('List of users') ?></h3>
                 <ul>
                 <?php foreach ($users as $username => $password) { ?>

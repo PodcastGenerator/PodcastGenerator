@@ -1,13 +1,13 @@
 <?php
 $correctepisode = array();
-for ($i = 0; $i < sizeof($episodes); $i++) {
+for ($i = 0; $i < count($episodes); $i++) {
     if ($episodes[$i]["episode"]["filename"] == $_GET[$link]) {
         $correctepisode = $episodes[$i];
         break;
     }
 }
 // Check if episode was not found
-if (sizeof($correctepisode) == 0) {
+if (count($correctepisode) == 0) {
     print(_('Episode does not exist'));
     goto end;
 }

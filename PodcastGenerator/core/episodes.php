@@ -82,7 +82,7 @@ function getEpisodes($category = null, $_config)
     $episodes_mtimes = setupEpisodes($_config);
     // Get XML data for the episodes of interest.
     $episodes_data = array();
-    for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
+    for ($i = 0; $i < count($episodes_mtimes); $i++) {
         $episode = $episodes_mtimes[$i][0];
         // We need to get the CDATA in plaintext.
         $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
@@ -117,7 +117,7 @@ function searchEpisodes($name = "", $_config)
     }
     // Get XML data for the episodes of interest.
     $episodes_data = array();
-    for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
+    for ($i = 0; $i < count($episodes_mtimes); $i++) {
         $episode = $episodes_mtimes[$i][0];
         // We need to get the CDATA in plaintext.
         $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
@@ -216,7 +216,7 @@ function indexEpisodes($_config)
 
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
-    for ($i = 0; $i < sizeof($new_files); $i++) {
+    for ($i = 0; $i < count($new_files); $i++) {
         // Skip files if they are not strictly named
         if ($_config['strictfilenamepolicy'] == 'yes') {
             if (!preg_match('/^[\w.]+$/', $new_files[$i])) {
@@ -226,7 +226,7 @@ function indexEpisodes($_config)
         // Select new filenames (with date) if not already exists
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
-        if (sizeof($output_array) == 0) {
+        if (count($output_array) == 0) {
             $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;

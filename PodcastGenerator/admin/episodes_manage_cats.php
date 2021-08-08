@@ -34,7 +34,7 @@ if (isset($_GET['add'])) {
     // These chars should be replaced with an underscore
     $chars_to_replace = [' ', '&', '"', '\'', '<', '>'];
     $id = $description;
-    for ($i = 0; $i < sizeof($chars_to_replace); $i++) {
+    for ($i = 0; $i < count($chars_to_replace); $i++) {
         $id = strtolower(str_replace($chars_to_replace[$i], '_', $id));
     }
     // Check if this episode already exists

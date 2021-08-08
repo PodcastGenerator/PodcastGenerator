@@ -7,7 +7,7 @@ if (isset($no_episodes)) {
 $loggedin = isset($_SESSION["username"]);
 
 // List episodes
-for ($i = 0; $i < sizeof($episode_chunk); $i++) {
+for ($i = 0; $i < count($episode_chunk); $i++) {
     $item = $episode_chunk;
     $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $item[$i]["episode"]["filename"]);
     if (!$mime) {

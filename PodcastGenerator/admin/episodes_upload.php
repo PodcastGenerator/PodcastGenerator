@@ -10,7 +10,7 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if (sizeof($_POST) > 0) {
+if (count($_POST) > 0) {
     checkToken();
     // CHeck if all fields are set (except "category")
     $req_fields = [
@@ -21,7 +21,7 @@ if (sizeof($_POST) > 0) {
         $_POST['explicit']
     ];
     // Check if fields are missing
-    for ($i = 0; $i < sizeof($req_fields); $i++) {
+    for ($i = 0; $i < count($req_fields); $i++) {
         if (empty($req_fields[$i])) {
             $error = _('Missing fields');
             goto error;
@@ -34,7 +34,7 @@ if (sizeof($_POST) > 0) {
     if (empty($_POST['category'])) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } elseif (isset($_POST['category']) && sizeof((array)$_POST['category']) > 3) {
+    } elseif (isset($_POST['category']) && count((array)$_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }

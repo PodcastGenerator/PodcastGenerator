@@ -18,7 +18,7 @@
     <?php if (isset($_GET[$link])) {
         /* IF name was passed, do this instead */
         $correctepisode = array();
-        for ($i = 0; $i < sizeof($episodes); $i++) {
+        for ($i = 0; $i < count($episodes); $i++) {
             if ($episodes[$i]["episode"]["filename"] == $_GET[$link]) {
                 $correctepisode = $episodes[$i];
                 break;
@@ -92,10 +92,10 @@
                 }
             ?>
         </div>
-        <?php if (!isset($no_episodes) && sizeof($episodes) > intval($config['episodeperpage'])) { ?>
+        <?php if (!isset($no_episodes) && count($episodes) > intval($config['episodeperpage'])) { ?>
             <nav>
                 <ul class="pagination">
-                    <?php for ($j = 0; $j < sizeof($splitted_episodes); $j++) { ?>
+                    <?php for ($j = 0; $j < count($splitted_episodes); $j++) { ?>
                         <li class="page-item"><a class="page-link" href="<?= $config['indexfile'] . '?page=' . ($j + 1) ?>"><?= $j + 1 ?></a></li>
                     <?php } ?>
                 </ul>

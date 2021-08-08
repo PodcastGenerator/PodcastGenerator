@@ -40,7 +40,7 @@ if (isset($_GET['delete'])) {
 }
 
 // Edit episode
-if (sizeof($_POST) > 0) {
+if (count($_POST) > 0) {
     checkToken();
     // CHeck if all fields are set
     $req_fields = [
@@ -53,7 +53,7 @@ if (sizeof($_POST) > 0) {
         $_POST['authoremail']
     ];
     // Check if fields are missing
-    for ($i = 0; $i < sizeof($req_fields); $i++) {
+    for ($i = 0; $i < count($req_fields); $i++) {
         if (empty($req_fields[$i])) {
             $error = _('Missing fields');
             goto error;
@@ -63,10 +63,10 @@ if (sizeof($_POST) > 0) {
     // If no categories were selected, add the 'uncategorized'
     // category.  Otherwise, ensure that no more than three categories
     // were actually selected.
-    if (sizeof($_POST['category']) == 0) {
+    if (count($_POST['category']) == 0) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } elseif (sizeof($_POST['category']) > 3) {
+    } elseif (count($_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }

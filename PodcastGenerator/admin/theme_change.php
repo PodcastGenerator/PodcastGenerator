@@ -14,11 +14,11 @@ require '../core/include_admin.php';
 $themes = array();
 $themes_in_dir = glob('../themes' . '/*', GLOB_ONLYDIR);
 $realthemes = array();
-for ($i = 0; $i < sizeof($themes_in_dir); $i++) {
+for ($i = 0; $i < count($themes_in_dir); $i++) {
     array_push($themes, [substr($themes_in_dir[$i], 3) . '/', json_decode(file_get_contents($themes_in_dir[$i] . '/theme.json'))]);
 }
 // Check if the theme is compatible
-for ($i = 0; $i < sizeof($themes); $i++) {
+for ($i = 0; $i < count($themes); $i++) {
     if (in_array(strval($version), $themes[$i][1]->pg_versions)) {
         array_push($realthemes, $themes[$i]);
     }
@@ -29,7 +29,7 @@ unset($realthemes);
 
 if (isset($_GET['change'])) {
     checkToken();
-    if ($_GET['change'] > sizeof($themes)) {
+    if ($_GET['change'] > count($themes)) {
         goto error;
     }
     updateConfig('../config.php', 'theme_path', $themes[$_GET['change']][0]);
@@ -61,10 +61,10 @@ if (isset($_GET['change'])) {
         <small><?= sprintf(_('You can upload themes to your %s folder'), '<code>themes/</code>') ?></small>
         <h3><?= _('Installed themes') ?></h3>
         <div class="row">
-            <?php if (sizeof($themes) == 0) { ?>
+            <?php if (count($themes) == 0) { ?>
                 <div class="col-lg-6"><p><?= _('No compatible themes installed') ?></p></div>
             <?php } else { ?>
-                <?php for ($i = 0; $i < sizeof($themes); $i++) {
+                <?php for ($i = 0; $i < count($themes); $i++) {
         $json = $themes[$i][1]; ?>
                     <div class="col-lg-6">
                         <div class="card">
