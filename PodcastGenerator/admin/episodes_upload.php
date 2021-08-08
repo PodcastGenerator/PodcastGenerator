@@ -130,10 +130,7 @@ if (sizeof($_POST) > 0) {
     // Set file date to this date
     touch($targetfile, $datetime);
 
-    // Get audio metadata (duration, bitrate etc)
-    require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
-    $getID3 = new getID3();
-    $fileinfo = $getID3->analyze($targetfile);
+    $fileinfo = getID3Info($targetfile);
     $duration = $fileinfo['playtime_string'];           // Get duration
     $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
     $frequency = $fileinfo['audio']['sample_rate'];     // Frequency

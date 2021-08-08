@@ -140,6 +140,20 @@ function searchEpisodes($name = "", $_config)
     return $episodes_data;
 }
 
+require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
+
+/**
+ * Get episode audio metadata from getID3.
+ *
+ * @param string $filename  The path of the episode audio file.
+ * @return array            The result from getID3 analyzing the file.
+ */
+function getID3Info($filename)
+{
+    $getID3 = new getID3();
+    return $getID3->analyze($filename);
+}
+
 // Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
@@ -199,7 +213,6 @@ function indexEpisodes($_config)
             array_push($new_files, $entry);
         }
     }
-    require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
 
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
@@ -226,8 +239,7 @@ function indexEpisodes($_config)
             $fname = $new_filename;
         }
         // Get audio metadata (duration, bitrate etc)
-        $getID3 = new getID3();
-        $fileinfo = $getID3->analyze($fname);
+        $fileinfo = getID3Info($fname);
         $duration = $fileinfo['playtime_string'];           // Get duration
         $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
         $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
