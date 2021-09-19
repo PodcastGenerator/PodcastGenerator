@@ -113,9 +113,9 @@ elseif (isset($_GET['create'])) {
                         goto error;
                     }
                 ?>
-                <form action="pg_users.php?change=<?= $_GET['username'] ?>" method="POST">
+                <form action="pg_users.php?change=<?= strip_tags($_GET['username']) ?>" method="POST">
                     <?= _('Username') ?>:<br>
-                    <input type="text" name="username" value="<?= $_GET['username']; ?>" disabled> <small><?= _('You cannot edit usernames') ?></small><br>
+                    <input type="text" name="username" value="<?= strip_tags($_GET['username']); ?>" disabled> <small><?= _('You cannot edit usernames') ?></small><br>
                     <?= _('New Password') ?><br>
                     <input type="password" name="password"><br>
                     <?= _('Repeat new password') ?><br>
@@ -129,7 +129,7 @@ elseif (isset($_GET['create'])) {
                 <?php if ($_GET['username'] == $_SESSION['username']) { /* Don't permit to delete the logged in user */ ?>
                     <p><?= _('You cannot delete yourself') ?></p>
                 <?php } else { ?>
-                    <form action="pg_users.php?delete=<?= $_GET['username'] ?>" method="POST">
+                    <form action="pg_users.php?delete=<?= strip_tags($_GET['username']) ?>" method="POST">
                         <input type="hidden" name="token" value="<?= $_SESSION['token' ] ?>">
                         <input class="btn btn-danger" type="submit" value="<?= _('Delete') ?>">
                     </form>
