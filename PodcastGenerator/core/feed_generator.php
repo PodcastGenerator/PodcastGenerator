@@ -137,6 +137,10 @@ function generateRSS()
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Get lines of custom tags
+        $customTags = isset($file->episode->customTagsPG)
+            ? preg_split("/\r\n|\n|\r/", $file->episode->customTagsPG)
+            : array();
         // Generate GUID if a pregenerated GUID is missing for the episode
         $guid = isset($file->episode->guid) ? $file->episode->guid : $config['url'] . "?" . $link . "=" . $files[$i]['filename'];
         // Check if this episode has a cover art
@@ -177,6 +181,9 @@ function generateRSS()
             $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
         }
         $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
+        foreach ($customTags as $line) {
+            $item .= $indent . $line . $linebreak;
+        }
         $item .= "\t\t</item>\n";
         // Push XML to the real XML
         array_push($items, $item);
