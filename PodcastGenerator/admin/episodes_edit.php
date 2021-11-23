@@ -17,7 +17,7 @@ if (!isset($_GET['name'])) {
 checkPath($_GET['name']);
 
 $targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
-$targetfile_without_ext = $config['absoluteurl'] . $config['upload_dir'] . pathinfo($filename, PATHINFO_FILENAME);
+$targetfile_without_ext = $config['absoluteurl'] . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
 
 if (!file_exists($targetfile)) {
     die(_('Episode does not exist'));
@@ -32,11 +32,11 @@ if (isset($_GET['delete'])) {
     unlink($targetfile_without_ext . '.xml');
     // Delete the image file if it exists
     if (
-        file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.jpg')
-        || file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.png')
+        file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg')
+        || file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png')
     ) {
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.jpg');
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.png');
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg');
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png');
     }
     generateRSS();
     pingServices();
