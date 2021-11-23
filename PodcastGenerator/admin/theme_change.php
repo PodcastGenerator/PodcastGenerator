@@ -82,7 +82,7 @@ if (isset($_GET['change'])) {
                         echo '<small>' . _('This theme is currently in use') . '</small>';
                     } else {
                         echo '<form action="theme_change.php?change=' . $i . '" method="POST">';
-                        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '"';
+                        echo '<input type="hidden" name="token" value="' . $_SESSION['token'] . '">';
                         echo '<input class="btn btn-success" type="submit" value="' . _('Switch theme') . '">';
                         echo '</form>';
                     }
