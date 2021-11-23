@@ -140,7 +140,7 @@ function searchEpisodes($name = "", $_config)
     return $episodes_data;
 }
 
-require_once '../vendor/james-heinrich/getid3/getid3/getid3.php';
+require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
 
 /**
  * Get episode audio metadata from getID3.
