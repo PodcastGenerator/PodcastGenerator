@@ -68,6 +68,12 @@ function generateRSS()
     if ($config['websub_server'] != '') {
         $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
     }
+    $custom_tags = getCustomFeedTags();
+    if ($custom_tags != '') {
+        foreach (preg_split("/\r\n|\n|\r/", $custom_tags) as $line) {
+            $feedhead .= '		' . $line . "\n";
+        }
+    }
     // Get supported file extensions
     $supported_extensions = array();
     $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
