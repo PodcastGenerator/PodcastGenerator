@@ -90,3 +90,29 @@ function checkPath($path)
         die("Potential escape attack");
     }
 }
+
+function isWellFormedXml($xmlString)
+{
+    if ($xmlString == null || $xmlString == '') {
+        return true;
+    }
+
+    // Heredoc screws up the XML declaration, so we need to put it in like this.
+    // Not including the declaration makes simplexml angry, so we need it.
+    $wrapped = '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+    $wrapped .= <<<XML
+<checkXml xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+          xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+          xmlns:atom="http://www.w3.org/2005/Atom"
+          xmlns:podcast="https://podcastindex.org/namespace/1.0">
+$xmlString
+</checkXml>
+XML;
+
+    try {
+        $xml = simplexml_load_string($wrapped);
+        return $xml !== false;
+    } catch (Exception) {
+        return false;
+    }
+}
