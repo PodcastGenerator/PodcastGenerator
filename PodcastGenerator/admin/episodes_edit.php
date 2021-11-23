@@ -16,7 +16,10 @@ if (!isset($_GET['name'])) {
 
 checkPath($_GET['name']);
 
-if (!file_exists($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) {
+$targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
+$targetfile_without_ext = $config['absoluteurl'] . $config['upload_dir'] . pathinfo($filename, PATHINFO_FILENAME);
+
+if (!file_exists($targetfile)) {
     die(_('Episode does not exist'));
 }
 
@@ -24,14 +27,14 @@ if (!file_exists($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])
 if (isset($_GET['delete'])) {
     checkToken();
     // Delete the audio file
-    unlink($config['absoluteurl'] . $config['upload_dir'] . $_GET['name']);
+    unlink($targetfile);
     // Delete the XML file
-    unlink($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+    unlink($targetfile_without_ext . '.xml');
     // Delete the image file if it exists
-    if (file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg') ||
-    file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png')) {
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.jpg');
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($config['absoulteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.png');
+    if (file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.jpg') ||
+        file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.png')) {
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.jpg');
+        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($filename, PATHINFO_FILENAME) . '.png');
     }
     generateRSS();
     pingServices();
@@ -145,7 +148,7 @@ if (count($_POST) > 0) {
     error:
 }
 // Get episode data
-$episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+$episode = simplexml_load_file($targetfile_without_ext . '.xml');
 // Fill in selected categories
 $categories = simplexml_load_file("../categories.xml");
 $selected_cats = array(
@@ -208,9 +211,9 @@ $selected_cats = array(
                         <?= _('Publication Date') ?>:<br>
                         <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
                         <?= _('Date') ?>*:<br>
-                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) ?>" required><br>
+                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($targetfile)) ?>" required><br>
                         <?= _('Time') ?>*:<br>
-                        <input name="time" type="time" value="<?= date('H:i', filemtime($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'])) ?>" required><br>
+                        <input name="time" type="time" value="<?= date('H:i', filemtime($targetfile)) ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
