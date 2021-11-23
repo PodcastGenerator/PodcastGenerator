@@ -23,7 +23,7 @@
                 "uriFormat": "http://localhost:%s",
                 "action": "openExternally"
             },
-            "log": true
+            "log": false
         }
     ]
 }
