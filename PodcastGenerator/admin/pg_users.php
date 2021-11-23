@@ -116,9 +116,9 @@ else if (isset($_GET['create'])) {
                     goto error;
                 }
             ?>
-                <form action="pg_users.php?change=<?php echo $_GET['username']; ?>" method="POST">
+                <form action="pg_users.php?change=<?php echo strip_tags($_GET['username']); ?>" method="POST">
                     <?php echo _('Username'); ?>:<br>
-                    <input type="text" name="username" value="<?php echo $_GET['username']; ?>" disabled> <small><?php echo _('You cannot edit usernames'); ?></small><br>
+                    <input type="text" name="username" value="<?php echo strip_tags($_GET['username']); ?>" disabled> <small><?php echo _('You cannot edit usernames'); ?></small><br>
                     <?php echo _('New Password'); ?><br>
                     <input type="password" name="password"><br>
                     <?php echo _('Repeat new password'); ?><br>
@@ -134,7 +134,7 @@ else if (isset($_GET['create'])) {
                 if ($_GET['username'] == $_SESSION['username']) {
                     echo '<p>' . _('You cannot delete yourself') . '</p>';
                 } else {
-                    echo '<form action="pg_users.php?delete=' . $_GET['username'] . '" method="POST">';
+                    echo '<form action="pg_users.php?delete=' . strip_tags($_GET['username']) . '" method="POST">';
                     echo '<input type="hidden" name="token" value="' . $_SESSION['token' ]. '">';
                     echo '<input class="btn btn-danger" type="submit" value="' . _('Delete') . '">';
                     echo '</form>';
