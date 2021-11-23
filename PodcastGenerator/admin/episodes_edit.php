@@ -88,15 +88,13 @@ if (count($_POST) > 0) {
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
 
-    $targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
-
     // Get datetime
     $datetime = strtotime($_POST["date"] . ' ' . $_POST['time']);
     // Set file date to this date
     touch($targetfile, $datetime);
 
     // Get audio metadata (duration, bitrate etc)
-    $fileinfo = getID3Info($filename);
+    $fileinfo = getID3Info($targetfile);
     $duration = $fileinfo["playtime_string"];           // Get duration
     $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate
     $frequency = $fileinfo["audio"]["sample_rate"];     // Frequency
