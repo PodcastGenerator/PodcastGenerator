@@ -41,9 +41,9 @@ function updateConfig($path, $key, $value, $eval_null = false)
             // Add quotes if it is a string
             if (gettype($value) == 'string') {
                 if ($value == 'null' && $eval_null) {
-                    $lines[$i] .= '"";';
+                    $lines[$i] .= "'';";
                 } else {
-                    $lines[$i] .= '"' . $value . '";';
+                    $lines[$i] .= "'" . $value . "';";
                 }
             } else {
                 $lines[$i] .= $value . ';';
