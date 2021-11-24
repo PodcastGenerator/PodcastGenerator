@@ -13,7 +13,23 @@ require '../core/include_admin.php';
 if (isset($_GET['edit'])) {
     checkToken();
     foreach ($_POST as $key => $value) {
-        updateConfig('../config.php', $key, $value);
+        if ($key == 'custom_tags') {
+            // need to handle custom_tags specially
+            $custom_tags = $value;
+            if (isWellFormedXml($custom_tags)) {
+                // only set the value if it's well-formed XML
+                saveCustomFeedTags($custom_tags);
+            } else {
+                $error = _('Custom tags are not well-formed');
+            }
+        } else {
+            updateConfig('../config.php', $key, $value);
+        }
+    }
+
+    if (!isset($error)) {
+        header('Location: podcast_details.php');
+        die();
     }
     header('Location: podcast_details.php');
     die();
@@ -21,6 +37,9 @@ if (isset($_GET['edit'])) {
     generateRSS();
     pingServices();
 }
+
+$custom_tags = getCustomFeedTags();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -137,6 +156,9 @@ if (isset($_GET['edit'])) {
             </select><br>
             <?= _('Explicit Podcast') ?>:<br>
             <input type="radio" name="explicit_podcast" value="yes" <?= $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?= $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <br>
+            <?= _('Custom Feed Tags') ?>:<br>
+            <textarea name="custom_tags" style="width:100%;"><?= htmlspecialchars($custom_tags) ?></textarea>
             <br>
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success">
