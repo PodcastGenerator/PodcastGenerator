@@ -44,5 +44,14 @@ function createstuff()
             return false;
         }
     }
+    if (!file_exists('../customtags.xml')) {
+        $catfile = '<?xml version="1.0" encoding="utf-8"?>
+<PodcastGenerator>
+    <customfeedtags><![CDATA[]]></customfeedtags>
+</PodcastGenerator>';
+        if (!file_put_contents('../customtags.xml', $catfile)) {
+            return false;
+        }
+    }
     return true;
 }

@@ -103,4 +103,12 @@ function backwards_3_1_to_3_2($absoluteurl)
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
+
+    if (!file_exists($absoluteurl . 'customtags.xml')) {
+        $catfile = '<?xml version="1.0" encoding="utf-8"?>
+<PodcastGenerator>
+    <customfeedtags><![CDATA[]]></customfeedtags>
+</PodcastGenerator>';
+        file_put_contents($absoluteurl . 'customtags.xml', $catfile);
+    }
 }
