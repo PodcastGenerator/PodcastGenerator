@@ -15,7 +15,7 @@ function backwards_3_1_to_3_2($absoluteurl)
     global $config;
     global $version;
     // Quit if version is not 3.1 or 3.1.1
-    if (!($config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1')) {
+    if (!($config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1' || $config['podcastgen_version'] == '3.1.2')) {
         return;
     }
     $config_php = "<?php
