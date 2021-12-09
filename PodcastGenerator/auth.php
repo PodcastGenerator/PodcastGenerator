@@ -18,7 +18,7 @@ if ($_SESSION['password'] == true) {
     die(_('Already signed in'));
 }
 if (isset($_GET['login'])) {
-    if ($config['podcastPassword'] == $_POST['password']) {
+    if ($config['podcastPassword'] === $_POST['password']) {
         $_SESSION['password'] = true;
         header('Location: index.php');
         die(_('Success'));
