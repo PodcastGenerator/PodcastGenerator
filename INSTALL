@@ -28,7 +28,7 @@ Install Podcast Generator on Ubuntu 20.04
 Please read this through entirely before using.
 [//]: https://github.com/PodcastGenerator/PodcastGenerator/issues/272
 *******
-This guide assumes there is a fresh install of Ubuntu 20.04.3 and that the user initially logs into the server as the root user.
+This guide assumes there is a fresh install of Ubuntu 20.04.3 and that the user initially logs into the server as the root user. The webserver used is nginx.
 
 ### Access Your Server
 1. Open your local machine or login via ssh:
@@ -49,6 +49,8 @@ This guide assumes there is a fresh install of Ubuntu 20.04.3 and that the user 
 
 `sudo ufw allow 80`
 
+`sudo ufw allow 443
+
 `sudo ufw allow 22`
 
 `sudo ufw enable`
@@ -61,11 +63,11 @@ All active rules should then be shown.
 
 `sudo apt update && sudo apt upgrade`
 
-7. Install PHP and unzip:
+7. Install PHP, unzip and nginx:
 
-`sudo apt install php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip`
+`sudo apt install php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip nginx`
 
-8. Confirm PHP version:
+8. Confirm PHP version and configure PHP for file uploads:
 
 `php --version`
 
@@ -77,6 +79,13 @@ Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
     with Zend OPcache v7.2.24-0ubuntu0.18.04.6, Copyright (c) 1999-2018, by Zend Technologies)
 ```
 
+Configure your PHP install so file uploads are allowed and working
+
+`sudo nano /etc/php/(version)/fpm/php.ini`
+
+Change the according lines to reflect
+`upload_max_filesize = 512M` and `post_max_size = 512M`
+
 ### Install Podcast Generator
 The next steps assume that you will be using the default html folder provided by the apache install and no other virtual hosts are present.
 
@@ -86,7 +95,7 @@ The next steps assume that you will be using the default html folder provided by
 
 10. Remove index.html:
 
-`sudo rm -rf index.html`
+`sudo rm -rf index*.html`
 
 11. Download the latest release: (replace url with the current release)
 
@@ -107,11 +116,31 @@ The next steps assume that you will be using the default html folder provided by
 
 `sudo chown -R www-data:www-data /var/www/html`
 
-16. Navigate to the IP or local host address of the machine in a web browser:
+16. Copy the nginx configuration file to the configuration directory and enable it:
 
-`ip.address.in.browser`
+`sudo mv /var/www/html/podcastgenerator-nginx.conf /etc/nginx/sites-available/podcastgenerator-nginx.conf`
 
-17. Select "Begin Installation"
+You may need to edit the configuration file to fit your environment. The file contains comments to help you through the process. `sudo nano /etc/nginx/sites-available/podcastgenerator-nginx.conf`
+
+Then restart nginx to apply your changes
+
+`sudo systemctl restart nginx`
+
+Create the file link to enable the webserver configuration
+
+`sudo ln -s /etc/nginx/sites-enabled/podcastgenerator-nginx.conf /etc/nginx/sites-available/podcastgenerator-nginx.conf`
+
+17. Optional: Install certbot and obtain a Let's Encrypt certificate:
+
+`sudo apt install certbot python3-certbot-nginx`
+
+`sudo certbot --nginx -d domain.of.your.podcastgenerator`
+
+18. Navigate to the IP, domain or local host address of the machine in a web browser:
+
+`ip.address.in.browser` or `domain.of.your.podcastgenerator`
+
+19. Select "Begin Installation"
 
 ### ALL DONE!
 Enjoy your installation of Podcast Generator! Consider spreading the word about the software or [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator). If your self-hosted instance gets to be too much to handle or if the installation/maintainance/security seems too intimidating, please consider using our [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/). Free accounts are availble for students and Non-profits and other users start with a free trial and have the option to upgrade to a full featured hosted plan starting at $12.99/month (USD). 
