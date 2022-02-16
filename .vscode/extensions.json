@@ -2,7 +2,7 @@
     "recommendations": [
         "ikappas.composer",
         "junstyle.php-cs-fixer",
-        "felixfbecker.php-debug",
+        "xdebug.php-debug",
         "neilbrayfield.php-docblocker",
         "bmewburn.vscode-intelephense-client",
         "mehedidracula.php-namespace-resolver",
