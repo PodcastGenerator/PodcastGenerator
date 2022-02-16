@@ -15,11 +15,11 @@ if (!file_exists('../config.php')) {
 include 'misc/configsystem.php';
 include 'misc/globs.php';
 $config = getConfig('../config.php');
-if($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1' || $config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1')
+if($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1' || $config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1' || $config['podcastgen_version'] == '3.1.2')
 {
     // Backwards compatibity
     include 'backwards.php';
-    backwards_3_0_to_3_1_2($config['absoluteurl']);
+    backwards_3_0_to_3_1_3($config['absoluteurl']);
     die("Please refresh");
 }
 include 'episodes.php';
