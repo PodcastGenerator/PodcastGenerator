@@ -63,7 +63,7 @@ if (sizeof($_POST) > 0) {
     // If no categories were selected, add the 'uncategorized'
     // category.  Otherwise, ensure that no more than three categories
     // were actually selected.
-    if (sizeof($_POST['category']) == 0) {
+    if (empty($_POST['category'])) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
     } else if (sizeof($_POST['category']) > 3) {
