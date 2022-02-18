@@ -32,7 +32,7 @@ function generateRSS()
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
     <!-- generator="Podcast Generator ' . $version . '" -->
-    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xml:lang="' . $config['feed_language'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xml:lang="' . $config['feed_language'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
 	<channel>
 		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
@@ -67,6 +67,12 @@ function generateRSS()
     }
     if ($config['websub_server'] != '') {
         $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
+    }
+    $custom_tags = getCustomFeedTags();
+    if ($custom_tags != '') {
+        foreach (preg_split("/\r\n|\n|\r/", $custom_tags) as $line) {
+            $feedhead .= '		' . $line . "\n";
+        }
     }
     // Get supported file extensions
     $supported_extensions = array();
@@ -137,6 +143,10 @@ function generateRSS()
         } else {
             $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
         }
+        // Get lines of custom tags
+        $customTags = isset($file->episode->customTagsPG)
+            ? preg_split("/\r\n|\n|\r/", $file->episode->customTagsPG)
+            : array();
         // Generate GUID if a pregenerated GUID is missing for the episode
         $guid = isset($file->episode->guid) ? $file->episode->guid : $config['url'] . "?" . $link . "=" . $files[$i]['filename'];
         // Check if this episode has a cover art
@@ -177,6 +187,9 @@ function generateRSS()
             $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
         }
         $item .= $indent . '<pubDate>' . date("r", $files[$i]['lastModified']) . '</pubDate>' . $linebreak;
+        foreach ($customTags as $line) {
+            $item .= $indent . $line . $linebreak;
+        }
         $item .= "\t\t</item>\n";
         // Push XML to the real XML
         array_push($items, $item);

@@ -41,18 +41,23 @@ if (isset($_GET['edit'])) {
         <form action="pg_config.php?edit=1" method="POST">
             <?= _('Enable Audio and Video Player') ?>:<br>
             <small><?= _('Enable streaming in web browser') ?></small><br>
-            <input type="radio" name="enablestreaming" value="yes" <?= $config['enablestreaming'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?>
+            <input type="radio" name="enablestreaming" value="yes" <?= $config['enablestreaming'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
             <input type="radio" name="enablestreaming" value="no" <?= $config['enablestreaming'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <hr>
             <?= _('Enable Freebox') ?>:<br>
             <small><?= _('Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.') ?></small><br>
-            <input type="radio" name="freebox" value="yes" <?= $config['freebox'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?>
+            <input type="radio" name="freebox" value="yes" <?= $config['freebox'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
             <input type="radio" name="freebox" value="no" <?= $config['freebox'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <hr>
             <?= _('Enable categories') ?>:<br>
             <small><?= _('Enable categories feature to make thematic lists of your podcasts.') ?></small><br>
-            <input type="radio" name="categoriesenabled" value="yes" <?= $config['categoriesenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?>
+            <input type="radio" name="categoriesenabled" value="yes" <?= $config['categoriesenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
             <input type="radio" name="categoriesenabled" value="no" <?= $config['categoriesenabled'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <hr>
+            <?= _('Enable custom tag input') ?>:<br>
+            <small><?= _('Enable the ability to add custom RSS tags to your podcast feed and individual episodes.') ?></small><br>
+            <input type="radio" name="customtagsenabled" value="yes" <?= $config['customtagsenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
+            <input type="radio" name="customtagsenabled" value="no" <?= $config['customtagsenabled'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <hr>
             <?= _('Use cron to regenerate the RSS feed') ?>:<br>
             <input type="text" value="<?= htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']) ?>" style="width: 100%;" readonly><br>

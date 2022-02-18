@@ -63,6 +63,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$podcastPassword = '';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
 
+\$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
+
 #####################
 # XML Feed stuff
 
@@ -103,4 +105,12 @@ function backwards_3_1_to_3_2($absoluteurl)
 // END OF CONFIG
 ";
     file_put_contents($absoluteurl . 'config.php', $config_php);
+
+    if (!file_exists($absoluteurl . 'customtags.xml')) {
+        $catfile = '<?xml version="1.0" encoding="utf-8"?>
+<PodcastGenerator>
+    <customfeedtags><![CDATA[]]></customfeedtags>
+</PodcastGenerator>';
+        file_put_contents($absoluteurl . 'customtags.xml', $catfile);
+    }
 }

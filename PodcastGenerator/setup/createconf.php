@@ -76,6 +76,8 @@ function createconf($username, $password)
 
 \$podcastPassword = '';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
 
+\$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
+
 #####################
 # XML Feed stuff
 

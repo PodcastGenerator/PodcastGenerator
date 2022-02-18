@@ -59,6 +59,19 @@ if (count($_POST) > 0) {
         goto error;
     }
 
+    // If we have custom tags, ensure that they're valid XML
+    $customTags = $_POST['customtags'];
+    if (!isWellFormedXml($customTags)) {
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
+    }
+
     // Skip files if they are not strictly named
     if ($config['strictfilenamepolicy'] == 'yes') {
         if (!preg_match('/^[\w.]+$/', basename($_FILES['file']['name']))) {
@@ -162,6 +175,7 @@ if (count($_POST) > 0) {
 	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
 	        <frequency>' . $frequency . '</frequency>
 	    </fileInfoPG>
+	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>
 	</episode>
 </PodcastGenerator>';
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
@@ -179,6 +193,10 @@ if (count($_POST) > 0) {
 }
 
 $categories = simplexml_load_file('../categories.xml');
+
+if (!isset($customTags)) {
+    $customTags = '';
+}
 
 ?>
 <!DOCTYPE html>
@@ -263,6 +281,14 @@ $categories = simplexml_load_file('../categories.xml');
                         <input type="text" class="form-control" name="authorname" placeholder="<?= htmlspecialchars($config["author_name"]) ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?= htmlspecialchars($config["author_email"]) ?>"><br>
                     </div>
+                    <div class="form-group" style="display: <?= ($config['customtagsenabled'] != 'yes') ? 'none' : 'block' ?>">
+                        <?= _('Custom Tags') ?><br>
+                        <textarea name="customtags"><?= htmlspecialchars($customTags) ?></textarea><br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-6">
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                     <input type="submit" class="btn btn-success btn-lg" value="<?= _('Upload episode') ?>">
                 </div>
