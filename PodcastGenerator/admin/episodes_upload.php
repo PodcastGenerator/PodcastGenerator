@@ -62,8 +62,14 @@ if (count($_POST) > 0) {
     // If we have custom tags, ensure that they're valid XML
     $customTags = $_POST['customtags'];
     if (!isWellFormedXml($customTags)) {
-        $error = _('Custom tags are not well-formed');
-        goto error;
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
     }
 
     // Skip files if they are not strictly named
@@ -188,6 +194,10 @@ if (count($_POST) > 0) {
 
 $categories = simplexml_load_file('../categories.xml');
 
+if (!isset($customTags)) {
+    $customTags = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -271,7 +281,7 @@ $categories = simplexml_load_file('../categories.xml');
                         <input type="text" class="form-control" name="authorname" placeholder="<?= htmlspecialchars($config["author_name"]) ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="<?= htmlspecialchars($config["author_email"]) ?>"><br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: <?= ($config['customtagsenabled'] != 'yes') ? 'none' : 'block' ?>">
                         <?= _('Custom Tags') ?><br>
                         <textarea name="customtags"><?= htmlspecialchars($customTags) ?></textarea><br>
                     </div>

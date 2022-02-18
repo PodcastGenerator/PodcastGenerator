@@ -19,7 +19,8 @@ if (isset($_GET['edit'])) {
             if (isWellFormedXml($custom_tags)) {
                 // only set the value if it's well-formed XML
                 saveCustomFeedTags($custom_tags);
-            } else {
+            } elseif ($config['customtagsenabled'] == 'yes') {
+                // only error if custom tags feature is enabled
                 $error = _('Custom tags are not well-formed');
             }
         } else {
@@ -157,9 +158,11 @@ $custom_tags = getCustomFeedTags();
             <?= _('Explicit Podcast') ?>:<br>
             <input type="radio" name="explicit_podcast" value="yes" <?= $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?= $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <br>
+<?php if ($config['customtagsenabled'] == 'yes') { ?>
             <?= _('Custom Feed Tags') ?>:<br>
             <textarea name="custom_tags" style="width:100%;"><?= htmlspecialchars($custom_tags) ?></textarea>
             <br>
+<?php } ?>
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success">
         </form>

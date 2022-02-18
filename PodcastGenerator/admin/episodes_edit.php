@@ -114,8 +114,14 @@ if (count($_POST) > 0) {
     // If we have custom tags, ensure that they're valid XML
     $customTags = $_POST['customtags'];
     if (!isWellFormedXml($customTags)) {
-        $error = _('Custom tags are not well-formed');
-        goto error;
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
     }
 
     // Go and actually generate the episode
@@ -247,7 +253,7 @@ $selected_cats = array(
                         <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>"><br>
                         <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?= htmlspecialchars($episode->episode->authorPG->emailPG) ?>"><br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: <?= ($config['customtagsenabled'] != 'yes') ? 'none' : 'block' ?>">
                         <?= _('Custom Tags') ?><br>
                         <textarea name="customtags"><?= htmlspecialchars($episode->episode->customTagsPG) ?></textarea><br>
                     </div>
