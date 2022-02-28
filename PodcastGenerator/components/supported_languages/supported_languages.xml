@@ -12,4 +12,8 @@
 		<code>es_ES</code>
 		<name>Español</name>
 	</language>
+	<language>
+			<code>pl_PL</code>
+			<name>Polski</name>
+	</language>
 </PodcastGenerator>
