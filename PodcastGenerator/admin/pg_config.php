@@ -18,6 +18,42 @@ if (isset($_GET['edit'])) {
     header('Location: pg_config.php');
     die();
 }
+
+$currentTz = $config['timezone'];
+if (empty($currentTz)) {
+    $currentTz = date_default_timezone_get();
+}
+
+function strcasecmp_empty_last($str1, $str2)
+{
+    if ($str1 == $str2) {
+        return 0;
+    } elseif ($str1 == '' || $str1 == null) {
+        return 1;
+    } elseif ($str2 == '' || $str2 == null) {
+        return -1;
+    } else {
+        return strcasecmp($str1, $str2);
+    }
+}
+
+$timezones = array();
+foreach (DateTimeZone::listIdentifiers() as $tz) {
+    $group = explode('/', $tz, 2)[0];
+    if ($group == $tz) {
+        $group = '';
+    }
+
+    if (!isset($timezones[$group])) {
+        $timezones[$group] = array();
+    }
+    array_push($timezones[$group], $tz);
+}
+uksort($timezones, 'strcasecmp_empty_last');
+foreach ($timezones as $group => $list) {
+    asort($list);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,6 +99,22 @@ if (isset($_GET['edit'])) {
             <small><?= _('Choose how episodes are ordered on the website and in the RSS feed.') ?></small><br>
             <input type="radio" name="feed_sort" value="timestamp" <?= $config['feed_sort'] == 'timestamp' ? 'checked' : '' ?>> <?= _('Timestamp') ?>
             <input type="radio" name="feed_sort" value="season_and_episode" <?= $config['feed_sort'] == 'season_and_episode' ? 'checked' : '' ?>> <?=_('Season and episode number') ?><br>
+            <hr>
+            <?= _('Time zone') ?>:<br>
+            <small><?= _('Select time zone for displaying the time which episodes have been released.') ?></small><br>
+            <select name="timezone">
+                <?php foreach ($timezones as $header => $zones) { ?>
+                    <?php if ($header != '') { ?>
+                        <optgroup label="<?= $header ?>">
+                    <?php } ?>
+                    <?php foreach ($zones as $zone) { ?>
+                        <option <?= ($zone == $currentTz) ? "selected" : "" ?>><?= $zone ?></option>
+                    <?php } ?>
+                    <?php if ($header != '') { ?>
+                        </optgroup>
+                    <?php } ?>
+                <?php } ?>
+            </select>
             <hr>
             <?= _('Use cron to regenerate the RSS feed') ?>:<br>
             <input type="text" value="<?= htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']) ?>" style="width: 100%;" readonly><br>
