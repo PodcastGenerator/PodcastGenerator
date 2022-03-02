@@ -18,7 +18,7 @@ function backwards_3_0_to_3_1_4($absoluteurl)
         return;
     }
     $config_php = "<?php
-\$podcastgen_version = \"3.1.3\"; // Version
+\$podcastgen_version = \"3.1.4\"; // Version
 
 \$first_installation = ".$config['first_installation'].";
 
