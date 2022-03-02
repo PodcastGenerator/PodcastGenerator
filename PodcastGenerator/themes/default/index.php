@@ -92,7 +92,7 @@
                 }
             ?>
         </div>
-        <?php if (!isset($no_episodes) && count($episodes) > intval($config['episodeperpage'])) { ?>
+        <?php if (!isset($_GET[$link]) && !isset($no_episodes) && count($episodes) > intval($config['episodeperpage'])) { ?>
             <nav>
                 <ul class="pagination">
                     <?php for ($j = 0; $j < count($splitted_episodes); $j++) { ?>
