@@ -132,7 +132,11 @@ if (count($_POST) > 0) {
     }
 
     if (!$validMimeType) {
-        $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $fileextension);
+        $error = sprintf(
+            _('Unsupported MIME content type "%s" detected for file with extension "%s"'),
+            $mimetype,
+            $fileextension
+        );
         // Delete the file if the mime type is invalid
         unlink($targetfile);
         goto error;
