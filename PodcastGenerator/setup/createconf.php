@@ -80,6 +80,8 @@ function createconf($username, $password)
 
 \$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
 
+\$timezone = '';              // Timezone used for displaying dates and times
+
 #####################
 # XML Feed stuff
 

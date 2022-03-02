@@ -91,6 +91,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
 
+\$timezone = '';              // Timezone used for displaying dates and times
+
 #####################
 # XML Feed stuff
 
