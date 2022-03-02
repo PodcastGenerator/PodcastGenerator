@@ -454,6 +454,12 @@
     <nativeName>English (Zimbabwe)</nativeName>
   </language>
   <language>
+    <code>eo</code>
+    <language>eo</language>
+    <name>Esperanto</name>
+    <nativeName>esperanto</nativeName>
+  </language>
+  <language>
     <code>et</code>
     <language>et</language>
     <name>Estonian</name>
@@ -464,6 +470,12 @@
     <language>fo</language>
     <name>Faroese</name>
     <nativeName>føroyskt</nativeName>
+  </language>
+  <language>
+    <code>fj</code>
+    <language>fj</language>
+    <name>Fijian</name>
+    <nativeName>vosa Vakaviti</nativeName>
   </language>
   <language>
     <code>fil</code>
@@ -751,6 +763,16 @@
     <nativeName>日本語</nativeName>
   </language>
   <language>
+    <code>jv</code>
+    <alias>jw</alias>
+  </language>
+  <language>
+    <code>jw</code>
+    <language>jw</language>
+    <name>Javanese</name>
+    <nativeName>ꦧꦱꦗꦮ</nativeName>
+  </language>
+  <language>
     <code>kl</code>
     <language>kl</language>
     <name>Kalaallisut</name>
@@ -827,6 +849,12 @@
     <language>lo</language>
     <name>Lao</name>
     <nativeName>ລາວ</nativeName>
+  </language>
+  <language>
+    <code>la</code>
+    <language>la</language>
+    <name>Latin</name>
+    <nativeName>latine</nativeName>
   </language>
   <language>
     <code>lv</code>
@@ -988,6 +1016,12 @@
     <nativeName>davvisámegiella (Ruoŧŧa)</nativeName>
   </language>
   <language>
+    <code>no</code>
+    <language>no</language>
+    <name>Norwegian</name>
+    <nativeName>norsk</nativeName>
+  </language>
+  <language>
     <code>nb</code>
     <language>nb</language>
     <name>Norwegian Bokmål</name>
@@ -1056,6 +1090,12 @@
     <nativeName>ਪੰਜਾਬੀ</nativeName>
   </language>
   <language>
+    <code>qu</code>
+    <language>qu</language>
+    <name>Quechua</name>
+    <nativeName>runa simi</nativeName>
+  </language>
+  <language>
     <code>ro</code>
     <language>ro</language>
     <name>Romanian</name>
@@ -1106,6 +1146,12 @@
     <language>sah</language>
     <name>Sakha</name>
     <nativeName>саха тыла</nativeName>
+  </language>
+  <language>
+    <code>sm</code>
+    <language>sm</language>
+    <name>Samoan</name>
+    <nativeName>gagana fa'a Samoa</nativeName>
   </language>
   <language>
     <code>sa</code>
@@ -1436,6 +1482,12 @@
     <country>ET</country>
     <name>Tigrinya (Ethiopia)</name>
     <nativeName>ትግርኛ (ኢትዮጵያ)</nativeName>
+  </language>
+  <language>
+    <code>to</code>
+    <language>to</language>
+    <name>Tonga</name>
+    <nativeName>Faka Tonga</nativeName>
   </language>
   <language>
     <code>tr</code>
