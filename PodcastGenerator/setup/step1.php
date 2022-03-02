@@ -48,7 +48,7 @@ if (isset($_GET['done'])) {
                     </select>
                     <input type="submit" value="Submit" class="btn btn-success mb-3 btn-block">
                 </form>
-                <small>If your desired language can't be choosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
+                <small>If your desired language can't be chosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
             </div>
         </div>
     </div>
