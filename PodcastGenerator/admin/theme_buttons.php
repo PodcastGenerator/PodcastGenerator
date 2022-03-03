@@ -87,8 +87,11 @@ if (isset($_GET['name'])) {
     foreach ($buttons as $item) {
         if ($item->name == $name) {
             $btn = $item;
+            break;
         }
     }
+} else {
+    $btn = (object) ['name' => $name, 'href' => null, 'class' => null, 'protocol' => null];
 }
 ?>
 <!DOCTYPE html>
@@ -132,7 +135,7 @@ if (isset($_GET['name'])) {
                 <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success">
             </form>
             <hr>
-            <form action="theme_buttons.php?del=1&name=<?= htmlspecialchars($_GET['name']) ?>" method="POST">
+            <form action="theme_buttons.php?del=1&name=<?= htmlspecialchars($name) ?>" method="POST">
                 <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                 <input class="btn btn-danger" type="submit" value="<?= _('Delete Button') ?>">
             </form>
@@ -140,7 +143,7 @@ if (isset($_GET['name'])) {
         <?php if (!isset($_GET['name'])) { ?>
             <hr>
             <h3><?= _('Add Button') ?></h3>
-            <form action="theme_buttons.php?add=1&name=<?= htmlspecialchars($_GET['name']) ?>" method="POST">
+            <form action="theme_buttons.php?add=1&name=<?= htmlspecialchars($name) ?>" method="POST">
                 <?= _('Name (needs to be unique)') ?>:<br>
                 <input type="text" name="name" value="<?= htmlspecialchars($btn->name) ?>"><br>
                 <?= _('Link (where it should point to)') ?>:<br>
