@@ -1,0 +1,20 @@
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #1c1c1c;
+		color: #ccc;
+	}
+
+	.card {
+		background-color: #282828;
+		color: #ccc;
+	}
+
+	.page-link {
+		background-color: #282828;
+		border-color: #555;
+	}
+
+	.jumbotron {
+		background-color: #282828;
+	}
+}
