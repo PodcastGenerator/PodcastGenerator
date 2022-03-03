@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -27,17 +27,17 @@ if (isset($_GET['edit'])) {
     die();
 }
 
-error: echo "";
+error:
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Select Podcast Category'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Select Podcast Category') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -47,65 +47,57 @@ error: echo "";
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Select Podcast Categories'); ?></h1>
-        <small><?php echo _('Select or change Podcast Categories (for iTunes)'); ?></small>
-        <?php
-        if (isset($error)) {
-            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
-        }
-        ?>
+        <h1><?= _('Select Podcast Categories') ?></h1>
+        <small><?= _('Select or change Podcast Categories (for iTunes)') ?></small>
+        <?php if (isset($error)) { ?>
+            <strong><p style="color: red;"><?= $error ?></p></strong>
+        <?php } ?>
         <form action="store_cat.php?edit=1" method="POST">
-            <h3><?php echo _('Category'); ?> 1:</h3>
+            <h3><?= _('Category') ?> 1:</h3>
             <select name="cat1">
-                <?php
-                foreach ($categories as $item) {
-                    if ($config["itunes_category[0]"] == $item->id) {
-                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
-                    } else {
-                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                    }
-                }
-                ?>
+                <?php foreach ($categories as $item) { ?>
+                    <?php if ($config["itunes_category[0]"] == $item->id) { ?>
+                       <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                    <?php } else { ?>
+                       <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                    <?php } ?>
+                <?php } ?>
             </select>
             <hr>
-            <h3><?php echo _('Category') ?> 2:</h3>
+            <h3><?= _('Category') ?> 2:</h3>
             <select name="cat2">
-                <?php
-                if ($config["itunes_category[1]"] == "") {
-                    echo '<option value="null" selected></option>';
-                } else {
-                    echo '<option value="null"></option>';
-                }
-                foreach ($categories as $item) {
-                    if ($config["itunes_category[1]"] == $item->id) {
-                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
-                    } else {
-                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                    }
-                }
-                ?>
+                <?php if ($config["itunes_category[1]"] == "") { ?>
+                    <option value="null" selected></option>
+                <?php } else { ?>
+                    <option value="null"></option>
+                <?php } ?>
+                <?php foreach ($categories as $item) { ?>
+                    <?php if ($config["itunes_category[1]"] == $item->id) { ?>
+                        <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                    <?php } else { ?>
+                        <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                    <?php } ?>
+                <?php } ?>
             </select>
             <hr>
-            <h3><?php echo _('Category'); ?> 3:</h3>
+            <h3><?= _('Category') ?> 3:</h3>
             <select name="cat3">
-                <?php
-                if ($config["itunes_category[2]"] == "") {
-                    echo '<option value="null" selected></option>';
-                } else {
-                    echo '<option value="null"></option>';
-                }
-                foreach ($categories as $item) {
-                    if ($config["itunes_category[2]"] == $item->id) {
-                        echo '<option value="' . htmlspecialchars($item->id) . '" selected>' . htmlspecialchars($item->description) . '</option>';
-                    } else {
-                        echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                    }
-                }
-                ?>
+                <?php if ($config["itunes_category[2]"] == "") { ?>
+                    <option value="null" selected></option>
+                <?php } else { ?>
+                    <option value="null"></option>
+                <?php } ?>
+                <?php foreach ($categories as $item) { ?>
+                    <?php if ($config["itunes_category[2]"] == $item->id) { ?>
+                        <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                    <?php } else { ?>
+                        <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                    <?php } ?>
+                <?php } ?>
             </select>
             <hr>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" value="<?php echo _('Save') ?>" class="btn btn-success"><br>
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" value="<?= _('Save') ?>" class="btn btn-success"><br>
         </form>
     </div>
 </body>

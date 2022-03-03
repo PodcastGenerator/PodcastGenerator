@@ -1,14 +1,16 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 session_start();
-function randomString($length = 8) {
+function randomString($length = 8)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -18,7 +20,8 @@ function randomString($length = 8) {
     return $randomString;
 }
 
-function createconf($username, $password) {
+function createconf($username, $password)
+{
     require "../core/misc/globs.php";
     $installtime = time();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -29,86 +32,96 @@ function createconf($username, $password) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     $config = "<?php
-\$podcastgen_version = \"$version\"; // Version
+\$podcastgen_version = '$version'; // Version
 
 \$first_installation = $installtime;
 
-\$installationKey = \"$installationKey\";
+\$installationKey = '$installationKey';
 
-\$scriptlang = \"".$_SESSION['lang']."\";
+\$scriptlang = '".$_SESSION['lang']."';
 
-\$url = \"$url\";
+\$url = '$url';
 
-\$absoluteurl = \"$absoluteurl\"; // The location on the server
+\$absoluteurl = '$absoluteurl'; // The location on the server
 
-\$theme_path = \"themes/default/\";
+\$theme_path = 'themes/default/';
 
-\$upload_dir = \"media/\"; // \"media/\" the default folder (Trailing slash required). Set chmod 755
+\$upload_dir = 'media/'; // 'media/' the default folder (Trailing slash required). Set chmod 755
 
-\$img_dir = \"images/\"; // (Trailing slash required). Set chmod 755
+\$img_dir = 'images/'; // (Trailing slash required). Set chmod 755
 
-\$feed_dir = \"\"; // Where to create feed.xml (empty value = root directory). Set chmod 755
+\$feed_dir = ''; // Where to create feed.xml (empty value = root directory). Set chmod 755
 
-\$max_recent = \"all\"; // How many file to show in the home page
+\$max_recent = 'all'; // How many file to show in the home page
 
-\$recent_episode_in_feed = \"All\"; // How many file to show in the XML feed (1,2,5 etc.. or \"All\")
+\$recent_episode_in_feed = 'All'; // How many file to show in the XML feed (1,2,5 etc.. or 'All')
 
 \$episodeperpage = 10;
 
-\$enablestreaming = \"yes\"; // Enable mp3 streaming? (\"yes\" or \"no\")
+\$enablestreaming = 'yes'; // Enable mp3 streaming? ('yes' or 'no')
 
-\$freebox = \"yes\"; // enable freely customizable box
+\$freebox = 'yes'; // enable freely customizable box
 
-\$enablepgnewsinadmin = \"yes\";
+\$enablepgnewsinadmin = 'yes';
 
-\$strictfilenamepolicy = \"no\"; // strictly rename files (just characters A to Z and numbers) 
+\$strictfilenamepolicy = 'no'; // strictly rename files (just characters A to Z and numbers) 
 
-\$categoriesenabled = \"yes\";
+\$categoriesenabled = 'yes';
 
 \$cronAutoIndex = 1; //Auto Index New Episodes via Cron
 
 \$cronAutoRegenerateRSS = 1; //Auto regenerate RSS via Cron
 
-\$indexfile = \"index.php\";    // Path of the index file
+\$indexfile = 'index.php';    // Path of the index file
 
-\$podcastPassword = \"\";       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
+\$podcastPassword = '';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
+
+\$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
 
 #####################
 # XML Feed stuff
 
-\$podcast_title = \"Podcast Title\";
+\$podcast_title = 'Podcast Title';
 
-\$podcast_subtitle = \"Subtitle\";
+\$podcast_subtitle = 'Subtitle';
 
-\$podcast_description = \"A little description of your podcast.\";
+\$podcast_description = 'A little description of your podcast.';
 
-\$author_name = \"Podcast Generator User\";
+\$author_name = 'Podcast Generator User';
 
-\$author_email = \"podcastgenerator@example.com\";
+\$author_email = 'podcastgenerator@example.com';
 
-# The e-amil of the technical admin of the podcast
-\$webmaster = \"podcastadmin@example.com\";
+# The e-mail of the technical admin of the podcast
+\$webmaster = 'podcastadmin@example.com';
 
-\$itunes_category[0] = \"Arts\"; // iTunes categories (mainCategory:subcategory)
-\$itunes_category[1] = \"\";
-\$itunes_category[2] = \"\";
+\$itunes_category[0] = 'Arts'; // iTunes categories (mainCategory:subcategory)
+\$itunes_category[1] = '';
+\$itunes_category[2] = '';
 
-\$link = \"?name=\"; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
+\$link = '?name='; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
 
-\$feed_language = \"en\";
+\$feed_language = 'en';
 
-\$copyright = \"All rights reserved\";   // Your copyright notice (e.g CC-BY)
+\$copyright = 'All rights reserved';   // Your copyright notice (e.g CC-BY)
 
-\$feed_encoding = \"utf-8\";
+\$feed_encoding = 'utf-8';
 
-\$explicit_podcast = \"no\"; //does your podcast contain explicit language? (\"yes\" or \"no\")
+\$explicit_podcast = 'no'; //does your podcast contain explicit language? ('yes' or 'no')
 
-\$users_json = \"{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}\";
+\$users_json = '{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}';
 
 #####################
 # WebSub
 
-\$websub_server = \"\";
+\$websub_server = '';
+
+#####################
+# Podcast Index
+
+\$pi_api_key = \"\";
+\$pi_api_secret = \"\";
+
+\$pi_podcast_id = 0; // is the podcast in Podcast Index? This is its show ID there.
 
 // END OF CONFIG
 ";
@@ -116,7 +129,7 @@ function createconf($username, $password) {
     fwrite($f, $config);
     fclose($f);
     // Check if file exists
-    if(file_exists("../config.php")) {
+    if (file_exists("../config.php")) {
         return true;
     }
     return false;

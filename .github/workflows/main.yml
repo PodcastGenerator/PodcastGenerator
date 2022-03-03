@@ -1,0 +1,47 @@
+name: Build and package Podcast Generator
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict --no-check-version
+      working-directory: PodcastGenerator
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: PodcastGenerator/vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+      working-directory: PodcastGenerator
+
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    # Docs: https://getcomposer.org/doc/articles/scripts.md
+
+    # - name: Run test suite
+    #   run: composer run-script test
+
+    # Take advantage of the fact that GitHub will zip everything up in an
+    # individual upload-artifact action. This means we don't have to rely on
+    # another action to build the zip package.
+    - name: Upload build
+      uses: actions/upload-artifact@v2
+      with:
+        name: PodcastGenerator
+        path: |
+          *
+          **/*
+          !.git
+          !.github

@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -13,7 +13,24 @@ require '../core/include_admin.php';
 if (isset($_GET['edit'])) {
     checkToken();
     foreach ($_POST as $key => $value) {
-        updateConfig('../config.php', $key, $value);
+        if ($key == 'custom_tags') {
+            // need to handle custom_tags specially
+            $custom_tags = $value;
+            if (isWellFormedXml($custom_tags)) {
+                // only set the value if it's well-formed XML
+                saveCustomFeedTags($custom_tags);
+            } elseif ($config['customtagsenabled'] == 'yes') {
+                // only error if custom tags feature is enabled
+                $error = _('Custom tags are not well-formed');
+            }
+        } else {
+            updateConfig('../config.php', $key, $value);
+        }
+    }
+
+    if (!isset($error)) {
+        header('Location: podcast_details.php');
+        die();
     }
     header('Location: podcast_details.php');
     die();
@@ -21,12 +38,15 @@ if (isset($_GET['edit'])) {
     generateRSS();
     pingServices();
 }
+
+$custom_tags = getCustomFeedTags();
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Podcast Details'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Podcast Details') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <style>
@@ -35,7 +55,7 @@ if (isset($_GET['edit'])) {
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -45,21 +65,21 @@ if (isset($_GET['edit'])) {
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Change Podcast Details'); ?></h1>
+        <h1><?= _('Change Podcast Details') ?></h1>
         <form action="podcast_details.php?edit=1" method="POST">
-            <?php echo _('Podcast Title'); ?>:<br>
-            <input type="text" name="podcast_title" value="<?php echo htmlspecialchars($config['podcast_title']); ?>" class="txt"><br>
-            <?php echo _('Podcast Subtitle or Slogan'); ?>:<br>
-            <input type="text" name="podcast_subtitle" value="<?php echo htmlspecialchars($config['podcast_subtitle']); ?>" class="txt"><br>
-            <?php echo _('Podcast Description'); ?>:<br>
-            <input type="text" name="podcast_description" value="<?php echo htmlspecialchars($config['podcast_description']); ?>" class="txt"><br>
-            <?php echo _('Copyright Notice'); ?>:<br>
-            <input type="text" name="copyright" value="<?php echo htmlspecialchars($config['copyright']); ?>" class="txt"><br>
-            <?php echo _('Author Name'); ?>:<br>
-            <input type="text" name="author_name" value="<?php echo htmlspecialchars($config['author_name']); ?>" class="txt"><br>
-            <?php echo _('Author E-Mail Address'); ?>:<br>
-            <input type="text" name="author_email" value="<?php echo htmlspecialchars($config['author_email']); ?>" class="txt"><br>
-            <?php echo _('Feed Language'); ?>: (<?php echo _('Main language of your podcast'); ?>)<br>
+            <?= _('Podcast Title') ?>:<br>
+            <input type="text" name="podcast_title" value="<?= htmlspecialchars($config['podcast_title']) ?>" class="txt"><br>
+            <?= _('Podcast Subtitle or Slogan') ?>:<br>
+            <input type="text" name="podcast_subtitle" value="<?= htmlspecialchars($config['podcast_subtitle']) ?>" class="txt"><br>
+            <?= _('Podcast Description') ?>:<br>
+            <input type="text" name="podcast_description" value="<?= htmlspecialchars($config['podcast_description']) ?>" class="txt"><br>
+            <?= _('Copyright Notice') ?>:<br>
+            <input type="text" name="copyright" value="<?= htmlspecialchars($config['copyright']) ?>" class="txt"><br>
+            <?= _('Author Name') ?>:<br>
+            <input type="text" name="author_name" value="<?= htmlspecialchars($config['author_name']) ?>" class="txt"><br>
+            <?= _('Author E-Mail Address') ?>:<br>
+            <input type="text" name="author_email" value="<?= htmlspecialchars($config['author_email']) ?>" class="txt"><br>
+            <?= _('Feed Language'); ?>: (<?= _('Main language of your podcast') ?>)<br>
             <select name="feed_language">
                 <option value="af">Afrikanns</option>
                 <option value="sq">Albanian</option>
@@ -135,11 +155,16 @@ if (isset($_GET['edit'])) {
                 <option value="cy">Welsh</option>
                 <option value="xh">Xhosa</option>
             </select><br>
-            <?php echo _('Explicit Podcast'); ?>:<br>
-            <input type="radio" name="explicit_podcast" value="yes" <?php echo $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?php echo _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?php echo $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?php echo _('No'); ?><br>
+            <?= _('Explicit Podcast') ?>:<br>
+            <input type="radio" name="explicit_podcast" value="yes" <?= $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?= $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <br>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" value="<?php echo _("Submit") ?>" class="btn btn-success">
+<?php if ($config['customtagsenabled'] == 'yes') { ?>
+            <?= _('Custom Feed Tags') ?>:<br>
+            <textarea name="custom_tags" style="width:100%;"><?= htmlspecialchars($custom_tags) ?></textarea>
+            <br>
+<?php } ?>
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success">
         </form>
     </div>
 </body>

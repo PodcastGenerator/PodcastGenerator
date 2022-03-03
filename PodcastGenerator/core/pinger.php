@@ -1,4 +1,5 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
@@ -12,7 +13,9 @@ function pingWebSub()
     // Get the global config
     global $config;
     // Exit early if no WebSub service isn't set up
-    if (!$config['websub_server']) { return; }
+    if (!$config['websub_server']) {
+        return;
+    }
     // Log an error and exit early if cURL is unavailable
     if (!function_exists('curl_init')) {
         error_log("cURL functions are not available.", 0);
@@ -35,22 +38,41 @@ function pingWebSub()
         if (function_exists('curl_setopt_array')) {
             curl_setopt_array($handle, $opts);
         } else {
-            foreach ($opts as $opt => $val)
+            foreach ($opts as $opt => $val) {
                 curl_setopt($handle, $opt, $val);
+            }
         }
         return curl_exec($handle);
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
         // write a warning to stderr, but don't blow anything up
         error_log($e, 0);
         return false;
+    } finally {
+        if ($handle) {
+            curl_close($handle);
+        }
     }
-    finally {
-        if ($handle) curl_close($handle);
-    }
+}
+
+function pingPodcastIndex()
+{
+    // Get the global config
+    global $config, $version;
+    // Exit early if Podcast Index isn't set up
+    if (!$config['pi_api_key'] || !$config['pi_api_secret'] || !$config['pi_podcast_id']) { return; }
+    // Set up our client
+    require_once('../vendor/autoload.php');
+    $client = new PodcastIndex\Client([
+        'app' => 'PodcastIndex/' . $version,
+        'key' => $config['pi_api_key'],
+        'secret' => $config['pi_api_secret']
+    ]);
+    try { $client->get('hub/pubnotify', array('id' => $config['pi_podcast_id'])); }
+    catch (Exception $e) { /* swallow any errors, this is fire-and-forget */ }
 }
 
 function pingServices()
 {
     pingWebSub();
+    pingPodcastIndex();
 }

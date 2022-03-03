@@ -1,0 +1,4 @@
+{
+    "phpcs.composerJsonPath": "PodcastGenerator/composer.json",
+    "phpunit.logpanel": true
+}

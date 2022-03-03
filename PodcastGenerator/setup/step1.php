@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'securitycheck.php';
@@ -42,15 +42,13 @@ if (isset($_GET['done'])) {
                 <p class="lead">Please choose a language</p>
                 <form action="step1.php?done=1" method="POST">
                     <select class="custom-select mb-4" name="lang">
-                        <?php
-                        foreach ($languages as $item) {
-                            echo '<option value=' . $item->code . '>' . $item->name . '</option>' . "\n";
-                        }
-                        ?>
+                        <?php foreach ($languages as $item) { ?>
+                            <option value='<?= $item->code ?>'><?= $item->name ?></option>
+                        <?php } ?>
                     </select>
                     <input type="submit" value="Submit" class="btn btn-success mb-3 btn-block">
                 </form>
-                <small>If your desired language can't be choosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
+                <small>If your desired language can't be chosen, you should execute <code>locale -a</code> and might append <code>.utf8</code> to <code>scriptlang</code> in the config</small>
             </div>
         </div>
     </div>

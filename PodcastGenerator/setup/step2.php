@@ -4,12 +4,13 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require "securitycheck.php";
-if (!isset($_SESSION))
+if (!isset($_SESSION)) {
     session_start();
+}
 
 // Dirs
 $media = "../media/";
@@ -54,6 +55,15 @@ if (file_exists($scripts . $testfile)) {
     unlink($scripts . $testfile);
     $scripts_write = true;
 }
+
+function textColor($success)
+{
+    return $success ? 'green' : 'red';
+}
+function isIsNot($success)
+{
+    return $success ? 'is' : 'is not';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,30 +80,20 @@ if (file_exists($scripts . $testfile)) {
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
                 <h2>Podcast Generator - <small>Step 2</small></h2>
                 <p><small>We are now checking if our data directories are writable so you can actual store the data.</small></p>
-                <?php
-                if ($media_write)
-                    echo "<p style=\"color: green;\">Media is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Media is not writeable</p>";
-                if ($images_write)
-                    echo "<p style=\"color: green;\">Images is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Images is not writeable</p>";
-                if ($scripts_write)
-                    echo "<p style=\"color: green;\">Scripts is writeable</p>";
-                else
-                    echo "<p style=\"color: red;\">Scripts is not writeable</p>";
-                // Try to adjust file permissions
-                if (!$media_write || !$images_write || !$scripts_write) {
-                    echo "<p>Try to adjust file permissions</p>";
-                    chmod("$media_directory", 0777);
-                    chmod("$images_directory", 0777);
-                    chmod("$script_directory", 0777);
-                    echo "<strong><p style=\"color: red;\">Please <a href=\"step2.php\">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>";
-                } else {
-                    echo "<a href=\"step3.php\" class=\"btn btn-success btn-block\">Continue</a>";
-                }
-                ?>
+                <p style="color: <?= textColor($media_write) ?>">Media <?= isIsNot($media_write) ?> writable</p>
+                <p style="color: <?= textColor($images_write) ?>">Images <?= isIsNot($images_write) ?> writable</p>
+                <p style="color: <?= textColor($scripts_write) ?>">Scripts <?= isIsNot($scripts_write) ?> writable</p>
+                <?php if (!$media_write || !$images_write || !$scripts_write) { /* Try to adjust file permissions */ ?>
+                    <p>Try to adjust file permissions</p>
+                    <?php
+                        chmod("$media_directory", 0777);
+                        chmod("$images_directory", 0777);
+                        chmod("$script_directory", 0777);
+                    ?>
+                    <strong><p style="color: red;">Please <a href="step2.php">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>
+                <?php } else { ?>
+                    <a href="step3.php" class="btn btn-success btn-block">Continue</a>
+                <?php } ?>
             </div>
         </div>
     </div>

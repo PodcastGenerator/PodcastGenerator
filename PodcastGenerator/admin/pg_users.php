@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -24,7 +24,7 @@ if (isset($_GET['change'])) {
     }
 }
 // Delete user case
-else if (isset($_GET['delete'])) {
+elseif (isset($_GET['delete'])) {
     checkToken();
     // Check if the deleted user is the logged in user
     // Don't permit to delete the logged in user
@@ -46,7 +46,7 @@ else if (isset($_GET['delete'])) {
     }
 }
 // Create user case
-else if (isset($_GET['create'])) {
+elseif (isset($_GET['create'])) {
     checkToken();
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = _('Missing fields');
@@ -64,11 +64,11 @@ else if (isset($_GET['create'])) {
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Manage users'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Manage users') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -78,77 +78,67 @@ else if (isset($_GET['create'])) {
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Manage users'); ?></h1>
-        <small><?php echo _('It may take a few seconds until the changes are visible'); ?></small><br>
-        <?php
-        if (isset($_GET['userchange'])) {
-            echo '<strong style="color: green;">' . _('User changed successfully') . '</strong>';
-        } elseif (isset($_GET['usercreate'])) {
-            echo '<strong style="color: green;">' . _('User created successfully') . '</strong>';
-        } elseif (isset($_GET['userdelete'])) {
-            echo '<strong style="color: red;">' . _('User deleted successfully') . '</strong>';
-        } else {
-            // If no GETS are set, display all users
-            if (sizeof($_GET) == 0) {
-                echo '<h3>' . _('List of users') . '</h3>';
-                echo '<ul>';
-                foreach ($users as $username => $password) {
-                    echo '<li><a href="pg_users.php?username=' . $username . '">' . $username . '</a></li>';
-                }
-                echo '</ul>';
-        ?>
-                <h3><?php echo _('Create User'); ?></h3>
+        <h1><?= _('Manage users') ?></h1>
+        <small><?= _('It may take a few seconds until the changes are visible') ?></small><br>
+        <?php if (isset($_GET['userchange'])) { ?>
+            <strong style="color: green;"><?= _('User changed successfully') ?></strong>
+        <?php } elseif (isset($_GET['usercreate'])) { ?>
+            <strong style="color: green;"><?= _('User created successfully') ?></strong>
+        <?php } elseif (isset($_GET['userdelete'])) { ?>
+            <strong style="color: red;"><?= _('User deleted successfully') ?></strong>
+        <?php } else { ?>
+            <?php if (count($_GET) == 0) { /* If no GETS are set, display all users */ ?>
+                <h3><?= _('List of users') ?></h3>
+                <ul>
+                <?php foreach ($users as $username => $password) { ?>
+                    <li><a href="pg_users.php?username=<?= $username ?>"><?= $username ?></a></li>
+                <?php } ?>
+                </ul>
+
+                <h3><?= _('Create User') ?></h3>
                 <form action="pg_users.php?create=1" method="POST">
-                    <?php echo _('Username') ?>:<br>
+                    <?= _('Username') ?>:<br>
                     <input type="text" name="username"><br>
-                    <?php echo _('Password') ?>:<br>
+                    <?= _('Password') ?>:<br>
                     <input type="password" name="password"><br>
                     <br>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                    <input type="submit" value="<?php echo _('Submit'); ?>" class="btn btn-success"><br>
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success"><br>
                 </form>
-            <?php
-            }
-            // List a specific user
-            if (isset($_GET['username'])) {
-                if (!array_key_exists($_GET['username'], $users)) {
-                    $error = _('User does not exist');
-                    goto error;
-                }
-            ?>
-                <form action="pg_users.php?change=<?php echo $_GET['username']; ?>" method="POST">
-                    <?php echo _('Username'); ?>:<br>
-                    <input type="text" name="username" value="<?php echo $_GET['username']; ?>" disabled> <small><?php echo _('You cannot edit usernames'); ?></small><br>
-                    <?php echo _('New Password'); ?><br>
+            <?php } ?>
+            <?php if (isset($_GET['username'])) { /* List a specific user */ ?>
+                <?php
+                    if (!array_key_exists($_GET['username'], $users)) {
+                        $error = _('User does not exist');
+                        goto error;
+                    }
+                ?>
+                <form action="pg_users.php?change=<?= strip_tags($_GET['username']) ?>" method="POST">
+                    <?= _('Username') ?>:<br>
+                    <input type="text" name="username" value="<?= strip_tags($_GET['username']); ?>" disabled> <small><?= _('You cannot edit usernames') ?></small><br>
+                    <?= _('New Password') ?><br>
                     <input type="password" name="password"><br>
-                    <?php echo _('Repeat new password'); ?><br>
+                    <?= _('Repeat new password') ?><br>
                     <input type="password" name="password2"><br>
                     <br>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                    <input type="submit" value="<?php echo _('Change'); ?>" class="btn btn-success">
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="submit" value="<?= _('Change') ?>" class="btn btn-success">
                 </form>
                 <hr>
-                <h3><?php echo _('Delete user'); ?></h3>
-                <?php
-                // Don't permit to delete the logged in user
-                if ($_GET['username'] == $_SESSION['username']) {
-                    echo '<p>' . _('You cannot delete yourself') . '</p>';
-                } else {
-                    echo '<form action="pg_users.php?delete=' . $_GET['username'] . '" method="POST">';
-                    echo '<input type="hidden" name="token" value="' . $_SESSION['token' ]. '">';
-                    echo '<input class="btn btn-danger" type="submit" value="' . _('Delete') . '">';
-                    echo '</form>';
-                }
-                ?>
-            <?php
-            }
-            ?>
-        <?php
-            error: if (isset($error)) {
-                echo '<p style="color: red;">' . $error . '</p>';
-            }
-        }
-        ?>
+                <h3><?= _('Delete user') ?></h3>
+                <?php if ($_GET['username'] == $_SESSION['username']) { /* Don't permit to delete the logged in user */ ?>
+                    <p><?= _('You cannot delete yourself') ?></p>
+                <?php } else { ?>
+                    <form action="pg_users.php?delete=<?= strip_tags($_GET['username']) ?>" method="POST">
+                        <input type="hidden" name="token" value="<?= $_SESSION['token' ] ?>">
+                        <input class="btn btn-danger" type="submit" value="<?= _('Delete') ?>">
+                    </form>
+                <?php } ?>
+            <?php } ?>
+            <?php error: if (isset($error)) { ?>
+                <p style="color: red;"><?= $error ?></p>
+            <?php } ?>
+        <?php } ?>
     </div>
 </body>
 
