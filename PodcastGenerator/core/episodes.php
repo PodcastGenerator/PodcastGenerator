@@ -1,10 +1,11 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 function setupEpisodes($_config)
@@ -46,6 +47,7 @@ function arrayEpisode($item, $episode, $_config)
 {
     $append_array = [
         'episode' => [
+            'guid' => $item->guid,
             'titlePG' => $item->titlePG,
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
@@ -80,7 +82,7 @@ function getEpisodes($category = null, $_config)
     $episodes_mtimes = setupEpisodes($_config);
     // Get XML data for the episodes of interest.
     $episodes_data = array();
-    for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
+    for ($i = 0; $i < count($episodes_mtimes); $i++) {
         $episode = $episodes_mtimes[$i][0];
         // We need to get the CDATA in plaintext.
         $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
@@ -115,7 +117,7 @@ function searchEpisodes($name = "", $_config)
     }
     // Get XML data for the episodes of interest.
     $episodes_data = array();
-    for ($i = 0; $i < sizeof($episodes_mtimes); $i++) {
+    for ($i = 0; $i < count($episodes_mtimes); $i++) {
         $episode = $episodes_mtimes[$i][0];
         // We need to get the CDATA in plaintext.
         $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
@@ -136,6 +138,157 @@ function searchEpisodes($name = "", $_config)
     }
     unset($_config);
     return $episodes_data;
+}
+
+require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
+
+/**
+ * Get episode audio metadata from getID3.
+ *
+ * @param string $filename  The path of the episode audio file.
+ * @return array            The result from getID3 analyzing the file.
+ */
+function getID3Info($filename)
+{
+    $getID3 = new getID3();
+    return $getID3->analyze($filename);
+}
+
+// Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
+// to the specific default value.
+function getID3Tag($fileinfo, $tagName, $defaultValue = null)
+{
+    if (isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
+            $fileinfo['tags']['id3v2'][$tagName][0]) {
+        return $fileinfo['tags']['id3v2'][$tagName][0];
+    } else {
+        if (isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
+                $fileinfo['tags']['id3v1'][$tagName][0]) {
+            return $fileinfo['tags']['id3v1'][$tagName][0];
+        } else {
+            return $defaultValue;
+        }
+    }
+}
+
+function indexEpisodes($_config)
+{
+    $new_files = array();
+    $mimetypes = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    // Get all files and check if they have an XML file associated
+    if ($handle = opendir($_config['absoluteurl'] . $_config['upload_dir'])) {
+        while (false !== ($entry = readdir($handle))) {
+            // Skip dotfiles
+            if (substr($entry, 0, 1) == '.') {
+                continue;
+            }
+            // Skip XML files
+            if (pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $entry, PATHINFO_EXTENSION) == 'xml') {
+                continue;
+            }
+            // Check if an XML file for that episode exists
+            if (file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+                continue;
+            }
+
+            // Get mime type
+            $mimetype = getmime($_config['absoluteurl'] . $_config['upload_dir'] . $entry);
+
+            // Continue if file isn't readable
+            if (!$mimetype) {
+                continue;
+            }
+
+            // Skip invalid mime types
+            $validExtension = false;
+            foreach ($mimetypes->mediaFile as $item) {
+                if ($mimetype == $item->mimetype) {
+                    $validExtension = true;
+                    break;
+                }
+            }
+            if (!$validExtension) {
+                continue;
+            }
+            array_push($new_files, $entry);
+        }
+    }
+
+    // Generate XML from audio file (with mostly empty values)
+    $num_added = 0;
+    for ($i = 0; $i < count($new_files); $i++) {
+        // Skip files if they are not strictly named
+        if ($_config['strictfilenamepolicy'] == 'yes') {
+            if (!preg_match('/^[\w.]+$/', $new_files[$i])) {
+                continue;
+            }
+        }
+        // Select new filenames (with date) if not already exists
+        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
+        $fname = $new_files[$i];
+        if (count($output_array) == 0) {
+            $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
+            $new_filename = str_replace(' ', '_', $new_filename);
+            $appendix = 1;
+            while (file_exists($new_filename)) {
+                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . strtolower(date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]));
+                $new_filename = str_replace(' ', '_', $new_filename);
+                $appendix++;
+            }
+            rename($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], $new_filename);
+            $fname = $new_filename;
+        }
+        // Get audio metadata (duration, bitrate etc)
+        $fileinfo = getID3Info($fname);
+        $duration = $fileinfo['playtime_string'];           // Get duration
+        $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
+        $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
+        $title = getID3Tag($fileinfo, 'title', pathinfo($fname, PATHINFO_FILENAME));
+        $comment = getID3Tag($fileinfo, 'comment', $title);
+        $author_name = getID3Tag($fileinfo, 'artist', '');
+
+        $link = str_replace('?', '', $_config['link']);
+        $link = str_replace('=', '', $link);
+        $link = str_replace('$url', '', $link);
+
+        $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
+<PodcastGenerator>
+        <episode>
+            <guid>' . htmlspecialchars($_config['url'] . "?" . $link . "=" . basename($fname)) . '</guid>
+            <titlePG>' . htmlspecialchars($title, ENT_NOQUOTES) . '</titlePG>
+            <shortdescPG><![CDATA[' . $comment . ']]></shortdescPG>
+            <longdescPG><![CDATA[' . $comment . ']]></longdescPG>
+            <imgPG></imgPG>
+            <categoriesPG>
+                <category1PG>uncategorized</category1PG>
+                <category2PG></category2PG>
+                <category3PG></category3PG>
+            </categoriesPG>
+            <keywordsPG></keywordsPG>
+            <explicitPG>' . htmlspecialchars($_config['explicit_podcast']) . '</explicitPG>
+            <authorPG>
+                <namePG>'. $author_name .'</namePG>
+                <emailPG></emailPG>
+            </authorPG>
+            <fileInfoPG>
+                <size>' . intval(filesize($fname) / 1000 / 1000) . '</size>
+                <duration>' . $duration . '</duration>
+                <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
+                <frequency>' . $frequency . '</frequency>
+            </fileInfoPG>
+        </episode>
+</PodcastGenerator>';
+        // Write image if set
+        if (isset($fileinfo['comments']['picture'])) {
+            $imgext = ($fileinfo['comments']['picture'][0]['image_mime'] == 'image/png') ? 'png' : 'jpg';
+            $img_filename = $_config['absoluteurl'] . $_config['img_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.' . $imgext;
+            file_put_contents($img_filename, $fileinfo['comments']['picture'][0]['data']);
+        }
+        // Write XML file
+        file_put_contents($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);
+        $num_added++;
+    }
+    return $num_added;
 }
 
 // usort() compare function that reverse-sorts numeric values (which,

@@ -2,23 +2,24 @@
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config["podcast_title"]); ?></title>
-    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/custom.css">
-    <link rel="stylesheet" href="<?php echo htmlspecialchars($config["theme_path"]); ?>style/font-awesome.min.css">
+    <title><?= htmlspecialchars($config["podcast_title"]) ?></title>
+    <link rel="stylesheet" href="<?= htmlspecialchars($config["theme_path"]) ?>style/bootstrap.css">
+    <link rel="stylesheet" href="<?= htmlspecialchars($config["theme_path"]) ?>style/custom.css">
+    <link rel="stylesheet" href="<?= htmlspecialchars($config["theme_path"]) ?>style/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= htmlspecialchars($config["theme_path"]) ?>style/dark.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo htmlspecialchars($config["podcast_subtitle"]); ?>">
-    <meta name="author" content="<?php echo htmlspecialchars($config["author_name"]); ?>">
+    <meta name="description" content="<?= htmlspecialchars($config["podcast_subtitle"]) ?>">
+    <meta name="author" content="<?= htmlspecialchars($config["author_name"]) ?>">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="Subscribe to <?= htmlspecialchars($config["podcast_title"]) ?>" href="feed.xml">
 
-    <!--    Add meta propreties for social cards, depends if it's for the main page ou a single episode -->
-    <?php
-    // IF name was passed, do this instead
-    if (isset($_GET[$link])) {
+    <!--    Add meta properties for social cards, depends if it's for the main page or a single episode -->
+    <?php if (isset($_GET[$link])) {
+        /* IF name was passed, do this instead */
         $correctepisode = array();
-        for ($i = 0; $i < sizeof($episodes); $i++) {
+        for ($i = 0; $i < count($episodes); $i++) {
             if ($episodes[$i]["episode"]["filename"] == $_GET[$link]) {
                 $correctepisode = $episodes[$i];
                 break;
@@ -37,20 +38,39 @@
                 $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png' :
                 $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.jpg';
             $img = $filename;
-        }
-        echo '<meta property="og:title" content="' . $config["podcast_title"] . ' - ' . $correctepisode["episode"]["titlePG"] . '" />' . "\n";
-        echo '    <meta property="og:type" content="article" />' . "\n";
-        echo '    <meta property="og:url" content="' . $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] . '" />' . "\n";
-        echo '    <meta property="og:image" content="' . $img . '" />' . "\n";
-        echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
-    } else {
-        echo '    <meta property="og:title" content="' . $config["podcast_title"] . '" />' . "\n";
-        echo '    <meta property="og:type" content="article" />' . "\n";
-        echo '    <meta property="og:url" content="' . $config["url"] . '" />' . "\n";
-        echo '    <meta property="og:image" content="' . $config["url"] . $config["img_dir"] . 'itunes_image.jpg" />' . "\n";
-        echo '    <meta property="og:description" content="' . $config["podcast_description"] . '" />' . "\n";
-    }
-    ?>
+        } ?>
+        <meta property="og:title" content="<?= $config["podcast_title"] . ' - ' . $correctepisode["episode"]["titlePG"] ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="'<?= $config["url"] . 'index.php?name=' . $correctepisode["episode"]["filename"] ?>" />
+        <meta property="og:image" content="<?= $img ?>" />
+        <meta property="og:description" content="<?= $config["podcast_description"] ?>" />
+
+        <?php if (strtolower($config["enablestreaming"]) == "yes") {
+            // Get mime
+            $mime = getmime($config["absoluteurl"] . $config["upload_dir"] . $correctepisode["episode"]["filename"]);
+            if (!$mime) {
+                $mime = null;
+            }
+            $type = '';
+            if (substr($mime, 0, 5) == 'video') {
+                $type = 'video';
+            } elseif (substr($mime, 0, 5) == 'audio' || $mime == 'application/ogg') {
+                $type = 'audio';
+            }
+            if ($type == 'audio' || $type == 'video') {
+                ?><meta property="og:<?= $type ?>" content="<?= $config["url"] . $config["upload_dir"] . $correctepisode["episode"]["filename"] ?>" /><?php
+                if ($mime) {
+                    ?><meta property="og:<?= $type ?>:type" content="<?= $mime ?>" /><?php
+                }
+            }
+        } ?>
+    <?php } else { ?>
+        <meta property="og:title" content="<?= $config["podcast_title"] ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="<?= $config["url"] ?>" />
+        <meta property="og:image" content="<?= $config["url"] . $config["img_dir"] . 'itunes_image.jpg' ?>" />
+        <meta property="og:description" content="<?= $config["podcast_description"] ?>" />
+    <?php } ?>
 </head>
 
 <body>
@@ -65,27 +85,25 @@
         ?>
         <div class="row">
             <?php
-            // IF name was passed, do this instead
-            if (isset($_GET[$link])) {
-                include 'singleepisode.php';
-            } else {
-                include 'listepisodes.php';
-            }
+                // IF name was passed, do this instead
+                if (isset($_GET[$link])) {
+                    include 'singleepisode.php';
+                } else {
+                    include 'listepisodes.php';
+                }
             ?>
         </div>
-        <?php
-        if (!isset($no_episodes) && sizeof($episodes) > intval($config['episodeperpage'])) {
-            echo '<nav>';
-            echo '  <ul class="pagination">';
-            for ($j = 0; $j < sizeof($splitted_episodes); $j++) {
-                echo '  <li class="page-item"><a class="page-link" href="' . $config['indexfile'] . '?page=' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
-            }
-            echo '  </ul>';
-            echo '</nav>';
-        }
-        ?>
+        <?php if (!isset($_GET[$link]) && !isset($no_episodes) && count($episodes) > intval($config['episodeperpage'])) { ?>
+            <nav>
+                <ul class="pagination">
+                    <?php for ($j = 0; $j < count($splitted_episodes); $j++) { ?>
+                        <li class="page-item"><a class="page-link" href="<?= $config['indexfile'] . '?page=' . ($j + 1) ?>"><?= $j + 1 ?></a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
+        <?php } ?>
         <hr>
-        <p>Powered by <a href="http://podcastgenerator.net">Podcast Generator</a>, an open source podcast publishing solution | Theme based on <a href="https://getbootstrap.org">Bootstrap</a></p>
+        <p>Powered by <a href="http://podcastgenerator.net">Podcast Generator</a>, an open source podcast publishing solution | Theme based on <a href="https://getbootstrap.com">Bootstrap</a></p>
     </div>
 </body>
 

@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ikappas.composer",
+        "junstyle.php-cs-fixer",
+        "xdebug.php-debug",
+        "neilbrayfield.php-docblocker",
+        "bmewburn.vscode-intelephense-client",
+        "mehedidracula.php-namespace-resolver",
+        "ikappas.phpcs",
+        "recca0120.vscode-phpunit"
+    ]
+}

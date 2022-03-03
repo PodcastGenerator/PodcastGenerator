@@ -1,10 +1,11 @@
 <?php
+
 ############################################################
 # PODCAST GENERATOR
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 session_start();
@@ -29,10 +30,9 @@ if (isset($_GET['p'])) {
 
 $episodes = null;
 // Testing if search
-if(isset($_GET['search']) && $_GET['search'] !== "") {
+if (isset($_GET['search']) && $_GET['search'] !== "") {
     $episodes = searchEpisodes($_GET['search'], $config);
-}
-else {
+} else {
     $episodes = getEpisodes(null, $config);
 }
 
@@ -42,7 +42,7 @@ $link = str_replace('?', '', $config['link']);
 $link = str_replace('=', '', $link);
 $link = str_replace('$url."', '', $link);
 
-if (sizeof($episodes) > 0) {
+if (count($episodes) > 0) {
     if (strtolower($config['max_recent']) != 'all') {
         $episodes = array_slice($episodes, 0, $config['max_recent']);
     }
@@ -62,13 +62,10 @@ if (sizeof($episodes) > 0) {
     $filetype = _('Filetype');
     $size = _('Size');
     $duration = _('Duration');
-}
-
-else {
+} else {
     if (isset($_GET['search'])) {
         $no_episodes = _('No episodes found with that search term');
-    }
-    else {
+    } else {
         $no_episodes = _('No episodes uploaded yet');
     }
 }
