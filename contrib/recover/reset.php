@@ -32,7 +32,6 @@ if(isset($_GET['reset'])) {
 }
 
 error:
-echo "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +41,7 @@ echo "";
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -53,20 +52,14 @@ echo "";
             but you should still check if the file exists and delete it in such a case! Otherwise ANYONE can reset your password easily and get access to your Podcast.
         </b>
         <p>
-            <?php
-            if(isset($error)) {
-                echo $error;
-            }
-            ?>
+            <?= isset($error) ? $error : '' ?>
         </p>
         <form action="reset.php?reset=1" method="POST">
             Username:<br>
             <select name="username">
-                <?php
-                foreach($users as $key => $value) {
-                    echo '<option value="' . $key . '">' . $key . '</option>';
-                }
-                ?>
+                <?php foreach($users as $key => $value) { ?>
+                    <option value="<?= $key ?>"><?= $key ?></option>
+                <?php } ?>
             </select><br>
             New Password:<br>
             <input type="password" name="password"><br>

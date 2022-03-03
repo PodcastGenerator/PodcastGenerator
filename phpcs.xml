@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="Podcast Generator Coding Style" namespace="PodcastGenerator\CS\Standard">
+    <file>PodcastGenerator</file>
+    <file>contrib</file>
+    <file>tests</file>
+
+    <!-- Ignore anything we've pulled in with Composer -->
+    <exclude-pattern>PodcastGenerator/vendor/*</exclude-pattern>
+
+    <!-- Ignore 3rd party JS and CSS in themes -->
+    <exclude-pattern>js/(bootstrap|jquery|popper)(\.min)?\.js$</exclude-pattern>
+    <exclude-pattern>style/(bootstrap|font-awesome)(\.min)?\.css$</exclude-pattern>
+
+    <!-- Use PSR-12 code standard rules - https://www.php-fig.org/psr/psr-12/ -->
+    <rule ref="PSR12">
+        <type>warning</type>
+    </rule>
+
+    <!-- For sake of Windows development, ignore EOL. Use Git core.autocrlf. -->
+    <exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+</ruleset>
