@@ -237,22 +237,30 @@ $selected_cats = array(
                     <input type="hidden" name="guid" value="<?= htmlspecialchars($episode->episode->guid) ?>">
                     <div class="form-group">
                         <?= _('Title') ?>*:<br>
-                        <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($episode->episode->titlePG) ?>" required>
+                        <input type="text" name="title" class="form-control"
+                               value="<?= htmlspecialchars($episode->episode->titlePG) ?>" required>
                     </div>
                     <div class="form-group">
                         <?= _('Short Description') ?>*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>" maxlength="255" oninput="shortDescCheck()" required>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control"
+                               value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>"
+                               maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
                     </div>
-                    <div class="form-group" style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
+                    <div class="form-group"
+                         style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
                         <?= _('Category') ?>:<br>
                         <small><?= _('You can select up to 3 categories') ?></small><br>
                         <select name="category[ ]" multiple>
                             <?php foreach ($categories as $item) { ?>
                                 <?php if (in_array($item->id, $selected_cats)) { ?>
-                                    <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                                    <option value="<?= htmlspecialchars($item->id) ?>" selected>
+                                        <?= htmlspecialchars($item->description) ?>
+                                    </option>
                                 <?php } else { ?>
-                                    <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                                    <option value="<?= htmlspecialchars($item->id) ?>">
+                                        <?= htmlspecialchars($item->description) ?>
+                                    </option>
                                 <?php } ?>
                             <?php } ?>
                         </select>
