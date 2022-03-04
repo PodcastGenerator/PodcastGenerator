@@ -69,6 +69,7 @@ function arrayEpisode($item, $episode, $_config)
                 'bitrate' => $item->fileInfoPG->bitrate,
                 'frequency' => $item->fileInfoPG->frequency
             ],
+            'customTagsPG' => $item->customTagsPG,
             'filename' => $episode,
             'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
             'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
