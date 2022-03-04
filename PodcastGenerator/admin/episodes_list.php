@@ -10,38 +10,28 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-//$episodes = getEpisodes(null, $config, true);
+function getEpisodeArray()
+{
+    global $config;
 
-// reads all episodes into an array
-// and yes, I know this does basically what the other getEpisodes function does...
-function getEpisodeArray(){
-	$episodeFiles = glob('../media/*.xml');
-	$episodes = [];
-	foreach($episodeFiles as $episodeFile){
-		$episodeXMLString = file_get_contents($episodeFile);
-		$episode = simplexml_load_string($episodeXMLString, 'SimpleXMLElement', LIBXML_NOCDATA);
-		// now get date and timestamp from date
-		$dateString = substr(basename($episodeFile),0,10);
-		$episode->episode->dateString = $dateString;
-		$episode->episode->timestamp = strtotime($dateString);	
-		$episode->episode->fileName = $episodeFile;		
-		$episodes[] = $episode->episode;		
-	}
-	return $episodes;
+    $episodeFiles = getEpisodes(null, $config);
+    $episodes = array_map(
+        function ($i) {
+            return $i['episode'];
+        },
+        $episodeFiles
+    );
+
+    // sorts into descending order, as future and recent episodes are most
+    // likely to be edited
+    usort($episodes, function ($a, $b) {
+        return $a['filemtime'] <=> $b['filemtime'];
+    });
+    return array_reverse($episodes);
 }
 
 
 $episodes = getEpisodeArray();
-//echo "<pre>";
-//print_r($episodes);
-//die("</pre>");
-// sorts into descending order, as future and recent episodes are most likely to be edited
-usort($episodes, function($a, $b) {
-	return $a['timestamp'] <=> $b['timestamp'];
-});
-$episodes = array_reverse($episodes);
-
-
 
 ?>
 <!DOCTYPE html>
