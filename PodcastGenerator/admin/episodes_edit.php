@@ -208,7 +208,7 @@ $selected_cats = array(
                     <div class="form-group">
                         <?= _('Short Description') ?>*:<br>
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control" value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>" maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter">255<?= _(' characters remaining') ?></i>
+                        <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
                     </div>
                     <div class="form-group" style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
                         <?= _('Category') ?>:<br>
