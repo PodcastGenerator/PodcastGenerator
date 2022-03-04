@@ -44,9 +44,9 @@ function generateRSS()
 		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
 		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
 		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>
-		<itunes:image href="' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg" />
+		<itunes:image href="' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '" />
 		<image>
-			<url>' . $config['url'] . $config['img_dir'] . 'itunes_image.jpg</url>
+			<url>' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '</url>
 			<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 			<link>' . $config['url'] . '</link>
 		</image>
@@ -163,6 +163,12 @@ function generateRSS()
         $item = '
         <item>' . "\n";
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
+        if (!empty($file->episode->episodeNumPG)) {
+            $item .= $indent . '<itunes:episode>' . $file->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
+        }
+        if (!empty($file->episode->seasonNumPG)) {
+            $item .= $indent . '<itunes:season>' . $file->episode->seasonNumPG . '</itunes:season>' . $linebreak;
+        }
         $item .= $indent . '<itunes:subtitle><![CDATA[' . $file->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description><![CDATA[' . $file->episode->shortdescPG . ']]></description>' . $linebreak;
         if ($file->episode->longdescPG != "") {

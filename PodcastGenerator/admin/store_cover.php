@@ -26,12 +26,14 @@ if (isset($_GET['upload'])) {
     }
 
     // Now everything is cool and the file can uploaded
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . 'itunes_image.jpg')) {
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $_FILES['file']['name'])) {
         $error = _('File was not uploaded');
         goto error;
     } else {
         // Wait a few seconds so the upload can finish
         sleep(3);
+        updateConfig('../config.php', 'podcast_cover', $_FILES['file']['name']);
+        generateRSS();
         header('Location: store_cover.php');
         die();
     }
@@ -62,7 +64,7 @@ if (isset($_GET['upload'])) {
             <strong><p style="color: red;"><?= $error ?></p></strong>
         <?php } ?>
         <h3><?= _('Current Cover') ?></h3>
-        <img src="<?= $config['url'] . $config['img_dir'] ?>itunes_image.jpg" style="max-height: 350px; max-width: 350px;">
+        <img src="<?= $config['url'] . $config['img_dir'] . $config['podcast_cover'] ?>" style="max-height: 350px; max-width: 350px;">
         <hr>
         <h3><?= _('Upload new cover') ?></h3>
         <form action="store_cover.php?upload=1" method="POST" enctype="multipart/form-data">

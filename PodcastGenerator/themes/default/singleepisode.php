@@ -35,7 +35,7 @@ if ($correctepisode["episode"]["imgPG"] != "") {
 } elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png')) {
     $coverimage = $config["url"] . $config["img_dir"] . $correctepisode["episode"]["fileid"] . '.png';
 } else {
-    $coverimage = $config["url"] . $config["img_dir"] . "itunes_image.jpg";
+    $coverimage = $config["url"] . $config["img_dir"] . $config['podcast_cover'];
 }
 ?>
 

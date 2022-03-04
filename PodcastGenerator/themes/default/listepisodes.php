@@ -31,7 +31,7 @@ for ($i = 0; $i < count($episode_chunk); $i++) {
     } elseif (file_exists($config["absoluteurl"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png')) {
         $coverimage = $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png';
     } else {
-        $coverimage = $config["url"] . $config["img_dir"] . "itunes_image.jpg";
+        $coverimage = $config["url"] . $config["img_dir"] . $config['podcast_cover'];
     } ?>
 
     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">

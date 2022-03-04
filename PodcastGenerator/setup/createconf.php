@@ -87,6 +87,8 @@ function createconf($username, $password)
 
 \$podcast_description = 'A little description of your podcast.';
 
+\$podcast_cover = 'itunes_image.jpg';
+
 \$author_name = 'Podcast Generator User';
 
 \$author_email = 'podcastgenerator@example.com';
@@ -122,6 +124,11 @@ function createconf($username, $password)
 \$pi_api_secret = \"\";
 
 \$pi_podcast_id = 0; // is the podcast in Podcast Index? This is its show ID there.
+
+#####################
+# WebSub
+
+\$websub_server = \"https://pubsubhubbub.appspot.com/\";
 
 // END OF CONFIG
 ";
