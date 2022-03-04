@@ -38,7 +38,7 @@ $episodes = getEpisodeArray();
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Theme Buttons'); ?></title>
+    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Episodes'); ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
