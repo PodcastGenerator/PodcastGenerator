@@ -32,6 +32,7 @@ function getEpisodeArray()
 
 
 $episodes = getEpisodeArray();
+$now = time();
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +63,6 @@ $episodes = getEpisodeArray();
         ?>
 		<ul>
         <?php
-			$now = time();
 			foreach($episodes as $episode){
 				echo "<li><span style='color:";
 				echo ($episode->timestamp > $now) ? "blue":"green";
