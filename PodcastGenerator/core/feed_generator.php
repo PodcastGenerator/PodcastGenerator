@@ -40,7 +40,7 @@ function generateRSS()
 		<description>' . htmlspecialchars($config['podcast_description']) . '</description>
 		<generator>Podcast Generator ' . $version . ' - http://www.podcastgenerator.net</generator>
 		<lastBuildDate>' . date('r') . '</lastBuildDate>
-		<language>' . substr($config['feed_language'], 0, 2) . '</language>
+		<language>' . $config['feed_language'] . '</language>
 		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
 		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
 		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>

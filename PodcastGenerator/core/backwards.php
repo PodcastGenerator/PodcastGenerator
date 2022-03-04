@@ -18,6 +18,27 @@ function backwards_3_1_to_3_2($absoluteurl)
     if (!($config['podcastgen_version'] == '3.1' || substr($config['podcastgen_version'], 0, 4) == '3.1.')) {
         return;
     }
+
+    $languages = simplexml_load_file('../components/supported_languages/podcast_languages.xml');
+
+    $matchedLanguage = null;
+    foreach ($languages as $lang) {
+        if ($config['feed_language'] == $lang->code) {
+            $matchedLanguage = $lang;
+            break;
+        }
+    }
+
+    if ($matchedLanguage == null) {
+        // Reset back to default of English, since we don't have a clue about
+        // what language this should have been.
+        $config['feed_language'] = 'en';
+    } elseif (property_exists($matchedLanguage, 'alias')) {
+        // Change to correct language code when a bad / obsolete code has been
+        // used.
+        $config['feed_language'] = $lang->alias;
+    }
+
     $config_php = "<?php
 \$podcastgen_version = '3.2'; // Version
 
