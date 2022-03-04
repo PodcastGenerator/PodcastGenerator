@@ -74,7 +74,7 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$podcast_description = '".$config['podcast_description']."';
 
-\$podcast_cover = '".$config['podcast_cover']."';
+\$podcast_cover = '".(isset($config['podcast_cover']) ? $config['podcast_cover'] : 'itunes_image.jpg')."';
 
 \$author_name = '".$config['author_name']."';
 
