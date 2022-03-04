@@ -33,7 +33,7 @@ if (isset($_GET['upload'])) {
         // Wait a few seconds so the upload can finish
         sleep(3);
         updateConfig('../config.php', 'podcast_cover', $_FILES['file']['name']);
-	generateRSS();
+        generateRSS();
         header('Location: store_cover.php');
         die();
     }
