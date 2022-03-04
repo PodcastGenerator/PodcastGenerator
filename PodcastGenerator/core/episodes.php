@@ -71,7 +71,7 @@ function arrayEpisode($item, $episode, $_config)
             ],
             'customTagsPG' => $item->customTagsPG,
             'filename' => $episode,
-            'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
+            'fileid' => pathinfo($episode, PATHINFO_FILENAME),
             'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
         ]
     ];
