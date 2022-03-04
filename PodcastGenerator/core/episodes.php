@@ -45,6 +45,7 @@ function setupEpisodes($_config)
 
 function arrayEpisode($item, $episode, $_config)
 {
+    $filemtime = filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode);
     $append_array = [
         'episode' => [
             'guid' => $item->guid,
@@ -70,8 +71,8 @@ function arrayEpisode($item, $episode, $_config)
                 'frequency' => $item->fileInfoPG->frequency
             ],
             'filename' => $episode,
-            'fileid' => pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME),
-            'moddate' => date('Y-m-d', filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode))
+            'filemtime' => $filemtime,
+            'moddate' => date('Y-m-d', $filemtime)
         ]
     ];
     return $append_array;
