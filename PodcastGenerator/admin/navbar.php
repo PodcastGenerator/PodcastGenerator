@@ -14,7 +14,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="episodes_upload.php"><?= _('Upload New Episodes') ?></a>
-                    <a class="dropdown-item" href="../<?= $config['indexfile']; ?>"><?= _('Edit / Delete Episode') ?></a>
+                    <a class="dropdown-item" href="episodes_list.php"><?= _('View All Episodes') ?></a>
                     <a class="dropdown-item" href="episodes_manage_cats.php"><?= _('Manage categories') ?></a>
                     <a class="dropdown-item" href="episodes_ftp_feature.php"><?= _('FTP Feature (Auto Indexing)') ?></a>
                     <a class="dropdown-item" href="episodes_bulk.php"><?= _('Bulk download episodes') ?></a>
