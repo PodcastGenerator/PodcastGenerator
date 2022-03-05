@@ -142,6 +142,14 @@ if (count($_POST) > 0) {
         goto error;
     }
 
+    // build categories list from post data
+    $categories = array();
+    for ($i = 0; $i < 3; $i++) {
+        $categories[$i] = isset($_POST['category'][$i])
+            ? $_POST['category'][$i]
+            : ($i == 0 ? 'uncategorized' : '');
+    }
+
     // Get datetime
     $datetime = strtotime($_POST['date'] . ' ' . $_POST['time']);
     // Set file date to this date
@@ -163,9 +171,9 @@ if (count($_POST) > 0) {
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
 	    <imgPG></imgPG>
 	    <categoriesPG>
-	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
-	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
-	        <category3PG>' . htmlspecialchars($_POST['category'][2]) . '</category3PG>
+	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
+	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>
+	        <category3PG>' . htmlspecialchars($categories[2]) . '</category3PG>
 	    </categoriesPG>
 	    <keywordsPG>' . htmlspecialchars($_POST['itunesKeywords']) . '</keywordsPG>
 	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
