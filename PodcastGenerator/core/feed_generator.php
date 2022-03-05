@@ -160,8 +160,13 @@ function generateRSS()
 	<channel>
 		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
-		<atom:link href="' . $config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />
-		<description>' . htmlspecialchars($config['podcast_description']) . '</description>
+		<atom:link href="' . $config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />' . "\n";
+
+    if (!empty($config['podcast_guid'])) {
+        $feedhead .= '		<podcast:guid>' . $config['podcast_guid'] . '</podcast:guid>' . "\n";
+    }
+
+    $feedhead .= '		<description>' . htmlspecialchars($config['podcast_description']) . '</description>
 		<generator>Podcast Generator ' . $version . ' - http://www.podcastgenerator.net</generator>
 		<lastBuildDate>' . date('r') . '</lastBuildDate>
 		<language>' . $config['feed_language'] . '</language>
