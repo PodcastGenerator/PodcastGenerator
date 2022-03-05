@@ -59,6 +59,11 @@ if (isset($_GET['edit'])) {
             <input type="radio" name="customtagsenabled" value="yes" <?= $config['customtagsenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
             <input type="radio" name="customtagsenabled" value="no" <?= $config['customtagsenabled'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
             <hr>
+            <?= _('Feed sort order') ?>:<br>
+            <small><?= _('Choose how episodes are ordered in the RSS feed.') ?></small><br>
+            <input type="radio" name="feed_sort" value="timestamp" <?= $config['feed_sort'] == 'timestamp' ? 'checked' : '' ?>> <?= _('Timestamp') ?>
+            <input type="radio" name="feed_sort" value="season_and_episode" <?= $config['feed_sort'] == 'season_and_episode' ? 'checked' : '' ?>> <?=_('Season and episode number') ?><br>
+            <hr>
             <?= _('Use cron to regenerate the RSS feed') ?>:<br>
             <input type="text" value="<?= htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']) ?>" style="width: 100%;" readonly><br>
             <hr>
