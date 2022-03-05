@@ -64,7 +64,7 @@ function sort_episodes_by_season_and_episode($episodeA, $episodeB)
     return sort_episodes_by_timestamp($episodeA, $episodeB);
 }
 
-function getEpisodeFiles($uploadDir)
+function getEpisodeFiles($uploadDir, $includeFuture = false)
 {
     global $config;
 
@@ -83,10 +83,12 @@ function getEpisodeFiles($uploadDir)
                 continue;
             }
 
-            // if file exists in the future, skip
-            $lastModified = filemtime($filePath);
-            if ($now < $lastModified) {
-                continue;
+            if (!$includeFuture) {
+                // if file exists in the future, skip
+                $lastModified = filemtime($filePath);
+                if ($now < $lastModified) {
+                    continue;
+                }
             }
 
             // if file doesn't have supported extension, skip
