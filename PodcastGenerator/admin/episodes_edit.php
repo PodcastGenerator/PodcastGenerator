@@ -327,7 +327,10 @@ $selected_cats = array(
         function shortDescCheck() {
             let shortdesc = document.getElementById("shortdesc").value;
             let maxlength = 255;
-            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + <?= _('" characters remaining"') ?>;
+            let remaining = maxlength - shortdesc.length;
+            let counter
+                = document.getElementById("shortdesc_counter").innerText
+                = "<?= _('%d characters remaining') ?>".replace('%d', remaining);
         }
         shortDescCheck();
     </script>
