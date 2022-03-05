@@ -193,7 +193,7 @@ function generateRSS()
     }
 
     // Get ordered episodes
-    $files = getEpisodeFiles($uploadDir);
+    $files = getEpisodeFiles($config);
 
     // Set a maximum amount of episodes generated in the feed
     $maxEpisodes = count($files);
