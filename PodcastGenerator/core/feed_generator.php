@@ -29,7 +29,10 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
-    $original_full_filepath = $uploadUrl . str_replace(' ', '%20', $file['filename']);
+
+    // encode special characters in file name
+    $encodedFilename = str_replace('+', '%20', urlencode($file['filename']));
+    $enclosureUrl = $uploadUrl . $encodedFilename;
 
     // Skip files with no read permission
     $mimetype = getmime($uploadDir . $file['filename']);
@@ -89,10 +92,10 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
         $item .= $TAB . '<itunes:summary><![CDATA[' . $file['data']->episode->longdescPG . ']]></itunes:summary>' . $LR;
     }
 
-    $item .= $TAB . '<link>' . $config['url'] . '?' . $link . '=' . $file['filename'] . '</link>' . $LR;
-    $item .= $TAB . '<enclosure url="' . $original_full_filepath . '" length="'
+    $item .= $TAB . '<link>' . $config['url'] . '?' . $link . '=' . $encodedFilename . '</link>' . $LR;
+    $item .= $TAB . '<enclosure url="' . htmlspecialchars($enclosureUrl) . '" length="'
         . filesize($uploadDir . $file['filename']) . '" type="' . $mimetype . '"></enclosure>' . $LR;
-    $item .= $TAB . '<guid>' . $guid . '</guid>' . $LR;
+    $item .= $TAB . '<guid>' . htmlspecialchars($guid) . '</guid>' . $LR;
     $item .= $TAB . '<itunes:duration>' . $file['data']->episode->fileInfoPG->duration . '</itunes:duration>' . $LR;
 
     $item .= $TAB . '<author>' . htmlspecialchars($author) . '</author>' . $LR;
