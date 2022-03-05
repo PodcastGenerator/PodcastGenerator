@@ -322,7 +322,7 @@ function indexEpisodes($_config)
 
         // Skip files if they are not strictly named
         if ($_config['strictfilenamepolicy'] == 'yes') {
-            if (!preg_match('/^[\w.]+$/', $new_files[$i])) {
+            if (!preg_match('/^[\w._-]+$/', $filename)) {
                 continue;
             }
         }
