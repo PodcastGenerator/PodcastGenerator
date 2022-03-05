@@ -12,7 +12,9 @@
 function getSupportedExtensions($config)
 {
     $supported_extensions = array();
-    $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    $supported_extensions_xml = simplexml_load_file(
+        $config['absoluteurl'] . 'components/supported_media/supported_media.xml'
+    );
     foreach ($supported_extensions_xml->mediaFile as $item) {
         array_push($supported_extensions, strval($item->extension));
     }
@@ -331,7 +333,9 @@ function indexEpisodes($_config)
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
-                $new_filename = $uploadDir . strtolower(date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]));
+                $new_filename = $uploadDir . strtolower(
+                    date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i])
+                );
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
@@ -383,7 +387,8 @@ function indexEpisodes($_config)
         // Write image if set
         if (isset($fileinfo['comments']['picture'])) {
             $imgext = ($fileinfo['comments']['picture'][0]['image_mime'] == 'image/png') ? 'png' : 'jpg';
-            $img_filename = $_config['absoluteurl'] . $_config['img_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.' . $imgext;
+            $img_filename =
+                $_config['absoluteurl'] . $_config['img_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.' . $imgext;
             file_put_contents($img_filename, $fileinfo['comments']['picture'][0]['data']);
         }
 

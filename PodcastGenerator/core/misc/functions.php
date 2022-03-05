@@ -37,7 +37,11 @@ function addUser($username, $password_plain)
         return false;
     }
     $users[$username] = password_hash($password_plain, PASSWORD_DEFAULT);
-    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
+    return updateConfig(
+        $config['absoluteurl'] . 'config.php',
+        'users_json',
+        str_replace('"', '\"', json_encode($users))
+    );
 }
 
 function deleteUser($username)
@@ -45,7 +49,11 @@ function deleteUser($username)
     global $config;
     $users =  json_decode($config['users_json'], true);
     unset($users[$username]);
-    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
+    return updateConfig(
+        $config['absoluteurl'] . 'config.php',
+        'users_json',
+        str_replace('"', '\"', json_encode($users))
+    );
 }
 
 function changeUserPassword($username, $new_password_plain)
@@ -57,7 +65,11 @@ function changeUserPassword($username, $new_password_plain)
         return false;
     }
     $users[$username] = password_hash($new_password_plain, PASSWORD_DEFAULT);
-    return updateConfig($config['absoluteurl'] . 'config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
+    return updateConfig(
+        $config['absoluteurl'] . 'config.php',
+        'users_json',
+        str_replace('"', '\"', json_encode($users))
+    );
 }
 
 function getUsers()

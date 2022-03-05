@@ -67,54 +67,56 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
         $has_cover = $imagesUrl . $basename . $ext;
     }
 
-    $indent = "\t\t\t";
-    $linebreak = "\n";
+    $TAB = "\t\t\t";
+    $LR = "\n";
 
     $item = '
     <item>' . "\n";
-    $item .= $indent . '<title>' . $file['data']->episode->titlePG . '</title>' . $linebreak;
+    $item .= $TAB . '<title>' . $file['data']->episode->titlePG . '</title>' . $LR;
 
     if (!empty($file['data']->episode->episodeNumPG)) {
-        $item .= $indent . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
-        $item .= $indent . '<podcast:episode>' . $file['data']->episode->episodeNumPG . '</podcast:episode>' . $linebreak;
+        $item .= $TAB . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $LR;
+        $item .= $TAB . '<podcast:episode>' . $file['data']->episode->episodeNumPG . '</podcast:episode>' . $LR;
     }
     if (!empty($file['data']->episode->seasonNumPG)) {
-        $item .= $indent . '<itunes:season>' . $file['data']->episode->seasonNumPG . '</itunes:season>' . $linebreak;
-        $item .= $indent . '<podcast:season>' . $file['data']->episode->seasonNumPG . '</podcast:season>' . $linebreak;
+        $item .= $TAB . '<itunes:season>' . $file['data']->episode->seasonNumPG . '</itunes:season>' . $LR;
+        $item .= $TAB . '<podcast:season>' . $file['data']->episode->seasonNumPG . '</podcast:season>' . $LR;
     }
 
-    $item .= $indent . '<itunes:subtitle><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
-    $item .= $indent . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $linebreak;
+    $item .= $TAB . '<itunes:subtitle><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:subtitle>' . $LR;
+    $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $LR;
     if ($file['data']->episode->longdescPG != "") {
-        $item .= $indent . '<itunes:summary><![CDATA[' . $file['data']->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
+        $item .= $TAB . '<itunes:summary><![CDATA[' . $file['data']->episode->longdescPG . ']]></itunes:summary>' . $LR;
     }
 
-    $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $file['filename'] . '</link>' . $linebreak;
-    $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($uploadDir . $file['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
-    $item .= $indent . '<guid>' . $guid . '</guid>' . $linebreak;
-    $item .= $indent . '<itunes:duration>' . $file['data']->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
+    $item .= $TAB . '<link>' . $config['url'] . '?' . $link . '=' . $file['filename'] . '</link>' . $LR;
+    $item .= $TAB . '<enclosure url="' . $original_full_filepath . '" length="'
+        . filesize($uploadDir . $file['filename']) . '" type="' . $mimetype . '"></enclosure>' . $LR;
+    $item .= $TAB . '<guid>' . $guid . '</guid>' . $LR;
+    $item .= $TAB . '<itunes:duration>' . $file['data']->episode->fileInfoPG->duration . '</itunes:duration>' . $LR;
 
-    $item .= $indent . '<author>' . htmlspecialchars($author) . '</author>' . $linebreak;
+    $item .= $TAB . '<author>' . htmlspecialchars($author) . '</author>' . $LR;
     if (!empty($file['data']->episode->authorPG->namePG)) {
-        $item .= $indent . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG) . '</itunes:author>' . $linebreak;
+        $item .= $TAB . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG)
+            . '</itunes:author>' . $LR;
     } else {
-        $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
+        $item .= $TAB . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $LR;
     }
 
     if ($file['data']->episode->keywordsPG != "") {
-        $item .= $indent . '<itunes:keywords>' . $file['data']->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
+        $item .= $TAB . '<itunes:keywords>' . $file['data']->episode->keywordsPG . '</itunes:keywords>' . $LR;
     }
-    $item .= $indent . '<itunes:explicit>' . $file['data']->episode->explicitPG . '</itunes:explicit>' . $linebreak;
+    $item .= $TAB . '<itunes:explicit>' . $file['data']->episode->explicitPG . '</itunes:explicit>' . $LR;
 
     // If image is set
     if ($has_cover) {
-        $item .= $indent . '<itunes:image href="' . $has_cover . '" />' . $linebreak;
+        $item .= $TAB . '<itunes:image href="' . $has_cover . '" />' . $LR;
     }
 
-    $item .= $indent . '<pubDate>' . date("r", $file['lastModified']) . '</pubDate>' . $linebreak;
+    $item .= $TAB . '<pubDate>' . date("r", $file['lastModified']) . '</pubDate>' . $LR;
 
     foreach ($customTags as $line) {
-        $item .= $indent . $line . $linebreak;
+        $item .= $TAB . $line . $LR;
     }
 
     $item .= "\t\t</item>\n";
@@ -145,8 +147,13 @@ function generateRSS()
 
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
-    <!-- generator="Podcast Generator ' . $version . '" -->
-    <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xml:lang="' . $config['feed_language'] . '" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<!-- generator="Podcast Generator ' . $version . '" -->
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+     xml:lang="' . $config['feed_language'] . '"
+     version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:podcast="https://podcastindex.org/namespace/1.0">
 	<channel>
 		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 		<link>' . $config['url'] . '</link>
