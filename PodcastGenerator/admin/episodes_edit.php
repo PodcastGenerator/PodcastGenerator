@@ -16,8 +16,10 @@ if (!isset($_GET['name'])) {
 
 checkPath($_GET['name']);
 
-$targetfile = $config['absoluteurl'] . $config['upload_dir'] . $_GET['name'];
-$targetfile_without_ext = $config['absoluteurl'] . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME);
+$uploadDir = $config['absoluteurl'] . $config['upload_dir'];
+
+$targetfile = $uploadDir . $_GET['name'];
+$targetfile_without_ext = $uploadDir . pathinfo($targetfile, PATHINFO_FILENAME);
 
 if (!file_exists($targetfile)) {
     die(_('Episode does not exist'));
@@ -188,7 +190,7 @@ if (count($_POST) > 0) {
 	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>
 	</episode>
 </PodcastGenerator>';
-    file_put_contents($config['absoluteurl'] . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
+    file_put_contents($uploadDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
     generateRSS();
     pingServices();
     // Redirect if success
@@ -206,6 +208,15 @@ $selected_cats = array(
     strval($episode->episode->categoriesPG->category2PG),
     strval($episode->episode->categoriesPG->category3PG)
 );
+
+function checkedAttr($val, $state)
+{
+    if ($val == $state) {
+        return 'checked';
+    }
+    return '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -269,9 +280,13 @@ $selected_cats = array(
                         <?= _('Publication Date') ?>:<br>
                         <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
                         <?= _('Date') ?>*:<br>
-                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($targetfile)) ?>" required><br>
+                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($targetfile)) ?>"
+                               required>
+                        <br>
                         <?= _('Time') ?>*:<br>
-                        <input name="time" type="time" value="<?= date('H:i', filemtime($targetfile)) ?>" required><br>
+                        <input name="time" type="time" value="<?= date('H:i', filemtime($targetfile)) ?>"
+                               required>
+                        <br>
                     </div>
                 </div>
                 <div class="col-6">
@@ -283,29 +298,50 @@ $selected_cats = array(
                     </div>
                     <div class="form-group">
                         <?= _('Episode Number') ?>:<br>
-                        <input type="text" name="episodenum" pattern="[0-9]*" class="form-control" value="<?= htmlspecialchars($episode->episode->episodeNumPG) ?>"><br>
+                        <input type="text" name="episodenum" pattern="[0-9]*" class="form-control"
+                               value="<?= htmlspecialchars($episode->episode->episodeNumPG) ?>">
+                        <br>
                     </div>
                     <div class="form-group">
                         <?= _('Season Number') ?>:<br>
-                        <input type="text" name="seasonnum" pattern="[0-9]*" class="form-control" value="<?= htmlspecialchars($episode->episode->seasonNumPG) ?>"><br>
+                        <input type="text" name="seasonnum" pattern="[0-9]*" class="form-control"
+                               value="<?= htmlspecialchars($episode->episode->seasonNumPG) ?>">
+                        <br>
                     </div>
                     <div class="form-group">
                         <?= _('iTunes Keywords') ?>:<br>
-                        <input type="text" name="itunesKeywords" value="<?= htmlspecialchars($episode->episode->keywordsPG) ?>" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
+                        <input type="text" name="itunesKeywords"
+                               value="<?= htmlspecialchars($episode->episode->keywordsPG) ?>"
+                               placeholder="Keyword1, Keyword2 (max 12)" class="form-control">
+                        <br>
                     </div>
                     <div class="form-group">
                         <?= _('Explicit Content') ?>:<br>
-                        <label><input type="radio" value="yes" name="explicit" <?= $episode->episode->explicitPG == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?></label>
-                        <label><input type="radio" value="no" name="explicit" <?= $episode->episode->explicitPG == 'no' ? 'checked' : '' ?>> <?= _('No') ?></label><br>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($episode->episode->explicitPG, 'yes') ?>
+                                   value="yes">
+                            <?= _('Yes') ?>
+                        </label>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($episode->episode->explicitPG, 'no') ?>
+                                   value="no">
+                            <?= _('No') ?>
+                        </label>
+                        <br>
                     </div>
                     <div class="form-group">
                         <?= _('Author') ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="Author Name" value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail" value="<?= htmlspecialchars($episode->episode->authorPG->emailPG) ?>"><br>
+                        <input type="text" class="form-control" name="authorname" placeholder="Author Name"
+                               value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>">
+                        <br>
+                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail"
+                               value="<?= htmlspecialchars($episode->episode->authorPG->emailPG) ?>">
+                        <br>
                     </div>
-                    <div class="form-group" style="display: <?= ($config['customtagsenabled'] != 'yes') ? 'none' : 'block' ?>">
+                    <div class="form-group" style="display: <?= $config['customtagsenabled'] != 'yes' ? 'none' : 'block' ?>">
                         <?= _('Custom Tags') ?><br>
-                        <textarea name="customtags"><?= htmlspecialchars($episode->episode->customTagsPG) ?></textarea><br>
+                        <textarea name="customtags"><?= htmlspecialchars($episode->episode->customTagsPG) ?></textarea>
+                        <br>
                     </div>
                 </div>
             </div>
