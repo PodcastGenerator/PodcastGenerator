@@ -31,14 +31,14 @@ if (isset($_GET['edit'])) {
     }
 
     if (!isset($error)) {
+        // need to reload config before generating feed
+        $config = getConfig('../config.php');
+        generateRSS();
+        pingServices();
+
         header('Location: podcast_details.php');
         die();
     }
-    header('Location: podcast_details.php');
-    die();
-} else {
-    generateRSS();
-    pingServices();
 }
 
 $custom_tags = getCustomFeedTags();
