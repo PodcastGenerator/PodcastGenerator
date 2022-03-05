@@ -110,6 +110,8 @@ function createconf($username, $password)
 
 \$feed_sort = 'timestamp'; // sort method used to order episodes in the feed (by timestamp or by season/episode number)
 
+\$feed_locked = ''; // podcast:locked status ('yes', 'no', '' for off)
+
 \$copyright = 'All rights reserved';   // Your copyright notice (e.g CC-BY)
 
 \$feed_encoding = 'utf-8';

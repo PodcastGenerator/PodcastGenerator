@@ -121,6 +121,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$feed_sort = '" . $config['feed_sort'] . "'; // sort method used to order episodes in the feed (by timestamp or by season/episode number)
 
+\$feed_locked = ''; // podcast:locked status ('yes', 'no', '' for off)
+
 \$copyright = '" . $config['copyright'] . "';   // Your copyright notice (e.g CC-BY)
 
 \$feed_encoding = '" . $config['feed_encoding'] . "';

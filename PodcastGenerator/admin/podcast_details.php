@@ -104,6 +104,20 @@ $custom_tags = getCustomFeedTags();
                 <?= _('No') ?>
             </label>
             <br>
+
+            <?= _('Lock Podcast Feed') ?>: (<?= _('Prevent other platforms from importing your feed') ?>)<br>
+            <label>
+                <input type="radio" name="feed_locked" value="yes" <?= $config['feed_locked'] == 'yes' ? 'checked' : '' ?>>
+                <?= _('Locked'); ?>
+            </label>
+            <label>
+                <input type="radio" name="feed_locked" value="no" <?= $config['feed_locked'] == 'no' ? 'checked' : '' ?>>
+                <?= _('Unlocked') ?>
+            </label>
+            <label>
+                <input type="radio" name="feed_locked" value="" <?= $config['feed_locked'] == '' ? 'checked' : '' ?>>
+                <?= _('Off') ?>
+            </label>
             <br>
 
 <?php if ($config['customtagsenabled'] == 'yes') { ?>
