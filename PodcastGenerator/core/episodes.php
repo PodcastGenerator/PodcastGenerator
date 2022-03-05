@@ -318,6 +318,8 @@ function indexEpisodes($_config)
     // Generate XML from audio file (with mostly empty values)
     $num_added = 0;
     for ($i = 0; $i < count($new_files); $i++) {
+        $filename = basename($new_files[$i]);
+
         // Skip files if they are not strictly named
         if ($_config['strictfilenamepolicy'] == 'yes') {
             if (!preg_match('/^[\w.]+$/', $new_files[$i])) {
@@ -325,21 +327,26 @@ function indexEpisodes($_config)
             }
         }
 
+        // fix filename encoding if mbstring is present
+        if (extension_loaded('mbstring')) {
+            $filename = mb_convert_encoding($filename, 'UTF-8', mb_detect_encoding($filename));
+        }
+
         // Select new filenames (with date) if not already exists
-        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
-        $fname = $new_files[$i];
+        preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $filename, $output_array);
+        $fname = $filename;
         if (count($output_array) == 0) {
-            $new_filename = $uploadDir . date('Y-m-d') . '_' . $new_files[$i];
+            $new_filename = $uploadDir . date('Y-m-d') . '_' . $filename;
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
                 $new_filename = $uploadDir . strtolower(
-                    date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i])
+                    date('Y-m-d') . '_' . $appendix . '_' . basename($filename)
                 );
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
-            rename($uploadDir . $new_files[$i], $new_filename);
+            rename($uploadDir . $filename, $new_filename);
             $fname = $new_filename;
         }
 

@@ -96,6 +96,8 @@ if (count($_POST) > 0) {
         }
     }
 
+    $filename = basename($_FILES['file']['name']);
+
     // Skip files if they are not strictly named
     if ($config['strictfilenamepolicy'] == 'yes') {
         if (!preg_match('/^[\w.]+$/', basename($_FILES['file']['name']))) {
@@ -104,16 +106,21 @@ if (count($_POST) > 0) {
         }
     }
 
+    // fix filename encoding if mbstring is present
+    if (extension_loaded('mbstring')) {
+        $filename = mb_convert_encoding($filename, 'UTF-8', mb_detect_encoding($filename));
+    }
+
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
 
-    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
+    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $filename;
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['file']['name']);
+            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . $filename;
             $targetfile = str_replace(' ', '_', $targetfile);
             $appendix++;
         }
