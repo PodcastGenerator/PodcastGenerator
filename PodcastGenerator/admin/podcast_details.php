@@ -14,17 +14,31 @@ $languages = simplexml_load_file('../components/supported_languages/podcast_lang
 
 if (isset($_GET['edit'])) {
     checkToken();
+
+    if (isset($_POST['podcast_guid']) && !empty($_POST['podcast_guid'])) {
+        $guid = $_POST['podcast_guid'];
+        if (!preg_match('/^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/', $guid)) {
+            $error = _('Podcast GUID is malformed');
+            goto error;
+        }
+    }
+
+    if (isset($_POST['custom_tags']) && !empty($_POST['custom_tags'])) {
+        // need to handle custom_tags specially
+        $custom_tags = $_POST['custom_tags'];
+        if (isWellFormedXml($custom_tags)) {
+            // only set the value if it's well-formed XML
+            saveCustomFeedTags($custom_tags);
+        } elseif ($config['customtagsenabled'] == 'yes') {
+            // only error if custom tags feature is enabled
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        }
+    }
+
     foreach ($_POST as $key => $value) {
         if ($key == 'custom_tags') {
-            // need to handle custom_tags specially
-            $custom_tags = $value;
-            if (isWellFormedXml($custom_tags)) {
-                // only set the value if it's well-formed XML
-                saveCustomFeedTags($custom_tags);
-            } elseif ($config['customtagsenabled'] == 'yes') {
-                // only error if custom tags feature is enabled
-                $error = _('Custom tags are not well-formed');
-            }
+            continue;
         } else {
             updateConfig('../config.php', $key, $value);
         }
@@ -40,6 +54,8 @@ if (isset($_GET['edit'])) {
         die();
     }
 }
+
+error:
 
 $custom_tags = getCustomFeedTags();
 
@@ -86,6 +102,14 @@ $custom_tags = getCustomFeedTags();
 
             <label for="author_email"><?= _('Author E-Mail Address') ?>:</label><br>
             <input type="text" name="author_email" value="<?= htmlspecialchars($config['author_email']) ?>" class="txt"><br>
+
+            <label for="podcast_guid"><?= _('Podcast GUID') ?>:</label>
+            (<?= _('Unique ID code for your podcast across the internet') ?>)<br>
+            <input type="text" name="podcast_guid" class="txt"
+                   value="<?= htmlspecialchars($config['podcast_guid']) ?>"
+                   pattern="^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$"
+                   placeholder="3636e0e4-8dff-4662-90b3-6068af079b97">
+            <br>
 
             <label for="feed_language"><?= _('Feed Language'); ?>:</label> (<?= _('Main language of your podcast') ?>)<br>
             <select name="feed_language">
