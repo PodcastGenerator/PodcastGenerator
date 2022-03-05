@@ -85,6 +85,8 @@ function createconf($username, $password)
 #####################
 # XML Feed stuff
 
+\$podcast_guid = ''; // Globally unique identifier for your podcast
+
 \$podcast_title = 'Podcast Title';
 
 \$podcast_subtitle = 'Subtitle';

@@ -96,6 +96,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 #####################
 # XML Feed stuff
 
+\$podcast_guid = ''; // Globally unique identifier for your podcast
+
 \$podcast_title = '" . $config['podcast_title'] . "';
 
 \$podcast_subtitle = '" . $config['podcast_subtitle'] . "';
