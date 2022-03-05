@@ -22,6 +22,56 @@ function itunes_category($categoryName)
     return $output;
 }
 
+function getEpisodeFiles($uploadDir)
+{
+    global $config;
+
+    // Get supported file extensions
+    $supported_extensions = array();
+    $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    foreach ($supported_extensions_xml->mediaFile as $item) {
+        array_push($supported_extensions, strval($item->extension));
+    }
+
+    // Get episodes ordered by pub date
+    $files = array();
+    if ($handle = opendir($uploadDir)) {
+        while (false !== ($entry = readdir($handle))) {
+            // Sort out all files which have no XML file
+            if (!file_exists($uploadDir . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+                continue;
+            }
+            // Sort out all files with invalid file extensions
+            if (in_array(pathinfo($uploadDir . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
+                array_push($files, [
+                    'filename' => $entry,
+                    'lastModified' => filemtime($uploadDir . $entry)
+                ]);
+            }
+        }
+    }
+
+    do {
+        $swapped = false;
+        for ($i = 0, $c = count($files) - 1; $i < $c; $i++) {
+            if ($files[$i]['lastModified'] < $files[$i + 1]['lastModified']) {
+                list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
+                $swapped = true;
+            }
+        }
+    } while ($swapped);
+
+    // Pop files from the future
+    $realfiles = array();
+    for ($i = 0; $i < count($files); $i++) {
+        if (time() > $files[$i]['lastModified']) {
+            array_push($realfiles, $files[$i]);
+        }
+    }
+
+    return $realfiles;
+}
+
 function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
 {
     global $config;
@@ -190,50 +240,8 @@ function generateRSS()
         }
     }
 
-    // Get supported file extensions
-    $supported_extensions = array();
-    $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    foreach ($supported_extensions_xml->mediaFile as $item) {
-        array_push($supported_extensions, strval($item->extension));
-    }
-
-    // Get episodes ordered by pub date
-    $files = array();
-    if ($handle = opendir($uploadDir)) {
-        while (false !== ($entry = readdir($handle))) {
-            // Sort out all files which have no XML file
-            if (!file_exists($uploadDir . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
-                continue;
-            }
-            // Sort out all files with invalid file extensions
-            if (in_array(pathinfo($uploadDir . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
-                array_push($files, [
-                    'filename' => $entry,
-                    'lastModified' => filemtime($uploadDir . $entry)
-                ]);
-            }
-        }
-    }
-
-    do {
-        $swapped = false;
-        for ($i = 0, $c = count($files) - 1; $i < $c; $i++) {
-            if ($files[$i]['lastModified'] < $files[$i + 1]['lastModified']) {
-                list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
-                $swapped = true;
-            }
-        }
-    } while ($swapped);
-
-    // Pop files from the future
-    $realfiles = array();
-    for ($i = 0; $i < count($files); $i++) {
-        if (time() > $files[$i]['lastModified']) {
-            array_push($realfiles, $files[$i]);
-        }
-    }
-    $files = $realfiles;
-    unset($realfiles);
+    // Get ordered episodes
+    $files = getEpisodeFiles($uploadDir);
 
     // Set a maximum amount of episodes generated in the feed
     $maxEpisodes = count($files);
