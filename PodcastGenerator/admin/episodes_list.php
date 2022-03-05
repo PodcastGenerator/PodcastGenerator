@@ -16,7 +16,7 @@ function getEpisodeArray()
 {
     global $config;
 
-    $episodeFiles = getEpisodes(null, $config);
+    $episodeFiles = findEpisodes($config, null, '', true);
     $episodes = array_map(
         function ($i) {
             return $i['episode'];
