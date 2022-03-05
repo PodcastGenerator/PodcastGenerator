@@ -8,12 +8,15 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+
 require 'core/include.php';
+
 // Kill the connection if categories are disabled
 if (strtolower($config['categoriesenabled']) != 'yes') {
-    header('Location: '.$config['indexfile']);
+    header('Location: ' . $config['indexfile']);
     die();
 }
+
 // Check for password
 if ($config['podcastPassword'] != "") {
     session_start();
@@ -22,6 +25,7 @@ if ($config['podcastPassword'] != "") {
         die(_('Authentication required'));
     }
 }
+
 $categories_xml = simplexml_load_file('categories.xml');
 $categories_arr = array();
 
@@ -51,4 +55,5 @@ $duration = _('Duration');
 $categories = _('Categories');
 
 $buttons = getButtons('./');
-require $config['theme_path'].'categories.php';
+
+require $config['theme_path'] . 'categories.php';
