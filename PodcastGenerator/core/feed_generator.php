@@ -195,6 +195,11 @@ function generateRSS()
         $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
     }
 
+    if ($config['feed_locked'] != '') {
+        $feedhead .= '		<podcast:locked owner="' . htmlspecialchars($config['author_email']) . '">'
+            . $config['feed_locked'] . '</podcast:locked>' . "\n";
+    }
+
     $custom_tags = getCustomFeedTags();
     if ($custom_tags != '') {
         foreach (preg_split("/\r\n|\n|\r/", $custom_tags) as $line) {
