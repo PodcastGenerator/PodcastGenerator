@@ -39,6 +39,11 @@ function backwards_3_1_to_3_2($absoluteurl)
         $config['feed_language'] = $lang->alias;
     }
 
+    // Default sort method for episodes in the RSS feed
+    if (!isset($config['feed_sort'])) {
+        $config['feed_sort'] = 'timestamp';
+    }
+
     $config_php = "<?php
 \$podcastgen_version = '3.2'; // Version
 
@@ -111,6 +116,8 @@ function backwards_3_1_to_3_2($absoluteurl)
 \$link = '".$config['link']."'; // permalink URL of single episode (appears in the <link> and <guid> tags in the feed)
 
 \$feed_language = '".$config['feed_language']."';
+
+\$feed_sort = '".$config['feed_sort']."'; // sort method used to order episodes in the feed (by timestamp or by season/episode number)
 
 \$copyright = '".$config['copyright']."';   // Your copyright notice (e.g CC-BY)
 

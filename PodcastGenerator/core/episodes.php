@@ -8,39 +8,108 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function setupEpisodes($_config)
-{
-    $supported_extensions = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    $realsupported_extensions = array();
-    foreach ($supported_extensions as $item) {
-        array_push($realsupported_extensions, $item->extension);
-    }
-    $supported_extensions = $realsupported_extensions;
-    unset($realsupported_extensions);
 
-    // Get episodes names and pubDates (which are the file
-    // modification times).  We'll ignore files with future
-    // timestamps.
-    $now_time = time();
-    $episodes_mtimes = array();
-    if ($handle = opendir($_config['absoluteurl'] . $_config['upload_dir'])) {
+function getSupportedExtensions($config)
+{
+    $supported_extensions = array();
+    $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    foreach ($supported_extensions_xml->mediaFile as $item) {
+        array_push($supported_extensions, strval($item->extension));
+    }
+    return $supported_extensions;
+}
+
+/**
+ * usort() callback for sorting episodes by timestamp.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_timestamp($episodeA, $episodeB)
+{
+    return $episodeA['lastModified'] - $episodeB['lastModified'];
+}
+
+/**
+ * usort() callback for sorting episodes by season and episode.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_season_and_episode($episodeA, $episodeB)
+{
+    function getValueOrDefault($val)
+    {
+        if (empty($val) || !is_numeric($val)) {
+            return -1;
+        }
+        return $val + 0;
+    }
+
+    $seasonA = getValueOrDefault($episodeA['data']->episode->seasonNumPG);
+    $seasonB = getValueOrDefault($episodeB['data']->episode->seasonNumPG);
+    if ($seasonA != $seasonB) {
+        return $seasonA - $seasonB;
+    }
+
+    $episodeA = getValueOrDefault($episodeA['data']->episode->episodeNumPG);
+    $episodeB = getValueOrDefault($episodeB['data']->episode->episodeNumPG);
+    if ($episodeA != $episodeB) {
+        return $episodeA - $episodeB;
+    }
+
+    // fall back on timestamp if season and episode numbers match / aren't set
+    return sort_episodes_by_timestamp($episodeA, $episodeB);
+}
+
+function getEpisodeFiles($_config, $includeFuture = false)
+{
+    $now = time();
+    $supported_extensions = getSupportedExtensions($_config);
+    $uploadDir = $_config['absoluteurl'] . $_config['upload_dir'];
+
+    // Load episode data
+    $files = array();
+    if ($handle = opendir($uploadDir)) {
         while (false !== ($entry = readdir($handle))) {
-            // If the file is a 'real' file, has a linked XML file,
-            // and isn't from the future, add its name and
-            // modification time to our array.
-            $this_entry = $_config['absoluteurl'] . $_config['upload_dir'] . $entry;
-            $this_mtime = filemtime($this_entry);
-            if (in_array(pathinfo($this_entry, PATHINFO_EXTENSION), $supported_extensions)
-                && file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($this_entry, PATHINFO_FILENAME) . '.xml')
-                && ($this_mtime <= $now_time || isset($_SESSION['username']))) {
-                array_push($episodes_mtimes, [$entry, $this_mtime]);
+            $filePath = $uploadDir . $entry;
+
+            $dataFile = $uploadDir . pathinfo($entry, PATHINFO_FILENAME) . '.xml';
+            // if sidecar file doesn't exist, skip
+            if (!file_exists($dataFile)) {
+                continue;
             }
+
+            if (!$includeFuture) {
+                // if file exists in the future, skip
+                $lastModified = filemtime($filePath);
+                if ($now < $lastModified) {
+                    continue;
+                }
+            }
+
+            // if file doesn't have supported extension, skip
+            if (!in_array(pathinfo($filePath, PATHINFO_EXTENSION), $supported_extensions)) {
+                continue;
+            }
+
+            array_push($files, [
+                'filename' => $entry,
+                'path' => $filePath,
+                'lastModified' => filemtime($filePath),
+                'data' => simplexml_load_file($dataFile, null, LIBXML_NOCDATA)
+            ]);
         }
     }
 
-    // Sort entries according to their pubDates.
-    usort($episodes_mtimes, 'compare_mtimes');
-    return $episodes_mtimes;
+    // sort episodes by the selected method
+    $sortMethod = 'sort_episodes_by_' . (!empty($config['feed_sort']) ? $config['feed_sort'] : 'timestamp');
+    usort($files, $sortMethod);
+
+    // need to reverse the array since it's sorted ascending
+    return array_reverse($files);
 }
 
 function arrayEpisode($item, $episode, $_config)
@@ -50,6 +119,8 @@ function arrayEpisode($item, $episode, $_config)
         'episode' => [
             'guid' => $item->guid,
             'titlePG' => $item->titlePG,
+            'episodeNumPG' => $item->episodeNumPG,
+            'seasonNumPG' => $item->seasonNumPG,
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
             'imgPG' => $item->imgPG,
@@ -80,67 +151,86 @@ function arrayEpisode($item, $episode, $_config)
     return $append_array;
 }
 
-function getEpisodes($category = null, $_config)
+/**
+ * Gets data for all episodes matching the provided conditions.
+ *
+ * @param mixed   $_config       The PG site configuration.
+ * @param string  $category      The category to filter on, or null for all episodes.
+ * @param string  $searchTerm    The search term used to filter episodes.
+ * @param boolean $includeFuture Whether to include unpublished episodes or not.
+ * @return array
+ *
+ * @since 3.2
+ */
+function findEpisodes($_config, $category = null, $searchTerm = '', $includeFuture = false)
 {
-    $episodes_mtimes = setupEpisodes($_config);
-    // Get XML data for the episodes of interest.
-    $episodes_data = array();
-    for ($i = 0; $i < count($episodes_mtimes); $i++) {
-        $episode = $episodes_mtimes[$i][0];
-        // We need to get the CDATA in plaintext.
-        $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
-        $xml = simplexml_load_file($_config['absoluteurl'] . $_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
-        foreach ($xml as $item) {
-            // If we are filtering by category, we can omit episodes
-            // that lack the desired category.
-            if ($category != null && $category != 'all') {
-                if ($item->categoriesPG->category1PG != $category
-                    && $item->categoriesPG->category2PG != $category
-                    && $item->categoriesPG->category3PG != $category) {
-                    continue;
-                }
+    $episodes = getEpisodeFiles($_config, $includeFuture);
+
+    if ($category != null) {
+        $episodes = array_filter(
+            $episodes,
+            function ($ep) use ($category) {
+                $categories = $ep['data']->episode->categoriesPG;
+                return $categories->category1PG == $category
+                    || $categories->category2PG == $category
+                    || $categories->category3PG == $category;
             }
-            array_push($episodes_data, arrayEpisode($item, $episode, $_config));
-        }
+        );
     }
-    unset($_config);
-    return $episodes_data;
+
+    if (!empty($searchTerm)) {
+        $episodes = array_filter(
+            $episodes,
+            function ($ep) use ($searchTerm) {
+                $data = $ep['data']->episode;
+                return strpos(strtolower($data->titlePG), $searchTerm) !== false
+                    || strpos(strtolower($data->shortdescPG), $searchTerm) !== false
+                    || strpos(strtolower($data->longdescPG), $searchTerm) !== false
+                    || strpos(strtolower($data->categoriesPG->category1PG), $searchTerm) !== false
+                    || strpos(strtolower($data->categoriesPG->category2PG), $searchTerm) !== false
+                    || strpos(strtolower($data->categoriesPG->category3PG), $searchTerm) !== false
+                    || strpos(strtolower($data->keywordsPG), $searchTerm) !== false
+                    || strpos(strtolower($data->authorPG->namePG), $searchTerm) !== false;
+            }
+        );
+    }
+
+    return array_map(
+        function ($ep) use ($_config) {
+            return arrayEpisode($ep['data']->episode, $ep['filename'], $_config);
+        },
+        $episodes
+    );
 }
 
+/**
+ * Get published episodes in a category.
+ *
+ * @param string $category The category to filter on, or null for all episodes.
+ * @param mixed  $_config  The PG site configuration.
+ * @return array
+ *
+ * @deprecated 3.2
+ * @see findEpisodes()    Replacement for getEpisodes() and searchEpisodes()
+ */
+function getEpisodes($category = null, $_config)
+{
+    return findEpisodes($_config, $category, '');
+}
+
+/**
+ * Get published episodes matching the provided search term.
+ *
+ * @param string $name    The search term used to filter episodes.
+ * @param mixed  $_config The PG site configuration.
+ * @return array
+ *
+ * @deprecated 3.2
+ * @see findEpisodes()    Replacement for getEpisodes() and searchEpisodes()
+ */
 function searchEpisodes($name = "", $_config)
 {
-    $name = strtolower($name);
-    $episodes_mtimes = setupEpisodes($_config);
-    // Check if name is a category and replace
-    $cats_xml = simplexml_load_file('categories.xml');
-    foreach ($cats_xml as $item) {
-        if ($name === strtolower($item->description)) {
-            $name = strval($item->id);
-        }
-    }
-    // Get XML data for the episodes of interest.
-    $episodes_data = array();
-    for ($i = 0; $i < count($episodes_mtimes); $i++) {
-        $episode = $episodes_mtimes[$i][0];
-        // We need to get the CDATA in plaintext.
-        $xml_file_name = pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $episode, PATHINFO_FILENAME) . '.xml';
-        $xml = simplexml_load_file($_config['absoluteurl'] . $_config['upload_dir'] . $xml_file_name, null, LIBXML_NOCDATA);
-        foreach ($xml as $item) {
-            if (strpos(strtolower($item->titlePG), $name) === false
-                && strpos(strtolower($item->shortdescPG), $name) === false
-                && strpos(strtolower($item->longdescPG), $name) === false
-                && strpos(strtolower($item->categoriesPG->category1PG), $name) === false
-                && strpos(strtolower($item->categoriesPG->category2PG), $name) === false
-                && strpos(strtolower($item->categoriesPG->category3PG), $name) === false
-                && strpos(strtolower($item->keywordsPG), $name) === false
-                && strpos(strtolower($item->authorPG->namePG), $name) === false) {
-                continue;
-            }
-            array_push($episodes_data, arrayEpisode($item, $episode, $_config));
-        }
-    }
-    unset($_config);
-    return $episodes_data;
+    return findEpisodes($_config, null, strtolower($name));
 }
 
 require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
@@ -161,16 +251,18 @@ function getID3Info($filename)
 // to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
-    if (isset($fileinfo['tags']['id3v2'][$tagName][0]) &&
-            $fileinfo['tags']['id3v2'][$tagName][0]) {
+    if (
+        isset($fileinfo['tags']['id3v2'][$tagName][0])
+        && $fileinfo['tags']['id3v2'][$tagName][0]
+    ) {
         return $fileinfo['tags']['id3v2'][$tagName][0];
+    } elseif (
+        isset($fileinfo['tags']['id3v1'][$tagName][0])
+        && $fileinfo['tags']['id3v1'][$tagName][0]
+    ) {
+        return $fileinfo['tags']['id3v1'][$tagName][0];
     } else {
-        if (isset($fileinfo['tags']['id3v1'][$tagName][0]) &&
-                $fileinfo['tags']['id3v1'][$tagName][0]) {
-            return $fileinfo['tags']['id3v1'][$tagName][0];
-        } else {
-            return $defaultValue;
-        }
+        return $defaultValue;
     }
 }
 
@@ -178,24 +270,28 @@ function indexEpisodes($_config)
 {
     $new_files = array();
     $mimetypes = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    $uploadDir = $_config['absoluteurl'] . $_config['upload_dir'];
+
     // Get all files and check if they have an XML file associated
-    if ($handle = opendir($_config['absoluteurl'] . $_config['upload_dir'])) {
+    if ($handle = opendir($uploadDir)) {
         while (false !== ($entry = readdir($handle))) {
             // Skip dotfiles
             if (substr($entry, 0, 1) == '.') {
                 continue;
             }
+
             // Skip XML files
-            if (pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $entry, PATHINFO_EXTENSION) == 'xml') {
+            if (pathinfo($entry, PATHINFO_EXTENSION) == 'xml') {
                 continue;
             }
+
             // Check if an XML file for that episode exists
-            if (file_exists($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($_config['absoluteurl'] . $_config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+            if (file_exists($uploadDir . pathinfo($entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
 
             // Get mime type
-            $mimetype = getmime($_config['absoluteurl'] . $_config['upload_dir'] . $entry);
+            $mimetype = getmime($uploadDir . $entry);
 
             // Continue if file isn't readable
             if (!$mimetype) {
@@ -226,21 +322,23 @@ function indexEpisodes($_config)
                 continue;
             }
         }
+
         // Select new filenames (with date) if not already exists
         preg_match('/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/', $new_files[$i], $output_array);
         $fname = $new_files[$i];
         if (count($output_array) == 0) {
-            $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . date('Y-m-d') . '_' . $new_files[$i];
+            $new_filename = $uploadDir . date('Y-m-d') . '_' . $new_files[$i];
             $new_filename = str_replace(' ', '_', $new_filename);
             $appendix = 1;
             while (file_exists($new_filename)) {
-                $new_filename = $_config['absoluteurl'] . $_config['upload_dir'] . strtolower(date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]));
+                $new_filename = $uploadDir . strtolower(date('Y-m-d') . '_' . $appendix . '_' . basename($new_files[$i]));
                 $new_filename = str_replace(' ', '_', $new_filename);
                 $appendix++;
             }
-            rename($_config['absoluteurl'] . $_config['upload_dir'] . $new_files[$i], $new_filename);
+            rename($uploadDir . $new_files[$i], $new_filename);
             $fname = $new_filename;
         }
+
         // Get audio metadata (duration, bitrate etc)
         $fileinfo = getID3Info($fname);
         $duration = $fileinfo['playtime_string'];           // Get duration
@@ -270,7 +368,7 @@ function indexEpisodes($_config)
             <keywordsPG></keywordsPG>
             <explicitPG>' . htmlspecialchars($_config['explicit_podcast']) . '</explicitPG>
             <authorPG>
-                <namePG>'. $author_name .'</namePG>
+                <namePG>' . $author_name . '</namePG>
                 <emailPG></emailPG>
             </authorPG>
             <fileInfoPG>
@@ -281,14 +379,16 @@ function indexEpisodes($_config)
             </fileInfoPG>
         </episode>
 </PodcastGenerator>';
+
         // Write image if set
         if (isset($fileinfo['comments']['picture'])) {
             $imgext = ($fileinfo['comments']['picture'][0]['image_mime'] == 'image/png') ? 'png' : 'jpg';
             $img_filename = $_config['absoluteurl'] . $_config['img_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.' . $imgext;
             file_put_contents($img_filename, $fileinfo['comments']['picture'][0]['data']);
         }
+
         // Write XML file
-        file_put_contents($_config['absoluteurl'] . $_config['upload_dir'] . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);
+        file_put_contents($uploadDir . pathinfo($fname, PATHINFO_FILENAME) . '.xml', $episodefeed);
         $num_added++;
     }
     return $num_added;
