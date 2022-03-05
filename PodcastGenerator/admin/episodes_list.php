@@ -62,12 +62,12 @@ $now = time();
             ?><p style="color: red;"><strong><?= $error ?></strong></p><?php
         } ?>
         <ul>
-                <?php foreach ($episodes as $episode) { ?>
+            <?php foreach ($episodes as $episode) { ?>
             <li>
                 <span style='color:<?= ($episode['filemtime'] > $now) ? "blue" : "green" ?>'><?= $episode['moddate'] ?></span>
                 - <a href='./episodes_edit.php?name=<?= $episode['filename'] ?>'><?= $episode['titlePG'] ?></a>
             </li>
-        <?php } ?>
+            <?php } ?>
         </ul>
     </div>
 </body>
