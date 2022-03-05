@@ -139,7 +139,7 @@ if (count($_POST) > 0) {
 	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
 	        <category3PG>' . htmlspecialchars($_POST['category'][2]) . '</category3PG>
 	    </categoriesPG>
-	    <keywordsPG>' . htmlspecialchars($_POST['keywords']) . '</keywordsPG>
+	    <keywordsPG>' . htmlspecialchars($_POST['itunesKeywords']) . '</keywordsPG>
 	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
 	    <authorPG>
 	        <namePG>' . htmlspecialchars($_POST['authorname']) . '</namePG>
