@@ -8,6 +8,105 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+
+/**
+ * usort() callback for sorting episodes by timestamp.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_timestamp($episodeA, $episodeB)
+{
+    return $episodeA['lastModified'] - $episodeB['lastModified'];
+}
+
+/**
+ * usort() callback for sorting episodes by season and episode.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_season_and_episode($episodeA, $episodeB)
+{
+    function getValueOrDefault($val)
+    {
+        if (empty($val) || !is_numeric($val)) {
+            return -1;
+        }
+        return $val + 0;
+    }
+
+    $seasonA = getValueOrDefault($episodeA['data']->episode->seasonNumPG);
+    $seasonB = getValueOrDefault($episodeB['data']->episode->seasonNumPG);
+    if ($seasonA != $seasonB) {
+        return $seasonA - $seasonB;
+    }
+
+    $episodeA = getValueOrDefault($episodeA['data']->episode->episodeNumPG);
+    $episodeB = getValueOrDefault($episodeB['data']->episode->episodeNumPG);
+    if ($episodeA != $episodeB) {
+        return $episodeA - $episodeB;
+    }
+
+    // fall back on timestamp if season and episode numbers match / aren't set
+    return sort_episodes_by_timestamp($episodeA, $episodeB);
+}
+
+function getEpisodeFiles($uploadDir)
+{
+    global $config;
+
+    $now = time();
+
+    // Get supported file extensions
+    $supported_extensions = array();
+    $supported_extensions_xml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    foreach ($supported_extensions_xml->mediaFile as $item) {
+        array_push($supported_extensions, strval($item->extension));
+    }
+
+    // Load episode data
+    $files = array();
+    if ($handle = opendir($uploadDir)) {
+        while (false !== ($entry = readdir($handle))) {
+            $filePath = $uploadDir . $entry;
+
+            $dataFile = $uploadDir . pathinfo($entry, PATHINFO_FILENAME) . '.xml';
+            // if sidecar file doesn't exist, skip
+            if (!file_exists($dataFile)) {
+                continue;
+            }
+
+            // if file exists in the future, skip
+            $lastModified = filemtime($filePath);
+            if ($now < $lastModified) {
+                continue;
+            }
+
+            // if file doesn't have supported extension, skip
+            if (!in_array(pathinfo($filePath, PATHINFO_EXTENSION), $supported_extensions)) {
+                continue;
+            }
+
+            array_push($files, [
+                'filename' => $entry,
+                'path' => $filePath,
+                'lastModified' => filemtime($filePath),
+                'data' => simplexml_load_file($dataFile)
+            ]);
+        }
+    }
+
+    // sort episodes by the selected method
+    $sortMethod = 'sort_episodes_by_' . (!empty($config['feed_sort']) ? $config['feed_sort'] : 'timestamp');
+    usort($files, $sortMethod);
+
+    // need to reverse the array since it's sorted ascending
+    return array_reverse($files);
+}
+
 function setupEpisodes($_config)
 {
     $supported_extensions = simplexml_load_file($_config['absoluteurl'] . 'components/supported_media/supported_media.xml');
