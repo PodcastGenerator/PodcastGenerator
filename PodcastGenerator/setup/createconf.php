@@ -9,6 +9,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 session_start();
+
 function randomString($length = 8)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -24,10 +25,11 @@ function createconf($username, $password)
 {
     require "../core/misc/globs.php";
     $installtime = time();
-    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+        . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Replace config stuff
     $url = str_replace("setup/step3.php?create=1", "", $url);
-    $absoluteurl = realpath("../")."/";
+    $absoluteurl = realpath("../") . "/";
     $installationKey = randomString();
     $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -38,7 +40,7 @@ function createconf($username, $password)
 
 \$installationKey = '$installationKey';
 
-\$scriptlang = '".$_SESSION['lang']."';
+\$scriptlang = '" . $_SESSION['lang'] . "';
 
 \$url = '$url';
 
@@ -112,7 +114,7 @@ function createconf($username, $password)
 
 \$explicit_podcast = 'no'; //does your podcast contain explicit language? ('yes' or 'no')
 
-\$users_json = '{\\\"".$username."\\\": \\\"".str_replace("\$", "\\\$", $password)."\\\"}';
+\$users_json = '{\\\"" . $username . "\\\": \\\"" . str_replace("\$", "\\\$", $password) . "\\\"}';
 
 #####################
 # WebSub
