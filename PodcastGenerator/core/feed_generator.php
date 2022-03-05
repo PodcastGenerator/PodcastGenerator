@@ -22,9 +22,56 @@ function itunes_category($categoryName)
     return $output;
 }
 
+/**
+ * usort() callback for sorting episodes by timestamp.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_timestamp($episodeA, $episodeB)
+{
+    return $episodeA['lastModified'] - $episodeB['lastModified'];
+}
+
+/**
+ * usort() callback for sorting episodes by season and episode.
+ *
+ * @param mixed $episodeA
+ * @param mixed $episodeB
+ * @return int
+ */
+function sort_episodes_by_season_and_episode($episodeA, $episodeB)
+{
+    function getValueOrDefault($val)
+    {
+        if (empty($val) || !is_numeric($val)) {
+            return -1;
+        }
+        return $val + 0;
+    }
+
+    $seasonA = getValueOrDefault($episodeA['data']->episode->seasonNumPG);
+    $seasonB = getValueOrDefault($episodeB['data']->episode->seasonNumPG);
+    if ($seasonA != $seasonB) {
+        return $seasonA - $seasonB;
+    }
+
+    $episodeA = getValueOrDefault($episodeA['data']->episode->episodeNumPG);
+    $episodeB = getValueOrDefault($episodeB['data']->episode->episodeNumPG);
+    if ($episodeA != $episodeB) {
+        return $episodeA - $episodeB;
+    }
+
+    // fall back on timestamp if season and episode numbers match / aren't set
+    return sort_episodes_by_timestamp($episodeA, $episodeB);
+}
+
 function getEpisodeFiles($uploadDir)
 {
     global $config;
+
+    $now = time();
 
     // Get supported file extensions
     $supported_extensions = array();
@@ -33,43 +80,44 @@ function getEpisodeFiles($uploadDir)
         array_push($supported_extensions, strval($item->extension));
     }
 
-    // Get episodes ordered by pub date
+    // Load episode data
     $files = array();
     if ($handle = opendir($uploadDir)) {
         while (false !== ($entry = readdir($handle))) {
-            // Sort out all files which have no XML file
-            if (!file_exists($uploadDir . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+            $filePath = $uploadDir . $entry;
+
+            $dataFile = $uploadDir . pathinfo($entry, PATHINFO_FILENAME) . '.xml';
+            // if sidecar file doesn't exist, skip
+            if (!file_exists($dataFile)) {
                 continue;
             }
-            // Sort out all files with invalid file extensions
-            if (in_array(pathinfo($uploadDir . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
-                array_push($files, [
-                    'filename' => $entry,
-                    'lastModified' => filemtime($uploadDir . $entry)
-                ]);
+
+            // if file exists in the future, skip
+            $lastModified = filemtime($filePath);
+            if ($now < $lastModified) {
+                continue;
             }
+
+            // if file doesn't have supported extension, skip
+            if (!in_array(pathinfo($filePath, PATHINFO_EXTENSION), $supported_extensions)) {
+                continue;
+            }
+
+            array_push($files, [
+                'filename' => $entry,
+                'path' => $filePath,
+                'lastModified' => filemtime($filePath),
+                'data' => simplexml_load_file($dataFile)
+            ]);
         }
     }
 
-    do {
-        $swapped = false;
-        for ($i = 0, $c = count($files) - 1; $i < $c; $i++) {
-            if ($files[$i]['lastModified'] < $files[$i + 1]['lastModified']) {
-                list($files[$i + 1], $files[$i]) = array($files[$i], $files[$i + 1]);
-                $swapped = true;
-            }
-        }
-    } while ($swapped);
+    // sort episodes by the selected method
+    $sortMethod = 'sort_episodes_by_' . (!empty($config['feed_sort']) ? $config['feed_sort'] : 'timestamp');
+    usort($files, $sortMethod);
 
-    // Pop files from the future
-    $realfiles = array();
-    for ($i = 0; $i < count($files); $i++) {
-        if (time() > $files[$i]['lastModified']) {
-            array_push($realfiles, $files[$i]);
-        }
-    }
-
-    return $realfiles;
+    // need to reverse the array since it's sorted ascending
+    return array_reverse($files);
 }
 
 function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
@@ -80,7 +128,6 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
     $original_full_filepath = $uploadUrl . str_replace(' ', '%20', $file['filename']);
-    $data = simplexml_load_file($uploadDir . pathinfo($file['filename'], PATHINFO_FILENAME) . '.xml');
 
     // Skip files with no read permission
     $mimetype = getmime($uploadDir . $file['filename']);
@@ -89,27 +136,30 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     }
 
     $author = null;
-    if (!empty($data->episode->authorPG->emailPG)) {
-        $author = $data->episode->authorPG->emailPG;
-        if (!empty($data->episode->authorPG->namePG)) {
-            $author .= ' (' . $data->episode->authorPG->namePG . ')';
+    if (!empty($file['data']->episode->authorPG->emailPG)) {
+        $author = $file['data']->episode->authorPG->emailPG;
+        if (!empty($file['data']->episode->authorPG->namePG)) {
+            $author .= ' (' . $file['data']->episode->authorPG->namePG . ')';
         }
     } else {
         $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
     }
 
     // Get lines of custom tags
-    $customTags = isset($data->episode->customTagsPG)
-        ? preg_split("/\r\n|\n|\r/", $data->episode->customTagsPG)
+    $customTags = isset($file['data']->episode->customTagsPG)
+        ? preg_split("/\r\n|\n|\r/", $file['data']->episode->customTagsPG)
         : array();
 
     // Generate GUID if a pregenerated GUID is missing for the episode
-    $guid = isset($data->episode->guid) ? $data->episode->guid : $config['url'] . "?" . $link . "=" . $file['filename'];
+    $guid = isset($file['data']->episode->guid)
+        ? $file['data']->episode->guid
+        : $config['url'] . "?" . $link . "=" . $file['filename'];
+
     // Check if this episode has a cover art
-    $basename = pathinfo($uploadDir . $file['filename'], PATHINFO_FILENAME);
+    $basename = pathinfo($file['filename'], PATHINFO_FILENAME);
     $has_cover = false;
-    if (!empty($data->episode->imgPG)) {
-        $has_cover = $data->episode->imgPG;
+    if (!empty($file['data']->episode->imgPG)) {
+        $has_cover = $file['data']->episode->imgPG;
     } elseif (file_exists($imagesDir . $basename . '.jpg') || file_exists($imagesDir . $basename . '.png')) {
         $ext = file_exists($imagesDir . $basename . '.png') ? '.png' : '.jpg';
         $has_cover = $imagesUrl . $basename . $ext;
@@ -120,39 +170,39 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
 
     $item = '
     <item>' . "\n";
-    $item .= $indent . '<title>' . $data->episode->titlePG . '</title>' . $linebreak;
+    $item .= $indent . '<title>' . $file['data']->episode->titlePG . '</title>' . $linebreak;
 
-    if (!empty($data->episode->episodeNumPG)) {
-        $item .= $indent . '<itunes:episode>' . $data->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
-        $item .= $indent . '<podcast:episode>' . $data->episode->episodeNumPG . '</podcast:episode>' . $linebreak;
+    if (!empty($file['data']->episode->episodeNumPG)) {
+        $item .= $indent . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $linebreak;
+        $item .= $indent . '<podcast:episode>' . $file['data']->episode->episodeNumPG . '</podcast:episode>' . $linebreak;
     }
-    if (!empty($data->episode->seasonNumPG)) {
-        $item .= $indent . '<itunes:season>' . $data->episode->seasonNumPG . '</itunes:season>' . $linebreak;
-        $item .= $indent . '<podcast:season>' . $data->episode->seasonNumPG . '</podcast:season>' . $linebreak;
+    if (!empty($file['data']->episode->seasonNumPG)) {
+        $item .= $indent . '<itunes:season>' . $file['data']->episode->seasonNumPG . '</itunes:season>' . $linebreak;
+        $item .= $indent . '<podcast:season>' . $file['data']->episode->seasonNumPG . '</podcast:season>' . $linebreak;
     }
 
-    $item .= $indent . '<itunes:subtitle><![CDATA[' . $data->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
-    $item .= $indent . '<description><![CDATA[' . $data->episode->shortdescPG . ']]></description>' . $linebreak;
-    if ($data->episode->longdescPG != "") {
-        $item .= $indent . '<itunes:summary><![CDATA[' . $data->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
+    $item .= $indent . '<itunes:subtitle><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:subtitle>' . $linebreak;
+    $item .= $indent . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $linebreak;
+    if ($file['data']->episode->longdescPG != "") {
+        $item .= $indent . '<itunes:summary><![CDATA[' . $file['data']->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
     }
 
     $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $file['filename'] . '</link>' . $linebreak;
     $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($uploadDir . $file['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
     $item .= $indent . '<guid>' . $guid . '</guid>' . $linebreak;
-    $item .= $indent . '<itunes:duration>' . $data->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
+    $item .= $indent . '<itunes:duration>' . $file['data']->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
 
     $item .= $indent . '<author>' . htmlspecialchars($author) . '</author>' . $linebreak;
-    if (!empty($data->episode->authorPG->namePG)) {
-        $item .= $indent . '<itunes:author>' . htmlspecialchars($data->episode->authorPG->namePG) . '</itunes:author>' . $linebreak;
+    if (!empty($file['data']->episode->authorPG->namePG)) {
+        $item .= $indent . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG) . '</itunes:author>' . $linebreak;
     } else {
         $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
     }
 
-    if ($data->episode->keywordsPG != "") {
-        $item .= $indent . '<itunes:keywords>' . $data->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
+    if ($file['data']->episode->keywordsPG != "") {
+        $item .= $indent . '<itunes:keywords>' . $file['data']->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
     }
-    $item .= $indent . '<itunes:explicit>' . $data->episode->explicitPG . '</itunes:explicit>' . $linebreak;
+    $item .= $indent . '<itunes:explicit>' . $file['data']->episode->explicitPG . '</itunes:explicit>' . $linebreak;
 
     // If image is set
     if ($has_cover) {
