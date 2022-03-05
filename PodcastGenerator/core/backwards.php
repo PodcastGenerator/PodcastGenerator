@@ -108,7 +108,7 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$author_email = '" . $config['author_email'] . "';
 
-# The e-amil of the technical admin of the podcast
+# The e-mail of the technical admin of the podcast
 \$webmaster = '" . $config['author_email'] . "';
 
 \$itunes_category[0] = '" . $config['itunes_category[0]'] . "'; // iTunes categories (mainCategory:subcategory)
