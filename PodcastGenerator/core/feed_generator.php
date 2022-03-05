@@ -25,10 +25,24 @@ function generateRSS()
 {
     // Make variables available in this scope
     global $config, $version;
+
+    $feedDir = $config['absoluteurl'] . $config['feed_dir'];
+
+    // We use the media directory a lot, and possibly also the images directory
+    // Stick them in variables instead of concatenating all the time
+    $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
+    $uploadUrl = $config['url'] . $config['upload_dir'];
+
+    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
+    $imagesUrl = $config['url'] . $config['img_dir'];
+
     // Create path if it doesn't exist
-    if (!is_dir($config['absoluteurl'] . $config['feed_dir'])) {
-        mkdir($config['absoluteurl'] . $config['feed_dir']);
+    if (!is_dir($feedDir)) {
+        mkdir($feedDir);
     }
+
+    $podcastCoverUrl = $imagesUrl . $config['podcast_cover'];
+
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
     <!-- generator="Podcast Generator ' . $version . '" -->
@@ -44,9 +58,9 @@ function generateRSS()
 		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
 		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
 		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>
-		<itunes:image href="' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '" />
+		<itunes:image href="' . $podcastCoverUrl . '" />
 		<image>
-			<url>' . $config['url'] . $config['img_dir'] . $config['podcast_cover'] . '</url>
+			<url>' . $podcastCoverUrl . '</url>
 			<title>' . htmlspecialchars($config['podcast_title']) . '</title>
 			<link>' . $config['url'] . '</link>
 		</image>
@@ -82,17 +96,17 @@ function generateRSS()
     }
     // Get episodes ordered by pub date
     $files = array();
-    if ($handle = opendir($config['absoluteurl'] . $config['upload_dir'])) {
+    if ($handle = opendir($uploadDir)) {
         while (false !== ($entry = readdir($handle))) {
             // Sort out all files which have no XML file
-            if (!file_exists($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
+            if (!file_exists($uploadDir . pathinfo($config['upload_dir'] . $entry, PATHINFO_FILENAME) . '.xml')) {
                 continue;
             }
             // Sort out all files with invalid file extensions
-            if (in_array(pathinfo($config['absoluteurl'] . $config['upload_dir'] . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
+            if (in_array(pathinfo($uploadDir . $entry, PATHINFO_EXTENSION), $supported_extensions)) {
                 array_push($files, [
                     'filename' => $entry,
-                    'lastModified' => filemtime($config['absoluteurl'] . $config['upload_dir'] . $entry)
+                    'lastModified' => filemtime($uploadDir . $entry)
                 ]);
             }
         }
@@ -127,10 +141,11 @@ function generateRSS()
         $link = str_replace('?', '', $config['link']);
         $link = str_replace('=', '', $link);
         $link = str_replace('$url', '', $link);
-        $original_full_filepath = $config['url'] . $config['upload_dir'] . str_replace(' ', '%20', $files[$i]['filename']);
-        $file = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
+        $original_full_filepath = $uploadUrl . str_replace(' ', '%20', $files[$i]['filename']);
+        $file = simplexml_load_file($uploadDir . pathinfo($config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME) . '.xml');
+
         // Skip files with no read permission
-        $mimetype = getmime($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']);
+        $mimetype = getmime($uploadDir . $files[$i]['filename']);
         if (!$mimetype) {
             $mimetype = null;
         }
@@ -150,13 +165,13 @@ function generateRSS()
         // Generate GUID if a pregenerated GUID is missing for the episode
         $guid = isset($file->episode->guid) ? $file->episode->guid : $config['url'] . "?" . $link . "=" . $files[$i]['filename'];
         // Check if this episode has a cover art
-        $basename = pathinfo($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename'], PATHINFO_FILENAME);
+        $basename = pathinfo($uploadDir . $files[$i]['filename'], PATHINFO_FILENAME);
         $has_cover = false;
         if (!empty($file->episode->imgPG)) {
             $has_cover = $file->episode->imgPG;
-        } elseif (file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.jpg') || file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png')) {
-            $ext = file_exists($config['absoluteurl'] . $config['img_dir'] . $basename . '.png') ? '.png' : '.jpg';
-            $has_cover = $config['url'] . $config['img_dir'] . $basename . $ext;
+        } elseif (file_exists($imagesDir . $basename . '.jpg') || file_exists($imagesDir . $basename . '.png')) {
+            $ext = file_exists($imagesDir . $basename . '.png') ? '.png' : '.jpg';
+            $has_cover = $imagesUrl . $basename . $ext;
         }
         $indent = "\t\t\t";
         $linebreak = "\n";
@@ -177,7 +192,7 @@ function generateRSS()
             $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
         }
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
-        $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
+        $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($uploadDir . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
         $item .= $indent . '<guid>' . $guid . '</guid>' . $linebreak;
         $item .= $indent . '<itunes:duration>' . $file->episode->fileInfoPG->duration . '</itunes:duration>' . $linebreak;
         $item .= $indent . '<author>' . htmlspecialchars($author) . '</author>' . $linebreak;
@@ -213,5 +228,5 @@ function generateRSS()
     }
     // Append footer
     $xml .= $feedfooter;
-    return file_put_contents($config['absoluteurl'] . $config['feed_dir'] .  'feed.xml', $xml);
+    return file_put_contents($feedDir . 'feed.xml', $xml);
 }
