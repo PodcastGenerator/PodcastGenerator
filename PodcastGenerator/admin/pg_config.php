@@ -56,28 +56,10 @@ foreach ($timezones as $group => $list) {
 
 $cronLink = htmlspecialchars($config['url'] . "pg-cron.php?key=" . $config['installationKey']);
 
-$yesNoOptions = array(
-    [ 'value' => 'yes', 'label' => _('Yes') ],
-    [ 'value' => 'no', 'label' => _('No') ]
-);
-
 $episodeSortOrderOptions = array(
     [ 'value' => 'timestamp', 'label' => _('Timestamp') ],
     [ 'value' => 'season_and_episode', 'label' => _('Season and episode number') ]
 );
-
-function htmlOptionRadios($name, $value, $options)
-{
-    foreach ($options as $opt) {
-        $checked = ($value == $opt['value']) ? ' checked' : '';
-        ?>
-            <label>
-                <input type="radio" name="<?= $name ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
-                <?= $opt['label'] ?>
-            </label>
-        <?php
-    }
-}
 
 ?>
 <!DOCTYPE html>

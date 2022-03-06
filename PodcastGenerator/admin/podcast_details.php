@@ -59,29 +59,11 @@ error:
 
 $custom_tags = getCustomFeedTags();
 
-$yesNoOptions = array(
-    [ 'value' => 'yes', 'label' => _('Yes') ],
-    [ 'value' => 'no', 'label' => _('No') ]
-);
-
 $lockFeedOptions = array(
     [ 'value' => 'yes', 'label' => _('Locked') ],
     [ 'value' => 'no', 'label' => _('Unlocked') ],
     [ 'value' => '', 'label' => _('Off') ]
 );
-
-function htmlOptionRadios($name, $value, $options)
-{
-    foreach ($options as $opt) {
-        $checked = ($value == $opt['value']) ? ' checked' : '';
-        ?>
-            <label>
-                <input type="radio" name="<?= $name ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
-                <?= $opt['label'] ?>
-            </label>
-        <?php
-    }
-}
 
 function selectedLangAttr($lang)
 {

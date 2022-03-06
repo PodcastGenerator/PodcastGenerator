@@ -243,18 +243,6 @@ if (!isset($customTags)) {
     $customTags = '';
 }
 
-function checkedAttr($val, $state)
-{
-    if ($val == $state) {
-        return 'checked';
-    }
-    return '';
-}
-
-function displayBlockCss($val) {
-    return 'display: ' . ($val == 'yes' ? 'block' : 'none') . ';';
-}
-
 ?>
 <!DOCTYPE html>
 <html>

@@ -36,5 +36,7 @@ include 'freebox.php';
 // This file is wizard to convert old password to a more secure algorithm
 // Load useful functions
 include 'misc/functions.php';
+// Load HTML helper functions
+include 'html_helpers.php';
 // Load translations
 include 'translation.php';
