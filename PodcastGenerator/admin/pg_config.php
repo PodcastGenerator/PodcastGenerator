@@ -54,6 +54,29 @@ foreach ($timezones as $group => $list) {
     asort($list);
 }
 
+$yesNoOptions = array(
+    [ 'value' => 'yes', 'label' => _('Yes') ],
+    [ 'value' => 'no', 'label' => _('No') ]
+);
+
+$episodeSortOrderOptions = array(
+    [ 'value' => 'timestamp', 'label' => _('Timestamp') ],
+    [ 'value' => 'season_and_episode', 'label' => _('Season and episode number') ]
+);
+
+function htmlOptionRadios($name, $value, $options)
+{
+    foreach ($options as $opt) {
+        $checked = ($value == $opt['value']) ? ' checked' : '';
+        ?>
+            <label>
+                <input type="radio" name="<?= $name ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
+                <?= $opt['label'] ?>
+            </label>
+        <?php
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,28 +100,32 @@ foreach ($timezones as $group => $list) {
         <form action="pg_config.php?edit=1" method="POST">
             <?= _('Enable Audio and Video Player') ?>:<br>
             <small><?= _('Enable streaming in web browser') ?></small><br>
-            <input type="radio" name="enablestreaming" value="yes" <?= $config['enablestreaming'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
-            <input type="radio" name="enablestreaming" value="no" <?= $config['enablestreaming'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <?php htmlOptionRadios('enablestreaming', $config['enablestreaming'], $yesNoOptions); ?>
+            <br>
             <hr>
             <?= _('Enable Freebox') ?>:<br>
-            <small><?= _('Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.') ?></small><br>
-            <input type="radio" name="freebox" value="yes" <?= $config['freebox'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
-            <input type="radio" name="freebox" value="no" <?= $config['freebox'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <small>
+                <?= _('Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.') ?>
+            </small><br>
+            <?php htmlOptionRadios('freebox', $config['freebox'], $yesNoOptions); ?>
+            <br>
             <hr>
             <?= _('Enable categories') ?>:<br>
             <small><?= _('Enable categories feature to make thematic lists of your podcasts.') ?></small><br>
-            <input type="radio" name="categoriesenabled" value="yes" <?= $config['categoriesenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
-            <input type="radio" name="categoriesenabled" value="no" <?= $config['categoriesenabled'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <?php htmlOptionRadios('categoriesenabled', $config['categoriesenabled'], $yesNoOptions); ?>
+            <br>
             <hr>
             <?= _('Enable custom tag input') ?>:<br>
-            <small><?= _('Enable the ability to add custom RSS tags to your podcast feed and individual episodes.') ?></small><br>
-            <input type="radio" name="customtagsenabled" value="yes" <?= $config['customtagsenabled'] == 'yes' ? 'checked' : '' ?>> <?= _('Yes') ?>
-            <input type="radio" name="customtagsenabled" value="no" <?= $config['customtagsenabled'] != 'yes' ? 'checked' : '' ?>> <?= _('No') ?><br>
+            <small>
+                <?= _('Enable the ability to add custom RSS tags to your podcast feed and individual episodes.') ?>
+            </small><br>
+            <?php htmlOptionRadios('customtagsenabled', $config['customtagsenabled'], $yesNoOptions); ?>
+            <br>
             <hr>
             <?= _('Episode sort order') ?>:<br>
             <small><?= _('Choose how episodes are ordered on the website and in the RSS feed.') ?></small><br>
-            <input type="radio" name="feed_sort" value="timestamp" <?= $config['feed_sort'] == 'timestamp' ? 'checked' : '' ?>> <?= _('Timestamp') ?>
-            <input type="radio" name="feed_sort" value="season_and_episode" <?= $config['feed_sort'] == 'season_and_episode' ? 'checked' : '' ?>> <?=_('Season and episode number') ?><br>
+            <?php htmlOptionRadios('feed_sort', $config['feed_sort'], $episodeSortOrderOptions); ?>
+            <br>
             <hr>
             <?= _('Time zone') ?>:<br>
             <small><?= _('Select time zone for displaying the time which episodes have been released.') ?></small><br>
