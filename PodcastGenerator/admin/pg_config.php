@@ -150,6 +150,7 @@ function htmlOptionRadios($name, $value, $options)
             <small><?= _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not') ?></small><br>
             <input type="text" name="podcastPassword" value="<?= $config['podcastPassword'] ?>"><br>
             <hr>
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success"><br>
         </form>
     </div>
