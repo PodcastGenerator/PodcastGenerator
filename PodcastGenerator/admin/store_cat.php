@@ -53,19 +53,24 @@ error:
             <strong><p style="color: red;"><?= $error ?></p></strong>
         <?php } ?>
         <form action="store_cat.php?edit=1" method="POST">
-            <h3><?= _('Category') ?> 1:</h3>
-            <select name="cat1">
+            <h3><label for="cat1"><?= sprintf(_('Category %d'), 1) ?>:</label></h3>
+            <select id="cat1" name="cat1">
                 <?php foreach ($categories as $item) { ?>
                     <?php if ($config["itunes_category[0]"] == $item->id) { ?>
-                       <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>" selected>
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } else { ?>
-                       <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>">
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } ?>
                 <?php } ?>
             </select>
             <hr>
-            <h3><?= _('Category') ?> 2:</h3>
-            <select name="cat2">
+
+            <h3><label for="cat2"><?= sprintf(_('Category %d'), 2) ?>:</label></h3>
+            <select id="cat2" name="cat2">
                 <?php if ($config["itunes_category[1]"] == "") { ?>
                     <option value="null" selected></option>
                 <?php } else { ?>
@@ -73,15 +78,20 @@ error:
                 <?php } ?>
                 <?php foreach ($categories as $item) { ?>
                     <?php if ($config["itunes_category[1]"] == $item->id) { ?>
-                        <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>" selected>
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } else { ?>
-                        <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>">
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } ?>
                 <?php } ?>
             </select>
             <hr>
-            <h3><?= _('Category') ?> 3:</h3>
-            <select name="cat3">
+
+            <h3><label for="cat3"><?= sprintf(_('Category %d'), 3) ?>:</label></h3>
+            <select id="cat3" name="cat3">
                 <?php if ($config["itunes_category[2]"] == "") { ?>
                     <option value="null" selected></option>
                 <?php } else { ?>
@@ -89,13 +99,18 @@ error:
                 <?php } ?>
                 <?php foreach ($categories as $item) { ?>
                     <?php if ($config["itunes_category[2]"] == $item->id) { ?>
-                        <option value="<?= htmlspecialchars($item->id) ?>" selected><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>" selected>
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } else { ?>
-                        <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                        <option value="<?= htmlspecialchars($item->id) ?>">
+                            <?= htmlspecialchars($item->description) ?>
+                        </option>
                     <?php } ?>
                 <?php } ?>
             </select>
             <hr>
+
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _('Save') ?>" class="btn btn-success"><br>
         </form>
