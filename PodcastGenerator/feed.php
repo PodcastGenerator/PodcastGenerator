@@ -16,7 +16,14 @@ if ($config['podcastPassword'] != "") {
         die(_('Authentication required'));
     }
 }
+
 header('Content-Type: application/xml');
 sleep(0.01);
-$xml = file_get_contents($config['absoluteurl'] . $config['feed_dir'] . 'feed.xml');
+
+if (isset($_GET['cat'])) {
+    $xml = generateRssFeed($config, $_GET['cat']);
+} else {
+    $xml = file_get_contents($config['absoluteurl'] . $config['feed_dir'] . 'feed.xml');
+}
+
 print($xml);
