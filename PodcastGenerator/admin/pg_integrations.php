@@ -14,7 +14,7 @@ if (isset($_GET['edit'])) {
     foreach ($_POST as $key => $value) {
         if ($key[0] != '_') {
             updateConfig('../config.php', $key, $value);
-        } else if ($key == '_register') {
+        } elseif ($key == '_register') {
             $register = $value;
         }
     }
@@ -48,12 +48,12 @@ if (isset($_GET['edit'])) {
                     $error = $e->getMessage();
                     goto error;
                 }
-            break;
+                break;
 
             default:
                 $error = _('Unsupported service') . ': ' . $register;
                 goto error;
-            break;
+                break;
         }
     }
 
