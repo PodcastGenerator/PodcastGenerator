@@ -61,12 +61,12 @@ if (isset($_GET['login'])) {
                 <?php } ?>
                 <form action="login.php?login=1" method="POST">
                     <div class="form-group">
-                        <?= _('Username') ?>:<br>
-                        <input class="form-control" type="text" name="username">
+                        <label for="username"><?= _('Username') ?>:</label><br>
+                        <input class="form-control" type="text" id="username" name="username">
                     </div>
                     <div class="form-group">
-                        <?= _('Password') ?>:<br>
-                        <input class="form-control" type="password" name="password"><br>
+                        <label for="password"><?= _('Password') ?>:</label><br>
+                        <input class="form-control" type="password" id="password" name="password"><br>
                         <small><a href="forgot.php"><?= _('Forgot Password?') ?></a></small><br>
                         <br>
                         <input type="submit" value="<?= _('Sign In') ?>" class="btn btn-success">
