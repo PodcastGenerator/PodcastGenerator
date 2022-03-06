@@ -140,6 +140,26 @@ function generateRssFeed($_config, $category = null)
 
     $podcastCoverUrl = $imagesUrl . $_config['podcast_cover'];
 
+    $categoryDescription = null;
+    if (!empty($category)) {
+        $feedUrl = $_config['url'] . 'feed.php?cat=' . $category;
+        // Get category description
+        $cats = simplexml_load_file('../categories.xml');
+        foreach ($cats as $item) {
+            if ($category == $item->id) {
+                $categoryDescription = $item->description;
+                break;
+            }
+        }
+    } else {
+        $feedUrl = $_config['url'] . $_config['feed_dir'] . 'feed.xml';
+    }
+
+    $feedTitle = $_config['podcast_title'];
+    if (!empty($categoryDescription)) {
+        $feedTitle .= " - " . $categoryDescription;
+    }
+
     // Set the feed header with relevant podcast informations
     $feedhead = '<?xml version="1.0" encoding="' . $_config['feed_encoding'] . '"?>
 <!-- generator="Podcast Generator ' . $version . '" -->
@@ -150,9 +170,9 @@ function generateRssFeed($_config, $category = null)
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:podcast="https://podcastindex.org/namespace/1.0">
 	<channel>
-		<title>' . htmlspecialchars($_config['podcast_title']) . '</title>
+		<title>' . htmlspecialchars($feedTitle) . '</title>
 		<link>' . $_config['url'] . '</link>
-		<atom:link href="' . $_config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />' . "\n";
+		<atom:link href="' . $feedUrl . '" rel="self" type="application/rss+xml" />' . "\n";
 
     if (!empty($_config['podcast_guid'])) {
         $feedhead .= '		<podcast:guid>' . $_config['podcast_guid'] . '</podcast:guid>' . "\n";
@@ -236,7 +256,7 @@ function generateRssFeed($_config, $category = null)
     // Close the tags
     $feedfooter = '
     </channel>
-    </rss>' . "\n";
+</rss>' . "\n";
 
     // Generate the actual XML
     $xml = $feedhead;
