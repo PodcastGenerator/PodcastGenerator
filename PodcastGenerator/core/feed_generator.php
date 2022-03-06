@@ -144,7 +144,7 @@ function generateRssFeed($_config, $category = null)
     if (!empty($category)) {
         $feedUrl = $_config['url'] . 'feed.php?cat=' . $category;
         // Get category description
-        $cats = simplexml_load_file('../categories.xml');
+        $cats = simplexml_load_file($_config['absoluteurl'] . 'categories.xml');
         foreach ($cats as $item) {
             if ($category == $item->id) {
                 $categoryDescription = $item->description;
