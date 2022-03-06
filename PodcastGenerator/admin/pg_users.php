@@ -98,37 +98,43 @@ if (isset($_GET['change'])) {
 
                 <h3><?= _('Create User') ?></h3>
                 <form action="pg_users.php?create=1" method="POST">
-                    <?= _('Username') ?>:<br>
-                    <input type="text" name="username"><br>
-                    <?= _('Password') ?>:<br>
-                    <input type="password" name="password"><br>
+                    <label for="username_cr"><?= _('Username') ?>:</label><br>
+                    <input type="text" id="username_cr" name="username"><br>
+
+                    <label for="password_cr"><?= _('Password') ?>:</label><br>
+                    <input type="password" id="password_cr" name="password"><br>
+
                     <br>
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                     <input type="submit" value="<?= _('Submit') ?>" class="btn btn-success"><br>
                 </form>
             <?php } ?>
             <?php if (isset($_GET['username'])) { /* List a specific user */ ?>
-                <?php
-                    if (!array_key_exists($_GET['username'], $users)) {
+                <?php if (!array_key_exists($_GET['username'], $users)) {
                         $error = _('User does not exist');
                         goto error;
-                    }
-                ?>
+                } ?>
                 <form action="pg_users.php?change=<?= strip_tags($_GET['username']) ?>" method="POST">
-                    <?= _('Username') ?>:<br>
-                    <input type="text" name="username" value="<?= strip_tags($_GET['username']); ?>" disabled> <small><?= _('You cannot edit usernames') ?></small><br>
-                    <?= _('New Password') ?><br>
-                    <input type="password" name="password"><br>
-                    <?= _('Repeat new password') ?><br>
-                    <input type="password" name="password2"><br>
+                    <label for="username_ch"><?= _('Username') ?>:</label><br>
+                    <input type="text" id="username_ch" name="username"
+                           value="<?= strip_tags($_GET['username']); ?>" disabled>
+                    <small><?= _('You cannot edit usernames') ?></small>
                     <br>
+
+                    <label for="password_ch"><?= _('New Password') ?></label><br>
+                    <input type="password" id="password_ch" name="password"><br>
+                    <label for="password2_ch"><?= _('Repeat new password') ?></label><br>
+                    <input type="password" id="password2_ch" name="password2"><br>
+                    <br>
+
                     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                     <input type="submit" value="<?= _('Change') ?>" class="btn btn-success">
                 </form>
                 <hr>
+
                 <h3><?= _('Delete user') ?></h3>
                 <?php if ($_GET['username'] == $_SESSION['username']) { /* Don't permit to delete the logged in user */ ?>
-                    <p><?= _('You cannot delete yourself') ?></p>
+                    <p style="color: red;"><?= _('You cannot delete yourself') ?></p>
                 <?php } else { ?>
                     <form action="pg_users.php?delete=<?= strip_tags($_GET['username']) ?>" method="POST">
                         <input type="hidden" name="token" value="<?= $_SESSION['token' ] ?>">
