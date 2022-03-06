@@ -89,25 +89,46 @@ if (isset($_GET['edit'])) {
         <form action="pg_integrations.php?edit=1" method="POST">
             <section>
                 <h2><?= _('Podcast Index'); ?>:</h2>
-                <?= _('API key') ?>:<br>
-                <input type="text" name="pi_api_key" value="<?= htmlspecialchars($config['pi_api_key']) ?>"><br>
-                <?= _('API secret') ?>:<br>
-                <input type="password" name="pi_api_secret" value="<?= htmlspecialchars($config['pi_api_secret']) ?>"><br>
-                <?= _('Podcast ID') ?>:<br>
-                <small><?= _('Enter the ID number for your show in Podcast Index or click "Add Show" to add your show to the index') ?></small><br>
-                <input type="text" name="pi_podcast_id" value="<?= $config['pi_podcast_id'] ?>">
+
+                <label for="pi_api_key"><?= _('API key') ?>:</label><br>
+                <input type="text" id="pi_api_key" name="pi_api_key"
+                       value="<?= htmlspecialchars($config['pi_api_key']) ?>">
+                <br>
+
+                <label for="pi_api_secret"><?= _('API secret') ?>:</label><br>
+                <input type="password" id="pi_api_secret" name="pi_api_secret"
+                       value="<?= htmlspecialchars($config['pi_api_secret']) ?>">
+                <br>
+
+                <label for="pi_podcast_id"><?= _('Podcast ID') ?>:</label><br>
+                <small>
+                    <?= _('Enter the ID number for your show in Podcast Index or click "Add Show" to add your show to the index') ?>
+                </small>
+                <br>
+                <input type="text" id="pi_podcast_id" name="pi_podcast_id" value="<?= $config['pi_podcast_id'] ?>">
+
                 <?php if (!$config['pi_podcast_id']) { ?>
-                    <button type="submit" name="_register" value="podcast-index" class="btn btn-sm btn-secondary"><?= _('Add Show') ?></button>
+                    <button type="submit" name="_register" value="podcast-index" class="btn btn-sm btn-secondary">
+                        <?= _('Add Show') ?>
+                    </button>
                 <?php } ?><br>
                 <hr>
             </section>
+
             <section>
                 <h2><?= _('WebSub') ?>:</h2>
-                <?= _('Server address') ?>:<br>
-                <small><?= _('This is the full address of the WebSub hub to alert when the podcast is updated.') ?></small><br>
-                <input type="text" name="websub_server" value="<?= htmlspecialchars($config['websub_server']) ?>"><br>
+
+                <label for="websub_server"><?= _('Server address') ?>:</label><br>
+                <small>
+                    <?= _('This is the full address of the WebSub hub to alert when the podcast is updated.') ?>
+                </small>
+                <br>
+                <input type="text" id="websub_server" name="websub_server"
+                       value="<?= htmlspecialchars($config['websub_server']) ?>">
+                <br>
                 <hr>
             </section>
+
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success"><br>
         </form>
     </div>
