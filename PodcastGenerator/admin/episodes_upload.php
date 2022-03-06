@@ -267,15 +267,17 @@ if (!isset($customTags)) {
     <div class="container">
         <h1><?php _('Upload Episode'); ?></h1>
         <?php if (isset($success)) { ?>
-            <strong><p style="color: #2ecc71;"><?= htmlspecialchars($_POST['title']) . ' ' . _('uploaded successfully') ?></p></strong>
+            <p style="color: #2ecc71;">
+                <strong><?= htmlspecialchars(sprintf(_('"%s" uploaded successfully'), $_POST['title'])) ?></strong>
+            </p>
         <?php } ?>
         <?php if (isset($error)) { ?>
-            <strong><p style="color: #e74c3c;"><?= $error ?></p></strong>
+            <p style="color: #e74c3c;"><strong><?= $error ?></strong></p>
         <?php } ?>
         <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
-                    <h3><?= _('Main Informations') ?></h3>
+                    <h3><?= _('Main Information') ?></h3>
                     <hr>
                     <div class="form-group">
                         <label for="file" class="req"><?= _('File') ?>:</label><br>
