@@ -10,7 +10,9 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-checkToken();
+if (count($_GET) != 0) {
+    checkToken();
+}
 
 $users = getUsers();
 
