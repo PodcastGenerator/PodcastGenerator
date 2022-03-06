@@ -54,6 +54,8 @@ foreach ($timezones as $group => $list) {
     asort($list);
 }
 
+$cronLink = htmlspecialchars($config['url'] . "pg-cron.php?key=" . $config['installationKey']);
+
 $yesNoOptions = array(
     [ 'value' => 'yes', 'label' => _('Yes') ],
     [ 'value' => 'no', 'label' => _('No') ]
@@ -103,6 +105,7 @@ function htmlOptionRadios($name, $value, $options)
             <?php htmlOptionRadios('enablestreaming', $config['enablestreaming'], $yesNoOptions); ?>
             <br>
             <hr>
+
             <?= _('Enable Freebox') ?>:<br>
             <small>
                 <?= _('Freebox allows you to write freely what you wish, add links or text through a visual editor in the admin section.') ?>
@@ -110,11 +113,13 @@ function htmlOptionRadios($name, $value, $options)
             <?php htmlOptionRadios('freebox', $config['freebox'], $yesNoOptions); ?>
             <br>
             <hr>
+
             <?= _('Enable categories') ?>:<br>
             <small><?= _('Enable categories feature to make thematic lists of your podcasts.') ?></small><br>
             <?php htmlOptionRadios('categoriesenabled', $config['categoriesenabled'], $yesNoOptions); ?>
             <br>
             <hr>
+
             <?= _('Enable custom tag input') ?>:<br>
             <small>
                 <?= _('Enable the ability to add custom RSS tags to your podcast feed and individual episodes.') ?>
@@ -122,11 +127,13 @@ function htmlOptionRadios($name, $value, $options)
             <?php htmlOptionRadios('customtagsenabled', $config['customtagsenabled'], $yesNoOptions); ?>
             <br>
             <hr>
+
             <?= _('Episode sort order') ?>:<br>
             <small><?= _('Choose how episodes are ordered on the website and in the RSS feed.') ?></small><br>
             <?php htmlOptionRadios('feed_sort', $config['feed_sort'], $episodeSortOrderOptions); ?>
             <br>
             <hr>
+
             <?= _('Time zone') ?>:<br>
             <small><?= _('Select time zone for displaying the time which episodes have been released.') ?></small><br>
             <select name="timezone">
@@ -143,12 +150,19 @@ function htmlOptionRadios($name, $value, $options)
                 <?php } ?>
             </select>
             <hr>
+
             <?= _('Use cron to regenerate the RSS feed') ?>:<br>
-            <input type="text" value="<?= htmlspecialchars($config['url']) . "pg-cron.php?key=" . htmlspecialchars($config['installationKey']) ?>" style="width: 100%;" readonly><br>
+            <input type="text" readonly style="width: 100%;" value="<?= $cronLink ?>">
+            <br>
             <hr>
-            <?= _('Password Protection for the web pages') ?>:<br>
-            <small><?= _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not') ?></small><br>
-            <input type="text" name="podcastPassword" value="<?= $config['podcastPassword'] ?>"><br>
+
+            <label for="podcastPassword"><?= _('Password Protection for the web pages') ?>:</label><br>
+            <small>
+                <?= _('Leave empty for no password, keep in mind that the feed and the audio files will still be accessible no matter if a password is set or not') ?>
+            </small><br>
+            <input type="text" id="podcastPassword" name="podcastPassword" value="<?= $config['podcastPassword'] ?>">
+            <br>
+
             <hr>
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success"><br>
