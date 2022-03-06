@@ -126,83 +126,75 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     return $item;
 }
 
-function generateRSS()
+function generateRssFeed($_config, $category = null)
 {
-    // Make variables available in this scope
-    global $config, $version;
-
-    $feedDir = $config['absoluteurl'] . $config['feed_dir'];
+    global $version;
 
     // We use the media directory a lot, and possibly also the images directory
     // Stick them in variables instead of concatenating all the time
-    $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
-    $uploadUrl = $config['url'] . $config['upload_dir'];
+    $uploadDir = $_config['absoluteurl'] . $_config['upload_dir'];
+    $uploadUrl = $_config['url'] . $_config['upload_dir'];
 
-    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
-    $imagesUrl = $config['url'] . $config['img_dir'];
+    $imagesDir = $_config['absoluteurl'] . $_config['img_dir'];
+    $imagesUrl = $_config['url'] . $_config['img_dir'];
 
-    // Create path if it doesn't exist
-    if (!is_dir($feedDir)) {
-        mkdir($feedDir);
-    }
-
-    $podcastCoverUrl = $imagesUrl . $config['podcast_cover'];
+    $podcastCoverUrl = $imagesUrl . $_config['podcast_cover'];
 
     // Set the feed header with relevant podcast informations
-    $feedhead = '<?xml version="1.0" encoding="' . $config['feed_encoding'] . '"?>
+    $feedhead = '<?xml version="1.0" encoding="' . $_config['feed_encoding'] . '"?>
 <!-- generator="Podcast Generator ' . $version . '" -->
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
      xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
-     xml:lang="' . $config['feed_language'] . '"
+     xml:lang="' . $_config['feed_language'] . '"
      version="2.0"
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:podcast="https://podcastindex.org/namespace/1.0">
 	<channel>
-		<title>' . htmlspecialchars($config['podcast_title']) . '</title>
-		<link>' . $config['url'] . '</link>
-		<atom:link href="' . $config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />' . "\n";
+		<title>' . htmlspecialchars($_config['podcast_title']) . '</title>
+		<link>' . $_config['url'] . '</link>
+		<atom:link href="' . $_config['url'] . 'feed.xml" rel="self" type="application/rss+xml" />' . "\n";
 
-    if (!empty($config['podcast_guid'])) {
-        $feedhead .= '		<podcast:guid>' . $config['podcast_guid'] . '</podcast:guid>' . "\n";
+    if (!empty($_config['podcast_guid'])) {
+        $feedhead .= '		<podcast:guid>' . $_config['podcast_guid'] . '</podcast:guid>' . "\n";
     }
 
-    $feedhead .= '		<description>' . htmlspecialchars($config['podcast_description']) . '</description>
+    $feedhead .= '		<description>' . htmlspecialchars($_config['podcast_description']) . '</description>
 		<generator>Podcast Generator ' . $version . ' - http://www.podcastgenerator.net</generator>
 		<lastBuildDate>' . date('r') . '</lastBuildDate>
-		<language>' . $config['feed_language'] . '</language>
-		<copyright>' . htmlspecialchars($config['copyright']) . '</copyright>
-		<managingEditor>' . htmlspecialchars($config['author_email']) . '</managingEditor>
-		<webMaster>' . htmlspecialchars($config['webmaster']) . '</webMaster>
+		<language>' . $_config['feed_language'] . '</language>
+		<copyright>' . htmlspecialchars($_config['copyright']) . '</copyright>
+		<managingEditor>' . htmlspecialchars($_config['author_email']) . '</managingEditor>
+		<webMaster>' . htmlspecialchars($_config['webmaster']) . '</webMaster>
 		<itunes:image href="' . $podcastCoverUrl . '" />
 		<image>
 			<url>' . $podcastCoverUrl . '</url>
-			<title>' . htmlspecialchars($config['podcast_title']) . '</title>
-			<link>' . $config['url'] . '</link>
+			<title>' . htmlspecialchars($_config['podcast_title']) . '</title>
+			<link>' . $_config['url'] . '</link>
 		</image>
-		<itunes:summary>' . htmlspecialchars($config['podcast_description']) . '</itunes:summary>
-		<itunes:subtitle>' . htmlspecialchars($config['podcast_subtitle']) . '</itunes:subtitle>
-		<itunes:author>' . htmlspecialchars($config['author_name']) . '</itunes:author>
+		<itunes:summary>' . htmlspecialchars($_config['podcast_description']) . '</itunes:summary>
+		<itunes:subtitle>' . htmlspecialchars($_config['podcast_subtitle']) . '</itunes:subtitle>
+		<itunes:author>' . htmlspecialchars($_config['author_name']) . '</itunes:author>
 		<itunes:owner>
-			<itunes:name>' . htmlspecialchars($config['author_name']) . '</itunes:name>
-			<itunes:email>' . htmlspecialchars($config['author_email']) . '</itunes:email>
+			<itunes:name>' . htmlspecialchars($_config['author_name']) . '</itunes:name>
+			<itunes:email>' . htmlspecialchars($_config['author_email']) . '</itunes:email>
         </itunes:owner>
-        <itunes:explicit>' . $config['explicit_podcast'] . '</itunes:explicit>' . "\n";
+        <itunes:explicit>' . $_config['explicit_podcast'] . '</itunes:explicit>' . "\n";
 
-    $feedhead .= itunes_category($config['itunes_category[0]']);
-    if ($config['itunes_category[1]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= itunes_category($config['itunes_category[1]']);
+    $feedhead .= itunes_category($_config['itunes_category[0]']);
+    if ($_config['itunes_category[1]'] != '' || $_config['itunes_category[1]'] == 'null') {
+        $feedhead .= itunes_category($_config['itunes_category[1]']);
     }
-    if ($config['itunes_category[2]'] != '' || $config['itunes_category[1]'] == 'null') {
-        $feedhead .= itunes_category($config['itunes_category[2]']);
-    }
-
-    if ($config['websub_server'] != '') {
-        $feedhead .= '		<atom:link href="' . $config['websub_server'] . '" rel="hub" />' . "\n";
+    if ($_config['itunes_category[2]'] != '' || $_config['itunes_category[1]'] == 'null') {
+        $feedhead .= itunes_category($_config['itunes_category[2]']);
     }
 
-    if ($config['feed_locked'] != '') {
-        $feedhead .= '		<podcast:locked owner="' . htmlspecialchars($config['author_email']) . '">'
-            . $config['feed_locked'] . '</podcast:locked>' . "\n";
+    if ($_config['websub_server'] != '') {
+        $feedhead .= '		<atom:link href="' . $_config['websub_server'] . '" rel="hub" />' . "\n";
+    }
+
+    if ($_config['feed_locked'] != '') {
+        $feedhead .= '		<podcast:locked owner="' . htmlspecialchars($_config['author_email']) . '">'
+            . $_config['feed_locked'] . '</podcast:locked>' . "\n";
     }
 
     $custom_tags = getCustomFeedTags();
@@ -213,12 +205,24 @@ function generateRSS()
     }
 
     // Get ordered episodes
-    $files = getEpisodeFiles($config);
+    $files = getEpisodeFiles($_config);
+
+    if ($category != null) {
+        $files = array_filter(
+            $files,
+            function ($ep) use ($category) {
+                $categories = $ep['data']->episode->categoriesPG;
+                return $categories->category1PG == $category
+                    || $categories->category2PG == $category
+                    || $categories->category3PG == $category;
+            }
+        );
+    }
 
     // Set a maximum amount of episodes generated in the feed
     $maxEpisodes = count($files);
-    if (strtolower($config['recent_episode_in_feed']) != 'all') {
-        $maxEpisodes = intval($config['recent_episode_in_feed']);
+    if (strtolower($_config['recent_episode_in_feed']) != 'all') {
+        $maxEpisodes = intval($_config['recent_episode_in_feed']);
     }
 
     // Items (Episodes) in XML
@@ -242,5 +246,21 @@ function generateRSS()
 
     // Append footer
     $xml .= $feedfooter;
+    return $xml;
+}
+
+function generateRSS()
+{
+    // Make variables available in this scope
+    global $config;
+
+    $feedDir = $config['absoluteurl'] . $config['feed_dir'];
+
+    // Create path if it doesn't exist
+    if (!is_dir($feedDir)) {
+        mkdir($feedDir);
+    }
+
+    $xml = generateRssFeed($config);
     return file_put_contents($feedDir . 'feed.xml', $xml);
 }
