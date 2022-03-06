@@ -217,7 +217,7 @@ function generateRssFeed($_config, $category = null)
             . $_config['feed_locked'] . '</podcast:locked>' . "\n";
     }
 
-    $custom_tags = getCustomFeedTags();
+    $custom_tags = getCustomFeedTags($_config['absoluteurl']);
     if ($custom_tags != '') {
         foreach (preg_split("/\r\n|\n|\r/", $custom_tags) as $line) {
             $feedhead .= '		' . $line . "\n";

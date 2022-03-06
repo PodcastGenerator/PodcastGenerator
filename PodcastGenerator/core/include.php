@@ -22,6 +22,7 @@ if ($config['podcastgen_version'] != $version) {
 }
 
 include 'episodes.php';
+include 'customtags.php';
 include 'feed_generator.php';
 include 'pinger.php';
 include 'buttons.php';
