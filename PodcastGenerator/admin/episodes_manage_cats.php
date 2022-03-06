@@ -60,6 +60,8 @@ if (isset($_GET['add'])) {
 
 $cats_xml = simplexml_load_file('../categories.xml');
 
+$catsPageBaseLink = $config['url'] . 'categories.php?cat=';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,8 +84,8 @@ $cats_xml = simplexml_load_file('../categories.xml');
         <h1><?= _('Manage categories') ?></h1>
         <h3><?= _('Add category') ?></h3>
         <form action="episodes_manage_cats.php?add=1" method="POST">
-            <?= _('Category Name') ?>:<br>
-            <input type="text" name="categoryname" placeholder="<?= _('Category Name') ?>"><br><br>
+            <label for="categoryname" class="req"><?= _('Category Name') ?>:</label><br>
+            <input type="text" id="categoryname" name="categoryname" placeholder="<?= _('Category Name') ?>"><br><br>
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _('Add') ?>" class="btn btn-success"><br><br>
         </form>
@@ -91,9 +93,12 @@ $cats_xml = simplexml_load_file('../categories.xml');
         <?php foreach ($cats_xml as $item) { ?>
             <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->id) ?>" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
-            <a href="<?= htmlspecialchars($config['url']) . $config['indexfile'] . '?cat=' . htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></a> 
-            <input class="btn btn-sm btn-danger" type="submit" value="<?= _('Delete')  ?>">
-            </form><br>
+            <a href="<?= htmlspecialchars($catsPageBaseLink . $item->id) ?>">
+                <?= htmlspecialchars($item->description) ?>
+            </a>
+            <input class="btn btn-sm btn-danger" type="submit" value="<?= _('Delete') ?>">
+            </form>
+            <br>
         <?php } ?>
     </div>
 </body>

@@ -59,6 +59,18 @@ error:
 
 $custom_tags = getCustomFeedTags();
 
+$lockFeedOptions = array(
+    [ 'value' => 'yes', 'label' => _('Locked') ],
+    [ 'value' => 'no', 'label' => _('Unlocked') ],
+    [ 'value' => '', 'label' => _('Off') ]
+);
+
+function selectedLangAttr($lang)
+{
+    global $config;
+    return $config['feed_language'] == $lang ? ' selected' : '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,69 +98,68 @@ $custom_tags = getCustomFeedTags();
         <h1><?= _('Change Podcast Details') ?></h1>
         <form action="podcast_details.php?edit=1" method="POST">
             <label for="podcast_title"><?= _('Podcast Title') ?>:</label><br>
-            <input type="text" name="podcast_title" value="<?= htmlspecialchars($config['podcast_title']) ?>" class="txt"><br>
+            <input type="text" id="podcast_title" name="podcast_title"
+                   value="<?= htmlspecialchars($config['podcast_title']) ?>" class="txt">
+            <br>
 
             <label for="podcast_subtitle"><?= _('Podcast Subtitle or Slogan') ?>:</label><br>
-            <input type="text" name="podcast_subtitle" value="<?= htmlspecialchars($config['podcast_subtitle']) ?>" class="txt"><br>
+            <input type="text" id="podcast_subtitle" name="podcast_subtitle"
+                   value="<?= htmlspecialchars($config['podcast_subtitle']) ?>" class="txt">
+            <br>
 
             <label for="podcast_description"><?= _('Podcast Description') ?>:</label><br>
-            <input type="text" name="podcast_description" value="<?= htmlspecialchars($config['podcast_description']) ?>" class="txt"><br>
+            <input type="text" id="podcast_description" name="podcast_description"
+                   value="<?= htmlspecialchars($config['podcast_description']) ?>" class="txt">
+            <br>
 
             <label for="copyright"><?= _('Copyright Notice') ?>:</label><br>
-            <input type="text" name="copyright" value="<?= htmlspecialchars($config['copyright']) ?>" class="txt"><br>
+            <input type="text" id="copyright" name="copyright"
+                   value="<?= htmlspecialchars($config['copyright']) ?>" class="txt">
+            <br>
 
             <label for="author_name"><?= _('Author Name') ?>:</label><br>
-            <input type="text" name="author_name" value="<?= htmlspecialchars($config['author_name']) ?>" class="txt"><br>
+            <input type="text" id="author_name" name="author_name"
+                   value="<?= htmlspecialchars($config['author_name']) ?>" class="txt">
+            <br>
 
             <label for="author_email"><?= _('Author E-Mail Address') ?>:</label><br>
-            <input type="text" name="author_email" value="<?= htmlspecialchars($config['author_email']) ?>" class="txt"><br>
+            <input type="text" id="author_email" name="author_email"
+                   value="<?= htmlspecialchars($config['author_email']) ?>" class="txt">
+            <br>
 
             <label for="podcast_guid"><?= _('Podcast GUID') ?>:</label>
             (<?= _('Unique ID code for your podcast across the internet') ?>)<br>
-            <input type="text" name="podcast_guid" class="txt"
+            <input type="text" id="podcast_guid" name="podcast_guid" class="txt"
                    value="<?= htmlspecialchars($config['podcast_guid']) ?>"
                    pattern="^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$"
                    placeholder="3636e0e4-8dff-4662-90b3-6068af079b97">
             <br>
 
-            <label for="feed_language"><?= _('Feed Language'); ?>:</label> (<?= _('Main language of your podcast') ?>)<br>
-            <select name="feed_language">
+            <label for="feed_language"><?= _('Feed Language'); ?>:</label>
+            (<?= _('Main language of your podcast') ?>)<br>
+            <select id="feed_language" name="feed_language">
                 <?php foreach ($languages as $lang) { ?>
-                    <option value="<?= htmlspecialchars($lang->code) ?>"<?= $config['feed_language'] == $lang->code ? " selected" : "" ?>><?= htmlspecialchars($lang->name) ?></option>
+                    <option value="<?= htmlspecialchars($lang->code) ?>"<?= selectedLangAttr($lang->code) ?>>
+                        <?= htmlspecialchars($lang->name) ?>
+                    </option>
                 <?php } ?>
-            </select><br>
+            </select>
+            <br>
 
             <?= _('Explicit Podcast') ?>:<br>
-            <label>
-                <input type="radio" name="explicit_podcast" value="yes" <?= $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>>
-                <?= _('Yes'); ?>
-            </label>
-            <label>
-                <input type="radio" name="explicit_podcast" value="no" <?= $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>>
-                <?= _('No') ?>
-            </label>
+            <?php htmlOptionRadios('explicit_podcast', $config['explicit_podcast'], $yesNoOptions); ?>
             <br>
 
             <?= _('Lock Podcast Feed') ?>: (<?= _('Prevent other platforms from importing your feed') ?>)<br>
-            <label>
-                <input type="radio" name="feed_locked" value="yes" <?= $config['feed_locked'] == 'yes' ? 'checked' : '' ?>>
-                <?= _('Locked'); ?>
-            </label>
-            <label>
-                <input type="radio" name="feed_locked" value="no" <?= $config['feed_locked'] == 'no' ? 'checked' : '' ?>>
-                <?= _('Unlocked') ?>
-            </label>
-            <label>
-                <input type="radio" name="feed_locked" value="" <?= $config['feed_locked'] == '' ? 'checked' : '' ?>>
-                <?= _('Off') ?>
-            </label>
+            <?php htmlOptionRadios('feed_locked', $config['feed_locked'], $lockFeedOptions); ?>
             <br>
 
 <?php if ($config['customtagsenabled'] == 'yes') { ?>
             <label for="custom_tags"><?= _('Custom Feed Tags') ?>:</label><br>
-            <textarea name="custom_tags" style="width:100%;"><?= htmlspecialchars($custom_tags) ?></textarea>
+            <textarea id="custom_tags" name="custom_tags" class="txt"><?= htmlspecialchars($custom_tags) ?></textarea>
             <br>
 <?php } ?>
+
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success">
         </form>

@@ -63,13 +63,17 @@ if (isset($_GET['upload'])) {
         <?php if (isset($error)) { ?>
             <strong><p style="color: red;"><?= $error ?></p></strong>
         <?php } ?>
+
         <h3><?= _('Current Cover') ?></h3>
-        <img src="<?= $config['url'] . $config['img_dir'] . $config['podcast_cover'] ?>" style="max-height: 350px; max-width: 350px;">
+        <img src="<?= $config['url'] . $config['img_dir'] . $config['podcast_cover'] ?>"
+             style="max-height: 350px; max-width: 350px;">
         <hr>
+
         <h3><?= _('Upload new cover') ?></h3>
         <form action="store_cover.php?upload=1" method="POST" enctype="multipart/form-data">
-            <?= _('Select file') ?>:<br>
-            <input type="file" name="file"><br><br>
+            <label for="file"><?= _('Select file') ?>:</label><br>
+            <input type="file" id="file" name="file"><br><br>
+
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _('Upload') ?>" class="btn btn-success">
         </form>

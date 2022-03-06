@@ -253,6 +253,9 @@ if (!isset($customTags)) {
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
+    <style>
+        label.req::after { content: "*"; color: red; }
+    </style>
 </head>
 
 <body>
@@ -275,68 +278,88 @@ if (!isset($customTags)) {
                     <h3><?= _('Main Informations') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?= _('File') ?>*:<br>
-                        <input type="file" name="file" required><br>
+                        <label for="file" class="req"><?= _('File') ?>:</label><br>
+                        <input type="file" id="file" name="file" required><br>
                     </div>
                     <div class="form-group">
-                        <?= _('Title') ?>*:<br>
-                        <input type="text" name="title" class="form-control" required>
+                        <label for="title" class="req"><?= _('Title') ?>:</label><br>
+                        <input type="text" id="title" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <?= _('Short Description') ?>*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter">255 <?= _('characters remaining') ?></i>
+                    <label for="shortdesc" class="req"><?= _('Short Description') ?>:</label><br>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control"
+                               maxlength="255" oninput="shortDescCheck()" required>
+                        <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
                     </div>
-                    <div class="form-group" style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
-                        <?= _('Category') ?>:<br>
+                    <div class="form-group" style="<?= displayBlockCss($config['categoriesenabled']) ?>">
+                    <label for="categories"><?= _('Category') ?>:</label><br>
                         <small><?= _('You can select up to 3 categories') ?></small><br>
-                        <select name="category[ ]" multiple>
+                        <select id="categories" name="category[ ]" multiple>
                             <?php foreach ($categories as $item) { ?>
-                                <option value="<?= htmlspecialchars($item->id) ?>"><?= htmlspecialchars($item->description) ?></option>
+                                <option value="<?= htmlspecialchars($item->id) ?>">
+                                    <?= htmlspecialchars($item->description) ?>
+                                </option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <?= _('Publication Date') ?>:<br>
                         <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
-                        <?= _('Date') ?>*:<br>
-                        <input name="date" type="date" value="<?= date("Y-m-d") ?>" required><br>
-                        <?= _('Time') ?>*:<br>
-                        <input name="time" type="time" value="<?= date("H:i") ?>" required><br>
+                        <label for="date" class="req"><?= _('Date') ?>:</label><br>
+                        <input name="date" id="date" type="date" value="<?= date("Y-m-d") ?>" required><br>
+                        <label for="time" class="req"><?= _('Time') ?>:</label><br>
+                        <input name="time" id="time" type="time" value="<?= date("H:i") ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?= _('Extra Informations') ?></h3>
+                    <h3><?= _('Extra Information') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?= _('Long Description') ?>:<br>
-                        <textarea name="longdesc"></textarea><br>
+                    <label for="longdesc"><?= _('Long Description') ?>:</label><br>
+                        <textarea id="longdesc" name="longdesc" class="form-control"></textarea><br>
                     </div>
                     <div class="form-group">
-                        <?= _('Episode Number') ?>:<br>
-                        <input type="text" name="episodenum" pattern="[0-9]*" class="form-control"><br>
+                    <label for="episodenum"><?= _('Episode Number') ?>:</label><br>
+                        <input type="text" id="episodenum" name="episodenum" pattern="[0-9]*" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?= _('Season Number') ?>:<br>
-                        <input type="text" name="seasonnum" pattern="[0-9]*" class="form-control"><br>
+                    <label for="seasonnum"><?= _('Season Number') ?>:</label><br>
+                        <input type="text" id="seasonnum" name="seasonnum" pattern="[0-9]*" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?= _('iTunes Keywords') ?>:<br>
-                        <input type="text" name="itunesKeywords" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
+                    <label for="itunesKeywords"><?= _('iTunes Keywords') ?>:</label><br>
+                        <input type="text" id="itunesKeywords" name="itunesKeywords"
+                               placeholder="Keyword1, Keyword2 (max 12)" class="form-control">
+                        <br>
                     </div>
                     <div class="form-group">
                         <?= _('Explicit content') ?>:<br>
-                        <label><input type="radio" value="yes" name="explicit"> <?= _('Yes') ?></label>
-                        <label><input type="radio" value="no" name="explicit" checked> <?= _('No') ?></label><br>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($config['explicit_podcast'], 'yes') ?>
+                                   value="yes">
+                            <?= _('Yes') ?>
+                        </label>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($config['explicit_podcast'], 'no') ?>
+                                   value="no">
+                            <?= _('No') ?>
+                        </label>
+                        <br>
                     </div>
                     <div class="form-group">
-                        <?= _('Author') ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="<?= htmlspecialchars($config["author_name"]) ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="<?= htmlspecialchars($config["author_email"]) ?>"><br>
+                    <label for="authorname" class="req"><?= _('Author') ?>:</label><br>
+                        <input type="text" id="authorname" name="authorname" class="form-control"
+                               placeholder="<?= htmlspecialchars($config["author_name"]) ?>">
+                        <br>
+                        <input type="email" id="authoremail" name="authoremail" class="form-control"
+                               placeholder="<?= htmlspecialchars($config["author_email"]) ?>">
+                        <br>
                     </div>
-                    <div class="form-group" style="display: <?= ($config['customtagsenabled'] != 'yes') ? 'none' : 'block' ?>">
-                        <?= _('Custom Tags') ?><br>
-                        <textarea name="customtags"><?= htmlspecialchars($customTags) ?></textarea><br>
+                    <div class="form-group" style="<?= displayBlockCss($config['customtagsenabled']) ?>">
+                        <label for="customtags"><?= _('Custom Tags') ?>:</label><br>
+                        <textarea id="customtags" name="customtags"
+                                class="form-control"><?= htmlspecialchars($customTags) ?></textarea>
+                        <br>
                     </div>
                 </div>
             </div>

@@ -11,21 +11,24 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 // Get all themes
-$themes = array();
-$themes_in_dir = glob('../themes' . '/*', GLOB_ONLYDIR);
-$realthemes = array();
-for ($i = 0; $i < count($themes_in_dir); $i++) {
-    array_push($themes, [substr($themes_in_dir[$i], 3) . '/', json_decode(file_get_contents($themes_in_dir[$i] . '/theme.json'))]);
-}
-// Check if the theme is compatible
-for ($i = 0; $i < count($themes); $i++) {
-    if (in_array(strval($version), $themes[$i][1]->pg_versions)) {
-        array_push($realthemes, $themes[$i]);
-    }
-}
+$themes = array_map(
+    function ($item) {
+        return (object) [
+            'path' => substr($item, 3) . '/',
+            'json' => json_decode(file_get_contents($item) . '/theme.json')
+        ];
+    },
+    glob('../themes/*', GLOB_ONLYDIR)
+);
 
-$themes = $realthemes;
-unset($realthemes);
+// Check if the theme is compatible
+$themes = array_filter(
+    $themes,
+    function ($item) {
+        global $version;
+        return in_array(strval($version), $item->json->pg_versions);
+    }
+);
 
 if (isset($_GET['change'])) {
     checkToken();
@@ -64,20 +67,19 @@ if (isset($_GET['change'])) {
             <?php if (count($themes) == 0) { ?>
                 <div class="col-lg-6"><p><?= _('No compatible themes installed') ?></p></div>
             <?php } else { ?>
-                <?php for ($i = 0; $i < count($themes); $i++) {
-        $json = $themes[$i][1]; ?>
+                <?php for ($i = 0; $i < count($themes); $i++) { ?>
                     <div class="col-lg-6">
                         <div class="card">
-                            <img src="../<?= $themes[$i][0] ?>preview.png" class="card-img-top">
-                            <div class="card-body">';
-                                <h3><?= htmlspecialchars($json->name) ?></h3>
-                                <p>Description: <?= htmlspecialchars($json->description) ?></p>
-                                <p>Author: <?= htmlspecialchars($json->author) ?></p>
-                                <p>Theme Version: <?= htmlspecialchars($json->version) ?></p>
-                                <p>Credits: <?= htmlspecialchars($json->credits) ?></p>
+                            <img src="../<?= $themes[$i]->path ?>preview.png" class="card-img-top">
+                            <div class="card-body">
+                                <h3><?= htmlspecialchars($themes[$i]->json->name) ?></h3>
+                                <p>Description: <?= htmlspecialchars($themes[$i]->json->description) ?></p>
+                                <p>Author: <?= htmlspecialchars($themes[$i]->json->author) ?></p>
+                                <p>Theme Version: <?= htmlspecialchars($themes[$i]->json->version) ?></p>
+                                <p>Credits: <?= htmlspecialchars($themes[$i]->json->credits) ?></p>
                                 <hr>
-                                <?php if ($themes[$i][0] == htmlspecialchars($config['theme_path'])) { /* Check if this theme is the used theme */ ?>
-                                    <small><?= _('This theme is currently in use') ?></small>';
+                                <?php if ($themes[$i]->path == htmlspecialchars($config['theme_path'])) { ?>
+                                    <small><?= _('This theme is currently in use') ?></small>
                                 <?php } else { ?>
                                     <form action="theme_change.php?change=<?= $i ?>" method="POST">
                                         <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
@@ -87,8 +89,7 @@ if (isset($_GET['change'])) {
                             </div>
                         </div>
                     </div>
-                <?php
-    } ?>
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
