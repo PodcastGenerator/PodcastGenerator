@@ -23,15 +23,19 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-      working-directory: PodcastGenerator
+    # - name: Install dependencies
+    #   run: composer install --prefer-dist --no-progress
+    #   working-directory: PodcastGenerator
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     # - name: Run test suite
     #   run: composer run-script test
+
+    - name: Clear out dev dependencies
+      run: composer install --prefer-dist --no-dev --no-progress
+      working-directory: PodcastGenerator
 
     # Take advantage of the fact that GitHub will zip everything up in an
     # individual upload-artifact action. This means we don't have to rely on
