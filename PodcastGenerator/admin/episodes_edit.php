@@ -199,8 +199,11 @@ if (count($_POST) > 0) {
 
     error:
 }
+
 // Get episode data
 $episode = simplexml_load_file($targetfile_without_ext . '.xml');
+$filemtime = filemtime($targetfile);
+
 // Fill in selected categories
 $categories = simplexml_load_file("../categories.xml");
 $selected_cats = array(
@@ -217,6 +220,10 @@ function checkedAttr($val, $state)
     return '';
 }
 
+function displayBlockCss($val) {
+    return 'display: ' . ($val == 'yes' ? 'block' : 'none') . ';';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -227,6 +234,9 @@ function checkedAttr($val, $state)
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
+    <style>
+        label.req::after { content: "*"; color: red; }
+    </style>
 </head>
 
 <body>
@@ -243,26 +253,25 @@ function checkedAttr($val, $state)
         <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>" method="POST">
             <div class="row">
                 <div class="col-6">
-                    <h3><?= _('Main Information') ?></h3>
+                    <h4><?= _('Main Information') ?></h4>
                     <hr>
                     <input type="hidden" name="guid" value="<?= htmlspecialchars($episode->episode->guid) ?>">
                     <div class="form-group">
-                        <?= _('Title') ?>*:<br>
-                        <input type="text" name="title" class="form-control"
+                        <label for="title" class="req"><?= _('Title') ?>:</label><br>
+                        <input type="text" id="title" name="title" class="form-control"
                                value="<?= htmlspecialchars($episode->episode->titlePG) ?>" required>
                     </div>
                     <div class="form-group">
-                        <?= _('Short Description') ?>*:<br>
+                        <label for="shortdesc" class="req"><?= _('Short Description') ?>:</label><br>
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control"
                                value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>"
                                maxlength="255" oninput="shortDescCheck()" required>
                         <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
                     </div>
-                    <div class="form-group"
-                         style="display: <?= ($config['categoriesenabled'] != 'yes') ? 'none' : 'block' ?>">
-                        <?= _('Category') ?>:<br>
+                    <div class="form-group" style="<?= displayBlockCss($config['categoriesenabled']) ?>">
+                        <label for="categories"><?= _('Category') ?>:</label><br>
                         <small><?= _('You can select up to 3 categories') ?></small><br>
-                        <select name="category[ ]" multiple>
+                        <select name="category[ ]" id="categories" multiple>
                             <?php foreach ($categories as $item) { ?>
                                 <?php if (in_array($item->id, $selected_cats)) { ?>
                                     <option value="<?= htmlspecialchars($item->id) ?>" selected>
@@ -279,38 +288,38 @@ function checkedAttr($val, $state)
                     <div class="form-group">
                         <?= _('Publication Date') ?>:<br>
                         <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
-                        <?= _('Date') ?>*:<br>
-                        <input name="date" type="date" value="<?= date('Y-m-d', filemtime($targetfile)) ?>"
-                               required>
+                        <label for="date" class="req"><?= _('Date') ?>:</label><br>
+                        <input name="date" id="date" type="date" value="<?= date('Y-m-d', $filemtime) ?>" required>
                         <br>
-                        <?= _('Time') ?>*:<br>
-                        <input name="time" type="time" value="<?= date('H:i', filemtime($targetfile)) ?>"
-                               required>
+                        <label for="time" class="req"><?= _('Time') ?>:</label><br>
+                        <input name="time" id="time" type="time" value="<?= date('H:i', $filemtime) ?>" required>
                         <br>
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?= _('Extra Information') ?></h3>
+                    <h4><?= _('Extra Information') ?></h4>
                     <hr>
                     <div class="form-group">
-                        <?= _('Long Description') ?>:<br>
-                        <textarea name="longdesc"><?= htmlspecialchars($episode->episode->longdescPG) ?></textarea><br>
+                        <label for="longdesc"><?= _('Long Description') ?>:</label><br>
+                        <textarea id="longdesc" name="longdesc"
+                                class="form-control"><?= htmlspecialchars($episode->episode->longdescPG) ?></textarea>
+                        <br>
                     </div>
                     <div class="form-group">
-                        <?= _('Episode Number') ?>:<br>
-                        <input type="text" name="episodenum" pattern="[0-9]*" class="form-control"
+                        <label for="episodenum"><?= _('Episode Number') ?>:</label><br>
+                        <input type="text" id="episodenum" name="episodenum" pattern="[0-9]*" class="form-control"
                                value="<?= htmlspecialchars($episode->episode->episodeNumPG) ?>">
                         <br>
                     </div>
                     <div class="form-group">
-                        <?= _('Season Number') ?>:<br>
-                        <input type="text" name="seasonnum" pattern="[0-9]*" class="form-control"
+                        <label for="seasonnum"><?= _('Season Number') ?>:</label><br>
+                        <input type="text" id="seasonnum" name="seasonnum" pattern="[0-9]*" class="form-control"
                                value="<?= htmlspecialchars($episode->episode->seasonNumPG) ?>">
                         <br>
                     </div>
                     <div class="form-group">
-                        <?= _('iTunes Keywords') ?>:<br>
-                        <input type="text" name="itunesKeywords"
+                        <label for="itunesKeywords"><?= _('iTunes Keywords') ?>:</label><br>
+                        <input type="text" id="itunesKeywords" name="itunesKeywords"
                                value="<?= htmlspecialchars($episode->episode->keywordsPG) ?>"
                                placeholder="Keyword1, Keyword2 (max 12)" class="form-control">
                         <br>
@@ -330,17 +339,20 @@ function checkedAttr($val, $state)
                         <br>
                     </div>
                     <div class="form-group">
-                        <?= _('Author') ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="Author Name"
+                        <label for="authorname" class="req"><?= _('Author') ?>:</label><br>
+                        <input type="text" id="authorname" name="authorname" class="form-control"
+                               placeholder="Author Name"
                                value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>">
                         <br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="Author E-Mail"
+                        <input type="email" id="authoremail" name="authoremail" class="form-control"
+                               placeholder="Author E-Mail"
                                value="<?= htmlspecialchars($episode->episode->authorPG->emailPG) ?>">
                         <br>
                     </div>
-                    <div class="form-group" style="display: <?= $config['customtagsenabled'] != 'yes' ? 'none' : 'block' ?>">
-                        <?= _('Custom Tags') ?><br>
-                        <textarea name="customtags"><?= htmlspecialchars($episode->episode->customTagsPG) ?></textarea>
+                    <div class="form-group" style="<?= displayBlockCss($config['customtagsenabled']) ?>">
+                        <label for="customtags"><?= _('Custom Tags') ?>:</label><br>
+                        <textarea id="customtags" name="customtags"
+                                class="form-control"><?= htmlspecialchars($episode->episode->customTagsPG) ?></textarea>
                         <br>
                     </div>
                 </div>
@@ -353,7 +365,7 @@ function checkedAttr($val, $state)
             </div>
         </form>
         <hr>
-        <h3><?= _('Delete Episode') ?></h3>
+        <h4><?= _('Delete Episode') ?></h4>
         <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET['name']) ?>&delete=1" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
