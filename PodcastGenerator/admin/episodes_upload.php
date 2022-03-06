@@ -4,13 +4,13 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if (sizeof($_POST) > 0) {
+if (count($_POST) > 0) {
     checkToken();
     // CHeck if all fields are set (except "category")
     $req_fields = [
@@ -21,7 +21,7 @@ if (sizeof($_POST) > 0) {
         $_POST['explicit']
     ];
     // Check if fields are missing
-    for ($i = 0; $i < sizeof($req_fields); $i++) {
+    for ($i = 0; $i < count($req_fields); $i++) {
         if (empty($req_fields[$i])) {
             $error = _('Missing fields');
             goto error;
@@ -34,7 +34,7 @@ if (sizeof($_POST) > 0) {
     if (empty($_POST['category'])) {
         $_POST['category'] = array();
         array_push($_POST['category'], 'uncategorized');
-    } else if (isset($_POST['category']) && sizeof((array)$_POST['category']) > 3) {
+    } elseif (isset($_POST['category']) && count((array)$_POST['category']) > 3) {
         $error = _('Too many categories selected (max: 3)');
         goto error;
     }
@@ -54,29 +54,73 @@ if (sizeof($_POST) > 0) {
         }
     }
 
+    // Check episode and season numbers
+    if (!empty($_POST['episodenum'])) {
+        if (!is_numeric($_POST['episodenum'])) {
+            $error = _('Invalid Episode Number provided');
+            goto error;
+        }
+        $episodeNum = $_POST['episodenum'] + 0;
+        if (!is_integer($episodeNum) || $episodeNum < 1) {
+            $error = _('Invalid Episode Number provided');
+            goto error;
+        }
+    }
+    if (!empty($_POST['seasonnum'])) {
+        if (!is_numeric($_POST['seasonnum'])) {
+            $error = _('Invalid Season Number provided');
+            goto error;
+        }
+        $seasonNum = $_POST['seasonnum'] + 0;
+        if (!is_integer($seasonNum) || $seasonNum < 1) {
+            $error = _('Invalid Season Number provided');
+            goto error;
+        }
+    }
+
     if (strlen($_POST['shortdesc']) > 255) {
         $error = _("Size of the 'Short Description' exceeded");
         goto error;
     }
 
+    // If we have custom tags, ensure that they're valid XML
+    $customTags = $_POST['customtags'];
+    if (!isWellFormedXml($customTags)) {
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
+    }
+
+    $filename = basename($_FILES['file']['name']);
+
     // Skip files if they are not strictly named
     if ($config['strictfilenamepolicy'] == 'yes') {
-        if (!preg_match('/^[\w.]+$/', basename($_FILES['file']['name']))) {
+        if (!preg_match('/^[\w._-]+$/', $filename)) {
             $error = _('Invalid filename, only A-Z, a-z, underscores and dots are permitted');
             goto error;
         }
+    }
+
+    // fix filename encoding if mbstring is present
+    if (extension_loaded('mbstring')) {
+        $filename = mb_convert_encoding($filename, 'UTF-8', mb_detect_encoding($filename));
     }
 
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
 
-    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . basename($_FILES['file']['name']);
+    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $filename;
     $targetfile = str_replace(' ', '_', $targetfile);
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['file']['name']);
+            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . $filename;
             $targetfile = str_replace(' ', '_', $targetfile);
             $appendix++;
         }
@@ -119,7 +163,11 @@ if (sizeof($_POST) > 0) {
     }
 
     if (!$validMimeType) {
-        $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $fileextension);
+        $error = sprintf(
+            _('Unsupported MIME content type "%s" detected for file with extension "%s"'),
+            $mimetype,
+            $fileextension
+        );
         // Delete the file if the mime type is invalid
         unlink($targetfile);
         goto error;
@@ -184,15 +232,20 @@ if (sizeof($_POST) > 0) {
         $episodecoverfileURL = htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile));
     } 
 
+    // build categories list from post data
+    $categories = array();
+    for ($i = 0; $i < 3; $i++) {
+        $categories[$i] = isset($_POST['category'][$i])
+            ? $_POST['category'][$i]
+            : ($i == 0 ? 'uncategorized' : '');
+    }
+
     // Get datetime
     $datetime = strtotime($_POST['date'] . ' ' . $_POST['time']);
     // Set file date to this date
     touch($targetfile, $datetime);
 
-    // Get audio metadata (duration, bitrate etc)
-    require_once '../components/getid3/getid3.php';
-    $getID3 = new getID3;
-    $fileinfo = $getID3->analyze($targetfile);
+    $fileinfo = getID3Info($targetfile);
     $duration = $fileinfo['playtime_string'];           // Get duration
     $bitrate = $fileinfo['audio']['bitrate'];           // Get bitrate
     $frequency = $fileinfo['audio']['sample_rate'];     // Frequency
@@ -204,13 +257,15 @@ if (sizeof($_POST) > 0) {
 	<episode>
 	    <guid>' . htmlspecialchars($config['url'] . "?" . $link . "=" . $targetfile) . '</guid>
 	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
+	    <episodeNumPG>' . $_POST['episodenum'] . '</episodeNumPG>
+	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
 	    <imgPG>' . $episodecoverfileURL .'</imgPG>
 	    <categoriesPG>
-	        <category1PG>' . htmlspecialchars($_POST['category'][0]) . '</category1PG>
-	        <category2PG>' . htmlspecialchars($_POST['category'][1]) . '</category2PG>
-	        <category3PG>' . htmlspecialchars($_POST['category'][2]) . '</category3PG>
+	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
+	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>
+	        <category3PG>' . htmlspecialchars($categories[2]) . '</category3PG>
 	    </categoriesPG>
 	    <keywordsPG>' . htmlspecialchars($_POST['itunesKeywords']) . '</keywordsPG>
 	    <explicitPG>' . $_POST['explicit'] . '</explicitPG>
@@ -224,6 +279,7 @@ if (sizeof($_POST) > 0) {
 	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
 	        <frequency>' . $frequency . '</frequency>
 	    </fileInfoPG>
+	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>
 	</episode>
 </PodcastGenerator>';
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
@@ -237,18 +293,28 @@ if (sizeof($_POST) > 0) {
     pingServices();
     $success = true;
 
-    error: echo ('');
+    error:
 }
+
+$categories = simplexml_load_file('../categories.xml');
+
+if (!isset($customTags)) {
+    $customTags = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Upload Episode'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Upload Episode') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
+    <style>
+        label.req::after { content: "*"; color: red; }
+    </style>
 </head>
 
 <body>
@@ -259,80 +325,113 @@ if (sizeof($_POST) > 0) {
     <br>
     <div class="container">
         <h1><?php _('Upload Episode'); ?></h1>
-        <?php
-        if (isset($success)) {
-            echo '<strong><p style="color: #2ecc71;">' . htmlspecialchars($_POST['title']) . ' ' . _('uploaded successfully') . '</p></strong>';
-        }
-        if (isset($error)) {
-            echo '<strong><p style="color: #e74c3c;">' . $error . '</p></strong>';
-        }
-        ?>
+        <?php if (isset($success)) { ?>
+            <p style="color: #2ecc71;">
+                <strong><?= htmlspecialchars(sprintf(_('"%s" uploaded successfully'), $_POST['title'])) ?></strong>
+            </p>
+        <?php } ?>
+        <?php if (isset($error)) { ?>
+            <p style="color: #e74c3c;"><strong><?= $error ?></strong></p>
+        <?php } ?>
         <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
-                    <h3><?php echo _('Main Informations'); ?></h3>
+                    <h3><?= _('Main Information') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?php echo _('File'); ?>*:<br>
-                        <input type="file" name="file" required><br>
+                        <label for="file" class="req"><?= _('File') ?>:</label><br>
+                        <input type="file" id="file" name="file" required><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Episode Cover');?>:<br>
-                        <input type="file" name="episodecover"><br>
+                        <label for="title" class="req"><?= _('Title') ?>:</label><br>
+                        <input type="text" id="title" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Title'); ?>*:<br>
-                        <input type="text" name="title" class="form-control" required>
+                    <label for="shortdesc" class="req"><?= _('Short Description') ?>:</label><br>
+                        <input type="text" id="shortdesc" name="shortdesc" class="form-control"
+                               maxlength="255" oninput="shortDescCheck()" required>
+                        <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
                     </div>
-                    <div class="form-group">
-                        <?php echo _('Short Description'); ?>*:<br>
-                        <input type="text" id="shortdesc" name="shortdesc" class="form-control" maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter">255 <?php echo _('characters remaining'); ?></i>
-                    </div>
-                    <div class="form-group" style="display: <?php echo ($config['categoriesenabled'] != 'yes') ? 'none' : 'block'; ?>">
-                        <?php echo _('Category'); ?>:<br>
-                        <small><?php echo _('You can select up to 3 categories'); ?></small><br>
-                        <select name="category[ ]" multiple>
-                            <?php
-                            $categories = simplexml_load_file('../categories.xml');
-                            foreach ($categories as $item) {
-                                echo '<option value="' . htmlspecialchars($item->id) . '">' . htmlspecialchars($item->description) . '</option>';
-                            }
-                            ?>
+                    <div class="form-group" style="<?= displayBlockCss($config['categoriesenabled']) ?>">
+                    <label for="categories"><?= _('Category') ?>:</label><br>
+                        <small><?= _('You can select up to 3 categories') ?></small><br>
+                        <select id="categories" name="category[ ]" multiple>
+                            <?php foreach ($categories as $item) { ?>
+                                <option value="<?= htmlspecialchars($item->id) ?>">
+                                    <?= htmlspecialchars($item->description) ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Publication Date'); ?>:<br>
-                        <small><?php echo _('If you select a date in the future, it will be published then'); ?></small><br>
-                        <?php echo _('Date'); ?>*:<br>
-                        <input name="date" type="date" value="<?php echo date("Y-m-d"); ?>" required><br>
-                        <?php echo _('Time'); ?>*:<br>
-                        <input name="time" type="time" value="<?php echo date("H:i"); ?>" required><br>
+                        <?= _('Publication Date') ?>:<br>
+                        <small><?= _('If you select a date in the future, it will be published then') ?></small><br>
+                        <label for="date" class="req"><?= _('Date') ?>:</label><br>
+                        <input name="date" id="date" type="date" value="<?= date("Y-m-d") ?>" required><br>
+                        <label for="time" class="req"><?= _('Time') ?>:</label><br>
+                        <input name="time" id="time" type="time" value="<?= date("H:i") ?>" required><br>
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3><?php echo _('Extra Informations'); ?></h3>
+                    <h3><?= _('Extra Information') ?></h3>
                     <hr>
                     <div class="form-group">
-                        <?php echo _('Long Description'); ?>:<br>
-                        <textarea name="longdesc"></textarea><br>
+                        <label for="episodecover"><?= _('Episode Cover') ?>:</label><br>
+                        <input type="file" id="episodecover" name="episodecover"><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('iTunes Keywords'); ?>:<br>
-                        <input type="text" name="itunesKeywords" placeholder="Keyword1, Keyword2 (max 12)" class="form-control"><br>
+                    <label for="longdesc"><?= _('Long Description') ?>:</label><br>
+                        <textarea id="longdesc" name="longdesc" class="form-control"></textarea><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Explicit content'); ?>:<br>
-                        <label><input type="radio" value="yes" name="explicit"> <?php echo _('Yes'); ?></label>
-                        <label><input type="radio" value="no" name="explicit" checked> <?php echo _('No'); ?></label><br>
+                    <label for="episodenum"><?= _('Episode Number') ?>:</label><br>
+                        <input type="text" id="episodenum" name="episodenum" pattern="[0-9]*" class="form-control"><br>
                     </div>
                     <div class="form-group">
-                        <?php echo _('Author'); ?>*:<br>
-                        <input type="text" class="form-control" name="authorname" placeholder="<?php echo htmlspecialchars($config["author_name"]); ?>"><br>
-                        <input type="email" class="form-control" name="authoremail" placeholder="<?php echo htmlspecialchars($config["author_email"]); ?>"><br>
+                    <label for="seasonnum"><?= _('Season Number') ?>:</label><br>
+                        <input type="text" id="seasonnum" name="seasonnum" pattern="[0-9]*" class="form-control"><br>
                     </div>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-                    <input type="submit" class="btn btn-success btn-lg" value="<?php echo _('Upload episode'); ?>">
+                    <div class="form-group">
+                    <label for="itunesKeywords"><?= _('iTunes Keywords') ?>:</label><br>
+                        <input type="text" id="itunesKeywords" name="itunesKeywords"
+                               placeholder="Keyword1, Keyword2 (max 12)" class="form-control">
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <?= _('Explicit content') ?>:<br>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($config['explicit_podcast'], 'yes') ?>
+                                   value="yes">
+                            <?= _('Yes') ?>
+                        </label>
+                        <label>
+                            <input type="radio" name="explicit" <?= checkedAttr($config['explicit_podcast'], 'no') ?>
+                                   value="no">
+                            <?= _('No') ?>
+                        </label>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                    <label for="authorname" class="req"><?= _('Author') ?>:</label><br>
+                        <input type="text" id="authorname" name="authorname" class="form-control"
+                               placeholder="<?= htmlspecialchars($config["author_name"]) ?>">
+                        <br>
+                        <input type="email" id="authoremail" name="authoremail" class="form-control"
+                               placeholder="<?= htmlspecialchars($config["author_email"]) ?>">
+                        <br>
+                    </div>
+                    <div class="form-group" style="<?= displayBlockCss($config['customtagsenabled']) ?>">
+                        <label for="customtags"><?= _('Custom Tags') ?>:</label><br>
+                        <textarea id="customtags" name="customtags"
+                                class="form-control"><?= htmlspecialchars($customTags) ?></textarea>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="submit" class="btn btn-success btn-lg" value="<?= _('Upload episode') ?>">
                 </div>
             </div>
         </form>
@@ -341,7 +440,10 @@ if (sizeof($_POST) > 0) {
         function shortDescCheck() {
             let shortdesc = document.getElementById("shortdesc").value;
             let maxlength = 255;
-            let counter = document.getElementById("shortdesc_counter").innerText = (maxlength - shortdesc.length) + " " + <?php echo '"' . _('characters remaining') . '"' ?>;
+            let remaining = maxlength - shortdesc.length;
+            let counter
+                = document.getElementById("shortdesc_counter").innerText
+                = "<?= _('%d characters remaining') ?>".replace('%d', remaining);
         }
     </script>
 </body>

@@ -14,6 +14,10 @@
 		<mimetype>video/mpeg</mimetype>
 	</mediaFile>
 	<mediaFile>
+		<extension>mp4</extension>
+		<mimetype>video/mp4</mimetype>
+	</mediaFile>
+	<mediaFile>
 		<extension>mov</extension>
 		<mimetype>video/quicktime</mimetype>
 	</mediaFile>
@@ -71,11 +75,39 @@
 	</mediaFile>
 	<mediaFile>
 		<extension>m4a</extension>
-		<mimetype>audio/x-m4a</mimetype>
+		<mimetype>audio/mp4</mimetype>
 	</mediaFile>
 	<mediaFile>
 		<extension>m4v</extension>
-		<mimetype>video/x-m4v</mimetype>
+		<mimetype>video/mp4</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>3gp</extension>
+		<mimetype>audio/3gpp</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>3gp</extension>
+		<mimetype>audio/3gpp2</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>ac3</extension>
+		<mimetype>audio/ac3</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>aac</extension>
+		<mimetype>audio/aac</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>adif</extension>
+		<mimetype>audio/aac</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>adts</extension>
+		<mimetype>audio/aac</mimetype>
+	</mediaFile>
+	<mediaFile>
+		<extension>ogg</extension>
+		<mimetype>application/ogg</mimetype>
 	</mediaFile>
 	<mediaFile>
 		<extension>pdf</extension>

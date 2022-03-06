@@ -4,7 +4,7 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
@@ -13,7 +13,7 @@ require '../core/include_admin.php';
 if (isset($_GET['upload'])) {
     checkToken();
     // Check mime type
-    if(mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
+    if (mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
         $error = _('Image is not a JPEG');
         goto error;
     }
@@ -26,27 +26,29 @@ if (isset($_GET['upload'])) {
     }
 
     // Now everything is cool and the file can uploaded
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . 'itunes_image.jpg')) {
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $_FILES['file']['name'])) {
         $error = _('File was not uploaded');
         goto error;
     } else {
         // Wait a few seconds so the upload can finish
         sleep(3);
+        updateConfig('../config.php', 'podcast_cover', $_FILES['file']['name']);
+        generateRSS();
         header('Location: store_cover.php');
         die();
     }
-    error: echo "";
+    error:
 }
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Store Cover'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Store Cover') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -56,22 +58,24 @@ if (isset($_GET['upload'])) {
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Change Cover'); ?></h1>
-        <p><?php echo _('The cover art will be displayed in the podcast readers.'); ?></p>
-        <?php
-        if (isset($error)) {
-            echo '<strong><p style="color: red;">' . $error . '</p></strong>';
-        }
-        ?>
-        <h3><?php echo _('Current Cover'); ?></h3>
-        <img src="<?php echo $config['url'] . $config['img_dir']; ?>itunes_image.jpg" style="max-height: 350px; max-width: 350px;">
+        <h1><?= _('Change Cover') ?></h1>
+        <p><?= _('The cover art will be displayed in the podcast readers.') ?></p>
+        <?php if (isset($error)) { ?>
+            <strong><p style="color: red;"><?= $error ?></p></strong>
+        <?php } ?>
+
+        <h3><?= _('Current Cover') ?></h3>
+        <img src="<?= $config['url'] . $config['img_dir'] . $config['podcast_cover'] ?>"
+             style="max-height: 350px; max-width: 350px;">
         <hr>
-        <h3><?php echo _('Upload new cover'); ?></h3>
+
+        <h3><?= _('Upload new cover') ?></h3>
         <form action="store_cover.php?upload=1" method="POST" enctype="multipart/form-data">
-            <?php echo _('Select file'); ?>:<br>
-            <input type="file" name="file"><br><br>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" value="<?php echo _('Upload'); ?>" class="btn btn-success">
+            <label for="file"><?= _('Select file') ?>:</label><br>
+            <input type="file" id="file" name="file"><br><br>
+
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" value="<?= _('Upload') ?>" class="btn btn-success">
         </form>
     </div>
 </body>

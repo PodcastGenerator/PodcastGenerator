@@ -4,14 +4,15 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";
-if (!isset($_SESSION))
+if (!isset($_SESSION)) {
     session_start();
+}
 
 if (isset($_GET["create"])) {
     $p = $_POST;
@@ -24,14 +25,16 @@ if (isset($_GET["create"])) {
         }
         // Now create the config file
         if (!isset($error)) {
-            if (createconf($p["username"], $p["password"]))
+            if (createconf($p["username"], $p["password"])) {
                 $success = true;
-            else
+            } else {
                 $error = "Failure while creating the config file";
-            if (createstuff())
+            }
+            if (createstuff()) {
                 $success = true;
-            else
+            } else {
                 $error = "Failure while creating categories file";
+            }
         }
         if ($success) {
             session_destroy();
@@ -72,11 +75,9 @@ if (isset($_GET["create"])) {
                     <hr>
                     <button type="submit" class="btn btn-success btn-block">Submit</button>
                 </form>
-                <?php
-                if (isset($error)) {
-                    echo "<strong><p style=\"color: red;\">Error: $error</p>";
-                }
-                ?>
+                <?php if (isset($error)) { ?>
+                    <strong><p style="color: red;">Error: <?= $error ?></p>
+                <?php } ?>
             </div>
         </div>
     </div>

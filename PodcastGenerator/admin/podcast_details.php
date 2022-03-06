@@ -4,29 +4,79 @@
 #
 # Created by Alberto Betella and Emil Engler
 # http://www.podcastgenerator.net
-# 
+#
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
+$languages = simplexml_load_file('../components/supported_languages/podcast_languages.xml');
+
 if (isset($_GET['edit'])) {
     checkToken();
-    foreach ($_POST as $key => $value) {
-        updateConfig('../config.php', $key, $value);
+
+    if (isset($_POST['podcast_guid']) && !empty($_POST['podcast_guid'])) {
+        $guid = $_POST['podcast_guid'];
+        if (!preg_match('/^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/', $guid)) {
+            $error = _('Podcast GUID is malformed');
+            goto error;
+        }
     }
-    header('Location: podcast_details.php');
-    die();
-} else {
-    generateRSS();
-    pingServices();
+
+    if (isset($_POST['custom_tags']) && !empty($_POST['custom_tags'])) {
+        // need to handle custom_tags specially
+        $custom_tags = $_POST['custom_tags'];
+        if (isWellFormedXml($custom_tags)) {
+            // only set the value if it's well-formed XML
+            saveCustomFeedTags($custom_tags);
+        } elseif ($config['customtagsenabled'] == 'yes') {
+            // only error if custom tags feature is enabled
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        }
+    }
+
+    foreach ($_POST as $key => $value) {
+        if ($key == 'custom_tags') {
+            continue;
+        } else {
+            updateConfig('../config.php', $key, $value);
+        }
+    }
+
+    if (!isset($error)) {
+        // need to reload config before generating feed
+        $config = getConfig('../config.php');
+        generateRSS();
+        pingServices();
+
+        header('Location: podcast_details.php');
+        die();
+    }
 }
+
+error:
+
+$custom_tags = getCustomFeedTags();
+
+$lockFeedOptions = array(
+    [ 'value' => 'yes', 'label' => _('Locked') ],
+    [ 'value' => 'no', 'label' => _('Unlocked') ],
+    [ 'value' => '', 'label' => _('Off') ]
+);
+
+function selectedLangAttr($lang)
+{
+    global $config;
+    return $config['feed_language'] == $lang ? ' selected' : '';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title><?php echo htmlspecialchars($config['podcast_title']); ?> - <?php echo _('Podcast Details'); ?></title>
+    <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Podcast Details') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
     <style>
@@ -35,7 +85,7 @@ if (isset($_GET['edit'])) {
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $config['url']; ?>favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['url'] ?>favicon.ico">
 </head>
 
 <body>
@@ -45,101 +95,73 @@ if (isset($_GET['edit'])) {
     ?>
     <br>
     <div class="container">
-        <h1><?php echo _('Change Podcast Details'); ?></h1>
+        <h1><?= _('Change Podcast Details') ?></h1>
         <form action="podcast_details.php?edit=1" method="POST">
-            <?php echo _('Podcast Title'); ?>:<br>
-            <input type="text" name="podcast_title" value="<?php echo htmlspecialchars($config['podcast_title']); ?>" class="txt"><br>
-            <?php echo _('Podcast Subtitle or Slogan'); ?>:<br>
-            <input type="text" name="podcast_subtitle" value="<?php echo htmlspecialchars($config['podcast_subtitle']); ?>" class="txt"><br>
-            <?php echo _('Podcast Description'); ?>:<br>
-            <input type="text" name="podcast_description" value="<?php echo htmlspecialchars($config['podcast_description']); ?>" class="txt"><br>
-            <?php echo _('Copyright Notice'); ?>:<br>
-            <input type="text" name="copyright" value="<?php echo htmlspecialchars($config['copyright']); ?>" class="txt"><br>
-            <?php echo _('Author Name'); ?>:<br>
-            <input type="text" name="author_name" value="<?php echo htmlspecialchars($config['author_name']); ?>" class="txt"><br>
-            <?php echo _('Author E-Mail Address'); ?>:<br>
-            <input type="text" name="author_email" value="<?php echo htmlspecialchars($config['author_email']); ?>" class="txt"><br>
-            <?php echo _('Feed Language'); ?>: (<?php echo _('Main language of your podcast'); ?>)<br>
-            <select name="feed_language">
-                <option value="af">Afrikanns</option>
-                <option value="sq">Albanian</option>
-                <option value="ar">Arabic</option>
-                <option value="hy">Armenian</option>
-                <option value="eu">Basque</option>
-                <option value="bn">Bengali</option>
-                <option value="bg">Bulgarian</option>
-                <option value="ca">Catalan</option>
-                <option value="km">Cambodian</option>
-                <option value="zh">Chinese (Mandarin)</option>
-                <option value="hr">Croation</option>
-                <option value="cs">Czech</option>
-                <option value="da">Danish</option>
-                <option value="nl">Dutch</option>
-                <option value="en" selected>English</option>
-                <option value="eo">Esperanto</option>
-                <option value="et">Estonian</option>
-                <option value="fj">Fiji</option>
-                <option value="fi">Finnish</option>
-                <option value="fr">French</option>
-                <option value="ka">Georgian</option>
-                <option value="de">German</option>
-                <option value="el">Greek</option>
-                <option value="gu">Gujarati</option>
-                <option value="he">Hebrew</option>
-                <option value="hi">Hindi</option>
-                <option value="hu">Hungarian</option>
-                <option value="is">Icelandic</option>
-                <option value="id">Indonesian</option>
-                <option value="ga">Irish</option>
-                <option value="it">Italian</option>
-                <option value="ja">Japanese</option>
-                <option value="jw">Javanese</option>
-                <option value="ko">Korean</option>
-                <option value="la">Latin</option>
-                <option value="lv">Latvian</option>
-                <option value="lt">Lithuanian</option>
-                <option value="mk">Macedonian</option>
-                <option value="ms">Malay</option>
-                <option value="ml">Malayalam</option>
-                <option value="mt">Maltese</option>
-                <option value="mi">Maori</option>
-                <option value="mr">Marathi</option>
-                <option value="mn">Mongolian</option>
-                <option value="ne">Nepali</option>
-                <option value="no">Norwegian</option>
-                <option value="fa">Persian</option>
-                <option value="pl">Polish</option>
-                <option value="pt">Portuguese</option>
-                <option value="pa">Punjabi</option>
-                <option value="qu">Quechua</option>
-                <option value="ro">Romanian</option>
-                <option value="ru">Russian</option>
-                <option value="sm">Samoan</option>
-                <option value="sr">Serbian</option>
-                <option value="sk">Slovak</option>
-                <option value="sl">Slovenian</option>
-                <option value="es">Spanish</option>
-                <option value="sw">Swahili</option>
-                <option value="sv">Swedish </option>
-                <option value="ta">Tamil</option>
-                <option value="tt">Tatar</option>
-                <option value="te">Telugu</option>
-                <option value="th">Thai</option>
-                <option value="bo">Tibetan</option>
-                <option value="to">Tonga</option>
-                <option value="tr">Turkish</option>
-                <option value="uk">Ukranian</option>
-                <option value="ur">Urdu</option>
-                <option value="uz">Uzbek</option>
-                <option value="vi">Vietnamese</option>
-                <option value="cy">Welsh</option>
-                <option value="xh">Xhosa</option>
-            </select><br>
-            <?php echo _('Explicit Podcast'); ?>:<br>
-            <input type="radio" name="explicit_podcast" value="yes" <?php echo $config['explicit_podcast'] == 'yes' ? 'checked' : '' ?>> <?php echo _('Yes'); ?> <input type="radio" name="explicit_podcast" value="no" <?php echo $config['explicit_podcast'] == 'no' ? 'checked' : '' ?>> <?php echo _('No'); ?><br>
+            <label for="podcast_title"><?= _('Podcast Title') ?>:</label><br>
+            <input type="text" id="podcast_title" name="podcast_title"
+                   value="<?= htmlspecialchars($config['podcast_title']) ?>" class="txt">
             <br>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <input type="submit" value="<?php echo _("Submit") ?>" class="btn btn-success">
+
+            <label for="podcast_subtitle"><?= _('Podcast Subtitle or Slogan') ?>:</label><br>
+            <input type="text" id="podcast_subtitle" name="podcast_subtitle"
+                   value="<?= htmlspecialchars($config['podcast_subtitle']) ?>" class="txt">
+            <br>
+
+            <label for="podcast_description"><?= _('Podcast Description') ?>:</label><br>
+            <input type="text" id="podcast_description" name="podcast_description"
+                   value="<?= htmlspecialchars($config['podcast_description']) ?>" class="txt">
+            <br>
+
+            <label for="copyright"><?= _('Copyright Notice') ?>:</label><br>
+            <input type="text" id="copyright" name="copyright"
+                   value="<?= htmlspecialchars($config['copyright']) ?>" class="txt">
+            <br>
+
+            <label for="author_name"><?= _('Author Name') ?>:</label><br>
+            <input type="text" id="author_name" name="author_name"
+                   value="<?= htmlspecialchars($config['author_name']) ?>" class="txt">
+            <br>
+
+            <label for="author_email"><?= _('Author E-Mail Address') ?>:</label><br>
+            <input type="text" id="author_email" name="author_email"
+                   value="<?= htmlspecialchars($config['author_email']) ?>" class="txt">
+            <br>
+
+            <label for="podcast_guid"><?= _('Podcast GUID') ?>:</label>
+            (<?= _('Unique ID code for your podcast across the internet') ?>)<br>
+            <input type="text" id="podcast_guid" name="podcast_guid" class="txt"
+                   value="<?= htmlspecialchars($config['podcast_guid']) ?>"
+                   pattern="^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$"
+                   placeholder="3636e0e4-8dff-4662-90b3-6068af079b97">
+            <br>
+
+            <label for="feed_language"><?= _('Feed Language'); ?>:</label>
+            (<?= _('Main language of your podcast') ?>)<br>
+            <select id="feed_language" name="feed_language">
+                <?php foreach ($languages as $lang) { ?>
+                    <option value="<?= htmlspecialchars($lang->code) ?>"<?= selectedLangAttr($lang->code) ?>>
+                        <?= htmlspecialchars($lang->name) ?>
+                    </option>
+                <?php } ?>
+            </select>
+            <br>
+
+            <?= _('Explicit Podcast') ?>:<br>
+            <?php htmlOptionRadios('explicit_podcast', $config['explicit_podcast'], $yesNoOptions); ?>
+            <br>
+
+            <?= _('Lock Podcast Feed') ?>: (<?= _('Prevent other platforms from importing your feed') ?>)<br>
+            <?php htmlOptionRadios('feed_locked', $config['feed_locked'], $lockFeedOptions); ?>
+            <br>
+
+<?php if ($config['customtagsenabled'] == 'yes') { ?>
+            <label for="custom_tags"><?= _('Custom Feed Tags') ?>:</label><br>
+            <textarea id="custom_tags" name="custom_tags" class="txt"><?= htmlspecialchars($custom_tags) ?></textarea>
+            <br>
+<?php } ?>
+
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="submit" value="<?= _("Submit") ?>" class="btn btn-success">
         </form>
     </div>
 </body>
