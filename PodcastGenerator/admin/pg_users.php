@@ -10,11 +10,13 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
+checkToken();
+
 $users = getUsers();
 
-// Change password case
 if (isset($_GET['change'])) {
-    checkToken();
+    // Change password case
+
     if (!changeUserPassword($_GET['change'], $_POST['password'])) {
         $error = _('Error while changing password');
         goto error;
@@ -22,10 +24,9 @@ if (isset($_GET['change'])) {
         header('Location: pg_users.php?userchange=1');
         die();
     }
-}
-// Delete user case
-elseif (isset($_GET['delete'])) {
-    checkToken();
+} elseif (isset($_GET['delete'])) {
+    // Delete user case
+
     // Check if the deleted user is the logged in user
     // Don't permit to delete the logged in user
     if ($_GET['delete'] == $_SESSION['username']) {
@@ -44,10 +45,9 @@ elseif (isset($_GET['delete'])) {
         header('Location: pg_users.php?userdelete=1');
         die();
     }
-}
-// Create user case
-elseif (isset($_GET['create'])) {
-    checkToken();
+} elseif (isset($_GET['create'])) {
+    // Create user case
+
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = _('Missing fields');
         goto error;
@@ -59,6 +59,7 @@ elseif (isset($_GET['create'])) {
     header('Location: pg_users.php?usercreate=1');
     die();
 }
+
 ?>
 <!DOCTYPE html>
 <html>
