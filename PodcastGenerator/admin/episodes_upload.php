@@ -115,18 +115,11 @@ if (count($_POST) > 0) {
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
 
-    $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $filename;
-    $targetfile = str_replace(' ', '_', $targetfile);
-    if (file_exists($targetfile)) {
-        $appendix = 1;
-        while (file_exists($targetfile)) {
-            $targetfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . $filename;
-            $targetfile = str_replace(' ', '_', $targetfile);
-            $appendix++;
-        }
-    }
-    $targetfile = strtolower($targetfile);
-    $targetfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($targetfile, PATHINFO_FILENAME));
+    $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
+    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
+
+    $targetfile = makeEpisodeFilename($uploadDir, $_POST['date'], $filename);
+    $targetfile_without_ext = strtolower($uploadDir . pathinfo($targetfile, PATHINFO_FILENAME));
 
     $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
     $fileextension = pathinfo($targetfile, PATHINFO_EXTENSION);
@@ -138,19 +131,19 @@ if (count($_POST) > 0) {
         }
     }
     if (!$validFileExt) {
-        $error = _('Invalid file extension');
+        $error = sprintf(_('%s has invalid file extension'), $filename);
         goto error;
     }
 
     if (!move_uploaded_file($_FILES['file']['tmp_name'], $targetfile)) {
-        $error = _('The file upload was not successfully');
+        $error = sprintf(_('%s was not uploaded successfully'), $filename);
         goto error;
     }
 
     $mimetype = getmime($targetfile);
 
     if (!$mimetype) {
-        $error = _('The uploaded file is not readable (permission error)');
+        $error = _('The uploaded episode file is not readable (permission error)');
         goto error;
     }
 
@@ -163,14 +156,108 @@ if (count($_POST) > 0) {
     }
 
     if (!$validMimeType) {
-        $error = sprintf(
-            _('Unsupported MIME content type "%s" detected for file with extension "%s"'),
-            $mimetype,
-            $fileextension
-        );
+        $error = sprintf(_('%s has unsupported MIME content type %s'), $filename, $mimetype);
         // Delete the file if the mime type is invalid
         unlink($targetfile);
         goto error;
+    }
+
+    // Order of precedence for episode art:
+    // 1. The episode cover uploaded on the form
+    // 2. The cover art embedded in the episode mp3
+    // 3. The show cover art
+
+    // add the Episode Cover
+    $episodecoverfileURL = '';
+    $episodecoverfilePath = '';
+    if (!empty($_FILES['episodecover']['name'])) {
+        // User has uploaded a specific cover image
+
+        $coverfile = basename($_FILES['episodecover']['name']);
+        $episodecoverfile = makeEpisodeFilename($imagesDir, $_POST['date'], $coverfile);
+
+        $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
+        $validCoverFileExt = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if ($coverfileextension == $item->extension) {
+                $validCoverFileExt = true;
+                break;
+            }
+        }
+        if (!$validCoverFileExt) {
+            $error = sprintf(_('%s has invalid file extension'), $coverfile);
+            goto error;
+        }
+
+        if (!move_uploaded_file($_FILES['episodecover']['tmp_name'], $episodecoverfile)) {
+            $error = sprintf(_('%s was not uploaded successfully'), $coverfile);
+            goto error;
+        }
+
+        $covermimetype = getmime($episodecoverfile);
+        if (!$covermimetype) {
+            $error = _('The uploaded cover art file is not readable (permission error)');
+            goto error;
+        }
+        $validCoverMimeType = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if (strpos($item->mimetype, 'image/') !== 0) {
+                continue; // skip non-image MIME types
+            }
+            if ($covermimetype == $item->mimetype) {
+                $validCoverMimeType = true;
+                break;
+            }
+        }
+
+        if (!$validCoverMimeType) {
+            $error = sprintf(_('%s has unsupported MIME content type %s'), $coverfile, $mimetype);
+
+            // Delete both cover and episode files in this situation, just as if
+            // the episode file itself had a bad MIME type.
+            unlink($targetfile);
+            unlink($episodecoverfile);
+            goto error;
+        }
+
+        $episodecoverfileURL = htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile));
+    } elseif (isset($fileinfo["comments"]["picture"])) {
+        // Episode file has an embedded image
+
+        $covermimetype = $fileinfo["comments"]["picture"][0]["image_mime"];
+        $imgext = null;
+        foreach ($validTypes->mediaFile as $item) {
+            if (strpos($item->mimetype, 'image/') !== 0) {
+                continue; // skip non-image MIME types
+            }
+            if ($imgMime == $item->mimetype) {
+                $coverExt = $item->extension;
+                break;
+            }
+        }
+        if (empty($coverExt)) {
+            $error = sprintf(_('%s has unsupported MIME type %s'), _('Embedded cover art'), $covermimetype);
+            goto error;
+        }
+
+        $episodecoverfile = makeEpisodeFilename(
+            $imagesDir,
+            $_POST['date'],
+            pathinfo($filename, PATHINFO_FILENAME) . '.' . $imgext
+        );
+
+        if (!file_put_contents($episodecoverfile, $fileinfo["comments"]["picture"][0]["data"])) {
+            $error = _('The embedded cover art file was not saved successfully');
+            // Delete the episode file like we do when there's an error with it
+            unlink($targetfile);
+            goto error;
+        }
+
+        $episodecoverfileURL = htmlspecialchars($config['url'] . $config['img_dir'] . basename($episodecoverfile));
+    }
+
+    if (isset($episodecoverfile)) {
+        $episodecoverfilePath = htmlspecialchars($episodecoverfile);
     }
 
     // build categories list from post data
@@ -202,7 +289,7 @@ if (count($_POST) > 0) {
 	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
-	    <imgPG></imgPG>
+	    <imgPG path="' . $episodecoverfilePath . '">' . $episodecoverfileURL . '</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>
@@ -224,12 +311,7 @@ if (count($_POST) > 0) {
 	</episode>
 </PodcastGenerator>';
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
-    // Write image if set
-    if (isset($fileinfo["comments"]["picture"])) {
-        $imgext = ($fileinfo["comments"]["picture"][0]["image_mime"] == "image/png") ? 'png' : 'jpg';
-        $img_filename = $config["absoluteurl"] . $config["img_dir"] . pathinfo($targetfile, PATHINFO_FILENAME) . '.' . $imgext;
-        file_put_contents($img_filename, $fileinfo["comments"]["picture"][0]["data"]);
-    }
+
     generateRSS();
     pingServices();
     $success = true;
@@ -316,6 +398,10 @@ if (!isset($customTags)) {
                 <div class="col-6">
                     <h3><?= _('Extra Information') ?></h3>
                     <hr>
+                    <div class="form-group">
+                        <label for="episodecover"><?= _('Episode Cover') ?>:</label><br>
+                        <input type="file" id="episodecover" name="episodecover"><br>
+                    </div>
                     <div class="form-group">
                     <label for="longdesc"><?= _('Long Description') ?>:</label><br>
                         <textarea id="longdesc" name="longdesc" class="form-control"></textarea><br>
