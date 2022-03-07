@@ -131,19 +131,19 @@ if (count($_POST) > 0) {
         }
     }
     if (!$validFileExt) {
-        $error = _('Invalid file extension');
+        $error = sprintf(_('%s has invalid file extension'), $filename);
         goto error;
     }
 
     if (!move_uploaded_file($_FILES['file']['tmp_name'], $targetfile)) {
-        $error = _('The file upload was not successfully');
+        $error = sprintf(_('%s was not uploaded successfully'), $filename);
         goto error;
     }
 
     $mimetype = getmime($targetfile);
 
     if (!$mimetype) {
-        $error = _('The uploaded file is not readable (permission error)');
+        $error = _('The uploaded episode file is not readable (permission error)');
         goto error;
     }
 
@@ -156,11 +156,7 @@ if (count($_POST) > 0) {
     }
 
     if (!$validMimeType) {
-        $error = sprintf(
-            _('Unsupported MIME content type "%s" detected for file with extension "%s"'),
-            $mimetype,
-            $fileextension
-        );
+        $error = sprintf(_('%s has unsupported MIME content type %s'), $filename, $mimetype);
         // Delete the file if the mime type is invalid
         unlink($targetfile);
         goto error;
@@ -189,18 +185,18 @@ if (count($_POST) > 0) {
             }
         }
         if (!$validCoverFileExt) {
-            $error = _('Invalid Cover file extension');
+            $error = sprintf(_('%s has invalid file extension'), $coverfile);
             goto error;
         }
 
         if (!move_uploaded_file($_FILES['episodecover']['tmp_name'], $episodecoverfile)) {
-            $error = _('The Cover file upload was not successfully');
+            $error = sprintf(_('%s was not uploaded successfully'), $coverfile);
             goto error;
         }
 
         $covermimetype = getmime($episodecoverfile);
         if (!$covermimetype) {
-            $error = _('The uploaded Cover file is not readable (permission error)');
+            $error = _('The uploaded cover art file is not readable (permission error)');
             goto error;
         }
         $validCoverMimeType = false;
@@ -215,7 +211,7 @@ if (count($_POST) > 0) {
         }
 
         if (!$validCoverMimeType) {
-            $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $coverfileextension);
+            $error = sprintf(_('%s has unsupported MIME content type %s'), $coverfile, $mimetype);
 
             // Delete both cover and episode files in this situation, just as if
             // the episode file itself had a bad MIME type.
