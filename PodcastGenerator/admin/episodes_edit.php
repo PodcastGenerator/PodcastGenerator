@@ -17,6 +17,7 @@ if (!isset($_GET['name'])) {
 checkPath($_GET['name']);
 
 $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
+$imagesDir = $config['absoluteurl'] . $config['img_dir'];
 
 $targetfile = $uploadDir . $_GET['name'];
 $targetfile_without_ext = $uploadDir . pathinfo($targetfile, PATHINFO_FILENAME);
@@ -28,20 +29,11 @@ if (!file_exists($targetfile)) {
 // Delete episode
 if (isset($_GET['delete'])) {
     checkToken();
-    // Delete the audio file
-    unlink($targetfile);
-    // Delete the XML file
-    unlink($targetfile_without_ext . '.xml');
-    // Delete the image file if it exists
-    if (
-        file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg')
-        || file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png')
-    ) {
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg');
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png');
-    }
+
+    deleteEpisode($targetfile, $config);
     generateRSS();
     pingServices();
+
     header('Location: ' . $config['url'] . $config['indexfile']);
     die();
 }
@@ -115,6 +107,19 @@ if (count($_POST) > 0) {
         goto error;
     }
 
+    // If we have custom tags, ensure that they're valid XML
+    $customTags = $_POST['customtags'];
+    if (!isWellFormedXml($customTags)) {
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
+    }
+
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
@@ -125,6 +130,87 @@ if (count($_POST) > 0) {
         $categories[$i] = isset($_POST['category'][$i])
             ? $_POST['category'][$i]
             : ($i == 0 ? 'uncategorized' : '');
+    }
+
+    // Get episode data
+    $episode = simplexml_load_file($targetfile_without_ext . '.xml');
+
+    // Determine current cover art file
+    $currentCoverFile = $episode->episode->imgPG->attributes()['path'] ?? '';
+    $currentCoverUrl = (string) $episode->episode->imgPG;
+    if (empty($currentCoverFile)) {
+        // Look for old-style cover image
+        $currentCoverFile = pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg';
+        if (!file_exists($imagesDir . $currentCoverFile)) {
+            $currentCoverFile = pathinfo($targetfile, PATHINFO_FILENAME) . '.png';
+            if (!file_exists($imagesDir . $currentCoverFile)) {
+                $currentCoverFile = '';
+            }
+        }
+    }
+
+    // Build array of previous cover art files
+    $previousCoverFiles = array();
+    if (isset($coverImg->episode->previousImgsPG)) {
+        foreach ($coverImg->episode->previousImgsPG->children() as $prevImg) {
+            $previousCoverFiles[] = $imagesDir . $prevImg;
+        }
+    }
+
+    $coverfile = '';
+    if (!empty($_FILES['episodecover']['name'])) {
+        $coverfile = basename($_FILES['episodecover']['name']);
+        $episodecoverfile = makeEpisodeFilename($imagesDir, $_POST['date'], $coverfile);
+
+        $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
+
+        $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
+        $validCoverFileExt = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if ($coverfileextension == $item->extension) {
+                $validCoverFileExt = true;
+                break;
+            }
+        }
+        if (!$validCoverFileExt) {
+            $error = sprintf(_('%s has invalid file extension'), $coverfile);
+            goto error;
+        }
+
+        if (!move_uploaded_file($_FILES['episodecover']['tmp_name'], $episodecoverfile)) {
+            $error = sprintf(_('%s was not uploaded successfully'), $coverfile);
+            goto error;
+        }
+
+        $covermimetype = getmime($episodecoverfile);
+        if (!$covermimetype) {
+            $error = _('The uploaded cover art file is not readable (permission error)');
+            goto error;
+        }
+        $validCoverMimeType = false;
+        foreach ($validTypes->mediaFile as $item) {
+            if (strpos($item->mimetype, 'image/') !== 0) {
+                continue; // skip non-image MIME types
+            }
+            if ($covermimetype == $item->mimetype) {
+                $validCoverMimeType = true;
+                break;
+            }
+        }
+
+        if (!$validCoverMimeType) {
+            $error = sprintf(_('%s has unsupported MIME content type %s'), $coverfile, $mimetype);
+            // Delete the file if the mime type is invalid
+            unlink($episodecoverfile);
+            goto error;
+        }
+    }
+
+    // Newer cover art files go on top of the list
+    if (!empty($episodecoverfile) && $episodecoverfile != $currentCoverFile) {
+        array_unshift($previousCoverFiles, $currentCoverFile);
+        $currentCoverFile = $episodecoverfile;
+        $currentCoverUrl = $config['url'] . $config['img_dir'] . basename($episodecoverfile);
     }
 
     // Get datetime
@@ -145,19 +231,6 @@ if (count($_POST) > 0) {
     // Regenerate GUID if it is missing from POST data
     $guid = empty($_POST['guid']) ? $config['url'] . "?" . $link . "=" . $_GET['name'] : $_POST['guid'];
 
-    // If we have custom tags, ensure that they're valid XML
-    $customTags = $_POST['customtags'];
-    if (!isWellFormedXml($customTags)) {
-        if ($config['customtagsenabled'] == 'yes') {
-            $error = _('Custom tags are not well-formed');
-            goto error;
-        } else {
-            // if we have custom tags disabled and the POST value is misformed,
-            // just clear it out.
-            $customTags = '';
-        }
-    }
-
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
@@ -169,7 +242,7 @@ if (count($_POST) > 0) {
 	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
-	    <imgPG></imgPG>
+	    <imgPG path="' . htmlspecialchars($currentCoverFile) . '">' . htmlspecialchars($currentCoverUrl) . '</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>
@@ -187,12 +260,22 @@ if (count($_POST) > 0) {
 	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
 	        <frequency>' . $frequency . '</frequency>
 	    </fileInfoPG>
-	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>
-	</episode>
-</PodcastGenerator>';
+	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>' . "\n";
+
+    if (!empty($previousCoverFiles)) {
+        $episodefeed .= "\t\t" . '<previousImgsPG>' . "\n";
+        foreach ($previousCoverFiles as $img) {
+            $episodefeed .= "\t\t\t" . '<imgPG>' . $img . '</imgPG>' . "\n";
+        }
+        $episodefeed .= "\t\t" . '</previousImgsPG>' . "\n";
+    }
+
+    $episodefeed .= '	</episode>' . "\n" . '</PodcastGenerator>';
     file_put_contents($uploadDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
+
     generateRSS();
     pingServices();
+
     // Redirect if success
     header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
     die();
@@ -203,6 +286,20 @@ if (count($_POST) > 0) {
 // Get episode data
 $episode = simplexml_load_file($targetfile_without_ext . '.xml');
 $filemtime = filemtime($targetfile);
+
+$coverart = (string) $episode->episode->imgPG;
+if (empty($coverart)) {
+    // check for old style cover art files
+    if (file_exists($imagesDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg')) {
+        $coverart = pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg';
+    } elseif (file_exists($imagesDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.png')) {
+        $coverart = pathinfo($targetfile, PATHINFO_FILENAME) . '.png';
+    } else {
+        // default to the podcast cover art, if no episode art exists
+        $coverart = $config['podcast_cover'] ?? 'itunes_image.jpg';
+    }
+    $coverart = $config['url'] . $config['img_dir'] . $coverart;
+}
 
 // Fill in selected categories
 $categories = simplexml_load_file("../categories.xml");
@@ -238,7 +335,8 @@ $selected_cats = array(
         <?php if (isset($error)) { ?>
             <p style="color: red;"><strong><?= $error ?></strong></p>
         <?php } ?>
-        <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>" method="POST">
+        <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>"
+              method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h4><?= _('Main Information') ?></h4>
@@ -287,6 +385,14 @@ $selected_cats = array(
                 <div class="col-6">
                     <h4><?= _('Extra Information') ?></h4>
                     <hr>
+                    <div class="form-group">
+                        <?= _('Current Cover'); ?>:<br>
+                        <img src="<?= htmlspecialchars($coverart) ?>"
+                             style="max-height: 150px; max-width: 150px;">
+                        <hr>
+                        <label for="episodecover"><?= _('Upload new cover') ?>:</label><br>
+                        <input type="file" id="episodecover" name="episodecover"><br>
+                    </div>
                     <div class="form-group">
                         <label for="longdesc"><?= _('Long Description') ?>:</label><br>
                         <textarea id="longdesc" name="longdesc"

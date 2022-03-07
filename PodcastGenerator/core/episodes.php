@@ -412,3 +412,82 @@ function compare_mtimes($a, $b)
 {
     return $b[1] - $a[1];
 }
+
+/**
+ * Creates a standardized filename for the provided original filename.
+ *
+ * Because this function takes a directory name, it is useful for both episode
+ * files and cover art files.
+ *
+ * @param string $directory The path of the directory where the file will be
+ *                          saved.
+ * @param string $date      The publication date of the file in YYYY-MM-DD
+ *                          format.
+ * @param string $filename  The original name of the file to be saved.
+ * @return string           The file name and path to use for saving the file.
+ */
+function makeEpisodeFilename($directory, $date, $filename)
+{
+    $filename = str_replace(' ', '_', $filename);
+    $targetfile = $directory . $date . '_' . $filename;
+
+    if (file_exists($targetfile)) {
+        $appendix = 1;
+        while (file_exists($targetfile)) {
+            $targetfile = $directory . $date . '_' . $appendix . '_' . $filename;
+            $appendix++;
+        }
+    }
+    return strtolower($targetfile);
+}
+
+/**
+ * Deletes a podcast episode and its related sidecar file and cover images.
+ *
+ * This function does not regenerate the XML feed or ping third party services.
+ * Whoever calls this function should ensure that those tasks are taken care of.
+ *
+ * On failure, some files related to a podcast episode may still be left around
+ * the media and images directories.
+ *
+ * @param string $episodeFile The path of the episode file to delete.
+ * @param mixed  $config      The PG configuration object.
+ * @return bool               true on success or false on failure.
+ */
+function deleteEpisode($episodeFile, $config)
+{
+    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
+
+    $pathinfo = pathinfo($episodeFile);
+    $xmlFile = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '.xml';
+
+    $filesToDelete = [
+        $episodeFile,
+        $xmlFile
+    ];
+
+    $xmlData = simplexml_load_file($xmlFile);
+    $coverImg = (string) $xmlData->episode->imgPG->attributes()['path'];
+    if (!empty($coverImg)) {
+        $filesToDelete[] = $coverImg;
+    }
+    if (isset($xmlData->episode->previousImgsPG)) {
+        foreach ($xmlData->episode->previousImgsPG->children() as $prevImg) {
+            $filesToDelete[] = (string) $prevImg;
+        }
+    }
+
+    if (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg')) {
+        $filesToDelete[] = $imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg';
+    } elseif (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.png')) {
+        $filesToDelete[] = $imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.png';
+    }
+
+    // Go through the list of files and delete each one
+    foreach ($filesToDelete as $file) {
+        if (!unlink($file)) {
+            return false;
+        }
+    }
+    return true;
+}

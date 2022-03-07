@@ -114,6 +114,7 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     // If image is set
     if ($has_cover) {
         $item .= $TAB . '<itunes:image href="' . $has_cover . '" />' . $LR;
+        $item .= $TAB . '<googleplay:image href="' . $has_cover . '" />' . $LR;
     }
 
     $item .= $TAB . '<pubDate>' . date("r", $file['lastModified']) . '</pubDate>' . $LR;
