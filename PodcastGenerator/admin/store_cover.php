@@ -12,31 +12,56 @@ require '../core/include_admin.php';
 
 if (isset($_GET['upload'])) {
     checkToken();
-    // Check mime type
-    if (mime_content_type($_FILES['file']['tmp_name']) != "image/jpeg") {
-        $error = _('Image is not a JPEG');
+
+    $supportedMediaTypes = simplexml_load_file(
+        $config['absoluteurl'] . 'components/supported_media/supported_media.xml'
+    );
+
+    // Check MIME type and extension
+    $mimetype = mime_content_type($_FILES['file']['tmp_name']);
+    $fileext = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
+
+    $validExts = array();
+    foreach ($supportedMediaTypes->mediaFile as $item) {
+        if (strpos($item->mimetype, 'image/') !== 0) {
+            continue;
+        }
+        if ($item->mimetype == $mimetype) {
+            $validExts[] = (string) $item->extension;
+        }
+    }
+
+    if (empty($validExts)) {
+        $error = _('Image format is not supported');
         goto error;
     }
 
-    $imagesize = getimagesize($_FILES['file']['tmp_name']);
     // Verify if image is a square
+    $imagesize = getimagesize($_FILES['file']['tmp_name']);
     if ($imagesize[0] / $imagesize[1] != 1) {
-        $error = _('Image is not quadratic');
+        $error = _('Image does not have square dimensions');
         goto error;
     }
+
+    // change extension if it's not in the valid extensions list
+    if (!in_array($fileext, $validExts)) {
+        $fileext = $validExts[0];
+    }
+    $filename = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME) . $fileext;
 
     // Now everything is cool and the file can uploaded
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $_FILES['file']['name'])) {
-        $error = _('File was not uploaded');
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $filename)) {
+        $error = _('Image was not uploaded successfully');
         goto error;
-    } else {
-        // Wait a few seconds so the upload can finish
-        sleep(3);
-        updateConfig('../config.php', 'podcast_cover', $_FILES['file']['name']);
-        generateRSS();
-        header('Location: store_cover.php');
-        die();
     }
+
+    // Wait a few seconds so the upload can finish
+    sleep(3);
+    updateConfig('../config.php', 'podcast_cover', $filename);
+    generateRSS();
+    header('Location: store_cover.php');
+    die();
+
     error:
 }
 ?>
