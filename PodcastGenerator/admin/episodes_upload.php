@@ -206,6 +206,9 @@ if (count($_POST) > 0) {
 
         $validCoverMimeType = false;
         foreach ($validTypes->mediaFile as $item) {
+            if (strpos($item->mimetype, 'image/') !== 0) {
+                continue; // skip non-image MIME types
+            }
             if ($covermimetype == $item->mimetype) {
                 $validCoverMimeType = true;
                 break;
