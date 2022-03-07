@@ -414,6 +414,34 @@ function compare_mtimes($a, $b)
 }
 
 /**
+ * Creates a standardized filename for the provided original filename.
+ *
+ * Because this function takes a directory name, it is useful for both episode
+ * files and cover art files.
+ *
+ * @param string $directory The path of the directory where the file will be
+ *                          saved.
+ * @param string $date      The publication date of the file in YYYY-MM-DD
+ *                          format.
+ * @param string $filename  The original name of the file to be saved.
+ * @return string           The file name and path to use for saving the file.
+ */
+function makeEpisodeFilename($directory, $date, $filename)
+{
+    $filename = str_replace(' ', '_', $filename);
+    $targetfile = $directory . $date . '_' . $filename;
+
+    if (file_exists($targetfile)) {
+        $appendix = 1;
+        while (file_exists($targetfile)) {
+            $targetfile = $directory . $date . '_' . $appendix . '_' . $filename;
+            $appendix++;
+        }
+    }
+    return strtolower($targetfile);
+}
+
+/**
  * Deletes a podcast episode and its related sidecar file and cover images.
  *
  * This function does not regenerate the XML feed or ping third party services.

@@ -17,6 +17,7 @@ if (!isset($_GET['name'])) {
 checkPath($_GET['name']);
 
 $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
+$imagesDir = $config['absoluteurl'] . $config['img_dir'];
 
 $targetfile = $uploadDir . $_GET['name'];
 $targetfile_without_ext = $uploadDir . pathinfo($targetfile, PATHINFO_FILENAME);
@@ -137,19 +138,8 @@ if (count($_POST) > 0) {
     $episodecoverfileURL = htmlspecialchars($episode->episode->imgPG);
     print_r($episodecoverfileURL);
     if (!empty($_FILES['episodecover']['name'])) {
-        $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' .basename($_FILES['episodecover']['name']);
-        $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
-
-        if (file_exists($episodecoverfile)) {
-            $appendix = 1;
-            while(file_exists($episodecoverfile)) {
-                $episodecoverfile = '../' . $config['upload_dir'] . $_POST['date'] . '_' . $appendix . '_' . basename($_FILES['episodecover']['name']);
-                $episodecoverfile = str_replace(' ', '_', $episodecoverfile);
-                $appendix++;
-            }
-        }
-        $episodecoverfile = strtolower($episodecoverfile);
-        $episodecoverfile_without_ext = strtolower('../' . $config['upload_dir'] . pathinfo($episodecoverfile, PATHINFO_FILENAME));
+        $coverfile = basename($_FILES['episodecover']['name']);
+        $episodecoverfile = makeEpisodeFilename($imagesDir, $_POST['date'], $coverfile);
 
         $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
         $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
