@@ -217,7 +217,10 @@ if (count($_POST) > 0) {
 
         if (!$validCoverMimeType) {
             $error = sprintf(_('Unsupported mime type detected for file with extension "%s"'), $coverfileextension);
-            // Delete the file if the mime type is invalid
+
+            // Delete both cover and episode files in this situation, just as if
+            // the episode file itself had a bad MIME type.
+            unlink($targetfile);
             unlink($episodecoverfile);
             goto error;
         }
