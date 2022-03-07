@@ -252,6 +252,20 @@ if (count($_POST) > 0) {
 $episode = simplexml_load_file($targetfile_without_ext . '.xml');
 $filemtime = filemtime($targetfile);
 
+$coverart = (string) $episode->episode->imgPG;
+if (empty($coverart)) {
+    // check for old style cover art files
+    if (file_exists($imagesDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg')) {
+        $coverart = pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg';
+    } elseif (file_exists($imagesDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.png')) {
+        $coverart = pathinfo($targetfile, PATHINFO_FILENAME) . '.png';
+    } else {
+        // default to the podcast cover art, if no episode art exists
+        $coverart = $config['podcast_cover'] ?? 'itunes_image.jpg';
+    }
+    $coverart = $config['url'] . $config['img_dir'] . $coverart;
+}
+
 // Fill in selected categories
 $categories = simplexml_load_file("../categories.xml");
 $selected_cats = array(
@@ -338,7 +352,7 @@ $selected_cats = array(
                     <hr>
                     <div class="form-group">
                         <?= _('Current Cover'); ?>:<br>
-                        <img src="<?= htmlspecialchars($episode->episode->imgPG) ?>"
+                        <img src="<?= htmlspecialchars($coverart) ?>"
                              style="max-height: 150px; max-width: 150px;">
                         <hr>
                         <label for="episodecover"><?= _('Upload new cover') ?>:</label><br>
