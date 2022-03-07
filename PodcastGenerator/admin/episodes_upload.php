@@ -173,6 +173,7 @@ if (count($_POST) > 0) {
 
     // add the Episode Cover
     $episodecoverfileURL = '';
+    $episodecoverfilePath = '';
     if (!empty($_FILES['episodecover']['name'])) {
         // User has uploaded a specific cover image
 
@@ -198,12 +199,10 @@ if (count($_POST) > 0) {
         }
 
         $covermimetype = getmime($episodecoverfile);
-
         if (!$covermimetype) {
             $error = _('The uploaded Cover file is not readable (permission error)');
             goto error;
         }
-
         $validCoverMimeType = false;
         foreach ($validTypes->mediaFile as $item) {
             if (strpos($item->mimetype, 'image/') !== 0) {
@@ -261,6 +260,10 @@ if (count($_POST) > 0) {
         $episodecoverfileURL = htmlspecialchars($config['url'] . $config['img_dir'] . basename($episodecoverfile));
     }
 
+    if (isset($episodecoverfile)) {
+        $episodecoverfilePath = htmlspecialchars($episodecoverfile);
+    }
+
     // build categories list from post data
     $categories = array();
     for ($i = 0; $i < 3; $i++) {
@@ -290,7 +293,7 @@ if (count($_POST) > 0) {
 	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $_POST['longdesc'] . ']]></longdescPG>
-	    <imgPG>' . $episodecoverfileURL .'</imgPG>
+	    <imgPG path="' . $episodecoverfilePath . '">' . $episodecoverfileURL . '</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>

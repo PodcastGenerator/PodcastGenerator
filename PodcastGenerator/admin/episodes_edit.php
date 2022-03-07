@@ -133,15 +133,37 @@ if (count($_POST) > 0) {
     }
 
     // Get episode data
-    $episode = simplexml_load_file($config['absoluteurl'] . $config['upload_dir'] . pathinfo($config['absoluteurl'] . $config['upload_dir'] . $_GET['name'], PATHINFO_FILENAME) . '.xml');
+    $episode = simplexml_load_file($targetfile_without_ext . '.xml');
 
-    $episodecoverfileURL = htmlspecialchars($episode->episode->imgPG);
-    print_r($episodecoverfileURL);
+    // Determine current cover art file
+    $currentCoverFile = $episode->episode->imgPG->attributes()['path'] ?? '';
+    $currentCoverUrl = (string) $episode->episode->imgPG;
+    if (empty($currentCoverFile)) {
+        // Look for old-style cover image
+        $currentCoverFile = pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg';
+        if (!file_exists($imagesDir . $currentCoverFile)) {
+            $currentCoverFile = pathinfo($targetfile, PATHINFO_FILENAME) . '.png';
+            if (!file_exists($imagesDir . $currentCoverFile)) {
+                $currentCoverFile = '';
+            }
+        }
+    }
+
+    // Build array of previous cover art files
+    $previousCoverFiles = array();
+    if (isset($coverImg->episode->previousImgsPG)) {
+        foreach ($coverImg->episode->previousImgsPG->children() as $prevImg) {
+            $previousCoverFiles[] = $imagesDir . $prevImg;
+        }
+    }
+
+    $coverfile = '';
     if (!empty($_FILES['episodecover']['name'])) {
         $coverfile = basename($_FILES['episodecover']['name']);
         $episodecoverfile = makeEpisodeFilename($imagesDir, $_POST['date'], $coverfile);
 
         $validTypes = simplexml_load_file('../components/supported_media/supported_media.xml');
+
         $coverfileextension = pathinfo($episodecoverfile, PATHINFO_EXTENSION);
         $validCoverFileExt = false;
         foreach ($validTypes->mediaFile as $item) {
@@ -161,12 +183,10 @@ if (count($_POST) > 0) {
         }
 
         $covermimetype = getmime($episodecoverfile);
-
         if (!$covermimetype) {
             $error = _('The uploaded Cover file is not readable (permission error)');
             goto error;
         }
-
         $validCoverMimeType = false;
         foreach ($validTypes->mediaFile as $item) {
             if (strpos($item->mimetype, 'image/') !== 0) {
@@ -184,8 +204,13 @@ if (count($_POST) > 0) {
             unlink($episodecoverfile);
             goto error;
         }
+    }
 
-        $episodecoverfileURL = htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile));
+    // Newer cover art files go on top of the list
+    if (!empty($episodecoverfile) && $episodecoverfile != $currentCoverFile) {
+        array_unshift($previousCoverFiles, $currentCoverFile);
+        $currentCoverFile = $episodecoverfile;
+        $currentCoverUrl = $config['url'] . $config['img_dir'] . basename($episodecoverfile);
     }
 
     // Get datetime
@@ -217,7 +242,7 @@ if (count($_POST) > 0) {
 	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
 	    <shortdescPG><![CDATA[' . $_POST['shortdesc'] . ']]></shortdescPG>
 	    <longdescPG><![CDATA[' . $long_desc . ']]></longdescPG>
-	    <imgPG>' . $episodecoverfileURL . '</imgPG>
+	    <imgPG path="' . htmlspecialchars($currentCoverFile) . '">' . htmlspecialchars($currentCoverUrl) . '</imgPG>
 	    <categoriesPG>
 	        <category1PG>' . htmlspecialchars($categories[0]) . '</category1PG>
 	        <category2PG>' . htmlspecialchars($categories[1]) . '</category2PG>
@@ -235,12 +260,22 @@ if (count($_POST) > 0) {
 	        <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
 	        <frequency>' . $frequency . '</frequency>
 	    </fileInfoPG>
-	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>
-	</episode>
-</PodcastGenerator>';
+	    <customTagsPG><![CDATA[' . $customTags . ']]></customTagsPG>' . "\n";
+
+    if (!empty($previousCoverFiles)) {
+        $episodefeed .= "\t\t" . '<previousImgsPG>' . "\n";
+        foreach ($previousCoverFiles as $img) {
+            $episodefeed .= "\t\t\t" . '<imgPG>' . $img . '</imgPG>' . "\n";
+        }
+        $episodefeed .= "\t\t" . '</previousImgsPG>' . "\n";
+    }
+
+    $episodefeed .= '	</episode>' . "\n" . '</PodcastGenerator>';
     file_put_contents($uploadDir . pathinfo($targetfile, PATHINFO_FILENAME) . '.xml', $episodefeed);
+
     generateRSS();
     pingServices();
+
     // Redirect if success
     header('Location: ' . $config['url'] . $config['indexfile'] . $config['link'] . $_GET['name'] . '');
     die();

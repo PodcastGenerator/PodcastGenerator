@@ -466,6 +466,17 @@ function deleteEpisode($episodeFile, $config)
         $xmlFile
     ];
 
+    $xmlData = simplexml_load_file($xmlFile);
+    $coverImg = (string) $xmlData->episode->imgPG->attributes()['path'];
+    if (!empty($coverImg)) {
+        $filesToDelete[] = $coverImg;
+    }
+    if (isset($xmlData->episode->previousImgsPG)) {
+        foreach ($xmlData->episode->previousImgsPG->children() as $prevImg) {
+            $filesToDelete[] = (string) $prevImg;
+        }
+    }
+
     if (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg')) {
         $filesToDelete[] = $imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg';
     } elseif (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.png')) {
