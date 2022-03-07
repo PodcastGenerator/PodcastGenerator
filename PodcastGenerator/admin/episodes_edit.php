@@ -115,6 +115,19 @@ if (count($_POST) > 0) {
         goto error;
     }
 
+    // If we have custom tags, ensure that they're valid XML
+    $customTags = $_POST['customtags'];
+    if (!isWellFormedXml($customTags)) {
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
+    }
+
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
@@ -208,19 +221,6 @@ if (count($_POST) > 0) {
 
     // Regenerate GUID if it is missing from POST data
     $guid = empty($_POST['guid']) ? $config['url'] . "?" . $link . "=" . $_GET['name'] : $_POST['guid'];
-
-    // If we have custom tags, ensure that they're valid XML
-    $customTags = $_POST['customtags'];
-    if (!isWellFormedXml($customTags)) {
-        if ($config['customtagsenabled'] == 'yes') {
-            $error = _('Custom tags are not well-formed');
-            goto error;
-        } else {
-            // if we have custom tags disabled and the POST value is misformed,
-            // just clear it out.
-            $customTags = '';
-        }
-    }
 
     // Go and actually generate the episode
     // It easier to not dynamically generate the file
