@@ -412,3 +412,43 @@ function compare_mtimes($a, $b)
 {
     return $b[1] - $a[1];
 }
+
+/**
+ * Deletes a podcast episode and its related sidecar file and cover images.
+ *
+ * This function does not regenerate the XML feed or ping third party services.
+ * Whoever calls this function should ensure that those tasks are taken care of.
+ *
+ * On failure, some files related to a podcast episode may still be left around
+ * the media and images directories.
+ *
+ * @param string $episodeFile The path of the episode file to delete.
+ * @param mixed  $config      The PG configuration object.
+ * @return bool               true on success or false on failure.
+ */
+function deleteEpisode($episodeFile, $config)
+{
+    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
+
+    $pathinfo = pathinfo($episodeFile);
+    $xmlFile = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '.xml';
+
+    $filesToDelete = [
+        $episodeFile,
+        $xmlFile
+    ];
+
+    if (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg')) {
+        $filesToDelete[] = $imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.jpg';
+    } elseif (file_exists($imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.png')) {
+        $filesToDelete[] = $imagesDir . pathinfo($episodeFile, PATHINFO_FILENAME) . '.png';
+    }
+
+    // Go through the list of files and delete each one
+    foreach ($filesToDelete as $file) {
+        if (!unlink($file)) {
+            return false;
+        }
+    }
+    return true;
+}

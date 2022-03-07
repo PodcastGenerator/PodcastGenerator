@@ -28,20 +28,11 @@ if (!file_exists($targetfile)) {
 // Delete episode
 if (isset($_GET['delete'])) {
     checkToken();
-    // Delete the audio file
-    unlink($targetfile);
-    // Delete the XML file
-    unlink($targetfile_without_ext . '.xml');
-    // Delete the image file if it exists
-    if (
-        file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg')
-        || file_exists($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png')
-    ) {
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.jpg');
-        unlink($config['absoluteurl'] . $config['img_dir'] . pathinfo($targetfile, PATHINFO_FILENAME) . '.png');
-    }
+
+    deleteEpisode($targetfile, $config);
     generateRSS();
     pingServices();
+
     header('Location: ' . $config['url'] . $config['indexfile']);
     die();
 }
