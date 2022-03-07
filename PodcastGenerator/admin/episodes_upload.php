@@ -165,9 +165,17 @@ if (count($_POST) > 0) {
         unlink($targetfile);
         goto error;
     }
+
+    // Order of precedence for episode art:
+    // 1. The episode cover uploaded on the form
+    // 2. The cover art embedded in the episode mp3
+    // 3. The show cover art
+
     // add the Episode Cover
     $episodecoverfileURL = '';
     if (!empty($_FILES['episodecover']['name'])) {
+        // User has uploaded a specific cover image
+
         $coverfile = basename($_FILES['episodecover']['name']);
         $episodecoverfile = makeEpisodeFilename($imagesDir, $_POST['date'], $coverfile);
 
@@ -212,7 +220,40 @@ if (count($_POST) > 0) {
         }
 
         $episodecoverfileURL = htmlspecialchars($config['url'] . str_replace('../', '', $episodecoverfile));
-    } 
+    } elseif (isset($fileinfo["comments"]["picture"])) {
+        // Episode file has an embedded image
+
+        $covermimetype = $fileinfo["comments"]["picture"][0]["image_mime"];
+        $imgext = null;
+        foreach ($validTypes->mediaFile as $item) {
+            if (strpos($item->mimetype, 'image/') !== 0) {
+                continue; // skip non-image MIME types
+            }
+            if ($imgMime == $item->mimetype) {
+                $coverExt = $item->extension;
+                break;
+            }
+        }
+        if (empty($coverExt)) {
+            $error = sprintf(_('%s has unsupported MIME type %s'), _('Embedded cover art'), $covermimetype);
+            goto error;
+        }
+
+        $episodecoverfile = makeEpisodeFilename(
+            $imagesDir,
+            $_POST['date'],
+            pathinfo($filename, PATHINFO_FILENAME) . '.' . $imgext
+        );
+
+        if (!file_put_contents($episodecoverfile, $fileinfo["comments"]["picture"][0]["data"])) {
+            $error = _('The embedded cover art file was not saved successfully');
+            // Delete the episode file like we do when there's an error with it
+            unlink($targetfile);
+            goto error;
+        }
+
+        $episodecoverfileURL = htmlspecialchars($config['url'] . $config['img_dir'] . basename($episodecoverfile));
+    }
 
     // build categories list from post data
     $categories = array();
@@ -265,12 +306,7 @@ if (count($_POST) > 0) {
 	</episode>
 </PodcastGenerator>';
     file_put_contents($targetfile_without_ext . '.xml', $episodefeed);
-    // Write image if set
-    if (isset($fileinfo["comments"]["picture"])) {
-        $imgext = ($fileinfo["comments"]["picture"][0]["image_mime"] == "image/png") ? 'png' : 'jpg';
-        $img_filename = $config["absoluteurl"] . $config["img_dir"] . pathinfo($targetfile, PATHINFO_FILENAME) . '.' . $imgext;
-        file_put_contents($img_filename, $fileinfo["comments"]["picture"][0]["data"]);
-    }
+
     generateRSS();
     pingServices();
     $success = true;
