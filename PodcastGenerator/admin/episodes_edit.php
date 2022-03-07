@@ -388,7 +388,7 @@ $selected_cats = array(
                     <div class="form-group">
                         <?= _('Current Cover'); ?>:<br>
                         <img src="<?= htmlspecialchars($coverart) ?>"
-                             style="max-height: 150px; max-width: 150px;">
+                             style="max-height: 350px; max-width: 350px;">
                         <hr>
                         <label for="episodecover"><?= _('Upload new cover') ?>:</label><br>
                         <input type="file" id="episodecover" name="episodecover"><br>
