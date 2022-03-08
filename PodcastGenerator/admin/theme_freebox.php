@@ -75,7 +75,7 @@ $freebox = getFreebox('../');
         <form action="theme_freebox.php?change=1" method="POST">
             <?php if ($freebox != null) { ?>
                 <h3><?= _('Change Freebox content') ?></h3>
-                <label for="content">?= _('Content') ?>:</label><br>
+                <label for="content"><?= _('Content') ?>:</label><br>
                 <textarea rows="10" cols="100"
                         id="content" name="content"><?= htmlspecialchars(getFreebox('../')) ?></textarea>
                 <br>
