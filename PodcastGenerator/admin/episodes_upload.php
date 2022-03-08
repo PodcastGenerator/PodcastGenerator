@@ -236,7 +236,7 @@ if (count($_POST) > 0) {
             }
         }
         if (empty($coverExt)) {
-            $error = sprintf(_('%s has unsupported MIME type %s'), _('Embedded cover art'), $covermimetype);
+            $error = sprintf(_('%s has unsupported MIME content type %s'), _('Embedded cover art'), $covermimetype);
             goto error;
         }
 
