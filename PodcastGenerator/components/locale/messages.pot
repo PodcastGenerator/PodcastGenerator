@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-06 22:37-0500\n"
+"POT-Creation-Date: 2022-03-07 20:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,6 +178,7 @@ msgstr ""
 #: PodcastGenerator/admin/episodes_edit.php:202
 #: PodcastGenerator/admin/episodes_upload.php:159
 #: PodcastGenerator/admin/episodes_upload.php:214
+#: PodcastGenerator/admin/episodes_upload.php:239
 #, php-format
 msgid "%s has unsupported MIME content type %s"
 msgstr ""
@@ -397,11 +398,6 @@ msgstr ""
 
 #: PodcastGenerator/admin/episodes_upload.php:146
 msgid "The uploaded episode file is not readable (permission error)"
-msgstr ""
-
-#: PodcastGenerator/admin/episodes_upload.php:239
-#, php-format
-msgid "%s has unsupported MIME type %s"
 msgstr ""
 
 #: PodcastGenerator/admin/episodes_upload.php:239
@@ -1045,6 +1041,10 @@ msgstr ""
 
 #: PodcastGenerator/admin/theme_freebox.php:77
 msgid "Change Freebox content"
+msgstr ""
+
+#: PodcastGenerator/admin/theme_freebox.php:78
+msgid "Content"
 msgstr ""
 
 #: PodcastGenerator/themes/default/categories.php:26
