@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
 if (isset($_GET["create"])) {
     $p = $_POST;
     if (empty($p["username"]) || empty($p["password"]) || empty($p["password2"])) {
-        $error = "Emtyp fields";
+        $error = "Empty fields";
     }
     if (!isset($error)) {
         if ($p["password"] != $p["password2"]) {
