@@ -37,6 +37,9 @@ jobs:
       run: composer install --prefer-dist --no-dev --no-progress
       working-directory: PodcastGenerator
 
+    - name: Compile message catalogs
+      uses: whtsky/msgfmt-action@6b2181f051b002182d01a1e1f1aff216230c5a4d
+
     # Take advantage of the fact that GitHub will zip everything up in an
     # individual upload-artifact action. This means we don't have to rely on
     # another action to build the zip package.
@@ -49,3 +52,4 @@ jobs:
           **/*
           !.git
           !.github
+          !.vscode
