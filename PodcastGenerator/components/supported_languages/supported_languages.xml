@@ -9,7 +9,23 @@
 		<name>Deutsch</name>
 	</language>
 	<language>
+		<code>et_EE</code>
+		<name>Eesti keel</name>
+	</language>
+	<language>
 		<code>es_ES</code>
 		<name>Español</name>
+	</language>
+	<language>
+		<code>fr_FR</code>
+		<name>Français</name>
+	</language>
+	<language>
+		<code>sv_SE</code>
+		<name>Svenska</name>
+	</language>
+	<language>
+		<code>he_IL</code>
+		<name>עִבְרִית</code>
 	</language>
 </PodcastGenerator>

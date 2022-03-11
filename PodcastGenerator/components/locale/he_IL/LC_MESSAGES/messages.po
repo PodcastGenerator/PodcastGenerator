@@ -3,97 +3,102 @@
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Samuel Liebermann <liebermann@gmail.com>, 2022
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-07 20:03-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2022-03-05 22:57+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2022\n"
+"Language-Team: Hebrew (Israel) (https://www.transifex.com/podcast-generator/teams/14574/he_IL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "This Podcast has no password"
+msgstr "להסכת זה אין סיסמה"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
-msgstr "Already signed in"
+msgstr "כבר נכנסת"
 
 #: PodcastGenerator/auth.php:24
 msgid "Success"
-msgstr "Success"
+msgstr "הצלחה"
 
 #: PodcastGenerator/auth.php:26
 msgid "Invalid password"
-msgstr "Invalid password"
+msgstr "סיסמה שגויה"
 
 #: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
 msgid "Password required"
-msgstr "Password required"
+msgstr "נדרשת סיסמה"
 
 #: PodcastGenerator/auth.php:47
 msgid "Enter Password"
-msgstr "Enter Password"
+msgstr "נא למלא סיסמה"
 
 #: PodcastGenerator/auth.php:49
 msgid "Login"
-msgstr "Login"
+msgstr "כניסה"
 
 #: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
 #: PodcastGenerator/index.php:17
 msgid "Authentication required"
-msgstr "Authentication required"
+msgstr "נדרשת הזדהות"
 
 #: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:59
 msgid "More"
-msgstr "More"
+msgstr "עוד"
 
 #: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:60
 msgid "Download"
-msgstr "Download"
+msgstr "הורדה"
 
 #: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:61
 msgid "Edit/Delete (Admin)"
-msgstr "Edit/Delete (Admin)"
+msgstr "עריכה/מחיקה (הנהלה)"
 
 #: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:62
 msgid "Filetype"
-msgstr "Filetype"
+msgstr "סוג קובץ"
 
 #: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:63
 msgid "Size"
-msgstr "Size"
+msgstr "גודל"
 
 #: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:64
 msgid "Duration"
-msgstr "Duration"
+msgstr "משך"
 
 #: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:75
 msgid "Categories"
-msgstr "Categories"
+msgstr "קטגוריות"
 
 #: PodcastGenerator/index.php:67
 msgid "No episodes found with that search term"
-msgstr "No episodes found with that search term"
+msgstr "לא נמצאו פרקים עם ביטוי החיפוש הזה"
 
 #: PodcastGenerator/index.php:69
 msgid "No episodes uploaded yet"
-msgstr "No episodes uploaded yet"
+msgstr "טרם הועלו פרקים"
 
 #: PodcastGenerator/index.php:74
 msgid "Search"
-msgstr "Search"
+msgstr "חיפוש"
 
 #: PodcastGenerator/admin/episodes_bulk.php:48
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"
-msgstr "Bulk download episodes"
+msgstr "הורדת פרקים במרוכז"
 
 #: PodcastGenerator/admin/episodes_bulk.php:51
 msgid ""
@@ -102,79 +107,79 @@ msgid ""
 "        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
 "        After this paste the following (long) command into the terminal/cmd.exe and press enter."
 msgstr ""
-"If you want to bulk download all episodes, you need to have curl installed.\n"
-"        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
-"        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
-"        After this paste the following (long) command into the terminal/cmd.exe and press enter."
+"כדי להוריד באופן מרוכז את כל הפרקים, עליך להיעזר ב־curl.\n"
+"         ב־Windows 10,‏ macOS וברוב הפצות הלינוקס הכלי הזה כבר מותקן מראש.\n"
+"         נא לפתוח את תכנית המסוף שלך ב־macOS או בלינוקס או לפתוח את תפריט ההתחלה ולחפש אחר cmd.exe ב־Windows.\n"
+"        לאחר מכן נא להדביק את הפקודה (הארוכה) הבאה למסוף/cmd.exe וללחוץ על enter."
 
 #: PodcastGenerator/admin/episodes_edit.php:14
 msgid "No name given"
-msgstr "No name given"
+msgstr "לא ניתן שם"
 
 #: PodcastGenerator/admin/episodes_edit.php:26
 #: PodcastGenerator/themes/default/singleepisode.php:11
 msgid "Episode does not exist"
-msgstr "Episode does not exist"
+msgstr "פרק לא קיים"
 
 #: PodcastGenerator/admin/episodes_edit.php:57
 #: PodcastGenerator/admin/episodes_upload.php:26
 #: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:54
 msgid "Missing fields"
-msgstr "Missing fields"
+msgstr "שדות חסרים"
 
 #: PodcastGenerator/admin/episodes_edit.php:69
 #: PodcastGenerator/admin/episodes_upload.php:38
 msgid "Too many categories selected (max: 3)"
-msgstr "Too many categories selected (max: 3)"
+msgstr "יותר מדי קטגוריות נבחרו (עד 3)"
 
 #: PodcastGenerator/admin/episodes_edit.php:76
 #: PodcastGenerator/admin/episodes_upload.php:52
 msgid "Invalid Author E-Mail provided"
-msgstr "Invalid Author E-Mail provided"
+msgstr "כתובת דוא״ל המחבר שסופקה שגויה"
 
 #: PodcastGenerator/admin/episodes_edit.php:84
 #: PodcastGenerator/admin/episodes_edit.php:89
 #: PodcastGenerator/admin/episodes_upload.php:60
 #: PodcastGenerator/admin/episodes_upload.php:65
 msgid "Invalid Episode Number provided"
-msgstr "Invalid Episode Number provided"
+msgstr "מספר הפרק שצוין שגוי"
 
 #: PodcastGenerator/admin/episodes_edit.php:95
 #: PodcastGenerator/admin/episodes_edit.php:100
 #: PodcastGenerator/admin/episodes_upload.php:71
 #: PodcastGenerator/admin/episodes_upload.php:76
 msgid "Invalid Season Number provided"
-msgstr "Invalid Season Number provided"
+msgstr "מספר העונה שצוין שגוי"
 
 #: PodcastGenerator/admin/episodes_edit.php:106
 #: PodcastGenerator/admin/episodes_upload.php:82
 msgid "Size of the 'Short Description' exceeded"
-msgstr "Size of the 'Short Description' exceeded"
+msgstr "חרגת מאורך התיאור המקוצר"
 
 #: PodcastGenerator/admin/episodes_edit.php:114
 #: PodcastGenerator/admin/episodes_upload.php:90
 #: PodcastGenerator/admin/podcast_details.php:34
 msgid "Custom tags are not well-formed"
-msgstr "Custom tags are not well-formed"
+msgstr "התגיות המותאמות אינן בצורה נכונה"
 
 #: PodcastGenerator/admin/episodes_edit.php:176
 #: PodcastGenerator/admin/episodes_upload.php:134
 #: PodcastGenerator/admin/episodes_upload.php:188
 #, php-format
 msgid "%s has invalid file extension"
-msgstr "%s has invalid file extension"
+msgstr "סיומת הקובץ של %s שגויה"
 
 #: PodcastGenerator/admin/episodes_edit.php:181
 #: PodcastGenerator/admin/episodes_upload.php:139
 #: PodcastGenerator/admin/episodes_upload.php:193
 #, php-format
 msgid "%s was not uploaded successfully"
-msgstr "%s was not uploaded successfully"
+msgstr "%s לא הועלה בהצלחה"
 
 #: PodcastGenerator/admin/episodes_edit.php:187
 #: PodcastGenerator/admin/episodes_upload.php:199
 msgid "The uploaded cover art file is not readable (permission error)"
-msgstr "The uploaded cover art file is not readable (permission error)"
+msgstr "קובץ העטיפה שהועלה אינו קריא (שגיאות הרשאה)"
 
 #: PodcastGenerator/admin/episodes_edit.php:202
 #: PodcastGenerator/admin/episodes_upload.php:159
@@ -182,27 +187,27 @@ msgstr "The uploaded cover art file is not readable (permission error)"
 #: PodcastGenerator/admin/episodes_upload.php:239
 #, php-format
 msgid "%s has unsupported MIME content type %s"
-msgstr "%s has unsupported MIME content type %s"
+msgstr "ל־%s יש סוג תוכן MIME בלתי נתמך %s"
 
 #: PodcastGenerator/admin/episodes_edit.php:317
 #: PodcastGenerator/admin/episodes_edit.php:334
 msgid "Edit Episode"
-msgstr "Edit Episode"
+msgstr "עריכת פרק"
 
 #: PodcastGenerator/admin/episodes_edit.php:342
 #: PodcastGenerator/admin/episodes_upload.php:362
 msgid "Main Information"
-msgstr "Main Information"
+msgstr "מידע ראשי"
 
 #: PodcastGenerator/admin/episodes_edit.php:346
 #: PodcastGenerator/admin/episodes_upload.php:369
 msgid "Title"
-msgstr "Title"
+msgstr "כותרת"
 
 #: PodcastGenerator/admin/episodes_edit.php:351
 #: PodcastGenerator/admin/episodes_upload.php:373
 msgid "Short Description"
-msgstr "Short Description"
+msgstr "תיאור קצר"
 
 #: PodcastGenerator/admin/episodes_edit.php:355
 #: PodcastGenerator/admin/episodes_edit.php:475
@@ -210,244 +215,244 @@ msgstr "Short Description"
 #: PodcastGenerator/admin/episodes_upload.php:469
 #, php-format
 msgid "%d characters remaining"
-msgstr "%d characters remaining"
+msgstr "נותרו %d תווים"
 
 #: PodcastGenerator/admin/episodes_edit.php:358
 #: PodcastGenerator/admin/episodes_upload.php:379
 msgid "Category"
-msgstr "Category"
+msgstr "קטגוריה"
 
 #: PodcastGenerator/admin/episodes_edit.php:359
 #: PodcastGenerator/admin/episodes_upload.php:380
 msgid "You can select up to 3 categories"
-msgstr "You can select up to 3 categories"
+msgstr "ניתן לבחור עד 3 קטגוריות"
 
 #: PodcastGenerator/admin/episodes_edit.php:375
 #: PodcastGenerator/admin/episodes_upload.php:390
 msgid "Publication Date"
-msgstr "Publication Date"
+msgstr "תאריך פרסום"
 
 #: PodcastGenerator/admin/episodes_edit.php:376
 #: PodcastGenerator/admin/episodes_upload.php:391
 msgid "If you select a date in the future, it will be published then"
-msgstr "If you select a date in the future, it will be published then"
+msgstr "אם ייבחר תאריך עתידי, הפרסום יבוצע בתאריך זה"
 
 #: PodcastGenerator/admin/episodes_edit.php:377
 #: PodcastGenerator/admin/episodes_upload.php:392
 msgid "Date"
-msgstr "Date"
+msgstr "תאריך"
 
 #: PodcastGenerator/admin/episodes_edit.php:380
 #: PodcastGenerator/admin/episodes_upload.php:394
 msgid "Time"
-msgstr "Time"
+msgstr "זמן"
 
 #: PodcastGenerator/admin/episodes_edit.php:386
 #: PodcastGenerator/admin/episodes_upload.php:399
 msgid "Extra Information"
-msgstr "Extra Information"
+msgstr "מידע נוסף"
 
 #: PodcastGenerator/admin/episodes_edit.php:389
 #: PodcastGenerator/admin/store_cover.php:92
 msgid "Current Cover"
-msgstr "Current Cover"
+msgstr "תמונה ייצוגית נוכחית"
 
 #: PodcastGenerator/admin/episodes_edit.php:393
 #: PodcastGenerator/admin/store_cover.php:97
 msgid "Upload new cover"
-msgstr "Upload new cover"
+msgstr "העלאת תמונה ייצוגית חדשה"
 
 #: PodcastGenerator/admin/episodes_edit.php:397
 #: PodcastGenerator/admin/episodes_upload.php:406
 msgid "Long Description"
-msgstr "Long Description"
+msgstr "תיאור ארוך"
 
 #: PodcastGenerator/admin/episodes_edit.php:403
 #: PodcastGenerator/admin/episodes_upload.php:410
 msgid "Episode Number"
-msgstr "Episode Number"
+msgstr "מספר הפרק"
 
 #: PodcastGenerator/admin/episodes_edit.php:409
 #: PodcastGenerator/admin/episodes_upload.php:414
 msgid "Season Number"
-msgstr "Season Number"
+msgstr "מספר העונה"
 
 #: PodcastGenerator/admin/episodes_edit.php:415
 #: PodcastGenerator/admin/episodes_upload.php:418
 msgid "iTunes Keywords"
-msgstr "iTunes Keywords"
+msgstr "מילות מפתח עבור iTunes"
 
 #: PodcastGenerator/admin/episodes_edit.php:422
 msgid "Explicit Content"
-msgstr "Explicit Content"
+msgstr "תוכן בוטה"
 
 #: PodcastGenerator/admin/episodes_edit.php:426
 #: PodcastGenerator/admin/episodes_upload.php:428
 #: PodcastGenerator/core/html_helpers.php:39
 msgid "Yes"
-msgstr "Yes"
+msgstr "כן"
 
 #: PodcastGenerator/admin/episodes_edit.php:431
 #: PodcastGenerator/admin/episodes_upload.php:433
 #: PodcastGenerator/core/html_helpers.php:40
 msgid "No"
-msgstr "No"
+msgstr "לא"
 
 #: PodcastGenerator/admin/episodes_edit.php:436
 #: PodcastGenerator/admin/episodes_upload.php:438
 msgid "Author"
-msgstr "Author"
+msgstr "מחבר"
 
 #: PodcastGenerator/admin/episodes_edit.php:447
 #: PodcastGenerator/admin/episodes_upload.php:447
 msgid "Custom Tags"
-msgstr "Custom Tags"
+msgstr "תגיות מותאמות אישית"
 
 #: PodcastGenerator/admin/episodes_edit.php:457
 msgid "Save Changes"
-msgstr "Save Changes"
+msgstr "שמירת שינויים"
 
 #: PodcastGenerator/admin/episodes_edit.php:462
 msgid "Delete Episode"
-msgstr "Delete Episode"
+msgstr "מחיקת פרק"
 
 #: PodcastGenerator/admin/episodes_edit.php:465
 #: PodcastGenerator/admin/episodes_manage_cats.php:99
 #: PodcastGenerator/admin/pg_users.php:143
 msgid "Delete"
-msgstr "Delete"
+msgstr "מחיקה"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:19
 #, php-format
 msgid "Added %d new episode(s)"
-msgstr "Added %d new episode(s)"
+msgstr "נוספו %d פרקים חדשים"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:21
 msgid "No new episodes were found"
-msgstr "No new episodes were found"
+msgstr "לא נמצאו פרקים חדשים"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:30
 msgid "FTP Feature"
-msgstr "FTP Feature"
+msgstr "תכונת FTP"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:44
 msgid "FTP Auto Indexing"
-msgstr "FTP Auto Indexing"
+msgstr "סידור אוטומטי של FTP באינדקס"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:48
 msgid "Begin"
-msgstr "Begin"
+msgstr "התחלה"
 
 #: PodcastGenerator/admin/episodes_list.php:44
 #: PodcastGenerator/admin/episodes_list.php:58
 #: PodcastGenerator/admin/navbar.php:13
 msgid "Episodes"
-msgstr "Episodes"
+msgstr "פרקים"
 
 #: PodcastGenerator/admin/episodes_list.php:59
 msgid "Click on the title of the podcast you want to edit/delete."
-msgstr "Click on the title of the podcast you want to edit/delete."
+msgstr "נא ללחוץ על כותרת ההסכת המיועד לעריכה/מחיקה."
 
 #: PodcastGenerator/admin/episodes_list.php:60
 msgid ""
 "Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
 "<span style='color:green;'>green</span> have been posted."
 msgstr ""
-"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
-"<span style='color:green;'>green</span> have been posted."
+"תאריכים ב<span style='color:blue;'>כחול</span> הם עתידיים. תאריכים ב<span "
+"style='color:green;'>ירוק</span> כבר פורסמו."
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:43
 msgid "Category already exists"
-msgstr "Category already exists"
+msgstr "הקטגוריה כבר קיימת"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:70
 #: PodcastGenerator/admin/episodes_manage_cats.php:84
 #: PodcastGenerator/admin/navbar.php:18
 msgid "Manage categories"
-msgstr "Manage categories"
+msgstr "ניהול קטגוריות"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:85
 msgid "Add category"
-msgstr "Add category"
+msgstr "הוספת קטגוריה"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:87
 #: PodcastGenerator/admin/episodes_manage_cats.php:88
 msgid "Category Name"
-msgstr "Category Name"
+msgstr "שם הקטגוריה"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:90
 msgid "Add"
-msgstr "Add"
+msgstr "הוספה"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:92
 msgid "Current Categories"
-msgstr "Current Categories"
+msgstr "קטגוריות זמינות"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:20
 msgid "Regenerate Feed"
-msgstr "Regenerate Feed"
+msgstr "יצירת ההזנה מחדש"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:34
 msgid "Successfully regenerated RSS feed"
-msgstr "Successfully regenerated RSS feed"
+msgstr "הזנת ה־RSS נוצרה מחדש בהצלחה"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:35
 msgid "Return"
-msgstr "Return"
+msgstr "חזרה"
 
 #: PodcastGenerator/admin/episodes_upload.php:104
 msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
-msgstr "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr "שם הקובץ שגוי, מותר רק A עד Z,‏ a עד z ונקודות"
 
 #: PodcastGenerator/admin/episodes_upload.php:146
 msgid "The uploaded episode file is not readable (permission error)"
-msgstr "The uploaded episode file is not readable (permission error)"
+msgstr "קובץ הפרק שהועלה אינו קריא (שגיאת הרשאות"
 
 #: PodcastGenerator/admin/episodes_upload.php:239
 msgid "Embedded cover art"
-msgstr "Embedded cover art"
+msgstr "עטיפת אלבום מוטמעת"
 
 #: PodcastGenerator/admin/episodes_upload.php:250
 msgid "The embedded cover art file was not saved successfully"
-msgstr "The embedded cover art file was not saved successfully"
+msgstr "קובץ עטיפת האלבום לא נשמר בהצלחה"
 
 #: PodcastGenerator/admin/episodes_upload.php:333
 #: PodcastGenerator/admin/episodes_upload.php:350
 msgid "Upload Episode"
-msgstr "Upload Episode"
+msgstr "העלאת פרק"
 
 #: PodcastGenerator/admin/episodes_upload.php:353
 #, php-format
 msgid "\"%s\" uploaded successfully"
-msgstr "\"%s\" uploaded successfully"
+msgstr "„%s” הועלה בהצלחה"
 
 #: PodcastGenerator/admin/episodes_upload.php:365
 msgid "File"
-msgstr "File"
+msgstr "קובץ"
 
 #: PodcastGenerator/admin/episodes_upload.php:402
 msgid "Episode Cover"
-msgstr "Episode Cover"
+msgstr "עטיפת פרק"
 
 #: PodcastGenerator/admin/episodes_upload.php:424
 msgid "Explicit content"
-msgstr "Explicit content"
+msgstr "תוכן בוטה"
 
 #: PodcastGenerator/admin/episodes_upload.php:457
 msgid "Upload episode"
-msgstr "Upload episode"
+msgstr "העלאת פרק"
 
 #: PodcastGenerator/admin/forgot.php:4
 msgid "Password Reset"
-msgstr "Password Reset"
+msgstr "איפוס סיסמה"
 
 #: PodcastGenerator/admin/forgot.php:12
 msgid "Reset your password"
-msgstr "Reset your password"
+msgstr "איפוס סיסמה"
 
 #: PodcastGenerator/admin/forgot.php:13
 msgid "No password, no problem!"
-msgstr "No password, no problem!"
+msgstr "אין סיסמה, אין בעיות!"
 
 #: PodcastGenerator/admin/forgot.php:15
 msgid ""
@@ -455,9 +460,9 @@ msgid ""
 "the danger of this is that as long as this file is online, anyone can reset "
 "this password so this file shouldn't be online that long."
 msgstr ""
-"We offer a tool which allows you to easily recover your password. However, "
-"the danger of this is that as long as this file is online, anyone can reset "
-"this password so this file shouldn't be online that long."
+"אנו מציעים כלי שמאפשר לך לשחזר את הסיסמה שלך. עם זאת, הסיכון הוא שכל עוד "
+"הקובץ הזה נגיש לאינטרנט, לכל אחד יש אפשרות לאפס את הסיסמה, לכן לא כדאי "
+"שהקובץ הזה יהיה נגיש למשך זמן רב."
 
 #: PodcastGenerator/admin/forgot.php:17
 #, php-format
@@ -466,9 +471,8 @@ msgid ""
 "%s folder called %s. Upload this file to into the admin directory with the "
 "name %s"
 msgstr ""
-"In the ZIP file of this version which you downloaded there is a file in the "
-"%s folder called %s. Upload this file to into the admin directory with the "
-"name %s"
+"בקובץ ה־ZIP שהורדת של הגרסה הזו יש קובץ בתיקייה %s שנקרא %s. יש להעלות את "
+"הקובץ הזה לתיקייה admin (ניהול) עם השם %s"
 
 #: PodcastGenerator/admin/forgot.php:18
 msgid ""
@@ -476,210 +480,207 @@ msgid ""
 "Podcast Generator ever released since 2.5 are available on the Podcast "
 "Generator Homepage."
 msgstr ""
-"If you no don't have this ZIP file anymore, don't worry! All versions of "
-"Podcast Generator ever released since 2.5 are available on the Podcast "
-"Generator Homepage."
+"אם אין לך את קובץ ה־ZIP הזה עוד, אל דאגה! כל הגרסאות של יצרן ההסכתים שאי פעם"
+" יצאו לאור מאז גרסה 2.5 זמינות באתר הבית של יצרן ההסכתים."
 
 #: PodcastGenerator/admin/index.php:37
 msgid "Welcome to your Podcast Generator Admin Interface"
-msgstr "Welcome to your Podcast Generator Admin Interface"
+msgstr "ברוך בואך למנשק הניהול של יצרן ההסכתים"
 
 #: PodcastGenerator/admin/login.php:24
 msgid "Login disabled for security reasons"
-msgstr "Login disabled for security reasons"
+msgstr "הכניסה הושבתה מטעמי אבטחת מידע"
 
 #: PodcastGenerator/admin/login.php:38
 msgid "Invalid username or password"
-msgstr "Invalid username or password"
+msgstr "שם המשתמש או הסיסמה שגויים"
 
 #: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:103
 #: PodcastGenerator/admin/pg_users.php:120
 msgid "Username"
-msgstr "Username"
+msgstr "שם משתמש"
 
 #: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:106
 msgid "Password"
-msgstr "Password"
+msgstr "סיסמה"
 
 #: PodcastGenerator/admin/login.php:70
 msgid "Forgot Password?"
-msgstr "Forgot Password?"
+msgstr "שכחת סיסמה?"
 
 #: PodcastGenerator/admin/login.php:72
 msgid "Sign In"
-msgstr "Sign In"
+msgstr "כניסה"
 
 #: PodcastGenerator/admin/navbar.php:3
 msgid "Toggle navigation"
-msgstr "Toggle navigation"
+msgstr "הצגה/הסתרה של ניווט"
 
 #: PodcastGenerator/admin/navbar.php:16
 msgid "Upload New Episodes"
-msgstr "Upload New Episodes"
+msgstr "העלאת פרקים חדשים"
 
 #: PodcastGenerator/admin/navbar.php:17
 msgid "View All Episodes"
-msgstr "View All Episodes"
+msgstr "הצגת כל הפרקים"
 
 #: PodcastGenerator/admin/navbar.php:19
 msgid "FTP Feature (Auto Indexing)"
-msgstr "FTP Feature (Auto Indexing)"
+msgstr "תכונת FTP (סידור אוטומטי באינדקס)"
 
 #: PodcastGenerator/admin/navbar.php:21
 msgid "Manually regenerate RSS feed"
-msgstr "Manually regenerate RSS feed"
+msgstr "לייצר הזנת RSS מחדש ידנית"
 
 #: PodcastGenerator/admin/navbar.php:26
 msgid "Themes and aspect"
-msgstr "Themes and aspect"
+msgstr "ערכות עיצוב ונקודת מבט"
 
 #: PodcastGenerator/admin/navbar.php:29
 msgid "Change Theme"
-msgstr "Change Theme"
+msgstr "החלפת ערכת עיצוב"
 
 #: PodcastGenerator/admin/navbar.php:30
 msgid "Customize your Freebox"
-msgstr "Customize your Freebox"
+msgstr "התאמת ה־Freebox שלך"
 
 #: PodcastGenerator/admin/navbar.php:31
 #: PodcastGenerator/admin/theme_buttons.php:115
 msgid "Change Buttons"
-msgstr "Change Buttons"
+msgstr "שינוי כפתורים"
 
 #: PodcastGenerator/admin/navbar.php:36
 msgid "Podcast Platform Settings"
-msgstr "Podcast Platform Settings"
+msgstr "הגדרות פלטפורמת ההסכתים"
 
 #: PodcastGenerator/admin/navbar.php:39
 msgid "Change Cover Art"
-msgstr "Change Cover Art"
+msgstr "החלפת התמונה הייצוגית"
 
 #: PodcastGenerator/admin/navbar.php:40
 msgid "Change Podcast Category"
-msgstr "Change Podcast Category"
+msgstr "שינוי קטגוריית ההסכת"
 
 #: PodcastGenerator/admin/navbar.php:45
 #: PodcastGenerator/admin/podcast_details.php:79
 msgid "Podcast Details"
-msgstr "Podcast Details"
+msgstr "פרטי ההסכת"
 
 #: PodcastGenerator/admin/navbar.php:48
 msgid "Change Podcast details"
-msgstr "Change Podcast details"
+msgstr "שינוי פרטי ההסכת"
 
 #: PodcastGenerator/admin/navbar.php:53
 msgid "Podcast Generator"
-msgstr "Podcast Generator"
+msgstr "מחולל הסכתים"
 
 #: PodcastGenerator/admin/navbar.php:56
 msgid "Change Podcast Generator Config"
-msgstr "Change Podcast Generator Config"
+msgstr "שינוי הגדרות יצרן ההסכתים"
 
 #: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:70
 #: PodcastGenerator/admin/pg_users.php:84
 msgid "Manage users"
-msgstr "Manage users"
+msgstr "ניהול משתמשים"
 
 #: PodcastGenerator/admin/navbar.php:58
 #: PodcastGenerator/admin/pg_integrations.php:84
 msgid "Manage integrations"
-msgstr "Manage integrations"
+msgstr "ניהול השילובים"
 
 #: PodcastGenerator/admin/navbar.php:64
 msgid "View Podcast"
-msgstr "View Podcast"
+msgstr "הצגת הסכת"
 
 #: PodcastGenerator/admin/pg_config.php:60
 msgid "Timestamp"
-msgstr "Timestamp"
+msgstr "חותמת זמן"
 
 #: PodcastGenerator/admin/pg_config.php:61
 msgid "Season and episode number"
-msgstr "Season and episode number"
+msgstr "מספרי עונה ופרק"
 
 #: PodcastGenerator/admin/pg_config.php:69
 #: PodcastGenerator/admin/pg_integrations.php:70
 msgid "Podcast Generator Configuration"
-msgstr "Podcast Generator Configuration"
+msgstr "הגדרות יצרן ההסכתים"
 
 #: PodcastGenerator/admin/pg_config.php:83
 msgid "Change Podcast Generator Configuration"
-msgstr "Change Podcast Generator Configuration"
+msgstr "החלפת הגדרות יצרן ההסכתים"
 
 #: PodcastGenerator/admin/pg_config.php:85
 msgid "Enable Audio and Video Player"
-msgstr "Enable Audio and Video Player"
+msgstr "הפעלת נגן שמע ווידאו"
 
 #: PodcastGenerator/admin/pg_config.php:86
 msgid "Enable streaming in web browser"
-msgstr "Enable streaming in web browser"
+msgstr "הפעלת הזרמה דרך הדפדפן"
 
 #: PodcastGenerator/admin/pg_config.php:91
 #: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
-msgstr "Enable Freebox"
+msgstr "הפעלת Freebox"
 
 #: PodcastGenerator/admin/pg_config.php:93
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
 msgstr ""
-"Freebox allows you to write freely what you wish, add links or text through "
-"a visual editor in the admin section."
+"Freebox מאפשר לך לכתוב מה שבא לך, להוסיף קישורים או טקסט בחופשיות דרך העורך "
+"החזותי באזור הניהול."
 
 #: PodcastGenerator/admin/pg_config.php:99
 msgid "Enable categories"
-msgstr "Enable categories"
+msgstr "הפעלת קטגוריות"
 
 #: PodcastGenerator/admin/pg_config.php:100
 msgid "Enable categories feature to make thematic lists of your podcasts."
-msgstr "Enable categories feature to make thematic lists of your podcasts."
+msgstr ""
+"יש להפעיל את תכונת הקטגוריות כדי ליצור רשימות של ההסכתים שלך לפי נושאים."
 
 #: PodcastGenerator/admin/pg_config.php:105
 msgid "Enable custom tag input"
-msgstr "Enable custom tag input"
+msgstr "הפעלת קלט תגיות בהתאמה אישית"
 
 #: PodcastGenerator/admin/pg_config.php:107
 msgid ""
 "Enable the ability to add custom RSS tags to your podcast feed and "
 "individual episodes."
-msgstr ""
-"Enable the ability to add custom RSS tags to your podcast feed and "
-"individual episodes."
+msgstr "לאפשר להוסיף תגיות RSS להזנת ההסכתים שלך ולפרקים באופן פרטני."
 
 #: PodcastGenerator/admin/pg_config.php:113
 msgid "Episode sort order"
-msgstr "Episode sort order"
+msgstr "סדר פרקים"
 
 #: PodcastGenerator/admin/pg_config.php:114
 msgid "Choose how episodes are ordered on the website and in the RSS feed."
-msgstr "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr "נא לבחור איך יסודרו הפרקים באתר ובהזנת ה־RSS."
 
 #: PodcastGenerator/admin/pg_config.php:119
 msgid "Time zone"
-msgstr "Time zone"
+msgstr "אזור זמן"
 
 #: PodcastGenerator/admin/pg_config.php:120
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
-msgstr ""
-"Select time zone for displaying the time which episodes have been released."
+msgstr "נא לבחור את אזור הזמן להצגת השעה בה הופצו הפרקים."
 
 #: PodcastGenerator/admin/pg_config.php:136
 msgid "Use cron to regenerate the RSS feed"
-msgstr "Use cron to regenerate the RSS feed"
+msgstr "להשתמש ב־cron כדי לייצר את הזנות ה־RSS מחדש"
 
 #: PodcastGenerator/admin/pg_config.php:141
 msgid "Password Protection for the web pages"
-msgstr "Password Protection for the web pages"
+msgstr "הגנה בססמה על דפי האתר"
 
 #: PodcastGenerator/admin/pg_config.php:143
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
 msgstr ""
-"Leave empty for no password, keep in mind that the feed and the audio files "
-"will still be accessible no matter if a password is set or not"
+"שדה ריק יבטל את הסיסמה, נא לשים לב שההזנה וקובצי השמע עדיין יהיו נגישים בין "
+"אם הוגדרה סיסמה או לא"
 
 #: PodcastGenerator/admin/pg_config.php:150
 #: PodcastGenerator/admin/pg_integrations.php:132
@@ -688,47 +689,47 @@ msgstr ""
 #: PodcastGenerator/admin/theme_buttons.php:153
 #: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
-msgstr "Submit"
+msgstr "שליחה"
 
 #: PodcastGenerator/admin/pg_integrations.php:26
 msgid "Already registered with Podcast Index"
-msgstr "Already registered with Podcast Index"
+msgstr "כבר נרשמת למפתח הסכתים"
 
 #: PodcastGenerator/admin/pg_integrations.php:39
 msgid "API error"
-msgstr "API error"
+msgstr "שגיאת API"
 
 #: PodcastGenerator/admin/pg_integrations.php:54
 msgid "Unsupported service"
-msgstr "Unsupported service"
+msgstr "שירות לא נתמך"
 
 #: PodcastGenerator/admin/pg_integrations.php:91
 msgid "Podcast Index"
-msgstr "Podcast Index"
+msgstr "מפתח הסכתים"
 
 #: PodcastGenerator/admin/pg_integrations.php:93
 msgid "API key"
-msgstr "API key"
+msgstr "מפתח API"
 
 #: PodcastGenerator/admin/pg_integrations.php:98
 msgid "API secret"
-msgstr "API secret"
+msgstr "סוד API"
 
 #: PodcastGenerator/admin/pg_integrations.php:103
 msgid "Podcast ID"
-msgstr "Podcast ID"
+msgstr "מזהה הסכת"
 
 #: PodcastGenerator/admin/pg_integrations.php:105
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
 msgstr ""
-"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
-"add your show to the index"
+"נא למלא את המזהה של התוכנית שלך במפתח ההסכתים או ללחוץ על „הוספת תוכנית” כדי"
+" להוסיף את התוכנית שלך למפתח"
 
 #: PodcastGenerator/admin/pg_integrations.php:112
 msgid "Add Show"
-msgstr "Add Show"
+msgstr "הוספת תוכנית"
 
 #: PodcastGenerator/admin/pg_integrations.php:119
 msgid "WebSub"
@@ -736,340 +737,338 @@ msgstr "WebSub"
 
 #: PodcastGenerator/admin/pg_integrations.php:121
 msgid "Server address"
-msgstr "Server address"
+msgstr "כתובת שרת"
 
 #: PodcastGenerator/admin/pg_integrations.php:123
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
-msgstr ""
-"This is the full address of the WebSub hub to alert when the podcast is "
-"updated."
+msgstr "זו הכתובת המלאה לרכזת של WebSub לקבלת התראה כאשר ההסכת מתעדכן."
 
 #: PodcastGenerator/admin/pg_users.php:23
 msgid "Error while changing password"
-msgstr "Error while changing password"
+msgstr "ארעה שגיאה בשינוי הסיסמה"
 
 #: PodcastGenerator/admin/pg_users.php:35
 #: PodcastGenerator/admin/pg_users.php:139
 msgid "You cannot delete yourself"
-msgstr "You cannot delete yourself"
+msgstr "אין לך אפשרות למחוק את עצמך"
 
 #: PodcastGenerator/admin/pg_users.php:40
 msgid "User does not exists"
-msgstr "User does not exists"
+msgstr "משתמש לא קיים"
 
 #: PodcastGenerator/admin/pg_users.php:44
 msgid "Unknown error while deleting user"
-msgstr "Unknown error while deleting user"
+msgstr "ארעה שגיאה בלתי ידועה בעת מחיקת משתמש"
 
 #: PodcastGenerator/admin/pg_users.php:58
 msgid "Error while creating user"
-msgstr "Error while creating user"
+msgstr "שגיאה בעת יצירת משתמש"
 
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "It may take a few seconds until the changes are visible"
-msgstr "It may take a few seconds until the changes are visible"
+msgstr "השינויים אמורים להופיע בעוד מספר שניות"
 
 #: PodcastGenerator/admin/pg_users.php:87
 msgid "User changed successfully"
-msgstr "User changed successfully"
+msgstr "המשתמש נערך בהצלחה"
 
 #: PodcastGenerator/admin/pg_users.php:89
 msgid "User created successfully"
-msgstr "User created successfully"
+msgstr "המשתמש נוצר בהצלחה"
 
 #: PodcastGenerator/admin/pg_users.php:91
 msgid "User deleted successfully"
-msgstr "User deleted successfully"
+msgstr "המשתמש נמחק בהצלחה"
 
 #: PodcastGenerator/admin/pg_users.php:94
 msgid "List of users"
-msgstr "List of users"
+msgstr "רשימת משתמשים"
 
 #: PodcastGenerator/admin/pg_users.php:101
 msgid "Create User"
-msgstr "Create User"
+msgstr "יצירת משתמש"
 
 #: PodcastGenerator/admin/pg_users.php:116
 msgid "User does not exist"
-msgstr "User does not exist"
+msgstr "משתמש לא קיים"
 
 #: PodcastGenerator/admin/pg_users.php:123
 msgid "You cannot edit usernames"
-msgstr "You cannot edit usernames"
+msgstr "לא ניתן לערוך שמות משתמשים"
 
 #: PodcastGenerator/admin/pg_users.php:126
 msgid "New Password"
-msgstr "New Password"
+msgstr "סיסמה חדשה"
 
 #: PodcastGenerator/admin/pg_users.php:128
 msgid "Repeat new password"
-msgstr "Repeat new password"
+msgstr "נא לחזור על הסיסמה החדשה"
 
 #: PodcastGenerator/admin/pg_users.php:133
 msgid "Change"
-msgstr "Change"
+msgstr "שינוי"
 
 #: PodcastGenerator/admin/pg_users.php:137
 msgid "Delete user"
-msgstr "Delete user"
+msgstr "מחיקת משתמש"
 
 #: PodcastGenerator/admin/podcast_details.php:21
 msgid "Podcast GUID is malformed"
-msgstr "Podcast GUID is malformed"
+msgstr "מזהה ההסכת הגלובלי שגוי"
 
 #: PodcastGenerator/admin/podcast_details.php:63
 msgid "Locked"
-msgstr "Locked"
+msgstr "נעול"
 
 #: PodcastGenerator/admin/podcast_details.php:64
 msgid "Unlocked"
-msgstr "Unlocked"
+msgstr "משוחרר"
 
 #: PodcastGenerator/admin/podcast_details.php:65
 msgid "Off"
-msgstr "Off"
+msgstr "כבוי"
 
 #: PodcastGenerator/admin/podcast_details.php:98
 msgid "Change Podcast Details"
-msgstr "Change Podcast Details"
+msgstr "החלפת פרטי ההסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:100
 msgid "Podcast Title"
-msgstr "Podcast Title"
+msgstr "כותרת ההסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:105
 msgid "Podcast Subtitle or Slogan"
-msgstr "Podcast Subtitle or Slogan"
+msgstr "כותרת משנה להסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:110
 msgid "Podcast Description"
-msgstr "Podcast Description"
+msgstr "תיאור ההסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:115
 msgid "Copyright Notice"
-msgstr "Copyright Notice"
+msgstr "הערת זכויות יוצרים"
 
 #: PodcastGenerator/admin/podcast_details.php:120
 msgid "Author Name"
-msgstr "Author Name"
+msgstr "שם המחבר"
 
 #: PodcastGenerator/admin/podcast_details.php:125
 msgid "Author E-Mail Address"
-msgstr "Author E-Mail Address"
+msgstr "כתובת הדוא״ל של המחבר"
 
 #: PodcastGenerator/admin/podcast_details.php:130
 msgid "Podcast GUID"
-msgstr "Podcast GUID"
+msgstr "מזהה הסכת גלובלי"
 
 #: PodcastGenerator/admin/podcast_details.php:131
 msgid "Unique ID code for your podcast across the internet"
-msgstr "Unique ID code for your podcast across the internet"
+msgstr "קוד זיהוי ייחודי להסכת שלך בכל רחבי האינטרנט"
 
 #: PodcastGenerator/admin/podcast_details.php:138
 msgid "Feed Language"
-msgstr "Feed Language"
+msgstr "שפת ההזנה"
 
 #: PodcastGenerator/admin/podcast_details.php:139
 msgid "Main language of your podcast"
-msgstr "Main language of your podcast"
+msgstr "השפה העיקרית של ההסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:149
 msgid "Explicit Podcast"
-msgstr "Explicit Podcast"
+msgstr "הסכת בוטה"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Lock Podcast Feed"
-msgstr "Lock Podcast Feed"
+msgstr "נעילת הזנת הסכת"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Prevent other platforms from importing your feed"
-msgstr "Prevent other platforms from importing your feed"
+msgstr "למנוע מפלטפורמות אחרות לייבא את ההזנה שלך"
 
 #: PodcastGenerator/admin/podcast_details.php:158
 msgid "Custom Feed Tags"
-msgstr "Custom Feed Tags"
+msgstr "תגיות הזנה בהתאמה אישית"
 
 #: PodcastGenerator/admin/store_cat.php:18
 msgid "Category 1 needs to be set"
-msgstr "Category 1 needs to be set"
+msgstr "יש להגדיר קטגוריה אחת"
 
 #: PodcastGenerator/admin/store_cat.php:36
 msgid "Select Podcast Category"
-msgstr "Select Podcast Category"
+msgstr "בחירת קטגוריה להסכת"
 
 #: PodcastGenerator/admin/store_cat.php:50
 msgid "Select Podcast Categories"
-msgstr "Select Podcast Categories"
+msgstr "בחירת קטגוריות להסכת"
 
 #: PodcastGenerator/admin/store_cat.php:51
 msgid "Select or change Podcast Categories (for iTunes)"
-msgstr "Select or change Podcast Categories (for iTunes)"
+msgstr "לבחור או להחליף קטגוריות להסכת (עבור iTunes)"
 
 #: PodcastGenerator/admin/store_cat.php:56
 #: PodcastGenerator/admin/store_cat.php:72
 #: PodcastGenerator/admin/store_cat.php:93
 #, php-format
 msgid "Category %d"
-msgstr "Category %d"
+msgstr "קטגוריה %d"
 
 #: PodcastGenerator/admin/store_cat.php:115
 #: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
-msgstr "Save"
+msgstr "שמירה"
 
 #: PodcastGenerator/admin/store_cover.php:35
 msgid "Image format is not supported"
-msgstr "Image format is not supported"
+msgstr "סוג התמונה אינו נתמך"
 
 #: PodcastGenerator/admin/store_cover.php:42
 msgid "Image does not have square dimensions"
-msgstr "Image does not have square dimensions"
+msgstr "התמונה אינה ריבועית"
 
 #: PodcastGenerator/admin/store_cover.php:54
 msgid "Image was not uploaded successfully"
-msgstr "Image was not uploaded successfully"
+msgstr "התמונה לא הועלתה בהצלחה"
 
 #: PodcastGenerator/admin/store_cover.php:72
 msgid "Store Cover"
-msgstr "Store Cover"
+msgstr "תמונה ייצוגית של החנות"
 
 #: PodcastGenerator/admin/store_cover.php:86
 msgid "Change Cover"
-msgstr "Change Cover"
+msgstr "החלפת תמונה ייצוגית"
 
 #: PodcastGenerator/admin/store_cover.php:87
 msgid "The cover art will be displayed in the podcast readers."
-msgstr "The cover art will be displayed in the podcast readers."
+msgstr "התמונה הייצוגית תוצג בפני צופי ההסכת."
 
 #: PodcastGenerator/admin/store_cover.php:99
 msgid "Select file"
-msgstr "Select file"
+msgstr "נא לבחור קובץ"
 
 #: PodcastGenerator/admin/store_cover.php:103
 msgid "Upload"
-msgstr "Upload"
+msgstr "העלאה"
 
 #: PodcastGenerator/admin/theme_buttons.php:25
 msgid "Item exists"
-msgstr "Item exists"
+msgstr "הפריט קיים"
 
 #: PodcastGenerator/admin/theme_buttons.php:30
 msgid "Name, Link and CSS Class needs to be set"
-msgstr "Name, Link and CSS Class needs to be set"
+msgstr "יש להגדיר שם, קישור ו־class של CSS"
 
 #: PodcastGenerator/admin/theme_buttons.php:101
 msgid "Theme Buttons"
-msgstr "Theme Buttons"
+msgstr "כפתורי ערכת העיצוב"
 
 #: PodcastGenerator/admin/theme_buttons.php:116
 msgid "Click on the button you wish to edit"
-msgstr "Click on the button you wish to edit"
+msgstr "נא ללחוץ על הכפתור לעריכה"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "Name"
-msgstr "Name"
+msgstr "שם"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "needs to be unique"
-msgstr "needs to be unique"
+msgstr "חייב להיות ייחודי"
 
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
 msgid "Link"
-msgstr "Link"
+msgstr "קישור"
 
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
 msgid "where it should point to"
-msgstr "where it should point to"
+msgstr "הוא אמור להפנות אל"
 
 #: PodcastGenerator/admin/theme_buttons.php:139
 #: PodcastGenerator/admin/theme_buttons.php:173
 msgid "CSS Classes"
-msgstr "CSS Classes"
+msgstr "מחלקות CSS"
 
 #: PodcastGenerator/admin/theme_buttons.php:141
 #: PodcastGenerator/admin/theme_buttons.php:175
 #, php-format
 msgid "depends on theme, you can use %s in the default theme"
-msgstr "depends on theme, you can use %s in the default theme"
+msgstr "תלוי בערכת העיצוב, אפשר להשתמש ב־%s בערכת העיצוב כבררת המחדל"
 
 #: PodcastGenerator/admin/theme_buttons.php:146
 #: PodcastGenerator/admin/theme_buttons.php:180
 msgid "Protocol"
-msgstr "Protocol"
+msgstr "פרוטוקול"
 
 #: PodcastGenerator/admin/theme_buttons.php:147
 #: PodcastGenerator/admin/theme_buttons.php:181
 msgid "Leave it blank if you don't know what you are doing"
-msgstr "Leave it blank if you don't know what you are doing"
+msgstr "יש להשאיר ריק אם לא ברור לך מה עליך לעשות"
 
 #: PodcastGenerator/admin/theme_buttons.php:159
 msgid "Delete Button"
-msgstr "Delete Button"
+msgstr "מחיקת כפתור"
 
 #: PodcastGenerator/admin/theme_buttons.php:165
 msgid "Add Button"
-msgstr "Add Button"
+msgstr "הוספת כפתור"
 
 #: PodcastGenerator/admin/theme_change.php:49
 msgid "Theme Change"
-msgstr "Theme Change"
+msgstr "החלפת ערכת העיצוב"
 
 #: PodcastGenerator/admin/theme_change.php:63
 msgid "Change theme"
-msgstr "Change theme"
+msgstr "החלפת ערכת עיצוב"
 
 #: PodcastGenerator/admin/theme_change.php:64
 #, php-format
 msgid "You can upload themes to your %s folder"
-msgstr "You can upload themes to your %s folder"
+msgstr "ניתן להעלות ערכות עיצוב לתיקיית ה־%s שלך"
 
 #: PodcastGenerator/admin/theme_change.php:65
 msgid "Installed themes"
-msgstr "Installed themes"
+msgstr "ערכות עיצוב מותקנות"
 
 #: PodcastGenerator/admin/theme_change.php:68
 msgid "No compatible themes installed"
-msgstr "No compatible themes installed"
+msgstr "לא מותקנות ערכות עיצוב תואמות"
 
 #: PodcastGenerator/admin/theme_change.php:82
 msgid "This theme is currently in use"
-msgstr "This theme is currently in use"
+msgstr "ערכת עיצוב זו נמצאת בשימוש כעת"
 
 #: PodcastGenerator/admin/theme_change.php:86
 msgid "Switch theme"
-msgstr "Switch theme"
+msgstr "החלפת ערכת עיצוב"
 
 #: PodcastGenerator/admin/theme_freebox.php:40
 #: PodcastGenerator/admin/theme_freebox.php:54
 msgid "Customize Freebox"
-msgstr "Customize Freebox"
+msgstr "התאמת Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:56
 msgid "Current Freebox"
-msgstr "Current Freebox"
+msgstr "ה־Freebox הנוכחי"
 
 #: PodcastGenerator/admin/theme_freebox.php:63
 msgid "Enable / Disable Freebox"
-msgstr "Enable / Disable Freebox"
+msgstr "הפעלת / השבתת Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:72
 msgid "Disable Freebox"
-msgstr "Disable Freebox"
+msgstr "השבתת Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:77
 msgid "Change Freebox content"
-msgstr "Change Freebox content"
+msgstr "החלפת תוכן Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:78
 msgid "Content"
-msgstr "Content"
+msgstr "תוכן"
 
 #: PodcastGenerator/themes/default/categories.php:26
 msgid "All Episodes"
-msgstr "All Episodes"
+msgstr "כל הפרקים"

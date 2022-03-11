@@ -3,97 +3,101 @@
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Artur Räpp <rtr@planet.ee>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-07 20:03-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2022-03-05 22:57+0000\n"
+"Last-Translator: Artur Räpp <rtr@planet.ee>, 2022\n"
+"Language-Team: Estonian (Estonia) (https://www.transifex.com/podcast-generator/teams/14574/et_EE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: et_EE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "This Podcast has no password"
+msgstr "Sellel podcastil pole salasõna"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
-msgstr "Already signed in"
+msgstr "Juba sisse logitud"
 
 #: PodcastGenerator/auth.php:24
 msgid "Success"
-msgstr "Success"
+msgstr "Edukas"
 
 #: PodcastGenerator/auth.php:26
 msgid "Invalid password"
-msgstr "Invalid password"
+msgstr "Sobimatu salasõna"
 
 #: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
 msgid "Password required"
-msgstr "Password required"
+msgstr "Nõutav salasõna"
 
 #: PodcastGenerator/auth.php:47
 msgid "Enter Password"
-msgstr "Enter Password"
+msgstr "Sisesta salasõna"
 
 #: PodcastGenerator/auth.php:49
 msgid "Login"
-msgstr "Login"
+msgstr "Sisselogimine"
 
 #: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
 #: PodcastGenerator/index.php:17
 msgid "Authentication required"
-msgstr "Authentication required"
+msgstr "Nõutav autoriseerimine"
 
 #: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:59
 msgid "More"
-msgstr "More"
+msgstr "Rohkem"
 
 #: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:60
 msgid "Download"
-msgstr "Download"
+msgstr "Laadi alla"
 
 #: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:61
 msgid "Edit/Delete (Admin)"
-msgstr "Edit/Delete (Admin)"
+msgstr "Muuda / kustuta (admin)"
 
 #: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:62
 msgid "Filetype"
-msgstr "Filetype"
+msgstr "Faili tüüp"
 
 #: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:63
 msgid "Size"
-msgstr "Size"
+msgstr "Suurus"
 
 #: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:64
 msgid "Duration"
-msgstr "Duration"
+msgstr "Kestus"
 
 #: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:75
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategooriad"
 
 #: PodcastGenerator/index.php:67
 msgid "No episodes found with that search term"
-msgstr "No episodes found with that search term"
+msgstr "Ei leidnud otsitavale vastavat episoodi."
 
 #: PodcastGenerator/index.php:69
 msgid "No episodes uploaded yet"
-msgstr "No episodes uploaded yet"
+msgstr "Veel pole üles laetud ühtegi episoodi"
 
 #: PodcastGenerator/index.php:74
 msgid "Search"
-msgstr "Search"
+msgstr "Otsi"
 
 #: PodcastGenerator/admin/episodes_bulk.php:48
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"
-msgstr "Bulk download episodes"
+msgstr "Laadi hulgi episoode alla"
 
 #: PodcastGenerator/admin/episodes_bulk.php:51
 msgid ""
@@ -102,79 +106,79 @@ msgid ""
 "        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
 "        After this paste the following (long) command into the terminal/cmd.exe and press enter."
 msgstr ""
-"If you want to bulk download all episodes, you need to have curl installed.\n"
-"        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
-"        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
-"        After this paste the following (long) command into the terminal/cmd.exe and press enter."
+"Kui soovid korraga alla laadida kõik episoodid, peab installeeritud olema curl.\n"
+"Opsüsteemis Windows 10, macOS ja enamikes Linuxi distrotes on see eelinstalleeritud. \n"
+"Ava macOSis ja Linuxis terminal või Windowsis start menüü ja otsi rakendust cmd.exe.\n"
+"Seejärel kleebi järgmine (pikk) käsk terminali /cmd.exe rakendusse ja vajuta Enter."
 
 #: PodcastGenerator/admin/episodes_edit.php:14
 msgid "No name given"
-msgstr "No name given"
+msgstr "Nime pole määratud"
 
 #: PodcastGenerator/admin/episodes_edit.php:26
 #: PodcastGenerator/themes/default/singleepisode.php:11
 msgid "Episode does not exist"
-msgstr "Episode does not exist"
+msgstr "Episoodi pole"
 
 #: PodcastGenerator/admin/episodes_edit.php:57
 #: PodcastGenerator/admin/episodes_upload.php:26
 #: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:54
 msgid "Missing fields"
-msgstr "Missing fields"
+msgstr "Puuduvad väljad"
 
 #: PodcastGenerator/admin/episodes_edit.php:69
 #: PodcastGenerator/admin/episodes_upload.php:38
 msgid "Too many categories selected (max: 3)"
-msgstr "Too many categories selected (max: 3)"
+msgstr "Valitud liiga mitu kategooriat (maks: 3)"
 
 #: PodcastGenerator/admin/episodes_edit.php:76
 #: PodcastGenerator/admin/episodes_upload.php:52
 msgid "Invalid Author E-Mail provided"
-msgstr "Invalid Author E-Mail provided"
+msgstr "Sisestati autori sobimatu e-postiaadress"
 
 #: PodcastGenerator/admin/episodes_edit.php:84
 #: PodcastGenerator/admin/episodes_edit.php:89
 #: PodcastGenerator/admin/episodes_upload.php:60
 #: PodcastGenerator/admin/episodes_upload.php:65
 msgid "Invalid Episode Number provided"
-msgstr "Invalid Episode Number provided"
+msgstr "Anti sobimatu episoodi number"
 
 #: PodcastGenerator/admin/episodes_edit.php:95
 #: PodcastGenerator/admin/episodes_edit.php:100
 #: PodcastGenerator/admin/episodes_upload.php:71
 #: PodcastGenerator/admin/episodes_upload.php:76
 msgid "Invalid Season Number provided"
-msgstr "Invalid Season Number provided"
+msgstr "Anti sobimatu hooaja number"
 
 #: PodcastGenerator/admin/episodes_edit.php:106
 #: PodcastGenerator/admin/episodes_upload.php:82
 msgid "Size of the 'Short Description' exceeded"
-msgstr "Size of the 'Short Description' exceeded"
+msgstr "Lühikirjelduse pikkuse piir ületatud"
 
 #: PodcastGenerator/admin/episodes_edit.php:114
 #: PodcastGenerator/admin/episodes_upload.php:90
 #: PodcastGenerator/admin/podcast_details.php:34
 msgid "Custom tags are not well-formed"
-msgstr "Custom tags are not well-formed"
+msgstr "Kohandatud sildid pole sobival kujul"
 
 #: PodcastGenerator/admin/episodes_edit.php:176
 #: PodcastGenerator/admin/episodes_upload.php:134
 #: PodcastGenerator/admin/episodes_upload.php:188
 #, php-format
 msgid "%s has invalid file extension"
-msgstr "%s has invalid file extension"
+msgstr "%s on sobimatu faililaiendiga"
 
 #: PodcastGenerator/admin/episodes_edit.php:181
 #: PodcastGenerator/admin/episodes_upload.php:139
 #: PodcastGenerator/admin/episodes_upload.php:193
 #, php-format
 msgid "%s was not uploaded successfully"
-msgstr "%s was not uploaded successfully"
+msgstr "%s üleslaadimine polnud edukas"
 
 #: PodcastGenerator/admin/episodes_edit.php:187
 #: PodcastGenerator/admin/episodes_upload.php:199
 msgid "The uploaded cover art file is not readable (permission error)"
-msgstr "The uploaded cover art file is not readable (permission error)"
+msgstr "Üleslaaditud kaanepildi fail pole loetav (ligipääsu viga)"
 
 #: PodcastGenerator/admin/episodes_edit.php:202
 #: PodcastGenerator/admin/episodes_upload.php:159
@@ -182,27 +186,27 @@ msgstr "The uploaded cover art file is not readable (permission error)"
 #: PodcastGenerator/admin/episodes_upload.php:239
 #, php-format
 msgid "%s has unsupported MIME content type %s"
-msgstr "%s has unsupported MIME content type %s"
+msgstr "%s MIME-tüüp pole toetatud: %s"
 
 #: PodcastGenerator/admin/episodes_edit.php:317
 #: PodcastGenerator/admin/episodes_edit.php:334
 msgid "Edit Episode"
-msgstr "Edit Episode"
+msgstr "Muuda episoodi"
 
 #: PodcastGenerator/admin/episodes_edit.php:342
 #: PodcastGenerator/admin/episodes_upload.php:362
 msgid "Main Information"
-msgstr "Main Information"
+msgstr "Põhiinfo"
 
 #: PodcastGenerator/admin/episodes_edit.php:346
 #: PodcastGenerator/admin/episodes_upload.php:369
 msgid "Title"
-msgstr "Title"
+msgstr "Pealkiri"
 
 #: PodcastGenerator/admin/episodes_edit.php:351
 #: PodcastGenerator/admin/episodes_upload.php:373
 msgid "Short Description"
-msgstr "Short Description"
+msgstr "Lühikirjeldus"
 
 #: PodcastGenerator/admin/episodes_edit.php:355
 #: PodcastGenerator/admin/episodes_edit.php:475
@@ -210,244 +214,244 @@ msgstr "Short Description"
 #: PodcastGenerator/admin/episodes_upload.php:469
 #, php-format
 msgid "%d characters remaining"
-msgstr "%d characters remaining"
+msgstr "%d märki jäänud"
 
 #: PodcastGenerator/admin/episodes_edit.php:358
 #: PodcastGenerator/admin/episodes_upload.php:379
 msgid "Category"
-msgstr "Category"
+msgstr "Kategooria"
 
 #: PodcastGenerator/admin/episodes_edit.php:359
 #: PodcastGenerator/admin/episodes_upload.php:380
 msgid "You can select up to 3 categories"
-msgstr "You can select up to 3 categories"
+msgstr "Võid valida kuni 3 kategooriat"
 
 #: PodcastGenerator/admin/episodes_edit.php:375
 #: PodcastGenerator/admin/episodes_upload.php:390
 msgid "Publication Date"
-msgstr "Publication Date"
+msgstr "Avaldamise aeg"
 
 #: PodcastGenerator/admin/episodes_edit.php:376
 #: PodcastGenerator/admin/episodes_upload.php:391
 msgid "If you select a date in the future, it will be published then"
-msgstr "If you select a date in the future, it will be published then"
+msgstr "Kui valid aja tulevikus, avaldatakse asi sel ajal"
 
 #: PodcastGenerator/admin/episodes_edit.php:377
 #: PodcastGenerator/admin/episodes_upload.php:392
 msgid "Date"
-msgstr "Date"
+msgstr "Aeg"
 
 #: PodcastGenerator/admin/episodes_edit.php:380
 #: PodcastGenerator/admin/episodes_upload.php:394
 msgid "Time"
-msgstr "Time"
+msgstr "Kell"
 
 #: PodcastGenerator/admin/episodes_edit.php:386
 #: PodcastGenerator/admin/episodes_upload.php:399
 msgid "Extra Information"
-msgstr "Extra Information"
+msgstr "Lisainfo"
 
 #: PodcastGenerator/admin/episodes_edit.php:389
 #: PodcastGenerator/admin/store_cover.php:92
 msgid "Current Cover"
-msgstr "Current Cover"
+msgstr "Hetke kaas"
 
 #: PodcastGenerator/admin/episodes_edit.php:393
 #: PodcastGenerator/admin/store_cover.php:97
 msgid "Upload new cover"
-msgstr "Upload new cover"
+msgstr "Laadi üles uus kaas"
 
 #: PodcastGenerator/admin/episodes_edit.php:397
 #: PodcastGenerator/admin/episodes_upload.php:406
 msgid "Long Description"
-msgstr "Long Description"
+msgstr "Pikk kirjeldus"
 
 #: PodcastGenerator/admin/episodes_edit.php:403
 #: PodcastGenerator/admin/episodes_upload.php:410
 msgid "Episode Number"
-msgstr "Episode Number"
+msgstr "Episoodi number"
 
 #: PodcastGenerator/admin/episodes_edit.php:409
 #: PodcastGenerator/admin/episodes_upload.php:414
 msgid "Season Number"
-msgstr "Season Number"
+msgstr "Hooaja number"
 
 #: PodcastGenerator/admin/episodes_edit.php:415
 #: PodcastGenerator/admin/episodes_upload.php:418
 msgid "iTunes Keywords"
-msgstr "iTunes Keywords"
+msgstr "iTunesi märksõnad"
 
 #: PodcastGenerator/admin/episodes_edit.php:422
 msgid "Explicit Content"
-msgstr "Explicit Content"
+msgstr "Otseütlemisega sisu"
 
 #: PodcastGenerator/admin/episodes_edit.php:426
 #: PodcastGenerator/admin/episodes_upload.php:428
 #: PodcastGenerator/core/html_helpers.php:39
 msgid "Yes"
-msgstr "Yes"
+msgstr "Jah"
 
 #: PodcastGenerator/admin/episodes_edit.php:431
 #: PodcastGenerator/admin/episodes_upload.php:433
 #: PodcastGenerator/core/html_helpers.php:40
 msgid "No"
-msgstr "No"
+msgstr "Ei"
 
 #: PodcastGenerator/admin/episodes_edit.php:436
 #: PodcastGenerator/admin/episodes_upload.php:438
 msgid "Author"
-msgstr "Author"
+msgstr "Autor"
 
 #: PodcastGenerator/admin/episodes_edit.php:447
 #: PodcastGenerator/admin/episodes_upload.php:447
 msgid "Custom Tags"
-msgstr "Custom Tags"
+msgstr "Kohandatud sildid"
 
 #: PodcastGenerator/admin/episodes_edit.php:457
 msgid "Save Changes"
-msgstr "Save Changes"
+msgstr "Salvesta muudatused"
 
 #: PodcastGenerator/admin/episodes_edit.php:462
 msgid "Delete Episode"
-msgstr "Delete Episode"
+msgstr "Kustuta episood"
 
 #: PodcastGenerator/admin/episodes_edit.php:465
 #: PodcastGenerator/admin/episodes_manage_cats.php:99
 #: PodcastGenerator/admin/pg_users.php:143
 msgid "Delete"
-msgstr "Delete"
+msgstr "Kustuta"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:19
 #, php-format
 msgid "Added %d new episode(s)"
-msgstr "Added %d new episode(s)"
+msgstr "Uusi episoode lisatud %d "
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:21
 msgid "No new episodes were found"
-msgstr "No new episodes were found"
+msgstr "Ei leidnud uusi episoode"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:30
 msgid "FTP Feature"
-msgstr "FTP Feature"
+msgstr "FTP oskus"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:44
 msgid "FTP Auto Indexing"
-msgstr "FTP Auto Indexing"
+msgstr "FTP autoindekseerimine"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:48
 msgid "Begin"
-msgstr "Begin"
+msgstr "Alustamine"
 
 #: PodcastGenerator/admin/episodes_list.php:44
 #: PodcastGenerator/admin/episodes_list.php:58
 #: PodcastGenerator/admin/navbar.php:13
 msgid "Episodes"
-msgstr "Episodes"
+msgstr "Episoodid"
 
 #: PodcastGenerator/admin/episodes_list.php:59
 msgid "Click on the title of the podcast you want to edit/delete."
-msgstr "Click on the title of the podcast you want to edit/delete."
+msgstr "Klõpsa podcasti pealkirjal, mida soovid muuta/kustutada."
 
 #: PodcastGenerator/admin/episodes_list.php:60
 msgid ""
 "Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
 "<span style='color:green;'>green</span> have been posted."
 msgstr ""
-"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
-"<span style='color:green;'>green</span> have been posted."
+"<span style='color:blue;'>blue</span> kuupäev on tulevikus. <span "
+"style='color:green;'>green</span> kuupäev - episood on postitatud."
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:43
 msgid "Category already exists"
-msgstr "Category already exists"
+msgstr "Kategooria on juba olemas"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:70
 #: PodcastGenerator/admin/episodes_manage_cats.php:84
 #: PodcastGenerator/admin/navbar.php:18
 msgid "Manage categories"
-msgstr "Manage categories"
+msgstr "Halda kategooriaid"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:85
 msgid "Add category"
-msgstr "Add category"
+msgstr "Lisa kategooria"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:87
 #: PodcastGenerator/admin/episodes_manage_cats.php:88
 msgid "Category Name"
-msgstr "Category Name"
+msgstr "Kategooria nimi"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:90
 msgid "Add"
-msgstr "Add"
+msgstr "Lisa"
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:92
 msgid "Current Categories"
-msgstr "Current Categories"
+msgstr "Hetke kategooriad"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:20
 msgid "Regenerate Feed"
-msgstr "Regenerate Feed"
+msgstr "Taasloo lõim"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:34
 msgid "Successfully regenerated RSS feed"
-msgstr "Successfully regenerated RSS feed"
+msgstr "RSS-lõim edukalt taasloodud"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:35
 msgid "Return"
-msgstr "Return"
+msgstr "Naase"
 
 #: PodcastGenerator/admin/episodes_upload.php:104
 msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
-msgstr "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr "Sobimatu failinimi. Lubatud on vaid A-Z, a-z allkriips ja punkt"
 
 #: PodcastGenerator/admin/episodes_upload.php:146
 msgid "The uploaded episode file is not readable (permission error)"
-msgstr "The uploaded episode file is not readable (permission error)"
+msgstr "Üleslaaditud episoodi  fail pole loetav (ligipääsu viga)"
 
 #: PodcastGenerator/admin/episodes_upload.php:239
 msgid "Embedded cover art"
-msgstr "Embedded cover art"
+msgstr "Manustatud kaanepilt"
 
 #: PodcastGenerator/admin/episodes_upload.php:250
 msgid "The embedded cover art file was not saved successfully"
-msgstr "The embedded cover art file was not saved successfully"
+msgstr "Manustatud kaanepildi faili salvestamine polnud edukas"
 
 #: PodcastGenerator/admin/episodes_upload.php:333
 #: PodcastGenerator/admin/episodes_upload.php:350
 msgid "Upload Episode"
-msgstr "Upload Episode"
+msgstr "Laadi episood üles"
 
 #: PodcastGenerator/admin/episodes_upload.php:353
 #, php-format
 msgid "\"%s\" uploaded successfully"
-msgstr "\"%s\" uploaded successfully"
+msgstr "\"%s\" laaditi edukalt üles"
 
 #: PodcastGenerator/admin/episodes_upload.php:365
 msgid "File"
-msgstr "File"
+msgstr "Fail"
 
 #: PodcastGenerator/admin/episodes_upload.php:402
 msgid "Episode Cover"
-msgstr "Episode Cover"
+msgstr "Episoodi kaas"
 
 #: PodcastGenerator/admin/episodes_upload.php:424
 msgid "Explicit content"
-msgstr "Explicit content"
+msgstr "Otseütlemisega sisu"
 
 #: PodcastGenerator/admin/episodes_upload.php:457
 msgid "Upload episode"
-msgstr "Upload episode"
+msgstr "Laadi episood üles"
 
 #: PodcastGenerator/admin/forgot.php:4
 msgid "Password Reset"
-msgstr "Password Reset"
+msgstr "Lähtesta salasõna"
 
 #: PodcastGenerator/admin/forgot.php:12
 msgid "Reset your password"
-msgstr "Reset your password"
+msgstr "Lähtesta oma salasõna"
 
 #: PodcastGenerator/admin/forgot.php:13
 msgid "No password, no problem!"
-msgstr "No password, no problem!"
+msgstr "Pole salasõna, pole probleemi!"
 
 #: PodcastGenerator/admin/forgot.php:15
 msgid ""
@@ -455,9 +459,9 @@ msgid ""
 "the danger of this is that as long as this file is online, anyone can reset "
 "this password so this file shouldn't be online that long."
 msgstr ""
-"We offer a tool which allows you to easily recover your password. However, "
-"the danger of this is that as long as this file is online, anyone can reset "
-"this password so this file shouldn't be online that long."
+"Me pakume vahendit, mis võimaldab sul hõlpsalt salasõna lähtestada. Siiski, "
+"lahendus on ohtlik, sest seni kuni see fail on online, saab igaüks salasõna "
+"lähtestada. Nii ei tohi see fail kaua onlines olla."
 
 #: PodcastGenerator/admin/forgot.php:17
 #, php-format
@@ -466,9 +470,8 @@ msgid ""
 "%s folder called %s. Upload this file to into the admin directory with the "
 "name %s"
 msgstr ""
-"In the ZIP file of this version which you downloaded there is a file in the "
-"%s folder called %s. Upload this file to into the admin directory with the "
-"name %s"
+"ZIP-failis, mille praeguse versiooni saamiseks alla laadisid, on kaustas %s "
+"fail nimega %s. Laadi see fail üles admin kausta nimega %s"
 
 #: PodcastGenerator/admin/forgot.php:18
 msgid ""
@@ -476,96 +479,95 @@ msgid ""
 "Podcast Generator ever released since 2.5 are available on the Podcast "
 "Generator Homepage."
 msgstr ""
-"If you no don't have this ZIP file anymore, don't worry! All versions of "
-"Podcast Generator ever released since 2.5 are available on the Podcast "
-"Generator Homepage."
+"Kui sul pole enam seda ZIP-faili, ära muretse! Mistahes Podcast Generatori "
+"versioonid alates versioonist 2.5 on olemas Podcast Generatori kodulehel."
 
 #: PodcastGenerator/admin/index.php:37
 msgid "Welcome to your Podcast Generator Admin Interface"
-msgstr "Welcome to your Podcast Generator Admin Interface"
+msgstr "Tere tulemast Podcast Generatori haldusliidesesse"
 
 #: PodcastGenerator/admin/login.php:24
 msgid "Login disabled for security reasons"
-msgstr "Login disabled for security reasons"
+msgstr "Turvakaalutlustel on sisenemine keelatud"
 
 #: PodcastGenerator/admin/login.php:38
 msgid "Invalid username or password"
-msgstr "Invalid username or password"
+msgstr "Sobimatu kasutajanimi või salasõna"
 
 #: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:103
 #: PodcastGenerator/admin/pg_users.php:120
 msgid "Username"
-msgstr "Username"
+msgstr "Kasutajanimi"
 
 #: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:106
 msgid "Password"
-msgstr "Password"
+msgstr "Salasõna"
 
 #: PodcastGenerator/admin/login.php:70
 msgid "Forgot Password?"
-msgstr "Forgot Password?"
+msgstr "Unustasid salasõna?"
 
 #: PodcastGenerator/admin/login.php:72
 msgid "Sign In"
-msgstr "Sign In"
+msgstr "Sisene"
 
 #: PodcastGenerator/admin/navbar.php:3
 msgid "Toggle navigation"
-msgstr "Toggle navigation"
+msgstr "Lülita navigeerimist"
 
 #: PodcastGenerator/admin/navbar.php:16
 msgid "Upload New Episodes"
-msgstr "Upload New Episodes"
+msgstr "Laadi üles uusi episoode"
 
 #: PodcastGenerator/admin/navbar.php:17
 msgid "View All Episodes"
-msgstr "View All Episodes"
+msgstr "Vaata kõiki episoode"
 
 #: PodcastGenerator/admin/navbar.php:19
 msgid "FTP Feature (Auto Indexing)"
-msgstr "FTP Feature (Auto Indexing)"
+msgstr "FTP oskus (autoindekseerimine)"
 
 #: PodcastGenerator/admin/navbar.php:21
 msgid "Manually regenerate RSS feed"
-msgstr "Manually regenerate RSS feed"
+msgstr "Taasloo RSS-lõim käsitsi"
 
 #: PodcastGenerator/admin/navbar.php:26
 msgid "Themes and aspect"
-msgstr "Themes and aspect"
+msgstr "Teemad ja suurendus"
 
 #: PodcastGenerator/admin/navbar.php:29
 msgid "Change Theme"
-msgstr "Change Theme"
+msgstr "Muuda teemat"
 
 #: PodcastGenerator/admin/navbar.php:30
 msgid "Customize your Freebox"
-msgstr "Customize your Freebox"
+msgstr "Kohanda vabakasti"
 
 #: PodcastGenerator/admin/navbar.php:31
 #: PodcastGenerator/admin/theme_buttons.php:115
 msgid "Change Buttons"
-msgstr "Change Buttons"
+msgstr "Muuda nuppe"
 
 #: PodcastGenerator/admin/navbar.php:36
 msgid "Podcast Platform Settings"
-msgstr "Podcast Platform Settings"
+msgstr "Podcasti platvormi seaded"
 
 #: PodcastGenerator/admin/navbar.php:39
 msgid "Change Cover Art"
-msgstr "Change Cover Art"
+msgstr "Muuda kaanepilti"
 
 #: PodcastGenerator/admin/navbar.php:40
 msgid "Change Podcast Category"
-msgstr "Change Podcast Category"
+msgstr "Muuda podcasti kategooriat"
 
 #: PodcastGenerator/admin/navbar.php:45
 #: PodcastGenerator/admin/podcast_details.php:79
 msgid "Podcast Details"
-msgstr "Podcast Details"
+msgstr "Podcasti üksikasjad"
 
 #: PodcastGenerator/admin/navbar.php:48
 msgid "Change Podcast details"
-msgstr "Change Podcast details"
+msgstr "Muuda podcasti üksikasju"
 
 #: PodcastGenerator/admin/navbar.php:53
 msgid "Podcast Generator"
@@ -573,113 +575,112 @@ msgstr "Podcast Generator"
 
 #: PodcastGenerator/admin/navbar.php:56
 msgid "Change Podcast Generator Config"
-msgstr "Change Podcast Generator Config"
+msgstr "Muuda Podcast Generatori konfi"
 
 #: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:70
 #: PodcastGenerator/admin/pg_users.php:84
 msgid "Manage users"
-msgstr "Manage users"
+msgstr "Halda kasutajaid"
 
 #: PodcastGenerator/admin/navbar.php:58
 #: PodcastGenerator/admin/pg_integrations.php:84
 msgid "Manage integrations"
-msgstr "Manage integrations"
+msgstr "Halda lõimimisi"
 
 #: PodcastGenerator/admin/navbar.php:64
 msgid "View Podcast"
-msgstr "View Podcast"
+msgstr "Vaata podcasti"
 
 #: PodcastGenerator/admin/pg_config.php:60
 msgid "Timestamp"
-msgstr "Timestamp"
+msgstr "Ajatempel"
 
 #: PodcastGenerator/admin/pg_config.php:61
 msgid "Season and episode number"
-msgstr "Season and episode number"
+msgstr "Hooaja ja episoodi number"
 
 #: PodcastGenerator/admin/pg_config.php:69
 #: PodcastGenerator/admin/pg_integrations.php:70
 msgid "Podcast Generator Configuration"
-msgstr "Podcast Generator Configuration"
+msgstr "Podcast Generatori konfiguratsioon"
 
 #: PodcastGenerator/admin/pg_config.php:83
 msgid "Change Podcast Generator Configuration"
-msgstr "Change Podcast Generator Configuration"
+msgstr "Muuda Podcast Generatori konfiguratsiooni"
 
 #: PodcastGenerator/admin/pg_config.php:85
 msgid "Enable Audio and Video Player"
-msgstr "Enable Audio and Video Player"
+msgstr "Luba heli- ja videomängija"
 
 #: PodcastGenerator/admin/pg_config.php:86
 msgid "Enable streaming in web browser"
-msgstr "Enable streaming in web browser"
+msgstr "Luba veebilehitsejasse striimimine"
 
 #: PodcastGenerator/admin/pg_config.php:91
 #: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
-msgstr "Enable Freebox"
+msgstr "Luba vabakast"
 
 #: PodcastGenerator/admin/pg_config.php:93
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
 msgstr ""
-"Freebox allows you to write freely what you wish, add links or text through "
-"a visual editor in the admin section."
+"Vabakast võimaldab sul vabalt kirjutada, mida soovid, lisada "
+"administreerimisliideses oleva visuaalse toimetaja abil teksti ja linke."
 
 #: PodcastGenerator/admin/pg_config.php:99
 msgid "Enable categories"
-msgstr "Enable categories"
+msgstr "Luba kategooriad"
 
 #: PodcastGenerator/admin/pg_config.php:100
 msgid "Enable categories feature to make thematic lists of your podcasts."
-msgstr "Enable categories feature to make thematic lists of your podcasts."
+msgstr "Luba kategooriad, et luua oma podcastide temaatilisi loetelusid."
 
 #: PodcastGenerator/admin/pg_config.php:105
 msgid "Enable custom tag input"
-msgstr "Enable custom tag input"
+msgstr "Võimalda kohandatud siltide sisestamine"
 
 #: PodcastGenerator/admin/pg_config.php:107
 msgid ""
 "Enable the ability to add custom RSS tags to your podcast feed and "
 "individual episodes."
 msgstr ""
-"Enable the ability to add custom RSS tags to your podcast feed and "
-"individual episodes."
+"Võimalda podcasti lõimele ja konkreetsetele episoodidele kohantatud RSS "
+"siltide lisamine."
 
 #: PodcastGenerator/admin/pg_config.php:113
 msgid "Episode sort order"
-msgstr "Episode sort order"
+msgstr "Episoodide sortimise järjestus"
 
 #: PodcastGenerator/admin/pg_config.php:114
 msgid "Choose how episodes are ordered on the website and in the RSS feed."
-msgstr "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr "Vali, kuidas episoodid on lehel ja RSS-voos järjestatud."
 
 #: PodcastGenerator/admin/pg_config.php:119
 msgid "Time zone"
-msgstr "Time zone"
+msgstr "Ajavöönd"
 
 #: PodcastGenerator/admin/pg_config.php:120
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
-msgstr ""
-"Select time zone for displaying the time which episodes have been released."
+msgstr "Vali ajavöönd, mille järgi näidatakse episoodide avaldamise aega."
 
 #: PodcastGenerator/admin/pg_config.php:136
 msgid "Use cron to regenerate the RSS feed"
-msgstr "Use cron to regenerate the RSS feed"
+msgstr "Kasuta cron'i, et  taasluua RSS-lõimed"
 
 #: PodcastGenerator/admin/pg_config.php:141
 msgid "Password Protection for the web pages"
-msgstr "Password Protection for the web pages"
+msgstr "Veebilehtede kaitsmine salasõna abil"
 
 #: PodcastGenerator/admin/pg_config.php:143
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
 msgstr ""
-"Leave empty for no password, keep in mind that the feed and the audio files "
-"will still be accessible no matter if a password is set or not"
+"Jäta tühjaks, kui ei soovi salasõna. Pane tähele, et lõim ja audiofailid on "
+"ligipääsetavad sõltumata sellest, kas salasõna on määratud või ei."
 
 #: PodcastGenerator/admin/pg_config.php:150
 #: PodcastGenerator/admin/pg_integrations.php:132
@@ -688,47 +689,47 @@ msgstr ""
 #: PodcastGenerator/admin/theme_buttons.php:153
 #: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
-msgstr "Submit"
+msgstr "Sisesta"
 
 #: PodcastGenerator/admin/pg_integrations.php:26
 msgid "Already registered with Podcast Index"
-msgstr "Already registered with Podcast Index"
+msgstr "Podcasti indekseerijaga juba registreeritud"
 
 #: PodcastGenerator/admin/pg_integrations.php:39
 msgid "API error"
-msgstr "API error"
+msgstr "API-viga"
 
 #: PodcastGenerator/admin/pg_integrations.php:54
 msgid "Unsupported service"
-msgstr "Unsupported service"
+msgstr "Toetamata teenus"
 
 #: PodcastGenerator/admin/pg_integrations.php:91
 msgid "Podcast Index"
-msgstr "Podcast Index"
+msgstr "Podcastide indekseerija"
 
 #: PodcastGenerator/admin/pg_integrations.php:93
 msgid "API key"
-msgstr "API key"
+msgstr "API-võti"
 
 #: PodcastGenerator/admin/pg_integrations.php:98
 msgid "API secret"
-msgstr "API secret"
+msgstr "API-secret"
 
 #: PodcastGenerator/admin/pg_integrations.php:103
 msgid "Podcast ID"
-msgstr "Podcast ID"
+msgstr "Podcasti ID"
 
 #: PodcastGenerator/admin/pg_integrations.php:105
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
 msgstr ""
-"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
-"add your show to the index"
+"Oma podcasti podcastide indeksis näitamiseks sisesta ID või klõpsa \"Lisa "
+"šõu\", et lisada oma šõu indeksisse"
 
 #: PodcastGenerator/admin/pg_integrations.php:112
 msgid "Add Show"
-msgstr "Add Show"
+msgstr "Lisa šõu"
 
 #: PodcastGenerator/admin/pg_integrations.php:119
 msgid "WebSub"
@@ -736,246 +737,245 @@ msgstr "WebSub"
 
 #: PodcastGenerator/admin/pg_integrations.php:121
 msgid "Server address"
-msgstr "Server address"
+msgstr "Serveri aadress"
 
 #: PodcastGenerator/admin/pg_integrations.php:123
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
 msgstr ""
-"This is the full address of the WebSub hub to alert when the podcast is "
-"updated."
+"See on WebSub hubi täisaadress, kuhu teatatakse, kui podcasti uuendatakse."
 
 #: PodcastGenerator/admin/pg_users.php:23
 msgid "Error while changing password"
-msgstr "Error while changing password"
+msgstr "Viga salasõna muutmisel"
 
 #: PodcastGenerator/admin/pg_users.php:35
 #: PodcastGenerator/admin/pg_users.php:139
 msgid "You cannot delete yourself"
-msgstr "You cannot delete yourself"
+msgstr "Sa ei saa iseennast kustutada"
 
 #: PodcastGenerator/admin/pg_users.php:40
 msgid "User does not exists"
-msgstr "User does not exists"
+msgstr "Kasutajat pole olemas"
 
 #: PodcastGenerator/admin/pg_users.php:44
 msgid "Unknown error while deleting user"
-msgstr "Unknown error while deleting user"
+msgstr "Tundmatu viga kasutaja kustutamisel"
 
 #: PodcastGenerator/admin/pg_users.php:58
 msgid "Error while creating user"
-msgstr "Error while creating user"
+msgstr "Viga kasutaja loomisel"
 
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "It may take a few seconds until the changes are visible"
-msgstr "It may take a few seconds until the changes are visible"
+msgstr "See võib võtta mõne sekundi, kuni muudatused on nähtavad"
 
 #: PodcastGenerator/admin/pg_users.php:87
 msgid "User changed successfully"
-msgstr "User changed successfully"
+msgstr "Kasutaja on edukalt muudetud"
 
 #: PodcastGenerator/admin/pg_users.php:89
 msgid "User created successfully"
-msgstr "User created successfully"
+msgstr "Kasutaja on edukalt loodud"
 
 #: PodcastGenerator/admin/pg_users.php:91
 msgid "User deleted successfully"
-msgstr "User deleted successfully"
+msgstr "Kasutaja edukalt kustutatud"
 
 #: PodcastGenerator/admin/pg_users.php:94
 msgid "List of users"
-msgstr "List of users"
+msgstr "Kasutajate loetelu"
 
 #: PodcastGenerator/admin/pg_users.php:101
 msgid "Create User"
-msgstr "Create User"
+msgstr "Loo kasutaja"
 
 #: PodcastGenerator/admin/pg_users.php:116
 msgid "User does not exist"
-msgstr "User does not exist"
+msgstr "Kasutajat pole olemas"
 
 #: PodcastGenerator/admin/pg_users.php:123
 msgid "You cannot edit usernames"
-msgstr "You cannot edit usernames"
+msgstr "Sa ei saa kasutajanimesid muuta"
 
 #: PodcastGenerator/admin/pg_users.php:126
 msgid "New Password"
-msgstr "New Password"
+msgstr "Uus salasõna"
 
 #: PodcastGenerator/admin/pg_users.php:128
 msgid "Repeat new password"
-msgstr "Repeat new password"
+msgstr "Korda uut salasõna"
 
 #: PodcastGenerator/admin/pg_users.php:133
 msgid "Change"
-msgstr "Change"
+msgstr "Muuda"
 
 #: PodcastGenerator/admin/pg_users.php:137
 msgid "Delete user"
-msgstr "Delete user"
+msgstr "Kustuta kasutaja"
 
 #: PodcastGenerator/admin/podcast_details.php:21
 msgid "Podcast GUID is malformed"
-msgstr "Podcast GUID is malformed"
+msgstr "Podcasti GUID on sobimatul kujul"
 
 #: PodcastGenerator/admin/podcast_details.php:63
 msgid "Locked"
-msgstr "Locked"
+msgstr "Lukus"
 
 #: PodcastGenerator/admin/podcast_details.php:64
 msgid "Unlocked"
-msgstr "Unlocked"
+msgstr "Lukustamata"
 
 #: PodcastGenerator/admin/podcast_details.php:65
 msgid "Off"
-msgstr "Off"
+msgstr "Väljas"
 
 #: PodcastGenerator/admin/podcast_details.php:98
 msgid "Change Podcast Details"
-msgstr "Change Podcast Details"
+msgstr "Muuda podcasti üksikasju"
 
 #: PodcastGenerator/admin/podcast_details.php:100
 msgid "Podcast Title"
-msgstr "Podcast Title"
+msgstr "Podcasti pealkiri"
 
 #: PodcastGenerator/admin/podcast_details.php:105
 msgid "Podcast Subtitle or Slogan"
-msgstr "Podcast Subtitle or Slogan"
+msgstr "Podcasti alampealkiri või hüüdlause"
 
 #: PodcastGenerator/admin/podcast_details.php:110
 msgid "Podcast Description"
-msgstr "Podcast Description"
+msgstr "Podcasti kirjeldus"
 
 #: PodcastGenerator/admin/podcast_details.php:115
 msgid "Copyright Notice"
-msgstr "Copyright Notice"
+msgstr "Autoriõiguse märkus"
 
 #: PodcastGenerator/admin/podcast_details.php:120
 msgid "Author Name"
-msgstr "Author Name"
+msgstr "Autori nimi"
 
 #: PodcastGenerator/admin/podcast_details.php:125
 msgid "Author E-Mail Address"
-msgstr "Author E-Mail Address"
+msgstr "Autori e-postiaadress"
 
 #: PodcastGenerator/admin/podcast_details.php:130
 msgid "Podcast GUID"
-msgstr "Podcast GUID"
+msgstr "Podcasti GUID"
 
 #: PodcastGenerator/admin/podcast_details.php:131
 msgid "Unique ID code for your podcast across the internet"
-msgstr "Unique ID code for your podcast across the internet"
+msgstr "Sinu podcasti jaoks üle kogu interneti unikaalne ID-kood "
 
 #: PodcastGenerator/admin/podcast_details.php:138
 msgid "Feed Language"
-msgstr "Feed Language"
+msgstr "Lõime keel"
 
 #: PodcastGenerator/admin/podcast_details.php:139
 msgid "Main language of your podcast"
-msgstr "Main language of your podcast"
+msgstr "Podcasti peamine keel"
 
 #: PodcastGenerator/admin/podcast_details.php:149
 msgid "Explicit Podcast"
-msgstr "Explicit Podcast"
+msgstr "Otsesõnaline podcast"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Lock Podcast Feed"
-msgstr "Lock Podcast Feed"
+msgstr "Lukusta podcasti lõim"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Prevent other platforms from importing your feed"
-msgstr "Prevent other platforms from importing your feed"
+msgstr "Väldi teiste platvormide poolt sinu lõime importimist."
 
 #: PodcastGenerator/admin/podcast_details.php:158
 msgid "Custom Feed Tags"
-msgstr "Custom Feed Tags"
+msgstr "Lõime kohandatud sildid"
 
 #: PodcastGenerator/admin/store_cat.php:18
 msgid "Category 1 needs to be set"
-msgstr "Category 1 needs to be set"
+msgstr "Kategooria 1 peab olema määratud"
 
 #: PodcastGenerator/admin/store_cat.php:36
 msgid "Select Podcast Category"
-msgstr "Select Podcast Category"
+msgstr "Vali podcasti kategooria"
 
 #: PodcastGenerator/admin/store_cat.php:50
 msgid "Select Podcast Categories"
-msgstr "Select Podcast Categories"
+msgstr "Vali podcasti kategooriad"
 
 #: PodcastGenerator/admin/store_cat.php:51
 msgid "Select or change Podcast Categories (for iTunes)"
-msgstr "Select or change Podcast Categories (for iTunes)"
+msgstr "Vali või muuda podcasti kategooriaid (iTunesi jaoks)"
 
 #: PodcastGenerator/admin/store_cat.php:56
 #: PodcastGenerator/admin/store_cat.php:72
 #: PodcastGenerator/admin/store_cat.php:93
 #, php-format
 msgid "Category %d"
-msgstr "Category %d"
+msgstr "Kategooria %d"
 
 #: PodcastGenerator/admin/store_cat.php:115
 #: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
-msgstr "Save"
+msgstr "Salvesta"
 
 #: PodcastGenerator/admin/store_cover.php:35
 msgid "Image format is not supported"
-msgstr "Image format is not supported"
+msgstr "Pildi vorming pole toetatud"
 
 #: PodcastGenerator/admin/store_cover.php:42
 msgid "Image does not have square dimensions"
-msgstr "Image does not have square dimensions"
+msgstr "Pildi mõõdud ei vasta ruudu mõõtudele"
 
 #: PodcastGenerator/admin/store_cover.php:54
 msgid "Image was not uploaded successfully"
-msgstr "Image was not uploaded successfully"
+msgstr "Pildi üleslaadimine polnud edukas"
 
 #: PodcastGenerator/admin/store_cover.php:72
 msgid "Store Cover"
-msgstr "Store Cover"
+msgstr "Salvesta kaas"
 
 #: PodcastGenerator/admin/store_cover.php:86
 msgid "Change Cover"
-msgstr "Change Cover"
+msgstr "Muuda kaant"
 
 #: PodcastGenerator/admin/store_cover.php:87
 msgid "The cover art will be displayed in the podcast readers."
-msgstr "The cover art will be displayed in the podcast readers."
+msgstr "Kaanepilti näidatakse podcastimängijates."
 
 #: PodcastGenerator/admin/store_cover.php:99
 msgid "Select file"
-msgstr "Select file"
+msgstr "Vali fail"
 
 #: PodcastGenerator/admin/store_cover.php:103
 msgid "Upload"
-msgstr "Upload"
+msgstr "Laadi üles"
 
 #: PodcastGenerator/admin/theme_buttons.php:25
 msgid "Item exists"
-msgstr "Item exists"
+msgstr "Asi on olemas"
 
 #: PodcastGenerator/admin/theme_buttons.php:30
 msgid "Name, Link and CSS Class needs to be set"
-msgstr "Name, Link and CSS Class needs to be set"
+msgstr "Nimi, link ja CSS klass peab olema määratud"
 
 #: PodcastGenerator/admin/theme_buttons.php:101
 msgid "Theme Buttons"
-msgstr "Theme Buttons"
+msgstr "Teema nupud"
 
 #: PodcastGenerator/admin/theme_buttons.php:116
 msgid "Click on the button you wish to edit"
-msgstr "Click on the button you wish to edit"
+msgstr "Klõpsa nupul, mida soovid muuta"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "Name"
-msgstr "Name"
+msgstr "Nimi"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "needs to be unique"
-msgstr "needs to be unique"
+msgstr "peab olema unikaalne"
 
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
@@ -985,91 +985,91 @@ msgstr "Link"
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
 msgid "where it should point to"
-msgstr "where it should point to"
+msgstr "kuhu see peab viitama"
 
 #: PodcastGenerator/admin/theme_buttons.php:139
 #: PodcastGenerator/admin/theme_buttons.php:173
 msgid "CSS Classes"
-msgstr "CSS Classes"
+msgstr "CSS klassid"
 
 #: PodcastGenerator/admin/theme_buttons.php:141
 #: PodcastGenerator/admin/theme_buttons.php:175
 #, php-format
 msgid "depends on theme, you can use %s in the default theme"
-msgstr "depends on theme, you can use %s in the default theme"
+msgstr "depends on theme, you can use %s in the default teema"
 
 #: PodcastGenerator/admin/theme_buttons.php:146
 #: PodcastGenerator/admin/theme_buttons.php:180
 msgid "Protocol"
-msgstr "Protocol"
+msgstr "Protokoll"
 
 #: PodcastGenerator/admin/theme_buttons.php:147
 #: PodcastGenerator/admin/theme_buttons.php:181
 msgid "Leave it blank if you don't know what you are doing"
-msgstr "Leave it blank if you don't know what you are doing"
+msgstr "Jäta tühjaks, kui sa ei tea, mida sa teed"
 
 #: PodcastGenerator/admin/theme_buttons.php:159
 msgid "Delete Button"
-msgstr "Delete Button"
+msgstr "Kustuta nupp"
 
 #: PodcastGenerator/admin/theme_buttons.php:165
 msgid "Add Button"
-msgstr "Add Button"
+msgstr "Lisa nupp"
 
 #: PodcastGenerator/admin/theme_change.php:49
 msgid "Theme Change"
-msgstr "Theme Change"
+msgstr "Teema muutmine"
 
 #: PodcastGenerator/admin/theme_change.php:63
 msgid "Change theme"
-msgstr "Change theme"
+msgstr "Muuda teemat"
 
 #: PodcastGenerator/admin/theme_change.php:64
 #, php-format
 msgid "You can upload themes to your %s folder"
-msgstr "You can upload themes to your %s folder"
+msgstr "Võid laadida teemasid kausta %s "
 
 #: PodcastGenerator/admin/theme_change.php:65
 msgid "Installed themes"
-msgstr "Installed themes"
+msgstr "Paigaldatud teemad"
 
 #: PodcastGenerator/admin/theme_change.php:68
 msgid "No compatible themes installed"
-msgstr "No compatible themes installed"
+msgstr "Paigaldatud pole ühtegi kokkusobivat teemat "
 
 #: PodcastGenerator/admin/theme_change.php:82
 msgid "This theme is currently in use"
-msgstr "This theme is currently in use"
+msgstr "Hetkel on kasutusel see teema"
 
 #: PodcastGenerator/admin/theme_change.php:86
 msgid "Switch theme"
-msgstr "Switch theme"
+msgstr "Vaheta teemat"
 
 #: PodcastGenerator/admin/theme_freebox.php:40
 #: PodcastGenerator/admin/theme_freebox.php:54
 msgid "Customize Freebox"
-msgstr "Customize Freebox"
+msgstr "Kohanda vabakasti"
 
 #: PodcastGenerator/admin/theme_freebox.php:56
 msgid "Current Freebox"
-msgstr "Current Freebox"
+msgstr "Praegune vabakast"
 
 #: PodcastGenerator/admin/theme_freebox.php:63
 msgid "Enable / Disable Freebox"
-msgstr "Enable / Disable Freebox"
+msgstr "Luba / keela vabakast"
 
 #: PodcastGenerator/admin/theme_freebox.php:72
 msgid "Disable Freebox"
-msgstr "Disable Freebox"
+msgstr "Keela vabakast"
 
 #: PodcastGenerator/admin/theme_freebox.php:77
 msgid "Change Freebox content"
-msgstr "Change Freebox content"
+msgstr "Muuda vabakasti sisu"
 
 #: PodcastGenerator/admin/theme_freebox.php:78
 msgid "Content"
-msgstr "Content"
+msgstr "Sisu"
 
 #: PodcastGenerator/themes/default/categories.php:26
 msgid "All Episodes"
-msgstr "All Episodes"
+msgstr "Kõik episoodid"
