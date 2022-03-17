@@ -13,7 +13,7 @@ http://podcastgenerator.net/download
 
 ## Contribute
 
-Everyone is most welcome to contribute code, test, reviews, [translations](https://www.transifex.com/albertobeta/podcast-generator/) and other stuff.
+Everyone is most welcome to contribute code, test, reviews, [translations](https://www.transifex.com/podcast-generator/podcast-generator/) and other stuff.
 Also feature requests are welcome.
 For this please open an issue on GitHub.
 
