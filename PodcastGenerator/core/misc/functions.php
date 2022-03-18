@@ -124,7 +124,7 @@ XML;
     try {
         $xml = simplexml_load_string($wrapped);
         return $xml !== false;
-    } catch (Exception) {
+    } catch (Exception $ex) {
         return false;
     }
 }
