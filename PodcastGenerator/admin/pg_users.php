@@ -10,7 +10,8 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-if (count($_GET) != 0) {
+// we need to allow GET ?username=foo but check token on any other GET
+if (count($_GET) > 1 || (count($_GET) == 1 && !isset($_GET['username']))) {
     checkToken();
 }
 
@@ -139,7 +140,7 @@ if (isset($_GET['change'])) {
                     <p style="color: red;"><?= _('You cannot delete yourself') ?></p>
                 <?php } else { ?>
                     <form action="pg_users.php?delete=<?= strip_tags($_GET['username']) ?>" method="POST">
-                        <input type="hidden" name="token" value="<?= $_SESSION['token' ] ?>">
+                        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                         <input class="btn btn-danger" type="submit" value="<?= _('Delete') ?>">
                     </form>
                 <?php } ?>
