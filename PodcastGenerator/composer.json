@@ -41,7 +41,6 @@
         "podcastindex/podcastindex-php": "~1.0"
     },
     "require-dev": {
-        "php": ">=8.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "squizlabs/php_codesniffer": "^3.6",
         "phpunit/phpunit": "^9.5",
