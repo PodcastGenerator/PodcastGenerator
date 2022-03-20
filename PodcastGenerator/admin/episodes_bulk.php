@@ -11,7 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 $curl_str = "curl";
-$episodes = getEpisodes(null, $config);
+$episodes = findEpisodes($config, null, '', true);
 if (count($episodes) == 0) {
     $curl_str = "No episodes found";
 }

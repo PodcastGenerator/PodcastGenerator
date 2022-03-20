@@ -36,7 +36,7 @@ ksort($categories_arr);
 
 $episodes = null;
 if (isset($_GET['cat'])) {
-    $episodes = getEpisodes($_GET['cat'], $config);
+    $episodes = findEpisodes($config, $_GET['cat'], '', false);
 }
 $episode_chunk = $episodes;
 

@@ -28,13 +28,7 @@ if (isset($_GET['p'])) {
     }
 }
 
-$episodes = null;
-// Testing if search
-if (isset($_GET['search']) && $_GET['search'] !== "") {
-    $episodes = searchEpisodes($_GET['search'], $config);
-} else {
-    $episodes = getEpisodes(null, $config);
-}
+$episodes = findEpisodes($config, null, isset($_GET['search']) ? $_GET['search'] : '', false);
 
 // When calling name
 // Backwards comp

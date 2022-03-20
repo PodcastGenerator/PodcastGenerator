@@ -181,6 +181,7 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
     }
 
     if (!empty($searchTerm)) {
+        $searchTerm = strtolower($searchTerm);
         $episodes = array_filter(
             $episodes,
             function ($ep) use ($searchTerm) {
@@ -203,36 +204,6 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
         },
         $episodes
     );
-}
-
-/**
- * Get published episodes in a category.
- *
- * @param string $category The category to filter on, or null for all episodes.
- * @param mixed  $_config  The PG site configuration.
- * @return array
- *
- * @deprecated 3.2
- * @see findEpisodes()    Replacement for getEpisodes() and searchEpisodes()
- */
-function getEpisodes($category = null, $_config)
-{
-    return findEpisodes($_config, $category, '');
-}
-
-/**
- * Get published episodes matching the provided search term.
- *
- * @param string $name    The search term used to filter episodes.
- * @param mixed  $_config The PG site configuration.
- * @return array
- *
- * @deprecated 3.2
- * @see findEpisodes()    Replacement for getEpisodes() and searchEpisodes()
- */
-function searchEpisodes($name = "", $_config)
-{
-    return findEpisodes($_config, null, strtolower($name));
 }
 
 require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
