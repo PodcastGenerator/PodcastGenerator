@@ -53,6 +53,7 @@ error:
             <strong><p style="color: red;"><?= $error ?></p></strong>
         <?php } ?>
         <form action="store_cat.php?edit=1" method="POST">
+            <?php //# %d is 1, 2, or 3 ?>
             <h3><label for="cat1"><?= sprintf(_('Category %d'), 1) ?>:</label></h3>
             <select id="cat1" name="cat1">
                 <?php foreach ($categories as $item) { ?>

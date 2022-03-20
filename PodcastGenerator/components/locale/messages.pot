@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2022 The Podcast Generator Translation Team
+# Copyright (C) YEAR The Podcast Generator Translation Team
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-07 20:03-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/"
+"issues/new\n"
+"POT-Creation-Date: 2022-03-20 12:45-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,43 +51,43 @@ msgstr ""
 msgid "Authentication required"
 msgstr ""
 
-#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:59
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:53
 msgid "More"
 msgstr ""
 
-#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:60
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:54
 msgid "Download"
 msgstr ""
 
-#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:61
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:55
 msgid "Edit/Delete (Admin)"
 msgstr ""
 
-#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:62
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:56
 msgid "Filetype"
 msgstr ""
 
-#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:63
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:57
 msgid "Size"
 msgstr ""
 
-#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:64
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:58
 msgid "Duration"
 msgstr ""
 
-#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:75
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:69
 msgid "Categories"
 msgstr ""
 
-#: PodcastGenerator/index.php:67
+#: PodcastGenerator/index.php:61
 msgid "No episodes found with that search term"
 msgstr ""
 
-#: PodcastGenerator/index.php:69
+#: PodcastGenerator/index.php:63
 msgid "No episodes uploaded yet"
 msgstr ""
 
-#: PodcastGenerator/index.php:74
+#: PodcastGenerator/index.php:68
 msgid "Search"
 msgstr ""
 
@@ -117,7 +118,7 @@ msgstr ""
 
 #: PodcastGenerator/admin/episodes_edit.php:57
 #: PodcastGenerator/admin/episodes_upload.php:26
-#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:54
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:55
 msgid "Missing fields"
 msgstr ""
 
@@ -312,7 +313,7 @@ msgstr ""
 
 #: PodcastGenerator/admin/episodes_edit.php:465
 #: PodcastGenerator/admin/episodes_manage_cats.php:99
-#: PodcastGenerator/admin/pg_users.php:143
+#: PodcastGenerator/admin/pg_users.php:144
 msgid "Delete"
 msgstr ""
 
@@ -480,12 +481,12 @@ msgstr ""
 msgid "Invalid username or password"
 msgstr ""
 
-#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:103
-#: PodcastGenerator/admin/pg_users.php:120
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:104
+#: PodcastGenerator/admin/pg_users.php:121
 msgid "Username"
 msgstr ""
 
-#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:106
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:107
 msgid "Password"
 msgstr ""
 
@@ -563,13 +564,13 @@ msgstr ""
 msgid "Change Podcast Generator Config"
 msgstr ""
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:70
-#: PodcastGenerator/admin/pg_users.php:84
+#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/pg_users.php:85
 msgid "Manage users"
 msgstr ""
 
 #: PodcastGenerator/admin/navbar.php:58
-#: PodcastGenerator/admin/pg_integrations.php:84
+#: PodcastGenerator/admin/pg_integrations.php:85
 msgid "Manage integrations"
 msgstr ""
 
@@ -586,7 +587,7 @@ msgid "Season and episode number"
 msgstr ""
 
 #: PodcastGenerator/admin/pg_config.php:69
-#: PodcastGenerator/admin/pg_integrations.php:70
+#: PodcastGenerator/admin/pg_integrations.php:71
 msgid "Podcast Generator Configuration"
 msgstr ""
 
@@ -663,132 +664,137 @@ msgid ""
 msgstr ""
 
 #: PodcastGenerator/admin/pg_config.php:150
-#: PodcastGenerator/admin/pg_integrations.php:132
-#: PodcastGenerator/admin/pg_users.php:111
+#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_users.php:112
 #: PodcastGenerator/admin/podcast_details.php:164
 #: PodcastGenerator/admin/theme_buttons.php:153
 #: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:26
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:27
 msgid "Already registered with Podcast Index"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:39
+#: PodcastGenerator/admin/pg_integrations.php:40
 msgid "API error"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:54
+#: PodcastGenerator/admin/pg_integrations.php:55
 msgid "Unsupported service"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:91
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:93
 msgid "Podcast Index"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:93
+#: PodcastGenerator/admin/pg_integrations.php:94
 msgid "API key"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:98
+#: PodcastGenerator/admin/pg_integrations.php:99
 msgid "API secret"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:103
+#: PodcastGenerator/admin/pg_integrations.php:104
 msgid "Podcast ID"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:105
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:107
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:112
+#: PodcastGenerator/admin/pg_integrations.php:114
 msgid "Add Show"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:119
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:122
 msgid "WebSub"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:121
+#: PodcastGenerator/admin/pg_integrations.php:124
 msgid "Server address"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_integrations.php:123
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:127
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:23
+#: PodcastGenerator/admin/pg_users.php:24
 msgid "Error while changing password"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:35
-#: PodcastGenerator/admin/pg_users.php:139
+#: PodcastGenerator/admin/pg_users.php:36
+#: PodcastGenerator/admin/pg_users.php:140
 msgid "You cannot delete yourself"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:40
+#: PodcastGenerator/admin/pg_users.php:41
 msgid "User does not exists"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:44
+#: PodcastGenerator/admin/pg_users.php:45
 msgid "Unknown error while deleting user"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:58
+#: PodcastGenerator/admin/pg_users.php:59
 msgid "Error while creating user"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:85
+#: PodcastGenerator/admin/pg_users.php:86
 msgid "It may take a few seconds until the changes are visible"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:87
+#: PodcastGenerator/admin/pg_users.php:88
 msgid "User changed successfully"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:89
+#: PodcastGenerator/admin/pg_users.php:90
 msgid "User created successfully"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:91
+#: PodcastGenerator/admin/pg_users.php:92
 msgid "User deleted successfully"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:94
+#: PodcastGenerator/admin/pg_users.php:95
 msgid "List of users"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:101
+#: PodcastGenerator/admin/pg_users.php:102
 msgid "Create User"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:116
+#: PodcastGenerator/admin/pg_users.php:117
 msgid "User does not exist"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:123
+#: PodcastGenerator/admin/pg_users.php:124
 msgid "You cannot edit usernames"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:126
+#: PodcastGenerator/admin/pg_users.php:127
 msgid "New Password"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:128
+#: PodcastGenerator/admin/pg_users.php:129
 msgid "Repeat new password"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:133
+#: PodcastGenerator/admin/pg_users.php:134
 msgid "Change"
 msgstr ""
 
-#: PodcastGenerator/admin/pg_users.php:137
+#: PodcastGenerator/admin/pg_users.php:138
 msgid "Delete user"
 msgstr ""
 
@@ -884,14 +890,15 @@ msgstr ""
 msgid "Select or change Podcast Categories (for iTunes)"
 msgstr ""
 
-#: PodcastGenerator/admin/store_cat.php:56
-#: PodcastGenerator/admin/store_cat.php:72
-#: PodcastGenerator/admin/store_cat.php:93
+#. # %d is 1, 2, or 3
+#: PodcastGenerator/admin/store_cat.php:57
+#: PodcastGenerator/admin/store_cat.php:73
+#: PodcastGenerator/admin/store_cat.php:94
 #, php-format
 msgid "Category %d"
 msgstr ""
 
-#: PodcastGenerator/admin/store_cat.php:115
+#: PodcastGenerator/admin/store_cat.php:116
 #: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
 msgstr ""

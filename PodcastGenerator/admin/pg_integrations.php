@@ -23,6 +23,7 @@ if (isset($_GET['edit'])) {
         switch ($register) {
             case 'podcast-index':
                 if ($config['pi_podcast_id']) {
+                    //# 'Podcast Index' is a proper name.
                     $error = _('Already registered with Podcast Index');
                     goto error;
                 }
@@ -88,8 +89,8 @@ if (isset($_GET['edit'])) {
         } ?>
         <form action="pg_integrations.php?edit=1" method="POST">
             <section>
+                <?php //# 'Podcast Index' is a proper name. ?>
                 <h2><?= _('Podcast Index'); ?>:</h2>
-
                 <label for="pi_api_key"><?= _('API key') ?>:</label><br>
                 <input type="text" id="pi_api_key" name="pi_api_key"
                        value="<?= htmlspecialchars($config['pi_api_key']) ?>">
@@ -102,6 +103,7 @@ if (isset($_GET['edit'])) {
 
                 <label for="pi_podcast_id"><?= _('Podcast ID') ?>:</label><br>
                 <small>
+                    <?php //# 'Podcast Index' is a proper name. ?>
                     <?= _('Enter the ID number for your show in Podcast Index or click "Add Show" to add your show to the index') ?>
                 </small>
                 <br>
@@ -116,10 +118,12 @@ if (isset($_GET['edit'])) {
             </section>
 
             <section>
+                <?php //# 'WebSub' is a proper name. ?>
                 <h2><?= _('WebSub') ?>:</h2>
 
                 <label for="websub_server"><?= _('Server address') ?>:</label><br>
                 <small>
+                    <?php //# 'WebSub' is a proper name. ?>
                     <?= _('This is the full address of the WebSub hub to alert when the podcast is updated.') ?>
                 </small>
                 <br>
