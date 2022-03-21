@@ -34,7 +34,7 @@ jobs:
     #   run: composer run-script test
 
     - name: Clear out dev dependencies
-      run: composer install --prefer-dist --no-dev --no-progress
+      run: composer install --prefer-dist --no-dev --no-progress --optimize-autoloader
       working-directory: PodcastGenerator
 
     - name: Compile message catalogs
