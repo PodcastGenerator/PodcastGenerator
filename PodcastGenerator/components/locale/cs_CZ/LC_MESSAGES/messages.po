@@ -1,0 +1,1088 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Podcast Generator Translation Team
+# This file is distributed under the same license as the Podcast Generator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Radim Skála <radim@rskala.cz>, 2022
+# fri, 2022
+# Joe Mama, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator 3.2\n"
+"Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
+"POT-Creation-Date: 2022-03-20 12:45-0400\n"
+"PO-Revision-Date: 2022-03-20 18:30+0000\n"
+"Last-Translator: Joe Mama, 2022\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/podcast-generator/teams/14574/cs_CZ/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: PodcastGenerator/auth.php:14
+msgid "This Podcast has no password"
+msgstr "Tento záznam není chráněn heslem"
+
+#: PodcastGenerator/auth.php:18
+msgid "Already signed in"
+msgstr "Již jste přihlášeni"
+
+#: PodcastGenerator/auth.php:24
+msgid "Success"
+msgstr "Úspěch"
+
+#: PodcastGenerator/auth.php:26
+msgid "Invalid password"
+msgstr "Neplatné heslo"
+
+#: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
+msgid "Password required"
+msgstr "Heslo vyžadováno"
+
+#: PodcastGenerator/auth.php:47
+msgid "Enter Password"
+msgstr "Zadejte heslo"
+
+#: PodcastGenerator/auth.php:49
+msgid "Login"
+msgstr "Přihlášení"
+
+#: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
+#: PodcastGenerator/index.php:17
+msgid "Authentication required"
+msgstr "Vyžadována autentifikace"
+
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:53
+msgid "More"
+msgstr "Více"
+
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:54
+msgid "Download"
+msgstr "Stažení"
+
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:55
+msgid "Edit/Delete (Admin)"
+msgstr "Upravit/Smazat (správce)"
+
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:56
+msgid "Filetype"
+msgstr "Typ souboru"
+
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:57
+msgid "Size"
+msgstr "Velikost"
+
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:58
+msgid "Duration"
+msgstr "Trvání"
+
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:69
+msgid "Categories"
+msgstr "Kategorie"
+
+#: PodcastGenerator/index.php:61
+msgid "No episodes found with that search term"
+msgstr "Nebyly nalezeny žádné díly s tímto hledaným výrazem"
+
+#: PodcastGenerator/index.php:63
+msgid "No episodes uploaded yet"
+msgstr "Nebyly nahrány žádné díly"
+
+#: PodcastGenerator/index.php:68
+msgid "Search"
+msgstr "Hledat"
+
+#: PodcastGenerator/admin/episodes_bulk.php:48
+#: PodcastGenerator/admin/navbar.php:20
+msgid "Bulk download episodes"
+msgstr "Hromadné stažení dílů"
+
+#: PodcastGenerator/admin/episodes_bulk.php:51
+msgid ""
+"If you want to bulk download all episodes, you need to have curl installed.\n"
+"        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
+"        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
+"        After this paste the following (long) command into the terminal/cmd.exe and press enter."
+msgstr ""
+"Pokud chcete hromadně stáhnout všechny díly, potřebujete mít nainstalován cURL.\n"
+" Ve Windows 10, macOS a většině distribucí Linuxu je již předinstalován. Prosím,\n"
+"otevřete Terminál na macOS a Linuxu, nebo otevřete nabídku start a vyhledejte cmd.exe na Windows.\n"
+"Po tomto zkopírujte následující (dlouhý) příkaz do Terminálu/cmd.exe a zmáčkněte Enter."
+
+#: PodcastGenerator/admin/episodes_edit.php:14
+msgid "No name given"
+msgstr "Nezadán žádný název"
+
+#: PodcastGenerator/admin/episodes_edit.php:26
+#: PodcastGenerator/themes/default/singleepisode.php:11
+msgid "Episode does not exist"
+msgstr "Díl neexistuje"
+
+#: PodcastGenerator/admin/episodes_edit.php:57
+#: PodcastGenerator/admin/episodes_upload.php:26
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:55
+msgid "Missing fields"
+msgstr "Chybí pole"
+
+#: PodcastGenerator/admin/episodes_edit.php:69
+#: PodcastGenerator/admin/episodes_upload.php:38
+msgid "Too many categories selected (max: 3)"
+msgstr "Příliš mnoho kategorií (maximálně: 3) "
+
+#: PodcastGenerator/admin/episodes_edit.php:76
+#: PodcastGenerator/admin/episodes_upload.php:52
+msgid "Invalid Author E-Mail provided"
+msgstr "Poskytnut neplatný e-mail autora"
+
+#: PodcastGenerator/admin/episodes_edit.php:84
+#: PodcastGenerator/admin/episodes_edit.php:89
+#: PodcastGenerator/admin/episodes_upload.php:60
+#: PodcastGenerator/admin/episodes_upload.php:65
+msgid "Invalid Episode Number provided"
+msgstr "Poskytnuot neplatné číslo dílu"
+
+#: PodcastGenerator/admin/episodes_edit.php:95
+#: PodcastGenerator/admin/episodes_edit.php:100
+#: PodcastGenerator/admin/episodes_upload.php:71
+#: PodcastGenerator/admin/episodes_upload.php:76
+msgid "Invalid Season Number provided"
+msgstr "Poskytnuto neplatné číslo řady"
+
+#: PodcastGenerator/admin/episodes_edit.php:106
+#: PodcastGenerator/admin/episodes_upload.php:82
+msgid "Size of the 'Short Description' exceeded"
+msgstr "Velikost krátkého popisu překročena"
+
+#: PodcastGenerator/admin/episodes_edit.php:114
+#: PodcastGenerator/admin/episodes_upload.php:90
+#: PodcastGenerator/admin/podcast_details.php:34
+msgid "Custom tags are not well-formed"
+msgstr "Vlastní značky nemají správný tvar"
+
+#: PodcastGenerator/admin/episodes_edit.php:176
+#: PodcastGenerator/admin/episodes_upload.php:134
+#: PodcastGenerator/admin/episodes_upload.php:188
+#, php-format
+msgid "%s has invalid file extension"
+msgstr "%s má neplatnou příponu souboru"
+
+#: PodcastGenerator/admin/episodes_edit.php:181
+#: PodcastGenerator/admin/episodes_upload.php:139
+#: PodcastGenerator/admin/episodes_upload.php:193
+#, php-format
+msgid "%s was not uploaded successfully"
+msgstr "%s nebyl úspěšně nahrán"
+
+#: PodcastGenerator/admin/episodes_edit.php:187
+#: PodcastGenerator/admin/episodes_upload.php:199
+msgid "The uploaded cover art file is not readable (permission error)"
+msgstr "Nahraný soubor s přebalem nelze přečíst (chyba v oprávnění)"
+
+#: PodcastGenerator/admin/episodes_edit.php:202
+#: PodcastGenerator/admin/episodes_upload.php:159
+#: PodcastGenerator/admin/episodes_upload.php:214
+#: PodcastGenerator/admin/episodes_upload.php:239
+#, php-format
+msgid "%s has unsupported MIME content type %s"
+msgstr "%s má nepodporovaný typ obsahu MIME %s"
+
+#: PodcastGenerator/admin/episodes_edit.php:317
+#: PodcastGenerator/admin/episodes_edit.php:334
+msgid "Edit Episode"
+msgstr "Upravit díly"
+
+#: PodcastGenerator/admin/episodes_edit.php:342
+#: PodcastGenerator/admin/episodes_upload.php:362
+msgid "Main Information"
+msgstr "Hlavní informace"
+
+#: PodcastGenerator/admin/episodes_edit.php:346
+#: PodcastGenerator/admin/episodes_upload.php:369
+msgid "Title"
+msgstr "Název"
+
+#: PodcastGenerator/admin/episodes_edit.php:351
+#: PodcastGenerator/admin/episodes_upload.php:373
+msgid "Short Description"
+msgstr "Krátký popis"
+
+#: PodcastGenerator/admin/episodes_edit.php:355
+#: PodcastGenerator/admin/episodes_edit.php:475
+#: PodcastGenerator/admin/episodes_upload.php:376
+#: PodcastGenerator/admin/episodes_upload.php:469
+#, php-format
+msgid "%d characters remaining"
+msgstr "zbývá %d znaků"
+
+#: PodcastGenerator/admin/episodes_edit.php:358
+#: PodcastGenerator/admin/episodes_upload.php:379
+msgid "Category"
+msgstr "Skupina"
+
+#: PodcastGenerator/admin/episodes_edit.php:359
+#: PodcastGenerator/admin/episodes_upload.php:380
+msgid "You can select up to 3 categories"
+msgstr "Můžete vybrat až 3 skupiny"
+
+#: PodcastGenerator/admin/episodes_edit.php:375
+#: PodcastGenerator/admin/episodes_upload.php:390
+msgid "Publication Date"
+msgstr "Datum vydání"
+
+#: PodcastGenerator/admin/episodes_edit.php:376
+#: PodcastGenerator/admin/episodes_upload.php:391
+msgid "If you select a date in the future, it will be published then"
+msgstr "Pokud vyberete budoucí datum, bude zveřejněno potom"
+
+#: PodcastGenerator/admin/episodes_edit.php:377
+#: PodcastGenerator/admin/episodes_upload.php:392
+msgid "Date"
+msgstr "Datum"
+
+#: PodcastGenerator/admin/episodes_edit.php:380
+#: PodcastGenerator/admin/episodes_upload.php:394
+msgid "Time"
+msgstr "Čas"
+
+#: PodcastGenerator/admin/episodes_edit.php:386
+#: PodcastGenerator/admin/episodes_upload.php:399
+msgid "Extra Information"
+msgstr "Další informace"
+
+#: PodcastGenerator/admin/episodes_edit.php:389
+#: PodcastGenerator/admin/store_cover.php:92
+msgid "Current Cover"
+msgstr "Nynější přebal"
+
+#: PodcastGenerator/admin/episodes_edit.php:393
+#: PodcastGenerator/admin/store_cover.php:97
+msgid "Upload new cover"
+msgstr "Nahrát nový přebal"
+
+#: PodcastGenerator/admin/episodes_edit.php:397
+#: PodcastGenerator/admin/episodes_upload.php:406
+msgid "Long Description"
+msgstr "Dlouhý popis"
+
+#: PodcastGenerator/admin/episodes_edit.php:403
+#: PodcastGenerator/admin/episodes_upload.php:410
+msgid "Episode Number"
+msgstr "Číslo dílu"
+
+#: PodcastGenerator/admin/episodes_edit.php:409
+#: PodcastGenerator/admin/episodes_upload.php:414
+msgid "Season Number"
+msgstr "Číslo řady"
+
+#: PodcastGenerator/admin/episodes_edit.php:415
+#: PodcastGenerator/admin/episodes_upload.php:418
+msgid "iTunes Keywords"
+msgstr "Klíčová slova iTunes"
+
+#: PodcastGenerator/admin/episodes_edit.php:422
+msgid "Explicit Content"
+msgstr "Nevhodný obsah"
+
+#: PodcastGenerator/admin/episodes_edit.php:426
+#: PodcastGenerator/admin/episodes_upload.php:428
+#: PodcastGenerator/core/html_helpers.php:39
+msgid "Yes"
+msgstr "Ano"
+
+#: PodcastGenerator/admin/episodes_edit.php:431
+#: PodcastGenerator/admin/episodes_upload.php:433
+#: PodcastGenerator/core/html_helpers.php:40
+msgid "No"
+msgstr "Ne"
+
+#: PodcastGenerator/admin/episodes_edit.php:436
+#: PodcastGenerator/admin/episodes_upload.php:438
+msgid "Author"
+msgstr "Autor"
+
+#: PodcastGenerator/admin/episodes_edit.php:447
+#: PodcastGenerator/admin/episodes_upload.php:447
+msgid "Custom Tags"
+msgstr "Vlastní značky"
+
+#: PodcastGenerator/admin/episodes_edit.php:457
+msgid "Save Changes"
+msgstr "Uložit změny"
+
+#: PodcastGenerator/admin/episodes_edit.php:462
+msgid "Delete Episode"
+msgstr "Smazat díl"
+
+#: PodcastGenerator/admin/episodes_edit.php:465
+#: PodcastGenerator/admin/episodes_manage_cats.php:99
+#: PodcastGenerator/admin/pg_users.php:144
+msgid "Delete"
+msgstr "Smazat"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:19
+#, php-format
+msgid "Added %d new episode(s)"
+msgstr "Přidán %d nový(é) díl(y)"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:21
+msgid "No new episodes were found"
+msgstr "Nebyly nalezeny nové díly"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:30
+msgid "FTP Feature"
+msgstr "Funkce FTP"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:44
+msgid "FTP Auto Indexing"
+msgstr "Automatické rejstříkování FTP"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:48
+msgid "Begin"
+msgstr "Začít"
+
+#: PodcastGenerator/admin/episodes_list.php:44
+#: PodcastGenerator/admin/episodes_list.php:58
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr "Díly"
+
+#: PodcastGenerator/admin/episodes_list.php:59
+msgid "Click on the title of the podcast you want to edit/delete."
+msgstr "Klepněte na název záznamu, který chcete upravit/smazat."
+
+#: PodcastGenerator/admin/episodes_list.php:60
+msgid ""
+"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
+"<span style='color:green;'>green</span> have been posted."
+msgstr ""
+"Data v <span style='color:blue;'>modré</span> jsou v budoucnosti. Data v "
+"<span style='color:green;'>zelené</span> nebyla zveřejněna."
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:43
+msgid "Category already exists"
+msgstr "Skupina již je"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:70
+#: PodcastGenerator/admin/episodes_manage_cats.php:84
+#: PodcastGenerator/admin/navbar.php:18
+msgid "Manage categories"
+msgstr "Spravovat skupiny"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:85
+msgid "Add category"
+msgstr "Přidat skupinu"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:87
+#: PodcastGenerator/admin/episodes_manage_cats.php:88
+msgid "Category Name"
+msgstr "Název skupiny"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:90
+msgid "Add"
+msgstr "Přidat"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:92
+msgid "Current Categories"
+msgstr "Nynější skupiny"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:20
+msgid "Regenerate Feed"
+msgstr "Vytvořit kanál znovu"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:34
+msgid "Successfully regenerated RSS feed"
+msgstr "Úspěšně přegenerován RSS feed"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:35
+msgid "Return"
+msgstr "Vrátit"
+
+#: PodcastGenerator/admin/episodes_upload.php:104
+msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr ""
+"Neplatný název souboru, jen A-Z, a-z, podtržítka a tečky nejsou povoleny"
+
+#: PodcastGenerator/admin/episodes_upload.php:146
+msgid "The uploaded episode file is not readable (permission error)"
+msgstr "Nahraný soubor s dílem nelze přečíst (chyba v oprávnění)"
+
+#: PodcastGenerator/admin/episodes_upload.php:239
+msgid "Embedded cover art"
+msgstr "Vložený přebal"
+
+#: PodcastGenerator/admin/episodes_upload.php:250
+msgid "The embedded cover art file was not saved successfully"
+msgstr "Vložený soubor s přebalem nebyl úspěšně uložen"
+
+#: PodcastGenerator/admin/episodes_upload.php:333
+#: PodcastGenerator/admin/episodes_upload.php:350
+msgid "Upload Episode"
+msgstr "Nahrát díl"
+
+#: PodcastGenerator/admin/episodes_upload.php:353
+#, php-format
+msgid "\"%s\" uploaded successfully"
+msgstr "\"%s\" nahrán úspěšně"
+
+#: PodcastGenerator/admin/episodes_upload.php:365
+msgid "File"
+msgstr "Soubor"
+
+#: PodcastGenerator/admin/episodes_upload.php:402
+msgid "Episode Cover"
+msgstr "Přebal dílu"
+
+#: PodcastGenerator/admin/episodes_upload.php:424
+msgid "Explicit content"
+msgstr "Nezakrytý obsah"
+
+#: PodcastGenerator/admin/episodes_upload.php:457
+msgid "Upload episode"
+msgstr "Nahrát díl"
+
+#: PodcastGenerator/admin/forgot.php:4
+msgid "Password Reset"
+msgstr "Obnovení hesla"
+
+#: PodcastGenerator/admin/forgot.php:12
+msgid "Reset your password"
+msgstr "Obnovte si heslo"
+
+#: PodcastGenerator/admin/forgot.php:13
+msgid "No password, no problem!"
+msgstr "Žádné heslo, žádný problém"
+
+#: PodcastGenerator/admin/forgot.php:15
+msgid ""
+"We offer a tool which allows you to easily recover your password. However, "
+"the danger of this is that as long as this file is online, anyone can reset "
+"this password so this file shouldn't be online that long."
+msgstr ""
+"Nabízíme nástroj, který přináší jednoduchou obnovu vašeho hesla. Každopádně,"
+" nebezpečí tohoto je, že dokud je tento soubor na internetu, může každý "
+"obnovit toto heslo, takže tento soubor by neměl být na internetu po dlouhou "
+"dobu."
+
+#: PodcastGenerator/admin/forgot.php:17
+#, php-format
+msgid ""
+"In the ZIP file of this version which you downloaded there is a file in the "
+"%s folder called %s. Upload this file to into the admin directory with the "
+"name %s"
+msgstr ""
+"V souboru ZIP této verze, kterou jste stáhli, je soubor ve složce %s s "
+"názvem %s. Nahrajte tento soubor do admin adresáře s názvem %s."
+
+#: PodcastGenerator/admin/forgot.php:18
+msgid ""
+"If you no don't have this ZIP file anymore, don't worry! All versions of "
+"Podcast Generator ever released since 2.5 are available on the Podcast "
+"Generator Homepage."
+msgstr ""
+"Pokud tento soubor ZIP již nemáte, nemějte obavy! Všechny verze Podcast "
+"Generatoru, které kdy od 2.5 byly vydány, jsou dostupné na domovské stránce "
+"Podcast Generator."
+
+#: PodcastGenerator/admin/index.php:37
+msgid "Welcome to your Podcast Generator Admin Interface"
+msgstr "Vítejte ve správcovském rozhraní Podcast Generatoru"
+
+#: PodcastGenerator/admin/login.php:24
+msgid "Login disabled for security reasons"
+msgstr "Přihlášení zakázáno z bezpečnostních důvodů"
+
+#: PodcastGenerator/admin/login.php:38
+msgid "Invalid username or password"
+msgstr "Neplatné uživatelské jméno nebo heslo"
+
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:104
+#: PodcastGenerator/admin/pg_users.php:121
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:107
+msgid "Password"
+msgstr "Heslo"
+
+#: PodcastGenerator/admin/login.php:70
+msgid "Forgot Password?"
+msgstr "Zapomenuté heslo?"
+
+#: PodcastGenerator/admin/login.php:72
+msgid "Sign In"
+msgstr "Přihlásit se"
+
+#: PodcastGenerator/admin/navbar.php:3
+msgid "Toggle navigation"
+msgstr "Přepnout navigaci"
+
+#: PodcastGenerator/admin/navbar.php:16
+msgid "Upload New Episodes"
+msgstr "Nahrajte nové díly"
+
+#: PodcastGenerator/admin/navbar.php:17
+msgid "View All Episodes"
+msgstr "Zobrazit všechny díly"
+
+#: PodcastGenerator/admin/navbar.php:19
+msgid "FTP Feature (Auto Indexing)"
+msgstr "Funkce FTP (automatické indexování)"
+
+#: PodcastGenerator/admin/navbar.php:21
+msgid "Manually regenerate RSS feed"
+msgstr "Ručně přegenerovat RSS kanál "
+
+#: PodcastGenerator/admin/navbar.php:26
+msgid "Themes and aspect"
+msgstr "Šablony a vzhled"
+
+#: PodcastGenerator/admin/navbar.php:29
+msgid "Change Theme"
+msgstr "Změna šablony"
+
+#: PodcastGenerator/admin/navbar.php:30
+msgid "Customize your Freebox"
+msgstr "Přizpůsobte si svůj Freebox"
+
+#: PodcastGenerator/admin/navbar.php:31
+#: PodcastGenerator/admin/theme_buttons.php:115
+msgid "Change Buttons"
+msgstr "Změnit tlačítka"
+
+#: PodcastGenerator/admin/navbar.php:36
+msgid "Podcast Platform Settings"
+msgstr "Nastavení Podcastové platformy"
+
+#: PodcastGenerator/admin/navbar.php:39
+msgid "Change Cover Art"
+msgstr "Změna přebalu"
+
+#: PodcastGenerator/admin/navbar.php:40
+msgid "Change Podcast Category"
+msgstr "Změna skupiny záznamu"
+
+#: PodcastGenerator/admin/navbar.php:45
+#: PodcastGenerator/admin/podcast_details.php:79
+msgid "Podcast Details"
+msgstr "Podrobnosti záznamu"
+
+#: PodcastGenerator/admin/navbar.php:48
+msgid "Change Podcast details"
+msgstr "Změna podrobností záznamu"
+
+#: PodcastGenerator/admin/navbar.php:53
+msgid "Podcast Generator"
+msgstr "Tvůrce záznamů"
+
+#: PodcastGenerator/admin/navbar.php:56
+msgid "Change Podcast Generator Config"
+msgstr "Změna nastavení tvůrce záznamů"
+
+#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/pg_users.php:85
+msgid "Manage users"
+msgstr "Úprava uživatelů"
+
+#: PodcastGenerator/admin/navbar.php:58
+#: PodcastGenerator/admin/pg_integrations.php:85
+msgid "Manage integrations"
+msgstr "Spravovat zapojení"
+
+#: PodcastGenerator/admin/navbar.php:64
+msgid "View Podcast"
+msgstr "Zobrazit záznam"
+
+#: PodcastGenerator/admin/pg_config.php:60
+msgid "Timestamp"
+msgstr "Časové razítko"
+
+#: PodcastGenerator/admin/pg_config.php:61
+msgid "Season and episode number"
+msgstr "Číslo řady a dílu"
+
+#: PodcastGenerator/admin/pg_config.php:69
+#: PodcastGenerator/admin/pg_integrations.php:71
+msgid "Podcast Generator Configuration"
+msgstr "Nastavení tvůrce záznamů"
+
+#: PodcastGenerator/admin/pg_config.php:83
+msgid "Change Podcast Generator Configuration"
+msgstr "Změnit nastavení tvůrce záznamů"
+
+#: PodcastGenerator/admin/pg_config.php:85
+msgid "Enable Audio and Video Player"
+msgstr "Povolit přehrávání zvuku a obrazu"
+
+#: PodcastGenerator/admin/pg_config.php:86
+msgid "Enable streaming in web browser"
+msgstr "Povolit vysílání v internetovém prohlížeči"
+
+#: PodcastGenerator/admin/pg_config.php:91
+#: PodcastGenerator/admin/theme_freebox.php:67
+msgid "Enable Freebox"
+msgstr "Povolit Freebox"
+
+#: PodcastGenerator/admin/pg_config.php:93
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"Freebox vám umožňuje psát volně to, co si přejete, přidávat odkazy nebo text"
+" pomocí editoru v oddíle správce."
+
+#: PodcastGenerator/admin/pg_config.php:99
+msgid "Enable categories"
+msgstr "Povolit skupiny"
+
+#: PodcastGenerator/admin/pg_config.php:100
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "Povolit funkci skupin pro dělání tematických seznamů záznamů."
+
+#: PodcastGenerator/admin/pg_config.php:105
+msgid "Enable custom tag input"
+msgstr "Povolit zadávání vlastních značek"
+
+#: PodcastGenerator/admin/pg_config.php:107
+msgid ""
+"Enable the ability to add custom RSS tags to your podcast feed and "
+"individual episodes."
+msgstr ""
+"Povolte možnost přidávat vlastní značky RSS do zdroje záznamů a jednotlivých"
+" dílů."
+
+#: PodcastGenerator/admin/pg_config.php:113
+msgid "Episode sort order"
+msgstr "Pořadí řazení dílů"
+
+#: PodcastGenerator/admin/pg_config.php:114
+msgid "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr "Vyberte způsob řazení dílů na internetové stránce a v kanálu RSS."
+
+#: PodcastGenerator/admin/pg_config.php:119
+msgid "Time zone"
+msgstr "Časové pásmo"
+
+#: PodcastGenerator/admin/pg_config.php:120
+msgid ""
+"Select time zone for displaying the time which episodes have been released."
+msgstr "Vyberte časové pásmo pro zobrazení času, kdy byly díly vydány."
+
+#: PodcastGenerator/admin/pg_config.php:136
+msgid "Use cron to regenerate the RSS feed"
+msgstr "Použít cron k znovuvytvoření kanálu RSS"
+
+#: PodcastGenerator/admin/pg_config.php:141
+msgid "Password Protection for the web pages"
+msgstr "Ochrana heslem webové stránky"
+
+#: PodcastGenerator/admin/pg_config.php:143
+msgid ""
+"Leave empty for no password, keep in mind that the feed and the audio files "
+"will still be accessible no matter if a password is set or not"
+msgstr ""
+"Pro přístup bez hesla ponechte prázdné, mějte však na paměti, že zdroj a "
+"zvukové soubory budou stále přístupné bez ohledu na to, zda je nastaveno "
+"heslo nebo ne."
+
+#: PodcastGenerator/admin/pg_config.php:150
+#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_users.php:112
+#: PodcastGenerator/admin/podcast_details.php:164
+#: PodcastGenerator/admin/theme_buttons.php:153
+#: PodcastGenerator/admin/theme_buttons.php:186
+msgid "Submit"
+msgstr "Odeslat"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:27
+msgid "Already registered with Podcast Index"
+msgstr "Již zaregistrováno v rejstříku záznamů"
+
+#: PodcastGenerator/admin/pg_integrations.php:40
+msgid "API error"
+msgstr "Chyba API"
+
+#: PodcastGenerator/admin/pg_integrations.php:55
+msgid "Unsupported service"
+msgstr "Nepodporovaná služba"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:93
+msgid "Podcast Index"
+msgstr "Rejstřík záznamu"
+
+#: PodcastGenerator/admin/pg_integrations.php:94
+msgid "API key"
+msgstr "Klíč API"
+
+#: PodcastGenerator/admin/pg_integrations.php:99
+msgid "API secret"
+msgstr "Tajný klíč API"
+
+#: PodcastGenerator/admin/pg_integrations.php:104
+msgid "Podcast ID"
+msgstr "ID záznamu"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:107
+msgid ""
+"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
+"add your show to the index"
+msgstr ""
+"Zadejte číslo ID svého pořadu do rejstříku záznamů nebo klepněte na „Přidat "
+"pořad“ a přidejte svůj pořad do rejstříku"
+
+#: PodcastGenerator/admin/pg_integrations.php:114
+msgid "Add Show"
+msgstr "Přidat pořad"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:122
+msgid "WebSub"
+msgstr "WebSub"
+
+#: PodcastGenerator/admin/pg_integrations.php:124
+msgid "Server address"
+msgstr "Adresa serveru"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:127
+msgid ""
+"This is the full address of the WebSub hub to alert when the podcast is "
+"updated."
+msgstr ""
+"Toto je úplná adresa centra WebSub, které vás upozorní na aktualizaci "
+"záznamu."
+
+#: PodcastGenerator/admin/pg_users.php:24
+msgid "Error while changing password"
+msgstr "Nastala chyba při změně hesla."
+
+#: PodcastGenerator/admin/pg_users.php:36
+#: PodcastGenerator/admin/pg_users.php:140
+msgid "You cannot delete yourself"
+msgstr "Nemůžete smazat sami sebe."
+
+#: PodcastGenerator/admin/pg_users.php:41
+msgid "User does not exists"
+msgstr "Uživatel neexistuje"
+
+#: PodcastGenerator/admin/pg_users.php:45
+msgid "Unknown error while deleting user"
+msgstr "Neznámá chyba při mazání uživatele"
+
+#: PodcastGenerator/admin/pg_users.php:59
+msgid "Error while creating user"
+msgstr "Chyba při vytváření uživatele"
+
+#: PodcastGenerator/admin/pg_users.php:86
+msgid "It may take a few seconds until the changes are visible"
+msgstr "Může to trvat i několik vteřin, než se projeví změny"
+
+#: PodcastGenerator/admin/pg_users.php:88
+msgid "User changed successfully"
+msgstr "Uživatel upraven úspěšně"
+
+#: PodcastGenerator/admin/pg_users.php:90
+msgid "User created successfully"
+msgstr "Uživatel úspěšně vytvořen"
+
+#: PodcastGenerator/admin/pg_users.php:92
+msgid "User deleted successfully"
+msgstr "Uživatel úspěšně smazán"
+
+#: PodcastGenerator/admin/pg_users.php:95
+msgid "List of users"
+msgstr "Seznam uživatelů"
+
+#: PodcastGenerator/admin/pg_users.php:102
+msgid "Create User"
+msgstr "Vytvoření uživatele"
+
+#: PodcastGenerator/admin/pg_users.php:117
+msgid "User does not exist"
+msgstr "Uživatel neexistuje"
+
+#: PodcastGenerator/admin/pg_users.php:124
+msgid "You cannot edit usernames"
+msgstr "Nemůžete měnit uživatelská jména"
+
+#: PodcastGenerator/admin/pg_users.php:127
+msgid "New Password"
+msgstr "Zadejte nové heslo"
+
+#: PodcastGenerator/admin/pg_users.php:129
+msgid "Repeat new password"
+msgstr "Zadejte znovu nové heslo"
+
+#: PodcastGenerator/admin/pg_users.php:134
+msgid "Change"
+msgstr "Změna"
+
+#: PodcastGenerator/admin/pg_users.php:138
+msgid "Delete user"
+msgstr "Smazat uživatele"
+
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast GUID is malformed"
+msgstr "GUID záznamu má nesprávný tvar"
+
+#: PodcastGenerator/admin/podcast_details.php:63
+msgid "Locked"
+msgstr "Zamknuto"
+
+#: PodcastGenerator/admin/podcast_details.php:64
+msgid "Unlocked"
+msgstr "Odemknuto"
+
+#: PodcastGenerator/admin/podcast_details.php:65
+msgid "Off"
+msgstr "Vypnut"
+
+#: PodcastGenerator/admin/podcast_details.php:98
+msgid "Change Podcast Details"
+msgstr "Změnit podrobnosti záznamu"
+
+#: PodcastGenerator/admin/podcast_details.php:100
+msgid "Podcast Title"
+msgstr "Název záznamu"
+
+#: PodcastGenerator/admin/podcast_details.php:105
+msgid "Podcast Subtitle or Slogan"
+msgstr "Podnázev záznamu a průpovídka"
+
+#: PodcastGenerator/admin/podcast_details.php:110
+msgid "Podcast Description"
+msgstr "Popis záznamu"
+
+#: PodcastGenerator/admin/podcast_details.php:115
+msgid "Copyright Notice"
+msgstr "Oznámení o kopírovacím autorském"
+
+#: PodcastGenerator/admin/podcast_details.php:120
+msgid "Author Name"
+msgstr "Jméno autora"
+
+#: PodcastGenerator/admin/podcast_details.php:125
+msgid "Author E-Mail Address"
+msgstr "Adresa autorovy elektronické pošty"
+
+#: PodcastGenerator/admin/podcast_details.php:130
+msgid "Podcast GUID"
+msgstr "GUID záznamu"
+
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "Unique ID code for your podcast across the internet"
+msgstr "Jedinečný kód ID pro váš záznam na internetu"
+
+#: PodcastGenerator/admin/podcast_details.php:138
+msgid "Feed Language"
+msgstr "Jazyk kanálu"
+
+#: PodcastGenerator/admin/podcast_details.php:139
+msgid "Main language of your podcast"
+msgstr "Hlavní jazyk záznamu"
+
+#: PodcastGenerator/admin/podcast_details.php:149
+msgid "Explicit Podcast"
+msgstr "Jmenovitý záznam"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Lock Podcast Feed"
+msgstr "Uzamknout kanál záznamů"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Prevent other platforms from importing your feed"
+msgstr "Zabraňte jiným platformám v zavedení vašeho zdroje"
+
+#: PodcastGenerator/admin/podcast_details.php:158
+msgid "Custom Feed Tags"
+msgstr "Vlastní značky zdroje"
+
+#: PodcastGenerator/admin/store_cat.php:18
+msgid "Category 1 needs to be set"
+msgstr "Skupinu 1 je potřeba nastavit"
+
+#: PodcastGenerator/admin/store_cat.php:36
+msgid "Select Podcast Category"
+msgstr "Vybrat skupinu záznamu"
+
+#: PodcastGenerator/admin/store_cat.php:50
+msgid "Select Podcast Categories"
+msgstr "Vybrat skupiny záznamu"
+
+#: PodcastGenerator/admin/store_cat.php:51
+msgid "Select or change Podcast Categories (for iTunes)"
+msgstr "Vybrat nebo změnit skupiny záznamu (pro iTunes)"
+
+#. # %d is 1, 2, or 3
+#: PodcastGenerator/admin/store_cat.php:57
+#: PodcastGenerator/admin/store_cat.php:73
+#: PodcastGenerator/admin/store_cat.php:94
+#, php-format
+msgid "Category %d"
+msgstr "Skupina %d"
+
+#: PodcastGenerator/admin/store_cat.php:116
+#: PodcastGenerator/admin/theme_freebox.php:85
+msgid "Save"
+msgstr "Uložit"
+
+#: PodcastGenerator/admin/store_cover.php:35
+msgid "Image format is not supported"
+msgstr "Formát obrázku není podporován"
+
+#: PodcastGenerator/admin/store_cover.php:42
+msgid "Image does not have square dimensions"
+msgstr "Obrázek nemá čtvercové rozměry"
+
+#: PodcastGenerator/admin/store_cover.php:54
+msgid "Image was not uploaded successfully"
+msgstr "Obrázek nebyl úspěšně nahrán"
+
+#: PodcastGenerator/admin/store_cover.php:72
+msgid "Store Cover"
+msgstr "Uložit přebal"
+
+#: PodcastGenerator/admin/store_cover.php:86
+msgid "Change Cover"
+msgstr "Změnit přebal"
+
+#: PodcastGenerator/admin/store_cover.php:87
+msgid "The cover art will be displayed in the podcast readers."
+msgstr "Obrázek přebalu bude zobrazen ve čtečkách záznamů."
+
+#: PodcastGenerator/admin/store_cover.php:99
+msgid "Select file"
+msgstr "Vybrat soubor"
+
+#: PodcastGenerator/admin/store_cover.php:103
+msgid "Upload"
+msgstr "Nahrát"
+
+#: PodcastGenerator/admin/theme_buttons.php:25
+msgid "Item exists"
+msgstr "Položka je"
+
+#: PodcastGenerator/admin/theme_buttons.php:30
+msgid "Name, Link and CSS Class needs to be set"
+msgstr "Název, odkaz a třídu CSS je potřeba nastavit"
+
+#: PodcastGenerator/admin/theme_buttons.php:101
+msgid "Theme Buttons"
+msgstr "Tlačítka vzhledu"
+
+#: PodcastGenerator/admin/theme_buttons.php:116
+msgid "Click on the button you wish to edit"
+msgstr "Klepněte na tlačítko, jež si přejete upravit"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "Name"
+msgstr "Název"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "needs to be unique"
+msgstr "musí být jedinečný"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "Link"
+msgstr "Odkaz"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "where it should point to"
+msgstr "kam má ukazovat"
+
+#: PodcastGenerator/admin/theme_buttons.php:139
+#: PodcastGenerator/admin/theme_buttons.php:173
+msgid "CSS Classes"
+msgstr "Třídy CSS"
+
+#: PodcastGenerator/admin/theme_buttons.php:141
+#: PodcastGenerator/admin/theme_buttons.php:175
+#, php-format
+msgid "depends on theme, you can use %s in the default theme"
+msgstr "závisí od vzhledu, ve výchozím vzhledu můžete použít %s"
+
+#: PodcastGenerator/admin/theme_buttons.php:146
+#: PodcastGenerator/admin/theme_buttons.php:180
+msgid "Protocol"
+msgstr "Protokol"
+
+#: PodcastGenerator/admin/theme_buttons.php:147
+#: PodcastGenerator/admin/theme_buttons.php:181
+msgid "Leave it blank if you don't know what you are doing"
+msgstr "Ponechte prázdné, nevíte-li, co děláte"
+
+#: PodcastGenerator/admin/theme_buttons.php:159
+msgid "Delete Button"
+msgstr "Smazat tlačítko"
+
+#: PodcastGenerator/admin/theme_buttons.php:165
+msgid "Add Button"
+msgstr "Přidat tlačítko"
+
+#: PodcastGenerator/admin/theme_change.php:49
+msgid "Theme Change"
+msgstr "Změna vzhledu"
+
+#: PodcastGenerator/admin/theme_change.php:63
+msgid "Change theme"
+msgstr "Změnit vzhled"
+
+#: PodcastGenerator/admin/theme_change.php:64
+#, php-format
+msgid "You can upload themes to your %s folder"
+msgstr "Vzhledy můžete nahrát do složky %s"
+
+#: PodcastGenerator/admin/theme_change.php:65
+msgid "Installed themes"
+msgstr "Nainstalované vzhledy"
+
+#: PodcastGenerator/admin/theme_change.php:68
+msgid "No compatible themes installed"
+msgstr "Nejsou nainstalována kompatibilní šablony"
+
+#: PodcastGenerator/admin/theme_change.php:82
+msgid "This theme is currently in use"
+msgstr "Tento vzhled se nyní používá"
+
+#: PodcastGenerator/admin/theme_change.php:86
+msgid "Switch theme"
+msgstr "Přepnout vzhled"
+
+#: PodcastGenerator/admin/theme_freebox.php:40
+#: PodcastGenerator/admin/theme_freebox.php:54
+msgid "Customize Freebox"
+msgstr "Přizpůsobit Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:56
+msgid "Current Freebox"
+msgstr "Nynější FreeboxCover"
+
+#: PodcastGenerator/admin/theme_freebox.php:63
+msgid "Enable / Disable Freebox"
+msgstr "Povolit/Zakázat Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:72
+msgid "Disable Freebox"
+msgstr "Zakázat Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:77
+msgid "Change Freebox content"
+msgstr "Změnit obsah Freeboxu"
+
+#: PodcastGenerator/admin/theme_freebox.php:78
+msgid "Content"
+msgstr "Obsah"
+
+#: PodcastGenerator/themes/default/categories.php:26
+msgid "All Episodes"
+msgstr "Všechny díly"
