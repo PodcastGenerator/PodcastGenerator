@@ -1,333 +1,450 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Podcast Generator Translation Team
+# Copyright (C) 2022 The Podcast Generator Translation Team
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# rampmaster <rampmaster@gmail.com>, 2020
-# Diego Dell Agostino <dellagostino@gmail.com>, 2020
-# mahas <mahamantradas@hotmail.com>, 2020
-# 𝔇𝔞𝔦𝔡𝔞𝔯𝔬𝔰 <2.0@daidaros.com>, 2020
+# Diego Dell Agostino <dellagostino@gmail.com>, 2022
+# Mini Favrica <mini@favrica.com>, 2022
+# mahas <mahamantradas@hotmail.com>, 2022
+# rampmaster <rampmaster@gmail.com>, 2022
+# 𝔇𝔞𝔦𝔡𝔞𝔯𝔬𝔰 <2.0@daidaros.com>, 2022
+# Ernesto A. <elavdeveloper@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Podcast Generator\n"
+"Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 11:39+0200\n"
-"PO-Revision-Date: 2020-05-30 09:40+0000\n"
-"Last-Translator: 𝔇𝔞𝔦𝔡𝔞𝔯𝔬𝔰 <2.0@daidaros.com>, 2020\n"
-"Language-Team: Spanish (https://www.transifex.com/albertobeta/teams/14574/es/)\n"
+"POT-Creation-Date: 2022-03-07 20:03-0500\n"
+"PO-Revision-Date: 2022-03-05 22:57+0000\n"
+"Last-Translator: Ernesto A. <elavdeveloper@gmail.com>, 2022\n"
+"Language-Team: Spanish (Spain) (https://www.transifex.com/podcast-generator/teams/14574/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: PodcastGenerator/admin/episodes_bulk.php:37
+#: PodcastGenerator/auth.php:14
+msgid "This Podcast has no password"
+msgstr "Este podcast no tiene contraseña"
+
+#: PodcastGenerator/auth.php:18
+msgid "Already signed in"
+msgstr "Ya iniciaste sesión"
+
+#: PodcastGenerator/auth.php:24
+msgid "Success"
+msgstr "Éxito"
+
+#: PodcastGenerator/auth.php:26
+msgid "Invalid password"
+msgstr "Contraseña inválida"
+
+#: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
+msgid "Password required"
+msgstr "Contraseña requerida"
+
+#: PodcastGenerator/auth.php:47
+msgid "Enter Password"
+msgstr "Ingresar contraseña"
+
+#: PodcastGenerator/auth.php:49
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
+#: PodcastGenerator/index.php:17
+msgid "Authentication required"
+msgstr "Autentificación requerida"
+
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:59
+msgid "More"
+msgstr "Más"
+
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:60
+msgid "Download"
+msgstr "Descargar"
+
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:61
+msgid "Edit/Delete (Admin)"
+msgstr "Editar / eliminar (administrador)"
+
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:62
+msgid "Filetype"
+msgstr "Tipo de archivo"
+
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:63
+msgid "Size"
+msgstr "Tamaño"
+
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:64
+msgid "Duration"
+msgstr "Duración"
+
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:75
+msgid "Categories"
+msgstr "Categorías"
+
+#: PodcastGenerator/index.php:67
+msgid "No episodes found with that search term"
+msgstr "No se encontraron episodios con este término de búsqueda"
+
+#: PodcastGenerator/index.php:69
+msgid "No episodes uploaded yet"
+msgstr "Sin episodos subidos aún"
+
+#: PodcastGenerator/index.php:74
+msgid "Search"
+msgstr "Buscar"
+
+#: PodcastGenerator/admin/episodes_bulk.php:48
 #: PodcastGenerator/admin/navbar.php:20
 msgid "Bulk download episodes"
-msgstr "Descargar episodios en masa"
+msgstr "Descarga de episodios en bloque"
 
-#: PodcastGenerator/admin/episodes_bulk.php:50
+#: PodcastGenerator/admin/episodes_bulk.php:51
 msgid ""
 "If you want to bulk download all episodes, you need to have curl installed.\n"
 "        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
 "        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
 "        After this paste the following (long) command into the terminal/cmd.exe and press enter."
 msgstr ""
-"Si quieres descargar en masa todos los episodios, necesitas tener curl instalado.\n"
+"Si quieres descargar en bloque todos los episodios, necesitas tener curl instalado.\n"
 "En Windows 10, macOS y la mayoría de las distribuciones de Linux se encuentran ya preinstalados.\n"
-"Por favor, abre tu aplicación de Terminal en macOS y Linux o abre el menú de inicio y busca por cmd.exe en Windows.\n"
-"Luego de esto, pega el siguiente comando (largo) en el terminal o cmd.exe y presiona Enter."
+"Por favor, abre tu aplicación de Terminal en macOS y Linux o, en Windows, abre el menú de inicio y busca cmd.exe.\n"
+"A continuacióno, pega el siguiente comando (largo) en el terminal o cmd.exe y presiona Enter."
 
 #: PodcastGenerator/admin/episodes_edit.php:14
 msgid "No name given"
 msgstr "Sin nombre"
 
-#: PodcastGenerator/admin/episodes_edit.php:17
+#: PodcastGenerator/admin/episodes_edit.php:26
+#: PodcastGenerator/themes/default/singleepisode.php:11
 msgid "Episode does not exist"
 msgstr "El episodio no existe"
 
-#: PodcastGenerator/admin/episodes_edit.php:42
-#: PodcastGenerator/admin/episodes_upload.php:15
-msgid "Empty title"
-msgstr "Sin título"
+#: PodcastGenerator/admin/episodes_edit.php:57
+#: PodcastGenerator/admin/episodes_upload.php:26
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:54
+msgid "Missing fields"
+msgstr "Campos faltantes"
 
-#: PodcastGenerator/admin/episodes_edit.php:46
-#: PodcastGenerator/admin/episodes_upload.php:19
-msgid "Empty Short Description"
-msgstr "Sin descripción corta"
-
-#: PodcastGenerator/admin/episodes_edit.php:50
-#: PodcastGenerator/admin/episodes_upload.php:23
-msgid "Empty Date"
-msgstr "Sin fecha"
-
-#: PodcastGenerator/admin/episodes_edit.php:54
-#: PodcastGenerator/admin/episodes_upload.php:27
-msgid "Empty explicit value"
-msgstr "Sin valor explícito"
-
-#: PodcastGenerator/admin/episodes_edit.php:58
-#: PodcastGenerator/admin/episodes_upload.php:31
-msgid "Empty author name"
-msgstr "Sin nombre de autor"
-
-#: PodcastGenerator/admin/episodes_edit.php:62
-#: PodcastGenerator/admin/episodes_upload.php:35
-msgid "Empty author email"
-msgstr "Sin correo de autor"
-
-#: PodcastGenerator/admin/episodes_edit.php:73
-#: PodcastGenerator/admin/episodes_upload.php:46
+#: PodcastGenerator/admin/episodes_edit.php:69
+#: PodcastGenerator/admin/episodes_upload.php:38
 msgid "Too many categories selected (max: 3)"
 msgstr "Demasiadas categorías seleccionadas (máx: 3)"
 
-#: PodcastGenerator/admin/episodes_edit.php:80
-#: PodcastGenerator/admin/episodes_upload.php:60
+#: PodcastGenerator/admin/episodes_edit.php:76
+#: PodcastGenerator/admin/episodes_upload.php:52
 msgid "Invalid Author E-Mail provided"
 msgstr "Correo del autor entregado inválido"
 
-#: PodcastGenerator/admin/episodes_edit.php:86
-#: PodcastGenerator/admin/episodes_upload.php:66
+#: PodcastGenerator/admin/episodes_edit.php:84
+#: PodcastGenerator/admin/episodes_edit.php:89
+#: PodcastGenerator/admin/episodes_upload.php:60
+#: PodcastGenerator/admin/episodes_upload.php:65
+msgid "Invalid Episode Number provided"
+msgstr "El número de episodio proporcionado es inválido"
+
+#: PodcastGenerator/admin/episodes_edit.php:95
+#: PodcastGenerator/admin/episodes_edit.php:100
+#: PodcastGenerator/admin/episodes_upload.php:71
+#: PodcastGenerator/admin/episodes_upload.php:76
+msgid "Invalid Season Number provided"
+msgstr "El número de temporada proporcionado es inválido"
+
+#: PodcastGenerator/admin/episodes_edit.php:106
+#: PodcastGenerator/admin/episodes_upload.php:82
 msgid "Size of the 'Short Description' exceeded"
 msgstr "El tamaño de la descripción corta se excede"
 
-#: PodcastGenerator/admin/episodes_edit.php:152
-#: PodcastGenerator/admin/episodes_edit.php:166
+#: PodcastGenerator/admin/episodes_edit.php:114
+#: PodcastGenerator/admin/episodes_upload.php:90
+#: PodcastGenerator/admin/podcast_details.php:34
+msgid "Custom tags are not well-formed"
+msgstr "Las etiquetas personalizadas no están bien formadas"
+
+#: PodcastGenerator/admin/episodes_edit.php:176
+#: PodcastGenerator/admin/episodes_upload.php:134
+#: PodcastGenerator/admin/episodes_upload.php:188
+#, php-format
+msgid "%s has invalid file extension"
+msgstr "1%s tiene una extensión no válida"
+
+#: PodcastGenerator/admin/episodes_edit.php:181
+#: PodcastGenerator/admin/episodes_upload.php:139
+#: PodcastGenerator/admin/episodes_upload.php:193
+#, php-format
+msgid "%s was not uploaded successfully"
+msgstr "1%s no fue subido satisfactoriamente"
+
+#: PodcastGenerator/admin/episodes_edit.php:187
+#: PodcastGenerator/admin/episodes_upload.php:199
+msgid "The uploaded cover art file is not readable (permission error)"
+msgstr "El archivo de portada subido no se puede leer (error de permisos)"
+
+#: PodcastGenerator/admin/episodes_edit.php:202
+#: PodcastGenerator/admin/episodes_upload.php:159
+#: PodcastGenerator/admin/episodes_upload.php:214
+#: PodcastGenerator/admin/episodes_upload.php:239
+#, php-format
+msgid "%s has unsupported MIME content type %s"
+msgstr "1%s tiene contenido de tipo MIME no soportado 1%s"
+
+#: PodcastGenerator/admin/episodes_edit.php:317
+#: PodcastGenerator/admin/episodes_edit.php:334
 msgid "Edit Episode"
 msgstr "Editar episodio"
 
-#: PodcastGenerator/admin/episodes_edit.php:174
+#: PodcastGenerator/admin/episodes_edit.php:342
+#: PodcastGenerator/admin/episodes_upload.php:362
 msgid "Main Information"
 msgstr "Información principal"
 
-#: PodcastGenerator/admin/episodes_edit.php:177
-#: PodcastGenerator/admin/episodes_upload.php:222
+#: PodcastGenerator/admin/episodes_edit.php:346
+#: PodcastGenerator/admin/episodes_upload.php:369
 msgid "Title"
 msgstr "Título"
 
-#: PodcastGenerator/admin/episodes_edit.php:181
-#: PodcastGenerator/admin/episodes_upload.php:226
+#: PodcastGenerator/admin/episodes_edit.php:351
+#: PodcastGenerator/admin/episodes_upload.php:373
 msgid "Short Description"
 msgstr "Descripción corta"
 
-#: PodcastGenerator/admin/episodes_edit.php:183
-msgid " characters remaining"
-msgstr "caracteres restantes"
+#: PodcastGenerator/admin/episodes_edit.php:355
+#: PodcastGenerator/admin/episodes_edit.php:475
+#: PodcastGenerator/admin/episodes_upload.php:376
+#: PodcastGenerator/admin/episodes_upload.php:469
+#, php-format
+msgid "%d characters remaining"
+msgstr "1%d caracteres restantes"
 
-#: PodcastGenerator/admin/episodes_edit.php:186
-#: PodcastGenerator/admin/episodes_upload.php:231
-#: PodcastGenerator/admin/store_cat.php:56
-#: PodcastGenerator/admin/store_cat.php:69
-#: PodcastGenerator/admin/store_cat.php:87
+#: PodcastGenerator/admin/episodes_edit.php:358
+#: PodcastGenerator/admin/episodes_upload.php:379
 msgid "Category"
 msgstr "Categoría"
 
-#: PodcastGenerator/admin/episodes_edit.php:187
-#: PodcastGenerator/admin/episodes_upload.php:232
+#: PodcastGenerator/admin/episodes_edit.php:359
+#: PodcastGenerator/admin/episodes_upload.php:380
 msgid "You can select up to 3 categories"
 msgstr "Puedes seleccionar hasta 3 categorías"
 
-#: PodcastGenerator/admin/episodes_edit.php:204
-#: PodcastGenerator/admin/episodes_upload.php:243
+#: PodcastGenerator/admin/episodes_edit.php:375
+#: PodcastGenerator/admin/episodes_upload.php:390
 msgid "Publication Date"
 msgstr "Fecha de publicación"
 
-#: PodcastGenerator/admin/episodes_edit.php:205
-#: PodcastGenerator/admin/episodes_upload.php:244
+#: PodcastGenerator/admin/episodes_edit.php:376
+#: PodcastGenerator/admin/episodes_upload.php:391
 msgid "If you select a date in the future, it will be published then"
 msgstr "Si seleccionas una fecha futura, será publicada entonces"
 
-#: PodcastGenerator/admin/episodes_edit.php:206
-#: PodcastGenerator/admin/episodes_upload.php:245
+#: PodcastGenerator/admin/episodes_edit.php:377
+#: PodcastGenerator/admin/episodes_upload.php:392
 msgid "Date"
 msgstr "Fecha"
 
-#: PodcastGenerator/admin/episodes_edit.php:208
-#: PodcastGenerator/admin/episodes_upload.php:247
+#: PodcastGenerator/admin/episodes_edit.php:380
+#: PodcastGenerator/admin/episodes_upload.php:394
 msgid "Time"
 msgstr "Hora"
 
-#: PodcastGenerator/admin/episodes_edit.php:213
+#: PodcastGenerator/admin/episodes_edit.php:386
+#: PodcastGenerator/admin/episodes_upload.php:399
 msgid "Extra Information"
 msgstr "Información extra"
 
-#: PodcastGenerator/admin/episodes_edit.php:216
-#: PodcastGenerator/admin/episodes_upload.php:255
+#: PodcastGenerator/admin/episodes_edit.php:389
+#: PodcastGenerator/admin/store_cover.php:92
+msgid "Current Cover"
+msgstr "Carátula actual"
+
+#: PodcastGenerator/admin/episodes_edit.php:393
+#: PodcastGenerator/admin/store_cover.php:97
+msgid "Upload new cover"
+msgstr "Subir nueva catátula"
+
+#: PodcastGenerator/admin/episodes_edit.php:397
+#: PodcastGenerator/admin/episodes_upload.php:406
 msgid "Long Description"
 msgstr "Descripción larga"
 
-#: PodcastGenerator/admin/episodes_edit.php:220
-#: PodcastGenerator/admin/episodes_upload.php:259
+#: PodcastGenerator/admin/episodes_edit.php:403
+#: PodcastGenerator/admin/episodes_upload.php:410
+msgid "Episode Number"
+msgstr "Número de episodio"
+
+#: PodcastGenerator/admin/episodes_edit.php:409
+#: PodcastGenerator/admin/episodes_upload.php:414
+msgid "Season Number"
+msgstr "Número de temporada"
+
+#: PodcastGenerator/admin/episodes_edit.php:415
+#: PodcastGenerator/admin/episodes_upload.php:418
 msgid "iTunes Keywords"
 msgstr "Palabras clave para iTunes"
 
-#: PodcastGenerator/admin/episodes_edit.php:224
+#: PodcastGenerator/admin/episodes_edit.php:422
 msgid "Explicit Content"
 msgstr "Contenido explícito"
 
-#: PodcastGenerator/admin/episodes_edit.php:228
-#: PodcastGenerator/admin/episodes_upload.php:267
+#: PodcastGenerator/admin/episodes_edit.php:426
+#: PodcastGenerator/admin/episodes_upload.php:428
+#: PodcastGenerator/core/html_helpers.php:39
+msgid "Yes"
+msgstr "Sí"
+
+#: PodcastGenerator/admin/episodes_edit.php:431
+#: PodcastGenerator/admin/episodes_upload.php:433
+#: PodcastGenerator/core/html_helpers.php:40
+msgid "No"
+msgstr "No"
+
+#: PodcastGenerator/admin/episodes_edit.php:436
+#: PodcastGenerator/admin/episodes_upload.php:438
 msgid "Author"
 msgstr "Autor"
 
-#: PodcastGenerator/admin/episodes_edit.php:232
+#: PodcastGenerator/admin/episodes_edit.php:447
+#: PodcastGenerator/admin/episodes_upload.php:447
+msgid "Custom Tags"
+msgstr "Etiquetas personalizadas"
+
+#: PodcastGenerator/admin/episodes_edit.php:457
 msgid "Save Changes"
 msgstr "Guardar cambios"
 
-#: PodcastGenerator/admin/episodes_edit.php:237
+#: PodcastGenerator/admin/episodes_edit.php:462
 msgid "Delete Episode"
 msgstr "Borrar episodio"
 
-#: PodcastGenerator/admin/episodes_edit.php:244
-msgid "\" characters remaining\""
-msgstr "\" caracteres restantes\""
+#: PodcastGenerator/admin/episodes_edit.php:465
+#: PodcastGenerator/admin/episodes_manage_cats.php:99
+#: PodcastGenerator/admin/pg_users.php:143
+msgid "Delete"
+msgstr "Borrar"
 
-#: PodcastGenerator/admin/episodes_ftp_feature.php:139
+#: PodcastGenerator/admin/episodes_ftp_feature.php:19
 #, php-format
 msgid "Added %d new episode(s)"
 msgstr "Añadido(s) %d nuevo(s) episodio(s)"
 
-#: PodcastGenerator/admin/episodes_ftp_feature.php:141
+#: PodcastGenerator/admin/episodes_ftp_feature.php:21
 msgid "No new episodes were found"
-msgstr "No se encontraron episodios"
+msgstr "No se encontraron nuevos episodios"
 
-#: PodcastGenerator/admin/episodes_ftp_feature.php:149
+#: PodcastGenerator/admin/episodes_ftp_feature.php:30
 msgid "FTP Feature"
 msgstr "Característica FTP"
 
-#: PodcastGenerator/admin/episodes_ftp_feature.php:163
+#: PodcastGenerator/admin/episodes_ftp_feature.php:44
 msgid "FTP Auto Indexing"
 msgstr "Auto indexación FTP"
 
-#: PodcastGenerator/admin/episodes_ftp_feature.php:166
+#: PodcastGenerator/admin/episodes_ftp_feature.php:48
 msgid "Begin"
 msgstr "Comenzar"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:40
+#: PodcastGenerator/admin/episodes_list.php:44
+#: PodcastGenerator/admin/episodes_list.php:58
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr "Episodios"
+
+#: PodcastGenerator/admin/episodes_list.php:59
+msgid "Click on the title of the podcast you want to edit/delete."
+msgstr "Haga clic en el título del podcast que quiere editar/borrar"
+
+#: PodcastGenerator/admin/episodes_list.php:60
+msgid ""
+"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
+"<span style='color:green;'>green</span> have been posted."
+msgstr ""
+"Las fechas en 1azul1 están en el futuro. Se han publicado las fechas en "
+"2verde2."
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:43
 msgid "Category already exists"
 msgstr "La categoría ya existe"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:62
-#: PodcastGenerator/admin/episodes_manage_cats.php:76
+#: PodcastGenerator/admin/episodes_manage_cats.php:70
+#: PodcastGenerator/admin/episodes_manage_cats.php:84
 #: PodcastGenerator/admin/navbar.php:18
 msgid "Manage categories"
 msgstr "Administrar categorías"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:77
+#: PodcastGenerator/admin/episodes_manage_cats.php:85
 msgid "Add category"
 msgstr "Añadir categoría"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:79
-#: PodcastGenerator/admin/episodes_manage_cats.php:80
+#: PodcastGenerator/admin/episodes_manage_cats.php:87
+#: PodcastGenerator/admin/episodes_manage_cats.php:88
 msgid "Category Name"
 msgstr "Nombre de categoría"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:81
+#: PodcastGenerator/admin/episodes_manage_cats.php:90
 msgid "Add"
 msgstr "Agregar"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:83
+#: PodcastGenerator/admin/episodes_manage_cats.php:92
 msgid "Current Categories"
 msgstr "Categorías actuales"
 
-#: PodcastGenerator/admin/episodes_manage_cats.php:88
-msgid "Delete"
-msgstr "Borrar"
-
-#: PodcastGenerator/admin/episodes_regenerate.php:19
+#: PodcastGenerator/admin/episodes_regenerate.php:20
 msgid "Regenerate Feed"
 msgstr "Regenerar feed"
 
-#: PodcastGenerator/admin/episodes_regenerate.php:33
+#: PodcastGenerator/admin/episodes_regenerate.php:34
 msgid "Successfully regenerated RSS feed"
 msgstr "Regeneración del Feed RSS exitosa"
 
-#: PodcastGenerator/admin/episodes_regenerate.php:34
+#: PodcastGenerator/admin/episodes_regenerate.php:35
 msgid "Return"
 msgstr "Volver"
 
-#: PodcastGenerator/admin/episodes_upload.php:73
+#: PodcastGenerator/admin/episodes_upload.php:104
 msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
 msgstr ""
 "Nombre del archivo inválido, solo están permitidos A-Z, a-z, guiones bajos y"
 " puntos"
 
-#: PodcastGenerator/admin/episodes_upload.php:100
-msgid "Invalid file extension"
-msgstr "Extensión de archivo inválida"
+#: PodcastGenerator/admin/episodes_upload.php:146
+msgid "The uploaded episode file is not readable (permission error)"
+msgstr "El archivo del episodio subido no se puede leer (error de permisos)"
 
-#: PodcastGenerator/admin/episodes_upload.php:105
-msgid "The file upload was not successfully"
-msgstr "El archivo no se subió correctamente"
+#: PodcastGenerator/admin/episodes_upload.php:239
+msgid "Embedded cover art"
+msgstr "Portada incrustada"
 
-#: PodcastGenerator/admin/episodes_upload.php:112
-msgid "The uploaded file is not readable (permission error)"
-msgstr "El archivo no puede leerse (error de permiso)"
+#: PodcastGenerator/admin/episodes_upload.php:250
+msgid "The embedded cover art file was not saved successfully"
+msgstr "El archivo de portada incrustado no se guardó correctamente"
 
-#: PodcastGenerator/admin/episodes_upload.php:125
-#, php-format
-msgid "Unsupported mime type detected for file with extension \"%s\""
-msgstr "Tipo de medio detectado no soportado para el archivo con extensión \"%s\""
-
-#: PodcastGenerator/admin/episodes_upload.php:189
-#: PodcastGenerator/admin/episodes_upload.php:203
+#: PodcastGenerator/admin/episodes_upload.php:333
+#: PodcastGenerator/admin/episodes_upload.php:350
 msgid "Upload Episode"
 msgstr "Subir episodio"
 
-#: PodcastGenerator/admin/episodes_upload.php:206
-msgid "uploaded successfully"
-msgstr "subida exitosa"
+#: PodcastGenerator/admin/episodes_upload.php:353
+#, php-format
+msgid "\"%s\" uploaded successfully"
+msgstr "\"1%s\" subido satisfactoriamente"
 
-#: PodcastGenerator/admin/episodes_upload.php:215
-msgid "Main Informations"
-msgstr "Informaciones principales"
-
-#: PodcastGenerator/admin/episodes_upload.php:218
+#: PodcastGenerator/admin/episodes_upload.php:365
 msgid "File"
 msgstr "Archivo"
 
-#: PodcastGenerator/admin/episodes_upload.php:228
-#: PodcastGenerator/admin/episodes_upload.php:280
-msgid "characters remaining"
-msgstr "caracteres restantes"
+#: PodcastGenerator/admin/episodes_upload.php:402
+msgid "Episode Cover"
+msgstr "Portada del episodio"
 
-#: PodcastGenerator/admin/episodes_upload.php:252
-msgid "Extra Informations"
-msgstr "Informaciones extra"
-
-#: PodcastGenerator/admin/episodes_upload.php:263
+#: PodcastGenerator/admin/episodes_upload.php:424
 msgid "Explicit content"
 msgstr "Contenido explícito"
 
-#: PodcastGenerator/admin/episodes_upload.php:264
-#: PodcastGenerator/admin/pg_config.php:43
-#: PodcastGenerator/admin/pg_config.php:47
-#: PodcastGenerator/admin/pg_config.php:51
-#: PodcastGenerator/admin/podcast_details.php:137
-msgid "Yes"
-msgstr "Sí"
-
-#: PodcastGenerator/admin/episodes_upload.php:264
-#: PodcastGenerator/admin/pg_config.php:43
-#: PodcastGenerator/admin/pg_config.php:47
-#: PodcastGenerator/admin/pg_config.php:51
-#: PodcastGenerator/admin/podcast_details.php:137
-msgid "No"
-msgstr "No"
-
-#: PodcastGenerator/admin/episodes_upload.php:268
-#: PodcastGenerator/admin/podcast_details.php:56
-msgid "Author Name"
-msgstr "Nombre del autor"
-
-#: PodcastGenerator/admin/episodes_upload.php:269
-msgid "Author E-Mail"
-msgstr "Correo electrónico del autor"
-
-#: PodcastGenerator/admin/episodes_upload.php:271
+#: PodcastGenerator/admin/episodes_upload.php:457
 msgid "Upload episode"
 msgstr "Subir episodio"
 
@@ -343,7 +460,7 @@ msgstr "Reinicia tu contraseña"
 msgid "No password, no problem!"
 msgstr "Sin contraseña, ¡no hay problema!"
 
-#: PodcastGenerator/admin/forgot.php:16
+#: PodcastGenerator/admin/forgot.php:15
 msgid ""
 "We offer a tool which allows you to easily recover your password. However, "
 "the danger of this is that as long as this file is online, anyone can reset "
@@ -354,7 +471,7 @@ msgstr ""
 "línea, cualquiera puede reiniciar esta contraseña, así que el archivo puede "
 "que no esté en línea por mucho tiempo."
 
-#: PodcastGenerator/admin/forgot.php:18
+#: PodcastGenerator/admin/forgot.php:17
 #, php-format
 msgid ""
 "In the ZIP file of this version which you downloaded there is a file in the "
@@ -365,7 +482,7 @@ msgstr ""
 "carpeta %s llamado %s. Sube este archivo en la carpeta de administrador con "
 "el nombre %s"
 
-#: PodcastGenerator/admin/forgot.php:19
+#: PodcastGenerator/admin/forgot.php:18
 msgid ""
 "If you no don't have this ZIP file anymore, don't worry! All versions of "
 "Podcast Generator ever released since 2.5 are available on the Podcast "
@@ -383,28 +500,24 @@ msgstr "Bienvenido a tu interfaz de administración de Podcast Generator "
 msgid "Login disabled for security reasons"
 msgstr "El inicio de sesión está deshabilitado por razones de seguridad"
 
-#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:49
-msgid "Missing fields"
-msgstr "Campos faltantes"
-
-#: PodcastGenerator/admin/login.php:37
+#: PodcastGenerator/admin/login.php:38
 msgid "Invalid username or password"
 msgstr "Nombre de usuario o contraseña inválidos"
 
-#: PodcastGenerator/admin/login.php:62 PodcastGenerator/admin/pg_users.php:99
-#: PodcastGenerator/admin/pg_users.php:116
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:103
+#: PodcastGenerator/admin/pg_users.php:120
 msgid "Username"
 msgstr "Usuario"
 
-#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:101
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:106
 msgid "Password"
 msgstr "Contraseña"
 
-#: PodcastGenerator/admin/login.php:66
+#: PodcastGenerator/admin/login.php:70
 msgid "Forgot Password?"
 msgstr "¿Olvidaste la contraseña?"
 
-#: PodcastGenerator/admin/login.php:68
+#: PodcastGenerator/admin/login.php:72
 msgid "Sign In"
 msgstr "Registrarse"
 
@@ -412,17 +525,13 @@ msgstr "Registrarse"
 msgid "Toggle navigation"
 msgstr "Cambiar navegación"
 
-#: PodcastGenerator/admin/navbar.php:13
-msgid "Episodes"
-msgstr "Episodios"
-
 #: PodcastGenerator/admin/navbar.php:16
 msgid "Upload New Episodes"
 msgstr "Subir nuevos episodios"
 
 #: PodcastGenerator/admin/navbar.php:17
-msgid "Edit / Delete Episode"
-msgstr "Editar / borrar episodio"
+msgid "View All Episodes"
+msgstr "Ver todos los episodios"
 
 #: PodcastGenerator/admin/navbar.php:19
 msgid "FTP Feature (Auto Indexing)"
@@ -445,7 +554,7 @@ msgid "Customize your Freebox"
 msgstr "Personalizar tu caja libre"
 
 #: PodcastGenerator/admin/navbar.php:31
-#: PodcastGenerator/admin/theme_buttons.php:98
+#: PodcastGenerator/admin/theme_buttons.php:115
 msgid "Change Buttons"
 msgstr "Cambiar botones"
 
@@ -462,7 +571,7 @@ msgid "Change Podcast Category"
 msgstr "Cambiar la categoría del podcast"
 
 #: PodcastGenerator/admin/navbar.php:45
-#: PodcastGenerator/admin/podcast_details.php:27
+#: PodcastGenerator/admin/podcast_details.php:79
 msgid "Podcast Details"
 msgstr "Detalles del podcast"
 
@@ -478,37 +587,51 @@ msgstr "Podcast Generator"
 msgid "Change Podcast Generator Config"
 msgstr "Cambiar la configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:64
-#: PodcastGenerator/admin/pg_users.php:78
+#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:70
+#: PodcastGenerator/admin/pg_users.php:84
 msgid "Manage users"
 msgstr "Administrar usuarios"
 
-#: PodcastGenerator/admin/navbar.php:63
+#: PodcastGenerator/admin/navbar.php:58
+#: PodcastGenerator/admin/pg_integrations.php:84
+msgid "Manage integrations"
+msgstr "Gestionar integraciones"
+
+#: PodcastGenerator/admin/navbar.php:64
 msgid "View Podcast"
 msgstr "Ver podcast"
 
-#: PodcastGenerator/admin/pg_config.php:25
+#: PodcastGenerator/admin/pg_config.php:60
+msgid "Timestamp"
+msgstr "Marca de tiempo"
+
+#: PodcastGenerator/admin/pg_config.php:61
+msgid "Season and episode number"
+msgstr "Número de episodio y temporada"
+
+#: PodcastGenerator/admin/pg_config.php:69
+#: PodcastGenerator/admin/pg_integrations.php:70
 msgid "Podcast Generator Configuration"
 msgstr "Configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/pg_config.php:39
+#: PodcastGenerator/admin/pg_config.php:83
 msgid "Change Podcast Generator Configuration"
 msgstr "Cambiar la configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/pg_config.php:41
+#: PodcastGenerator/admin/pg_config.php:85
 msgid "Enable Audio and Video Player"
 msgstr "Habilitar el reproductor de audio y vídeo"
 
-#: PodcastGenerator/admin/pg_config.php:42
+#: PodcastGenerator/admin/pg_config.php:86
 msgid "Enable streaming in web browser"
 msgstr "Habilitar la transmisión en el navegador web"
 
-#: PodcastGenerator/admin/pg_config.php:45
-#: PodcastGenerator/admin/theme_freebox.php:63
+#: PodcastGenerator/admin/pg_config.php:91
+#: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
 msgstr "Habilitar la caja libre"
 
-#: PodcastGenerator/admin/pg_config.php:46
+#: PodcastGenerator/admin/pg_config.php:93
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
@@ -516,24 +639,56 @@ msgstr ""
 "La FreeBox le permite escribir libremente lo que desee, agregue enlaces o "
 "texto mediante un editor visual en la sección de administración"
 
-#: PodcastGenerator/admin/pg_config.php:49
+#: PodcastGenerator/admin/pg_config.php:99
 msgid "Enable categories"
 msgstr "Habilitar las categorías"
 
-#: PodcastGenerator/admin/pg_config.php:50
+#: PodcastGenerator/admin/pg_config.php:100
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 "Active la función de categorías para hacer listas temáticas de sus podcasts."
 
-#: PodcastGenerator/admin/pg_config.php:53
+#: PodcastGenerator/admin/pg_config.php:105
+msgid "Enable custom tag input"
+msgstr "Activar entrada de etiqueta personalizada"
+
+#: PodcastGenerator/admin/pg_config.php:107
+msgid ""
+"Enable the ability to add custom RSS tags to your podcast feed and "
+"individual episodes."
+msgstr ""
+"Habilite la capacidad de agregar etiquetas RSS personalizadas a su fuente de"
+" podcast y episodios individuales."
+
+#: PodcastGenerator/admin/pg_config.php:113
+msgid "Episode sort order"
+msgstr "Orden para mostrar los episodios"
+
+#: PodcastGenerator/admin/pg_config.php:114
+msgid "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr ""
+"Elija cómo se ordenan los episodios en el sitio web y en la fuente RSS."
+
+#: PodcastGenerator/admin/pg_config.php:119
+msgid "Time zone"
+msgstr "Zona horaria"
+
+#: PodcastGenerator/admin/pg_config.php:120
+msgid ""
+"Select time zone for displaying the time which episodes have been released."
+msgstr ""
+"Seleccione la zona horaria para mostrar la hora en que se lanzaron los "
+"episodios."
+
+#: PodcastGenerator/admin/pg_config.php:136
 msgid "Use cron to regenerate the RSS feed"
 msgstr "Usa cron para regenerar la fuente RSS"
 
-#: PodcastGenerator/admin/pg_config.php:56
+#: PodcastGenerator/admin/pg_config.php:141
 msgid "Password Protection for the web pages"
 msgstr "Protección con contraseña para las páginas web"
 
-#: PodcastGenerator/admin/pg_config.php:57
+#: PodcastGenerator/admin/pg_config.php:143
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
@@ -542,340 +697,395 @@ msgstr ""
 "archivos de audio serán accesibles sin importar que una contraseña sea "
 "puesta o no"
 
-#: PodcastGenerator/admin/pg_config.php:60
-#: PodcastGenerator/admin/pg_users.php:104
-#: PodcastGenerator/admin/podcast_details.php:139
-#: PodcastGenerator/admin/theme_buttons.php:127
-#: PodcastGenerator/admin/theme_buttons.php:148
+#: PodcastGenerator/admin/pg_config.php:150
+#: PodcastGenerator/admin/pg_integrations.php:132
+#: PodcastGenerator/admin/pg_users.php:111
+#: PodcastGenerator/admin/podcast_details.php:164
+#: PodcastGenerator/admin/theme_buttons.php:153
+#: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
 msgstr "Enviar"
 
-#: PodcastGenerator/admin/pg_users.php:18
+#: PodcastGenerator/admin/pg_integrations.php:26
+msgid "Already registered with Podcast Index"
+msgstr "Ya está registrado en Podcast Index"
+
+#: PodcastGenerator/admin/pg_integrations.php:39
+msgid "API error"
+msgstr "Error de API"
+
+#: PodcastGenerator/admin/pg_integrations.php:54
+msgid "Unsupported service"
+msgstr "Servicio no soportado"
+
+#: PodcastGenerator/admin/pg_integrations.php:91
+msgid "Podcast Index"
+msgstr "Indice de Podcasts"
+
+#: PodcastGenerator/admin/pg_integrations.php:93
+msgid "API key"
+msgstr "Llave de API"
+
+#: PodcastGenerator/admin/pg_integrations.php:98
+msgid "API secret"
+msgstr "Secreto de API"
+
+#: PodcastGenerator/admin/pg_integrations.php:103
+msgid "Podcast ID"
+msgstr "ID de Podcast"
+
+#: PodcastGenerator/admin/pg_integrations.php:105
+msgid ""
+"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
+"add your show to the index"
+msgstr ""
+"Ingrese el número de identificación de su programa en el Indice de Podcasts "
+"o haga clic en \"Agregar programa\" para agregar su programa al índice"
+
+#: PodcastGenerator/admin/pg_integrations.php:112
+msgid "Add Show"
+msgstr "Añadir Podcast"
+
+#: PodcastGenerator/admin/pg_integrations.php:119
+msgid "WebSub"
+msgstr "Subtítulo web"
+
+#: PodcastGenerator/admin/pg_integrations.php:121
+msgid "Server address"
+msgstr "Dirección del Servidor"
+
+#: PodcastGenerator/admin/pg_integrations.php:123
+msgid ""
+"This is the full address of the WebSub hub to alert when the podcast is "
+"updated."
+msgstr ""
+"Esta es la dirección completa del concentrador WebSub para alertar cuando se"
+" actualice el podcast."
+
+#: PodcastGenerator/admin/pg_users.php:23
 msgid "Error while changing password"
 msgstr "Error mientras se cambiaba la contraseña"
 
-#: PodcastGenerator/admin/pg_users.php:30
-#: PodcastGenerator/admin/pg_users.php:130
+#: PodcastGenerator/admin/pg_users.php:35
+#: PodcastGenerator/admin/pg_users.php:139
 msgid "You cannot delete yourself"
 msgstr "No puedes borrarte a ti mismo"
 
-#: PodcastGenerator/admin/pg_users.php:35
+#: PodcastGenerator/admin/pg_users.php:40
 msgid "User does not exists"
 msgstr " El usuario no existe"
 
-#: PodcastGenerator/admin/pg_users.php:39
+#: PodcastGenerator/admin/pg_users.php:44
 msgid "Unknown error while deleting user"
 msgstr "Error desconocido mientras se eliminaba el usuario"
 
-#: PodcastGenerator/admin/pg_users.php:53
+#: PodcastGenerator/admin/pg_users.php:58
 msgid "Error while creating user"
 msgstr "Error mientras se creaba el usuario"
 
-#: PodcastGenerator/admin/pg_users.php:79
+#: PodcastGenerator/admin/pg_users.php:85
 msgid "It may take a few seconds until the changes are visible"
 msgstr "Puede tomar unos pocos segundos hasta que los cambios sean visibles"
 
-#: PodcastGenerator/admin/pg_users.php:82
+#: PodcastGenerator/admin/pg_users.php:87
 msgid "User changed successfully"
 msgstr "Usuario cambiado exitosamente"
 
-#: PodcastGenerator/admin/pg_users.php:84
+#: PodcastGenerator/admin/pg_users.php:89
 msgid "User created successfully"
 msgstr "Usuario creado exitosamente"
 
-#: PodcastGenerator/admin/pg_users.php:86
+#: PodcastGenerator/admin/pg_users.php:91
 msgid "User deleted successfully"
 msgstr "Usuario borrado exitosamente"
 
-#: PodcastGenerator/admin/pg_users.php:90
+#: PodcastGenerator/admin/pg_users.php:94
 msgid "List of users"
 msgstr "Lista de usuarios"
 
-#: PodcastGenerator/admin/pg_users.php:97
+#: PodcastGenerator/admin/pg_users.php:101
 msgid "Create User"
 msgstr "Crear usuario"
 
-#: PodcastGenerator/admin/pg_users.php:111
+#: PodcastGenerator/admin/pg_users.php:116
 msgid "User does not exist"
 msgstr "El usuario no existe"
 
-#: PodcastGenerator/admin/pg_users.php:117
+#: PodcastGenerator/admin/pg_users.php:123
 msgid "You cannot edit usernames"
 msgstr "No puedes editar los nombres de usuario"
 
-#: PodcastGenerator/admin/pg_users.php:118
+#: PodcastGenerator/admin/pg_users.php:126
 msgid "New Password"
 msgstr "Nueva contraseña"
 
-#: PodcastGenerator/admin/pg_users.php:120
+#: PodcastGenerator/admin/pg_users.php:128
 msgid "Repeat new password"
 msgstr "Repetir la nueva contraseña"
 
-#: PodcastGenerator/admin/pg_users.php:123
+#: PodcastGenerator/admin/pg_users.php:133
 msgid "Change"
 msgstr "Cambiar"
 
-#: PodcastGenerator/admin/pg_users.php:126
+#: PodcastGenerator/admin/pg_users.php:137
 msgid "Delete user"
 msgstr "Borrar usuario"
 
-#: PodcastGenerator/admin/podcast_details.php:46
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast GUID is malformed"
+msgstr "El GUID del Podcast está mal formado"
+
+#: PodcastGenerator/admin/podcast_details.php:63
+msgid "Locked"
+msgstr "Bloqueado"
+
+#: PodcastGenerator/admin/podcast_details.php:64
+msgid "Unlocked"
+msgstr "Desbloqueado"
+
+#: PodcastGenerator/admin/podcast_details.php:65
+msgid "Off"
+msgstr "Apagado"
+
+#: PodcastGenerator/admin/podcast_details.php:98
 msgid "Change Podcast Details"
 msgstr "Cambiar los detalles del podcast"
 
-#: PodcastGenerator/admin/podcast_details.php:48
+#: PodcastGenerator/admin/podcast_details.php:100
 msgid "Podcast Title"
 msgstr "Titulo del podcast"
 
-#: PodcastGenerator/admin/podcast_details.php:50
+#: PodcastGenerator/admin/podcast_details.php:105
 msgid "Podcast Subtitle or Slogan"
 msgstr "Subtítulo o eslogan del podcast"
 
-#: PodcastGenerator/admin/podcast_details.php:52
+#: PodcastGenerator/admin/podcast_details.php:110
 msgid "Podcast Description"
 msgstr "Descripción del podcast"
 
-#: PodcastGenerator/admin/podcast_details.php:54
+#: PodcastGenerator/admin/podcast_details.php:115
 msgid "Copyright Notice"
 msgstr "Aviso de los derechos de autor"
 
-#: PodcastGenerator/admin/podcast_details.php:58
+#: PodcastGenerator/admin/podcast_details.php:120
+msgid "Author Name"
+msgstr "Nombre del autor"
+
+#: PodcastGenerator/admin/podcast_details.php:125
 msgid "Author E-Mail Address"
 msgstr "Correo electrónico del autor"
 
-#: PodcastGenerator/admin/podcast_details.php:60
+#: PodcastGenerator/admin/podcast_details.php:130
+msgid "Podcast GUID"
+msgstr "GUID del Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "Unique ID code for your podcast across the internet"
+msgstr "Identificador único de tu podcast a través de Internet"
+
+#: PodcastGenerator/admin/podcast_details.php:138
 msgid "Feed Language"
 msgstr "Idioma de la fuente"
 
-#: PodcastGenerator/admin/podcast_details.php:60
+#: PodcastGenerator/admin/podcast_details.php:139
 msgid "Main language of your podcast"
 msgstr "Idioma principal de tu podcast"
 
-#: PodcastGenerator/admin/podcast_details.php:136
+#: PodcastGenerator/admin/podcast_details.php:149
 msgid "Explicit Podcast"
 msgstr "Podcast explícito"
 
-#: PodcastGenerator/admin/store_cat.php:17
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Lock Podcast Feed"
+msgstr "Bloquear el Feed del Podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Prevent other platforms from importing your feed"
+msgstr "Prevenir que otras plataformas importen tu Feed"
+
+#: PodcastGenerator/admin/podcast_details.php:158
+msgid "Custom Feed Tags"
+msgstr "Feed personalizado de etiquetas"
+
+#: PodcastGenerator/admin/store_cat.php:18
 msgid "Category 1 needs to be set"
 msgstr "Categoría 1 necesita ser ajustada"
 
-#: PodcastGenerator/admin/store_cat.php:34
+#: PodcastGenerator/admin/store_cat.php:36
 msgid "Select Podcast Category"
 msgstr "Selecciona una categoría de podcast"
 
-#: PodcastGenerator/admin/store_cat.php:48
+#: PodcastGenerator/admin/store_cat.php:50
 msgid "Select Podcast Categories"
 msgstr "Selecciona categorías de podcast"
 
-#: PodcastGenerator/admin/store_cat.php:49
+#: PodcastGenerator/admin/store_cat.php:51
 msgid "Select or change Podcast Categories (for iTunes)"
 msgstr "Selecciona o cambia las categorías de podcast (para iTunes)"
 
-#: PodcastGenerator/admin/store_cat.php:105
-#: PodcastGenerator/admin/theme_freebox.php:75
+#: PodcastGenerator/admin/store_cat.php:56
+#: PodcastGenerator/admin/store_cat.php:72
+#: PodcastGenerator/admin/store_cat.php:93
+#, php-format
+msgid "Category %d"
+msgstr "Categoría 1%d"
+
+#: PodcastGenerator/admin/store_cat.php:115
+#: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
 msgstr "Guardar"
 
-#: PodcastGenerator/admin/store_cover.php:16
-msgid "Image is not a JPEG"
-msgstr "La imagen no es un JPEG"
+#: PodcastGenerator/admin/store_cover.php:35
+msgid "Image format is not supported"
+msgstr "Formato de imagen no soportado"
 
-#: PodcastGenerator/admin/store_cover.php:23
-msgid "Image is not quadratic"
-msgstr "La imagen no es cuadrática"
+#: PodcastGenerator/admin/store_cover.php:42
+msgid "Image does not have square dimensions"
+msgstr "La imagen no tiene dimensiones cuadradas"
 
-#: PodcastGenerator/admin/store_cover.php:29
-msgid "File was not uploaded"
-msgstr "El archivo no se subió"
+#: PodcastGenerator/admin/store_cover.php:54
+msgid "Image was not uploaded successfully"
+msgstr "La imagen no fue subida satisfactoriamente"
 
-#: PodcastGenerator/admin/store_cover.php:44
+#: PodcastGenerator/admin/store_cover.php:72
 msgid "Store Cover"
 msgstr "Carátula de la tienda"
 
-#: PodcastGenerator/admin/store_cover.php:58
+#: PodcastGenerator/admin/store_cover.php:86
 msgid "Change Cover"
 msgstr "Cambiar carátula"
 
-#: PodcastGenerator/admin/store_cover.php:59
+#: PodcastGenerator/admin/store_cover.php:87
 msgid "The cover art will be displayed in the podcast readers."
 msgstr "La carátula se mostrará a los lectores de podcast."
 
-#: PodcastGenerator/admin/store_cover.php:65
-msgid "Current Cover"
-msgstr "Carátula actual"
-
-#: PodcastGenerator/admin/store_cover.php:68
-msgid "Upload new cover"
-msgstr "Subir nueva catátula"
-
-#: PodcastGenerator/admin/store_cover.php:70
+#: PodcastGenerator/admin/store_cover.php:99
 msgid "Select file"
 msgstr "Seleccionar archivo"
 
-#: PodcastGenerator/admin/store_cover.php:72
+#: PodcastGenerator/admin/store_cover.php:103
 msgid "Upload"
 msgstr "Subir"
 
-#: PodcastGenerator/admin/theme_buttons.php:24
+#: PodcastGenerator/admin/theme_buttons.php:25
 msgid "Item exists"
 msgstr "El artículo existe"
 
-#: PodcastGenerator/admin/theme_buttons.php:29
+#: PodcastGenerator/admin/theme_buttons.php:30
 msgid "Name, Link and CSS Class needs to be set"
 msgstr "Se necesita ajustar nombre, enlace y clases CSS"
 
-#: PodcastGenerator/admin/theme_buttons.php:84
+#: PodcastGenerator/admin/theme_buttons.php:101
 msgid "Theme Buttons"
 msgstr "Botones de tema"
 
-#: PodcastGenerator/admin/theme_buttons.php:99
+#: PodcastGenerator/admin/theme_buttons.php:116
 msgid "Click on the button you wish to edit"
 msgstr "Clic en el botón que deseas editar"
 
-#: PodcastGenerator/admin/theme_buttons.php:119
-#: PodcastGenerator/admin/theme_buttons.php:140
-msgid "Name (needs to be unique)"
-msgstr "Nombre (necesita ser único)"
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "Name"
+msgstr "Nombre"
 
-#: PodcastGenerator/admin/theme_buttons.php:121
-#: PodcastGenerator/admin/theme_buttons.php:142
-msgid "Link (where it should point to)"
-msgstr "Enlace (donde debiera apuntar)"
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "needs to be unique"
+msgstr "necesita ser único"
 
-#: PodcastGenerator/admin/theme_buttons.php:123
-#: PodcastGenerator/admin/theme_buttons.php:144
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "Link"
+msgstr "Enlace"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "where it should point to"
+msgstr "¿A dónde debe apuntar?"
+
+#: PodcastGenerator/admin/theme_buttons.php:139
+#: PodcastGenerator/admin/theme_buttons.php:173
+msgid "CSS Classes"
+msgstr "Clases CSS"
+
+#: PodcastGenerator/admin/theme_buttons.php:141
+#: PodcastGenerator/admin/theme_buttons.php:175
 #, php-format
-msgid "CSS Classes (depends on theme, you can use %s in the default theme)"
-msgstr "Clases CSS (depende del tema, puedes usar %s en el tema por defecto)"
+msgid "depends on theme, you can use %s in the default theme"
+msgstr "depende del tema, puede usar 1%s en el tema predeterminado"
 
-#: PodcastGenerator/admin/theme_buttons.php:125
 #: PodcastGenerator/admin/theme_buttons.php:146
-msgid "Protocol (Leave it blank if you don't know what you are doing)"
-msgstr "Protocolo (déjalo en blanco si no sabes qué es lo que haces)"
+#: PodcastGenerator/admin/theme_buttons.php:180
+msgid "Protocol"
+msgstr "Protocolo"
 
-#: PodcastGenerator/admin/theme_buttons.php:130
+#: PodcastGenerator/admin/theme_buttons.php:147
+#: PodcastGenerator/admin/theme_buttons.php:181
+msgid "Leave it blank if you don't know what you are doing"
+msgstr "Deje esto en blanco si no sabe lo que está haciendo"
+
+#: PodcastGenerator/admin/theme_buttons.php:159
 msgid "Delete Button"
 msgstr "Borrar botón"
 
-#: PodcastGenerator/admin/theme_buttons.php:138
+#: PodcastGenerator/admin/theme_buttons.php:165
 msgid "Add Button"
 msgstr "Añadir botón"
 
-#: PodcastGenerator/admin/theme_change.php:45
+#: PodcastGenerator/admin/theme_change.php:49
 msgid "Theme Change"
 msgstr "Cambio de tema"
 
-#: PodcastGenerator/admin/theme_change.php:59
+#: PodcastGenerator/admin/theme_change.php:63
 msgid "Change theme"
 msgstr "Cambiar tema"
 
-#: PodcastGenerator/admin/theme_change.php:60
+#: PodcastGenerator/admin/theme_change.php:64
 #, php-format
 msgid "You can upload themes to your %s folder"
 msgstr "Puedes subir temas a tu carpeta %s"
 
-#: PodcastGenerator/admin/theme_change.php:61
+#: PodcastGenerator/admin/theme_change.php:65
 msgid "Installed themes"
 msgstr "Temas instalados"
 
-#: PodcastGenerator/admin/theme_change.php:65
+#: PodcastGenerator/admin/theme_change.php:68
 msgid "No compatible themes installed"
 msgstr "Sin temas compatibles instalados"
 
-#: PodcastGenerator/admin/theme_change.php:81
+#: PodcastGenerator/admin/theme_change.php:82
 msgid "This theme is currently in use"
 msgstr "Este tema está en uso"
 
-#: PodcastGenerator/admin/theme_change.php:83
+#: PodcastGenerator/admin/theme_change.php:86
 msgid "Switch theme"
 msgstr "Cambiar tema"
 
-#: PodcastGenerator/admin/theme_freebox.php:34
-#: PodcastGenerator/admin/theme_freebox.php:48
+#: PodcastGenerator/admin/theme_freebox.php:40
+#: PodcastGenerator/admin/theme_freebox.php:54
 msgid "Customize Freebox"
 msgstr "Personalizar caja libre"
 
-#: PodcastGenerator/admin/theme_freebox.php:52
+#: PodcastGenerator/admin/theme_freebox.php:56
 msgid "Current Freebox"
 msgstr "Actual caja libre"
 
-#: PodcastGenerator/admin/theme_freebox.php:60
+#: PodcastGenerator/admin/theme_freebox.php:63
 msgid "Enable / Disable Freebox"
 msgstr "Habilitar / deshabilitar caja libre"
 
-#: PodcastGenerator/admin/theme_freebox.php:65
+#: PodcastGenerator/admin/theme_freebox.php:72
 msgid "Disable Freebox"
 msgstr "Deshabilitar caja libre"
 
-#: PodcastGenerator/admin/theme_freebox.php:72
+#: PodcastGenerator/admin/theme_freebox.php:77
 msgid "Change Freebox content"
 msgstr "Cambiar el contenido de la caja libre"
 
-#: PodcastGenerator/admin/theme_freebox.php:73
+#: PodcastGenerator/admin/theme_freebox.php:78
 msgid "Content"
 msgstr "Contenido"
 
-#: PodcastGenerator/auth.php:14
-msgid "This Podcast has no password"
-msgstr "Este podcast no tiene contraseña"
-
-#: PodcastGenerator/auth.php:18
-msgid "Already signed in"
-msgstr "Ya iniciaste sesión"
-
-#: PodcastGenerator/auth.php:24
-msgid "Success"
-msgstr "Éxito"
-
-#: PodcastGenerator/auth.php:27
-msgid "Invalid password"
-msgstr "Contraseña inválida"
-
-#: PodcastGenerator/auth.php:38 PodcastGenerator/auth.php:44
-msgid "Password required"
-msgstr "Contraseña requerida"
-
-#: PodcastGenerator/auth.php:51
-msgid "Enter Password"
-msgstr "Ingresar contraseña"
-
-#: PodcastGenerator/auth.php:53
-msgid "Login"
-msgstr "Iniciar sesión"
-
-#: PodcastGenerator/categories.php:21 PodcastGenerator/feed.php:15
-#: PodcastGenerator/index.php:16
-msgid "Authentication required"
-msgstr "Autentificación requerida"
-
-#: PodcastGenerator/categories.php:37 PodcastGenerator/index.php:52
-msgid "More"
-msgstr "Más"
-
-#: PodcastGenerator/categories.php:38 PodcastGenerator/index.php:53
-msgid "Download"
-msgstr "Descargar"
-
-#: PodcastGenerator/categories.php:39 PodcastGenerator/index.php:54
-msgid "Edit/Delete (Admin)"
-msgstr "Editar / eliminar (administrador)"
-
-#: PodcastGenerator/categories.php:40 PodcastGenerator/index.php:65
-msgid "Categories"
-msgstr "Categorías"
-
-#: PodcastGenerator/index.php:55
-msgid "Filetype"
-msgstr "Tipo de archivo"
-
-#: PodcastGenerator/index.php:56
-msgid "Size"
-msgstr "Tamaño"
-
-#: PodcastGenerator/index.php:57
-msgid "Duration"
-msgstr "Duración"
-
-#: PodcastGenerator/index.php:61
-msgid "No episodes uploaded yet"
-msgstr "Sin episodos subidos aún"
+#: PodcastGenerator/themes/default/categories.php:26
+msgid "All Episodes"
+msgstr "Todos los Episodios"
