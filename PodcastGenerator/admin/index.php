@@ -34,6 +34,7 @@ require '../core/include_admin.php';
     ?>
     <br>
     <div class="container">
+        <?php //# 'Podcast Generator' is a proper name. ?>
         <h1><?= _('Welcome to your Podcast Generator Admin Interface') ?></h1>
         <?php if ($config['enablepgnewsinadmin'] == 'yes') { ?>
             <iframe width="100%" src='<?= $news_url ?>'></iframe>

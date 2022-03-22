@@ -50,9 +50,11 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php //# 'Podcast Generator' is a proper name. ?>
                     <?= _('Podcast Generator') ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <?php //# 'Podcast Generator' is a proper name. ?>
                     <a class="dropdown-item" href="pg_config.php"><?= _('Change Podcast Generator Config') ?></a>
                     <a class="dropdown-item" href="pg_users.php"><?= _('Manage users') ?></a>
                     <a class="dropdown-item" href="pg_integrations.php"><?= _('Manage integrations') ?></a>

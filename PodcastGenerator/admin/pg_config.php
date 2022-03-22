@@ -66,6 +66,7 @@ $episodeSortOrderOptions = array(
 <html>
 
 <head>
+    <?php //# 'Podcast Generator' is a proper name. ?>
     <title><?= htmlspecialchars($config['podcast_title']); ?> - <?= _('Podcast Generator Configuration') ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
@@ -80,6 +81,7 @@ $episodeSortOrderOptions = array(
     ?>
     <br>
     <div class="container">
+        <?php //# 'Podcast Generator' is a proper name. ?>
         <h1><?= _('Change Podcast Generator Configuration') ?></h1>
         <form action="pg_config.php?edit=1" method="POST">
             <?= _('Enable Audio and Video Player') ?>:<br>

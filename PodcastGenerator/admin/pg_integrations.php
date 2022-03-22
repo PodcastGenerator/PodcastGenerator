@@ -68,6 +68,7 @@ if (isset($_GET['edit'])) {
 <html>
 
 <head>
+    <?php //# 'Podcast Generator' is a proper name. ?>
     <title><?= htmlspecialchars($config['podcast_title']) ?> - <?= _('Podcast Generator Configuration'); ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../core/bootstrap/style.css">
