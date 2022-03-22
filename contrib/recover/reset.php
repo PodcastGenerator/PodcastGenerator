@@ -1,6 +1,7 @@
 <?php
 require '../core/Configuration.php';
 require '../core/misc/functions.php';
+require '../core/users.php';
 
 $config = PodcastGenerator\Configuration::load('../config.php');
 $users = getUsers();
