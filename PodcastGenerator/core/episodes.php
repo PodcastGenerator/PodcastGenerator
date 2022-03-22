@@ -9,6 +9,8 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+require_once(__DIR__ . '/../vendor/autoload.php');
+
 function getSupportedExtensions($config)
 {
     $supported_extensions = array();
@@ -205,8 +207,6 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
         $episodes
     );
 }
-
-require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
 
 /**
  * Get episode audio metadata from getID3.

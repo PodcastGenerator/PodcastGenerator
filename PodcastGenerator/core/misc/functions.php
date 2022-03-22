@@ -9,11 +9,10 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-// When this file is included, config MUST be included first!
+require_once(__DIR__ . '/../../vendor/autoload.php');
+
 function getmime($filename)
 {
-    global $config;
-    require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
     // Check if file is even readable
     if (!is_readable($filename)) {
         return false;

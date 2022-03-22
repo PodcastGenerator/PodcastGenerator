@@ -27,7 +27,7 @@ if (isset($_GET['edit'])) {
                     $error = _('Already registered with Podcast Index');
                     goto error;
                 }
-                require_once('../vendor/autoload.php');
+                require_once(__DIR__ . '/../vendor/autoload.php');
                 try {
                     $client = new PodcastIndex\Client([
                         'app' => 'PodcastGenerator/' . $version,

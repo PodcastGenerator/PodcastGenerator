@@ -65,7 +65,7 @@ function pingPodcastIndex()
     }
 
     // Set up our client
-    require_once('../vendor/autoload.php');
+    require_once(__DIR__ . '/../vendor/autoload.php');
     $client = new PodcastIndex\Client([
         'app' => 'PodcastIndex/' . $version,
         'key' => $config['pi_api_key'],
