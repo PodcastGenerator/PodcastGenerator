@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2022 The Podcast Generator Translation Team
+# Copyright (C) YEAR The Podcast Generator Translation Team
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Samuel Liebermann <liebermann@gmail.com>, 2022
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2022
+# Chris Charabaruk <transifex@chris.charabaruk.net>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-07 20:03-0500\n"
-"PO-Revision-Date: 2022-03-05 22:57+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2022\n"
+"Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
+"POT-Creation-Date: 2022-03-20 12:45-0400\n"
+"PO-Revision-Date: 2022-03-20 18:30+0000\n"
+"Last-Translator: Chris Charabaruk <transifex@chris.charabaruk.net>, 2022\n"
 "Language-Team: Hebrew (Israel) (https://www.transifex.com/podcast-generator/teams/14574/he_IL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,43 +56,43 @@ msgstr "כניסה"
 msgid "Authentication required"
 msgstr "נדרשת הזדהות"
 
-#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:59
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:53
 msgid "More"
 msgstr "עוד"
 
-#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:60
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:54
 msgid "Download"
 msgstr "הורדה"
 
-#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:61
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:55
 msgid "Edit/Delete (Admin)"
 msgstr "עריכה/מחיקה (הנהלה)"
 
-#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:62
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:56
 msgid "Filetype"
 msgstr "סוג קובץ"
 
-#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:63
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:57
 msgid "Size"
 msgstr "גודל"
 
-#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:64
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:58
 msgid "Duration"
 msgstr "משך"
 
-#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:75
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:69
 msgid "Categories"
 msgstr "קטגוריות"
 
-#: PodcastGenerator/index.php:67
+#: PodcastGenerator/index.php:61
 msgid "No episodes found with that search term"
 msgstr "לא נמצאו פרקים עם ביטוי החיפוש הזה"
 
-#: PodcastGenerator/index.php:69
+#: PodcastGenerator/index.php:63
 msgid "No episodes uploaded yet"
 msgstr "טרם הועלו פרקים"
 
-#: PodcastGenerator/index.php:74
+#: PodcastGenerator/index.php:68
 msgid "Search"
 msgstr "חיפוש"
 
@@ -123,7 +124,7 @@ msgstr "פרק לא קיים"
 
 #: PodcastGenerator/admin/episodes_edit.php:57
 #: PodcastGenerator/admin/episodes_upload.php:26
-#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:54
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:55
 msgid "Missing fields"
 msgstr "שדות חסרים"
 
@@ -318,7 +319,7 @@ msgstr "מחיקת פרק"
 
 #: PodcastGenerator/admin/episodes_edit.php:465
 #: PodcastGenerator/admin/episodes_manage_cats.php:99
-#: PodcastGenerator/admin/pg_users.php:143
+#: PodcastGenerator/admin/pg_users.php:144
 msgid "Delete"
 msgstr "מחיקה"
 
@@ -495,12 +496,12 @@ msgstr "הכניסה הושבתה מטעמי אבטחת מידע"
 msgid "Invalid username or password"
 msgstr "שם המשתמש או הסיסמה שגויים"
 
-#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:103
-#: PodcastGenerator/admin/pg_users.php:120
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:104
+#: PodcastGenerator/admin/pg_users.php:121
 msgid "Username"
 msgstr "שם משתמש"
 
-#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:106
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:107
 msgid "Password"
 msgstr "סיסמה"
 
@@ -578,13 +579,13 @@ msgstr "מחולל הסכתים"
 msgid "Change Podcast Generator Config"
 msgstr "שינוי הגדרות יצרן ההסכתים"
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:70
-#: PodcastGenerator/admin/pg_users.php:84
+#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/pg_users.php:85
 msgid "Manage users"
 msgstr "ניהול משתמשים"
 
 #: PodcastGenerator/admin/navbar.php:58
-#: PodcastGenerator/admin/pg_integrations.php:84
+#: PodcastGenerator/admin/pg_integrations.php:85
 msgid "Manage integrations"
 msgstr "ניהול השילובים"
 
@@ -601,7 +602,7 @@ msgid "Season and episode number"
 msgstr "מספרי עונה ופרק"
 
 #: PodcastGenerator/admin/pg_config.php:69
-#: PodcastGenerator/admin/pg_integrations.php:70
+#: PodcastGenerator/admin/pg_integrations.php:71
 msgid "Podcast Generator Configuration"
 msgstr "הגדרות יצרן ההסכתים"
 
@@ -683,43 +684,46 @@ msgstr ""
 "אם הוגדרה סיסמה או לא"
 
 #: PodcastGenerator/admin/pg_config.php:150
-#: PodcastGenerator/admin/pg_integrations.php:132
-#: PodcastGenerator/admin/pg_users.php:111
+#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_users.php:112
 #: PodcastGenerator/admin/podcast_details.php:164
 #: PodcastGenerator/admin/theme_buttons.php:153
 #: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
 msgstr "שליחה"
 
-#: PodcastGenerator/admin/pg_integrations.php:26
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:27
 msgid "Already registered with Podcast Index"
-msgstr "כבר נרשמת למפתח הסכתים"
+msgstr "כבר נרשמת ל־Podcast Index"
 
-#: PodcastGenerator/admin/pg_integrations.php:39
+#: PodcastGenerator/admin/pg_integrations.php:40
 msgid "API error"
 msgstr "שגיאת API"
 
-#: PodcastGenerator/admin/pg_integrations.php:54
+#: PodcastGenerator/admin/pg_integrations.php:55
 msgid "Unsupported service"
 msgstr "שירות לא נתמך"
 
-#: PodcastGenerator/admin/pg_integrations.php:91
-msgid "Podcast Index"
-msgstr "מפתח הסכתים"
-
+#. # 'Podcast Index' is a proper name.
 #: PodcastGenerator/admin/pg_integrations.php:93
+msgid "Podcast Index"
+msgstr "Podcast Index"
+
+#: PodcastGenerator/admin/pg_integrations.php:94
 msgid "API key"
 msgstr "מפתח API"
 
-#: PodcastGenerator/admin/pg_integrations.php:98
+#: PodcastGenerator/admin/pg_integrations.php:99
 msgid "API secret"
 msgstr "סוד API"
 
-#: PodcastGenerator/admin/pg_integrations.php:103
+#: PodcastGenerator/admin/pg_integrations.php:104
 msgid "Podcast ID"
 msgstr "מזהה הסכת"
 
-#: PodcastGenerator/admin/pg_integrations.php:105
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:107
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
@@ -727,90 +731,92 @@ msgstr ""
 "נא למלא את המזהה של התוכנית שלך במפתח ההסכתים או ללחוץ על „הוספת תוכנית” כדי"
 " להוסיף את התוכנית שלך למפתח"
 
-#: PodcastGenerator/admin/pg_integrations.php:112
+#: PodcastGenerator/admin/pg_integrations.php:114
 msgid "Add Show"
 msgstr "הוספת תוכנית"
 
-#: PodcastGenerator/admin/pg_integrations.php:119
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:122
 msgid "WebSub"
 msgstr "WebSub"
 
-#: PodcastGenerator/admin/pg_integrations.php:121
+#: PodcastGenerator/admin/pg_integrations.php:124
 msgid "Server address"
 msgstr "כתובת שרת"
 
-#: PodcastGenerator/admin/pg_integrations.php:123
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:127
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
 msgstr "זו הכתובת המלאה לרכזת של WebSub לקבלת התראה כאשר ההסכת מתעדכן."
 
-#: PodcastGenerator/admin/pg_users.php:23
+#: PodcastGenerator/admin/pg_users.php:24
 msgid "Error while changing password"
 msgstr "ארעה שגיאה בשינוי הסיסמה"
 
-#: PodcastGenerator/admin/pg_users.php:35
-#: PodcastGenerator/admin/pg_users.php:139
+#: PodcastGenerator/admin/pg_users.php:36
+#: PodcastGenerator/admin/pg_users.php:140
 msgid "You cannot delete yourself"
 msgstr "אין לך אפשרות למחוק את עצמך"
 
-#: PodcastGenerator/admin/pg_users.php:40
+#: PodcastGenerator/admin/pg_users.php:41
 msgid "User does not exists"
 msgstr "משתמש לא קיים"
 
-#: PodcastGenerator/admin/pg_users.php:44
+#: PodcastGenerator/admin/pg_users.php:45
 msgid "Unknown error while deleting user"
 msgstr "ארעה שגיאה בלתי ידועה בעת מחיקת משתמש"
 
-#: PodcastGenerator/admin/pg_users.php:58
+#: PodcastGenerator/admin/pg_users.php:59
 msgid "Error while creating user"
 msgstr "שגיאה בעת יצירת משתמש"
 
-#: PodcastGenerator/admin/pg_users.php:85
+#: PodcastGenerator/admin/pg_users.php:86
 msgid "It may take a few seconds until the changes are visible"
 msgstr "השינויים אמורים להופיע בעוד מספר שניות"
 
-#: PodcastGenerator/admin/pg_users.php:87
+#: PodcastGenerator/admin/pg_users.php:88
 msgid "User changed successfully"
 msgstr "המשתמש נערך בהצלחה"
 
-#: PodcastGenerator/admin/pg_users.php:89
+#: PodcastGenerator/admin/pg_users.php:90
 msgid "User created successfully"
 msgstr "המשתמש נוצר בהצלחה"
 
-#: PodcastGenerator/admin/pg_users.php:91
+#: PodcastGenerator/admin/pg_users.php:92
 msgid "User deleted successfully"
 msgstr "המשתמש נמחק בהצלחה"
 
-#: PodcastGenerator/admin/pg_users.php:94
+#: PodcastGenerator/admin/pg_users.php:95
 msgid "List of users"
 msgstr "רשימת משתמשים"
 
-#: PodcastGenerator/admin/pg_users.php:101
+#: PodcastGenerator/admin/pg_users.php:102
 msgid "Create User"
 msgstr "יצירת משתמש"
 
-#: PodcastGenerator/admin/pg_users.php:116
+#: PodcastGenerator/admin/pg_users.php:117
 msgid "User does not exist"
 msgstr "משתמש לא קיים"
 
-#: PodcastGenerator/admin/pg_users.php:123
+#: PodcastGenerator/admin/pg_users.php:124
 msgid "You cannot edit usernames"
 msgstr "לא ניתן לערוך שמות משתמשים"
 
-#: PodcastGenerator/admin/pg_users.php:126
+#: PodcastGenerator/admin/pg_users.php:127
 msgid "New Password"
 msgstr "סיסמה חדשה"
 
-#: PodcastGenerator/admin/pg_users.php:128
+#: PodcastGenerator/admin/pg_users.php:129
 msgid "Repeat new password"
 msgstr "נא לחזור על הסיסמה החדשה"
 
-#: PodcastGenerator/admin/pg_users.php:133
+#: PodcastGenerator/admin/pg_users.php:134
 msgid "Change"
 msgstr "שינוי"
 
-#: PodcastGenerator/admin/pg_users.php:137
+#: PodcastGenerator/admin/pg_users.php:138
 msgid "Delete user"
 msgstr "מחיקת משתמש"
 
@@ -906,14 +912,15 @@ msgstr "בחירת קטגוריות להסכת"
 msgid "Select or change Podcast Categories (for iTunes)"
 msgstr "לבחור או להחליף קטגוריות להסכת (עבור iTunes)"
 
-#: PodcastGenerator/admin/store_cat.php:56
-#: PodcastGenerator/admin/store_cat.php:72
-#: PodcastGenerator/admin/store_cat.php:93
+#. # %d is 1, 2, or 3
+#: PodcastGenerator/admin/store_cat.php:57
+#: PodcastGenerator/admin/store_cat.php:73
+#: PodcastGenerator/admin/store_cat.php:94
 #, php-format
 msgid "Category %d"
 msgstr "קטגוריה %d"
 
-#: PodcastGenerator/admin/store_cat.php:115
+#: PodcastGenerator/admin/store_cat.php:116
 #: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
 msgstr "שמירה"
