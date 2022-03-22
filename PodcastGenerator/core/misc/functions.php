@@ -17,7 +17,7 @@ function getmime($filename)
     if (!is_readable($filename)) {
         return false;
     }
-    // Analyze file to dtermine mime type
+    // Analyze file to determine mime type
     $getID3 = new getID3();
     $fileinfo = $getID3->analyze($filename);
     return $fileinfo["mime_type"];
