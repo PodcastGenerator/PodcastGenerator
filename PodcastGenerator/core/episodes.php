@@ -319,6 +319,9 @@ function indexEpisodes($_config)
             }
             rename($uploadDir . $filename, $new_filename);
             $fname = $new_filename;
+        } else {
+            // We don't need to rename the file, but we do need to get the full path
+            $fname = $uploadDir . $filename;
         }
 
         // Get audio metadata (duration, bitrate etc)
