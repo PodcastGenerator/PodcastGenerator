@@ -285,7 +285,7 @@ if (count($_POST) > 0) {
 
 // Get episode data
 $episode = simplexml_load_file($targetfile_without_ext . '.xml');
-$filemtime = filemtime($targetfile);
+$filemtime = lstat($targetfile)['mtime'];
 
 $coverart = (string) $episode->episode->imgPG;
 if (empty($coverart)) {

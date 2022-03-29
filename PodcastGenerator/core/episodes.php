@@ -86,7 +86,7 @@ function getEpisodeFiles($_config, $includeFuture = false)
 
             if (!$includeFuture) {
                 // if file exists in the future, skip
-                $lastModified = filemtime($filePath);
+                $lastModified = lstat($filePath)['mtime'];
                 if ($now < $lastModified) {
                     continue;
                 }
@@ -100,7 +100,7 @@ function getEpisodeFiles($_config, $includeFuture = false)
             array_push($files, [
                 'filename' => $entry,
                 'path' => $filePath,
-                'lastModified' => filemtime($filePath),
+                'lastModified' => lstat($filePath)['mtime'],
                 'data' => simplexml_load_file($dataFile, null, LIBXML_NOCDATA)
             ]);
         }
@@ -116,7 +116,7 @@ function getEpisodeFiles($_config, $includeFuture = false)
 
 function arrayEpisode($item, $episode, $_config)
 {
-    $filemtime = filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode);
+    $filemtime = lstat($_config['absoluteurl'] . $_config['upload_dir'] . $episode)['mtime'];
     $append_array = [
         'episode' => [
             'guid' => $item->guid,
