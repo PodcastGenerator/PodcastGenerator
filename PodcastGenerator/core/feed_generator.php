@@ -146,7 +146,7 @@ function generateRSS()
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
         $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
         $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
-        if ($file->episode->longdescPG == "<![CDATA[]]>") {
+        if (!empty(trim($file->episode->longdescPG))) {
             $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
         }
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
@@ -159,7 +159,7 @@ function generateRSS()
         } else {
             $item .= $indent . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $linebreak;
         }
-        if ($file->episode->keywordsPG == "<![CDATA[]]>") {
+        if (!empty(trim($file->episode->keywordsPG))) {
             $item .= $indent . '<itunes:keywords>' . $file->episode->keywordsPG . '</itunes:keywords>' . $linebreak;
         }
         $item .= $indent . '<itunes:explicit>' . $file->episode->explicitPG . '</itunes:explicit>' . $linebreak;
