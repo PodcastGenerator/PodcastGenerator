@@ -5,12 +5,16 @@
 		<name>English</name>
 	</language>
 	<language>
+		<code>cs_CZ</code>
+		<name>Čeština</name>
+	</language>
+	<language>
 		<code>de_DE</code>
 		<name>Deutsch</name>
 	</language>
 	<language>
 		<code>et_EE</code>
-		<name>Eesti keel</name>
+		<name>Eesti</name>
 	</language>
 	<language>
 		<code>es_ES</code>
@@ -21,11 +25,11 @@
 		<name>Français</name>
 	</language>
 	<language>
-		<code>sv_SE</code>
-		<name>Svenska</name>
-	</language>
-	<language>
 		<code>he_IL</code>
 		<name>עִבְרִית</code>
+	</language>
+	<language>
+		<code>sv_SE</code>
+		<name>Svenska</name>
 	</language>
 </PodcastGenerator>
