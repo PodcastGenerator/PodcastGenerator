@@ -373,7 +373,7 @@ if (!isset($customTags)) {
                     <label for="shortdesc" class="req"><?= _('Short Description') ?>:</label><br>
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control"
                                maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
+                        <i id="shortdesc_counter"><?= sprintf(_('Characters remaining: %d'), 255) ?></i>
                     </div>
                     <div class="form-group" style="<?= displayBlockCss($config['categoriesenabled']) ?>">
                     <label for="categories"><?= _('Category') ?>:</label><br>
@@ -466,7 +466,7 @@ if (!isset($customTags)) {
             let remaining = maxlength - shortdesc.length;
             let counter
                 = document.getElementById("shortdesc_counter").innerText
-                = "<?= _('%d characters remaining') ?>".replace('%d', remaining);
+                = "<?= _('Characters remaining: %d') ?>".replace('%d', remaining);
         }
     </script>
 </body>

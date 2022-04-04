@@ -352,7 +352,7 @@ $selected_cats = array(
                         <input type="text" id="shortdesc" name="shortdesc" class="form-control"
                                value="<?= htmlspecialchars($episode->episode->shortdescPG) ?>"
                                maxlength="255" oninput="shortDescCheck()" required>
-                        <i id="shortdesc_counter"><?= sprintf(_('%d characters remaining'), 255) ?></i>
+                        <i id="shortdesc_counter"><?= sprintf(_('Characters remaining: %d'), 255) ?></i>
                     </div>
                     <div class="form-group" style="<?= displayBlockCss($config['categoriesenabled']) ?>">
                         <label for="categories"><?= _('Category') ?>:</label><br>
@@ -472,7 +472,7 @@ $selected_cats = array(
             let remaining = maxlength - shortdesc.length;
             let counter
                 = document.getElementById("shortdesc_counter").innerText
-                = "<?= _('%d characters remaining') ?>".replace('%d', remaining);
+                = "<?= _('Characters remaining: %d') ?>".replace('%d', remaining);
         }
         shortDescCheck();
     </script>

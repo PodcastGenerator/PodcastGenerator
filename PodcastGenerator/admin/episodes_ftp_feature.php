@@ -16,7 +16,7 @@ if (isset($_GET['start'])) {
     if ($num_added) {
         generateRSS();
         pingServices();
-        $success = sprintf(_('Added %d new episode(s)'), $num_added);
+        $success = sprintf(ngettext('Added one new episode', 'Added %d new episodes', $num_added), $num_added);
     } else {
         $success = _('No new episodes were found');
     }
