@@ -68,6 +68,7 @@ Versions prior to 3.2 are documented per their individual release notes.
 * FTP indexed episodes with dash character in filename are not processed correctly (#508)
 * Form label accessibility fixes
 * Various typo and translation corrections
+* Theme change page not showing installed themes
 
 ### Security
 
