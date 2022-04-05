@@ -15,7 +15,7 @@ $themes = array_map(
     function ($item) {
         return (object) [
             'path' => substr($item, 3) . '/',
-            'json' => json_decode(file_get_contents($item) . '/theme.json')
+            'json' => json_decode(file_get_contents($item . '/theme.json'))
         ];
     },
     glob('../themes/*', GLOB_ONLYDIR)
