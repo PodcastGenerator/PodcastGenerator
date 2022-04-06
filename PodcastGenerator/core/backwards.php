@@ -7,18 +7,18 @@
 # 
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_0_to_3_1_4($absoluteurl)
+function backwards_3_0_to_3_1_5($absoluteurl)
 {
     session_start();
     session_destroy();
     global $config;
     global $version;
     // Quit if version is not 3.0
-    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1' || $config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1' || $config['podcastgen_version'] == '3.1.2' || $config['podcastgen_version'] == '3.1.3')) {
+    if(!($config['podcastgen_version'] == '3.0' || $config['podcastgen_version'] == '3.0.1' || $config['podcastgen_version'] == '3.1' || $config['podcastgen_version'] == '3.1.1' || $config['podcastgen_version'] == '3.1.2' || $config['podcastgen_version'] == '3.1.3' || $config['podcastgen_version'] == '3.1.4')) {
         return;
     }
     $config_php = "<?php
-\$podcastgen_version = \"3.1.4\"; // Version
+\$podcastgen_version = \"3.1.5\"; // Version
 
 \$first_installation = ".$config['first_installation'].";
 
@@ -91,9 +91,9 @@ function backwards_3_0_to_3_1_4($absoluteurl)
 
 ";
 
-    if($config['podcastgen_version'] != '3.1' && $config['podcastgen_version'] != '3.1.1' && $config['podcastgen_version'] != '3.1.2' && $config['podcastgen_version'] != '3.1.3' && $config['podcastgen_version'] != '3.1.4')
+    if ($config['podcastgen_version'] != '3.1' && substr($config['podcastgen_version'], 0, 4) != '3.1.') {
         $config_php .= "\$users_json = \"{\"".$config['username']."\": \"".str_replace("\$", "\\\$", $config['userpassword'])."\"}\";\n";
-    else {
+    } else {
         $users_json = str_replace("\$", "\\\$", $config['users_json']);
         $users_json = str_replace("\"", "\\\"", $users_json);
         $config_php .= "\$users_json = \"".$users_json."\";\n";

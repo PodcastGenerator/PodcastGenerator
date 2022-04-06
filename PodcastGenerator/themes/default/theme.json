@@ -1,8 +1,8 @@
 {
     "name": "default",
     "description": "The default theme, simple and modern",
-    "version": "3.1.4",
-    "pg_versions": ["3.1.4"],
+    "version": "3.1.5",
+    "pg_versions": ["3.1.5"],
     "author": "Emil Engler",
     "credits": "Bootstrap"
 }
