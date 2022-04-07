@@ -51,6 +51,7 @@ Versions prior to 3.2 are documented per their individual release notes.
 * Improved installation documentation, including nginx instructions (#407, #456)
 * PNG images are now supported for show cover art (#469)
 * Episode cover images can now be uploaded directly when not embedded in episode media (#481)
+* Short and long descriptions switched in `<description>` and `<itunes:summary>` tags (#522)
 
 ### Fixed
 

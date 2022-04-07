@@ -87,10 +87,12 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     }
 
     $item .= $TAB . '<itunes:subtitle><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:subtitle>' . $LR;
-    $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $LR;
-    if ($file['data']->episode->longdescPG != "") {
-        $item .= $TAB . '<itunes:summary><![CDATA[' . $file['data']->episode->longdescPG . ']]></itunes:summary>' . $LR;
+    if (isset($file['data']->episode->longdescPG) && trim($file['data']->episode->longdescPG) != "") {
+        $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->longdescPG . ']]></description>' . $LR;
+    } else {
+        $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $LR;
     }
+    $item .= $TAB . '<itunes:summary><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:summary>' . $LR;
 
     $item .= $TAB . '<link>' . $config['url'] . '?' . $link . '=' . $encodedFilename . '</link>' . $LR;
     $item .= $TAB . '<enclosure url="' . htmlspecialchars($enclosureUrl) . '" length="'
