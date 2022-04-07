@@ -145,10 +145,12 @@ function generateRSS()
         <item>' . "\n";
         $item .= $indent . '<title>' . $file->episode->titlePG . '</title>' . $linebreak;
         $item .= $indent . '<itunes:subtitle>' . $file->episode->shortdescPG . '</itunes:subtitle>' . $linebreak;
-        $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
         if (!empty(trim($file->episode->longdescPG))) {
-            $item .= $indent . '<itunes:summary><![CDATA[' . $file->episode->longdescPG . ']]></itunes:summary>' . $linebreak;
+            $item .= $indent . '<description><![CDATA[' . $file->episode->longdescPG . ']]></description>' . $linebreak;
+        } else {
+            $item .= $indent . '<description>' . $file->episode->shortdescPG . '</description>' . $linebreak;
         }
+        $item .= $indent . '<itunes:summary>' . $file->episode->shortdescPG . '</itunes:summary>' . $linebreak;
         $item .= $indent . '<link>' . $config['url'] . '?' . $link . '=' . $files[$i]['filename'] . '</link>' . $linebreak;
         $item .= $indent . '<enclosure url="' . $original_full_filepath . '" length="' . filesize($config['absoluteurl'] . $config['upload_dir'] . $files[$i]['filename']) . '" type="' . $mimetype . '"></enclosure>' . $linebreak;
         $item .= $indent . '<guid>' . $config['url'] . "?" . $link . "=" . $files[$i]['filename'] . '</guid>' . $linebreak;
