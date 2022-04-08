@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Podcast Generator Translation Team
+# Copyright (C) 2022 The Podcast Generator Translation Team
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
-"POT-Creation-Date: 2022-03-20 12:45-0400\n"
+"POT-Creation-Date: 2022-03-22 17:45-0400\n"
 "PO-Revision-Date: 2022-03-20 18:30+0000\n"
 "Last-Translator: Chris Charabaruk <transifex@chris.charabaruk.net>, 2022\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/podcast-generator/teams/14574/cs_CZ/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "Tento záznam není chráněn heslem"
+msgstr "Tento podcast není chráněn heslem"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
@@ -353,7 +353,7 @@ msgstr "Díly"
 
 #: PodcastGenerator/admin/episodes_list.php:59
 msgid "Click on the title of the podcast you want to edit/delete."
-msgstr "Klepněte na název záznamu, který chcete upravit/smazat."
+msgstr "Klepněte na název podcastu, který chcete upravit/smazat."
 
 #: PodcastGenerator/admin/episodes_list.php:60
 msgid ""
@@ -478,7 +478,8 @@ msgstr ""
 "V souboru ZIP této verze, kterou jste stáhli, je soubor ve složce %s s "
 "názvem %s. Nahrajte tento soubor do admin adresáře s názvem %s."
 
-#: PodcastGenerator/admin/forgot.php:18
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/forgot.php:19
 msgid ""
 "If you no don't have this ZIP file anymore, don't worry! All versions of "
 "Podcast Generator ever released since 2.5 are available on the Podcast "
@@ -488,7 +489,8 @@ msgstr ""
 "Generatoru, které kdy od 2.5 byly vydány, jsou dostupné na domovské stránce "
 "Podcast Generator."
 
-#: PodcastGenerator/admin/index.php:37
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/index.php:38
 msgid "Welcome to your Podcast Generator Admin Interface"
 msgstr "Vítejte ve správcovském rozhraní Podcast Generatoru"
 
@@ -564,7 +566,7 @@ msgstr "Změna přebalu"
 
 #: PodcastGenerator/admin/navbar.php:40
 msgid "Change Podcast Category"
-msgstr "Změna skupiny záznamu"
+msgstr "Změna kategorie podcastu"
 
 #: PodcastGenerator/admin/navbar.php:45
 #: PodcastGenerator/admin/podcast_details.php:79
@@ -575,25 +577,27 @@ msgstr "Podrobnosti záznamu"
 msgid "Change Podcast details"
 msgstr "Změna podrobností záznamu"
 
-#: PodcastGenerator/admin/navbar.php:53
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:54
 msgid "Podcast Generator"
 msgstr "Tvůrce záznamů"
 
-#: PodcastGenerator/admin/navbar.php:56
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:58
 msgid "Change Podcast Generator Config"
 msgstr "Změna nastavení tvůrce záznamů"
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/navbar.php:59 PodcastGenerator/admin/pg_users.php:71
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "Manage users"
 msgstr "Úprava uživatelů"
 
-#: PodcastGenerator/admin/navbar.php:58
-#: PodcastGenerator/admin/pg_integrations.php:85
+#: PodcastGenerator/admin/navbar.php:60
+#: PodcastGenerator/admin/pg_integrations.php:86
 msgid "Manage integrations"
 msgstr "Spravovat zapojení"
 
-#: PodcastGenerator/admin/navbar.php:64
+#: PodcastGenerator/admin/navbar.php:66
 msgid "View Podcast"
 msgstr "Zobrazit záznam"
 
@@ -605,29 +609,31 @@ msgstr "Časové razítko"
 msgid "Season and episode number"
 msgstr "Číslo řady a dílu"
 
-#: PodcastGenerator/admin/pg_config.php:69
-#: PodcastGenerator/admin/pg_integrations.php:71
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:70
+#: PodcastGenerator/admin/pg_integrations.php:72
 msgid "Podcast Generator Configuration"
 msgstr "Nastavení tvůrce záznamů"
 
-#: PodcastGenerator/admin/pg_config.php:83
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:85
 msgid "Change Podcast Generator Configuration"
 msgstr "Změnit nastavení tvůrce záznamů"
 
-#: PodcastGenerator/admin/pg_config.php:85
+#: PodcastGenerator/admin/pg_config.php:87
 msgid "Enable Audio and Video Player"
 msgstr "Povolit přehrávání zvuku a obrazu"
 
-#: PodcastGenerator/admin/pg_config.php:86
+#: PodcastGenerator/admin/pg_config.php:88
 msgid "Enable streaming in web browser"
 msgstr "Povolit vysílání v internetovém prohlížeči"
 
-#: PodcastGenerator/admin/pg_config.php:91
+#: PodcastGenerator/admin/pg_config.php:93
 #: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
 msgstr "Povolit Freebox"
 
-#: PodcastGenerator/admin/pg_config.php:93
+#: PodcastGenerator/admin/pg_config.php:95
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
@@ -635,19 +641,19 @@ msgstr ""
 "Freebox vám umožňuje psát volně to, co si přejete, přidávat odkazy nebo text"
 " pomocí editoru v oddíle správce."
 
-#: PodcastGenerator/admin/pg_config.php:99
+#: PodcastGenerator/admin/pg_config.php:101
 msgid "Enable categories"
 msgstr "Povolit skupiny"
 
-#: PodcastGenerator/admin/pg_config.php:100
+#: PodcastGenerator/admin/pg_config.php:102
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr "Povolit funkci skupin pro dělání tematických seznamů záznamů."
 
-#: PodcastGenerator/admin/pg_config.php:105
+#: PodcastGenerator/admin/pg_config.php:107
 msgid "Enable custom tag input"
 msgstr "Povolit zadávání vlastních značek"
 
-#: PodcastGenerator/admin/pg_config.php:107
+#: PodcastGenerator/admin/pg_config.php:109
 msgid ""
 "Enable the ability to add custom RSS tags to your podcast feed and "
 "individual episodes."
@@ -655,32 +661,32 @@ msgstr ""
 "Povolte možnost přidávat vlastní značky RSS do zdroje záznamů a jednotlivých"
 " dílů."
 
-#: PodcastGenerator/admin/pg_config.php:113
+#: PodcastGenerator/admin/pg_config.php:115
 msgid "Episode sort order"
 msgstr "Pořadí řazení dílů"
 
-#: PodcastGenerator/admin/pg_config.php:114
+#: PodcastGenerator/admin/pg_config.php:116
 msgid "Choose how episodes are ordered on the website and in the RSS feed."
 msgstr "Vyberte způsob řazení dílů na internetové stránce a v kanálu RSS."
 
-#: PodcastGenerator/admin/pg_config.php:119
+#: PodcastGenerator/admin/pg_config.php:121
 msgid "Time zone"
 msgstr "Časové pásmo"
 
-#: PodcastGenerator/admin/pg_config.php:120
+#: PodcastGenerator/admin/pg_config.php:122
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
 msgstr "Vyberte časové pásmo pro zobrazení času, kdy byly díly vydány."
 
-#: PodcastGenerator/admin/pg_config.php:136
+#: PodcastGenerator/admin/pg_config.php:138
 msgid "Use cron to regenerate the RSS feed"
 msgstr "Použít cron k znovuvytvoření kanálu RSS"
 
-#: PodcastGenerator/admin/pg_config.php:141
+#: PodcastGenerator/admin/pg_config.php:143
 msgid "Password Protection for the web pages"
 msgstr "Ochrana heslem webové stránky"
 
-#: PodcastGenerator/admin/pg_config.php:143
+#: PodcastGenerator/admin/pg_config.php:145
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
@@ -689,8 +695,8 @@ msgstr ""
 "zvukové soubory budou stále přístupné bez ohledu na to, zda je nastaveno "
 "heslo nebo ne."
 
-#: PodcastGenerator/admin/pg_config.php:150
-#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_config.php:152
+#: PodcastGenerator/admin/pg_integrations.php:137
 #: PodcastGenerator/admin/pg_users.php:112
 #: PodcastGenerator/admin/podcast_details.php:164
 #: PodcastGenerator/admin/theme_buttons.php:153
@@ -712,24 +718,24 @@ msgid "Unsupported service"
 msgstr "Nepodporovaná služba"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:93
+#: PodcastGenerator/admin/pg_integrations.php:94
 msgid "Podcast Index"
 msgstr "Podcast Index"
 
-#: PodcastGenerator/admin/pg_integrations.php:94
+#: PodcastGenerator/admin/pg_integrations.php:95
 msgid "API key"
 msgstr "Klíč API"
 
-#: PodcastGenerator/admin/pg_integrations.php:99
+#: PodcastGenerator/admin/pg_integrations.php:100
 msgid "API secret"
 msgstr "Tajný klíč API"
 
-#: PodcastGenerator/admin/pg_integrations.php:104
+#: PodcastGenerator/admin/pg_integrations.php:105
 msgid "Podcast ID"
 msgstr "ID záznamu"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:107
+#: PodcastGenerator/admin/pg_integrations.php:108
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
@@ -737,21 +743,21 @@ msgstr ""
 "Zadejte ID svého pořadu do služby Podcast Index nebo klepněte na „Přidat "
 "pořad“ a přidejte svůj pořad do rejstříku"
 
-#: PodcastGenerator/admin/pg_integrations.php:114
+#: PodcastGenerator/admin/pg_integrations.php:115
 msgid "Add Show"
 msgstr "Přidat pořad"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:122
+#: PodcastGenerator/admin/pg_integrations.php:123
 msgid "WebSub"
 msgstr "WebSub"
 
-#: PodcastGenerator/admin/pg_integrations.php:124
+#: PodcastGenerator/admin/pg_integrations.php:125
 msgid "Server address"
 msgstr "Adresa serveru"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:127
+#: PodcastGenerator/admin/pg_integrations.php:128
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
