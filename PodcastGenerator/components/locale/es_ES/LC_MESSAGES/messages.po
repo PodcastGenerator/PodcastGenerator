@@ -4,21 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Diego Dell Agostino <dellagostino@gmail.com>, 2022
-# Mini Favrica <mini@favrica.com>, 2022
-# mahas <mahamantradas@hotmail.com>, 2022
-# rampmaster <rampmaster@gmail.com>, 2022
-# 𝔇𝔞𝔦𝔡𝔞𝔯𝔬𝔰 <2.0@daidaros.com>, 2022
-# Ernesto A. <elavdeveloper@gmail.com>, 2022
+# Chris Charabaruk <transifex@chris.charabaruk.net>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
-"POT-Creation-Date: 2022-03-20 12:45-0400\n"
+"POT-Creation-Date: 2022-03-22 17:45-0400\n"
 "PO-Revision-Date: 2022-03-20 18:30+0000\n"
-"Last-Translator: Ernesto A. <elavdeveloper@gmail.com>, 2022\n"
+"Last-Translator: Chris Charabaruk <transifex@chris.charabaruk.net>, 2022\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/podcast-generator/teams/14574/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -482,7 +477,8 @@ msgstr ""
 "carpeta %s llamado %s. Sube este archivo en la carpeta de administrador con "
 "el nombre %s"
 
-#: PodcastGenerator/admin/forgot.php:18
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/forgot.php:19
 msgid ""
 "If you no don't have this ZIP file anymore, don't worry! All versions of "
 "Podcast Generator ever released since 2.5 are available on the Podcast "
@@ -492,7 +488,8 @@ msgstr ""
 "Podcast Generator lanzadas desde la 2.5 están disponibles en el sitio de "
 "Podcast Generator."
 
-#: PodcastGenerator/admin/index.php:37
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/index.php:38
 msgid "Welcome to your Podcast Generator Admin Interface"
 msgstr "Bienvenido a tu interfaz de administración de Podcast Generator "
 
@@ -579,25 +576,27 @@ msgstr "Detalles del podcast"
 msgid "Change Podcast details"
 msgstr "Cambiar los detalles del podcast"
 
-#: PodcastGenerator/admin/navbar.php:53
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:54
 msgid "Podcast Generator"
 msgstr "Podcast Generator"
 
-#: PodcastGenerator/admin/navbar.php:56
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:58
 msgid "Change Podcast Generator Config"
 msgstr "Cambiar la configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/navbar.php:59 PodcastGenerator/admin/pg_users.php:71
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "Manage users"
 msgstr "Administrar usuarios"
 
-#: PodcastGenerator/admin/navbar.php:58
-#: PodcastGenerator/admin/pg_integrations.php:85
+#: PodcastGenerator/admin/navbar.php:60
+#: PodcastGenerator/admin/pg_integrations.php:86
 msgid "Manage integrations"
 msgstr "Gestionar integraciones"
 
-#: PodcastGenerator/admin/navbar.php:64
+#: PodcastGenerator/admin/navbar.php:66
 msgid "View Podcast"
 msgstr "Ver podcast"
 
@@ -609,29 +608,31 @@ msgstr "Marca de tiempo"
 msgid "Season and episode number"
 msgstr "Número de episodio y temporada"
 
-#: PodcastGenerator/admin/pg_config.php:69
-#: PodcastGenerator/admin/pg_integrations.php:71
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:70
+#: PodcastGenerator/admin/pg_integrations.php:72
 msgid "Podcast Generator Configuration"
 msgstr "Configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/pg_config.php:83
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:85
 msgid "Change Podcast Generator Configuration"
 msgstr "Cambiar la configuración de Podcast Generator"
 
-#: PodcastGenerator/admin/pg_config.php:85
+#: PodcastGenerator/admin/pg_config.php:87
 msgid "Enable Audio and Video Player"
 msgstr "Habilitar el reproductor de audio y vídeo"
 
-#: PodcastGenerator/admin/pg_config.php:86
+#: PodcastGenerator/admin/pg_config.php:88
 msgid "Enable streaming in web browser"
 msgstr "Habilitar la transmisión en el navegador web"
 
-#: PodcastGenerator/admin/pg_config.php:91
+#: PodcastGenerator/admin/pg_config.php:93
 #: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
 msgstr "Habilitar la caja libre"
 
-#: PodcastGenerator/admin/pg_config.php:93
+#: PodcastGenerator/admin/pg_config.php:95
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
@@ -639,20 +640,20 @@ msgstr ""
 "La FreeBox le permite escribir libremente lo que desee, agregue enlaces o "
 "texto mediante un editor visual en la sección de administración"
 
-#: PodcastGenerator/admin/pg_config.php:99
+#: PodcastGenerator/admin/pg_config.php:101
 msgid "Enable categories"
 msgstr "Habilitar las categorías"
 
-#: PodcastGenerator/admin/pg_config.php:100
+#: PodcastGenerator/admin/pg_config.php:102
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 "Active la función de categorías para hacer listas temáticas de sus podcasts."
 
-#: PodcastGenerator/admin/pg_config.php:105
+#: PodcastGenerator/admin/pg_config.php:107
 msgid "Enable custom tag input"
 msgstr "Activar entrada de etiqueta personalizada"
 
-#: PodcastGenerator/admin/pg_config.php:107
+#: PodcastGenerator/admin/pg_config.php:109
 msgid ""
 "Enable the ability to add custom RSS tags to your podcast feed and "
 "individual episodes."
@@ -660,35 +661,35 @@ msgstr ""
 "Habilite la capacidad de agregar etiquetas RSS personalizadas a su fuente de"
 " podcast y episodios individuales."
 
-#: PodcastGenerator/admin/pg_config.php:113
+#: PodcastGenerator/admin/pg_config.php:115
 msgid "Episode sort order"
 msgstr "Orden para mostrar los episodios"
 
-#: PodcastGenerator/admin/pg_config.php:114
+#: PodcastGenerator/admin/pg_config.php:116
 msgid "Choose how episodes are ordered on the website and in the RSS feed."
 msgstr ""
 "Elija cómo se ordenan los episodios en el sitio web y en la fuente RSS."
 
-#: PodcastGenerator/admin/pg_config.php:119
+#: PodcastGenerator/admin/pg_config.php:121
 msgid "Time zone"
 msgstr "Zona horaria"
 
-#: PodcastGenerator/admin/pg_config.php:120
+#: PodcastGenerator/admin/pg_config.php:122
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
 msgstr ""
 "Seleccione la zona horaria para mostrar la hora en que se lanzaron los "
 "episodios."
 
-#: PodcastGenerator/admin/pg_config.php:136
+#: PodcastGenerator/admin/pg_config.php:138
 msgid "Use cron to regenerate the RSS feed"
 msgstr "Usa cron para regenerar la fuente RSS"
 
-#: PodcastGenerator/admin/pg_config.php:141
+#: PodcastGenerator/admin/pg_config.php:143
 msgid "Password Protection for the web pages"
 msgstr "Protección con contraseña para las páginas web"
 
-#: PodcastGenerator/admin/pg_config.php:143
+#: PodcastGenerator/admin/pg_config.php:145
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
@@ -697,8 +698,8 @@ msgstr ""
 "archivos de audio serán accesibles sin importar que una contraseña sea "
 "puesta o no"
 
-#: PodcastGenerator/admin/pg_config.php:150
-#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_config.php:152
+#: PodcastGenerator/admin/pg_integrations.php:137
 #: PodcastGenerator/admin/pg_users.php:112
 #: PodcastGenerator/admin/podcast_details.php:164
 #: PodcastGenerator/admin/theme_buttons.php:153
@@ -720,52 +721,52 @@ msgid "Unsupported service"
 msgstr "Servicio no soportado"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:93
-msgid "Podcast Index"
-msgstr "Indice de Podcasts"
-
 #: PodcastGenerator/admin/pg_integrations.php:94
+msgid "Podcast Index"
+msgstr "Podcast Index"
+
+#: PodcastGenerator/admin/pg_integrations.php:95
 msgid "API key"
 msgstr "Llave de API"
 
-#: PodcastGenerator/admin/pg_integrations.php:99
+#: PodcastGenerator/admin/pg_integrations.php:100
 msgid "API secret"
 msgstr "Secreto de API"
 
-#: PodcastGenerator/admin/pg_integrations.php:104
+#: PodcastGenerator/admin/pg_integrations.php:105
 msgid "Podcast ID"
 msgstr "ID de Podcast"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:107
+#: PodcastGenerator/admin/pg_integrations.php:108
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
 msgstr ""
-"Ingrese el número de identificación de su programa en el Indice de Podcasts "
-"o haga clic en \"Agregar programa\" para agregar su programa al índice"
+"Ingrese el número de identificación de su programa en Podcast Index o haga "
+"clic en \"Agregar programa\" para agregar su programa"
 
-#: PodcastGenerator/admin/pg_integrations.php:114
+#: PodcastGenerator/admin/pg_integrations.php:115
 msgid "Add Show"
 msgstr "Añadir Podcast"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:122
+#: PodcastGenerator/admin/pg_integrations.php:123
 msgid "WebSub"
-msgstr "Subtítulo web"
+msgstr "WebSub"
 
-#: PodcastGenerator/admin/pg_integrations.php:124
+#: PodcastGenerator/admin/pg_integrations.php:125
 msgid "Server address"
 msgstr "Dirección del Servidor"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:127
+#: PodcastGenerator/admin/pg_integrations.php:128
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
 msgstr ""
-"Esta es la dirección completa del concentrador WebSub para alertar cuando se"
-" actualice el podcast."
+"Esta es la dirección completa de WebSub hub para alertar cuando se actualice"
+" el podcast."
 
 #: PodcastGenerator/admin/pg_users.php:24
 msgid "Error while changing password"
