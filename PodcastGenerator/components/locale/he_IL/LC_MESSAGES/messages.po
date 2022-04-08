@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Podcast Generator Translation Team
+# Copyright (C) 2022 The Podcast Generator Translation Team
 # This file is distributed under the same license as the Podcast Generator package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Podcast Generator 3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
-"POT-Creation-Date: 2022-03-20 12:45-0400\n"
+"POT-Creation-Date: 2022-03-22 17:45-0400\n"
 "PO-Revision-Date: 2022-03-20 18:30+0000\n"
 "Last-Translator: Chris Charabaruk <transifex@chris.charabaruk.net>, 2022\n"
 "Language-Team: Hebrew (Israel) (https://www.transifex.com/podcast-generator/teams/14574/he_IL/)\n"
@@ -338,7 +338,7 @@ msgstr "תכונת FTP"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:44
 msgid "FTP Auto Indexing"
-msgstr "סידור אוטומטי של FTP באינדקס"
+msgstr "סידור אוטומטי של FTP במפתח"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:48
 msgid "Begin"
@@ -475,7 +475,8 @@ msgstr ""
 "בקובץ ה־ZIP שהורדת של הגרסה הזו יש קובץ בתיקייה %s שנקרא %s. יש להעלות את "
 "הקובץ הזה לתיקייה admin (ניהול) עם השם %s"
 
-#: PodcastGenerator/admin/forgot.php:18
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/forgot.php:19
 msgid ""
 "If you no don't have this ZIP file anymore, don't worry! All versions of "
 "Podcast Generator ever released since 2.5 are available on the Podcast "
@@ -484,7 +485,8 @@ msgstr ""
 "אם אין לך את קובץ ה־ZIP הזה עוד, אל דאגה! כל הגרסאות של יצרן ההסכתים שאי פעם"
 " יצאו לאור מאז גרסה 2.5 זמינות באתר הבית של יצרן ההסכתים."
 
-#: PodcastGenerator/admin/index.php:37
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/index.php:38
 msgid "Welcome to your Podcast Generator Admin Interface"
 msgstr "ברוך בואך למנשק הניהול של יצרן ההסכתים"
 
@@ -527,7 +529,7 @@ msgstr "הצגת כל הפרקים"
 
 #: PodcastGenerator/admin/navbar.php:19
 msgid "FTP Feature (Auto Indexing)"
-msgstr "תכונת FTP (סידור אוטומטי באינדקס)"
+msgstr "תכונת FTP (סידור אוטומטי במפתח)"
 
 #: PodcastGenerator/admin/navbar.php:21
 msgid "Manually regenerate RSS feed"
@@ -571,25 +573,27 @@ msgstr "פרטי ההסכת"
 msgid "Change Podcast details"
 msgstr "שינוי פרטי ההסכת"
 
-#: PodcastGenerator/admin/navbar.php:53
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:54
 msgid "Podcast Generator"
 msgstr "מחולל הסכתים"
 
-#: PodcastGenerator/admin/navbar.php:56
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:58
 msgid "Change Podcast Generator Config"
 msgstr "שינוי הגדרות יצרן ההסכתים"
 
-#: PodcastGenerator/admin/navbar.php:57 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/navbar.php:59 PodcastGenerator/admin/pg_users.php:71
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "Manage users"
 msgstr "ניהול משתמשים"
 
-#: PodcastGenerator/admin/navbar.php:58
-#: PodcastGenerator/admin/pg_integrations.php:85
+#: PodcastGenerator/admin/navbar.php:60
+#: PodcastGenerator/admin/pg_integrations.php:86
 msgid "Manage integrations"
 msgstr "ניהול השילובים"
 
-#: PodcastGenerator/admin/navbar.php:64
+#: PodcastGenerator/admin/navbar.php:66
 msgid "View Podcast"
 msgstr "הצגת הסכת"
 
@@ -601,29 +605,31 @@ msgstr "חותמת זמן"
 msgid "Season and episode number"
 msgstr "מספרי עונה ופרק"
 
-#: PodcastGenerator/admin/pg_config.php:69
-#: PodcastGenerator/admin/pg_integrations.php:71
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:70
+#: PodcastGenerator/admin/pg_integrations.php:72
 msgid "Podcast Generator Configuration"
 msgstr "הגדרות יצרן ההסכתים"
 
-#: PodcastGenerator/admin/pg_config.php:83
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:85
 msgid "Change Podcast Generator Configuration"
 msgstr "החלפת הגדרות יצרן ההסכתים"
 
-#: PodcastGenerator/admin/pg_config.php:85
+#: PodcastGenerator/admin/pg_config.php:87
 msgid "Enable Audio and Video Player"
 msgstr "הפעלת נגן שמע ווידאו"
 
-#: PodcastGenerator/admin/pg_config.php:86
+#: PodcastGenerator/admin/pg_config.php:88
 msgid "Enable streaming in web browser"
 msgstr "הפעלת הזרמה דרך הדפדפן"
 
-#: PodcastGenerator/admin/pg_config.php:91
+#: PodcastGenerator/admin/pg_config.php:93
 #: PodcastGenerator/admin/theme_freebox.php:67
 msgid "Enable Freebox"
 msgstr "הפעלת Freebox"
 
-#: PodcastGenerator/admin/pg_config.php:93
+#: PodcastGenerator/admin/pg_config.php:95
 msgid ""
 "Freebox allows you to write freely what you wish, add links or text through "
 "a visual editor in the admin section."
@@ -631,51 +637,51 @@ msgstr ""
 "Freebox מאפשר לך לכתוב מה שבא לך, להוסיף קישורים או טקסט בחופשיות דרך העורך "
 "החזותי באזור הניהול."
 
-#: PodcastGenerator/admin/pg_config.php:99
+#: PodcastGenerator/admin/pg_config.php:101
 msgid "Enable categories"
 msgstr "הפעלת קטגוריות"
 
-#: PodcastGenerator/admin/pg_config.php:100
+#: PodcastGenerator/admin/pg_config.php:102
 msgid "Enable categories feature to make thematic lists of your podcasts."
 msgstr ""
 "יש להפעיל את תכונת הקטגוריות כדי ליצור רשימות של ההסכתים שלך לפי נושאים."
 
-#: PodcastGenerator/admin/pg_config.php:105
+#: PodcastGenerator/admin/pg_config.php:107
 msgid "Enable custom tag input"
 msgstr "הפעלת קלט תגיות בהתאמה אישית"
 
-#: PodcastGenerator/admin/pg_config.php:107
+#: PodcastGenerator/admin/pg_config.php:109
 msgid ""
 "Enable the ability to add custom RSS tags to your podcast feed and "
 "individual episodes."
 msgstr "לאפשר להוסיף תגיות RSS להזנת ההסכתים שלך ולפרקים באופן פרטני."
 
-#: PodcastGenerator/admin/pg_config.php:113
+#: PodcastGenerator/admin/pg_config.php:115
 msgid "Episode sort order"
 msgstr "סדר פרקים"
 
-#: PodcastGenerator/admin/pg_config.php:114
+#: PodcastGenerator/admin/pg_config.php:116
 msgid "Choose how episodes are ordered on the website and in the RSS feed."
 msgstr "נא לבחור איך יסודרו הפרקים באתר ובהזנת ה־RSS."
 
-#: PodcastGenerator/admin/pg_config.php:119
+#: PodcastGenerator/admin/pg_config.php:121
 msgid "Time zone"
 msgstr "אזור זמן"
 
-#: PodcastGenerator/admin/pg_config.php:120
+#: PodcastGenerator/admin/pg_config.php:122
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
 msgstr "נא לבחור את אזור הזמן להצגת השעה בה הופצו הפרקים."
 
-#: PodcastGenerator/admin/pg_config.php:136
+#: PodcastGenerator/admin/pg_config.php:138
 msgid "Use cron to regenerate the RSS feed"
 msgstr "להשתמש ב־cron כדי לייצר את הזנות ה־RSS מחדש"
 
-#: PodcastGenerator/admin/pg_config.php:141
+#: PodcastGenerator/admin/pg_config.php:143
 msgid "Password Protection for the web pages"
 msgstr "הגנה בססמה על דפי האתר"
 
-#: PodcastGenerator/admin/pg_config.php:143
+#: PodcastGenerator/admin/pg_config.php:145
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
@@ -683,8 +689,8 @@ msgstr ""
 "שדה ריק יבטל את הסיסמה, נא לשים לב שההזנה וקובצי השמע עדיין יהיו נגישים בין "
 "אם הוגדרה סיסמה או לא"
 
-#: PodcastGenerator/admin/pg_config.php:150
-#: PodcastGenerator/admin/pg_integrations.php:136
+#: PodcastGenerator/admin/pg_config.php:152
+#: PodcastGenerator/admin/pg_integrations.php:137
 #: PodcastGenerator/admin/pg_users.php:112
 #: PodcastGenerator/admin/podcast_details.php:164
 #: PodcastGenerator/admin/theme_buttons.php:153
@@ -706,24 +712,24 @@ msgid "Unsupported service"
 msgstr "שירות לא נתמך"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:93
+#: PodcastGenerator/admin/pg_integrations.php:94
 msgid "Podcast Index"
 msgstr "Podcast Index"
 
-#: PodcastGenerator/admin/pg_integrations.php:94
+#: PodcastGenerator/admin/pg_integrations.php:95
 msgid "API key"
 msgstr "מפתח API"
 
-#: PodcastGenerator/admin/pg_integrations.php:99
+#: PodcastGenerator/admin/pg_integrations.php:100
 msgid "API secret"
 msgstr "סוד API"
 
-#: PodcastGenerator/admin/pg_integrations.php:104
+#: PodcastGenerator/admin/pg_integrations.php:105
 msgid "Podcast ID"
 msgstr "מזהה הסכת"
 
 #. # 'Podcast Index' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:107
+#: PodcastGenerator/admin/pg_integrations.php:108
 msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
@@ -731,21 +737,21 @@ msgstr ""
 "נא למלא את המזהה של התוכנית שלך ב־Podcast Index או ללחוץ על „הוספת תוכנית” "
 "כדי להוסיף את התוכנית שלך למפתח"
 
-#: PodcastGenerator/admin/pg_integrations.php:114
+#: PodcastGenerator/admin/pg_integrations.php:115
 msgid "Add Show"
 msgstr "הוספת תוכנית"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:122
+#: PodcastGenerator/admin/pg_integrations.php:123
 msgid "WebSub"
 msgstr "WebSub"
 
-#: PodcastGenerator/admin/pg_integrations.php:124
+#: PodcastGenerator/admin/pg_integrations.php:125
 msgid "Server address"
 msgstr "כתובת שרת"
 
 #. # 'WebSub' is a proper name.
-#: PodcastGenerator/admin/pg_integrations.php:127
+#: PodcastGenerator/admin/pg_integrations.php:128
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
