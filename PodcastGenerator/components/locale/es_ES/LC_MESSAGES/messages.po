@@ -166,14 +166,14 @@ msgstr "Las etiquetas personalizadas no están bien formadas"
 #: PodcastGenerator/admin/episodes_upload.php:188
 #, php-format
 msgid "%s has invalid file extension"
-msgstr "1%s tiene una extensión no válida"
+msgstr "%s tiene una extensión no válida"
 
 #: PodcastGenerator/admin/episodes_edit.php:181
 #: PodcastGenerator/admin/episodes_upload.php:139
 #: PodcastGenerator/admin/episodes_upload.php:193
 #, php-format
 msgid "%s was not uploaded successfully"
-msgstr "1%s no fue subido satisfactoriamente"
+msgstr "%s no fue subido satisfactoriamente"
 
 #: PodcastGenerator/admin/episodes_edit.php:187
 #: PodcastGenerator/admin/episodes_upload.php:199
@@ -186,7 +186,7 @@ msgstr "El archivo de portada subido no se puede leer (error de permisos)"
 #: PodcastGenerator/admin/episodes_upload.php:239
 #, php-format
 msgid "%s has unsupported MIME content type %s"
-msgstr "1%s tiene contenido de tipo MIME no soportado 1%s"
+msgstr "%s tiene contenido de tipo MIME no soportado %s"
 
 #: PodcastGenerator/admin/episodes_edit.php:317
 #: PodcastGenerator/admin/episodes_edit.php:334
@@ -214,7 +214,7 @@ msgstr "Descripción corta"
 #: PodcastGenerator/admin/episodes_upload.php:469
 #, php-format
 msgid "%d characters remaining"
-msgstr "1%d caracteres restantes"
+msgstr "%d caracteres restantes"
 
 #: PodcastGenerator/admin/episodes_edit.php:358
 #: PodcastGenerator/admin/episodes_upload.php:379
@@ -357,8 +357,8 @@ msgid ""
 "Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
 "<span style='color:green;'>green</span> have been posted."
 msgstr ""
-"Las fechas en 1azul1 están en el futuro. Se han publicado las fechas en "
-"2verde2."
+"Las fechas en <span style='color:blue;'>azul</span> están en el futuro. Se "
+"han publicado las fechas en <span style='color:green;'>verde</span>."
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:43
 msgid "Category already exists"
@@ -425,7 +425,7 @@ msgstr "Subir episodio"
 #: PodcastGenerator/admin/episodes_upload.php:353
 #, php-format
 msgid "\"%s\" uploaded successfully"
-msgstr "\"1%s\" subido satisfactoriamente"
+msgstr "\"%s\" subido satisfactoriamente"
 
 #: PodcastGenerator/admin/episodes_upload.php:365
 msgid "File"
@@ -935,7 +935,7 @@ msgstr "Selecciona o cambia las categorías de podcast (para iTunes)"
 #: PodcastGenerator/admin/store_cat.php:94
 #, php-format
 msgid "Category %d"
-msgstr "Categoría 1%d"
+msgstr "Categoría %d"
 
 #: PodcastGenerator/admin/store_cat.php:116
 #: PodcastGenerator/admin/theme_freebox.php:85
@@ -1019,7 +1019,7 @@ msgstr "Clases CSS"
 #: PodcastGenerator/admin/theme_buttons.php:175
 #, php-format
 msgid "depends on theme, you can use %s in the default theme"
-msgstr "depende del tema, puede usar 1%s en el tema predeterminado"
+msgstr "depende del tema, puede usar %s en el tema predeterminado"
 
 #: PodcastGenerator/admin/theme_buttons.php:146
 #: PodcastGenerator/admin/theme_buttons.php:180
