@@ -21,6 +21,12 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.1] - 2022-04-10
+
+### Fixed
+
+* Episode upload "was not uploaded successfully" (#570)
+
 ## [3.2] - 2022-04-08
 
 ### Added
