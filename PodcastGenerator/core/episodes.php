@@ -220,10 +220,17 @@ function getID3Info($filename)
     return $getID3->analyze($filename);
 }
 
-// Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
-// to the specific default value.
+/**
+ * Gets the value of an ID3 tag.
+ *
+ * @param array  $fileinfo       File info data from getID3.
+ * @param string $tagName        The identifier of the tag being retrieved.
+ * @param mixed  $defaultValue   The value to return if the tag is not present.
+ * @return mixed                 The value of the tag, or $defaultValue if the tag is not present.
+ */
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
+    // Try ID3v2, then ID3v1, before falling back on $defaultValue.
     if (
         isset($fileinfo['tags']['id3v2'][$tagName][0])
         && $fileinfo['tags']['id3v2'][$tagName][0]
