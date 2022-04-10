@@ -402,7 +402,7 @@ function compare_mtimes($a, $b)
  */
 function makeEpisodeFilename($directory, $date, $filename)
 {
-    $filename = str_replace(' ', '_', $filename);
+    $filename = strtolower(str_replace(' ', '_', $filename));
     $targetfile = $directory . $date . '_' . $filename;
 
     if (file_exists($targetfile)) {
@@ -412,7 +412,7 @@ function makeEpisodeFilename($directory, $date, $filename)
             $appendix++;
         }
     }
-    return strtolower($targetfile);
+    return $targetfile;
 }
 
 /**
