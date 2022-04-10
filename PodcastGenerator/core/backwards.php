@@ -8,14 +8,20 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_1_to_3_2($absoluteurl)
+function backwards_3_1_to_3_2_1($absoluteurl)
 {
     session_start();
     session_destroy();
     global $config;
     global $version;
-    // Quit if version is not 3.1.x
-    if (!($config['podcastgen_version'] == '3.1' || substr($config['podcastgen_version'], 0, 4) == '3.1.')) {
+    // Quit if version is not 3.1.x or 3.2
+    if (
+        !(
+            $config['podcastgen_version'] == '3.1'
+            || substr($config['podcastgen_version'], 0, 4) == '3.1.'
+            || $config['podcastgen_version'] == '3.2'
+        )
+    ) {
         return;
     }
 
@@ -44,8 +50,13 @@ function backwards_3_1_to_3_2($absoluteurl)
         $config['feed_sort'] = 'timestamp';
     }
 
+    // Ensure pi_podcast_id is integer value
+    if (!isset($config['pi_podcast_id']) || !is_int($config['pi_podcast_id'])) {
+        $config['pi_podcast_id'] = 0;
+    }
+
     $config_php = "<?php
-\$podcastgen_version = '3.2'; // Version
+\$podcastgen_version = '3.2.1'; // Version
 
 \$first_installation = " . $config['first_installation'] . ";
 
@@ -136,15 +147,15 @@ function backwards_3_1_to_3_2($absoluteurl)
 #####################
 # WebSub
 
-\$websub_server = '';
+\$websub_server = '" . $config['websub_server'] .  "';
 
 #####################
 # Podcast Index
 
-\$pi_api_key = '';
-\$pi_api_secret = '';
+\$pi_api_key = '" . $config['pi_api_key'] .  "';
+\$pi_api_secret = '" . $config['pi_api_secret'] .  "';
 
-\$pi_podcast_id = 0; // is the podcast in Podcast Index? This is its show ID there.
+\$pi_podcast_id = " . $config['pi_podcast_id'] . "; // is the podcast in Podcast Index? This is its show ID there.
 
 // END OF CONFIG
 ";
