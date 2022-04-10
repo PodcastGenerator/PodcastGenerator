@@ -115,8 +115,8 @@ if (count($_POST) > 0) {
     $link = str_replace('=', '', $link);
     $link = str_replace('$url', '', $link);
 
-    $uploadDir = $config['absoluteurl'] . $config['upload_dir'];
-    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
+    $uploadDir = '../' . $config['upload_dir'];
+    $imagesDir = '../' . $config['img_dir'];
 
     $targetfile = makeEpisodeFilename($uploadDir, $_POST['date'], $filename);
     $targetfile_without_ext = strtolower($uploadDir . pathinfo($targetfile, PATHINFO_FILENAME));
