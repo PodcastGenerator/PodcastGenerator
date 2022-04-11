@@ -11,6 +11,10 @@
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";
+
+require "../core/misc/configsystem.php";
+require "../core/feed_generator.php";
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -37,6 +41,11 @@ if (isset($_GET["create"])) {
     }
 
     if ($success) {
+        // #573: generate RSS for the first time at end of setup
+        $config = getConfig('../config.php');
+        generateRSS();
+
+        // clean up and redirect to main page
         session_destroy();
         header("Location: ../index.php");
         die();
