@@ -8,40 +8,86 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_1_to_3_2($absoluteurl)
+
+function backwards_3_1_to_3_3($absoluteurl)
 {
     session_start();
     session_destroy();
     global $config;
     global $version;
-    // Quit if version is not 3.1.x
-    if (!($config['podcastgen_version'] == '3.1' || substr($config['podcastgen_version'], 0, 4) == '3.1.')) {
-        return;
-    }
 
-    $languages = simplexml_load_file('../components/supported_languages/podcast_languages.xml');
+    $currentVersion = $config['podcastgen_version'];
 
-    $matchedLanguage = null;
-    foreach ($languages as $lang) {
-        if ($config['feed_language'] == $lang->code) {
-            $matchedLanguage = $lang;
-            break;
+    $upgrading = false;
+
+    // Upgrading from 3.1 -> 3.2
+    if ($currentVersion == '3.1' || substr($currentVersion, 0, 4) == '3.1.') {
+        $upgrading = true;
+
+        // Fix up podcast language
+        $languages = simplexml_load_file('../components/supported_languages/podcast_languages.xml');
+
+        $matchedLanguage = null;
+        foreach ($languages as $lang) {
+            if ($config['feed_language'] == $lang->code) {
+                $matchedLanguage = $lang;
+                break;
+            }
+        }
+
+        if ($matchedLanguage == null) {
+            // Reset back to default of English, since we don't have a clue
+            // about what language this should have been.
+            $config['feed_language'] = 'en';
+        } elseif (property_exists($matchedLanguage, 'alias')) {
+            // Change to correct language code when a bad / obsolete code has
+            // been used.
+            $config['feed_language'] = $lang->alias;
+        }
+
+        // Default sort method for episodes in the RSS feed
+        if (!isset($config['feed_sort'])) {
+            $config['feed_sort'] = 'timestamp';
+        }
+
+        // Other defaults for config settings added in 3.2
+        if (!isset($config['customtagsenabled'])) {
+            $config['customtagsenabled'] = 'no';
+        }
+        if (!isset($config['timezone'])) {
+            $config['timezone'] = '';
+        }
+        if (!isset($config['podcast_guid'])) {
+            $config['podcast_guid'] = '';
+        }
+        if (!isset($config['podcast_cover'])) {
+            $config['podcast_cover'] = 'itunes_image.jpg';
+        }
+        if (!isset($config['feed_locked'])) {
+            $config['feed_locked'] = '';
+        }
+        if (!isset($config['websub_server'])) {
+            $config['websub_server'] = '';
+        }
+        if (!isset($config['pi_api_key'])) {
+            $config['pi_api_key'] = '';
+        }
+        if (!isset($config['pi_api_secret'])) {
+            $config['pi_api_secret'] = '';
+        }
+        if (!isset($config['pi_podcast_id'])) {
+            $config['pi_podcast_id'] = 0;
         }
     }
 
-    if ($matchedLanguage == null) {
-        // Reset back to default of English, since we don't have a clue about
-        // what language this should have been.
-        $config['feed_language'] = 'en';
-    } elseif (property_exists($matchedLanguage, 'alias')) {
-        // Change to correct language code when a bad / obsolete code has been
-        // used.
-        $config['feed_language'] = $lang->alias;
+    // Upgrading from 3.2 -> 3.3
+    if ($upgrading || $currentVersion == '3.2' || substr($currentVersion, 0, 4) == '3.2.') {
+        $upgrading = true;
     }
 
-    // Default sort method for episodes in the RSS feed
-    if (!isset($config['feed_sort'])) {
-        $config['feed_sort'] = 'timestamp';
+    if (!$upgrading) {
+        // If we have no upgrades, no need to go further
+        return;
     }
 
     $config_php = "<?php
@@ -85,18 +131,18 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$cronAutoRegenerateRSS = " . $config['cronAutoRegenerateRSS'] . "; //Auto regenerate RSS via Cron
 
-\$indexfile = 'index.php';    // Path of the index file
+\$indexfile = '" . $config['indexfile'] . "';    // Path of the index file
 
-\$podcastPassword = '';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
+\$podcastPassword = '" . $config['podcastPassword'] . "';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
 
-\$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
+\$customtagsenabled = '" . $config['customtagsenabled'] . "';   // Advanced functionality for custom RSS tag input
 
-\$timezone = '';              // Timezone used for displaying dates and times
+\$timezone = '" . $config['timezone'] . "';              // Timezone used for displaying dates and times
 
 #####################
 # XML Feed stuff
 
-\$podcast_guid = ''; // Globally unique identifier for your podcast
+\$podcast_guid = '" . $config['podcast_guid'] . "'; // Globally unique identifier for your podcast
 
 \$podcast_title = '" . $config['podcast_title'] . "';
 
@@ -104,7 +150,7 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$podcast_description = '" . $config['podcast_description'] . "';
 
-\$podcast_cover = '" . (isset($config['podcast_cover']) ? $config['podcast_cover'] : 'itunes_image.jpg') . "';
+\$podcast_cover = '" . $config['podcast_cover'] . "';
 
 \$author_name = '" . $config['author_name'] . "';
 
@@ -123,7 +169,7 @@ function backwards_3_1_to_3_2($absoluteurl)
 
 \$feed_sort = '" . $config['feed_sort'] . "'; // sort method used to order episodes in the feed (by timestamp or by season/episode number)
 
-\$feed_locked = ''; // podcast:locked status ('yes', 'no', '' for off)
+\$feed_locked = '" . $config['feed_locked'] . "'; // podcast:locked status ('yes', 'no', '' for off)
 
 \$copyright = '" . $config['copyright'] . "';   // Your copyright notice (e.g CC-BY)
 
@@ -136,15 +182,15 @@ function backwards_3_1_to_3_2($absoluteurl)
 #####################
 # WebSub
 
-\$websub_server = '';
+\$websub_server = '" . $config['websub_server'] . "';
 
 #####################
 # Podcast Index
 
-\$pi_api_key = '';
-\$pi_api_secret = '';
+\$pi_api_key = '" . $config['pi_api_key'] . "';
+\$pi_api_secret = '" . $config['pi_api_secret'] . "';
 
-\$pi_podcast_id = 0; // is the podcast in Podcast Index? This is its show ID there.
+\$pi_podcast_id = " . $config['pi_podcast_id'] . "; // is the podcast in Podcast Index? This is its show ID there.
 
 // END OF CONFIG
 ";
