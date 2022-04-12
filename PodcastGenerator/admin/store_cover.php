@@ -49,15 +49,18 @@ if (isset($_GET['upload'])) {
     }
     $filename = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME) . '.' . $fileext;
 
+    // Generate full, unique path for file
+    $filename = makeUniqueFilename($config['absoluteurl'] . $config['img_dir'] . $filename);
+
     // Now everything is cool and the file can uploaded
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $filename)) {
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $filename)) {
         $error = _('Image was not uploaded successfully');
         goto error;
     }
 
     // Wait a few seconds so the upload can finish
     sleep(3);
-    updateConfig('../config.php', 'podcast_cover', $filename);
+    updateConfig('../config.php', 'podcast_cover', basename($filename));
     generateRSS();
     header('Location: store_cover.php');
     die();

@@ -128,3 +128,31 @@ XML;
         return false;
     }
 }
+
+/**
+ * Creates a unique filename based on the provided path.
+ *
+ * @param string $path  The full path of the filename that needs to be made unique.
+ * @return string       A unique filename in the same directory.
+ */
+function makeUniqueFilename($path)
+{
+    // make sure that we have a real directory path with filename attached
+    // just putting $path into realpath() will fail if the file doesn't exist
+    $pathinfo = pathinfo($path);
+    $realpath = realpath($pathinfo['dirname']) . '/' . $pathinfo['basename'];
+
+    // if the existing path doesn't exist, we're unique!
+    if (!file_exists($realpath)) {
+        return $realpath;
+    }
+
+    // otherwise, append a number and increment it until we find a unique path
+    $appendix = 0;
+    $pathinfo = pathinfo($realpath);
+    while (file_exists($realpath)) {
+        $appendix += 1;
+        $realpath = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '_' . $appendix . '.' . $pathinfo['extension'];
+    }
+    return $realpath;
+}
