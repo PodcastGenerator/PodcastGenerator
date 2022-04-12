@@ -13,6 +13,8 @@ require "createconf.php";
 require "createstuff.php";
 
 require "../core/misc/configsystem.php";
+require "../core/customtags.php";
+require "../core/episodes.php";
 require "../core/feed_generator.php";
 
 if (!isset($_SESSION)) {
