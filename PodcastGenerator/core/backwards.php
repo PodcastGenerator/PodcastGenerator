@@ -8,7 +8,7 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-function backwards_3_1_to_3_2_1($absoluteurl)
+function backwards_3_1_to_3_2_2($absoluteurl)
 {
     session_start();
     session_destroy();
@@ -20,6 +20,7 @@ function backwards_3_1_to_3_2_1($absoluteurl)
             $config['podcastgen_version'] == '3.1'
             || substr($config['podcastgen_version'], 0, 4) == '3.1.'
             || $config['podcastgen_version'] == '3.2'
+            || $config['podcastgen_version'] == '3.2.1'
         )
     ) {
         return;
@@ -56,7 +57,7 @@ function backwards_3_1_to_3_2_1($absoluteurl)
     }
 
     $config_php = "<?php
-\$podcastgen_version = '3.2.1'; // Version
+\$podcastgen_version = '3.2.2'; // Version
 
 \$first_installation = " . $config['first_installation'] . ";
 
