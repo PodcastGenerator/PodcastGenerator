@@ -21,6 +21,16 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.3] - 2022-04-12
+
+### Changed
+
+* Rolled back initial feed generation temporarily
+
+### Fixed
+
+* Fixed language selection during setup
+
 ## [3.2.2] - 2022-04-11
 
 ### Fixed
