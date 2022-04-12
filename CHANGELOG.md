@@ -19,6 +19,10 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Fixed
 
+* New podcast cover images are properly renamed on upload
+* Setup now handles Windows directory separator when saving configuration
+* Setup now generates RSS feed upon completion (#573)
+
 ### Security
 
 ## [3.2.1] - 2022-04-10
