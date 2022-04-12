@@ -47,7 +47,7 @@ if (isset($_GET['upload'])) {
     if (!in_array($fileext, $validExts)) {
         $fileext = $validExts[0];
     }
-    $filename = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME) . $fileext;
+    $filename = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME) . '.' . $fileext;
 
     // Now everything is cool and the file can uploaded
     if (!move_uploaded_file($_FILES['file']['tmp_name'], $config['absoluteurl'] . $config['img_dir'] . $filename)) {
