@@ -29,7 +29,13 @@ function createconf($username, $password)
         . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     // Replace config stuff
     $url = str_replace("setup/step3.php?create=1", "", $url);
+
     $absoluteurl = realpath("../") . "/";
+    if (DIRECTORY_SEPARATOR == '\\') {
+        // PHP supports / for Windows paths, so use it exclusively
+        $absoluteurl = str_replace('\\', '/', $absoluteurl);
+    }
+
     $installationKey = randomString();
     $password = password_hash($password, PASSWORD_DEFAULT);
 
