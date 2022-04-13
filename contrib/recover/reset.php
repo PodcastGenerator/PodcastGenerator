@@ -5,27 +5,27 @@ require '../core/misc/functions.php';
 $config = getConfig('../config.php');
 $users = getUsers();
 
-if(isset($_GET['reset'])) {
-    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2'])) {
+if (isset($_GET['reset'])) {
+    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2'])) {
         $error = 'All fields need to be set';
         goto error;
     }
-    if($_POST['password'] != $_POST['password2']) {
+    if ($_POST['password'] != $_POST['password2']) {
         $error = 'Passwords do not match';
         goto error;
     }
-    if(!array_key_exists($_POST['username'], $users)) {
-        $error = 'User does not exists';
+    if (!array_key_exists($_POST['username'], $users)) {
+        $error = 'User does not exist';
         goto error;
     }
+
     // No errors, continue
     $users[$_POST['username']] = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $ret = updateConfig('../config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
-    if(!$ret) {
+    if (!$ret) {
         $error = 'Unknown error. Be sure the file the users.php file is writable';
         goto error;
-    }
-    else {
+    } else {
         header('Location: login.php?deleteReset=1');
         die();
     }
@@ -48,8 +48,9 @@ error:
     <div class="container">
         <h1>Podcast Generator Password Resetter</h1>
         <b style="color: red;">
-            Warning: This file is extremely dangerous! Delete it instantly after you no longer need it! It will try to self destruct it once it successfully resetted a password
-            but you should still check if the file exists and delete it in such a case! Otherwise ANYONE can reset your password easily and get access to your Podcast.
+            Warning: This file is extremely dangerous! Delete it instantly after you no longer need it! It will try to
+            self destruct it once it successfully resets a password but you should still check if the file exists and
+            delete it in such a case! Otherwise ANYONE can reset your password easily and get access to your podcast.
         </b>
         <p>
             <?= isset($error) ? $error : '' ?>
@@ -57,7 +58,7 @@ error:
         <form action="reset.php?reset=1" method="POST">
             Username:<br>
             <select name="username">
-                <?php foreach($users as $key => $value) { ?>
+                <?php foreach ($users as $key => $value) { ?>
                     <option value="<?= $key ?>"><?= $key ?></option>
                 <?php } ?>
             </select><br>
