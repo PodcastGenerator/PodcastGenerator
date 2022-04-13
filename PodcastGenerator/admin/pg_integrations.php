@@ -11,11 +11,20 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
+    $configChanged = false;
     foreach ($_POST as $key => $value) {
         if ($key[0] != '_') {
-            updateConfig('../config.php', $key, $value);
+            $configChanged = true;
+            $config[$key] = $value;
         } elseif ($key == '_register') {
             $register = $value;
+        }
+    }
+
+    if ($configChanged) {
+        if (!$config->save()) {
+            $error = _('Could not save configuration changes');
+            goto error;
         }
     }
 
@@ -42,7 +51,13 @@ if (isset($_GET['edit'])) {
                     }
                     $result = $response->json();
                     if ($result->status && $result->status != 'false' && $result->feedId) {
-                        updateConfig('../config.php', 'pi_podcast_id', $result->feedId);
+                        if (!$config->set('pi_podcast_id', $result->feedId, true)) {
+                            $error = sprintf(
+                                _('Could not save Podcast ID %s, please set value manually'),
+                                $result->feedId
+                            );
+                            goto error;
+                        }
                     }
                 }
                 catch (Exception $e) {

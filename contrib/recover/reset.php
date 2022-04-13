@@ -1,8 +1,8 @@
 <?php
-require '../core/misc/configsystem.php';
+require '../core/Configuration.php';
 require '../core/misc/functions.php';
 
-$config = getConfig('../config.php');
+$config = PodcastGenerator\Configuration::load('../config.php');
 $users = getUsers();
 
 if (isset($_GET['reset'])) {
@@ -21,7 +21,7 @@ if (isset($_GET['reset'])) {
 
     // No errors, continue
     $users[$_POST['username']] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $ret = updateConfig('../config.php', 'users_json', str_replace('"', '\"', json_encode($users)));
+    $ret = $config->set('users_json', str_replace('"', '\"', json_encode($users)), true);
     if (!$ret) {
         $error = 'Unknown error. Be sure the file the users.php file is writable';
         goto error;

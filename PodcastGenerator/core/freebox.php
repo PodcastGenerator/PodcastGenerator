@@ -10,8 +10,8 @@
 ############################################################
 function getFreebox($path = null)
 {
-    $_config = getConfig($path . 'config.php');
-    if ($_config['freebox'] != 'yes') {
+    global $config;
+    if ($config['freebox'] != 'yes') {
         return null;
     }
     return file_get_contents($path . 'freebox-content.txt');

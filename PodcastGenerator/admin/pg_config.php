@@ -12,11 +12,17 @@ require '../core/include_admin.php';
 
 if (isset($_GET['edit'])) {
     checkToken();
+    $changed = false;
     foreach ($_POST as $key => $value) {
-        updateConfig('../config.php', $key, $value);
+        $changed = true;
+        $config[$key] = $value;
     }
-    header('Location: pg_config.php');
-    die();
+    if ($config->save()) {
+        header('Location: pg_config.php');
+        die();
+    } else {
+        $error = _('Could not save configuration changes');
+    }
 }
 
 $currentTz = $config['timezone'];
@@ -83,6 +89,9 @@ $episodeSortOrderOptions = array(
     <div class="container">
         <?php //# 'Podcast Generator' is a proper name. ?>
         <h1><?= _('Change Podcast Generator Configuration') ?></h1>
+        <?php if (isset($error)) { ?>
+            <p style="color: red;"><?= $error ?></p>
+        <?php } ?>
         <form action="pg_config.php?edit=1" method="POST">
             <?= _('Enable Audio and Video Player') ?>:<br>
             <small><?= _('Enable streaming in web browser') ?></small><br>

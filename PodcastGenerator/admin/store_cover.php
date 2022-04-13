@@ -60,7 +60,12 @@ if (isset($_GET['upload'])) {
 
     // Wait a few seconds so the upload can finish
     sleep(3);
-    updateConfig('../config.php', 'podcast_cover', basename($filename));
+
+    if (!$config->set('podcast_cover', basename($filename), true)) {
+        $error = _('Could not save configuration change for podcast cover');
+        goto error;
+    }
+
     generateRSS();
     header('Location: store_cover.php');
     die();

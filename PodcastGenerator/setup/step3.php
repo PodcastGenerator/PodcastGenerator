@@ -45,7 +45,7 @@ if (isset($_GET["create"])) {
         require "../core/feed_generator.php";
 
         // #573: generate RSS for the first time at end of setup
-        $config = getConfig('../config.php');
+        $config = PodcastGenerator\Configuration::load('../config.php');
         generateRSS();
 
         // clean up and redirect to main page

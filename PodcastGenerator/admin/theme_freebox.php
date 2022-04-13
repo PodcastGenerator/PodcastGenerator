@@ -12,13 +12,13 @@ require '../core/include_admin.php';
 
 if (isset($_GET['disable'])) {
     checkToken();
-    updateConfig('../config.php', 'freebox', 'no');
+    $config->set('freebox', 'no', true);
     header('Location: theme_freebox.php');
     die();
 }
 if (isset($_GET['enable'])) {
     checkToken();
-    updateConfig('../config.php', 'freebox', 'yes');
+    $config->set('freebox', 'yes', true);
     header('Location: theme_freebox.php');
     die();
 }

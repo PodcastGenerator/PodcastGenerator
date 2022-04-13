@@ -32,10 +32,16 @@ $themes = array_filter(
 
 if (isset($_GET['change'])) {
     checkToken();
+
     if ($_GET['change'] > count($themes)) {
         goto error;
     }
-    updateConfig('../config.php', 'theme_path', $themes[$_GET['change']][0]);
+
+    if (!$config->set('theme_path', $themes[$_GET['change']][0], true)) {
+        $error = _('Could not set theme');
+        goto error;
+    }
+
     header('Location: theme_change.php');
     die();
 

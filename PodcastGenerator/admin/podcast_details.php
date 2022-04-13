@@ -36,17 +36,26 @@ if (isset($_GET['edit'])) {
         }
     }
 
+    $configChanged = false;
     foreach ($_POST as $key => $value) {
         if ($key == 'custom_tags') {
             continue;
         } else {
-            updateConfig('../config.php', $key, $value);
+            $config[$key] = $value;
+            $configChanged = true;
+        }
+    }
+
+    if ($configChanged) {
+        if (!$config->save()) {
+            $error = _('Could not save configuration changes');
+            goto error;
         }
     }
 
     if (!isset($error)) {
         // need to reload config before generating feed
-        $config = getConfig('../config.php');
+        $config->reload();
         generateRSS();
         pingServices();
 
