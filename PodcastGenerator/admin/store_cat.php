@@ -14,13 +14,27 @@ $categories = simplexml_load_file('../components/itunes_categories/itunes_catego
 
 if (isset($_GET['edit'])) {
     checkToken();
+
     if (empty($_POST['cat1'])) {
         $error = _('Category 1 needs to be set');
         goto error;
     }
-    updateConfig('../config.php', 'itunes_category[0]', $_POST['cat1']);
-    updateConfig('../config.php', 'itunes_category[1]', $_POST['cat2'], true);
-    updateConfig('../config.php', 'itunes_category[2]', $_POST['cat3'], true);
+    $config['itunes_category[0]'] = $_POST['cat1'];
+
+    if (isset($_POST['cat2'])) {
+        $cat = $_POST['cat2'] != 'null' ? $_POST['cat2'] : '';
+        $config['itunes_category[1]'] = $cat;
+    }
+    if (isset($_POST['cat3'])) {
+        $cat = $_POST['cat3'] != 'null' ? $_POST['cat3'] : '';
+        $config['itunes_category[2]'] = $cat;
+    }
+
+    if (!$config->save()) {
+        $error = _('Could not save categories');
+        goto error;
+    }
+
     generateRSS();
     pingServices();
     header('Location: store_cat.php');

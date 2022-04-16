@@ -10,10 +10,10 @@
 ############################################################
 
 include 'misc/security.php';
-include 'misc/configsystem.php';
+include 'Configuration.php';
 include 'misc/globs.php';
 
-$config = getConfig('config.php');
+$config = PodcastGenerator\Configuration::load('config.php');
 if ($config['podcastgen_version'] != $version) {
     // Backwards compatibility
     include 'backwards.php';
