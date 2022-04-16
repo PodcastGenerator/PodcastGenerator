@@ -32,6 +32,16 @@
         "issues": "https://github.com/PodcastGenerator/PodcastGenerator/issues",
         "source": "https://github.com/PodcastGenerator/PodcastGenerator"
     },
+    "autoload": {
+        "classmap": [
+            "core/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "../tests/"
+        ]
+    },
     "require": {
         "php": ">=7.0",
         "ext-fileinfo": "*",
@@ -50,5 +60,8 @@
         "allow-plugins": {
             "composer/installers": true
         }
+    },
+    "scripts": {
+        "test": "phpunit --testdox ../tests"
     }
 }
