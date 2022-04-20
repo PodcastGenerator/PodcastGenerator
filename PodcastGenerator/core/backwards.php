@@ -8,12 +8,14 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+
 function backwards_3_1_to_3_2_4($absoluteurl)
 {
     session_start();
     session_destroy();
     global $config;
     global $version;
+
     // Quit if version is not 3.1.x or 3.2
     if (
         !(
@@ -28,6 +30,7 @@ function backwards_3_1_to_3_2_4($absoluteurl)
         return;
     }
 
+    // Fix up podcast language
     $languages = simplexml_load_file('../components/supported_languages/podcast_languages.xml');
 
     $matchedLanguage = null;
@@ -53,13 +56,37 @@ function backwards_3_1_to_3_2_4($absoluteurl)
         $config['feed_sort'] = 'timestamp';
     }
 
-    // Ensure pi_podcast_id is integer value
-    if (!isset($config['pi_podcast_id']) || !is_int($config['pi_podcast_id'])) {
+    // Other defaults for config settings added in 3.2
+    if (!isset($config['customtagsenabled'])) {
+        $config['customtagsenabled'] = 'no';
+    }
+    if (!isset($config['timezone'])) {
+        $config['timezone'] = '';
+    }
+    if (!isset($config['podcast_guid'])) {
+        $config['podcast_guid'] = '';
+    }
+    if (!isset($config['podcast_cover'])) {
+        $config['podcast_cover'] = 'itunes_image.jpg';
+    }
+    if (!isset($config['feed_locked'])) {
+        $config['feed_locked'] = '';
+    }
+    if (!isset($config['websub_server'])) {
+        $config['websub_server'] = '';
+    }
+    if (!isset($config['pi_api_key'])) {
+        $config['pi_api_key'] = '';
+    }
+    if (!isset($config['pi_api_secret'])) {
+        $config['pi_api_secret'] = '';
+    }
+    if (!isset($config['pi_podcast_id'])) {
         $config['pi_podcast_id'] = 0;
     }
 
     $config_php = "<?php
-\$podcastgen_version = '3.2.3'; // Version
+\$podcastgen_version = '" . $version . "'; // Version
 
 \$first_installation = " . $config['first_installation'] . ";
 
@@ -99,18 +126,18 @@ function backwards_3_1_to_3_2_4($absoluteurl)
 
 \$cronAutoRegenerateRSS = " . $config['cronAutoRegenerateRSS'] . "; //Auto regenerate RSS via Cron
 
-\$indexfile = 'index.php';    // Path of the index file
+\$indexfile = '" . $config['indexfile'] . "';    // Path of the index file
 
-\$podcastPassword = '';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
+\$podcastPassword = '" . $config['podcastPassword'] . "';       // Password to protect the podcast generator webpages, this will NOT protect the audio or XML files. Leave blank to disable.
 
-\$customtagsenabled = 'no';   // Advanced functionality for custom RSS tag input
+\$customtagsenabled = '" . $config['customtagsenabled'] . "';   // Advanced functionality for custom RSS tag input
 
-\$timezone = '';              // Timezone used for displaying dates and times
+\$timezone = '" . $config['timezone'] . "';              // Timezone used for displaying dates and times
 
 #####################
 # XML Feed stuff
 
-\$podcast_guid = ''; // Globally unique identifier for your podcast
+\$podcast_guid = '" . $config['podcast_guid'] . "'; // Globally unique identifier for your podcast
 
 \$podcast_title = '" . $config['podcast_title'] . "';
 
@@ -118,7 +145,7 @@ function backwards_3_1_to_3_2_4($absoluteurl)
 
 \$podcast_description = '" . $config['podcast_description'] . "';
 
-\$podcast_cover = '" . (isset($config['podcast_cover']) ? $config['podcast_cover'] : 'itunes_image.jpg') . "';
+\$podcast_cover = '" . $config['podcast_cover'] . "';
 
 \$author_name = '" . $config['author_name'] . "';
 
@@ -137,7 +164,7 @@ function backwards_3_1_to_3_2_4($absoluteurl)
 
 \$feed_sort = '" . $config['feed_sort'] . "'; // sort method used to order episodes in the feed (by timestamp or by season/episode number)
 
-\$feed_locked = ''; // podcast:locked status ('yes', 'no', '' for off)
+\$feed_locked = '" . $config['feed_locked'] . "'; // podcast:locked status ('yes', 'no', '' for off)
 
 \$copyright = '" . $config['copyright'] . "';   // Your copyright notice (e.g CC-BY)
 
@@ -150,13 +177,13 @@ function backwards_3_1_to_3_2_4($absoluteurl)
 #####################
 # WebSub
 
-\$websub_server = '" . $config['websub_server'] .  "';
+\$websub_server = '" . $config['websub_server'] . "';
 
 #####################
 # Podcast Index
 
-\$pi_api_key = '" . $config['pi_api_key'] .  "';
-\$pi_api_secret = '" . $config['pi_api_secret'] .  "';
+\$pi_api_key = '" . $config['pi_api_key'] . "';
+\$pi_api_secret = '" . $config['pi_api_secret'] . "';
 
 \$pi_podcast_id = " . $config['pi_podcast_id'] . "; // is the podcast in Podcast Index? This is its show ID there.
 
