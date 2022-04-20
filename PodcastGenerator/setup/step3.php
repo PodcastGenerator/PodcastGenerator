@@ -7,40 +7,51 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
+
 require "securitycheck.php";
 require "createconf.php";
 require "createstuff.php";
+
 if (!isset($_SESSION)) {
     session_start();
 }
 
 if (isset($_GET["create"])) {
     $p = $_POST;
+
     if (empty($p["username"]) || empty($p["password"]) || empty($p["password2"])) {
         $error = "Empty fields";
-    }
-    if (!isset($error)) {
-        if ($p["password"] != $p["password2"]) {
-            $error = "Passwords don't match";
-        }
+    } elseif ($p["password"] != $p["password2"]) {
+        $error = "Passwords don't match";
+    } else {
         // Now create the config file
-        if (!isset($error)) {
-            if (createconf($p["username"], $p["password"])) {
-                $success = true;
-            } else {
-                $error = "Failure while creating the config file";
-            }
-            if (createstuff()) {
-                $success = true;
-            } else {
-                $error = "Failure while creating categories file";
-            }
+        if (createconf($p["username"], $p["password"])) {
+            $success = true;
+        } else {
+            $error = "Failure while creating the config file";
         }
-        if ($success) {
-            session_destroy();
-            header("Location: ../index.php");
-            die();
+        if ($success && createstuff()) {
+            $success = true;
+        } else {
+            $error = "Failure while creating categories file";
         }
+    }
+
+    if ($success) {
+        // avoid dependency issues by only loading these files when needed
+        require "../core/misc/configsystem.php";
+        require "../core/customtags.php";
+        require "../core/episodes.php";
+        require "../core/feed_generator.php";
+
+        // #573: generate RSS for the first time at end of setup
+        $config = getConfig('../config.php');
+        generateRSS();
+
+        // clean up and redirect to main page
+        session_destroy();
+        header("Location: ../index.php");
+        die();
     }
 }
 ?>
