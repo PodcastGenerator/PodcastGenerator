@@ -21,6 +21,17 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.4] - 2022-04-20
+
+### Changed
+
+* German translation is now up to date
+* Feed generation on setup completion has been re-enabled
+
+### Fixed
+
+* Certain configuration settings that were lost on upgrade are now properly persisted
+
 ## [3.2.3] - 2022-04-12
 
 ### Changed
