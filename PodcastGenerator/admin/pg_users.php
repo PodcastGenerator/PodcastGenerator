@@ -11,7 +11,7 @@ require 'checkLogin.php';
 require '../core/include_admin.php';
 
 // we need to allow GET ?username=foo but check token on any other GET
-if (count($_GET) > 1 || (count($_GET) == 1 && !isset($_GET['username']))) {
+if (count($_GET) > 1 || (count($_GET) == 1 && !isset($_GET['usercreate']))) {
     checkToken();
 }
 
