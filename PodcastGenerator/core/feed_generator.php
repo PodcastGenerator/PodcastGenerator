@@ -75,7 +75,7 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
 
     $item = '
     <item>' . "\n";
-    $item .= $TAB . '<title>' . $file['data']->episode->titlePG . '</title>' . $LR;
+    $item .= $TAB . '<title>' . htmlspecialchars($file['data']->episode->titlePG) . '</title>' . $LR;
 
     if (!empty($file['data']->episode->episodeNumPG)) {
         $item .= $TAB . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $LR;
