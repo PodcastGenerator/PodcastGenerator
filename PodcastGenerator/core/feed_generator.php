@@ -105,7 +105,7 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
         $item .= $TAB . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG)
             . '</itunes:author>' . $LR;
     } else {
-        $item .= $TAB . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $LR;
+        $item .= $TAB . '<itunes:author>' . htmlspecialchars($config['author_name']) . '</itunes:author>' . $LR;
     }
 
     if ($file['data']->episode->keywordsPG != "") {
