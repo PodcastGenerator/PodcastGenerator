@@ -431,7 +431,7 @@ $selected_cats = array(
                         <br>
                     </div>
                     <div class="form-group">
-                        <label for="authorname" class="req"><?= _('Author') ?>:</label><br>
+                        <label for="authorname"><?= _('Author') ?>:</label><br>
                         <input type="text" id="authorname" name="authorname" class="form-control"
                                placeholder="Author Name"
                                value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>">
