@@ -664,23 +664,23 @@ msgstr "Tijdzone"
 msgid ""
 "Select time zone for displaying the time which episodes have been released."
 msgstr ""
-"Select time zone for displaying the time which episodes have been released."
+"Selecteer de tijdzone om weer te geven voor afleveringen die zijn uitgebracht."
 
 #: PodcastGenerator/admin/pg_config.php:136
 msgid "Use cron to regenerate the RSS feed"
-msgstr "Use cron to regenerate the RSS feed"
+msgstr "Gebruik cron om de RSS feed te regenereren"
 
 #: PodcastGenerator/admin/pg_config.php:141
 msgid "Password Protection for the web pages"
-msgstr "Password Protection for the web pages"
+msgstr "Wachtwoord voor de web pages"
 
 #: PodcastGenerator/admin/pg_config.php:143
 msgid ""
 "Leave empty for no password, keep in mind that the feed and the audio files "
 "will still be accessible no matter if a password is set or not"
 msgstr ""
-"Leave empty for no password, keep in mind that the feed and the audio files "
-"will still be accessible no matter if a password is set or not"
+"Leeg laten voor geen wachtwoord, weet dat de feed en de audio bestanden "
+"toegangkelijk blijven ongeacht of er een wachtwoord is opgegeven of niet."
 
 #: PodcastGenerator/admin/pg_config.php:150
 #: PodcastGenerator/admin/pg_integrations.php:132
@@ -689,19 +689,19 @@ msgstr ""
 #: PodcastGenerator/admin/theme_buttons.php:153
 #: PodcastGenerator/admin/theme_buttons.php:186
 msgid "Submit"
-msgstr "Submit"
+msgstr "Versturen"
 
 #: PodcastGenerator/admin/pg_integrations.php:26
 msgid "Already registered with Podcast Index"
-msgstr "Already registered with Podcast Index"
+msgstr "Reeds geregistreerd bij Podcast Index"
 
 #: PodcastGenerator/admin/pg_integrations.php:39
 msgid "API error"
-msgstr "API error"
+msgstr "API fout"
 
 #: PodcastGenerator/admin/pg_integrations.php:54
 msgid "Unsupported service"
-msgstr "Unsupported service"
+msgstr "Service niet ondersteund"
 
 #: PodcastGenerator/admin/pg_integrations.php:91
 msgid "Podcast Index"
@@ -724,12 +724,12 @@ msgid ""
 "Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
 "add your show to the index"
 msgstr ""
-"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
-"add your show to the index"
+"Typ het ID nummer van jouw show in de Podcast Index of klik \"Show Toevoegen\" om "
+"jouw show toe te voegen aan de index"
 
 #: PodcastGenerator/admin/pg_integrations.php:112
 msgid "Add Show"
-msgstr "Add Show"
+msgstr "Show Toevoegen"
 
 #: PodcastGenerator/admin/pg_integrations.php:119
 msgid "WebSub"
@@ -737,128 +737,128 @@ msgstr "WebSub"
 
 #: PodcastGenerator/admin/pg_integrations.php:121
 msgid "Server address"
-msgstr "Server address"
+msgstr "Server adres"
 
 #: PodcastGenerator/admin/pg_integrations.php:123
 msgid ""
 "This is the full address of the WebSub hub to alert when the podcast is "
 "updated."
 msgstr ""
-"This is the full address of the WebSub hub to alert when the podcast is "
-"updated."
+"Dit is het volledige adres van de WebSub hub om aan te geven dat de podcast is "
+"geüpdatet."
 
 #: PodcastGenerator/admin/pg_users.php:23
 msgid "Error while changing password"
-msgstr "Error while changing password"
+msgstr "Fout bij wijzigen wachtwoord"
 
 #: PodcastGenerator/admin/pg_users.php:35
 #: PodcastGenerator/admin/pg_users.php:139
 msgid "You cannot delete yourself"
-msgstr "You cannot delete yourself"
+msgstr "Je kan jezelf niet verwijderen"
 
 #: PodcastGenerator/admin/pg_users.php:40
 msgid "User does not exists"
-msgstr "User does not exists"
+msgstr "Gebruiker bestaat niet"
 
 #: PodcastGenerator/admin/pg_users.php:44
 msgid "Unknown error while deleting user"
-msgstr "Unknown error while deleting user"
+msgstr "Onbekende fout bij het verwijderen van gebruiker"
 
 #: PodcastGenerator/admin/pg_users.php:58
 msgid "Error while creating user"
-msgstr "Error while creating user"
+msgstr "Fout bij het creëren van gebruiker"
 
 #: PodcastGenerator/admin/pg_users.php:85
 msgid "It may take a few seconds until the changes are visible"
-msgstr "It may take a few seconds until the changes are visible"
+msgstr "Het kan een paar seconden duren voordat veranderingen zichtbaar zijn"
 
 #: PodcastGenerator/admin/pg_users.php:87
 msgid "User changed successfully"
-msgstr "User changed successfully"
+msgstr "Wijzigen gebruiker gelukt"
 
 #: PodcastGenerator/admin/pg_users.php:89
 msgid "User created successfully"
-msgstr "User created successfully"
+msgstr "Toevoegen gebruiker gelukt"
 
 #: PodcastGenerator/admin/pg_users.php:91
 msgid "User deleted successfully"
-msgstr "User deleted successfully"
+msgstr "Verwijderen gebruiker gelukt"
 
 #: PodcastGenerator/admin/pg_users.php:94
 msgid "List of users"
-msgstr "List of users"
+msgstr "Lijst van gebruikers"
 
 #: PodcastGenerator/admin/pg_users.php:101
 msgid "Create User"
-msgstr "Create User"
+msgstr "Toevoegen gebruiker"
 
 #: PodcastGenerator/admin/pg_users.php:116
 msgid "User does not exist"
-msgstr "User does not exist"
+msgstr "Gebruiker bestaat niet"
 
 #: PodcastGenerator/admin/pg_users.php:123
 msgid "You cannot edit usernames"
-msgstr "You cannot edit usernames"
+msgstr "Je kan geen namen van gebruikers wijzigen"
 
 #: PodcastGenerator/admin/pg_users.php:126
 msgid "New Password"
-msgstr "New Password"
+msgstr "Nieuw wachtwoord"
 
 #: PodcastGenerator/admin/pg_users.php:128
 msgid "Repeat new password"
-msgstr "Repeat new password"
+msgstr "Herhaal nieuw wachtwoord"
 
 #: PodcastGenerator/admin/pg_users.php:133
 msgid "Change"
-msgstr "Change"
+msgstr "Wijzigen"
 
 #: PodcastGenerator/admin/pg_users.php:137
 msgid "Delete user"
-msgstr "Delete user"
+msgstr "Gebruiker verwijderen"
 
 #: PodcastGenerator/admin/podcast_details.php:21
 msgid "Podcast GUID is malformed"
-msgstr "Podcast GUID is malformed"
+msgstr "Podcast GUID heeft niet het juiste format"
 
 #: PodcastGenerator/admin/podcast_details.php:63
 msgid "Locked"
-msgstr "Locked"
+msgstr "Vergrendeld"
 
 #: PodcastGenerator/admin/podcast_details.php:64
 msgid "Unlocked"
-msgstr "Unlocked"
+msgstr "Ontgrendeld"
 
 #: PodcastGenerator/admin/podcast_details.php:65
 msgid "Off"
-msgstr "Off"
+msgstr "Uit"
 
 #: PodcastGenerator/admin/podcast_details.php:98
 msgid "Change Podcast Details"
-msgstr "Change Podcast Details"
+msgstr "Podcast Details veranderen"
 
 #: PodcastGenerator/admin/podcast_details.php:100
 msgid "Podcast Title"
-msgstr "Podcast Title"
+msgstr "Podcast Titel"
 
 #: PodcastGenerator/admin/podcast_details.php:105
 msgid "Podcast Subtitle or Slogan"
-msgstr "Podcast Subtitle or Slogan"
+msgstr "Ondertitel of Slogan van de Podcast"
 
 #: PodcastGenerator/admin/podcast_details.php:110
 msgid "Podcast Description"
-msgstr "Podcast Description"
+msgstr "Podcast Beschrijving"
 
 #: PodcastGenerator/admin/podcast_details.php:115
 msgid "Copyright Notice"
-msgstr "Copyright Notice"
+msgstr "Auteursrechten"
 
 #: PodcastGenerator/admin/podcast_details.php:120
 msgid "Author Name"
-msgstr "Author Name"
+msgstr "Naam Auteur"
 
 #: PodcastGenerator/admin/podcast_details.php:125
 msgid "Author E-Mail Address"
-msgstr "Author E-Mail Address"
+msgstr "E-Mail Adres auteur"
 
 #: PodcastGenerator/admin/podcast_details.php:130
 msgid "Podcast GUID"
@@ -866,27 +866,27 @@ msgstr "Podcast GUID"
 
 #: PodcastGenerator/admin/podcast_details.php:131
 msgid "Unique ID code for your podcast across the internet"
-msgstr "Unique ID code for your podcast across the internet"
+msgstr "Unique ID code voor jouw podcast op het internet"
 
 #: PodcastGenerator/admin/podcast_details.php:138
 msgid "Feed Language"
-msgstr "Feed Language"
+msgstr "Taal van de Feed"
 
 #: PodcastGenerator/admin/podcast_details.php:139
 msgid "Main language of your podcast"
-msgstr "Main language of your podcast"
+msgstr "Taal van jouw podcast"
 
 #: PodcastGenerator/admin/podcast_details.php:149
 msgid "Explicit Podcast"
-msgstr "Explicit Podcast"
+msgstr "Expliciete Podcast"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Lock Podcast Feed"
-msgstr "Lock Podcast Feed"
+msgstr "Vergrendel Podcast Feed"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Prevent other platforms from importing your feed"
-msgstr "Prevent other platforms from importing your feed"
+msgstr "Voorkom dat andere platformen jouw podcast importeren"
 
 #: PodcastGenerator/admin/podcast_details.php:158
 msgid "Custom Feed Tags"
@@ -894,59 +894,59 @@ msgstr "Custom Feed Tags"
 
 #: PodcastGenerator/admin/store_cat.php:18
 msgid "Category 1 needs to be set"
-msgstr "Category 1 needs to be set"
+msgstr "Categorie 1 moet worden opgegeven"
 
 #: PodcastGenerator/admin/store_cat.php:36
 msgid "Select Podcast Category"
-msgstr "Select Podcast Category"
+msgstr "Selecteer Podcast Categorie"
 
 #: PodcastGenerator/admin/store_cat.php:50
 msgid "Select Podcast Categories"
-msgstr "Select Podcast Categories"
+msgstr "Selecteer Podcast Categorieën"
 
 #: PodcastGenerator/admin/store_cat.php:51
 msgid "Select or change Podcast Categories (for iTunes)"
-msgstr "Select or change Podcast Categories (for iTunes)"
+msgstr "Selecteer of wijzig Podcast Categorieën (for iTunes)"
 
 #: PodcastGenerator/admin/store_cat.php:56
 #: PodcastGenerator/admin/store_cat.php:72
 #: PodcastGenerator/admin/store_cat.php:93
 #, php-format
 msgid "Category %d"
-msgstr "Category %d"
+msgstr "Categorie %d"
 
 #: PodcastGenerator/admin/store_cat.php:115
 #: PodcastGenerator/admin/theme_freebox.php:85
 msgid "Save"
-msgstr "Save"
+msgstr "Opslaan"
 
 #: PodcastGenerator/admin/store_cover.php:35
 msgid "Image format is not supported"
-msgstr "Image format is not supported"
+msgstr "Het format van de afbeelding wordt niet ondersteund"
 
 #: PodcastGenerator/admin/store_cover.php:42
 msgid "Image does not have square dimensions"
-msgstr "Image does not have square dimensions"
+msgstr "De afmetingen van de afbeelding zijn geen vierkant"
 
 #: PodcastGenerator/admin/store_cover.php:54
 msgid "Image was not uploaded successfully"
-msgstr "Image was not uploaded successfully"
+msgstr "Upload van de afbeelding niet gelukt"
 
 #: PodcastGenerator/admin/store_cover.php:72
 msgid "Store Cover"
-msgstr "Store Cover"
+msgstr "Cover opslaan"
 
 #: PodcastGenerator/admin/store_cover.php:86
 msgid "Change Cover"
-msgstr "Change Cover"
+msgstr "Cover Wijzigen"
 
 #: PodcastGenerator/admin/store_cover.php:87
 msgid "The cover art will be displayed in the podcast readers."
-msgstr "The cover art will be displayed in the podcast readers."
+msgstr "De cover art wordt weergegeven in de podcast apps."
 
 #: PodcastGenerator/admin/store_cover.php:99
 msgid "Select file"
-msgstr "Select file"
+msgstr "Selecteer bestand"
 
 #: PodcastGenerator/admin/store_cover.php:103
 msgid "Upload"
@@ -954,29 +954,29 @@ msgstr "Upload"
 
 #: PodcastGenerator/admin/theme_buttons.php:25
 msgid "Item exists"
-msgstr "Item exists"
+msgstr "Item bestaat"
 
 #: PodcastGenerator/admin/theme_buttons.php:30
 msgid "Name, Link and CSS Class needs to be set"
-msgstr "Name, Link and CSS Class needs to be set"
+msgstr "Name, Link and CSS Class moeten worden ingesteld"
 
 #: PodcastGenerator/admin/theme_buttons.php:101
 msgid "Theme Buttons"
-msgstr "Theme Buttons"
+msgstr "Theme Knoppen"
 
 #: PodcastGenerator/admin/theme_buttons.php:116
 msgid "Click on the button you wish to edit"
-msgstr "Click on the button you wish to edit"
+msgstr "Klik op de knop die je wilt wijzigen"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "Name"
-msgstr "Name"
+msgstr "Naam"
 
 #: PodcastGenerator/admin/theme_buttons.php:133
 #: PodcastGenerator/admin/theme_buttons.php:167
 msgid "needs to be unique"
-msgstr "needs to be unique"
+msgstr "moet uniek zijn"
 
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
@@ -986,7 +986,7 @@ msgstr "Link"
 #: PodcastGenerator/admin/theme_buttons.php:136
 #: PodcastGenerator/admin/theme_buttons.php:170
 msgid "where it should point to"
-msgstr "where it should point to"
+msgstr "waar het moet verwijzen naar"
 
 #: PodcastGenerator/admin/theme_buttons.php:139
 #: PodcastGenerator/admin/theme_buttons.php:173
@@ -997,7 +997,7 @@ msgstr "CSS Classes"
 #: PodcastGenerator/admin/theme_buttons.php:175
 #, php-format
 msgid "depends on theme, you can use %s in the default theme"
-msgstr "depends on theme, you can use %s in the default theme"
+msgstr "afhankelijk van het thema, kan je %si gebruiken in the default thema"
 
 #: PodcastGenerator/admin/theme_buttons.php:146
 #: PodcastGenerator/admin/theme_buttons.php:180
@@ -1007,70 +1007,70 @@ msgstr "Protocol"
 #: PodcastGenerator/admin/theme_buttons.php:147
 #: PodcastGenerator/admin/theme_buttons.php:181
 msgid "Leave it blank if you don't know what you are doing"
-msgstr "Leave it blank if you don't know what you are doing"
+msgstr "Laat het leeg als je niet weet wat dit betekent"
 
 #: PodcastGenerator/admin/theme_buttons.php:159
 msgid "Delete Button"
-msgstr "Delete Button"
+msgstr "Knop vooe Verwijderen"
 
 #: PodcastGenerator/admin/theme_buttons.php:165
 msgid "Add Button"
-msgstr "Add Button"
+msgstr "Knop voor Toevoegen"
 
 #: PodcastGenerator/admin/theme_change.php:49
 msgid "Theme Change"
-msgstr "Theme Change"
+msgstr "Thema Wijzigen"
 
 #: PodcastGenerator/admin/theme_change.php:63
 msgid "Change theme"
-msgstr "Change theme"
+msgstr "Wijzigen thema"
 
 #: PodcastGenerator/admin/theme_change.php:64
 #, php-format
 msgid "You can upload themes to your %s folder"
-msgstr "You can upload themes to your %s folder"
+msgstr "Je kan thema's uploaden naar jouw %s folder"
 
 #: PodcastGenerator/admin/theme_change.php:65
 msgid "Installed themes"
-msgstr "Installed themes"
+msgstr "Geïnstalleerde thema's"
 
 #: PodcastGenerator/admin/theme_change.php:68
 msgid "No compatible themes installed"
-msgstr "No compatible themes installed"
+msgstr "Geen compatible thema's geïnstalleerd"
 
 #: PodcastGenerator/admin/theme_change.php:82
 msgid "This theme is currently in use"
-msgstr "This theme is currently in use"
+msgstr "Dit thema is in gebruik"
 
 #: PodcastGenerator/admin/theme_change.php:86
 msgid "Switch theme"
-msgstr "Switch theme"
+msgstr "Thema wisselen"
 
 #: PodcastGenerator/admin/theme_freebox.php:40
 #: PodcastGenerator/admin/theme_freebox.php:54
 msgid "Customize Freebox"
-msgstr "Customize Freebox"
+msgstr "Freebox Aanpassen"
 
 #: PodcastGenerator/admin/theme_freebox.php:56
 msgid "Current Freebox"
-msgstr "Current Freebox"
+msgstr "Huidige Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:63
 msgid "Enable / Disable Freebox"
-msgstr "Enable / Disable Freebox"
+msgstr "Inschakelen / Uitschakelen Freebox"
 
 #: PodcastGenerator/admin/theme_freebox.php:72
 msgid "Disable Freebox"
-msgstr "Disable Freebox"
+msgstr "Freebox Uitschakelen"
 
 #: PodcastGenerator/admin/theme_freebox.php:77
 msgid "Change Freebox content"
-msgstr "Change Freebox content"
+msgstr "Freebox inhoud wijzigen"
 
 #: PodcastGenerator/admin/theme_freebox.php:78
 msgid "Content"
-msgstr "Content"
+msgstr "Inhoud"
 
 #: PodcastGenerator/themes/default/categories.php:26
 msgid "All Episodes"
-msgstr "All Episodes"
+msgstr "Alle Afleveringen"
