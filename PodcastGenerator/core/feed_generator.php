@@ -75,7 +75,7 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
 
     $item = '
     <item>' . "\n";
-    $item .= $TAB . '<title>' . $file['data']->episode->titlePG . '</title>' . $LR;
+    $item .= $TAB . '<title>' . htmlspecialchars($file['data']->episode->titlePG) . '</title>' . $LR;
 
     if (!empty($file['data']->episode->episodeNumPG)) {
         $item .= $TAB . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $LR;
@@ -105,7 +105,7 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
         $item .= $TAB . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG)
             . '</itunes:author>' . $LR;
     } else {
-        $item .= $TAB . '<itunes:author>' . $config['author_name'] . '</itunes:author>' . $LR;
+        $item .= $TAB . '<itunes:author>' . htmlspecialchars($config['author_name']) . '</itunes:author>' . $LR;
     }
 
     if ($file['data']->episode->keywordsPG != "") {
