@@ -563,7 +563,7 @@ msgstr "變更 Podcast 類別"
 #: PodcastGenerator/admin/navbar.php:45
 #: PodcastGenerator/admin/podcast_details.php:79
 msgid "Podcast Details"
-msgstr "Podcast 詳細資訊"
+msgstr "Podcast 頻道詳細資訊"
 
 #: PodcastGenerator/admin/navbar.php:48
 msgid "Change Podcast details"
