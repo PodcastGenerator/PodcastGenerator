@@ -25,7 +25,7 @@ msgstr ""
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "此Podcast未設置密碼"
+msgstr "此Podcast頻道並未設置密碼"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
@@ -33,7 +33,7 @@ msgstr "已登入"
 
 #: PodcastGenerator/auth.php:24
 msgid "Success"
-msgstr "成功"
+msgstr "登入成功"
 
 #: PodcastGenerator/auth.php:26
 msgid "Invalid password"
@@ -86,7 +86,7 @@ msgstr "分類"
 
 #: PodcastGenerator/index.php:61
 msgid "No episodes found with that search term"
-msgstr "未找到使用該搜索詞的劇集"
+msgstr "節目中未找到搜尋的關鍵字"
 
 #: PodcastGenerator/index.php:63
 msgid "No episodes uploaded yet"
