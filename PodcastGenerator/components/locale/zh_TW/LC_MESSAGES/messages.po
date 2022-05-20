@@ -25,7 +25,7 @@ msgstr ""
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "此Podcast未設置密碼"
+msgstr "此Podcast頻道並未設置密碼"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
