@@ -25,7 +25,7 @@ msgstr ""
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
-msgstr "此Podcast未設置密碼"
+msgstr "此Podcast頻道並未設置密碼"
 
 #: PodcastGenerator/auth.php:18
 msgid "Already signed in"
@@ -33,7 +33,7 @@ msgstr "已登入"
 
 #: PodcastGenerator/auth.php:24
 msgid "Success"
-msgstr "成功"
+msgstr "登入成功"
 
 #: PodcastGenerator/auth.php:26
 msgid "Invalid password"
@@ -86,11 +86,11 @@ msgstr "分類"
 
 #: PodcastGenerator/index.php:61
 msgid "No episodes found with that search term"
-msgstr "未找到使用該搜索詞的劇集"
+msgstr "節目中未找到搜尋的關鍵字"
 
 #: PodcastGenerator/index.php:63
 msgid "No episodes uploaded yet"
-msgstr "尚未上傳任何集數"
+msgstr "尚未上傳任何節目"
 
 #: PodcastGenerator/index.php:68
 msgid "Search"
@@ -193,7 +193,7 @@ msgstr "%s 內含不被支援的 MIME 內容類型 %s"
 #: PodcastGenerator/admin/episodes_edit.php:317
 #: PodcastGenerator/admin/episodes_edit.php:334
 msgid "Edit Episode"
-msgstr "編輯劇集"
+msgstr "編輯節目"
 
 #: PodcastGenerator/admin/episodes_edit.php:342
 #: PodcastGenerator/admin/episodes_upload.php:362
@@ -208,7 +208,7 @@ msgstr "標題"
 #: PodcastGenerator/admin/episodes_edit.php:351
 #: PodcastGenerator/admin/episodes_upload.php:373
 msgid "Short Description"
-msgstr "簡單描述"
+msgstr "簡單描述說明"
 
 #: PodcastGenerator/admin/episodes_edit.php:355
 #: PodcastGenerator/admin/episodes_edit.php:475
@@ -251,7 +251,7 @@ msgstr "時間"
 #: PodcastGenerator/admin/episodes_edit.php:386
 #: PodcastGenerator/admin/episodes_upload.php:399
 msgid "Extra Information"
-msgstr "補充資訊"
+msgstr "額外補充資訊"
 
 #: PodcastGenerator/admin/episodes_edit.php:389
 #: PodcastGenerator/admin/store_cover.php:92
@@ -266,7 +266,7 @@ msgstr "上傳新的封面圖片"
 #: PodcastGenerator/admin/episodes_edit.php:397
 #: PodcastGenerator/admin/episodes_upload.php:406
 msgid "Long Description"
-msgstr "詳細描述"
+msgstr "節目詳細資訊"
 
 #: PodcastGenerator/admin/episodes_edit.php:403
 #: PodcastGenerator/admin/episodes_upload.php:410
@@ -302,7 +302,7 @@ msgstr "否"
 #: PodcastGenerator/admin/episodes_edit.php:436
 #: PodcastGenerator/admin/episodes_upload.php:438
 msgid "Author"
-msgstr "作家"
+msgstr "作者"
 
 #: PodcastGenerator/admin/episodes_edit.php:447
 #: PodcastGenerator/admin/episodes_upload.php:447
@@ -315,7 +315,7 @@ msgstr "儲存變更"
 
 #: PodcastGenerator/admin/episodes_edit.php:462
 msgid "Delete Episode"
-msgstr "刪除影音(Episode)"
+msgstr "刪除節目"
 
 #: PodcastGenerator/admin/episodes_edit.php:465
 #: PodcastGenerator/admin/episodes_manage_cats.php:99
@@ -326,11 +326,11 @@ msgstr "刪除"
 #: PodcastGenerator/admin/episodes_ftp_feature.php:19
 #, php-format
 msgid "Added %d new episode(s)"
-msgstr "已增加 %d 新的單集(或多個)"
+msgstr "已增加 %d 新的單集節目(或多個)"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:21
 msgid "No new episodes were found"
-msgstr "未找到新的單集"
+msgstr "未找到新的單集節目"
 
 #: PodcastGenerator/admin/episodes_ftp_feature.php:30
 msgid "FTP Feature"
@@ -348,18 +348,18 @@ msgstr "開始"
 #: PodcastGenerator/admin/episodes_list.php:58
 #: PodcastGenerator/admin/navbar.php:13
 msgid "Episodes"
-msgstr "影音(Episodes)管理"
+msgstr "節目"
 
 #: PodcastGenerator/admin/episodes_list.php:59
 msgid "Click on the title of the podcast you want to edit/delete."
-msgstr "點擊你想編輯或刪除的集數"
+msgstr "點擊你想編輯或刪除的節目標題"
 
 #: PodcastGenerator/admin/episodes_list.php:60
 msgid ""
 "Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
 "<span style='color:green;'>green</span> have been posted."
 msgstr ""
-"日期如果是<span style='color\\:blue;'>藍色</span> 即之後才上架的集數. 日期如果是<span "
+"日期如果是<span style='color\\:blue;'>藍色</span> 代表之後才會上架的節目集數. 日期如果是<span "
 "style='color\\:green;'>綠色</span> 表示已經發行."
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:43
@@ -391,7 +391,7 @@ msgstr "目前的分類"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:20
 msgid "Regenerate Feed"
-msgstr "重新產生Feed檔"
+msgstr "重新產生Feed XML"
 
 #: PodcastGenerator/admin/episodes_regenerate.php:34
 msgid "Successfully regenerated RSS feed"
@@ -407,11 +407,11 @@ msgstr "無效的檔案名稱，僅接受 A-Z, a-z, 底線 及 點"
 
 #: PodcastGenerator/admin/episodes_upload.php:146
 msgid "The uploaded episode file is not readable (permission error)"
-msgstr "此上傳音檔無法解析 (權限錯誤)"
+msgstr "上傳的音檔無法解析 (權限錯誤)"
 
 #: PodcastGenerator/admin/episodes_upload.php:239
 msgid "Embedded cover art"
-msgstr "iTunes 封面"
+msgstr "節目封面"
 
 #: PodcastGenerator/admin/episodes_upload.php:250
 msgid "The embedded cover art file was not saved successfully"
@@ -420,7 +420,7 @@ msgstr "此 iTunes 封面檔案儲存失敗"
 #: PodcastGenerator/admin/episodes_upload.php:333
 #: PodcastGenerator/admin/episodes_upload.php:350
 msgid "Upload Episode"
-msgstr "上傳影音(Episode)"
+msgstr "上傳節目"
 
 #: PodcastGenerator/admin/episodes_upload.php:353
 #, php-format
@@ -433,15 +433,15 @@ msgstr "檔案"
 
 #: PodcastGenerator/admin/episodes_upload.php:402
 msgid "Episode Cover"
-msgstr "單集封面"
+msgstr "節目封面"
 
 #: PodcastGenerator/admin/episodes_upload.php:424
 msgid "Explicit content"
-msgstr "限制級"
+msgstr "限制級內容"
 
 #: PodcastGenerator/admin/episodes_upload.php:457
 msgid "Upload episode"
-msgstr "上傳單集"
+msgstr "上傳節目"
 
 #: PodcastGenerator/admin/forgot.php:4
 msgid "Password Reset"
@@ -478,7 +478,7 @@ msgid ""
 "Podcast Generator ever released since 2.5 are available on the Podcast "
 "Generator Homepage."
 msgstr ""
-"如果您遺失此 ZIP 檔案，請不要擔心！ Podcast Generator 自 2.5 以後發布的版本都可以在 Podcast Generator "
+"如果您遺失此 ZIP 檔案，請不要擔心！ Podcast Generator 從 2.5 以後發布的版本都可以在 Podcast Generator "
 "首頁上找到。"
 
 #. # 'Podcast Generator' is a proper name.
@@ -517,11 +517,11 @@ msgstr "切換導覽"
 
 #: PodcastGenerator/admin/navbar.php:16
 msgid "Upload New Episodes"
-msgstr "上傳新的Podcast單集"
+msgstr "上傳新的Podcast節目"
 
 #: PodcastGenerator/admin/navbar.php:17
 msgid "View All Episodes"
-msgstr "檢視全部集數"
+msgstr "檢視全部節目集數"
 
 #: PodcastGenerator/admin/navbar.php:19
 msgid "FTP Feature (Auto Indexing)"
