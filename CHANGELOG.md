@@ -11,6 +11,20 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [3.2.5] - 2022-05-24
+
+### Added
+
 * Translations added for:
   * Farsi
   * Chinese (traditional)
