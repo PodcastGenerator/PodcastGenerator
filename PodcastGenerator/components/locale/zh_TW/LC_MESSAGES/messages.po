@@ -1,0 +1,1076 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022 The Podcast Generator Translation Team
+# This file is distributed under the same license as the Podcast Generator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# cheng <wucy0612@gmail.com>, 2022
+# which <whichcho@gmail.com>, 2022
+# X X, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator 3.2\n"
+"Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
+"POT-Creation-Date: 2022-03-22 17:45-0400\n"
+"PO-Revision-Date: 2022-03-05 22:57+0000\n"
+"Last-Translator: X X, 2022\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/podcast-generator/teams/14574/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: PodcastGenerator/auth.php:14
+msgid "This Podcast has no password"
+msgstr "此Podcast頻道未設置密碼"
+
+#: PodcastGenerator/auth.php:18
+msgid "Already signed in"
+msgstr "已登入"
+
+#: PodcastGenerator/auth.php:24
+msgid "Success"
+msgstr "登入成功"
+
+#: PodcastGenerator/auth.php:26
+msgid "Invalid password"
+msgstr "無效密碼"
+
+#: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
+msgid "Password required"
+msgstr "需要密碼"
+
+#: PodcastGenerator/auth.php:47
+msgid "Enter Password"
+msgstr "輸入密碼"
+
+#: PodcastGenerator/auth.php:49
+msgid "Login"
+msgstr "登入"
+
+#: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
+#: PodcastGenerator/index.php:17
+msgid "Authentication required"
+msgstr "需要認證"
+
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:53
+msgid "More"
+msgstr "更多"
+
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:54
+msgid "Download"
+msgstr "下載"
+
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:55
+msgid "Edit/Delete (Admin)"
+msgstr "編輯/刪除(管理權限)"
+
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:56
+msgid "Filetype"
+msgstr "檔案類型"
+
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:57
+msgid "Size"
+msgstr "檔案大小"
+
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:58
+msgid "Duration"
+msgstr "音檔長度"
+
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:69
+msgid "Categories"
+msgstr "分類"
+
+#: PodcastGenerator/index.php:61
+msgid "No episodes found with that search term"
+msgstr "節目中未找到搜尋的關鍵字"
+
+#: PodcastGenerator/index.php:63
+msgid "No episodes uploaded yet"
+msgstr "尚未上傳任何節目"
+
+#: PodcastGenerator/index.php:68
+msgid "Search"
+msgstr "搜尋"
+
+#: PodcastGenerator/admin/episodes_bulk.php:48
+#: PodcastGenerator/admin/navbar.php:20
+msgid "Bulk download episodes"
+msgstr "批次下載節目"
+
+#: PodcastGenerator/admin/episodes_bulk.php:51
+msgid ""
+"If you want to bulk download all episodes, you need to have curl installed.\n"
+"        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
+"        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
+"        After this paste the following (long) command into the terminal/cmd.exe and press enter."
+msgstr ""
+"如果你要批量下載所有節目，則需要安装curl套件。\n"
+"在Windows 10，macOS和大多數Linux發行版，curl已經預先安裝.\n"
+"在macOS和Linux上開啟你的終端機應用程式，或在Windows上點擊開始選單並搜尋cmd.exe.\n"
+"開啟之後，將以下(長)指令貼上至terminal/cmd.exe中，然後按Enter執行."
+
+#: PodcastGenerator/admin/episodes_edit.php:14
+msgid "No name given"
+msgstr "未給予名稱"
+
+#: PodcastGenerator/admin/episodes_edit.php:26
+#: PodcastGenerator/themes/default/singleepisode.php:11
+msgid "Episode does not exist"
+msgstr "節目不存在"
+
+#: PodcastGenerator/admin/episodes_edit.php:57
+#: PodcastGenerator/admin/episodes_upload.php:26
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:55
+msgid "Missing fields"
+msgstr "欄位資訊不全"
+
+#: PodcastGenerator/admin/episodes_edit.php:69
+#: PodcastGenerator/admin/episodes_upload.php:38
+msgid "Too many categories selected (max: 3)"
+msgstr "選擇過多的類別 (最多可選3個)"
+
+#: PodcastGenerator/admin/episodes_edit.php:76
+#: PodcastGenerator/admin/episodes_upload.php:52
+msgid "Invalid Author E-Mail provided"
+msgstr "無效的Email"
+
+#: PodcastGenerator/admin/episodes_edit.php:84
+#: PodcastGenerator/admin/episodes_edit.php:89
+#: PodcastGenerator/admin/episodes_upload.php:60
+#: PodcastGenerator/admin/episodes_upload.php:65
+msgid "Invalid Episode Number provided"
+msgstr "無效的節目集數"
+
+#: PodcastGenerator/admin/episodes_edit.php:95
+#: PodcastGenerator/admin/episodes_edit.php:100
+#: PodcastGenerator/admin/episodes_upload.php:71
+#: PodcastGenerator/admin/episodes_upload.php:76
+msgid "Invalid Season Number provided"
+msgstr "無效的季數"
+
+#: PodcastGenerator/admin/episodes_edit.php:106
+#: PodcastGenerator/admin/episodes_upload.php:82
+msgid "Size of the 'Short Description' exceeded"
+msgstr "文字長度已超出 '簡單描述'"
+
+#: PodcastGenerator/admin/episodes_edit.php:114
+#: PodcastGenerator/admin/episodes_upload.php:90
+#: PodcastGenerator/admin/podcast_details.php:34
+msgid "Custom tags are not well-formed"
+msgstr "自定義標籤格式不正確"
+
+#: PodcastGenerator/admin/episodes_edit.php:176
+#: PodcastGenerator/admin/episodes_upload.php:134
+#: PodcastGenerator/admin/episodes_upload.php:188
+#, php-format
+msgid "%s has invalid file extension"
+msgstr "%s 無效的檔案格式"
+
+#: PodcastGenerator/admin/episodes_edit.php:181
+#: PodcastGenerator/admin/episodes_upload.php:139
+#: PodcastGenerator/admin/episodes_upload.php:193
+#, php-format
+msgid "%s was not uploaded successfully"
+msgstr "%s 上傳失敗"
+
+#: PodcastGenerator/admin/episodes_edit.php:187
+#: PodcastGenerator/admin/episodes_upload.php:199
+msgid "The uploaded cover art file is not readable (permission error)"
+msgstr "上傳的封面圖像無法讀取 (權限錯誤)"
+
+#: PodcastGenerator/admin/episodes_edit.php:202
+#: PodcastGenerator/admin/episodes_upload.php:159
+#: PodcastGenerator/admin/episodes_upload.php:214
+#: PodcastGenerator/admin/episodes_upload.php:239
+#, php-format
+msgid "%s has unsupported MIME content type %s"
+msgstr "%s 內含不被支援的 MIME 內容類型 %s"
+
+#: PodcastGenerator/admin/episodes_edit.php:317
+#: PodcastGenerator/admin/episodes_edit.php:334
+msgid "Edit Episode"
+msgstr "編輯節目"
+
+#: PodcastGenerator/admin/episodes_edit.php:342
+#: PodcastGenerator/admin/episodes_upload.php:362
+msgid "Main Information"
+msgstr "主要資訊"
+
+#: PodcastGenerator/admin/episodes_edit.php:346
+#: PodcastGenerator/admin/episodes_upload.php:369
+msgid "Title"
+msgstr "標題"
+
+#: PodcastGenerator/admin/episodes_edit.php:351
+#: PodcastGenerator/admin/episodes_upload.php:373
+msgid "Short Description"
+msgstr "簡單描述"
+
+#: PodcastGenerator/admin/episodes_edit.php:355
+#: PodcastGenerator/admin/episodes_edit.php:475
+#: PodcastGenerator/admin/episodes_upload.php:376
+#: PodcastGenerator/admin/episodes_upload.php:469
+#, php-format
+msgid "%d characters remaining"
+msgstr "剩下 %d 字可以輸入"
+
+#: PodcastGenerator/admin/episodes_edit.php:358
+#: PodcastGenerator/admin/episodes_upload.php:379
+msgid "Category"
+msgstr "分類"
+
+#: PodcastGenerator/admin/episodes_edit.php:359
+#: PodcastGenerator/admin/episodes_upload.php:380
+msgid "You can select up to 3 categories"
+msgstr "你可以選擇三種類別"
+
+#: PodcastGenerator/admin/episodes_edit.php:375
+#: PodcastGenerator/admin/episodes_upload.php:390
+msgid "Publication Date"
+msgstr "節目上架日期"
+
+#: PodcastGenerator/admin/episodes_edit.php:376
+#: PodcastGenerator/admin/episodes_upload.php:391
+msgid "If you select a date in the future, it will be published then"
+msgstr "如果你指定的時間不是現在，那將會在你所指定時間發佈"
+
+#: PodcastGenerator/admin/episodes_edit.php:377
+#: PodcastGenerator/admin/episodes_upload.php:392
+msgid "Date"
+msgstr "日期"
+
+#: PodcastGenerator/admin/episodes_edit.php:380
+#: PodcastGenerator/admin/episodes_upload.php:394
+msgid "Time"
+msgstr "時間"
+
+#: PodcastGenerator/admin/episodes_edit.php:386
+#: PodcastGenerator/admin/episodes_upload.php:399
+msgid "Extra Information"
+msgstr "額外補充資訊"
+
+#: PodcastGenerator/admin/episodes_edit.php:389
+#: PodcastGenerator/admin/store_cover.php:92
+msgid "Current Cover"
+msgstr "目前的封面圖片"
+
+#: PodcastGenerator/admin/episodes_edit.php:393
+#: PodcastGenerator/admin/store_cover.php:97
+msgid "Upload new cover"
+msgstr "上傳新的封面圖片"
+
+#: PodcastGenerator/admin/episodes_edit.php:397
+#: PodcastGenerator/admin/episodes_upload.php:406
+msgid "Long Description"
+msgstr "詳細描述"
+
+#: PodcastGenerator/admin/episodes_edit.php:403
+#: PodcastGenerator/admin/episodes_upload.php:410
+msgid "Episode Number"
+msgstr "第幾集"
+
+#: PodcastGenerator/admin/episodes_edit.php:409
+#: PodcastGenerator/admin/episodes_upload.php:414
+msgid "Season Number"
+msgstr "第幾季"
+
+#: PodcastGenerator/admin/episodes_edit.php:415
+#: PodcastGenerator/admin/episodes_upload.php:418
+msgid "iTunes Keywords"
+msgstr "iTunes 關鍵字"
+
+#: PodcastGenerator/admin/episodes_edit.php:422
+msgid "Explicit Content"
+msgstr "內含成人內容"
+
+#: PodcastGenerator/admin/episodes_edit.php:426
+#: PodcastGenerator/admin/episodes_upload.php:428
+#: PodcastGenerator/core/html_helpers.php:39
+msgid "Yes"
+msgstr "是"
+
+#: PodcastGenerator/admin/episodes_edit.php:431
+#: PodcastGenerator/admin/episodes_upload.php:433
+#: PodcastGenerator/core/html_helpers.php:40
+msgid "No"
+msgstr "否"
+
+#: PodcastGenerator/admin/episodes_edit.php:436
+#: PodcastGenerator/admin/episodes_upload.php:438
+msgid "Author"
+msgstr "作者"
+
+#: PodcastGenerator/admin/episodes_edit.php:447
+#: PodcastGenerator/admin/episodes_upload.php:447
+msgid "Custom Tags"
+msgstr "客製標籤"
+
+#: PodcastGenerator/admin/episodes_edit.php:457
+msgid "Save Changes"
+msgstr "儲存變更"
+
+#: PodcastGenerator/admin/episodes_edit.php:462
+msgid "Delete Episode"
+msgstr "刪除節目"
+
+#: PodcastGenerator/admin/episodes_edit.php:465
+#: PodcastGenerator/admin/episodes_manage_cats.php:99
+#: PodcastGenerator/admin/pg_users.php:144
+msgid "Delete"
+msgstr "刪除"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:19
+#, php-format
+msgid "Added %d new episode(s)"
+msgstr "已增加 %d 新的單集(或多個)"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:21
+msgid "No new episodes were found"
+msgstr "未找到新的單集"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:30
+msgid "FTP Feature"
+msgstr "FTP功能"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:44
+msgid "FTP Auto Indexing"
+msgstr "FTP 自動索引"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:48
+msgid "Begin"
+msgstr "開始"
+
+#: PodcastGenerator/admin/episodes_list.php:44
+#: PodcastGenerator/admin/episodes_list.php:58
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr "節目"
+
+#: PodcastGenerator/admin/episodes_list.php:59
+msgid "Click on the title of the podcast you want to edit/delete."
+msgstr "點擊你想編輯或刪除的節目標題"
+
+#: PodcastGenerator/admin/episodes_list.php:60
+msgid ""
+"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
+"<span style='color:green;'>green</span> have been posted."
+msgstr ""
+"日期如果是<span style='color\\:blue;'>藍色</span> 表示之後才會上架的集數. 日期如果是<span "
+"style='color\\:green;'>綠色</span> 表示已經發行."
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:43
+msgid "Category already exists"
+msgstr "分類已存在"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:70
+#: PodcastGenerator/admin/episodes_manage_cats.php:84
+#: PodcastGenerator/admin/navbar.php:18
+msgid "Manage categories"
+msgstr "管理分類"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:85
+msgid "Add category"
+msgstr "新增分類"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:87
+#: PodcastGenerator/admin/episodes_manage_cats.php:88
+msgid "Category Name"
+msgstr "分類名稱"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:90
+msgid "Add"
+msgstr "新增"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:92
+msgid "Current Categories"
+msgstr "目前的分類"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:20
+msgid "Regenerate Feed"
+msgstr "重新產生Feed檔"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:34
+msgid "Successfully regenerated RSS feed"
+msgstr "重新產生RSS feed成功"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:35
+msgid "Return"
+msgstr "返回"
+
+#: PodcastGenerator/admin/episodes_upload.php:104
+msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr "無效的檔案名稱，僅接受 A-Z, a-z, 底線 及 點"
+
+#: PodcastGenerator/admin/episodes_upload.php:146
+msgid "The uploaded episode file is not readable (permission error)"
+msgstr "此上傳音檔無法解析 (權限錯誤)"
+
+#: PodcastGenerator/admin/episodes_upload.php:239
+msgid "Embedded cover art"
+msgstr "iTunes 封面"
+
+#: PodcastGenerator/admin/episodes_upload.php:250
+msgid "The embedded cover art file was not saved successfully"
+msgstr "此 iTunes 封面檔案儲存失敗"
+
+#: PodcastGenerator/admin/episodes_upload.php:333
+#: PodcastGenerator/admin/episodes_upload.php:350
+msgid "Upload Episode"
+msgstr "上傳節目"
+
+#: PodcastGenerator/admin/episodes_upload.php:353
+#, php-format
+msgid "\"%s\" uploaded successfully"
+msgstr "\"%s\" 已上傳"
+
+#: PodcastGenerator/admin/episodes_upload.php:365
+msgid "File"
+msgstr "檔案"
+
+#: PodcastGenerator/admin/episodes_upload.php:402
+msgid "Episode Cover"
+msgstr "節目封面"
+
+#: PodcastGenerator/admin/episodes_upload.php:424
+msgid "Explicit content"
+msgstr "限制級內容"
+
+#: PodcastGenerator/admin/episodes_upload.php:457
+msgid "Upload episode"
+msgstr "上傳節目"
+
+#: PodcastGenerator/admin/forgot.php:4
+msgid "Password Reset"
+msgstr "密碼重置"
+
+#: PodcastGenerator/admin/forgot.php:12
+msgid "Reset your password"
+msgstr "重新設定你的密碼"
+
+#: PodcastGenerator/admin/forgot.php:13
+msgid "No password, no problem!"
+msgstr "忘記密碼，小事!"
+
+#: PodcastGenerator/admin/forgot.php:15
+msgid ""
+"We offer a tool which allows you to easily recover your password. However, "
+"the danger of this is that as long as this file is online, anyone can reset "
+"this password so this file shouldn't be online that long."
+msgstr ""
+"我們提供了一種工具可讓您輕鬆恢復密碼。 但是，這樣做的危險在於只要這個檔案處於上線狀態，任何人都可以重置這個密碼，此檔案不該長時間處於上線狀態。"
+
+#: PodcastGenerator/admin/forgot.php:17
+#, php-format
+msgid ""
+"In the ZIP file of this version which you downloaded there is a file in the "
+"%s folder called %s. Upload this file to into the admin directory with the "
+"name %s"
+msgstr "您下載的此版本的 ZIP 文件中，有一個檔案在%s 資料夾名為 %s. 將此檔案上傳到 admin 資料夾並命名為 %s"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/forgot.php:19
+msgid ""
+"If you no don't have this ZIP file anymore, don't worry! All versions of "
+"Podcast Generator ever released since 2.5 are available on the Podcast "
+"Generator Homepage."
+msgstr ""
+"如果您遺失此 ZIP 檔案，請不要擔心！ Podcast Generator 從 2.5 以後發布的版本都可以在 Podcast Generator "
+"首頁上找到。"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/index.php:38
+msgid "Welcome to your Podcast Generator Admin Interface"
+msgstr "歡迎來到 Podcast Generator 管理界面"
+
+#: PodcastGenerator/admin/login.php:24
+msgid "Login disabled for security reasons"
+msgstr "基於安全因素，登入已禁用"
+
+#: PodcastGenerator/admin/login.php:38
+msgid "Invalid username or password"
+msgstr "無效的使用者名稱或密碼"
+
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:104
+#: PodcastGenerator/admin/pg_users.php:121
+msgid "Username"
+msgstr "使用者名稱"
+
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:107
+msgid "Password"
+msgstr "使用者密碼"
+
+#: PodcastGenerator/admin/login.php:70
+msgid "Forgot Password?"
+msgstr "忘記密碼?"
+
+#: PodcastGenerator/admin/login.php:72
+msgid "Sign In"
+msgstr "登入"
+
+#: PodcastGenerator/admin/navbar.php:3
+msgid "Toggle navigation"
+msgstr "切換導覽"
+
+#: PodcastGenerator/admin/navbar.php:16
+msgid "Upload New Episodes"
+msgstr "上傳新的Podcast節目"
+
+#: PodcastGenerator/admin/navbar.php:17
+msgid "View All Episodes"
+msgstr "檢視全部節目集數"
+
+#: PodcastGenerator/admin/navbar.php:19
+msgid "FTP Feature (Auto Indexing)"
+msgstr "FTP 自動索引"
+
+#: PodcastGenerator/admin/navbar.php:21
+msgid "Manually regenerate RSS feed"
+msgstr "手動生成RSS 摘要(feed)"
+
+#: PodcastGenerator/admin/navbar.php:26
+msgid "Themes and aspect"
+msgstr "網站主題及外觀設定"
+
+#: PodcastGenerator/admin/navbar.php:29
+msgid "Change Theme"
+msgstr "變更佈景網站主題(Theme)"
+
+#: PodcastGenerator/admin/navbar.php:30
+msgid "Customize your Freebox"
+msgstr "客製你的 Freebox 區塊"
+
+#: PodcastGenerator/admin/navbar.php:31
+#: PodcastGenerator/admin/theme_buttons.php:115
+msgid "Change Buttons"
+msgstr "變更按鈕"
+
+#: PodcastGenerator/admin/navbar.php:36
+msgid "Podcast Platform Settings"
+msgstr "Podcast 平台設置"
+
+#: PodcastGenerator/admin/navbar.php:39
+msgid "Change Cover Art"
+msgstr "變更Podcast頻道封面"
+
+#: PodcastGenerator/admin/navbar.php:40
+msgid "Change Podcast Category"
+msgstr "變更 Podcast 頻道類別"
+
+#: PodcastGenerator/admin/navbar.php:45
+#: PodcastGenerator/admin/podcast_details.php:79
+msgid "Podcast Details"
+msgstr "Podcast 頻道詳細資訊"
+
+#: PodcastGenerator/admin/navbar.php:48
+msgid "Change Podcast details"
+msgstr "更改Podcast頻道詳細資訊"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:54
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:58
+msgid "Change Podcast Generator Config"
+msgstr "更改 Podcast Generator 配置"
+
+#: PodcastGenerator/admin/navbar.php:59 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/pg_users.php:85
+msgid "Manage users"
+msgstr "管理使用者"
+
+#: PodcastGenerator/admin/navbar.php:60
+#: PodcastGenerator/admin/pg_integrations.php:86
+msgid "Manage integrations"
+msgstr "管理整合"
+
+#: PodcastGenerator/admin/navbar.php:66
+msgid "View Podcast"
+msgstr "查看Podcast"
+
+#: PodcastGenerator/admin/pg_config.php:60
+msgid "Timestamp"
+msgstr "時間戳記"
+
+#: PodcastGenerator/admin/pg_config.php:61
+msgid "Season and episode number"
+msgstr "季數及集數"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:70
+#: PodcastGenerator/admin/pg_integrations.php:72
+msgid "Podcast Generator Configuration"
+msgstr "Podcast Generator 配置"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:85
+msgid "Change Podcast Generator Configuration"
+msgstr "更改 Podcast Generator 配置"
+
+#: PodcastGenerator/admin/pg_config.php:87
+msgid "Enable Audio and Video Player"
+msgstr "啟用Audio and Video網頁線上播放"
+
+#: PodcastGenerator/admin/pg_config.php:88
+msgid "Enable streaming in web browser"
+msgstr "於瀏覽器中啟用串流播放"
+
+#: PodcastGenerator/admin/pg_config.php:93
+#: PodcastGenerator/admin/theme_freebox.php:67
+msgid "Enable Freebox"
+msgstr "啟用 Freebox 功能"
+
+#: PodcastGenerator/admin/pg_config.php:95
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr "Freebox 可讓你自由編輯或撰寫你想表達的內容，請於admin 新增一個按鈕或文字導向此Freebox頁面"
+
+#: PodcastGenerator/admin/pg_config.php:101
+msgid "Enable categories"
+msgstr "啟用類別功能"
+
+#: PodcastGenerator/admin/pg_config.php:102
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "啟用分類功能，讓您的播客(podcast)的依照分類主題列表。"
+
+#: PodcastGenerator/admin/pg_config.php:107
+msgid "Enable custom tag input"
+msgstr "啟用客製標籤"
+
+#: PodcastGenerator/admin/pg_config.php:109
+msgid ""
+"Enable the ability to add custom RSS tags to your podcast feed and "
+"individual episodes."
+msgstr "啟用客製 RSS 標籤添加到您的Podcast和單個節目的功能。"
+
+#: PodcastGenerator/admin/pg_config.php:115
+msgid "Episode sort order"
+msgstr "節目排序"
+
+#: PodcastGenerator/admin/pg_config.php:116
+msgid "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr "選擇節目排序呈獻方式(網站、RSS feed)"
+
+#: PodcastGenerator/admin/pg_config.php:121
+msgid "Time zone"
+msgstr "時區"
+
+#: PodcastGenerator/admin/pg_config.php:122
+msgid ""
+"Select time zone for displaying the time which episodes have been released."
+msgstr "選擇時區以顯示哪些集數是已經發行的"
+
+#: PodcastGenerator/admin/pg_config.php:138
+msgid "Use cron to regenerate the RSS feed"
+msgstr "使用cron排程重新生成 RSS Feed"
+
+#: PodcastGenerator/admin/pg_config.php:143
+msgid "Password Protection for the web pages"
+msgstr "此網頁為密碼保護狀態"
+
+#: PodcastGenerator/admin/pg_config.php:145
+msgid ""
+"Leave empty for no password, keep in mind that the feed and the audio files "
+"will still be accessible no matter if a password is set or not"
+msgstr "若不設置密碼請留空白，請放心無論有無設置密碼，你的Podcast RSS feed 及音檔都仍能正常存取"
+
+#: PodcastGenerator/admin/pg_config.php:152
+#: PodcastGenerator/admin/pg_integrations.php:137
+#: PodcastGenerator/admin/pg_users.php:112
+#: PodcastGenerator/admin/podcast_details.php:164
+#: PodcastGenerator/admin/theme_buttons.php:153
+#: PodcastGenerator/admin/theme_buttons.php:186
+msgid "Submit"
+msgstr "送出"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:27
+msgid "Already registered with Podcast Index"
+msgstr "已被Podcast Index索引"
+
+#: PodcastGenerator/admin/pg_integrations.php:40
+msgid "API error"
+msgstr "API error"
+
+#: PodcastGenerator/admin/pg_integrations.php:55
+msgid "Unsupported service"
+msgstr "未支援"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:94
+msgid "Podcast Index"
+msgstr "Podcast Index"
+
+#: PodcastGenerator/admin/pg_integrations.php:95
+msgid "API key"
+msgstr "API key"
+
+#: PodcastGenerator/admin/pg_integrations.php:100
+msgid "API secret"
+msgstr "API secret"
+
+#: PodcastGenerator/admin/pg_integrations.php:105
+msgid "Podcast ID"
+msgstr "Podcast ID"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:108
+msgid ""
+"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
+"add your show to the index"
+msgstr "在Podcast索引中輸入劇集的 ID 號或單擊“添加劇集”將您的節目添加到索引中"
+
+#: PodcastGenerator/admin/pg_integrations.php:115
+msgid "Add Show"
+msgstr "增加節目"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:123
+msgid "WebSub"
+msgstr "WebSub 協定"
+
+#: PodcastGenerator/admin/pg_integrations.php:125
+msgid "Server address"
+msgstr "伺服器位置"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:128
+msgid ""
+"This is the full address of the WebSub hub to alert when the podcast is "
+"updated."
+msgstr "此為Podcast更新時所觸發的 WebSub 地址。"
+
+#: PodcastGenerator/admin/pg_users.php:24
+msgid "Error while changing password"
+msgstr "變更密碼時發生錯誤"
+
+#: PodcastGenerator/admin/pg_users.php:36
+#: PodcastGenerator/admin/pg_users.php:140
+msgid "You cannot delete yourself"
+msgstr "你不能夠刪除自己的帳號"
+
+#: PodcastGenerator/admin/pg_users.php:41
+msgid "User does not exists"
+msgstr "使用者不存在"
+
+#: PodcastGenerator/admin/pg_users.php:45
+msgid "Unknown error while deleting user"
+msgstr "刪除使用者遇到不明的錯誤"
+
+#: PodcastGenerator/admin/pg_users.php:59
+msgid "Error while creating user"
+msgstr "創建使用者出錯"
+
+#: PodcastGenerator/admin/pg_users.php:86
+msgid "It may take a few seconds until the changes are visible"
+msgstr "更改的項目需要一點時間才會顯現"
+
+#: PodcastGenerator/admin/pg_users.php:88
+msgid "User changed successfully"
+msgstr "使用者變更成功"
+
+#: PodcastGenerator/admin/pg_users.php:90
+msgid "User created successfully"
+msgstr "使用者創建成功"
+
+#: PodcastGenerator/admin/pg_users.php:92
+msgid "User deleted successfully"
+msgstr "使用者刪除成功"
+
+#: PodcastGenerator/admin/pg_users.php:95
+msgid "List of users"
+msgstr "使用者列表"
+
+#: PodcastGenerator/admin/pg_users.php:102
+msgid "Create User"
+msgstr "建立使用者"
+
+#: PodcastGenerator/admin/pg_users.php:117
+msgid "User does not exist"
+msgstr "使用者不存在"
+
+#: PodcastGenerator/admin/pg_users.php:124
+msgid "You cannot edit usernames"
+msgstr "你無法編輯使用者名稱"
+
+#: PodcastGenerator/admin/pg_users.php:127
+msgid "New Password"
+msgstr "新密碼"
+
+#: PodcastGenerator/admin/pg_users.php:129
+msgid "Repeat new password"
+msgstr "再輸入一次新密碼"
+
+#: PodcastGenerator/admin/pg_users.php:134
+msgid "Change"
+msgstr "確定變更"
+
+#: PodcastGenerator/admin/pg_users.php:138
+msgid "Delete user"
+msgstr "刪除使用者"
+
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast GUID is malformed"
+msgstr "Podcast GUID 格式錯誤"
+
+#: PodcastGenerator/admin/podcast_details.php:63
+msgid "Locked"
+msgstr "鎖定"
+
+#: PodcastGenerator/admin/podcast_details.php:64
+msgid "Unlocked"
+msgstr "未鎖定"
+
+#: PodcastGenerator/admin/podcast_details.php:65
+msgid "Off"
+msgstr "關閉"
+
+#: PodcastGenerator/admin/podcast_details.php:98
+msgid "Change Podcast Details"
+msgstr "更改Podcast頻道詳細資訊"
+
+#: PodcastGenerator/admin/podcast_details.php:100
+msgid "Podcast Title"
+msgstr "Podcast 標題"
+
+#: PodcastGenerator/admin/podcast_details.php:105
+msgid "Podcast Subtitle or Slogan"
+msgstr "Podcast 副標題或網站口號"
+
+#: PodcastGenerator/admin/podcast_details.php:110
+msgid "Podcast Description"
+msgstr "Podcast 介紹"
+
+#: PodcastGenerator/admin/podcast_details.php:115
+msgid "Copyright Notice"
+msgstr "版權說明"
+
+#: PodcastGenerator/admin/podcast_details.php:120
+msgid "Author Name"
+msgstr "作者名稱"
+
+#: PodcastGenerator/admin/podcast_details.php:125
+msgid "Author E-Mail Address"
+msgstr "作者 Email"
+
+#: PodcastGenerator/admin/podcast_details.php:130
+msgid "Podcast GUID"
+msgstr "Podcast GUID"
+
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "Unique ID code for your podcast across the internet"
+msgstr "網際網路上Podcast唯一的ID代碼"
+
+#: PodcastGenerator/admin/podcast_details.php:138
+msgid "Feed Language"
+msgstr "Feed 語系"
+
+#: PodcastGenerator/admin/podcast_details.php:139
+msgid "Main language of your podcast"
+msgstr "你的 Podcast 語系"
+
+#: PodcastGenerator/admin/podcast_details.php:149
+msgid "Explicit Podcast"
+msgstr "內含成人內容"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Lock Podcast Feed"
+msgstr "鎖定Podcast提要"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Prevent other platforms from importing your feed"
+msgstr "防止其他平台導入您的RSS feed"
+
+#: PodcastGenerator/admin/podcast_details.php:158
+msgid "Custom Feed Tags"
+msgstr "客製提要標籤"
+
+#: PodcastGenerator/admin/store_cat.php:18
+msgid "Category 1 needs to be set"
+msgstr "最少需設置一個類別"
+
+#: PodcastGenerator/admin/store_cat.php:36
+msgid "Select Podcast Category"
+msgstr "選擇Podcast頻道分類"
+
+#: PodcastGenerator/admin/store_cat.php:50
+msgid "Select Podcast Categories"
+msgstr "選擇多個Podcast頻道分類"
+
+#: PodcastGenerator/admin/store_cat.php:51
+msgid "Select or change Podcast Categories (for iTunes)"
+msgstr "選擇或更改 Podcast 於 iTunes 分類"
+
+#. # %d is 1, 2, or 3
+#: PodcastGenerator/admin/store_cat.php:57
+#: PodcastGenerator/admin/store_cat.php:73
+#: PodcastGenerator/admin/store_cat.php:94
+#, php-format
+msgid "Category %d"
+msgstr "分類 %d"
+
+#: PodcastGenerator/admin/store_cat.php:116
+#: PodcastGenerator/admin/theme_freebox.php:85
+msgid "Save"
+msgstr "儲存"
+
+#: PodcastGenerator/admin/store_cover.php:35
+msgid "Image format is not supported"
+msgstr "圖像格式不支援"
+
+#: PodcastGenerator/admin/store_cover.php:42
+msgid "Image does not have square dimensions"
+msgstr "圖像非正方形"
+
+#: PodcastGenerator/admin/store_cover.php:54
+msgid "Image was not uploaded successfully"
+msgstr "圖像上傳失敗"
+
+#: PodcastGenerator/admin/store_cover.php:72
+msgid "Store Cover"
+msgstr "儲存Podcast封面"
+
+#: PodcastGenerator/admin/store_cover.php:86
+msgid "Change Cover"
+msgstr "變更Podcast封面"
+
+#: PodcastGenerator/admin/store_cover.php:87
+msgid "The cover art will be displayed in the podcast readers."
+msgstr "這個封面將於其它使用者 Podcast 播放軟體顯示"
+
+#: PodcastGenerator/admin/store_cover.php:99
+msgid "Select file"
+msgstr "選擇檔案"
+
+#: PodcastGenerator/admin/store_cover.php:103
+msgid "Upload"
+msgstr "上傳"
+
+#: PodcastGenerator/admin/theme_buttons.php:25
+msgid "Item exists"
+msgstr "上傳的項目已存在"
+
+#: PodcastGenerator/admin/theme_buttons.php:30
+msgid "Name, Link and CSS Class needs to be set"
+msgstr "名稱，鏈結及CSS類別需被設置"
+
+#: PodcastGenerator/admin/theme_buttons.php:101
+msgid "Theme Buttons"
+msgstr "主題按鈕"
+
+#: PodcastGenerator/admin/theme_buttons.php:116
+msgid "Click on the button you wish to edit"
+msgstr "點擊你要編輯的按鈕"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "Name"
+msgstr "名稱"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "needs to be unique"
+msgstr "必須為獨一無二的"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "Link"
+msgstr "鏈結"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "where it should point to"
+msgstr "鏈結"
+
+#: PodcastGenerator/admin/theme_buttons.php:139
+#: PodcastGenerator/admin/theme_buttons.php:173
+msgid "CSS Classes"
+msgstr "CSS Classes"
+
+#: PodcastGenerator/admin/theme_buttons.php:141
+#: PodcastGenerator/admin/theme_buttons.php:175
+#, php-format
+msgid "depends on theme, you can use %s in the default theme"
+msgstr "取決於主題, 你可以使用 %s 於預設主題"
+
+#: PodcastGenerator/admin/theme_buttons.php:146
+#: PodcastGenerator/admin/theme_buttons.php:180
+msgid "Protocol"
+msgstr "協定"
+
+#: PodcastGenerator/admin/theme_buttons.php:147
+#: PodcastGenerator/admin/theme_buttons.php:181
+msgid "Leave it blank if you don't know what you are doing"
+msgstr "如果你不曉得此功能，請留空白"
+
+#: PodcastGenerator/admin/theme_buttons.php:159
+msgid "Delete Button"
+msgstr "刪除按扭"
+
+#: PodcastGenerator/admin/theme_buttons.php:165
+msgid "Add Button"
+msgstr "添加按鈕"
+
+#: PodcastGenerator/admin/theme_change.php:49
+msgid "Theme Change"
+msgstr "佈景主題(Theme)已完成變更!"
+
+#: PodcastGenerator/admin/theme_change.php:63
+msgid "Change theme"
+msgstr "主題變更"
+
+#: PodcastGenerator/admin/theme_change.php:64
+#, php-format
+msgid "You can upload themes to your %s folder"
+msgstr "你可以上傳主題到你的 %s 資料夾"
+
+#: PodcastGenerator/admin/theme_change.php:65
+msgid "Installed themes"
+msgstr "已安裝的主題"
+
+#: PodcastGenerator/admin/theme_change.php:68
+msgid "No compatible themes installed"
+msgstr "未找到相容的主題"
+
+#: PodcastGenerator/admin/theme_change.php:82
+msgid "This theme is currently in use"
+msgstr "目前使用的主題"
+
+#: PodcastGenerator/admin/theme_change.php:86
+msgid "Switch theme"
+msgstr "切換主題"
+
+#: PodcastGenerator/admin/theme_freebox.php:40
+#: PodcastGenerator/admin/theme_freebox.php:54
+msgid "Customize Freebox"
+msgstr "客製化你的FreeBox"
+
+#: PodcastGenerator/admin/theme_freebox.php:56
+msgid "Current Freebox"
+msgstr "目前的 Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:63
+msgid "Enable / Disable Freebox"
+msgstr "啟用 / 停用 Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:72
+msgid "Disable Freebox"
+msgstr "停用 Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:77
+msgid "Change Freebox content"
+msgstr "變更Freebox內容"
+
+#: PodcastGenerator/admin/theme_freebox.php:78
+msgid "Content"
+msgstr "內容"
+
+#: PodcastGenerator/themes/default/categories.php:26
+msgid "All Episodes"
+msgstr "所有節目"
