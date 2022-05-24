@@ -10,14 +10,11 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-// we need to allow GET ?username=foo but check token on any other GET
-if (count($_GET) > 1 || (count($_GET) == 1 && !isset($_GET['username']))) {
-    checkToken();
-}
-
 $users = getUsers();
 
 if (isset($_GET['change'])) {
+    checkToken();
+
     // Change password case
 
     if (!changeUserPassword($_GET['change'], $_POST['password'])) {
@@ -28,6 +25,8 @@ if (isset($_GET['change'])) {
         die();
     }
 } elseif (isset($_GET['delete'])) {
+    checkToken();
+
     // Delete user case
 
     // Check if the deleted user is the logged in user
@@ -38,7 +37,7 @@ if (isset($_GET['change'])) {
     }
     // Check if user exists
     if (!array_key_exists($_GET['delete'], $users)) {
-        $error = _('User does not exists');
+        $error = _('User does not exist');
         goto error;
     }
     if (!deleteUser($_GET['delete'])) {
@@ -49,6 +48,8 @@ if (isset($_GET['change'])) {
         die();
     }
 } elseif (isset($_GET['create'])) {
+    checkToken();
+
     // Create user case
 
     if (empty($_POST['username']) || empty($_POST['password'])) {
