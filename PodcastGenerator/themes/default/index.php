@@ -25,7 +25,7 @@
                 break;
             }
         }
-        $img = $config["url"] . $config["img_dir"] . 'itunes_image.jpg';
+        $img = $config["url"] . $config["img_dir"] . $config['podcast_cover'];
         // The imgPG value has the highest priority
         if ($correctepisode["episode"]["imgPG"] != "") {
             $img = $correctepisode["episode"]["imgPG"];
@@ -68,7 +68,7 @@
         <meta property="og:title" content="<?= $config["podcast_title"] ?>" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="<?= $config["url"] ?>" />
-        <meta property="og:image" content="<?= $config["url"] . $config["img_dir"] . 'itunes_image.jpg' ?>" />
+        <meta property="og:image" content="<?= $config["url"] . $config["img_dir"] . $config['podcast_cover'] ?>" />
         <meta property="og:description" content="<?= $config["podcast_description"] ?>" />
     <?php } ?>
 </head>

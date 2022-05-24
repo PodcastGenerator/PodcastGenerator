@@ -19,6 +19,8 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Fixed
 
+* Open Graph tags in the default theme did not support new cover file scheme (#592)
+
 ### Security
 
 ## [3.2.4] - 2022-04-20
