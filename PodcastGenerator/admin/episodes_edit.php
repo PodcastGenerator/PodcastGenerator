@@ -47,9 +47,7 @@ if (count($_POST) > 0) {
         $_POST['shortdesc'],
         $_POST['date'],
         $_POST['time'],
-        $_POST['explicit'],
-        $_POST['authorname'],
-        $_POST['authoremail']
+        $_POST['explicit']
     ];
     // Check if fields are missing
     for ($i = 0; $i < count($req_fields); $i++) {
@@ -71,7 +69,7 @@ if (count($_POST) > 0) {
     }
 
     // Check author e-mail
-    if (isset($_POST['authoremail'])) {
+    if (!empty($_POST['authoremail'])) {
         if (!filter_var($_POST['authoremail'], FILTER_VALIDATE_EMAIL)) {
             $error = _('Invalid Author E-Mail provided');
             goto error;
@@ -433,7 +431,7 @@ $selected_cats = array(
                         <br>
                     </div>
                     <div class="form-group">
-                        <label for="authorname" class="req"><?= _('Author') ?>:</label><br>
+                        <label for="authorname"><?= _('Author') ?>:</label><br>
                         <input type="text" id="authorname" name="authorname" class="form-control"
                                placeholder="Author Name"
                                value="<?= htmlspecialchars($episode->episode->authorPG->namePG) ?>">
