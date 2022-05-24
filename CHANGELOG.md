@@ -13,6 +13,8 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Changed
 
+* Author name and email fields are no longer required when editing episodes (#591)
+
 ### Deprecated
 
 ### Removed
@@ -20,6 +22,7 @@ Versions prior to 3.2 are documented per their individual release notes.
 ### Fixed
 
 * Open Graph tags in the default theme did not support new cover file scheme (#592)
+* Updating users no longer leads to spurious CSRF warnings
 
 ### Security
 
