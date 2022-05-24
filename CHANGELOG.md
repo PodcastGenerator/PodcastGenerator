@@ -11,6 +11,10 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Added
 
+* Translations added for:
+  * Farsi
+  * Chinese (traditional)
+
 ### Changed
 
 ### Deprecated

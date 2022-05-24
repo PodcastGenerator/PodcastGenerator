@@ -21,6 +21,10 @@
 		<name>Español</name>
 	</language>
 	<language>
+		<code>fa_IR</code>
+		<name>فارسی</name>
+	</language>
+	<language>
 		<code>fr_FR</code>
 		<name>Français</name>
 	</language>
@@ -31,5 +35,9 @@
 	<language>
 		<code>sv_SE</code>
 		<name>Svenska</name>
+	</language>
+	<language>
+		<code>zh_TW</code>
+		<name>中文（台灣）</name>
 	</language>
 </PodcastGenerator>
