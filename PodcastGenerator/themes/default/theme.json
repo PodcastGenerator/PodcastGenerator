@@ -1,8 +1,8 @@
 {
     "name": "Light",
     "description": "The Light theme, simple and modern",
-    "version": "3.2.4",
-    "pg_versions": ["3.2.4"],
+    "version": "3.2.5",
+    "pg_versions": ["3.2.5"],
     "author": "Emil Engler, Manoliu Lucian",
     "credits": "Bootstrap"
 }
