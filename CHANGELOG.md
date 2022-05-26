@@ -21,6 +21,14 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.6] - 2022-05-26
+
+### Fixed
+
+* Setup step three no longer crashes on successful completion of setup. (#665)
+
+### Security
+
 * Updated Guzzle to version 6.5.6 to avoid possible cookie issue. (CVE-2022-29248)
 
 ## [3.2.5] - 2022-05-24
@@ -34,10 +42,6 @@ Versions prior to 3.2 are documented per their individual release notes.
 ### Changed
 
 * Author name and email fields are no longer required when editing episodes (#591)
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
