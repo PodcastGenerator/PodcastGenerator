@@ -19,6 +19,8 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Fixed
 
+* Setup step three no longer crashes on successful completion of setup. (#665)
+
 ### Security
 
 ## [3.2.5] - 2022-05-24
