@@ -8,6 +8,6 @@
 #
 # This is Free Software released under the GNU/GPL License.
 ############################################################
-$version = '3.2.5';
+$version = '3.2.6';
 $news_url = 'https://podcastgenerator.github.io/news/index.html';
-$isdev = false;
+$isdev = true;
