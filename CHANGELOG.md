@@ -19,6 +19,12 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Fixed
 
+### Security
+
+## [3.2.6] - 2022-05-26
+
+### Fixed
+
 * Setup step three no longer crashes on successful completion of setup. (#665)
 
 ### Security
@@ -36,10 +42,6 @@ Versions prior to 3.2 are documented per their individual release notes.
 ### Changed
 
 * Author name and email fields are no longer required when editing episodes (#591)
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
