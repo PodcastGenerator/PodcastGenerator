@@ -38,14 +38,17 @@ if (isset($_GET["create"])) {
     }
 
     if ($success) {
-        // avoid dependency issues by only loading these files when needed
-        require "../core/misc/configsystem.php";
-        require "../core/customtags.php";
-        require "../core/episodes.php";
-        require "../core/feed_generator.php";
+        // load configuration before any other post-setup work
+        require '../core/misc/configsystem.php';
+        global $config;
+        $config = getConfig('../config.php');
+
+        // includes for post-setup work. require here to avoid problems
+        require '../core/customtags.php';
+        require '../core/episodes.php';
+        require '../core/feed_generator.php';
 
         // #573: generate RSS for the first time at end of setup
-        $config = getConfig('../config.php');
         generateRSS();
 
         // clean up and redirect to main page
