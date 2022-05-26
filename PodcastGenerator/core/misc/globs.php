@@ -10,4 +10,4 @@
 ############################################################
 $version = '3.2.6';
 $news_url = 'https://podcastgenerator.github.io/news/index.html';
-$isdev = true;
+$isdev = false;
