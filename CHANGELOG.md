@@ -21,6 +21,8 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+* Updated Guzzle to version 6.5.6 to avoid possible cookie issue. (CVE-2022-29248)
+
 ## [3.2.5] - 2022-05-24
 
 ### Added
