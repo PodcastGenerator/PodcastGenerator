@@ -20,19 +20,20 @@ Caution: MAKE A BACKUP OF YOUR ENTIRE PODCAST GENERATOR FOLDER BEFORE UPGRADING!
 ## Install from scratch - Detailed
 
 *******
-Install Podcast Generator on Ubuntu 22.04.0
+Install Podcast Generator on Ubuntu 22.04
 
 Please read this through entirely before using.
 [Issues 272](https://github.com/PodcastGenerator/PodcastGenerator/issues/272)
 *******
 This guide assumes there is a fresh install of Ubuntu 22.04.0 and that the user initially logs into the server as the root user.
-The webserver used is nginx.
 
-### Access Your Server
+Note: These instructions are for illustrative purposes, you situation may require further enhancements and security considerations.
+
+### Setup Your Server
 
 1. Open your local machine or login via ssh:
 
-2. Create a system user:
+2. Create a user:
 
     ```bash
     adduser ${replace_with_your_username}
@@ -71,7 +72,7 @@ The webserver used is nginx.
 7. Install PHP, unzip and nginx:
 
     ```bash
-    sudo apt install php-cli php-fpm php-json php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip nginx
+    sudo apt install php-cli php-fpm php-json php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip nginx wget
     ```
 
 8. Confirm PHP version and configure PHP for file uploads:
@@ -96,18 +97,24 @@ The webserver used is nginx.
     ```
 
     Change the according lines to reflect
-    * `memory_limit = 513M`
-    * `upload_max_filesize = 512M`
+    * `memory_limit = 514M`
     * `post_max_size = 512M`
+    * `upload_max_filesize = 512M`
+
+    Restart PHP FPM
+
+    ```bash
+    sudo systemctl restart php8.1-fpm.service
+    ```
 
 ### Install Podcast Generator
 
 The next steps assume that you will be using the default html folder provided by the apache install and no other virtual hosts are present.
 
-1. Navigate to the folder where PodcastGenerator will be installed:
+1. Set VERSION for PodcastGenerator and change directory (cd) to the folder where PodcastGenerator will be installed:
 
     ```bash
-    export CURRENT='3.2.6'
+    export VERSION='3.2.6'
     cd /var/www/
     ```
 
@@ -120,37 +127,31 @@ The next steps assume that you will be using the default html folder provided by
 3. Download the latest release: (replace url with the current release)
 
     ```bash
-    sudo wget https://github.com/albertobeta/PodcastGenerator/archive/v${CURRENT}.zip
+    sudo wget https://github.com/PodcastGenerator/PodcastGenerator/releases/download/v${VERSION}/PodcastGenerator-v${VERSION}.zip
     ```
 
 4. Unzip PodcastGenerator: Replace with current release version
 
     ```bash
-    sudo unzip v${CURRENT}.zip
+    sudo unzip PodcastGenerator-v${VERSION}.zip -d PodcastGenerator-v${VERSION}
     ```
 
-5. Move PodcastGenerator from the unzipped directory PodcastGenerator-${CURRENT} to var/www/html:
+5. Move PodcastGenerator from the unzipped directory PodcastGenerator-${VERSION} to var/www/html:
 
     ```bash
-    sudo mv /var/www/PodcastGenerator-${CURRENT}/PodcastGenerator/* /var/www/html/
+    sudo mv /var/www/PodcastGenerator-v${VERSION}/PodcastGenerator/* /var/www/html/
     ```
 
 6. Copy the nginx configuration file to the configuration directory and enable it:
 
     ```bash
-    sudo mv /var/www/PodcastGenerator-${CURRENT}/podcastgenerator-nginx.conf /etc/nginx/sites-available/podcastgenerator-nginx.conf
+    sudo mv /var/www/PodcastGenerator-v${VERSION}/podcastgenerator-nginx.conf /etc/nginx/sites-available/podcastgenerator-nginx.conf
     ```
 
-    You may need to edit the configuration file to fit your environment. The file contains comments to help you through the process.
+    You will need to edit the configuration file to fit your environment. The file contains comments to help you through the process.
 
     ```bash
     sudo nano /etc/nginx/sites-available/podcastgenerator-nginx.conf
-    ```
-
-    Then restart nginx to apply your changes
-
-    ```bash
-    sudo systemctl restart nginx
     ```
 
     Create the file link to enable the webserver configuration
@@ -159,10 +160,22 @@ The next steps assume that you will be using the default html folder provided by
     sudo ln -s /etc/nginx/sites-available/podcastgenerator-nginx.conf /etc/nginx/sites-enabled/podcastgenerator-nginx.conf
     ```
 
+    Verify NGINX conf is working with
+
+    ```bash
+    sudo nginx -t
+    ```
+
+    If the conf check looks goot, restart nginx to apply your changes
+
+    ```bash
+    sudo systemctl restart nginx
+    ```
+
 7. Cleanup by removing unneccessary files:
 
     ```bash
-    sudo rm -rf PodcastGenerator-${CURRENT}/ v${CURRENT}.zip
+    sudo rm -rf PodcastGenerator-v${VERSION}/ PodcastGenerator-v${VERSION}.zip
     ```
 
 8. Change ownership of the installation files: (NOTE, this is for Ubuntu. If you are using BSD,RHEL,CENTOS,etc. Ownership may be different on different opperating systems.)
@@ -176,10 +189,9 @@ The next steps assume that you will be using the default html folder provided by
     Update file permissions
 
     ```bash
-    sudo chmod 775 media/
-    sudo chmod 775 images/
-    sudo chmod -R 664 media/*
-    sudo chmod -R 664 images/*
+    sudo chmod -R 755 html/images
+    sudo chmod -R 755 html/media
+
     ```
 
 9. Optional: Install certbot and obtain a Let's Encrypt certificate:
