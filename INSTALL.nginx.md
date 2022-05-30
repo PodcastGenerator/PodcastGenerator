@@ -106,7 +106,7 @@ further enhancements and security considerations.
 
     Change the according lines to reflect
     * `memory_limit = 514M`
-    * `post_max_size = 512M`
+    * `post_max_size = 513M`
     * `upload_max_filesize = 512M`
 
     Restart PHP FPM
