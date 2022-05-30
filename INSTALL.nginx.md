@@ -1,5 +1,8 @@
 # INSTALL
 
+There are 3 different options being presented for PodcastGenerator installation
+The below options are only beginning.
+
 ## Install from scratch - Basic
 
 1. Download the latest version of Podcast Generator;
@@ -235,7 +238,8 @@ Consider spreading the word about the software or
 [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator).
 
 If your self-hosted instance gets to be too much to handle or if the
-installation/maintainance/security seems too intimidating, please consider using our
+installation/maintainance/security seems too intimidating, please consider using
+our
 [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/).
 Free accounts are availble for students and Non-profits and other users start
 with a free trial and have the option to upgrade to a full featured hosted plan

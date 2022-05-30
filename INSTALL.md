@@ -1,5 +1,8 @@
 # INSTALL
 
+There are 3 different options being presented for PodcastGenerator installation
+The below options are only beginning.
+
 ## Install from scratch - Basic
 
 1. Download the latest version of Podcast Generator;
@@ -19,7 +22,7 @@ Caution: MAKE A BACKUP OF YOUR ENTIRE PODCAST GENERATOR FOLDER BEFORE UPGRADING!
 1. Download the latest version
 2. Upload it to your web server, allow to overwrite files.
 3. Point your web browser to the URL corresponding to the location where
-Podcast Generator files were uploaded (e.g. 
+Podcast Generator files were uploaded (e.g.
 [http://mypodcastsite.com/podcastgen](http://mypodcastsite.com/podcastgen)).
 You will be redirected to a password converter;
 4. Enjoy!
@@ -223,7 +226,8 @@ Consider spreading the word about the software or
 [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator).
 
 If your self-hosted instance gets to be too much to handle or if the
-installation/maintainance/security seems too intimidating, please consider using our
+installation/maintainance/security seems too intimidating, please consider using
+our
 [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/).
 Free accounts are availble for students and Non-profits and other users start
 with a free trial and have the option to upgrade to a full featured hosted plan
