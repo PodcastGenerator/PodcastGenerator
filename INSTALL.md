@@ -6,7 +6,8 @@
 2. Unzip the zip package containing the script;
 3. Upload the resulting files and folders to your web server;
 4. Point your web browser to the URL corresponding to the location where
-Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen).
+Podcast Generator files were uploaded (e.g.
+[http://mypodcastsite.com/podcastgen](http://mypodcastsite.com/podcastgen)).
 You will be redirected automatically to the 3-step setup wizard;
 5. Log-in into Podcast Generator administration area and start publishing your
 podcast.
@@ -18,7 +19,8 @@ Caution: MAKE A BACKUP OF YOUR ENTIRE PODCAST GENERATOR FOLDER BEFORE UPGRADING!
 1. Download the latest version
 2. Upload it to your web server, allow to overwrite files.
 3. Point your web browser to the URL corresponding to the location where
-Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen).
+Podcast Generator files were uploaded (e.g. 
+[http://mypodcastsite.com/podcastgen](http://mypodcastsite.com/podcastgen)).
 You will be redirected to a password converter;
 4. Enjoy!
 
