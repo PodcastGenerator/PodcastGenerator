@@ -5,8 +5,11 @@
 1. Download the latest version of Podcast Generator;
 2. Unzip the zip package containing the script;
 3. Upload the resulting files and folders to your web server;
-4. Point your web browser to the URL corresponding to the location where Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen). You will be redirected automatically to the 3-step setup wizard;
-5. Log-in into Podcast Generator administration area and start publishing your podcast.
+4. Point your web browser to the URL corresponding to the location where
+Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen).
+You will be redirected automatically to the 3-step setup wizard;
+5. Log-in into Podcast Generator administration area and start publishing your
+podcast.
 
 ## Upgrade from 2.7
 
@@ -14,7 +17,9 @@ Caution: MAKE A BACKUP OF YOUR ENTIRE PODCAST GENERATOR FOLDER BEFORE UPGRADING!
 
 1. Download the latest version
 2. Upload it to your web server, allow to overwrite files.
-3. Point your web browser to the URL corresponding to the location where Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen). You will be redirected to a password converter;
+3. Point your web browser to the URL corresponding to the location where 
+Podcast Generator files were uploaded (e.g. http://mypodcastsite.com/podcastgen).
+You will be redirected to a password converter;
 4. Enjoy!
 
 ## Install from scratch - Detailed
@@ -25,9 +30,11 @@ Install Podcast Generator on Ubuntu 22.04
 Please read this through entirely before using.
 [Issues 272](https://github.com/PodcastGenerator/PodcastGenerator/issues/272)
 *******
-This guide assumes there is a fresh install of Ubuntu 22.04.0 and that the user initially logs into the server as the root user.
+This guide assumes there is a fresh install of Ubuntu 22.04.0 and that the user
+initially logs into the server as the root user.
 
-Note: These instructions are for illustrative purposes, you situation may require further enhancements and security considerations.
+Note: These instructions are for illustrative purposes, you situation may require
+further enhancements and security considerations.
 
 ### Setup Your Server
 
@@ -72,7 +79,8 @@ Note: These instructions are for illustrative purposes, you situation may requir
 7. Install PHP, unzip and nginx:
 
     ```bash
-    sudo apt install php-cli php-fpm php-json php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip nginx wget
+    sudo apt install php-cli php-fpm php-json php-zip php-gd php-mbstring \
+      php-curl php-xml php-pear php-bcmath unzip nginx wget
     ```
 
 8. Confirm PHP version and configure PHP for file uploads:
@@ -109,9 +117,11 @@ Note: These instructions are for illustrative purposes, you situation may requir
 
 ### Install Podcast Generator
 
-The next steps assume that you will be using the default html folder provided by the apache install and no other virtual hosts are present.
+The next steps assume that you will be using the default html folder provided
+by the apache install and no other virtual hosts are present.
 
-1. Set VERSION for PodcastGenerator and change directory (cd) to the folder where PodcastGenerator will be installed:
+1. Set VERSION for PodcastGenerator and change directory (cd) to the folder
+where PodcastGenerator will be installed:
 
     ```bash
     export VERSION='3.2.6'
@@ -127,7 +137,8 @@ The next steps assume that you will be using the default html folder provided by
 3. Download the latest release: (replace url with the current release)
 
     ```bash
-    sudo wget https://github.com/PodcastGenerator/PodcastGenerator/releases/download/v${VERSION}/PodcastGenerator-v${VERSION}.zip
+    sudo wget \
+    https://github.com/PodcastGenerator/PodcastGenerator/releases/download/v${VERSION}/PodcastGenerator-v${VERSION}.zip
     ```
 
 4. Unzip PodcastGenerator: Replace with current release version
@@ -136,7 +147,8 @@ The next steps assume that you will be using the default html folder provided by
     sudo unzip PodcastGenerator-v${VERSION}.zip -d PodcastGenerator-v${VERSION}
     ```
 
-5. Move PodcastGenerator from the unzipped directory PodcastGenerator-${VERSION} to var/www/html:
+5. Move PodcastGenerator from the unzipped directory PodcastGenerator-${VERSION}
+to var/www/html:
 
     ```bash
     sudo mv /var/www/PodcastGenerator-v${VERSION}/PodcastGenerator/* /var/www/html/
@@ -145,10 +157,12 @@ The next steps assume that you will be using the default html folder provided by
 6. Copy the nginx configuration file to the configuration directory and enable it:
 
     ```bash
-    sudo mv /var/www/PodcastGenerator-v${VERSION}/podcastgenerator-nginx.conf /etc/nginx/sites-available/podcastgenerator-nginx.conf
+    sudo mv /var/www/PodcastGenerator-v${VERSION}/podcastgenerator-nginx.conf \
+      /etc/nginx/sites-available/podcastgenerator-nginx.conf
     ```
 
-    You will need to edit the configuration file to fit your environment. The file contains comments to help you through the process.
+    You will need to edit the configuration file to fit your environment.
+    The file contains comments to help you through the process.
 
     ```bash
     sudo nano /etc/nginx/sites-available/podcastgenerator-nginx.conf
@@ -157,7 +171,8 @@ The next steps assume that you will be using the default html folder provided by
     Create the file link to enable the webserver configuration
 
     ```bash
-    sudo ln -s /etc/nginx/sites-available/podcastgenerator-nginx.conf /etc/nginx/sites-enabled/podcastgenerator-nginx.conf
+    sudo ln -s /etc/nginx/sites-available/podcastgenerator-nginx.conf \
+    /etc/nginx/sites-enabled/podcastgenerator-nginx.conf
     ```
 
     Verify NGINX conf is working with
@@ -178,7 +193,9 @@ The next steps assume that you will be using the default html folder provided by
     sudo rm -rf PodcastGenerator-v${VERSION}/ PodcastGenerator-v${VERSION}.zip
     ```
 
-8. Change ownership of the installation files: (NOTE, this is for Ubuntu. If you are using BSD,RHEL,CENTOS,etc. Ownership may be different on different opperating systems.)
+8. Change ownership of the installation files: (NOTE, this is for Ubuntu.
+If you are using BSD,RHEL,CENTOS,etc. Ownership may be different on different
+opperating systems.)
 
     Update ownership
 
@@ -201,7 +218,8 @@ The next steps assume that you will be using the default html folder provided by
     sudo certbot --nginx -d domain.of.your.podcastgenerator
     ```
 
-10. Navigate to the IP, domain or local host address of the machine in a web browser:
+10. Navigate to the IP, domain or local host address of the machine in a
+web browser:
 
     `ip.address.in.browser` or `domain.of.your.podcastgenerator`
 
@@ -211,6 +229,12 @@ The next steps assume that you will be using the default html folder provided by
 
 Enjoy your installation of Podcast Generator!
 
-Consider spreading the word about the software or [contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator).
+Consider spreading the word about the software or
+[contribute back to the project](https://github.com/PodcastGenerator/PodcastGenerator).
 
-If your self-hosted instance gets to be too much to handle or if the installation/maintainance/security seems too intimidating, please consider using our [hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/). Free accounts are availble for students and Non-profits and other users start with a free trial and have the option to upgrade to a full featured hosted plan starting at $12.99/month (USD).
+If your self-hosted instance gets to be too much to handle or if the
+installation/maintainance/security seems too intimidating, please consider using our
+[hosting partner](https://rss.com/blog/how-to-create-an-rss-feed-for-a-podcast/).
+Free accounts are availble for students and Non-profits and other users start
+with a free trial and have the option to upgrade to a full featured hosted plan
+starting at $12.99/month (USD).
