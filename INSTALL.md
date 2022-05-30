@@ -79,8 +79,8 @@ further enhancements and security considerations.
 7. Install apache2, PHP and unzip:
 
     ```bash
-    sudo apt install apache2 php-cli php-fpm php-json php-zip php-gd php-mbstring \
-      php-curl php-xml php-pear php-bcmath unzip wget
+    sudo apt install apache2 libapache2-mod-fcgid php-cli php-fpm php-json \
+      php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath unzip wget
     ```
 
 8. Confirm PHP version and configure PHP for file uploads:
@@ -106,13 +106,35 @@ further enhancements and security considerations.
 
     Change the according lines to reflect
     * `memory_limit = 514M`
-    * `post_max_size = 512M`
+    * `post_max_size = 513M`
     * `upload_max_filesize = 512M`
 
     Restart PHP FPM
 
     ```bash
     sudo systemctl restart php8.1-fpm.service
+    ```
+
+9. Configure apache2
+
+    Enable needed conf and mods
+
+    ```bash
+    sudo a2enconf php8.1-fpm
+    sudo a2enmod proxy
+    sudo a2enmod proxy_fcgi
+    ```
+
+    Validate changes
+
+    ```bash
+    sudo apachectl configtest
+    ```
+
+    Restart apache2
+
+    ```bash
+    sudo systemctl restart apache2
     ```
 
 ### Install Podcast Generator
@@ -175,7 +197,6 @@ opperating systems.)
     ```bash
     sudo chmod -R 755 html/images
     sudo chmod -R 755 html/media
-
     ```
 
 8. Optional: Install certbot and obtain a Let's Encrypt certificate:
