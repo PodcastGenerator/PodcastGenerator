@@ -1,12 +1,17 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace PodcastGenerator\Tests;
 
+// phpcs:disable
 require('../PodcastGenerator/vendor/autoload.php');
+// phpcs:enable
 
 use PHPUnit\Framework\TestCase;
 use PodcastGenerator\Configuration;
 
+/**
+ * @covers PodcastGenerator\Configuration
+ */
 class ConfigurationTest extends TestCase
 {
     private $filename;
@@ -28,7 +33,19 @@ class ConfigurationTest extends TestCase
 
 \$boolvar = true; // This is a bool var
 
+\$falsevar = false; // This is also a bool var
+
 \$anyvar = 'foo';
+
+// C-style comment lines are ignored
+# so are hash comment lines
+
+// leading tabs are stripped from config file lines
+\t\$tabvar = 'tab';
+
+\$emptyvar = '';
+
+\$nullvar = null;
 ");
     }
 
@@ -67,6 +84,37 @@ class ConfigurationTest extends TestCase
         $sut['absoluteurl'] = 'test';
 
         $this->assertEquals($absoluteurl, $sut['absoluteurl']);
+    }
+
+    public function testCanGetArrayOfConfigurationKeys()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $keys = $sut->keys();
+
+        $this->assertIsArray($keys);
+        foreach ($keys as $key) {
+            $this->assertTrue(isset($sut[$key]));
+        }
+    }
+
+    public function testCanUseIssetToDetermineValueExists()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $this->assertTrue(isset($sut['stringvar']));
+    }
+
+    public function testCannotGetNonexistentValue()
+    {
+        $this->expectError();
+
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['nonexistent'];
+
+        $this->assertArrayNotHasKey('nonexistent', $sut->keys());
+        $this->assertFalse(isset($value));
     }
 
     public function testCannotSetNonexistentValue()
@@ -120,14 +168,35 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($new, $sut['floatvar']);
     }
 
+    public function testCanSetNumericValue()
+    {
+        $sut = Configuration::load($this->filename);
+        $new = '42.333';
+
+        $sut['floatvar'] = $new;
+
+        $this->assertEquals($new, $sut['floatvar']);
+        $this->assertFalse($new === $sut['floatvar']);
+    }
+
     public function testCanSetOtherValueAsString()
     {
         $sut = Configuration::load($this->filename);
-        $new = new Exception('test');
+        $new = new \Exception('test');
 
         $sut['anyvar'] = $new;
 
         $this->assertEquals($new->__toString(), $sut['anyvar']);
+    }
+
+    public function testCanSetValueToNullWithUnset()
+    {
+        $sut = Configuration::load($this->filename);
+
+        unset($sut['stringvar']);
+
+        $this->assertTrue(isset($sut['stringvar']));
+        $this->assertNull($sut['stringvar']);
     }
 
     public function testCanWriteValuesToFileOnExplicitCallToSet()
