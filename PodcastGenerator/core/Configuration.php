@@ -56,13 +56,25 @@ class Configuration implements \ArrayAccess
             preg_match('/\$(.+?) = ["\'](.+?)?["\'];/', $lines[$i], $strout); // Get all strings
             preg_match('/\$(.+?) = ([^"\']+);/', $lines[$i], $nonstr); // Get all non strings
             if (count($nonstr) == 3) {
+                $key = $nonstr[1];
+                $val = $nonstr[2];
                 // Cut of escape chars if there are any
-                // Check if $nonstr[2] is "
-                if ($nonstr[2] != '"') {
-                    $nonstr[2] = str_replace("\\", '', $nonstr[2]);
-                    $configMap[$nonstr[1]] = $nonstr[2];
+                // Check if $val is "
+                if ($val != '"') {
+                    $val = str_replace("\\", '', $val);
+                    if (is_numeric($val)) {
+                        $configMap[$key] = $val + 0;
+                    } elseif (strcasecmp('true', $val) == 0) {
+                        $configMap[$key] = true;
+                    } elseif (strcasecmp('false', $val) == 0) {
+                        $configMap[$key] = false;
+                    } elseif (strcasecmp('null', $val) == 0) {
+                        $configMap[$key] = null;
+                    } else {
+                        $configMap[$key] = $val;
+                    }
                 } else {
-                    $configMap[$nonstr[1]] = '';
+                    $configMap[$key] = '';
                 }
             } elseif (count($strout) == 3) {
                 if ($strout[2] != '"') {
@@ -180,6 +192,8 @@ class Configuration implements \ArrayAccess
             $this->map[$key] = $value + 0; // cheap cast
         } elseif (is_string($value)) {
             $this->map[$key] = $value;
+        } elseif (is_null($value)) {
+            $this->map[$key] = null;
         } else {
             $this->map[$key] = (string) $value; // make sure other types are turned to string!
         }
@@ -250,8 +264,12 @@ class Configuration implements \ArrayAccess
                 $lines[$i] = '$' . $key . ' = ';
 
                 // Add quotes and escapes if it is a string
-                if (gettype($value) == 'string') {
+                if (is_string($value)) {
                     $lines[$i] .= "'" . str_replace(array('\'', '\\'), array('\\\'', '\\\\'), $value) . "';";
+                } elseif (is_null($value)) {
+                    $lines[$i] .= 'null;';
+                } elseif (is_bool($value)) {
+                    $lines[$i] .= ($value ? 'true' : 'false') . ';';
                 } else {
                     $lines[$i] .= $value . ';';
                 }
@@ -272,10 +290,6 @@ class Configuration implements \ArrayAccess
         }
 
         // Write to the actual config
-        if (!file_put_contents($this->path, $configStr)) {
-            return false;
-        }
-
-        return true;
+        return !!file_put_contents($this->path, $configStr);
     }
 }
