@@ -13,6 +13,8 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Changed
 
+* Improved installation documentation.
+
 ### Deprecated
 
 ### Removed
