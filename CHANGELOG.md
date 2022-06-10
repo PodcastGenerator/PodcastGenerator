@@ -21,6 +21,16 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.7] - 2022-06-10
+
+### Changed
+
+* Improved installation documentation.
+
+### Security
+
+* Updated Guzzle to version 6.5.7 to avoid potential HTTP downgrade issues. (CVE-2022-31042, CVE-2022-31043)
+
 ## [3.2.6] - 2022-05-26
 
 ### Fixed
