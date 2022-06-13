@@ -1,0 +1,66 @@
+# File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
+
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,php-cs-fixer,phpcodesniffer,phpunit
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,php-cs-fixer,phpcodesniffer,phpunit
+
+### PHP-CS-Fixer ###
+# Covers PHP CS Fixer
+# Reference: https://cs.symfony.com/
+
+# Generated files
+.php-cs-fixer.cache
+
+# Local config See: https://cs.symfony.com/doc/config.html
+.php-cs-fixer.php
+
+### PHPCodeSniffer ###
+# CodeSniffer
+
+/vendor/*
+/wpcs/*
+
+### PHPUnit ###
+# Covers PHPUnit
+# Reference: https://phpunit.de/
+
+# Generated files
+.phpunit.result.cache
+.phpunit.cache
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+
+# Build data
+/build/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# Support for Project snippet scope
+.vscode/*.code-snippets
+
+# Ignore code-workspaces
+*.code-workspace
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,php-cs-fixer,phpcodesniffer,phpunit
+
+# Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
+
+/tests/coverage
