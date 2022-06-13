@@ -54,7 +54,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
         "squizlabs/php_codesniffer": "^3.6",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "phpunit/php-code-coverage": "^9.2"
     },
     "config": {
         "allow-plugins": {
@@ -62,6 +63,6 @@
         }
     },
     "scripts": {
-        "test": "phpunit --testdox ../tests"
+        "test": "phpunit --testdox --coverage-clover ../tests/coverage/clover.xml --coverage-filter ./core ../tests"
     }
 }
