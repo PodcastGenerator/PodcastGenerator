@@ -14,8 +14,13 @@
     <!-- Use PSR-12 code standard rules - https://www.php-fig.org/psr/psr-12/ -->
     <rule ref="PSR12">
         <type>warning</type>
+
+        <exclude name="PSR12.Files.OpenTag.NotAlone" />
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
     </rule>
 
     <!-- For sake of Windows development, ignore EOL. Use Git core.autocrlf. -->
-    <exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+    <rule ref="Generic.Files.LineEndings">
+        <exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+    </rule>
 </ruleset>
