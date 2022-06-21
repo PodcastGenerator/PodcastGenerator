@@ -44,51 +44,47 @@ class Configuration implements \ArrayAccess
             if (strlen($lines[$i]) == 0) {
                 continue;
             }
-            // Skip comment and php lines
-            if ($lines[$i][0] == '/' || $lines[$i][0] == '#') {
-                continue;
-            }
             // Remove tab at the beginning
             if ($lines[$i][0] == "\t") {
                 $lines[$i] = substr($lines[$i], 1);
             }
-
-            preg_match('/\$(.+?) = ["\'](.+?)?["\'];/', $lines[$i], $strout); // Get all strings
-            preg_match('/\$(.+?) = ([^"\']+);/', $lines[$i], $nonstr); // Get all non strings
-            if (count($nonstr) == 3) {
-                $key = $nonstr[1];
-                $val = $nonstr[2];
-                // Cut of escape chars if there are any
-                // Check if $val is "
-                if ($val != '"') {
-                    $val = str_replace("\\", '', $val);
-                    if (is_numeric($val)) {
-                        $configMap[$key] = $val + 0;
-                    } elseif (strcasecmp('true', $val) == 0) {
-                        $configMap[$key] = true;
-                    } elseif (strcasecmp('false', $val) == 0) {
-                        $configMap[$key] = false;
-                    } elseif (strcasecmp('null', $val) == 0) {
-                        $configMap[$key] = null;
-                    } else {
-                        $configMap[$key] = $val;
-                    }
-                } else {
-                    $configMap[$key] = '';
-                }
-            } elseif (count($strout) == 3) {
-                if ($strout[2] != '"') {
-                    $strout[2] = str_replace("\\", '', $strout[2]);
-                    $configMap[$strout[1]] = $strout[2];
-                // Make the string empty on errors
-                } else {
-                    $configMap[$strout[1]] = '';
-                }
-            } elseif (count($strout) == 2) {
-                // If the string is empty
-                $configMap[$strout[1]] = '';
-            } else {
+            // Skip comment and php lines
+            if ($lines[$i][0] == '/' || $lines[$i][0] == '#') {
                 continue;
+            }
+
+            // Skip unparseable lines
+            if (0 === preg_match(
+                '/\$(?<var>.+?) = (?<value>(?<quote>["\'])(?<str>.+?)?\k{quote}|(?<nonstr>[^"\'].+));/',
+                $lines[$i],
+                $matches
+            )) {
+                continue;
+            }
+
+            $key = $matches['var'];
+            if (isset($matches['str']) && $matches['str'] != '') {
+                if ('"' == $matches['quote']) {
+                    // clean escape characters
+                    $configMap[$key] = stripcslashes($matches['str']);
+                } else {
+                    $configMap[$key] = $matches['str'];
+                }
+            } elseif (isset($matches['nonstr']) && $matches['nonstr'] != '') {
+                $val = str_replace("\\", '', $matches['nonstr']);
+                if (is_numeric($val)) {
+                    $configMap[$key] = $val + 0;
+                } elseif (strcasecmp('true', $val) == 0) {
+                    $configMap[$key] = true;
+                } elseif (strcasecmp('false', $val) == 0) {
+                    $configMap[$key] = false;
+                } elseif (strcasecmp('null', $val) == 0) {
+                    $configMap[$key] = null;
+                } else {
+                    $configMap[$key] = $val;
+                }
+            } else {
+                $configMap[$key] = '';
             }
         }
 
@@ -263,15 +259,18 @@ class Configuration implements \ArrayAccess
 
                 $lines[$i] = '$' . $key . ' = ';
 
-                // Add quotes and escapes if it is a string
-                if (is_string($value)) {
-                    $lines[$i] .= "'" . str_replace(array('\'', '\\'), array('\\\'', '\\\\'), $value) . "';";
-                } elseif (is_null($value)) {
+                if (is_null($value)) {
                     $lines[$i] .= 'null;';
-                } elseif (is_bool($value)) {
-                    $lines[$i] .= ($value ? 'true' : 'false') . ';';
+                } elseif (is_string($value)) {
+                    if (preg_match('/^[\x20-\x7E]+$/', $value)) {
+                        // var_export() does all we need
+                        $lines[$i] .= var_export($value, true) . ';';
+                    } else {
+                        // addcslashes() to handle escaping for us
+                        $lines[$i] .= '"' . addcslashes($value, "\0..\37$\"\\\177..\377") . '";';
+                    }
                 } else {
-                    $lines[$i] .= $value . ';';
+                    $lines[$i] .= var_export($value, true) . ';';
                 }
 
                 // Append comment

@@ -46,12 +46,21 @@ class ConfigurationTest extends TestCase
 \$emptyvar = '';
 
 \$nullvar = null;
+
+\$double_quoted = \"there is no \\ backslash in this string\";
+\$single_quoted = 'there is a \\ backslash in this string';
+
+\$indexed[0] = 'indexed 0';
+\$indexed[1] = 'indexed 1';
 ");
     }
 
     protected function tearDown(): void
     {
-        unlink($this->filename);
+
+        if (!($this->hasFailed() && str_contains($this->getName(), 'WriteValuesToFile'))) {
+            unlink($this->filename);
+        }
     }
 
     public function testCanBeCreatedFromFilePath()
@@ -60,6 +69,15 @@ class ConfigurationTest extends TestCase
             Configuration::class,
             Configuration::load($this->filename)
         );
+    }
+
+    public function testIgnoresLeadingTabsInConfigFile()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['tabvar'];
+
+        $this->assertEquals('tab', $value);
     }
 
     public function testCannotSetVersionValue()
@@ -128,6 +146,60 @@ class ConfigurationTest extends TestCase
         $this->assertArrayNotHasKey('nonexistent', $sut->keys());
     }
 
+    public function testCanGetDoubleQuotedStringValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['double_quoted'];
+
+        $this->assertEquals('there is no  backslash in this string', $value);
+    }
+
+    public function testCanGetSingleQuotedSingleValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['single_quoted'];
+
+        $this->assertEquals('there is a \\ backslash in this string', $value);
+    }
+
+    public function testCanGetIntegerValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['intvar'];
+
+        $this->assertIsInt($value);
+    }
+
+    public function testCanGetFloatValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['floatvar'];
+
+        $this->assertIsFloat($value);
+    }
+
+    public function testCanGetBoolValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['boolvar'];
+
+        $this->assertIsBool($value);
+    }
+
+    public function testCanGetNullValue()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $value = $sut['nullvar'];
+
+        $this->assertNull($value);
+    }
+
     public function testCanSetStringValue()
     {
         $sut = Configuration::load($this->filename);
@@ -189,6 +261,16 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($new->__toString(), $sut['anyvar']);
     }
 
+    public function testCanSetValueToNull()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $sut['anyvar'] = null;
+
+        $this->assertTrue(isset($sut['anyvar']));
+        $this->assertNull($sut['anyvar']);
+    }
+
     public function testCanSetValueToNullWithUnset()
     {
         $sut = Configuration::load($this->filename);
@@ -202,7 +284,7 @@ class ConfigurationTest extends TestCase
     public function testCanWriteValuesToFileOnExplicitCallToSet()
     {
         $sut = Configuration::load($this->filename);
-        $new = 'foobarbaz';
+        $new = "this string has 'quote' and \"double quote\" characters in it,\na line break, and also a \\ backslash";
 
         $this->assertTrue($sut->set('stringvar', $new, true));
 
@@ -213,13 +295,30 @@ class ConfigurationTest extends TestCase
     public function testCanWriteValuesToFileOnSave()
     {
         $sut = Configuration::load($this->filename);
-        $new = 'foobarbaz';
+        $new = "this string has 'quote' and \"double quote\" characters in it,\na line break, and also a \\ backslash";
 
         $sut['stringvar'] = $new;
         $sut->save();
 
         $sut2 = Configuration::load($this->filename);
         $this->assertEquals($new, $sut2['stringvar']);
+    }
+
+    public function testCanGetValuesFromIndexedKeys()
+    {
+        $sut = Configuration::load($this->filename);
+
+        $this->assertEquals('indexed 0', $sut['indexed[0]']);
+    }
+
+    public function testCanSetValuesToIndexedKeys()
+    {
+        $sut = Configuration::load($this->filename);
+        $new = 'test value';
+
+        $sut['indexed[1]'] = $new;
+
+        $this->assertEquals($new, $sut['indexed[1]']);
     }
 
     public function testCanReloadValuesFromFile()
