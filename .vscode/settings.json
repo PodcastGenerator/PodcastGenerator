@@ -1,4 +1,8 @@
 {
     "phpcs.composerJsonPath": "PodcastGenerator/composer.json",
-    "phpunit.logpanel": true
+    "phpcs.executablePath": "PodcastGenerator/vendor/bin/phpcs",
+    "phpunit.logpanel": true,
+    "cSpell.words": [
+        "phpcs"
+    ]
 }
