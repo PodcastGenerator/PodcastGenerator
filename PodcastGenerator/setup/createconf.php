@@ -126,7 +126,7 @@ function createconf($username, $password)
 
 \$explicit_podcast = 'no'; //does your podcast contain explicit language? ('yes' or 'no')
 
-\$users_json = '{\\\"" . $username . "\\\": \\\"" . str_replace("\$", "\\\$", $password) . "\\\"}';
+\$users_json = '{\"" . $username . "\": \"" . $password . "\"}';
 
 #####################
 # WebSub
