@@ -39,7 +39,7 @@ if (isset($_GET["create"])) {
 
     if ($success) {
         // load configuration before any other post-setup work
-        require '../core/Configuratiom.php';
+        require '../core/Configuration.php';
         global $config;
         $config = PodcastGenerator\Configuration::load('../config.php');
 
