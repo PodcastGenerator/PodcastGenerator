@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63987b46ca76d4e6ae75d177bb631cbc",
+    "content-hash": "22ce4f40de8cfc3e6a9394595930fdbb",
     "packages": [
         {
             "name": "composer/installers",
@@ -522,6 +522,55 @@
                 "source": "https://github.com/JamesHeinrich/getID3/tree/v1.9.21"
             },
             "time": "2021-09-22T16:34:51+00:00"
+        },
+        {
+            "name": "lootils/uuid",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lootils/uuid.git",
+                "reference": "7658af1e06c4cce26f932d034798eb33bc9e0e7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lootils/uuid/zipball/7658af1e06c4cce26f932d034798eb33bc9e0e7a",
+                "reference": "7658af1e06c4cce26f932d034798eb33bc9e0e7a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "0.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Lootils\\Uuid": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Farina",
+                    "email": "matt@mattfarina.com",
+                    "homepage": "http://mattfarina.com"
+                }
+            ],
+            "description": "A simple class for working with UUIDs.",
+            "homepage": "https://github.com/lootils/lootils-uuid",
+            "keywords": [
+                "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/lootils/uuid/issues",
+                "source": "https://github.com/lootils/uuid/tree/master"
+            },
+            "time": "2013-11-15T13:39:44+00:00"
         },
         {
             "name": "podcastindex/podcastindex-php",

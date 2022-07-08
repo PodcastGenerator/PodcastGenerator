@@ -49,7 +49,8 @@
         "ext-simplexml": "*",
         "composer/installers": "~1.9.0",
         "james-heinrich/getid3": "~1.9.19",
-        "podcastindex/podcastindex-php": "~1.0"
+        "podcastindex/podcastindex-php": "~1.0",
+        "lootils/uuid": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
