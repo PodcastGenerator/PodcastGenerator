@@ -83,6 +83,12 @@ function backwards_3_1_to_3_3($absoluteurl)
     // Upgrading from 3.2 -> 3.3
     if ($upgrading || $currentVersion == '3.2' || substr($currentVersion, 0, 4) == '3.2.') {
         $upgrading = true;
+
+        // Live items are disabled if upgrading from a version without them
+        // Admins can turn on this feature on the live items management page
+        $liveitems_enabled = isset($config['liveitems_enabled'])
+            ? $config['liveitems_enabled']
+            : 'no';
     }
 
     if (!$upgrading) {
@@ -191,6 +197,11 @@ function backwards_3_1_to_3_3($absoluteurl)
 \$pi_api_secret = '" . $config['pi_api_secret'] . "';
 
 \$pi_podcast_id = " . $config['pi_podcast_id'] . "; // is the podcast in Podcast Index? This is its show ID there.
+
+#####################
+# Live Items
+
+\$liveitems_enabled = '" . $liveitems_enabled . "';
 
 // END OF CONFIG
 ";

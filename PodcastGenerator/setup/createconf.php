@@ -146,6 +146,11 @@ function createconf($username, $password)
 
 \$websub_server = \"https://pubsubhubbub.appspot.com/\";
 
+#####################
+# Live Items
+
+\$liveitems_enabled = 'yes';
+
 // END OF CONFIG
 ";
     $f = fopen("../config.php", 'w');
