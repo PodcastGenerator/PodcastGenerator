@@ -9,22 +9,25 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-function itunes_category($categoryName)
+function write_itunes_category(\XMLWriter $writer, $categoryName)
 {
     $cat_seg = explode(':', $categoryName, 2);
+
+    $writer->startElementNs('itunes', 'category', null);
+    $writer->writeAttribute('text', $cat_seg[0]);
+
     if (count($cat_seg) > 1) {
-        $output  = '		<itunes:category text="' . htmlspecialchars($cat_seg[0]) . '">' . "\n";
-        $output .= '			<itunes:category text="' . htmlspecialchars($cat_seg[1]) . '"/>' . "\n";
-        $output .= '		</itunes:category>' . "\n";
-    } else {
-        $output = '		<itunes:category text="' . htmlspecialchars($categoryName) . '"/>' . "\n";
+        $writer->startElementNs('itunes', 'category', null);
+        $writer->writeAttribute('text', $cat_seg[1]);
+        $writer->endElement();
     }
-    return $output;
+
+    $writer->endElement();
 }
 
-function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
+function write_episode_item(\XMLWriter $writer, $file, $feedContext)
 {
-    global $config;
+    $config = $feedContext->config;
 
     $link = str_replace('?', '', $config['link']);
     $link = str_replace('=', '', $link);
@@ -32,10 +35,10 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
 
     // encode special characters in file name
     $encodedFilename = str_replace('+', '%20', urlencode($file['filename']));
-    $enclosureUrl = $uploadUrl . $encodedFilename;
+    $enclosureUrl = $feedContext->uploadUrl . $encodedFilename;
 
     // Skip files with no read permission
-    $mimetype = getmime($uploadDir . $file['filename']);
+    $mimetype = getmime($feedContext->uploadDir . $file['filename']);
     if (!$mimetype) {
         $mimetype = null;
     }
@@ -50,11 +53,6 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
         $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
     }
 
-    // Get lines of custom tags
-    $customTags = isset($file['data']->episode->customTagsPG)
-        ? preg_split("/\r\n|\n|\r/", $file['data']->episode->customTagsPG)
-        : array();
-
     // Generate GUID if a pregenerated GUID is missing for the episode
     $guid = isset($file['data']->episode->guid)
         ? $file['data']->episode->guid
@@ -65,68 +63,85 @@ function generateRssItem($file, $uploadDir, $uploadUrl, $imagesDir, $imagesUrl)
     $has_cover = false;
     if (!empty($file['data']->episode->imgPG)) {
         $has_cover = $file['data']->episode->imgPG;
-    } elseif (file_exists($imagesDir . $basename . '.jpg') || file_exists($imagesDir . $basename . '.png')) {
-        $ext = file_exists($imagesDir . $basename . '.png') ? '.png' : '.jpg';
-        $has_cover = $imagesUrl . $basename . $ext;
+    } elseif (
+        file_exists($feedContext->imagesDir . $basename . '.jpg')
+        || file_exists($feedContext->imagesDir . $basename . '.png')
+    ) {
+        $ext = file_exists($feedContext->imagesDir . $basename . '.png') ? '.png' : '.jpg';
+        $has_cover = $feedContext->imagesUrl . $basename . $ext;
     }
 
-    $TAB = "\t\t\t";
-    $LR = "\n";
-
-    $item = '
-    <item>' . "\n";
-    $item .= $TAB . '<title>' . htmlspecialchars($file['data']->episode->titlePG) . '</title>' . $LR;
+    $writer->startElement('item');
+    $writer->writeElement('title', $file['data']->episode->titlePG);
 
     if (!empty($file['data']->episode->episodeNumPG)) {
-        $item .= $TAB . '<itunes:episode>' . $file['data']->episode->episodeNumPG . '</itunes:episode>' . $LR;
-        $item .= $TAB . '<podcast:episode>' . $file['data']->episode->episodeNumPG . '</podcast:episode>' . $LR;
+        $writer->writeElementNs('itunes', 'episode', null, $file['data']->episode->episodeNumPG);
+        $writer->writeElementNs('podcast', 'episode', null, $file['data']->episode->episodeNumPG);
     }
     if (!empty($file['data']->episode->seasonNumPG)) {
-        $item .= $TAB . '<itunes:season>' . $file['data']->episode->seasonNumPG . '</itunes:season>' . $LR;
-        $item .= $TAB . '<podcast:season>' . $file['data']->episode->seasonNumPG . '</podcast:season>' . $LR;
+        $writer->writeElementNs('itunes', 'season', null, $file['data']->episode->seasonNumPG);
+        $writer->writeElementNs('podcast', 'season', null, $file['data']->episode->seasonNumPG);
     }
 
-    $item .= $TAB . '<itunes:subtitle><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:subtitle>' . $LR;
+    $writer->startElementNs('itunes', 'subtitle', null);
+    $writer->writeCdata($file['data']->episode->shortdescPG);
+    $writer->fullEndElement();
+
+    $writer->startElement('description');
     if (isset($file['data']->episode->longdescPG) && trim($file['data']->episode->longdescPG) != "") {
-        $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->longdescPG . ']]></description>' . $LR;
+        $writer->writeCdata($file['data']->episode->longdescPG);
     } else {
-        $item .= $TAB . '<description><![CDATA[' . $file['data']->episode->shortdescPG . ']]></description>' . $LR;
+        $writer->writeCdata($file['data']->episode->shortdescPG);
     }
-    $item .= $TAB . '<itunes:summary><![CDATA[' . $file['data']->episode->shortdescPG . ']]></itunes:summary>' . $LR;
+    $writer->fullEndElement();
 
-    $item .= $TAB . '<link>' . $config['url'] . '?' . $link . '=' . $encodedFilename . '</link>' . $LR;
-    $item .= $TAB . '<enclosure url="' . htmlspecialchars($enclosureUrl) . '" length="'
-        . filesize($uploadDir . $file['filename']) . '" type="' . $mimetype . '"></enclosure>' . $LR;
-    $item .= $TAB . '<guid>' . htmlspecialchars($guid) . '</guid>' . $LR;
-    $item .= $TAB . '<itunes:duration>' . $file['data']->episode->fileInfoPG->duration . '</itunes:duration>' . $LR;
+    $writer->startElementNs('itunes', 'summary', null);
+    $writer->writeCdata($file['data']->episode->shortdescPG);
+    $writer->fullEndElement();
 
-    $item .= $TAB . '<author>' . htmlspecialchars($author) . '</author>' . $LR;
+    $writer->writeElement('link', $config['url'] . '?' . $link . '=' . $encodedFilename);
+
+    $writer->startElement('enclosure');
+    $writer->writeAttribute('url', $enclosureUrl);
+    $writer->writeAttribute('length', filesize($feedContext->uploadDir . $file['filename']));
+    $writer->writeAttribute('type', $mimetype);
+    $writer->fullEndElement();
+
+    $writer->writeElement('guid', $guid);
+
+    $writer->writeElementNs('itunes', 'duration', null, $file['data']->episode->fileInfoPG->duration);
+
+    $writer->writeElement('author', $author);
     if (!empty($file['data']->episode->authorPG->namePG)) {
-        $item .= $TAB . '<itunes:author>' . htmlspecialchars($file['data']->episode->authorPG->namePG)
-            . '</itunes:author>' . $LR;
+        $writer->writeElementNs('itunes', 'author', null, $file['data']->episode->authorPG->namePG);
     } else {
-        $item .= $TAB . '<itunes:author>' . htmlspecialchars($config['author_name']) . '</itunes:author>' . $LR;
+        $writer->writeElementNs('itunes', 'author', null, $config['author_name']);
     }
 
     if ($file['data']->episode->keywordsPG != "") {
-        $item .= $TAB . '<itunes:keywords>' . $file['data']->episode->keywordsPG . '</itunes:keywords>' . $LR;
+        $writer->writeElementNs('itunes', 'keywords', null, $file['data']->episode->keywordsPG);
     }
-    $item .= $TAB . '<itunes:explicit>' . $file['data']->episode->explicitPG . '</itunes:explicit>' . $LR;
+
+    $writer->writeElementNs('itunes', 'explicit', null, $file['data']->episode->explicitPG);
 
     // If image is set
     if ($has_cover) {
-        $item .= $TAB . '<itunes:image href="' . $has_cover . '" />' . $LR;
-        $item .= $TAB . '<googleplay:image href="' . $has_cover . '" />' . $LR;
+        $writer->startElementNs('itunes', 'image', null);
+        $writer->writeAttribute('href', $has_cover);
+        $writer->endElement();
+
+        $writer->startElementNs('googleplay', 'image', null);
+        $writer->writeAttribute('href', $has_cover);
+        $writer->endElement();
     }
 
-    $item .= $TAB . '<pubDate>' . date("r", $file['lastModified']) . '</pubDate>' . $LR;
+    $writer->writeElement('pubDate', date('r', $file['lastModified']));
 
-    foreach ($customTags as $line) {
-        $item .= $TAB . $line . $LR;
+    if (!empty($file['data']->episode->customTagsPG)) {
+        $writer->writeRaw($file['data']->episode->customTagsPG);
     }
 
-    $item .= "\t\t</item>\n";
-    return $item;
+    $writer->endElement();
 }
 
 function generateRssFeed($_config, $category = null)
@@ -140,6 +155,14 @@ function generateRssFeed($_config, $category = null)
 
     $imagesDir = $_config['absoluteurl'] . $_config['img_dir'];
     $imagesUrl = $_config['url'] . $_config['img_dir'];
+
+    $feedContext = (object) [
+        'uploadDir' => $uploadDir,
+        'uploadUrl' => $uploadUrl,
+        'imagesDir' => $imagesDir,
+        'imagesUrl' => $imagesUrl,
+        'config' => $_config
+    ];
 
     $podcastCoverUrl = $imagesUrl . $_config['podcast_cover'];
 
@@ -163,68 +186,97 @@ function generateRssFeed($_config, $category = null)
         $feedTitle .= " - " . $categoryDescription;
     }
 
+    $writer = new \XMLWriter();
+    $writer->openMemory();
+    $writer->setIndent(1);
+    $writer->setIndentString("\t");
+
     // Set the feed header with relevant podcast informations
-    $feedhead = '<?xml version="1.0" encoding="' . $_config['feed_encoding'] . '"?>
-<!-- generator="Podcast Generator ' . $version . '" -->
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
-     xml:lang="' . $_config['feed_language'] . '"
-     version="2.0"
-     xmlns:atom="http://www.w3.org/2005/Atom"
-     xmlns:podcast="https://podcastindex.org/namespace/1.0">
-	<channel>
-		<title>' . htmlspecialchars($feedTitle) . '</title>
-		<link>' . $_config['url'] . '</link>
-		<atom:link href="' . $feedUrl . '" rel="self" type="application/rss+xml" />' . "\n";
+
+    $writer->startDocument('1.0', $_config['feed_encoding']);
+    $writer->writeComment(' generator="Podcast Generator ' . $version . '" ');
+
+    $writer->startElement('rss');
+    $writer->writeAttributeNs('xmlns', 'itunes', null, 'http://www.itunes.com/dtds/podcast-1.0.dtd');
+    $writer->writeAttributeNs('xmlns', 'googleplay', null, 'http://www.google.com/schemas/play-podcasts/1.0');
+    $writer->writeAttributeNs('xml', 'lang', null, $_config['feed_language']);
+    $writer->writeAttribute('version', '2.0');
+    $writer->writeAttributeNs('xmlns', 'atom', null, 'http://www.w3.org/2005/Atom');
+    $writer->writeAttributeNs('xmlns', 'podcast', null, 'https://podcastindex.org/namespace/1.0');
+
+    $writer->startElement('channel');
+
+    $writer->writeElement('title', $feedTitle);
+
+    $writer->writeElement('link', $_config['url']);
+
+    $writer->startElementNs('atom', 'link', null);
+    $writer->writeAttribute('href', $feedUrl);
+    $writer->writeAttribute('rel', 'self');
+    $writer->writeAttribute('type', 'application/rss+xml');
+    $writer->endElement();
 
     if (!empty($_config['podcast_guid'])) {
-        $feedhead .= '		<podcast:guid>' . $_config['podcast_guid'] . '</podcast:guid>' . "\n";
+        $writer->writeElementNs('podcast', 'guid', null, $_config['podcast_guid']);
     }
 
-    $feedhead .= '		<description>' . htmlspecialchars($_config['podcast_description']) . '</description>
-		<generator>Podcast Generator ' . $version . ' - http://www.podcastgenerator.net</generator>
-		<lastBuildDate>' . date('r') . '</lastBuildDate>
-		<language>' . $_config['feed_language'] . '</language>
-		<copyright>' . htmlspecialchars($_config['copyright']) . '</copyright>
-		<managingEditor>' . htmlspecialchars($_config['author_email']) . '</managingEditor>
-		<webMaster>' . htmlspecialchars($_config['webmaster']) . '</webMaster>
-		<itunes:image href="' . $podcastCoverUrl . '" />
-		<image>
-			<url>' . $podcastCoverUrl . '</url>
-			<title>' . htmlspecialchars($_config['podcast_title']) . '</title>
-			<link>' . $_config['url'] . '</link>
-		</image>
-		<itunes:summary>' . htmlspecialchars($_config['podcast_description']) . '</itunes:summary>
-		<itunes:subtitle>' . htmlspecialchars($_config['podcast_subtitle']) . '</itunes:subtitle>
-		<itunes:author>' . htmlspecialchars($_config['author_name']) . '</itunes:author>
-		<itunes:owner>
-			<itunes:name>' . htmlspecialchars($_config['author_name']) . '</itunes:name>
-			<itunes:email>' . htmlspecialchars($_config['author_email']) . '</itunes:email>
-        </itunes:owner>
-        <itunes:explicit>' . $_config['explicit_podcast'] . '</itunes:explicit>' . "\n";
+    $writer->writeElement('description', $_config['podcast_description']);
 
-    $feedhead .= itunes_category($_config['itunes_category[0]']);
+    $writer->writeElement('generator', 'Podcast Generator ' . $version . ' - https://www.podcastgenerator.net/');
+    $writer->writeElement('lastBuildDate', date('r'));
+    $writer->writeElement('language', $_config['feed_language']);
+
+    $writer->writeElement('copyright', $_config['copyright']);
+    $writer->writeElement('managingEditor', $_config['author_email']);
+    $writer->writeElement('webMaster', $_config['webmaster']);
+
+    $writer->startElementNs('itunes', 'image', null);
+    $writer->writeAttribute('href', $podcastCoverUrl);
+    $writer->endElement();
+
+    $writer->startElement('image');
+    $writer->writeElement('url', $podcastCoverUrl);
+    $writer->writeElement('title', $_config['podcast_title']);
+    $writer->writeElement('link', $_config['url']);
+    $writer->endElement();
+
+    $writer->writeElementNs('itunes', 'summary', null, $_config['podcast_description']);
+    $writer->writeElementNs('itunes', 'subtitle', null, $_config['podcast_subtitle']);
+
+    $writer->writeElementNs('itunes', 'author', null, $_config['author_name']);
+
+    $writer->startElementNs('itunes', 'owner', null);
+    $writer->writeElementNs('itunes', 'name', null, $_config['author_name']);
+    $writer->writeElementNs('itunes', 'email', null, $_config['author_email']);
+    $writer->endElement();
+
+    $writer->writeElementNs('itunes', 'explicit', null, $_config['explicit_podcast']);
+
+    write_itunes_category($writer, $_config['itunes_category[0]']);
     if ($_config['itunes_category[1]'] != '' || $_config['itunes_category[1]'] == 'null') {
-        $feedhead .= itunes_category($_config['itunes_category[1]']);
+        write_itunes_category($writer, $_config['itunes_category[1]']);
     }
     if ($_config['itunes_category[2]'] != '' || $_config['itunes_category[1]'] == 'null') {
-        $feedhead .= itunes_category($_config['itunes_category[2]']);
+        write_itunes_category($writer, $_config['itunes_category[2]']);
     }
 
     if ($_config['websub_server'] != '') {
-        $feedhead .= '		<atom:link href="' . $_config['websub_server'] . '" rel="hub" />' . "\n";
+        $writer->startElementNs('atom', 'link', null);
+        $writer->writeAttribute('href', $_config['websub_server']);
+        $writer->writeAttribute('rel', 'hub');
+        $writer->endElement();
     }
 
     if ($_config['feed_locked'] != '') {
-        $feedhead .= '		<podcast:locked owner="' . htmlspecialchars($_config['author_email']) . '">'
-            . $_config['feed_locked'] . '</podcast:locked>' . "\n";
+        $writer->startElementNs('podcast', 'locked', null);
+        $writer->writeAttribute('owner', $_config['author_email']);
+        $writer->text($_config['feed_locked']);
+        $writer->fullEndElement();
     }
 
     $custom_tags = getCustomFeedTags($_config['absoluteurl']);
     if ($custom_tags != '') {
-        foreach (preg_split("/\r\n|\n|\r/", $custom_tags) as $line) {
-            $feedhead .= '		' . $line . "\n";
-        }
+        $writer->writeRaw($custom_tags);
     }
 
     // Get ordered episodes
@@ -249,27 +301,16 @@ function generateRssFeed($_config, $category = null)
     }
 
     // Items (Episodes) in XML
-    $items = array();
     for ($i = 0; $i < $maxEpisodes; $i++) {
-        $item = generateRssItem($files[$i], $uploadDir, $uploadUrl, $imagesDir, $imagesUrl);
-        // Push XML to the real XML
-        array_push($items, $item);
+        write_episode_item($writer, $files[$i], $feedContext);
     }
 
     // Close the tags
-    $feedfooter = '
-    </channel>
-</rss>' . "\n";
+    $writer->endElement(); // channel
+    $writer->endElement(); // rss
+    $writer->endDocument();
 
-    // Generate the actual XML
-    $xml = $feedhead;
-    for ($i = 0; $i < count($items); $i++) {
-        $xml .= $items[$i];
-    }
-
-    // Append footer
-    $xml .= $feedfooter;
-    return $xml;
+    return $writer->outputMemory();
 }
 
 function generateRSS()
