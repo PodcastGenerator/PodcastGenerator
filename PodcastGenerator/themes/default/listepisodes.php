@@ -63,11 +63,11 @@ for ($i = 0; $i < count($episode_chunk); $i++) {
             <div style="background-color: #f1f3f4;" class="card-footer">
                 <?php if (strtolower($config["enablestreaming"]) == "yes") { ?>
                     <?php if ($type == 'audio') { ?>
-                        <audio controls>
+                        <audio controls preload="none">
                             <source src="<?= $config["upload_dir"] . $item[$i]["episode"]["filename"] ?>" type="<?= $mime ?>">
                         </audio>
                     <?php } elseif ($type == 'video') { ?>
-                        <video controls width="250">
+                        <video controls width="250" preload="none">
                             <source src="<?= $config["upload_dir"] . $item[$i]["episode"]["filename"] ?>" type="<?= $mime ?>">
                         </video>
                     <?php } ?>
