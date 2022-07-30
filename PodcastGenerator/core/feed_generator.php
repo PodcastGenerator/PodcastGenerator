@@ -58,6 +58,8 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
         ? $file['data']->episode->guid
         : $config['url'] . "?" . $link . "=" . $file['filename'];
 
+        $hasLongDesc = isset($file['data']->episode->longdescPG) && trim($file['data']->episode->longdescPG) != "";
+
     // Check if this episode has a cover art
     $basename = pathinfo($file['filename'], PATHINFO_FILENAME);
     $has_cover = false;
@@ -88,15 +90,11 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
     $writer->fullEndElement();
 
     $writer->startElement('description');
-    if (isset($file['data']->episode->longdescPG) && trim($file['data']->episode->longdescPG) != "") {
-        $writer->writeCdata($file['data']->episode->longdescPG);
-    } else {
-        $writer->writeCdata($file['data']->episode->shortdescPG);
-    }
+    $writer->writeCdata($hasLongDesc ? $file['data']->episode->longdescPG : $file['data']->episode->shortdescPG);
     $writer->fullEndElement();
 
     $writer->startElementNs('itunes', 'summary', null);
-    $writer->writeCdata($file['data']->episode->shortdescPG);
+    $writer->writeCdata($hasLongDesc ? $file['data']->episode->longdescPG : $file['data']->episode->shortdescPG);
     $writer->fullEndElement();
 
     $writer->writeElement('link', $config['url'] . '?' . $link . '=' . $encodedFilename);
