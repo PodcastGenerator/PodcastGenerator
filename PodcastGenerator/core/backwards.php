@@ -89,6 +89,12 @@ function backwards_3_1_to_3_3($absoluteurl)
         $liveitems_enabled = isset($config['liveitems_enabled'])
             ? $config['liveitems_enabled']
             : 'no';
+        $liveitems_default_stream = isset($config['liveitems_default_stream'])
+            ? $config['liveitems_default_stream']
+            : '';
+        $liveitems_default_mimetype = isset($config['liveitems_default_mimetype'])
+            ? $config['liveitems_default_mimetype']
+            : '';
     }
 
     if (!$upgrading) {
@@ -202,6 +208,10 @@ function backwards_3_1_to_3_3($absoluteurl)
 # Live Items
 
 \$liveitems_enabled = '" . $liveitems_enabled . "';
+
+\$liveitems_default_stream = '" . $liveitems_default_stream . "';
+
+\$liveitems_default_mimetype = '" . $liveitems_default_mimetype . "';
 
 // END OF CONFIG
 ";

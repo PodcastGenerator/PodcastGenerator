@@ -17,6 +17,11 @@ function checkedAttr($val, $state)
     return '';
 }
 
+function selectedAttr($val, $state)
+{
+    return $val == $state ? 'selected' : '';
+}
+
 function displayBlockCss($val)
 {
     return 'display: ' . ($val == 'yes' ? 'block' : 'none') . ';';

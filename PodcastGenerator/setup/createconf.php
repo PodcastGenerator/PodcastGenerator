@@ -151,6 +151,10 @@ function createconf($username, $password)
 
 \$liveitems_enabled = 'yes';
 
+\$liveitems_default_stream = '';
+
+\$liveitems_default_mimetype = '';
+
 // END OF CONFIG
 ";
     $f = fopen("../config.php", 'w');
