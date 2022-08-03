@@ -228,6 +228,8 @@ function generateRssFeed($_config, $category = null)
 {
     global $version;
 
+    $genTime = new DateTimeImmutable();
+
     // We use the media directory a lot, and possibly also the images directory
     // Stick them in variables instead of concatenating all the time
     $uploadDir = $_config['absoluteurl'] . $_config['upload_dir'];
@@ -303,7 +305,7 @@ function generateRssFeed($_config, $category = null)
     $writer->writeElement('description', $_config['podcast_description']);
 
     $writer->writeElement('generator', 'Podcast Generator ' . $version . ' - https://www.podcastgenerator.net/');
-    $writer->writeElement('lastBuildDate', date('r'));
+    $writer->writeElement('lastBuildDate', $genTime->format('r'));
     $writer->writeElement('language', $_config['feed_language']);
 
     $writer->writeElement('copyright', $_config['copyright']);
@@ -375,6 +377,54 @@ function generateRssFeed($_config, $category = null)
     } elseif ($_config['liveitems_enabled'] == 'yes') {
         // we only include live items on the regular feed
         $liveItems = getLiveItemFiles($_config);
+
+        $endedLiveItems = [];
+        $liveLiveItems = [];
+        $pendingLiveItems = [];
+
+        foreach ($liveItems as $liveItem) {
+            switch ($liveItem['data']->liveItem->status) {
+                case LIVEITEM_STATUS_ENDED:
+                    $endedLiveItems[] = $liveItem;
+                    break;
+                case LIVEITEM_STATUS_LIVE:
+                    $liveLiveItems[] = $liveItem;
+                    break;
+                case LIVEITEM_STATUS_PENDING:
+                    $pendingLiveItems[] = $liveItem;
+                    break;
+            }
+        }
+
+        // for ended live items, we need the items from the far end of the array
+        // where the endTime >= now - liveitems_earliest_ended
+        $maxEnded = (int) $_config['liveitems_max_ended'];
+        $endTimeSeconds = (int) ($_config['liveitems_earliest_ended'] * 86400);
+        $endTimeInterval = DateInterval::createFromDateString("$endTimeSeconds seconds");
+        $endTime = $genTime->sub($endTimeInterval);
+        $endedLiveItems = array_filter(
+            array_slice($endedLiveItems, -$maxEnded, $maxEnded),
+            function ($liveItem) use ($endTime) {
+                $itemTime = new DateTime((string) $liveItem['data']->endTime);
+                return $itemTime >= $endTime;
+            }
+        );
+
+        // for pending live items, we need the items from the start of the array
+        // where the startTime <= now + liveitems_latest_pending
+        $maxPending = (int) $_config['liveitems_max_pending'];
+        $pndTimeSeconds = (int) ($_config['liveitems_latest_pending'] * 86400);
+        $pndTimeInterval = DateInterval::createFromDateString("$pndTimeSeconds seconds");
+        $pndTime = $genTime->add($pndTimeInterval);
+        $pendingLiveItems = array_filter(
+            array_slice($pendingLiveItems, 0, $maxPending),
+            function ($liveItem) use ($pndTime) {
+                $itemTime = new DateTime((string) $liveItem['data']->startTime);
+                return $itemTime <= $pndTime;
+            }
+        );
+
+        $liveItems = array_merge($endedLiveItems, $liveLiveItems, $pendingLiveItems);
         foreach ($liveItems as $liveItem) {
             write_live_item($writer, $liveItem, $feedContext);
         }

@@ -95,6 +95,19 @@ function backwards_3_1_to_3_3($absoluteurl)
         $liveitems_default_mimetype = isset($config['liveitems_default_mimetype'])
             ? $config['liveitems_default_mimetype']
             : '';
+
+        $liveitems_max_pending = isset($config['liveitems_max_pending'])
+            ? (int) $config['liveitems_max_pending']
+            : 2; // only show next two pending live items by default
+        $liveitems_latest_pending = isset($config['liveitems_latest_pending'])
+            ? (int) $config['liveitems_latest_pending']
+            : 14; // show up to two weeks of pending live items by default
+        $liveitems_max_ended = isset($config['liveitems_max_ended'])
+            ? (int) $config['liveitems_max_ended']
+            : 1; // only show most recent ended live item by default
+        $liveitems_earliest_ended = isset($config['liveitems_earliest_ended'])
+            ? (int) $config['liveitems_earliest_ended']
+            : 7; // show up to one week of ended live items by default
     }
 
     if (!$upgrading) {
@@ -212,6 +225,14 @@ function backwards_3_1_to_3_3($absoluteurl)
 \$liveitems_default_stream = '" . $liveitems_default_stream . "';
 
 \$liveitems_default_mimetype = '" . $liveitems_default_mimetype . "';
+
+\$liveitems_max_pending = " . $liveitems_max_pending . ";
+
+\$liveitems_latest_pending = " . $liveitems_latest_pending . ";
+
+\$liveitems_max_ended = " . $liveitems_max_ended . ";
+
+\$liveitems_earliest_ended = " . $liveitems_earliest_ended . ";
 
 // END OF CONFIG
 ";
