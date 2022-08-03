@@ -27,7 +27,7 @@ class ConfigurationTest extends TestCase
 
 \$stringvar = 'test'; // This is a string var
 
-\$intvar = 10; // This is an integer var
+\$intvar = 1; // This is an integer var
 
 \$floatvar = 1.2; // This is a float var
 

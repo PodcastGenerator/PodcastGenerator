@@ -54,11 +54,13 @@ class Configuration implements \ArrayAccess
             }
 
             // Skip unparseable lines
-            if (0 === preg_match(
-                '/\$(?<var>.+?) = (?<value>(?<quote>["\'])(?<str>.+?)?\k{quote}|(?<nonstr>[^"\'].+));/',
-                $lines[$i],
-                $matches
-            )) {
+            if (
+                0 === preg_match(
+                    '/\$(?<var>.+?) = (?<value>(?<quote>["\'])(?<str>.+?)?\k{quote}|(?<nonstr>[^"\']+));/',
+                    $lines[$i],
+                    $matches
+                )
+            ) {
                 continue;
             }
 
