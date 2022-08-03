@@ -52,6 +52,7 @@ function checkToken()
     if (!isset($_POST['token']) || ($_POST['token'] != $_SESSION['token'])) {
         die("Potential CSRF attack");
     }
+    unset($_POST['token']);
 }
 
 function checkPath($path)
