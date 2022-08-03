@@ -142,6 +142,88 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
     $writer->endElement();
 }
 
+function write_live_item(\XMLWriter $writer, $liveItem, $feedContext)
+{
+    $config = $feedContext->config;
+
+    $link = str_replace(['?', '=', '$url'], '', $config['link']);
+
+    $encodedFileName = substr($liveItem['filename'], 6, strlen($liveItem['filename']) - 10);
+    $encodedFilename = str_replace('+', '%20', urlencode($encodedFileName));
+
+    $streamUrl = (string) $liveItem['data']->liveItem->streamInfo->url;
+    if (empty($streamUrl)) {
+        $streamUrl = $feedContext->config['liveitems_default_stream'];
+        $streamMimeType = $feedContext->config['liveitems_default_mimetype'];
+    } else {
+        $streamMimeType = (string) $liveItem['data']->liveItem->streamInfo->mimeType;
+    }
+
+    if (!empty($liveItem['data']->liveItem->author->email)) {
+        $author = $liveItem['data']->liveItem->author->email;
+        if (!empty($liveItem['data']->liveItem->author->name)) {
+            $author .= ' (' . $liveItem['data']->liveItem->author->name . ')';
+        }
+    } else {
+        $author = $config['author_email'] . ' (' . $config['author_name'] . ')';
+    }
+
+    $hasLongDesc = isset($liveItem['data']->liveItem->longDesc) && trim($liveItem['data']->liveItem->longDesc) != '';
+
+    // Check if this live item has cover art
+    $cover = false;
+    if (!empty($liveItem['data']->liveItem->image)) {
+        $cover = $liveItem['data']->liveItem->image;
+    }
+
+    // start writing out the live item
+
+    $writer->startElementNs('podcast', 'liveItem', null);
+    $writer->writeAttribute('status', $liveItem['data']->liveItem->status);
+    $writer->writeAttribute('start', $liveItem['data']->liveItem->startTime);
+    $writer->writeAttribute('end', $liveItem['data']->liveItem->endTime);
+
+    $writer->writeElement('title', $liveItem['data']->liveItem->title);
+    $writer->writeElement('guid', $liveItem['data']->liveItem->guid);
+
+    $writer->startElementNs('itunes', 'subtitle', null);
+    $writer->writeCdata($liveItem['data']->liveItem->shortDesc);
+    $writer->fullEndElement();
+
+    $writer->startElement('description');
+    $writer->writeCdata($hasLongDesc ? $liveItem['data']->liveItem->longDesc : $liveItem['data']->liveItem->shortDesc);
+    $writer->fullEndElement();
+
+    $writer->startElementNs('itunes', 'summary', null);
+    $writer->writeCdata($hasLongDesc ? $liveItem['data']->liveItem->longDesc : $liveItem['data']->liveItem->shortDesc);
+    $writer->fullEndElement();
+
+    $writer->writeElement('link', $config['url'] . 'live.php?' . $link . '=' . $encodedFilename);
+
+    $writer->startElement('enclosure');
+    $writer->writeAttribute('url', $streamUrl);
+    $writer->writeAttribute('type', $streamMimeType);
+    $writer->writeAttribute('length', '33'); // dummy value as attr is required
+    $writer->endElement();
+
+    // If image is set
+    if ($cover) {
+        $writer->startElementNs('itunes', 'image', null);
+        $writer->writeAttribute('href', $cover);
+        $writer->endElement();
+
+        $writer->startElementNs('googleplay', 'image', null);
+        $writer->writeAttribute('href', $cover);
+        $writer->endElement();
+    }
+
+    if (!empty($liveItem['data']->liveItem->customTags)) {
+        $writer->writeRaw($liveItem['data']->liveItem->customTags);
+    }
+
+    $writer->endElement();
+}
+
 function generateRssFeed($_config, $category = null)
 {
     global $version;
@@ -290,6 +372,12 @@ function generateRssFeed($_config, $category = null)
                     || $categories->category3PG == $category;
             }
         );
+    } elseif ($_config['liveitems_enabled'] == 'yes') {
+        // we only include live items on the regular feed
+        $liveItems = getLiveItemFiles($_config);
+        foreach ($liveItems as $liveItem) {
+            write_live_item($writer, $liveItem, $feedContext);
+        }
     }
 
     // Set a maximum amount of episodes generated in the feed
