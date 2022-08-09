@@ -111,11 +111,11 @@ function array_liveitem(SimpleXMLElement $item, string $file, Configuration $con
 {
     $filemtime = filemtime($config['absoluteurl'] . $config['upload_dir'] . $file);
     return [
-        'guid' => new Uuid($item->guid),
+        'guid' => new Uuid('urn:uuid:' . $item->guid),
         'title' => (string) $item->title,
         'status' => (string) $item->status,
-        'startTime' => new DateTime($item->startTime),
-        'endTime' => new DateTime($item->endTime),
+        'startTime' => new DateTime((string) $item->startTime),
+        'endTime' => new DateTime((string) $item->endTime),
         'shortDesc' => (string) $item->shortDesc,
         'longDesc' => (string) $item->longDesc,
         'image' => [
