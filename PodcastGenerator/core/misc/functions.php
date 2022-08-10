@@ -11,6 +11,8 @@
 
 require_once(__DIR__ . '/../../vendor/autoload.php');
 
+use PodcastGenerator\Configuration;
+
 function getmime($filename)
 {
     // Check if file is even readable
@@ -114,4 +116,20 @@ function makeUniqueFilename($path)
         $realpath = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '_' . $appendix . '.' . $pathinfo['extension'];
     }
     return $realpath;
+}
+
+function getSupportedMimeTypes(Configuration $config, array $typeFilter = null): array
+{
+    $filterless = empty($typeFilter);
+
+    $mimetypesXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    $mimetypes = array();
+    foreach ($mimetypesXml->mediaFile as $mediaFile) {
+        $mimetype = (string) $mediaFile->mimetype;
+        $type = explode('/', $mimetype, 2)[0];
+        if ($filterless || in_array($type, $typeFilter)) {
+            $mimetypes[] = $mimetype;
+        }
+    }
+    return array_unique($mimetypes);
 }

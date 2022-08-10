@@ -30,16 +30,7 @@ if (isset($_GET['edit'])) {
     }
 }
 
-$mimetypesXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-$mimetypes = array();
-foreach ($mimetypesXml->mediaFile as $mediaFile) {
-    $mimetype = (string) $mediaFile->mimetype;
-    $primary = substr($mimetype, 0, 6);
-    if ($primary == 'audio/' || $primary == 'video/') {
-        $mimetypes[] = $mimetype;
-    }
-}
-$mimetypes = array_unique($mimetypes);
+$mimetypes = getSupportedMimeTypes($config, ['audio', 'video']);
 
 ?>
 <!DOCTYPE html>
