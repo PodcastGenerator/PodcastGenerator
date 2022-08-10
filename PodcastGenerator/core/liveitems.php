@@ -193,6 +193,11 @@ function getLiveItems(Configuration $config): array
     );
 }
 
+function loadLiveItem(string $liveItemFile, Configuration $config) {
+    $xmlData = simplexml_load_file($liveItemFile);
+    return array_liveitem($xmlData->liveItem, pathinfo($liveItemFile, PATHINFO_FILENAME), $config);
+}
+
 /**
  * Deletes a live item and its related cover image, if any.
  *
