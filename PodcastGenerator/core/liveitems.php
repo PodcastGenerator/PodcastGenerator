@@ -38,15 +38,17 @@ function makeLiveItemFilename(string $directory, DateTime $date, string $title, 
     if (empty($ext)) {
         $ext = '.xml';
     } elseif (substr($ext, 0, 1) != '.') {
-        $ext = '.' + $ext;
+        $ext = '.' . $ext;
     }
 
-    $targetfile = $directory . '_live_' . $date->format('Y-m-d_Hi') . '_' . $filename . $ext;
+    $fmtdate = $date->format('Y-m-d_Hi');
+
+    $targetfile = $directory . '_live_' . $fmtdate . '_' . $filename . $ext;
 
     if (file_exists($targetfile)) {
         $appendix = 1;
         while (file_exists($targetfile)) {
-            $targetfile = $directory . $date . '_' . $filename . '_' . $appendix . $ext;
+            $targetfile = $directory . $fmtdate . '_' . $filename . '_' . $appendix . $ext;
             $appendix++;
         }
     }
