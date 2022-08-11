@@ -133,3 +133,29 @@ function getSupportedMimeTypes(Configuration $config, array $typeFilter = null):
     }
     return array_unique($mimetypes);
 }
+
+function getSupportedFileExtensions(Configuration $config, array $typeFilter = null): array
+{
+    $filterless = empty($typeFilter);
+
+    $mimetypesXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+    $extensions = array();
+    foreach ($mimetypesXml->mediaFile as $mediaFile) {
+        if (!$filterless) {
+            $mimetype = (string) $mediaFile->mimetype;
+            $type = explode('/', $mimetype, 2)[0];
+            $matched = false;
+            foreach ($typeFilter as $filter) {
+                if ($filter == $mimetype || $filter == $type) {
+                    $matched = true;
+                    break;
+                }
+            }
+            if (!$matched) {
+                continue;
+            }
+        }
+        $extensions[] = (string) $mediaFile->extension;
+    }
+    return array_unique($extensions);
+}

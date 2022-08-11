@@ -30,8 +30,8 @@ if (!file_exists($targetfile)) {
     die(_('Episode does not exist'));
 }
 
-// Delete episode
 if (isset($_GET['delete'])) {
+    // Delete live item
     checkToken();
 
     deleteLiveItem($targetfile, $config);
@@ -40,6 +40,143 @@ if (isset($_GET['delete'])) {
 
     header('Location: ' . $config['url'] . $config['indexfile']);
     die();
+} elseif (count($_POST) > 0) {
+    // Edit live item
+    checkToken();
+
+    // Check for required fields
+    $req_fields = [
+        $_POST['title'],
+        $_POST['status'],
+        $_POST['shortDesc'],
+        $_POST['startDate'],
+        $_POST['startTime'],
+        $_POST['endDate'],
+        $_POST['endTime']
+    ];
+    foreach ($req_fields as $req_field) {
+        if (empty($req_field)) {
+            $error = _('Missing fields');
+            goto error;
+        }
+    }
+
+    // Validate status
+    if (
+        $_POST['status'] != LIVEITEM_STATUS_LIVE
+        && $_POST['status'] != LIVEITEM_STATUS_ENDED
+        && $_POST['status'] != LIVEITEM_STATUS_PENDING
+    ) {
+        $error = _('Invalid status');
+        goto error;
+    }
+
+    // Validate author email field
+    if (!empty($_POST['authorEmail'])) {
+        if (!filter_var($_POST['authorEmail'], FILTER_VALIDATE_EMAIL)) {
+            $error = _('Invalid Author E-Mail provided');
+            goto error;
+        }
+    }
+
+    // Validate start and end times
+    $startTime = new DateTime($_POST['startDate'] . ' ' . $_POST['startTime']);
+    $endTime = new DateTime($_POST['endDate'] . ' ' . $_POST['endTime']);
+    if ($startTime > $endTime) {
+        $error = _('Start date/time must be earlier than end date/time');
+        goto error;
+    }
+
+    // Validate short description length
+    if (strlen($_POST['shortDesc']) > 255) {
+        $error = _("Size of the 'Short Description' exceeded");
+        goto error;
+    }
+
+    // If we have custom tags, ensure that they're valid XML
+    $customTags = $_POST['customtags'];
+    if (!isWellFormedXml($customTags)) {
+        if ($config['customtagsenabled'] == 'yes') {
+            $error = _('Custom tags are not well-formed');
+            goto error;
+        } else {
+            // if we have custom tags disabled and the POST value is misformed,
+            // just clear it out.
+            $customTags = '';
+        }
+    }
+
+    // Load the live item
+    $liveItem = loadLiveItem($targetfile, $config);
+
+    // Determine current cover art file
+    $currentCoverFile = $liveItem['image']['path'];
+    $currentCoverUrl = $liveItem['image']['url'];
+    
+    // Process the cover image, if one was provided
+    $coverImage = '';
+    if (!empty($_FILES['cover']['name'])) {
+        $coverImage = basename($_FILES['cover']['name']);
+        $coverImageExt = pathinfo($coverImage, PATHINFO_EXTENSION);
+
+        $validExtensions = getSupportedFileExtensions($config, ['image']);
+        $validCoverFileExt = in_array($coverImageExt, $validExtensions);
+        if (!$validCoverFileExt) {
+            $error = sprintf(_('%s has invalid file extension'), $coverImage);
+            goto error;
+        }
+
+        $coverImageFile = makeUniqueFilename($imagesDir . $coverImage);
+        if (!move_uploaded_file($_FILES['cover']['tmp_name'], $coverImageFile)) {
+            $error = sprintf(_('%s was not uploaded successfully'), $coverImage);
+            goto error;
+        }
+
+        $coverMimeType = getmime($coverImageFile);
+        if (!$coverMimeType) {
+            $error = _('The uploaded cover art file is not readable (permission error)');
+            goto error;
+        }
+
+        $validMimeTypes = getSupportedMimeTypes($config, ['image']);
+        $validCoverMimeType = in_array($coverMimeType, $validMimeTypes);
+        if (!$validCoverMimeType) {
+            $error = sprintf(_('%s has unsupported MIME content type %s'), $coverImage, $coverMimeType);
+            // Delete the file if the mime type is invalid
+            unlink($coverImageFile);
+            goto error;
+        }
+
+        // Newer cover art files go on top of the list
+        if (!empty($coverImageFile) && $coverImageFile != $currentCoverFile) {
+            array_unshift($liveItem['previousImages'], $currentCoverFile);
+            $currentCoverFile = $coverImageFile;
+            $currentCoverUrl = $config['url'] . $config['img_dir'] . basename($coverImageFile);
+        }
+
+        $liveItem['image']['path'] = $coverImageFile;
+        $liveItem['image']['url'] = $currentCoverUrl;
+    }
+
+    // update remaining values and save
+    $liveItem['title'] = $_POST['title'];
+    $liveItem['status'] = $_POST['status'];
+    $liveItem['startTime'] = $startTime;
+    $liveItem['endTime'] = $endTime;
+    $liveItem['shortDesc'] = $_POST['shortDesc'];
+    $liveItem['streamInfo']['url'] = $_POST['streamUrl'];
+    $liveItem['streamInfo']['mimeType'] = $_POST['streamType'];
+    $liveItem['author']['name'] = $_POST['authorName'];
+    $liveItem['author']['email'] = $_POST['authorEmail'];
+    $liveItem['customTags'] = $_POST['customtags'];
+
+    saveLiveItem($liveItem, $targetfile);
+    generateRSS();
+    pingServices();
+
+    $success = true;
+
+    error:
 }
 
 $liveItem = loadLiveItem($targetfile, $config);
@@ -97,6 +234,8 @@ $statusOptions = [
 
         <?php if (isset($error)) { ?>
             <p style="color: red;"><?= $error ?></p>
+        <?php } elseif ($success) { ?>
+            <p style="color: green;"><?= _('Successfully updated live item!') ?></p>
         <?php } ?>
 
         <form action="live_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>"
