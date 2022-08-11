@@ -85,7 +85,18 @@ function saveLiveItem($liveItem, $filePath)
             <mimeType>' . $liveItem['streamInfo']['mimeType'] . '</mimeType>
         </streamInfo>
         <customTags><![CDATA[' . $liveItem['customTags'] . ']]></customTags>
-    </liveItem>
+';
+
+    if (!empty($liveItem['previousImages'])) {
+        $xml .= '        <previousImages>' . "\n";
+        foreach ($liveItem['previousImages'] as $previousImage) {
+            if (empty($previousImage)) { continue; }
+            $xml .= '            <image path="' . htmlspecialchars($previousImage) . '"/>' . "\n";
+        }
+        $xml .= '        </previousImages>' . "\n";
+    }
+
+    $xml .= '    </liveItem>
 </PodcastGenerator>';
 
     if (!file_put_contents($filePath, $xml)) {
@@ -112,7 +123,7 @@ function saveLiveItem($liveItem, $filePath)
 function array_liveitem(SimpleXMLElement $item, string $file, Configuration $config)
 {
     $filemtime = filemtime($config['absoluteurl'] . $config['upload_dir'] . $file);
-    return [
+    $liveItem = [
         'guid' => new Uuid('urn:uuid:' . $item->guid),
         'title' => (string) $item->title,
         'status' => (string) $item->status,
@@ -135,8 +146,17 @@ function array_liveitem(SimpleXMLElement $item, string $file, Configuration $con
         'customTags' => (string) $item->customTags,
         'filename' => $file,
         'filemtime' => $filemtime,
-        'moddate' => date('Y-m-d', $filemtime)
+        'moddate' => date('Y-m-d', $filemtime),
+        'previousImages' => []
     ];
+
+    if (isset($item->previousImages)) {
+        foreach ($item->previousImages->children() as $prevImage) {
+            $liveItem['previousImages'][] = $prevImage->attributes()['path'];
+        }
+    }
+
+    return $liveItem;
 }
 
 const LIVE_ITEM_FILE_MATCHER = '/^_live_\d{4}(-\d{2}){2}_\d{4}(_.+)?\.xml$/';
@@ -222,6 +242,12 @@ function deleteLiveItem(string $liveItemFile, Configuration $config): bool {
     $coverImg = (string) $xmlData->liveItem->image->attributes()['path'];
     if (!empty($coverImg)) {
         $filesToDelete[] = $coverImg;
+    }
+
+    if (isset($xmlData->liveItem->previousImages)) {
+        foreach ($xmlData->liveItem->previousImages->children() as $prevImage) {
+            $filesToDelete[] = $prevImage->attributes()['path'];
+        }
     }
 
     // Go through the list of files and delete each one
