@@ -118,32 +118,18 @@ function makeUniqueFilename($path)
     return $realpath;
 }
 
-function getSupportedMimeTypes(Configuration $config, array $typeFilter = null): array
+function getSupportedMediaFileTypes(Configuration $config, array $typeFilter = null): array
 {
-    $filterless = empty($typeFilter);
+    $hasFilter = !empty($typeFilter);
 
-    $mimetypesXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    $mimetypes = array();
-    foreach ($mimetypesXml->mediaFile as $mediaFile) {
-        $mimetype = (string) $mediaFile->mimetype;
-        $type = explode('/', $mimetype, 2)[0];
-        if ($filterless || in_array($type, $typeFilter)) {
-            $mimetypes[] = $mimetype;
-        }
-    }
-    return array_unique($mimetypes);
-}
+    $supportedMediaXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
 
-function getSupportedFileExtensions(Configuration $config, array $typeFilter = null): array
-{
-    $filterless = empty($typeFilter);
-
-    $mimetypesXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
-    $extensions = array();
-    foreach ($mimetypesXml->mediaFile as $mediaFile) {
-        if (!$filterless) {
+    $supportedFiles = array();
+    foreach ($supportedMediaXml->mediaFile as $mediaFile) {
+        if ($hasFilter) {
             $mimetype = (string) $mediaFile->mimetype;
             $type = explode('/', $mimetype, 2)[0];
+
             $matched = false;
             foreach ($typeFilter as $filter) {
                 if ($filter == $mimetype || $filter == $type) {
@@ -155,7 +141,31 @@ function getSupportedFileExtensions(Configuration $config, array $typeFilter = n
                 continue;
             }
         }
-        $extensions[] = (string) $mediaFile->extension;
+
+        $supportedFiles[] = [
+            'mimetype' => (string) $mediaFile->mimetype,
+            'extension' => (string) $mediaFile->extension
+        ];
     }
-    return array_unique($extensions);
+    return $supportedFiles;
+}
+
+function getSupportedMimeTypes(Configuration $config, array $typeFilter = null): array
+{
+    return array_unique(
+        array_map(
+            function ($mf) { return $mf['mimetype']; },
+            getSupportedMediaFileTypes($config, $typeFilter)
+        )
+    );
+}
+
+function getSupportedFileExtensions(Configuration $config, array $typeFilter = null): array
+{
+    return array_unique(
+        array_map(
+            function ($mf) { return $mf['extension']; },
+            getSupportedMediaFileTypes($config, $typeFilter)
+        )
+    );
 }
