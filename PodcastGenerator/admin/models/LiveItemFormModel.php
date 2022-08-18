@@ -23,37 +23,71 @@ class LiveItemFormModel
 
     private static Configuration $config;
 
-    private string $name;
+    private ?string $name;
 
-    public function name(): string
+    public function name(): ?string
     {
         return $this->name;
     }
 
     public ?Uuid $guid;
 
-    public string $title;
+    public string $title = '';
 
-    public string $status;
+    public string $status = LIVEITEM_STATUS_PENDING;
 
-    public string $shortDesc;
-    public string $longDesc;
+    public string $shortDesc = '';
+    public ?string $longDesc = null;
 
     private ?DateTime $startTime = null;
     public string $startTimeDate;
     public string $startTimeTime;
 
+    public function startTime(): ?DateTime
+    {
+        return $this->startTime;
+    }
+
+    private function setStartTime(?DateTime $time)
+    {
+        $this->startTime = $time;
+
+        if ($this->startTime != null) {
+            $this->startTimeDate = $time->format(self::DATE_FORMAT);
+            $this->startTimeTime = $time->format(self::TIME_FORMAT);
+        } else {
+            $this->startTimeDate = $this->startTimeTime = '';
+        }
+    }
+
     private ?DateTime $endTime = null;
     public string $endTimeDate;
     public string $endTimeTime;
 
-    public string $streamUrl;
-    public string $streamType;
+    public function endTime(): ?DateTime
+    {
+        return $this->endTime;
+    }
 
-    public string $authorName;
-    public string $authorEmail;
+    private function setEndTime(?DateTime $time)
+    {
+        $this->endTime = $time;
 
-    public string $customTags;
+        if ($this->endTime != null) {
+            $this->endTimeDate = $time->format(self::DATE_FORMAT);
+            $this->endTimeTime = $time->format(self::TIME_FORMAT);
+        } else {
+            $this->endTimeDate = $this->endTimeTime = '';
+        }
+    }
+
+    public ?string $streamUrl = null;
+    public ?string $streamType = null;
+
+    public ?string $authorName = null;
+    public ?string $authorEmail = null;
+
+    public ?string $customTags = null;
 
     public ?string $coverImagePath = null;
     public ?string $coverImageUrl = null;
@@ -84,9 +118,19 @@ class LiveItemFormModel
         self::$config = $config;
     }
 
-    private function __construct($name)
+    private function __construct(?string $name = null)
     {
         $this->name = $name;
+    }
+
+    public static function forNewLiveItem(): LiveItemFormModel
+    {
+        $model = new LiveItemFormModel(null);
+        $model->guid = Uuid::createV4();
+        $model->setStartTime(null);
+        $model->setEndTime(null);
+
+        return $model;
     }
 
     public static function fromForm($GET, $POST): LiveItemFormModel
@@ -123,14 +167,16 @@ class LiveItemFormModel
         $model->coverImageUrl = $POST['coverImageUrl'];
 
         try {
-            $model->startTime = new DateTime($model->startTimeDate . ' ' . $model->startTimeTime);
+            $startTime = new DateTime($model->startTimeDate . ' ' . $model->startTimeTime);
+            $model->setStartTime($startTime);
         } catch (Exception $e) {
             $model->addValidationError('startTime', $e->getMessage());
             $model->startTime = null;
         }
 
         try {
-            $model->endTime = new DateTime($model->endTimeDate . ' ' . $model->endTimeTime);
+            $endTime = new DateTime($model->endTimeDate . ' ' . $model->endTimeTime);
+            $model->setEndTime($endTime);
         } catch (Exception $e) {
             $model->addValidationError('endTime', $e->getMessage());
             $model->endTime = null;
@@ -152,13 +198,8 @@ class LiveItemFormModel
         $model->shortDesc = $liveItem['shortDesc'];
         $model->longDesc = $liveItem['longDesc'];
 
-        $model->startTime = $liveItem['startTime'];
-        $model->startTimeDate = $model->startTime->format(self::DATE_FORMAT);
-        $model->startTimeTime = $model->startTime->format(self::TIME_FORMAT);
-
-        $model->endTime = $liveItem['endTime'];
-        $model->endTimeDate = $model->endTime->format(self::DATE_FORMAT);
-        $model->endTimeTime = $model->endTime->format(self::TIME_FORMAT);
+        $model->setStartTime($liveItem['startTime']);
+        $model->setEndTime($liveItem['endTime']);
 
         $model->streamUrl = $liveItem['streamInfo']['url'];
         $model->streamType = $liveItem['streamInfo']['mimeType'];
@@ -273,10 +314,8 @@ class LiveItemFormModel
         $liveItem['endTime'] = $this->endTime;
         $liveItem['shortDesc'] = $this->shortDesc;
         $liveItem['longDesc'] = $this->longDesc;
-        $liveItem['streamInfo']['url'] = $this->streamUrl;
-        $liveItem['streamInfo']['mimeType'] = $this->streamType;
-        $liveItem['author']['name'] = $this->authorName;
-        $liveItem['author']['email'] = $this->authorEmail;
+        $liveItem['streamInfo'] = [ 'url' => $this->streamUrl, 'mimeType' => $this->streamType ];
+        $liveItem['author'] = [ 'name' => $this->authorName, 'email' => $this->authorEmail ];
         $liveItem['customTags'] = $this->customTags;
 
         if ($this->hasNewCoverImage) {
@@ -289,8 +328,7 @@ class LiveItemFormModel
             }
 
             // set live item properties
-            $liveItem['image']['url'] = $this->coverImageUrl;
-            $liveItem['image']['path'] = $this->coverImagePath;
+            $liveItem['image'] = [ 'url' => $this->coverImageUrl, 'path' => $this->coverImagePath ];
         }
     }
 
