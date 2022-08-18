@@ -14,6 +14,8 @@ require '../core/include_admin.php';
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
+use PodcastGenerator\Models\Admin\LiveItemFormModel;
+
 if (!isset($_GET['name'])) {
     die(_('No name given'));
 }
@@ -30,6 +32,10 @@ if (!file_exists($targetfile)) {
     die(_('Episode does not exist'));
 }
 
+LiveItemFormModel::initialize($config);
+
+$liveItem = loadLiveItem($targetfile, $config);
+
 if (isset($_GET['delete'])) {
     // Delete live item
     checkToken();
@@ -44,169 +50,42 @@ if (isset($_GET['delete'])) {
     // Edit live item
     checkToken();
 
-    // Check for required fields
-    $req_fields = [
-        $_POST['title'],
-        $_POST['status'],
-        $_POST['shortDesc'],
-        $_POST['startDate'],
-        $_POST['startTime'],
-        $_POST['endDate'],
-        $_POST['endTime']
-    ];
-    foreach ($req_fields as $req_field) {
-        if (empty($req_field)) {
-            $error = _('Missing fields');
-            goto error;
-        }
-    }
-
-    // Validate status
-    if (
-        $_POST['status'] != LIVEITEM_STATUS_LIVE
-        && $_POST['status'] != LIVEITEM_STATUS_ENDED
-        && $_POST['status'] != LIVEITEM_STATUS_PENDING
-    ) {
-        $error = _('Invalid status');
+    // create and validate form model
+    $model = LiveItemFormModel::fromForm($_GET, $_POST);
+    if (!$model->validate()) {
+        $error = _('Live item failed validation.');
         goto error;
     }
 
-    // Validate author email field
-    if (!empty($_POST['authorEmail'])) {
-        if (!filter_var($_POST['authorEmail'], FILTER_VALIDATE_EMAIL)) {
-            $error = _('Invalid Author E-Mail provided');
-            goto error;
-        }
-    }
-
-    // Validate start and end times
-    $startTime = new DateTime($_POST['startDate'] . ' ' . $_POST['startTime']);
-    $endTime = new DateTime($_POST['endDate'] . ' ' . $_POST['endTime']);
-    if ($startTime > $endTime) {
-        $error = _('Start date/time must be earlier than end date/time');
-        goto error;
-    }
-
-    // Validate short description length
-    if (strlen($_POST['shortDesc']) > 255) {
-        $error = _("Size of the 'Short Description' exceeded");
-        goto error;
-    }
-
-    // If we have custom tags, ensure that they're valid XML
-    $customTags = $_POST['customtags'];
-    if (!isWellFormedXml($customTags)) {
-        if ($config['customtagsenabled'] == 'yes') {
-            $error = _('Custom tags are not well-formed');
-            goto error;
-        } else {
-            // if we have custom tags disabled and the POST value is misformed,
-            // just clear it out.
-            $customTags = '';
-        }
-    }
-
-    // Load the live item
-    $liveItem = loadLiveItem($targetfile, $config);
-
-    // Determine current cover art file
-    $currentCoverFile = $liveItem['image']['path'];
-    $currentCoverUrl = $liveItem['image']['url'];
-    
     // Process the cover image, if one was provided
     $coverImage = '';
     if (!empty($_FILES['cover']['name'])) {
-        $coverImage = basename($_FILES['cover']['name']);
-        $coverImageExt = pathinfo($coverImage, PATHINFO_EXTENSION);
-
-        $validExtensions = getSupportedFileExtensions($config, ['image']);
-        $validCoverFileExt = in_array($coverImageExt, $validExtensions);
-        if (!$validCoverFileExt) {
-            $error = sprintf(_('%s has invalid file extension'), $coverImage);
-            goto error;
-        }
-
-        $coverImageFile = makeUniqueFilename($imagesDir . $coverImage);
-        if (!move_uploaded_file($_FILES['cover']['tmp_name'], $coverImageFile)) {
-            $error = sprintf(_('%s was not uploaded successfully'), $coverImage);
-            goto error;
-        }
-
-        $coverMimeType = getmime($coverImageFile);
-        if (!$coverMimeType) {
-            $error = _('The uploaded cover art file is not readable (permission error)');
-            goto error;
-        }
-
-        $validMimeTypes = getSupportedMimeTypes($config, ['image']);
-        $validCoverMimeType = in_array($coverMimeType, $validMimeTypes);
-        if (!$validCoverMimeType) {
-            $error = sprintf(_('%s has unsupported MIME content type %s'), $coverImage, $coverMimeType);
-            // Delete the file if the mime type is invalid
-            unlink($coverImageFile);
-            goto error;
-        }
-
-        // Newer cover art files go on top of the list
-        if (!empty($coverImageFile) && $coverImageFile != $currentCoverFile) {
-            array_unshift($liveItem['previousImages'], $currentCoverFile);
-            $currentCoverFile = $coverImageFile;
-            $currentCoverUrl = $config['url'] . $config['img_dir'] . basename($coverImageFile);
-        }
-
-        $liveItem['image']['path'] = $coverImageFile;
-        $liveItem['image']['url'] = $currentCoverUrl;
+        $model->saveCoverImageFile($_FILES['cover']);
     }
 
-    // update remaining values and save
-    $liveItem['title'] = $_POST['title'];
-    $liveItem['status'] = $_POST['status'];
-    $liveItem['startTime'] = $startTime;
-    $liveItem['endTime'] = $endTime;
-    $liveItem['shortDesc'] = $_POST['shortDesc'];
-    $liveItem['streamInfo']['url'] = $_POST['streamUrl'];
-    $liveItem['streamInfo']['mimeType'] = $_POST['streamType'];
-    $liveItem['author']['name'] = $_POST['authorName'];
-    $liveItem['author']['email'] = $_POST['authorEmail'];
-    $liveItem['customTags'] = $_POST['customtags'];
+    if ($model->isValid()) {
+        // update live item and save
+        $model->apply($liveItem);
+        saveLiveItem($liveItem, $targetfile);
+        generateRSS();
+        pingServices();
 
-    saveLiveItem($liveItem, $targetfile);
-    generateRSS();
-    pingServices();
-
-    $success = true;
+        $success = true;
+    } else {
+        $modelErr = $model->validationFor(''); // non-specific error messages
+        if (!empty($modelErr) && !empty($error)) {
+            $error .= ' ' . $modelErr;
+        } elseif (!empty($modelErr)) {
+            $error = $modelErr;
+        }
+    }
 
     error:
 }
 
-$liveItem = loadLiveItem($targetfile, $config);
-
-$coverart = $liveItem['image']['url'];
-if (empty($coverart)) {
-    // check for default live item image
-    if (!empty($config['liveitem_default_cover'])) {
-        $coverart = $config['liveitem_default_cover'];
-    } elseif (!empty($config['podcast_cover'])) {
-        $coverart = $config['podcast_cover'];
-    } else {
-        $coverart = 'itunes_image.jpg';
-    }
-    $coverart = $config['url'] . $config['img_dir'] . $coverart;
+if (!isset($model) || $model == null) {
+    $model = LiveItemFormModel::fromLiveItem($liveItem);
 }
-
-$mimetypes = getSupportedMimeTypes($config, ['audio', 'video']);
-$mimeTypeOptions = [
-    [ 'value' => '', 'label' => sprintf(_('Default (%s)'), $config['liveitems_default_mimetype']) ]
-];
-foreach ($mimetypes as $mimetype) {
-    $mimeTypeOptions[] = [ 'value' => $mimetype, 'label' => $mimetype ];
-}
-
-$statusOptions = [
-    [ 'value' => LIVEITEM_STATUS_PENDING, 'label' => _('Pending') ],
-    [ 'value' => LIVEITEM_STATUS_LIVE, 'label' => _('Live') ],
-    [ 'value' => LIVEITEM_STATUS_ENDED, 'label' => _('Ended') ]
-];
 
 ?>
 <!DOCTYPE html>
@@ -238,24 +117,26 @@ $statusOptions = [
             <p style="color: green;"><?= _('Successfully updated live item!') ?></p>
         <?php } ?>
 
-        <form action="live_edit.php?name=<?= htmlspecialchars($_GET["name"]) ?>"
+        <form action="live_edit.php?name=<?= htmlspecialchars($model->name()) ?>"
               method="POST"
               enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <h4><?= _('Main Information') ?></h4>
                     <hr>
-                    <input type="hidden" name="guid" value="<?= htmlspecialchars($liveItem['guid']) ?>">
+                    <input type="hidden" name="guid" value="<?= htmlspecialchars($model->guid) ?>">
                     <div class="form-group">
                         <label for="title" class="req"><?= _('Title') ?>:</label><br>
                         <input type="text" id="title" name="title" class="form-control"
-                               value="<?= htmlspecialchars($liveItem['title']) ?>" required>
+                               value="<?= htmlspecialchars($model->title) ?>" required>
+                        <span class="invalid-feedback"><?= $model->validationFor('title') ?></span>
                     </div>
                     <div class="form-group">
                         <label for="shortDesc" class="req"><?= _('Short Description') ?>:</label><br>
                         <input type="text" id="shortDesc" name="shortDesc" class="form-control"
-                               value="<?= htmlspecialchars($liveItem['shortDesc']) ?>"
+                               value="<?= htmlspecialchars($model->shortDesc) ?>"
                                maxlength="255" oninput="shortDescCheck()" required>
+                        <span class="invalid-feedback"><?= $model->validationFor('shortDesc') ?></span>
                         <i id="shortDesc_counter"><?= sprintf(_('Characters remaining: %d'), 255) ?></i>
                     </div>
                     <div class="form-group row">
@@ -263,12 +144,15 @@ $statusOptions = [
                         <div class="col-6">
                             <label for="startDate" class="req"><?= _('Date') ?>:</label><br>
                             <input name="startDate" id="startDate" type="date" required
-                                   value="<?= $liveItem['startTime']->format('Y-m-d') ?>">
+                                   value="<?= $model->startTimeDate ?>">
                         </div>
                         <div class="col-6">
                             <label for="startTime" class="req"><?= _('Time') ?>:</label><br>
                             <input name="startTime" id="startTime" type="time" required
-                                   value="<?= $liveItem['startTime']->format('H:i') ?>">
+                                   value="<?= $model->startTimeTime ?>">
+                        </div>
+                        <div class="col-12">
+                            <span class="invalid-feedback"><?= $model->validationFor('startTime') ?></span>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -276,32 +160,38 @@ $statusOptions = [
                         <div class="col-6">
                             <label for="endDate" class="req"><?= _('Date') ?>:</label><br>
                             <input name="endDate" id="endDate" type="date" required
-                                   value="<?= $liveItem['endTime']->format('Y-m-d') ?>">
+                                   value="<?= $model->endTimeDate ?>">
                         </div>
                         <div class="col-6">
                             <label for="endTime" class="req"><?= _('Time') ?>:</label><br>
                             <input name="endTime" id="endTime" type="time" required
-                                   value="<?= $liveItem['endTime']->format('H:i') ?>">
+                                   value="<?= $model->endTimeTime ?>">
+                        </div>
+                        <div class="col-12">
+                            <span class="invalid-feedback"><?= $model->validationFor('endTime') ?></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <?= _('Status') ?>:<br>
-                        <?php htmlOptionRadios('status', $liveItem['status'], $statusOptions); ?>
+                        <?php htmlOptionRadios('status', $model->status, LiveItemFormModel::$statusOptions); ?>
+                        <span class="invalid-feedback"><?= $model->validationFor('status') ?></span>
                     </div>
                     <div class="form-group">
                         <?= _('Stream Information') ?>:<br>
                         <label for="streamUrl"><?= _('URL') ?>:</label><br>
                         <input name="streamUrl" id="streamUrl" type="url" class="form-control"
-                               value="<?= $liveItem['streamInfo']['url'] ?>"
+                               value="<?= $model->streamUrl ?>"
                                placeholder="<?= $config['liveitems_default_stream'] ?>">
+                        <span class="invalid-feedback"><?= $model->validationFor('streamUrl') ?></span>
                         <br>
                         <label for="streamType"><?= _('MIME Type') ?>:</label><br>
                         <?php htmlOptionSelect(
                             'streamType',
-                            $liveItem['streamInfo']['mimeType'],
-                            $mimeTypeOptions,
+                            $model->streamType,
+                            LiveItemFormModel::$mimeTypeOptions,
                             'form-control'
                         ); ?>
+                        <span class="invalid-feedback"><?= $model->validationFor('streamType') ?></span>
                     </div>
                 </div>
 
@@ -310,34 +200,41 @@ $statusOptions = [
                     <hr>
                     <div class="form-group">
                         <?= _('Current Cover'); ?>:<br>
-                        <img src="<?= htmlspecialchars($coverart) ?>"
+                        <img src="<?= htmlspecialchars($model->getCoverImageUrl()) ?>"
                              style="max-height: 350px; max-width: 350px;">
                         <hr>
                         <label for="cover"><?= _('Upload new cover') ?>:</label><br>
                         <input type="file" id="cover" name="cover"><br>
+                        <input type="hidden" id="coverImageUrl" name="coverImageUrl"
+                               value="<?= htmlspecialchars($model->coverImageUrl) ?>">
+                        <span class="invalid-feedback"><?= $model->validationFor('cover') ?></span>
                     </div>
                     <div class="form-group">
                         <label for="longDesc"><?= _('Long Description') ?>:</label><br>
                         <textarea id="longDesc" name="longDesc"
-                                  class="form-control"><?= htmlspecialchars($liveItem['longDesc']) ?></textarea>
+                                  class="form-control"><?= htmlspecialchars($model->longDesc) ?></textarea>
                         <br>
+                        <span class="invalid-feedback"><?= $model->validationFor('longDesc') ?></span>
                     </div>
                     <div class="form-group">
                         <label for="authorName"><?= _('Author') ?>:</label><br>
                         <input type="text" id="authorName" name="authorName" class="form-control"
                                placeholder="Author Name"
-                               value="<?= htmlspecialchars($liveItem['author']['name']) ?>">
+                               value="<?= htmlspecialchars($model->authorName) ?>">
+                        <span class="invalid-feedback"><?= $model->validationFor('authorName') ?></span>
                         <br>
                         <input type="email" id="authorEmail" name="authorEmail" class="form-control"
                                placeholder="Author E-Mail"
-                               value="<?= htmlspecialchars($liveItem['author']['email']) ?>">
+                               value="<?= htmlspecialchars($model->authorEmail) ?>">
+                        <span class="invalid-feedback"><?= $model->validationFor('authorEmail') ?></span>
                         <br>
                     </div>
                     <div class="form-group" style="<?= displayBlockCss($config['customtagsenabled']) ?>">
                         <label for="customtags"><?= _('Custom Tags') ?>:</label><br>
                         <textarea id="customtags" name="customtags"
-                                class="form-control"><?= htmlspecialchars($liveItem['customTags']) ?></textarea>
+                                class="form-control"><?= htmlspecialchars($model->customTags) ?></textarea>
                         <br>
+                        <span class="invalid-feedback"><?= $model->validationFor('customTags') ?></span>
                     </div>
                 </div>
             </div>
