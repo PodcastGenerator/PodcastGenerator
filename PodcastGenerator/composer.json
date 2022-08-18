@@ -34,7 +34,8 @@
     },
     "autoload": {
         "classmap": [
-            "core/"
+            "core/",
+            "admin/models"
         ]
     },
     "autoload-dev": {
