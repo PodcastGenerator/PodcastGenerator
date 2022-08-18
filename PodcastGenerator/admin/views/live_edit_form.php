@@ -7,10 +7,8 @@ use PodcastGenerator\Models\Admin\LiveItemFormModel;
 
 function live_edit_form(
     LiveItemFormModel $model,
-    Configuration $config,
-    string $title,
-    bool $success = false,
-    ?string $error = null
+    object $viewMeta,
+    Configuration $config
 )
 {
     ?>
@@ -30,19 +28,19 @@ function live_edit_form(
 
 <body>
     <?php
-    include '../js.php';
-    include '../navbar.php'; ?>
+    include __DIR__ . '/../js.php';
+    include __DIR__ . '/../navbar.php'; ?>
     <br>
     <div class="container">
-        <h1><?= $title ?></h1>
+        <h1><?= $viewMeta->title ?></h1>
 
-        <?php if (isset($error)) { ?>
-            <p style="color: red;"><?= $error ?></p>
-        <?php } elseif ($success) { ?>
+        <?php if (isset($viewMeta->error) && !empty($viewMeta->error)) { ?>
+            <p style="color: red;"><?= $viewMeta->error ?></p>
+        <?php } elseif ($viewMeta->success) { ?>
             <p style="color: green;"><?= _('Successfully updated live item!') ?></p>
         <?php } ?>
 
-        <form action="live_edit.php?name=<?= htmlspecialchars($model->name()) ?>"
+        <form action="<?= $viewMeta->action ?>"
               method="POST"
               enctype="multipart/form-data">
             <div class="row">

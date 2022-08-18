@@ -89,5 +89,12 @@ if (!isset($model) || $model == null) {
     $model = LiveItemFormModel::fromLiveItem($liveItem);
 }
 
+$viewMeta = (object) [
+    'title' => _('Edit Live Item'),
+    'action' => 'live_edit.php?name=' . htmlspecialchars($model->name()),
+    'success' => $success,
+    'error' => $error
+];
+
 include 'views/live_edit_form.php';
-live_edit_form($model, $config, _('Edit Live Item'), $success, $error);
+live_edit_form($model, $viewMeta, $config);
