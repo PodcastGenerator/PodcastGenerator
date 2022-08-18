@@ -217,7 +217,7 @@ function getLiveItems(Configuration $config): array
 
 function loadLiveItem(string $liveItemFile, Configuration $config) {
     $xmlData = simplexml_load_file($liveItemFile);
-    return array_liveitem($xmlData->liveItem, pathinfo($liveItemFile, PATHINFO_FILENAME), $config);
+    return array_liveitem($xmlData->liveItem, pathinfo($liveItemFile, PATHINFO_BASENAME), $config);
 }
 
 /**
