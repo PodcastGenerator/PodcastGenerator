@@ -55,10 +55,10 @@ $liveItems = getLiveItemArray();
     <br>
     <div class="container">
     <h1><?= _('Live items') ?></h1>
-        <p><?= _("Click on the title of the live item you want to edit/delete.") ?></p>
+        <p><?= _('Click on the title of the live item you want to edit/delete.') ?></p>
         <p>
             <?php foreach ($statusColors as $status => $color) { ?>
-                <?= sprintf(_('Dates in <span style="color: %s;">%s</span> are %s.'), $color, $color, $status) ?>
+                <?= sprintf(_('Dates in <span style="color: %1s;">%1s</span> are %2s.'), $color, $status) ?>
             <?php } ?>
         </p>
         <?php if (isset($error)) {

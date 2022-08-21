@@ -1,6 +1,8 @@
 <?php
 
+// phpcs:disable
 require_once(__DIR__ . '/../../vendor/autoload.php');
+// phpcs:enable
 
 use PodcastGenerator\Configuration;
 use PodcastGenerator\Models\Admin\LiveItemFormModel;
@@ -9,8 +11,7 @@ function live_edit_form(
     LiveItemFormModel $model,
     object $viewMeta,
     Configuration $config
-)
-{
+) {
     ?>
 <!DOCTYPE html>
 <html>

@@ -9,7 +9,9 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+// phpcs:disable
 require_once(__DIR__ . '/../vendor/autoload.php');
+// phpcs:enable
 
 use PodcastGenerator\Configuration;
 use Lootils\Uuid\Uuid;
@@ -215,7 +217,8 @@ function getLiveItems(Configuration $config): array
     );
 }
 
-function loadLiveItem(string $liveItemFile, Configuration $config) {
+function loadLiveItem(string $liveItemFile, Configuration $config)
+{
     $xmlData = simplexml_load_file($liveItemFile);
     return array_liveitem($xmlData->liveItem, pathinfo($liveItemFile, PATHINFO_BASENAME), $config);
 }
@@ -233,9 +236,8 @@ function loadLiveItem(string $liveItemFile, Configuration $config) {
  * @param Configuration $config        The PG configuration object.
  * @return boolean                     true on success, false on failure.
  */
-function deleteLiveItem(string $liveItemFile, Configuration $config): bool {
-    $imagesDir = $config['absoluteurl'] . $config['img_dir'];
-
+function deleteLiveItem(string $liveItemFile, Configuration $config): bool
+{
     $filesToDelete = [$liveItemFile];
 
     $xmlData = simplexml_load_file($liveItemFile);
