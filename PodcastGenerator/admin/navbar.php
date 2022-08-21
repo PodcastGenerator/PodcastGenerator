@@ -28,6 +28,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="live_config.php"><?= _('Change Live Items Config') ?></a>
+                    <a class="dropdown-item" href="live_cover.php"><?= _('Change Live Item Cover Art') ?></a>
                     <a class="dropdown-item" href="live_list.php"><?= _('View All Live Items') ?></a>
                     <a class="dropdown-item" href="live_create.php"><?= _('Create New Live Item') ?></a>
                 </div>
