@@ -30,12 +30,13 @@ function displayBlockCss($val)
 function htmlOptionRadios($name, $value, $options)
 {
     foreach ($options as $opt) {
+        $id = $name . '_' . $opt['value'];
         $checked = ($value == $opt['value']) ? ' checked' : '';
         ?>
-            <label>
-                <input type="radio" name="<?= $name ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
-                <?= $opt['label'] ?>
-            </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="<?= $name ?>" id="<?= $id ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
+                <label class="form-check-label" for="<?= $id ?>"><?= $opt['label'] ?></label>
+            </div>
         <?php
     }
 }
