@@ -7,7 +7,7 @@ if (!isset($liveItems) || empty($liveItems)) {
 
 // List live items
 foreach ($liveItems as $liveItem) {
-    $coverImage = $liveItem['cover']['url'];
+    $coverImage = $liveItem['image']['url'];
     if (empty($coverImage)) {
         $imageDir = $config['url'] . $config['img_dir'];
 
@@ -22,7 +22,7 @@ foreach ($liveItems as $liveItem) {
     }
 
     $streamUrl = $liveItem['streamInfo']['url'];
-    $streamType = $liveItem['streamInfo']['type'];
+    $streamType = $liveItem['streamInfo']['mimeType'];
     if (empty($streamUrl)) {
         $streamUrl = $config['liveitems_default_stream'];
         $streamType = $config['liveitems_default_mimetype'];
@@ -60,7 +60,7 @@ foreach ($liveItems as $liveItem) {
                 </p>
                 <p class="card-text"><small><?= $liveItem['shortDesc'] ?></small></p>
 
-                <?php if ($loggedin) { ?>
+                <?php if ($loggedIn) { ?>
                     <a class="btn btn-danger btn-sm" href="admin/live_edit.php?name=<?= $liveItem["filename"] ?>">
                         <?= $editdelete ?>
                     </a>

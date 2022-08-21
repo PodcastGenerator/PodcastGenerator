@@ -5,7 +5,7 @@ if (!isset($liveItem) || $liveItem == null) {
     goto end;
 }
 
-$coverImage = $liveItem['cover']['url'];
+$coverImage = $liveItem['image']['url'];
 if (empty($coverImage)) {
     $imageDir = $config['url'] . $config['img_dir'];
 
@@ -20,7 +20,7 @@ if (empty($coverImage)) {
 }
 
 $streamUrl = $liveItem['streamInfo']['url'];
-$streamType = $liveItem['streamInfo']['type'];
+$streamType = $liveItem['streamInfo']['mimeType'];
 if (empty($streamUrl)) {
     $streamUrl = $config['liveitems_default_stream'];
     $streamType = $config['liveitems_default_mimetype'];
@@ -69,8 +69,8 @@ $showStreamWidget = strtolower($config['enablestreaming']) == 'yes';
                 </div>
             </div>
 
-            <div style="background-color: #f1f3f4;" class="card-footer w-100">
-                <?php if ($showStreamWidget) { ?>
+            <?php if ($showStreamWidget) { ?>
+                <div style="background-color: #f1f3f4;" class="card-footer w-100">
                     <?php if ($type == 'audio') { ?>
                         <audio controls preload="none">
                             <source src="<?= $streamUrl ?>" type="<?= $streamType ?>">
@@ -80,8 +80,8 @@ $showStreamWidget = strtolower($config['enablestreaming']) == 'yes';
                             <source src="<?= $streamUrl ?>" type="<?= $streamType ?>">
                         </video>
                     <?php } ?>
-                <?php } ?>
-            </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>
