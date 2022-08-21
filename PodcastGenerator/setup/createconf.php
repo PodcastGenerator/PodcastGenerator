@@ -163,6 +163,8 @@ function createconf($username, $password)
 
 \$liveitems_earliest_ended = 7;
 
+\$livefile = 'live.php';    // Path of the live index file
+
 // END OF CONFIG
 ";
     $f = fopen("../config.php", 'w');

@@ -108,6 +108,8 @@ function backwards_3_1_to_3_3($absoluteurl)
         $liveitems_earliest_ended = isset($config['liveitems_earliest_ended'])
             ? (int) $config['liveitems_earliest_ended']
             : 7; // show up to one week of ended live items by default
+
+        $livefile = isset($config['livefile']) ? $config['livefile'] : 'live.php';
     }
 
     if (!$upgrading) {
@@ -233,6 +235,8 @@ function backwards_3_1_to_3_3($absoluteurl)
 \$liveitems_max_ended = " . $liveitems_max_ended . ";
 
 \$liveitems_earliest_ended = " . $liveitems_earliest_ended . ";
+
+\$livefile = '" . $livefile . "';    // Path of the live index file
 
 // END OF CONFIG
 ";
