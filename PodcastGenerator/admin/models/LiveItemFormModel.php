@@ -135,7 +135,7 @@ class LiveItemFormModel
 
     public static function fromForm($GET, $POST): LiveItemFormModel
     {
-        $model = new LiveItemFormModel($GET['name']);
+        $model = new LiveItemFormModel(isset($GET['name']) ? $GET['name'] : null);
 
         try {
             $model->guid = new Uuid('urn:uuid:' . $POST['guid']);
@@ -245,8 +245,7 @@ class LiveItemFormModel
 
     private function addValidationError(string $field, string $error)
     {
-        $errors = $this->validationMessages[$field];
-        if ($errors == null) {
+        if (!isset($this->validationMessages[$field])) {
             $this->validationMessages[$field] = array();
         }
         $this->validationMessages[$field][] = $error;
@@ -339,6 +338,15 @@ class LiveItemFormModel
         }
 
         return implode(' ', $this->validationMessages[$field]);
+    }
+
+    public function cssClassFor(string $field): ?string
+    {
+        if (!isset($this->validationMessages[$field]) || empty($this->validationMessages[$field])) {
+            return null;
+        }
+
+        return 'is-invalid';
     }
 
     public function saveCoverImageFile($fileData): string|false
