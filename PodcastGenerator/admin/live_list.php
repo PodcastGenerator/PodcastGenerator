@@ -58,7 +58,7 @@ $liveItems = getLiveItemArray();
         <p><?= _('Click on the title of the live item you want to edit/delete.') ?></p>
         <p>
             <?php foreach ($statusColors as $status => $color) { ?>
-                <?= sprintf(_('Dates in <span style="color: %1s;">%1s</span> are %2s.'), $color, $status) ?>
+                <?= sprintf(_('Dates in <span style="color: %1$s;">%1s</span> are %2$s.'), $color, $status) ?>
             <?php } ?>
         </p>
         <?php if (isset($error)) {
