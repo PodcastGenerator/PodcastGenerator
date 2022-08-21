@@ -217,6 +217,13 @@ function getLiveItems(Configuration $config): array
     );
 }
 
+/**
+ * Gets an individual live item by file path.
+ *
+ * @param string $liveItemFile   The path of the live item file to load.
+ * @param Configuration $config  The configuration object for the website.
+ * @return array                 An array containing the live item information.
+ */
 function loadLiveItem(string $liveItemFile, Configuration $config)
 {
     $xmlData = simplexml_load_file($liveItemFile);
