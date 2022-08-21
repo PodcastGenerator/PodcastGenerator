@@ -93,7 +93,8 @@ $viewMeta = (object) [
     'title' => _('Edit Live Item'),
     'action' => 'live_edit.php?name=' . htmlspecialchars($model->name()),
     'success' => $success,
-    'error' => $error
+    'error' => isset($error) ? $error : null,
+    'newItem' => false,
 ];
 
 include 'views/live_edit_form.php';

@@ -186,12 +186,14 @@ function live_edit_form(
                 </div>
             </div>
         </form>
-        <hr>
-        <h4><?= _('Delete Episode') ?></h4>
-        <form action="episodes_edit.php?name=<?= htmlspecialchars($_GET['name']) ?>&delete=1" method="POST">
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
-            <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
-        </form>
+        <?php if (!$viewMeta->newItem) { ?>
+            <hr>
+            <h4><?= _('Delete Episode') ?></h4>
+            <form action="<?= htmlspecialchars($viewMeta->action) ?>&delete=1" method="POST">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
+            </form>
+        <?php } ?>
     </div>
     <script type="text/javascript">
         function shortDescCheck() {

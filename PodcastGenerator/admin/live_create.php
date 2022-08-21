@@ -76,7 +76,8 @@ $viewMeta = (object) [
     'title' => _('Create Live Item'),
     'action' => 'live_create.php',
     'success' => null,
-    'error' => $error
+    'error' => isset($error) ? $error : null,
+    'newItem' => true,
 ];
 
 include 'views/live_edit_form.php';
