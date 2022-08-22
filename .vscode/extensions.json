@@ -3,10 +3,10 @@
         "ikappas.composer",
         "junstyle.php-cs-fixer",
         "xdebug.php-debug",
+        "zobo.php-intellisense",
         "neilbrayfield.php-docblocker",
-        "bmewburn.vscode-intelephense-client",
         "mehedidracula.php-namespace-resolver",
-        "ikappas.phpcs",
+        "obliviousharmony.vscode-php-codesniffer",
         "recca0120.vscode-phpunit"
     ]
 }

@@ -1,8 +1,14 @@
 {
-    "phpcs.composerJsonPath": "PodcastGenerator/composer.json",
-    "phpcs.executablePath": "PodcastGenerator/vendor/bin/phpcs",
-    "phpunit.logpanel": true,
+    "composer.workingPath": "PodcastGenerator/composer.json",
     "cSpell.words": [
         "phpcs"
-    ]
+    ],
+    "phpCodeSniffer.autoExecutable": true,
+    "phpCodeSniffer.exclude": [
+        "**/vendor/**",
+        "tests/coverage/**"
+    ],
+    "phpCodeSniffer.standard": "Default",
+    "phpCodeSniffer.executable": "PodcastGenerator/vendor/bin/phpcs",
+    "phpunit.logpanel": true
 }
