@@ -147,4 +147,16 @@ class UserManager
         $user->setPassword($newPassword);
         return $this->updateUser($user);
     }
+
+    /**
+     * Checks if the named user exists on the website.
+     *
+     * @param string $username  The name of the user to look for.
+     * @return boolean          `true` if the named user has an account;
+     *                          otherwise, `false`.
+     */
+    public function userExists(string $username): bool
+    {
+        return $this->getUserByName($username) != null;
+    }
 }
