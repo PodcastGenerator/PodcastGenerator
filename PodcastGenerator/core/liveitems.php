@@ -35,7 +35,7 @@ define('LIVEITEM_STATUS_ENDED', 'ended');
  */
 function makeLiveItemFilename(string $directory, DateTime $date, string $title, string $ext = '.xml'): string
 {
-    $filename = strtolower(str_replace(' ', '_', $title));
+    $filename = strtolower(trim(preg_replace('/[^a-zA-Z0-9_-]+/', '_', $title), '_'));
 
     if (empty($ext)) {
         $ext = '.xml';
