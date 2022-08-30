@@ -16,7 +16,7 @@ use Exception;
 use Lootils\Uuid\Uuid;
 use PodcastGenerator\Configuration;
 
-class LiveItemFormModel
+class LiveItemFormModel extends FormModelBase
 {
     private const DATE_FORMAT = 'Y-m-d';
     private const TIME_FORMAT = 'H:i';
@@ -92,8 +92,6 @@ class LiveItemFormModel
     public ?string $coverImagePath = null;
     public ?string $coverImageUrl = null;
     private bool $hasNewCoverImage = false;
-
-    private array $validationMessages = [];
 
     public static array $statusOptions;
 
@@ -243,29 +241,6 @@ class LiveItemFormModel
         return self::$config['url'] . self::$config['img_dir'] . $coverImage;
     }
 
-    private function addValidationError(string $field, string $error)
-    {
-        if (!isset($this->validationMessages[$field])) {
-            $this->validationMessages[$field] = array();
-        }
-        $this->validationMessages[$field][] = $error;
-    }
-
-    private function addMissingValueValidationError(string $field, string $fieldName)
-    {
-        $this->addValidationError($field, sprintf(_('%s field is missing.'), $fieldName));
-    }
-
-    public function isValid(): bool
-    {
-        foreach ($this->validationMessages as $field => $errors) {
-            if (!empty($errors)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public function validate(): bool
     {
         if (empty($this->title)) {
@@ -301,12 +276,8 @@ class LiveItemFormModel
         return $this->isValid();
     }
 
-    public function apply(&$liveItem)
+    protected function apply(&$liveItem)
     {
-        if (!$this->isValid()) {
-            throw new Exception('Cannot apply invalid data');
-        }
-
         $liveItem['title'] = $this->title;
         $liveItem['status'] = $this->status;
         $liveItem['startTime'] = $this->startTime;
@@ -329,24 +300,6 @@ class LiveItemFormModel
             // set live item properties
             $liveItem['image'] = [ 'url' => $this->coverImageUrl, 'path' => $this->coverImagePath ];
         }
-    }
-
-    public function validationFor(string $field): ?string
-    {
-        if (!isset($this->validationMessages[$field]) || empty($this->validationMessages[$field])) {
-            return null;
-        }
-
-        return implode(' ', $this->validationMessages[$field]);
-    }
-
-    public function cssClassFor(string $field): ?string
-    {
-        if (!isset($this->validationMessages[$field]) || empty($this->validationMessages[$field])) {
-            return null;
-        }
-
-        return 'is-invalid';
     }
 
     public function saveCoverImageFile($fileData): string|false

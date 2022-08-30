@@ -67,7 +67,7 @@ if (isset($_GET['delete'])) {
 
     if ($model->isValid()) {
         // update live item and save
-        $model->apply($liveItem);
+        $model->applyChanges($liveItem);
         saveLiveItem($liveItem, $targetfile);
         generateRSS();
         pingServices();
