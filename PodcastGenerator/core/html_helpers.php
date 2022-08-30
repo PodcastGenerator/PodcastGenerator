@@ -55,6 +55,16 @@ function htmlOptionSelect($name, $value, $options, $selectCssClass = null)
     ?></select><?php
 }
 
+function htmlOptionSelectMulti(string $name, array $values, array $options, $selectCssClass = null)
+{
+    ?><select name="<?= $name ?>[]" id="<?= $name ?>" class="<?= $selectCssClass ?>" multiple><?php
+    foreach ($options as $opt) {
+        $selected = in_array($opt['value'], $values) ? ' selected' : '';
+        ?><option value="<?= $opt['value'] ?>"<?= $selected ?>><?= $opt['label'] ?></option><?php
+    }
+    ?></select><?php
+}
+
 $yesNoOptions = array(
     [ 'value' => 'yes', 'label' => _('Yes') ],
     [ 'value' => 'no', 'label' => _('No') ]
