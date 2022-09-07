@@ -18,6 +18,8 @@ use PodcastGenerator\Configuration;
 
 class LiveItemFormModel extends FormModelBase
 {
+    use CoverImageTrait;
+
     private const DATE_FORMAT = 'Y-m-d';
     private const TIME_FORMAT = 'H:i';
 
@@ -300,46 +302,5 @@ class LiveItemFormModel extends FormModelBase
             // set live item properties
             $liveItem['image'] = [ 'url' => $this->coverImageUrl, 'path' => $this->coverImagePath ];
         }
-    }
-
-    public function saveCoverImageFile($fileData): string|false
-    {
-        $coverImage = str_replace(' ', '_', basename($fileData['name']));
-        $coverImageExt = pathinfo($coverImage, PATHINFO_EXTENSION);
-        $imagesDir = self::$config['absoluteurl'] . self::$config['img_dir'];
-
-        $validExtensions = getSupportedFileExtensions(self::$config, ['image']);
-        $validCoverFileExt = in_array($coverImageExt, $validExtensions);
-        if (!$validCoverFileExt) {
-            $this->addValidationError('cover', sprintf(_('%s has invalid file extension'), $coverImage));
-            return false;
-        }
-
-        $coverImageFile = makeUniqueFilename($imagesDir . $coverImage);
-        if (!move_uploaded_file($fileData['tmp_name'], $coverImageFile)) {
-            $this->addValidationError('', sprintf(_('%s was not uploaded successfully'), $coverImage));
-            return false;
-        }
-
-        $coverMimeType = getmime($coverImageFile);
-        if (!$coverMimeType) {
-            $this->addValidationError('', _('The uploaded cover art file is not readable (permission error)'));
-            return false;
-        }
-
-        $validMimeTypes = getSupportedMimeTypes(self::$config, ['image']);
-        $validCoverMimeType = in_array($coverMimeType, $validMimeTypes);
-        if (!$validCoverMimeType) {
-            $this->addValidationError(
-                'cover',
-                sprintf(_('%s has unsupported MIME content type %s'), $coverImage, $coverMimeType)
-            );
-            // Delete the file if the mime type is invalid
-            unlink($coverImageFile);
-            return false;
-        }
-
-        $this->setCoverImage($coverImageFile);
-        return $coverImageFile;
     }
 }
