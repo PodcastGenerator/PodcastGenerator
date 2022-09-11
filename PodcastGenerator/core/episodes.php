@@ -9,7 +9,10 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
+// phpcs:disable
 require_once(__DIR__ . '/../vendor/autoload.php');
+// phpcs:enable
+
 
 function getSupportedExtensions($config)
 {
