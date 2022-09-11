@@ -34,7 +34,6 @@ if (count($_POST) > 0) {
     }
 
     // Process the cover image, if one was provided
-    $coverImage = '';
     if (!empty($_FILES['cover']['name'])) {
         $model->saveCoverImageFile($_FILES['cover']);
     }
