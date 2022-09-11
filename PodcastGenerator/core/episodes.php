@@ -130,6 +130,7 @@ function arrayEpisode($item, $episode, $_config)
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
             'imgPG' => $item->imgPG,
+            'imgPath' => $item->imgPG->attributes()['path'],
             'categoriesPG' => [
                 'category1PG' => $item->categoriesPG->category1PG,
                 'category2PG' => $item->categoriesPG->category2PG,
@@ -151,9 +152,13 @@ function arrayEpisode($item, $episode, $_config)
             'filename' => $episode,
             'fileid' => pathinfo($episode, PATHINFO_FILENAME),
             'filemtime' => $filemtime,
-            'moddate' => date('Y-m-d', $filemtime)
+            'moddate' => date('Y-m-d', $filemtime),
+            'previousImgsPG' => []
         ]
     ];
+    foreach ($item->previousImgsPG->children() as $previousImg) {
+        $episode['episode']['previousImgsPG'][] = $previousImg;
+    }
     return $append_array;
 }
 
