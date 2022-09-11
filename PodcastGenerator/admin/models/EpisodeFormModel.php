@@ -29,6 +29,8 @@ class EpisodeFormModel extends FormModelBase
 
     public static array $categoryOptions;
 
+    public static array $yesNoOptions;
+
     public static function initialize(Configuration $config)
     {
         self::$config = $config;
@@ -39,6 +41,9 @@ class EpisodeFormModel extends FormModelBase
             $catOpts[] = ['value' => (string) $cat->id, 'label' => (string) $cat->description];
         }
         self::$categoryOptions = $catOpts;
+
+        global $yesNoOptions;
+        self::$yesNoOptions = $yesNoOptions;
     }
 
     private ?string $name = null;
@@ -249,21 +254,21 @@ class EpisodeFormModel extends FormModelBase
         // Check episode and season numbers
         if (!empty($this->episodenum)) {
             if (!is_numeric($this->episodenum)) {
-            $this->addBadValueValidationError('episodenum', _('Episode Number'));
-        } else {
-            $episodeNum = $this->episodenum + 0;
-            if (!is_integer($episodeNum) || $episodeNum < 1) {
                 $this->addBadValueValidationError('episodenum', _('Episode Number'));
+            } else {
+                $episodeNum = $this->episodenum + 0;
+                if (!is_integer($episodeNum) || $episodeNum < 1) {
+                    $this->addBadValueValidationError('episodenum', _('Episode Number'));
+                }
             }
-        }
         }
         if (!empty($this->seasonnum)) {
             if (!is_numeric($this->seasonnum)) {
-            $this->addBadValueValidationError('seasonnum', _('Season Number'));
-        } else {
-            $seasonNum = $this->seasonnum + 0;
-            if (!is_integer($seasonNum) || $seasonNum < 1) {
                 $this->addBadValueValidationError('seasonnum', _('Season Number'));
+            } else {
+                $seasonNum = $this->seasonnum + 0;
+                if (!is_integer($seasonNum) || $seasonNum < 1) {
+                    $this->addBadValueValidationError('seasonnum', _('Season Number'));
                 }
             }
         }
