@@ -49,6 +49,19 @@ abstract class FormModelBase
     }
 
     /**
+     * Adds a new validation error message to the model, specifically to call
+     * out that a form field has an invalid value.
+     *
+     * @param string $field      The name of the form field with a bad value.
+     * @param string $fieldName  The display name of the form field.
+     * @return void
+     */
+    protected function addBadValueValidationError(string $field, string $fieldName)
+    {
+        $this->addValidationError($field, sprintf(_('Invalid %s value provided.'), $fieldName));
+    }
+
+    /**
      * Checks that all form fields in the model have valid values.
      *
      * @return boolean  `true` if the form is valid; otherwise, `false`.
