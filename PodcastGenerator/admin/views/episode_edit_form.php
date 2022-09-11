@@ -37,6 +37,10 @@ function episode_edit_form(
         <h3><?= $viewMeta->title ?></h3>
         <?php if (isset($viewMeta->error) && !empty($viewMeta->error)) { ?>
             <p style="color: red;"><strong><?= $viewMeta->error ?></strong></p>
+        <?php } elseif ($viewMeta->success) { ?>
+            <p style="color: #2ecc71;">
+                <strong><?= htmlspecialchars(sprintf(_('"%s" uploaded successfully'), $model->title)) ?></strong>
+            </p>
         <?php } ?>
         <form action="<?= htmlspecialchars($viewMeta->action) ?>"
               method="POST" enctype="multipart/form-data">
@@ -45,6 +49,12 @@ function episode_edit_form(
                     <h4><?= _('Main Information') ?></h4>
                     <hr>
                     <input type="hidden" name="guid" value="<?= htmlspecialchars($model->guid) ?>">
+                    <?php if ($viewMeta->newItem) { ?>
+                        <div class="form-group">
+                            <label for="file" class="req"><?= _('File') ?>:</label><br>
+                            <input type="file" id="file" name="file" required><br>
+                        </div>
+                    <?php } ?>
                     <div class="form-group">
                         <label for="title" class="req"><?= _('Title') ?>:</label><br>
                         <input type="text" id="title" name="title" class="form-control"
@@ -155,12 +165,14 @@ function episode_edit_form(
                 </div>
             </div>
         </form>
-        <hr>
-        <h4><?= _('Delete Episode') ?></h4>
-        <form action="episodes_edit.php?name=<?= htmlspecialchars($model->name()) ?>&delete=1" method="POST">
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
-            <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
-        </form>
+        <?php if (!$viewMeta->newItem) { ?>
+            <hr>
+            <h4><?= _('Delete Episode') ?></h4>
+            <form action="episodes_edit.php?name=<?= htmlspecialchars($model->name()) ?>&delete=1" method="POST">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                <input type="submit" class="btn btn-danger" value="<?= _('Delete') ?>">
+            </form>
+        <?php } ?>
     </div>
     <script type="text/javascript">
         function shortDescCheck() {

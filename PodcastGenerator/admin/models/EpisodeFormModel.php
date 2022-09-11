@@ -11,6 +11,7 @@
 
 namespace PodcastGenerator\Models\Admin;
 
+use Lootils\Uuid\Uuid;
 use PodcastGenerator\Configuration;
 use DateTime;
 use Exception;
@@ -47,14 +48,14 @@ class EpisodeFormModel extends FormModelBase
         return $this->name;
     }
 
-    public ?string $guid;
+    public ?string $guid = null;
 
     public string $title = '';
 
     public string $shortdesc = '';
-    public ?string $longdesc;
+    public ?string $longdesc = null;
 
-    public array $categories;
+    public array $categories = [];
 
     private ?int $filemtime = null;
     public string $date;
@@ -78,25 +79,35 @@ class EpisodeFormModel extends FormModelBase
         }
     }
 
-    public ?string $coverart;
-    public ?string $coverartPath;
+    public ?string $coverart = null;
+    public ?string $coverartPath = null;
     private bool $hasNewCoverImage = false;
 
-    public ?string $episodenum;
-    public ?string $seasonnum;
+    public ?string $episodenum = null;
+    public ?string $seasonnum = null;
 
-    public ?string $itunesKeywords;
+    public ?string $itunesKeywords = null;
 
     public ?string $explicit;
 
-    public ?string $authorname;
-    public ?string $authoremail;
+    public ?string $authorname = null;
+    public ?string $authoremail = null;
 
-    public ?string $customtags;
+    public ?string $customtags = null;
 
     private function __construct(?string $name)
     {
         $this->name = $name;
+        $this->explicit = self::$config['explicit_podcast'];
+    }
+
+    public static function forNewEpisode(): EpisodeFormModel
+    {
+        $model = new EpisodeFormModel(null);
+        $model->guid = (string) Uuid::createV4();
+        $model->setFilemtime(time());
+
+        return $model;
     }
 
     public static function fromForm($GET, $POST): EpisodeFormModel
@@ -104,7 +115,7 @@ class EpisodeFormModel extends FormModelBase
         $model = new EpisodeFormModel(isset($GET['name']) ? $GET['name'] : null);
 
         $model->guid = $POST['guid'];
-        
+
         $model->title = $POST['title'];
 
         $model->shortdesc = $POST['shortdesc'];
@@ -318,5 +329,114 @@ class EpisodeFormModel extends FormModelBase
             $episode['episode']['imgPath'] = $this->coverartPath;
             $episode['episode']['imgPG'] = $this->coverart;
         }
+    }
+
+    public function saveEpisodeMediaFile($file): string|false
+    {
+        $filename = basename($file['name']);
+
+        // Error out if file is not strictly named
+        if (self::$config['strictfilenamepolicy'] == 'yes') {
+            if (!preg_match('/^[\w._-]+$/', $filename)) {
+                $this->addValidationError(
+                    'file',
+                    _('Invalid filename: only A-Z, a-z, underscores, dashes and dots are permitted.')
+                );
+                return false;
+            }
+        }
+
+        if (extension_loaded('mbstring')) {
+            $filename = mb_convert_encoding($filename, 'UTF-8', mb_detect_encoding($filename));
+        }
+
+        $uploadDir = self::$config['absoluteurl'] . self::$config['upload_dir'];
+        $targetFile = makeEpisodeFilename($uploadDir, $this->date, $filename);
+        $targetFileWithoutExt = strtolower($uploadDir . pathinfo($targetFile, PATHINFO_FILENAME));
+
+        $validExtensions = getSupportedFileExtensions(self::$config, ['audio', 'video']);
+        $fileExt = pathinfo($targetFile, PATHINFO_EXTENSION);
+
+        $validFileExt = in_array($fileExt, $validExtensions);
+        if (!$validFileExt) {
+            $this->addValidationError('file', sprintf(_('%s has invalid file extension'), $filename));
+            return false;
+        }
+
+        if (!move_uploaded_file($file['tmp_name'], $targetFile)) {
+            $this->addValidationError(
+                'file',
+                sprintf(_('%s was not uploaded successfully'), $filename)
+            );
+            return false;
+        }
+
+        $mimeType = getmime($targetFile);
+        if (!$mimeType) {
+            $this->addValidationError(
+                'file',
+                _('The uploaded episode file is not readable (permission error)')
+            );
+            return false;
+        }
+
+        $validMimeTypes = getSupportedMimeTypes(self::$config, ['audio', 'video']);
+        $validMimeType = in_array($mimeType, $validMimeTypes);
+        if (!$validMimeType) {
+            $this->addValidationError(
+                'file',
+                sprintf(_('%s has unsupported MIME content type %s'), $filename, $mimeType)
+            );
+            unlink($targetFile);
+            return false;
+        }
+
+        $this->name = pathinfo($targetFile, PATHINFO_BASENAME);
+        return $targetFile;
+    }
+
+    public function saveCoverImageFromMediaFile(): string|null|false
+    {
+        if (empty($this->name)) {
+            return null;
+        }
+
+        $mediaFile = self::$config['absoluteurl'] . self::$config['upload_dir'] . $this->name;
+        $fileInfo = getID3Info($mediaFile);
+
+        $coverInfo = isset($fileInfo['comments']['picture'][0]) ? $fileInfo['comments']['picture'][0] : null;
+        if ($coverInfo == null) {
+            return null;
+        }
+
+        $imagesDir = self::$config['absoluteurl'] . self::$config['img_dir'];
+
+        $validMimeData = getSupportedMediaFileTypes(self::$config, ['image']);
+        foreach ($validMimeData as $validMime) {
+            if ($validMime['mimetype'] == $coverInfo['image_mime']) {
+                $coverExt = $validMime['extension'];
+                break;
+            }
+        }
+        if (empty($coverExt)) {
+            $this->addValidationError(
+                'file',
+                sprintf(_('%s has unsupported MIME content type %s'), _('Embedded cover art'), $coverInfo['image_mime'])
+            );
+            return false;
+        }
+
+        $coverFile = makeEpisodeFilename(
+            $imagesDir,
+            $this->date, pathinfo($mediaFile, PATHINFO_FILENAME) . '.' . $coverExt
+        );
+
+        if (!file_put_contents($coverFile, $coverInfo['data'])) {
+            $this->addValidationError('file', _('The embedded cover art file was not saved successfully'));
+            return false;
+        }
+
+        $this->setCoverImage($coverFile);
+        return $coverFile;
     }
 }
