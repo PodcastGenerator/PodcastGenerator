@@ -76,7 +76,7 @@ function live_edit_form(
                                 value="<?= $model->startTimeDate ?>">
                         <label class="sr-only" for="startTime"><?= _('Time') ?>:</label>
                         <input name="startTime" id="startTime" type="time" required
-                                pattern="[0-9]{2}-[0-9]{2}"
+                                pattern="[0-9]{2}:[0-9]{2}"
                                 class="form-control half-width <?= $model->cssClassFor('startTime') ?>"
                                 value="<?= $model->startTimeTime ?>">
                         <span class="invalid-feedback">
@@ -93,7 +93,7 @@ function live_edit_form(
                                 value="<?= $model->endTimeDate ?>">
                         <label class="sr-only" for="endTime"><?= _('Time') ?>:</label>
                         <input name="endTime" id="endTime" type="time" required
-                                pattern="[0-9]{2}-[0-9]{2}"
+                                pattern="[0-9]{2}:[0-9]{2}"
                                 class="form-control half-width <?= $model->cssClassFor('endTime') ?>"
                                 value="<?= $model->endTimeTime ?>">
                         <span class="invalid-feedback">
@@ -132,7 +132,7 @@ function live_edit_form(
                     <h4><?= _('Extra Information') ?></h4>
                     <hr>
                     <div class="form-group">
-                        <div><span><?= _('Current Cover'); ?>:</span></div>
+                        <div><span><?= _('Current Cover') ?>:</span></div>
                         <img src="<?= htmlspecialchars($model->getCoverImageUrl()) ?>"
                                 style="max-height: 350px; max-width: 350px;">
                         <hr>
