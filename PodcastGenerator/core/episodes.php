@@ -13,6 +13,7 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 // phpcs:enable
 
+use PodcastGenerator\Configuration;
 
 function getSupportedExtensions($config)
 {
@@ -121,6 +122,111 @@ function getEpisodeFiles($_config, $includeFuture = false)
     return array_reverse($files);
 }
 
+function episode_data_path($episodePath)
+{
+    $p = pathinfo($episodePath);
+    return $p['dirname'] . '/' . $p['filename'] . '.xml';
+}
+
+/**
+ * Saves episode data and updates timestamp for episode file.
+ *
+ * @param array $episode    An array containing the metadata for the episode.
+ * @param string $filePath  The path of the episode's media file.
+ * @return void
+ */
+function saveEpisode($episode, $filePath)
+{
+    global $config;
+
+    if (!empty($episode['episode']['guid'])) {
+        $guid = $episode['episode']['guid'];
+    } else {
+        $link = str_replace(['?', '=', '$url'], '', $config['link']);
+        $guid = $config['url'] . '?' . $link . '=' . basename($filePath);
+    }
+
+    $longDesc = !empty($episode['episode']['longdescPG'])
+        ? $episode['episode']['longdescPG']
+        : $episode['episode']['shortdescPG'];
+
+    // Get audio metadata (duration, bitrate etc)
+    $filesize = filesize($filePath);
+    $fileinfo = getID3Info($filePath);
+    $duration = $fileinfo["playtime_string"];           // Get duration
+    $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate
+    $frequency = $fileinfo["audio"]["sample_rate"];     // Frequency
+
+    $writer = new \XMLWriter();
+    $writer->openMemory();
+    $writer->setIndent(true);
+    $writer->setIndentString("\t");
+
+    $writer->startDocument('1.0', 'utf-8');
+    $writer->startElement('PodcastGenerator');
+    $writer->startElement('episode');
+
+    $writer->writeElement('guid', $guid);
+    $writer->writeElement('titlePG', $episode['episode']['titlePG']);
+
+    $writer->writeElement('episodeNumPG', $episode['episode']['episodeNumPG']);
+    $writer->writeElement('seasonNumPG', $episode['episode']['seasonNumPG']);
+
+    $writer->startElement('shortdescPG');
+    $writer->writeCdata($episode['episode']['shortdescPG']);
+    $writer->endElement();
+
+    $writer->startElement('longdescPG');
+    $writer->writeCdata($longDesc);
+    $writer->endElement();
+
+    $writer->startElement('imgPG');
+    $writer->writeAttribute('path', $episode['episode']['imgPath']);
+    $writer->text($episode['episode']['imgPG']);
+    $writer->endElement();
+
+    $writer->startElement('categoriesPG');
+    foreach ($episode['episode']['categoriesPG'] as $el => $val) {
+        $writer->writeElement($el, $val);
+    }
+    $writer->endElement();
+
+    $writer->writeElement('keywordsPG', $episode['episode']['keywordsPG']);
+    $writer->writeElement('explicitPG', $episode['episode']['explicitPG']);
+
+    $writer->startElement('authorPG');
+    $writer->writeElement('namePG', $episode['episode']['authorPG']['namePG']);
+    $writer->writeElement('emailPG', $episode['episode']['authorPG']['emailPG']);
+    $writer->endElement();
+
+    $writer->startElement('fileInfoPG');
+    $writer->writeElement('size', strval((int) ($filesize / 1000 / 1000)));
+    $writer->writeElement('duration', $duration);
+    $writer->writeElement('bitrate', substr(strval($bitrate), 0, 3));
+    $writer->writeElement('frequency', $frequency);
+    $writer->endElement();
+
+    $writer->startElement('customTagsPG');
+    $writer->writeCdata($episode['episode']['customTagsPG']);
+    $writer->endElement();
+
+    if (!empty($episode['episode']['previousImgsPG'])) {
+        $writer->startElement('previousImgsPG');
+        foreach ($episode['episode']['previousImgsPG'] as $img) {
+            $writer->writeElement('imgPG', $img);
+        }
+        $writer->endElement();
+    }
+
+    $writer->endElement(); // episode
+    $writer->endElement(); // PodcastGenerator
+    $writer->endDocument();
+    file_put_contents(episode_data_path($filePath), $writer->outputMemory());
+
+    // Set file date
+    touch($filePath, $episode['episode']['filemtime']);
+}
+
 function arrayEpisode($item, $episode, $_config)
 {
     $filemtime = filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode);
@@ -159,8 +265,10 @@ function arrayEpisode($item, $episode, $_config)
             'previousImgsPG' => []
         ]
     ];
-    foreach ($item->previousImgsPG->children() as $previousImg) {
-        $episode['episode']['previousImgsPG'][] = $previousImg;
+    if (isset($item->previousImgsPG)) {
+        foreach ($item->previousImgsPG->children() as $previousImg) {
+            $append_array['episode']['previousImgsPG'][] = $previousImg;
+        }
     }
     return $append_array;
 }
@@ -211,6 +319,19 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
     }
 
     return array_map(fn ($ep) => arrayEpisode($ep['data']->episode, $ep['filename'], $_config), $episodes);
+}
+
+/**
+ * Gets an individual episode by file path.
+ *
+ * @param string $episodeFile    The path of the episode to load.
+ * @param Configuration $config  The configuration object for the website.
+ * @return array                 An array containing the episode information.
+ */
+function loadEpisode(string $episodeFile, Configuration $config)
+{
+    $xmlData = simplexml_load_file(episode_data_path($episodeFile));
+    return arrayEpisode($xmlData->episode, pathinfo($episodeFile, PATHINFO_BASENAME), $config);
 }
 
 /**
