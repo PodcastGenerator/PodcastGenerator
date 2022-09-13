@@ -19,21 +19,11 @@ $statusColors = [
     LIVEITEM_STATUS_ENDED => 'green'
 ];
 
-function getLiveItemArray()
-{
-    global $config;
+$liveItems = getLiveItems();
 
-    $liveItems = getLiveItems($config);
-
-    // sorts into descending order, as future and recent episodes are most
-    // likely to be edited
-    usort($liveItems, function ($a, $b) {
-        return $a['filemtime'] <=> $b['filemtime'];
-    });
-    return array_reverse($liveItems);
-}
-
-$liveItems = getLiveItemArray();
+// sort descending, as future and recent episodes are most likely to be edited
+usort($liveItems, fn ($a, $b) => $a['filemtime'] <=> $b['filemtime']);
+$liveItems = array_reverse($liveItems);
 
 ?>
 <!DOCTYPE html>
