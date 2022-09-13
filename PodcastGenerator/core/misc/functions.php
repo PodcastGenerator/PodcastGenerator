@@ -154,7 +154,7 @@ function getSupportedMimeTypes(Configuration $config, array $typeFilter = null):
 {
     return array_unique(
         array_map(
-            function ($mf) { return $mf['mimetype']; },
+            fn ($mf) => $mf['mimetype'],
             getSupportedMediaFileTypes($config, $typeFilter)
         )
     );
@@ -164,7 +164,7 @@ function getSupportedFileExtensions(Configuration $config, array $typeFilter = n
 {
     return array_unique(
         array_map(
-            function ($mf) { return $mf['extension']; },
+            fn ($mf) => $mf['extension'],
             getSupportedMediaFileTypes($config, $typeFilter)
         )
     );

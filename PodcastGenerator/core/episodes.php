@@ -200,12 +200,7 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
         );
     }
 
-    return array_map(
-        function ($ep) use ($_config) {
-            return arrayEpisode($ep['data']->episode, $ep['filename'], $_config);
-        },
-        $episodes
-    );
+    return array_map(fn ($ep) => arrayEpisode($ep['data']->episode, $ep['filename'], $_config), $episodes);
 }
 
 /**

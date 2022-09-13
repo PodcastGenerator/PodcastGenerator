@@ -207,13 +207,9 @@ function getLiveItemFiles(Configuration $config): array
  */
 function getLiveItems(Configuration $config): array
 {
-    $liveItems = getLiveItemFiles($config);
-
     return array_map(
-        function ($ep) use ($config) {
-            return array_liveitem($ep['data']->liveItem, $ep['filename'], $config);
-        },
-        $liveItems
+        fn ($ep) => array_liveitem($ep['data']->liveItem, $ep['filename'], $config),
+        getLiveItemFiles($config)
     );
 }
 

@@ -34,12 +34,9 @@ if (isset($_GET['name'])) {
     if (!isset($_GET['all'])) {
         // get the 'current' live item: the "oldest" in live status, or if none
         // are in live status, the "oldest" in pending status.
-        $filteredItems = array_filter($liveItems, function ($l) { return $l['status'] == LIVEITEM_STATUS_LIVE; });
+        $filteredItems = array_filter($liveItems, fn ($l) => $l['status'] == LIVEITEM_STATUS_LIVE);
         if (empty($filteredItems)) {
-            $filteredItems = array_filter(
-                $liveItems,
-                function ($l) { return $l['status'] == LIVEITEM_STATUS_PENDING; }
-            );
+            $filteredItems = array_filter($liveItems, fn ($l) => $l['status'] == LIVEITEM_STATUS_PENDING);
         }
 
         if (!empty($filteredItems)) {
@@ -82,9 +79,7 @@ if (isset($_GET['name'])) {
         $endTime = $now->sub($endTimeInterval);
         $endedLiveItems = array_filter(
             array_slice($endedLiveItems, -$maxEnded, $maxEnded),
-            function ($liveItem) use ($endTime) {
-                return $liveItem['endTime'] >= $endTime;
-            }
+            fn ($liveItem) => $liveItem['endTime'] >= $endTime
         );
 
         // for pending live items, we need the items from the start of the array
@@ -95,9 +90,7 @@ if (isset($_GET['name'])) {
         $pndTime = $now->add($pndTimeInterval);
         $pendingLiveItems = array_filter(
             array_slice($pendingLiveItems, 0, $maxPending),
-            function ($liveItem) use ($pndTime) {
-                return $liveItem['startTime'] <= $pndTime;
-            }
+            fn ($liveItem) => $liveItem['startTime'] <= $pndTime
         );
 
         $ranks = [ LIVEITEM_STATUS_LIVE => 0, LIVEITEM_STATUS_PENDING => 1, LIVEITEM_STATUS_ENDED => 2 ];

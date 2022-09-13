@@ -12,28 +12,13 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-function getEpisodeArray()
-{
-    global $config;
+$episodes = array_map(fn ($e) => $e['episode'], findEpisodes($config, null, '', true));
 
-    $episodeFiles = findEpisodes($config, null, '', true);
-    $episodes = array_map(
-        function ($i) {
-            return $i['episode'];
-        },
-        $episodeFiles
-    );
+// sort into descending order, as future and recent episodes are most likely to
+// be edited
+usort($episodes, fn ($a, $b) => $a['filemtime'] <=> $b['filemtime']);
+$episodes = array_reverse($episodes);
 
-    // sorts into descending order, as future and recent episodes are most
-    // likely to be edited
-    usort($episodes, function ($a, $b) {
-        return $a['filemtime'] <=> $b['filemtime'];
-    });
-    return array_reverse($episodes);
-}
-
-
-$episodes = getEpisodeArray();
 $now = time();
 
 ?>
