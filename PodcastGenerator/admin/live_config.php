@@ -134,12 +134,12 @@ $mimetypes = getSupportedMimeTypes($config, ['audio', 'video']);
                             <?= _('The MIME content type for the above live stream.') ?>
                         </small>
                         <br>
-                        <select id="liveitems_default_mimetype" name="liveitems_default_mimetype" class="form-control">
-                            <?php foreach ($mimetypes as $mime) { ?>
-                                <option value="<?= $mime ?>" <?= selectedAttr($config['liveitems_default_mimetype'], $mime) ?>>
-                                    <?= $mime ?>
-                                </option>
-                            <?php } ?>
+                        <?php htmlOptionSelect(
+                            'liveitems_default_mimetype',
+                            $config['liveitems_default_mimetype'],
+                            $mimetypes,
+                            'form-control'
+                        ); ?>
                         </select>
                     </div>
                 </div>
