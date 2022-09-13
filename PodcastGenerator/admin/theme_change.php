@@ -12,23 +12,15 @@ require '../core/include_admin.php';
 
 // Get all themes
 $themes = array_map(
-    function ($item) {
-        return (object) [
-            'path' => substr($item, 3) . '/',
-            'json' => json_decode(file_get_contents($item . '/theme.json'))
-        ];
-    },
+    fn ($item) => (object) [
+        'path' => substr($item, 3) . '/',
+        'json' => json_decode(file_get_contents($item . '/theme.json'))
+    ],
     glob('../themes/*', GLOB_ONLYDIR)
 );
 
 // Check if the theme is compatible
-$themes = array_filter(
-    $themes,
-    function ($item) {
-        global $version;
-        return in_array(strval($version), $item->json->pg_versions);
-    }
-);
+$themes = array_filter($themes, fn ($t) => in_array(strval($version), $t->json->pg_versions));
 
 if (isset($_GET['change'])) {
     checkToken();

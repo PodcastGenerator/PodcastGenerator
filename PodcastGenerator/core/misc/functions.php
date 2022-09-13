@@ -11,6 +11,8 @@
 
 require_once(__DIR__ . '/../../vendor/autoload.php');
 
+use PodcastGenerator\Configuration;
+
 function getmime($filename)
 {
     // Check if file is even readable
@@ -115,4 +117,56 @@ function makeUniqueFilename($path)
         $realpath = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '_' . $appendix . '.' . $pathinfo['extension'];
     }
     return $realpath;
+}
+
+function getSupportedMediaFileTypes(Configuration $config, array $typeFilter = null): array
+{
+    $hasFilter = !empty($typeFilter);
+
+    $supportedMediaXml = simplexml_load_file($config['absoluteurl'] . 'components/supported_media/supported_media.xml');
+
+    $supportedFiles = array();
+    foreach ($supportedMediaXml->mediaFile as $mediaFile) {
+        if ($hasFilter) {
+            $mimetype = (string) $mediaFile->mimetype;
+            $type = explode('/', $mimetype, 2)[0];
+
+            $matched = false;
+            foreach ($typeFilter as $filter) {
+                if ($filter == $mimetype || $filter == $type) {
+                    $matched = true;
+                    break;
+                }
+            }
+            if (!$matched) {
+                continue;
+            }
+        }
+
+        $supportedFiles[] = [
+            'mimetype' => (string) $mediaFile->mimetype,
+            'extension' => (string) $mediaFile->extension
+        ];
+    }
+    return $supportedFiles;
+}
+
+function getSupportedMimeTypes(Configuration $config, array $typeFilter = null): array
+{
+    return array_unique(
+        array_map(
+            fn ($mf) => $mf['mimetype'],
+            getSupportedMediaFileTypes($config, $typeFilter)
+        )
+    );
+}
+
+function getSupportedFileExtensions(Configuration $config, array $typeFilter = null): array
+{
+    return array_unique(
+        array_map(
+            fn ($mf) => $mf['extension'],
+            getSupportedMediaFileTypes($config, $typeFilter)
+        )
+    );
 }

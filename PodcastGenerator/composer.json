@@ -34,7 +34,8 @@
     },
     "autoload": {
         "classmap": [
-            "core/"
+            "core/",
+            "admin/models"
         ]
     },
     "autoload-dev": {
@@ -49,17 +50,21 @@
         "ext-simplexml": "*",
         "composer/installers": "~1.9.0",
         "james-heinrich/getid3": "~1.9.19",
-        "podcastindex/podcastindex-php": "~1.0"
+        "podcastindex/podcastindex-php": "~1.0",
+        "lootils/uuid": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
         "squizlabs/php_codesniffer": "^3.6",
         "phpunit/phpunit": "^9.5",
-        "phpunit/php-code-coverage": "^9.2"
+        "phpunit/php-code-coverage": "^9.2",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
     },
     "config": {
         "allow-plugins": {
-            "composer/installers": true
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "scripts": {

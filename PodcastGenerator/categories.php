@@ -54,6 +54,8 @@ $size = _('Size');
 $duration = _('Duration');
 $categories = _('Categories');
 
+$livestream = !empty($config['liveitems_name']) ? $config['liveitems_name'] : _('Live Stream');
+
 $buttons = getButtons('./');
 
 require $config['theme_path'] . 'categories.php';

@@ -14,6 +14,11 @@
                         <a class="nav-link" href="categories.php"><?= $categories ?></a>
                     </li>
                 <?php } ?>
+                <?php if (strtolower($config['liveitems_enabled']) == 'yes') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="live.php"><?= $livestream ?></a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="admin/" target="_blank">Admin</a>
                 </li>

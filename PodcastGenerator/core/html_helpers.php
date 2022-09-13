@@ -17,6 +17,11 @@ function checkedAttr($val, $state)
     return '';
 }
 
+function selectedAttr($val, $state)
+{
+    return $val == $state ? 'selected' : '';
+}
+
 function displayBlockCss($val)
 {
     return 'display: ' . ($val == 'yes' ? 'block' : 'none') . ';';
@@ -25,14 +30,29 @@ function displayBlockCss($val)
 function htmlOptionRadios($name, $value, $options)
 {
     foreach ($options as $opt) {
+        $id = $name . '_' . $opt['value'];
         $checked = ($value == $opt['value']) ? ' checked' : '';
         ?>
-            <label>
-                <input type="radio" name="<?= $name ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
-                <?= $opt['label'] ?>
-            </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="<?= $name ?>" id="<?= $id ?>" value="<?= $opt['value'] ?>"<?= $checked ?>>
+                <label class="form-check-label" for="<?= $id ?>"><?= $opt['label'] ?></label>
+            </div>
         <?php
     }
+}
+
+function htmlOptionSelect($name, $value, $options, $selectCssClass = null)
+{
+    ?>
+        <select name="<?= $name ?>" id="<?= $name ?>" class="<?= $selectCssClass ?>">
+    <?php
+    foreach ($options as $opt) {
+        $selected = ($value == $opt['value']) ? ' selected' : '';
+        ?>
+            <option value="<?= $opt['value'] ?>"<?= $selected ?>><?= $opt['label'] ?></option>
+        <?php
+    }
+    ?></select><?php
 }
 
 $yesNoOptions = array(

@@ -10,6 +10,10 @@
     <!-- Ignore 3rd party JS and CSS in themes -->
     <exclude-pattern>js/(bootstrap|jquery|popper)(\.min)?\.js$</exclude-pattern>
     <exclude-pattern>style/(bootstrap|font-awesome)(\.min)?\.css$</exclude-pattern>
+    <exclude-pattern>core/bootstrap/*</exclude-pattern>
+
+    <!-- Ignore test coverage reports, if they're present -->
+    <exclude-pattern>tests/coverage/*</exclude-pattern>
 
     <!-- Use PSR-12 code standard rules - https://www.php-fig.org/psr/psr-12/ -->
     <rule ref="PSR12">
@@ -23,4 +27,8 @@
     <rule ref="Generic.Files.LineEndings">
         <exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
     </rule>
+
+    <!-- Run against the PHPCompatibility ruleset -->
+    <rule ref="PHPCompatibility"/>
+    <config name="testVersion" value="8.0" />
 </ruleset>

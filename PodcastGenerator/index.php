@@ -68,5 +68,7 @@ if (count($episodes) > 0) {
 $search = _('Search');
 $categories = _('Categories');
 
+$livestream = !empty($config['liveitems_name']) ? $config['liveitems_name'] : _('Live Stream');
+
 $buttons = getButtons('./');
 require $config['theme_path'] . "index.php";

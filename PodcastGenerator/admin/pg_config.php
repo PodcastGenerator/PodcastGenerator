@@ -113,6 +113,14 @@ $episodeSortOrderOptions = array(
             <br>
             <hr>
 
+            <?= _('Enable live items') ?>:<br>
+            <small>
+                <?= _('Enable the ability to include live stream info on your site and in the RSS feed.') ?>
+            </small><br>
+            <?php htmlOptionRadios('liveitems_enabled', $config['liveitems_enabled'], $yesNoOptions); ?>
+            <br>
+            <hr>
+
             <?= _('Enable custom tag input') ?>:<br>
             <small>
                 <?= _('Enable the ability to add custom RSS tags to your podcast feed and individual episodes.') ?>

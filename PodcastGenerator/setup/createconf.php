@@ -146,6 +146,25 @@ function createconf($username, $password)
 
 \$websub_server = \"https://pubsubhubbub.appspot.com/\";
 
+#####################
+# Live Items
+
+\$liveitems_enabled = 'yes';
+
+\$liveitems_default_stream = '';
+
+\$liveitems_default_mimetype = '';
+
+\$liveitems_max_pending = 2;
+
+\$liveitems_latest_pending = 14;
+
+\$liveitems_max_ended = 1;
+
+\$liveitems_earliest_ended = 7;
+
+\$livefile = 'live.php';    // Path of the live index file
+
 // END OF CONFIG
 ";
     $f = fopen("../config.php", 'w');
