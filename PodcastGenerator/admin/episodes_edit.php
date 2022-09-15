@@ -101,7 +101,7 @@ if (!isset($model) || $model == null) {
 
 $viewMeta = (object) [
     'title' => _('Edit Episode'),
-    'action' => 'episode_edit.php?name=' . htmlspecialchars($model->name()),
+    'action' => 'episodes_edit.php?name=' . htmlspecialchars($model->name()),
     'success' => $success,
     'error' => isset($error) ? $error : null,
     'newItem' => false,
