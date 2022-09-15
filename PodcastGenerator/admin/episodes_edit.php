@@ -46,7 +46,7 @@ if (isset($_GET['delete'])) {
 
     header('Location: ' . $config['url'] . $config['indexfile']);
     die();
-} else if (count($_POST) > 0) {
+} elseif (count($_POST) > 0) {
     // Edit episode
     checkToken();
 

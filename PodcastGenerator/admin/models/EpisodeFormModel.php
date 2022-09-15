@@ -75,8 +75,7 @@ class EpisodeFormModel extends FormModelBase
     {
         $this->filemtime = $filemtime;
 
-        if ($this->filemtime != null)
-        {
+        if ($this->filemtime != null) {
             $this->date = date(self::DATE_FORMAT, $this->filemtime);
             $this->time = date(self::TIME_FORMAT, $this->filemtime);
         } else {
@@ -433,7 +432,8 @@ class EpisodeFormModel extends FormModelBase
 
         $coverFile = makeEpisodeFilename(
             $imagesDir,
-            $this->date, pathinfo($mediaFile, PATHINFO_FILENAME) . '.' . $coverExt
+            $this->date,
+            pathinfo($mediaFile, PATHINFO_FILENAME) . '.' . $coverExt
         );
 
         if (!file_put_contents($coverFile, $coverInfo['data'])) {
