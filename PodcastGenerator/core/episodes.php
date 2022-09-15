@@ -218,6 +218,8 @@ function saveEpisode($episode, $filePath)
         $writer->endElement();
     }
 
+    $writer->writeElement('episodeType', $episode['episode']['episodeType']);
+
     $writer->endElement(); // episode
     $writer->endElement(); // PodcastGenerator
     $writer->endDocument();
@@ -258,6 +260,7 @@ function arrayEpisode($item, $episode, $_config)
                 'frequency' => $item->fileInfoPG->frequency
             ],
             'customTagsPG' => $item->customTagsPG,
+            'episodeType' => $item->episodeType,
             'filename' => $episode,
             'fileid' => pathinfo($episode, PATHINFO_FILENAME),
             'filemtime' => $filemtime,

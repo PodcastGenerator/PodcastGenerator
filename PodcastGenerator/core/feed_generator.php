@@ -122,6 +122,11 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
 
     $writer->writeElementNs('itunes', 'explicit', null, $file['data']->episode->explicitPG);
 
+    $episodeType = (string) $file['data']->episode->episodeType;
+    if (!empty($episodeType)) {
+        $writer->writeElementNs('itunes', 'episodeType', null, $episodeType);
+    }
+
     // If image is set
     if ($has_cover) {
         $writer->startElementNs('itunes', 'image', null);

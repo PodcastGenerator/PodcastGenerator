@@ -163,6 +163,12 @@ function episode_edit_form(
                         <span class="invalid-feedback"><?= $model->validationFor('explicit') ?></span>
                         <br>
                     </div>
+                    <div class="form-row form-group">
+                        <label class="req" style="width:100%"><?= _('Episode Type') ?>:</label>
+                        <?php htmlOptionRadios('episodetype', $model->episodeType, EpisodeFormModel::$epTypeOptions); ?>
+                        <span class="invalid-feedback"><?= $model->validationFor('episodetype') ?></span>
+                        <br>
+                    </div>
                     <div class="form-row">
                         <div class="col-12"><label><?= _('Author') ?>:</label></div>
                         <div class="col-12 form-group">

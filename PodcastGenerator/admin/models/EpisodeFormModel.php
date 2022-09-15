@@ -31,6 +31,8 @@ class EpisodeFormModel extends FormModelBase
 
     public static array $yesNoOptions;
 
+    public static array $epTypeOptions;
+
     public static function initialize(Configuration $config)
     {
         self::$config = $config;
@@ -44,6 +46,13 @@ class EpisodeFormModel extends FormModelBase
 
         global $yesNoOptions;
         self::$yesNoOptions = $yesNoOptions;
+
+        self::$epTypeOptions = [
+            ['value' => 'full', 'label' => _('Full episode')],
+            ['value' => 'trailer', 'label' => _('Trailer')],
+            ['value' => 'bonus', 'label' => _('Bonus content')],
+            ['value' => '', 'label' => _('Don\'t specify')]
+        ];
     }
 
     private ?string $name = null;
@@ -99,6 +108,8 @@ class EpisodeFormModel extends FormModelBase
 
     public ?string $customtags = null;
 
+    public string $episodeType = 'full';
+
     private function __construct(?string $name)
     {
         $this->name = $name;
@@ -142,6 +153,8 @@ class EpisodeFormModel extends FormModelBase
         $model->authoremail = $POST['authoremail'];
 
         $model->customtags = $POST['customtags'];
+
+        $model->episodeType = $POST['episodetype'];
 
         if (!empty($model->date) && !empty($model->time)) {
             $filemtime = strtotime($model->date . ' ' . $model->time);
@@ -192,6 +205,8 @@ class EpisodeFormModel extends FormModelBase
         $model->authoremail = (string) $episode['episode']['authorPG']['emailPG'];
 
         $model->customtags = (string) $episode['episode']['customTagsPG'];
+
+        $model->episodeType = (string) $episode['episode']['episodeType'];
 
         return $model;
     }
@@ -282,6 +297,10 @@ class EpisodeFormModel extends FormModelBase
             $this->addValidationError('customtags', _('Custom tags are not well-formed'));
         }
 
+        if (!empty($this->episodetype) && !in_array($this->episodetype, ['full', 'trailer', 'bonus'])) {
+            $this->addBadValueValidationError('episodetype', _('Episode Type'));
+        }
+
         return $this->isValid();
     }
 
@@ -319,6 +338,8 @@ class EpisodeFormModel extends FormModelBase
         if (self::$config['customtagsenabled'] == 'yes') {
             $episode['episode']['customTagsPG'] = $this->customtags;
         }
+
+        $episode['episode']['episodeType'] = $this->episodeType;
 
         if ($this->hasNewCoverImage) {
             // push existing cover image into previous covers array
