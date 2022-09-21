@@ -121,6 +121,9 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
     }
 
     $writer->writeElementNs('itunes', 'explicit', null, $file['data']->episode->explicitPG);
+    if (((string) $file['data']->episode->itunesBlock) == 'yes') {
+        $writer->writeElementNs('itunes', 'block', null, 'Yes');
+    }
 
     $episodeType = (string) $file['data']->episode->episodeType;
     if (!empty($episodeType)) {

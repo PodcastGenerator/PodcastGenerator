@@ -110,6 +110,8 @@ class EpisodeFormModel extends FormModelBase
 
     public string $episodeType = 'full';
 
+    public ?string $itunesBlock = null;
+
     private function __construct(?string $name)
     {
         $this->name = $name;
@@ -148,6 +150,7 @@ class EpisodeFormModel extends FormModelBase
 
         $model->itunesKeywords = $POST['itunesKeywords'];
         $model->explicit = $POST['explicit'];
+        $model->itunesBlock = $POST['itunesBlock'];
 
         $model->authorname = $POST['authorname'];
         $model->authoremail = $POST['authoremail'];
@@ -200,6 +203,7 @@ class EpisodeFormModel extends FormModelBase
 
         $model->itunesKeywords = (string) $episode['episode']['keywordsPG'];
         $model->explicit = (string) $episode['episode']['explicitPG'];
+        $model->itunesBlock = (string) $episode['episode']['itunesBlock'];
 
         $model->authorname = (string) $episode['episode']['authorPG']['namePG'];
         $model->authoremail = (string) $episode['episode']['authorPG']['emailPG'];
@@ -293,6 +297,10 @@ class EpisodeFormModel extends FormModelBase
             $this->addBadValueValidationError('explicit', _('Explicit'));
         }
 
+        if (!empty($this->itunesBlock) && !in_array($this->itunesBlock, ['yes', 'no'])) {
+            $this->addBadValueValidationError('itunesBlock', _('Block iTunes'));
+        }
+
         if (self::$config['customtagsenabled'] == 'yes' && !isWellFormedXml($this->customtags)) {
             $this->addValidationError('customtags', _('Custom tags are not well-formed'));
         }
@@ -331,6 +339,7 @@ class EpisodeFormModel extends FormModelBase
 
         $episode['episode']['keywordsPG'] = $this->itunesKeywords;
         $episode['episode']['explicitPG'] = $this->explicit;
+        $episode['episode']['itunesBlock'] = $this->itunesBlock;
 
         $episode['episode']['authorPG']['namePG'] = $this->authorname;
         $episode['episode']['authorPG']['emailPG'] = $this->authoremail;
