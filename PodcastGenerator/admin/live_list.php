@@ -19,7 +19,7 @@ $statusColors = [
     LIVEITEM_STATUS_ENDED => 'green'
 ];
 
-$liveItems = getLiveItems();
+$liveItems = getLiveItems($config);
 
 // sort descending, as future and recent episodes are most likely to be edited
 usort($liveItems, fn ($a, $b) => $a['filemtime'] <=> $b['filemtime']);
