@@ -498,6 +498,7 @@ function indexEpisodes($_config)
                 <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
                 <frequency>' . $frequency . '</frequency>
             </fileInfoPG>
+            <episodeType></episodeType>
         </episode>
 </PodcastGenerator>';
 
