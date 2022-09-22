@@ -1,0 +1,8 @@
+parameters:
+  level: 5
+  paths:
+    - PodcastGenerator
+    - tests
+  excludePaths:
+    analyse:
+      - PodcastGenerator/vendor
