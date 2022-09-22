@@ -48,7 +48,7 @@ function pingWebSub()
         error_log($e, 0);
         return false;
     } finally {
-        if ($handle) {
+        if ($handle != null) {
             curl_close($handle);
         }
     }
