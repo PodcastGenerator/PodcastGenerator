@@ -7,6 +7,7 @@
         "neilbrayfield.php-docblocker",
         "mehedidracula.php-namespace-resolver",
         "obliviousharmony.vscode-php-codesniffer",
-        "recca0120.vscode-phpunit"
+        "recca0120.vscode-phpunit",
+        "sanderronde.phpstan-vscode"
     ]
 }
