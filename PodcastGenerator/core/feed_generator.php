@@ -101,7 +101,7 @@ function write_episode_item(\XMLWriter $writer, $file, $feedContext)
 
     $writer->startElement('enclosure');
     $writer->writeAttribute('url', $enclosureUrl);
-    $writer->writeAttribute('length', filesize($feedContext->uploadDir . $file['filename']));
+    $writer->writeAttribute('length', (string) filesize($feedContext->uploadDir . $file['filename']));
     $writer->writeAttribute('type', $mimetype);
     $writer->fullEndElement();
 
@@ -270,7 +270,7 @@ function generateRssFeed($_config, $category = null)
 
     $writer = new \XMLWriter();
     $writer->openMemory();
-    $writer->setIndent(1);
+    $writer->setIndent(true);
     $writer->setIndentString("\t");
 
     // Set the feed header with relevant podcast informations
