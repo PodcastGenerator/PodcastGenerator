@@ -28,7 +28,7 @@ define('LIVEITEM_STATUS_ENDED', 'ended');
  *
  * @param string   $directory The path of the directory where the file will be
  *                            saved.
- * @param DateTime $datetime  The original start date/time of the live stream.
+ * @param DateTime $date      The original start date/time of the live stream.
  * @param string   $title     The original title of the live item to be saved.
  * @param string   $ext       File extension to use (defaults to 'xml').
  * @return string             The file name and path to use for saving the file.
