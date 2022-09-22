@@ -18,7 +18,7 @@ if ($config['podcastPassword'] != "") {
 }
 
 header('Content-Type: application/xml');
-sleep(0.01);
+usleep(10000);
 
 if (isset($_GET['cat'])) {
     $xml = generateRssFeed($config, $_GET['cat']);
