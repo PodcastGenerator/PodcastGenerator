@@ -89,7 +89,7 @@ $catsPageBaseLink = $config['url'] . 'categories.php?cat=';
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="submit" value="<?= _('Add') ?>" class="btn btn-success"><br><br>
         </form>
-        <h3><?php _('Current Categories'); ?></h3>
+        <h3><?= _('Current Categories') ?></h3>
         <?php foreach ($cats_xml as $item) { ?>
             <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->id) ?>" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
