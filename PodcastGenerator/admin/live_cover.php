@@ -14,7 +14,7 @@ require '../core/include_admin.php';
 if (isset($_GET['remove'])) {
     checkToken();
 
-    if (!$config->set('liveitem_default_cover', basename($filename), true)) {
+    if (!$config->set('liveitem_default_cover', '', true)) {
         $error = _('Could not save configuration change for default live item cover');
         goto error;
     }
