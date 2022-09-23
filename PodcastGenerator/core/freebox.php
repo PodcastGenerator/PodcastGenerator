@@ -17,7 +17,7 @@ function getFreebox($path = null)
     return file_get_contents($path . 'freebox-content.txt');
 }
 
-function updateFreebox($path = null, $content)
+function updateFreebox($content, $path = null)
 {
     return file_put_contents($path . 'freebox-content.txt', $content);
 }

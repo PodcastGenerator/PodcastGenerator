@@ -25,7 +25,7 @@ if (isset($_GET['enable'])) {
 
 if (isset($_GET['change'])) {
     checkToken();
-    updateFreebox('../', $_POST['content']);
+    updateFreebox($_POST['content'], '../');
     header('Location: theme_freebox.php');
     die();
 }
