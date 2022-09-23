@@ -17,7 +17,7 @@ if (isset($_GET['name'])) {
                 header('Location: ' . $item->href);
                 die();
             } else {
-                header('Location: ' . $item->protocol . '://' . str_replace('http://', '', str_replace('https://', '', $config['url'])) . $item->href);
+                header('Location: ' . $item->protocol . '://' . str_replace(['http://', 'https://'], '', $config['url']) . $item->href);
                 die();
             }
         }
