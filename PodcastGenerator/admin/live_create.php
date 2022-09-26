@@ -49,7 +49,7 @@ if (count($_POST) > 0) {
         ];
 
         // populate our live item object and save
-        $model->apply($liveItem);
+        $model->applyChanges($liveItem);
         saveLiveItem($liveItem, $targetfile);
         generateRSS();
         pingServices();
