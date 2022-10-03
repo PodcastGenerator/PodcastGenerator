@@ -25,7 +25,9 @@
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action" href="categories.php?cat=all"><?= _('All Episodes') ?></a>
                         <?php foreach ($categories_arr as $key => $value) { ?>
-                            <a class='list-group-item list-group-item-action' href="categories.php?cat=<?= $key ?>"><?= $value ?></a>
+                            <a class='list-group-item list-group-item-action' href="categories.php?cat=<?= $key ?>">
+                                <?= htmlspecialchars($value) ?>
+                            </a>
                         <?php } ?>
                     </div>
                 </div>
