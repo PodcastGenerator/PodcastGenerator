@@ -37,8 +37,10 @@ ksort($categories_arr);
 $episodes = null;
 if (isset($_GET['cat'])) {
     $episodes = findEpisodes($config, $_GET['cat'], '', false);
+    $episode_chunk = array_values($episodes); // needs reindexing for template
+} else {
+    $episode_chunk = null;
 }
-$episode_chunk = $episodes;
 
 // Backwards comp
 $link = str_replace('?', '', $config['link']);
