@@ -37,6 +37,16 @@ if ($correctepisode["episode"]["imgPG"] != "") {
 } else {
     $coverimage = $config["url"] . $config["img_dir"] . $config['podcast_cover'];
 }
+
+$cats = [];
+if ($config['categoriesenabled'] == 'yes') {
+    foreach ($correctepisode['episode']['categoriesPG'] as $k => $cat) {
+        $cat = (string) $cat; // it may be SimpleXMLElement, cast it
+        if (!empty($cat) && array_key_exists($cat, $categories_arr)) {
+            $cats[] = $cat;
+        }
+    }
+}
 ?>
 
 <div class="col-lg-12">
@@ -70,6 +80,19 @@ if ($correctepisode["episode"]["imgPG"] != "") {
                     <?php } ?>
                 </div>
             </div>
+
+            <?php if (!empty($cats)) { ?>
+                <div class="card-footer w-100">
+                    <div class="card-text">
+                        <small><?= $categories ?>:</small>
+                        <?php foreach ($cats as $cat) { ?>
+                            <a href="categories.php?cat=<?= $cat ?>" class="badge badge-pill badge-secondary">
+                                <?= $categories_arr[$cat]->name ?>
+                            </a>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
 
             <div style="background-color: #f1f3f4;" class="card-footer w-100">
                 <?php if (strtolower($config["enablestreaming"]) == "yes") { ?>
