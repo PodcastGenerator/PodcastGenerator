@@ -49,6 +49,12 @@ if (count($episodes) > 0) {
         $episode_chunk = $splitted_episodes[0];
     }
 
+    $categoryManager = new PodcastGenerator\CategoryManager('categories.xml');
+    $categories_arr = [];
+    foreach ($categoryManager->getCategories() as $category) {
+        $categories_arr[$category->slug] = $category;
+    }
+
     // Some translation strings
     $more = _('More');
     $download = _('Download');
