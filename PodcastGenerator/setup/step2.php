@@ -13,47 +13,47 @@ if (!isset($_SESSION)) {
 }
 
 // Dirs
-$media = "../media/";
-$images = "../images/";
-$scripts = "../";
-
-$media_write = false;
-$images_write = false;
-$scripts_write = false;
-
-$testfile = "test.txt";
+$rootdir = dirname(__DIR__);
+$dirs = [
+    'Media' => ['path' => $rootdir . '/media', 'exists' => false, 'writable' => false],
+    'Images' => ['path' => $rootdir . '/images', 'exists' => false, 'writable' => false],
+    'Scripts' => ['path' => $rootdir /* index.php dir */, 'exists' => false, 'writable' => false]
+];
 
 // Creating all testfiles
-// TODO Loop this and put the strings in arrays
-// Checking media
-$f = fopen($media . $testfile, 'w');
-fwrite($f, "test");
-fclose($f);
+foreach ($dirs as $name => $props) {
+    $path = $props['path'];
+    $exists = file_exists($path) && is_dir($path);
+    $props['exists'] = $exists;
 
-// Now create test file for images
-$f = fopen($images . $testfile, 'w');
-fwrite($f, "test");
-fclose($f);
+    if (!$exists) {
+        continue; // no point trying write test
+    }
 
-// Now do this with the root
-$f = fopen($scripts . $testfile, 'w');
-fwrite($f, "test");
-fclose($f);
+    $testfile = $path . '/test.txt';
 
-// Now verify if the files actually exists
-if (file_exists($media . $testfile)) {
-    unlink($media . $testfile);
-    $media_write = true;
+    $f = fopen($testfile, 'w');
+    if ($f === false) {
+        // if we can't open a file handle for write, we can't write in this dir
+        $props['writable'] = false;
+        continue;
+    }
+
+    // write some test content and close the handle
+    fwrite($f, 'test');
+    fclose($f);
+
+    // verify that the test file exists
+    if (file_exists($testfile)) {
+        unlink($testfile);
+        $props['writable'] = true;
+    }
 }
 
-if (file_exists($images . $testfile)) {
-    unlink($images . $testfile);
-    $images_write = true;
-}
-
-if (file_exists($scripts . $testfile)) {
-    unlink($scripts . $testfile);
-    $scripts_write = true;
+// are all directories writable?
+$all_writable = true;
+foreach ($dirs as $name => $props) {
+    $all_writable |= $props['writable'];
 }
 
 function textColor($success)
@@ -79,18 +79,24 @@ function isIsNot($success)
         <div class="align-items-center justify-content-md-center p-3 row vh-100">
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 bg-white p-4 shadow">
                 <h2>Podcast Generator - <small>Step 2</small></h2>
-                <p><small>We are now checking if our data directories are writable so you can actual store the data.</small></p>
-                <p style="color: <?= textColor($media_write) ?>">Media <?= isIsNot($media_write) ?> writable</p>
-                <p style="color: <?= textColor($images_write) ?>">Images <?= isIsNot($images_write) ?> writable</p>
-                <p style="color: <?= textColor($scripts_write) ?>">Scripts <?= isIsNot($scripts_write) ?> writable</p>
-                <?php if (!$media_write || !$images_write || !$scripts_write) { /* Try to adjust file permissions */ ?>
-                    <p>Try to adjust file permissions</p>
-                    <?php
-                        chmod($media, 0777);
-                        chmod($images, 0777);
-                        chmod($scripts, 0777);
-                    ?>
-                    <strong><p style="color: red;">Please <a href="step2.php">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>
+                <p><small>We are now checking if our data directories are writable so you can actually store the data.</small></p>
+                <?php foreach ($dirs as $name => $props) { ?>
+                    <p style="color: <?= textColor($props['writable']) ?>">
+                        <span title="<?= $props['path'] ?>"><?= $name ?></span>
+                        <?= isIsNot($props['writable']) ?> writable
+                    </p>
+                <?php } ?>
+                <?php if (!$all_writable) { /* Try to adjust file permissions */ ?>
+                    <p>Trying to adjust file permissions...</p>
+                    <?php foreach ($dirs as $name => $props) { ?>
+                        <ul>
+                            <li>
+                                <span title="<?= $props['path'] ?>"><?= $name ?></span>:
+                                <?= chmod($props['path'], 0777) ? 'success' : 'failure' ?>
+                            </li>
+                        </ul>
+                    <?php } ?>
+                    <p style="color: red;"><strong>Please <a href="step2.php">reload</a> this page, if you still see this message you will need to adjust the permissions manually</strong></p>
                 <?php } else { ?>
                     <a href="step3.php" class="btn btn-success btn-block">Continue</a>
                 <?php } ?>
