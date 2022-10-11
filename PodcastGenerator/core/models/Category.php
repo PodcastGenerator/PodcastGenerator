@@ -11,7 +11,9 @@
 
 namespace PodcastGenerator\Models;
 
+// phpcs:disable
 require_once(__DIR__ . '/../misc/functions.php');
+// phpcs:enable
 
 /**
  * Represents a category for organizing episodes of the podcast.
@@ -19,7 +21,7 @@ require_once(__DIR__ . '/../misc/functions.php');
 class Category
 {
     /** Characters that are not permitted in category slugs. */
-    const BAD_ID_CHARS = [' ', '&', '"', '\'', '<', '>', '%', '*', '#'];
+    public const BAD_ID_CHARS = [' ', '&', '"', '\'', '<', '>', '%', '*', '#'];
 
     /**
      * The text slug used for referencing the category in URLs.

@@ -173,7 +173,7 @@ function getSupportedFileExtensions(Configuration $config, array $typeFilter = n
 
 function str_contains_any(string $haystack, array $needles): bool
 {
-    foreach($needles as $needle) {
+    foreach ($needles as $needle) {
         if (str_contains($haystack, $needle)) {
             return true;
         }

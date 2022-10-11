@@ -11,10 +11,12 @@
 
 namespace PodcastGenerator;
 
+// phpcs:disable
 require_once(__DIR__ . '/models/Category.php');
+// phpcs:enable
 
-use \Exception;
-use \SimpleXMLElement;
+use Exception;
+use SimpleXMLElement;
 use PodcastGenerator\Models\Category;
 
 /**
@@ -31,15 +33,15 @@ class CategoryManager
         $this->xml = simplexml_load_file($path);
     }
 
-    private static function map_from_xml(\SimpleXMLElement $element): Category
+    private static function mapFromXml(\SimpleXMLElement $element): Category
     {
         return new Category((string) $element->id, (string) $element->description);
     }
 
-    public function getCategories(): Iterable
+    public function getCategories(): iterable
     {
         foreach ($this->xml as $item) {
-            yield self::map_from_xml($item);
+            yield self::mapFromXml($item);
         }
     }
 
