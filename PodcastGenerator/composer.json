@@ -68,6 +68,6 @@
         }
     },
     "scripts": {
-        "test": "phpunit --testdox --coverage-clover ../tests/coverage/clover.xml --coverage-filter ./core ../tests"
+        "test": "phpunit --testdox --coverage-clover ../test-results/clover.xml --coverage-filter ./core ../tests"
     }
 }
