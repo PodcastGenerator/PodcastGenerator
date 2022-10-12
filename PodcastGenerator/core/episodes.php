@@ -193,6 +193,7 @@ function saveEpisode($episode, $filePath)
 
     $writer->writeElement('keywordsPG', $episode['episode']['keywordsPG']);
     $writer->writeElement('explicitPG', $episode['episode']['explicitPG']);
+    $writer->writeElement('itunesBlock', $episode['episode']['itunesBlock']);
 
     $writer->startElement('authorPG');
     $writer->writeElement('namePG', $episode['episode']['authorPG']['namePG']);
@@ -217,6 +218,8 @@ function saveEpisode($episode, $filePath)
         }
         $writer->endElement();
     }
+
+    $writer->writeElement('episodeType', $episode['episode']['episodeType']);
 
     $writer->endElement(); // episode
     $writer->endElement(); // PodcastGenerator
@@ -247,6 +250,7 @@ function arrayEpisode($item, $episode, $_config)
             ],
             'keywordsPG' => $item->keywordsPG,
             'explicitPG' => $item->explicitPG,
+            'itunesBlock' => $item->itunesBlock,
             'authorPG' => [
                 'namePG' => $item->authorPG->namePG,
                 'emailPG' => $item->authorPG->emailPG
@@ -258,6 +262,7 @@ function arrayEpisode($item, $episode, $_config)
                 'frequency' => $item->fileInfoPG->frequency
             ],
             'customTagsPG' => $item->customTagsPG,
+            'episodeType' => $item->episodeType,
             'filename' => $episode,
             'fileid' => pathinfo($episode, PATHINFO_FILENAME),
             'filemtime' => $filemtime,
@@ -485,6 +490,7 @@ function indexEpisodes($_config)
             </categoriesPG>
             <keywordsPG></keywordsPG>
             <explicitPG>' . htmlspecialchars($_config['explicit_podcast']) . '</explicitPG>
+            <itunesBlock></itunesBlock>
             <authorPG>
                 <namePG>' . $author_name . '</namePG>
                 <emailPG></emailPG>
@@ -495,6 +501,7 @@ function indexEpisodes($_config)
                 <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
                 <frequency>' . $frequency . '</frequency>
             </fileInfoPG>
+            <episodeType></episodeType>
         </episode>
 </PodcastGenerator>';
 
