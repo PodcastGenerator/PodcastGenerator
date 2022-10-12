@@ -9,7 +9,7 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-require_once(__DIR__ . '/../../vendor/autoload.php');
+require_once(__DIR__ . '/../../vendor/autoload.php'); // @codeCoverageIgnore
 
 use PodcastGenerator\Configuration;
 
