@@ -68,6 +68,7 @@
         }
     },
     "scripts": {
-        "test": "phpunit --testdox --log-junit ../test-results/junit.xml --coverage-clover ../test-results/clover.xml --coverage-html ../test-results/coverage --coverage-filter ./core ../tests"
+        "test": "phpunit --testdox --log-junit ../test-results/junit.xml --coverage-clover ../test-results/clover.xml --coverage-html ../test-results/coverage --coverage-filter ./core ../tests",
+        "test-ci": "phpunit --no-interaction --testdox -c ../phpunit.xml.dist ../tests"
     }
 }
