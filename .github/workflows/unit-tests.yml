@@ -30,6 +30,7 @@ jobs:
         with:
           working_dir: PodcastGenerator
           php_version: "8.0"
+          php_extensions: gettext xdebug 
 
       # Run PHPUnit tests
       - name: PHPUnit
