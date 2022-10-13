@@ -44,7 +44,7 @@
         ]
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=8.0",
         "ext-fileinfo": "*",
         "ext-gettext": "*",
         "ext-simplexml": "*",
@@ -65,6 +65,9 @@
         "allow-plugins": {
             "composer/installers": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "8.0"
         }
     },
     "scripts": {
