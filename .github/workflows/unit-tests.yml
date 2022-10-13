@@ -45,6 +45,7 @@ jobs:
           configuration: phpunit.xml.dist
           log_junit: test-results/junit.xml
           memory_limit: 256M
+          args: --no-interaction --testdox
         env:
           XDEBUG_MODE: coverage
 
