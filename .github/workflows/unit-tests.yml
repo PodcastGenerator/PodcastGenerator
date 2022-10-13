@@ -32,11 +32,16 @@ jobs:
           php_version: "8.0"
           php_extensions: gettext xdebug 
 
+      # For some reason output from the phpunt step doesn't overwrite the
+      # output.log from the composer step?
+      - run: rm -f PodcastGenerator/output.log
+
       # Run PHPUnit tests
       - name: PHPUnit
         uses: php-actions/phpunit@v3
         with:
           php_version: "8.0"
+          php_extensions: gettext xdebug 
           configuration: phpunit.xml.dist
           log_junit: test-results/junit.xml
           memory_limit: 256M
