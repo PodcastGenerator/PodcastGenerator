@@ -71,6 +71,14 @@ class ConfigurationTest extends TestCase
         );
     }
 
+    public function testCanGetRealPathOfConfigFile()
+    {
+        $sut = Configuration::load($this->filename);
+        $realPath = realpath($this->filename);
+
+        $this->assertEquals($realPath, $sut->getPath());
+    }
+
     public function testIgnoresLeadingTabsInConfigFile()
     {
         $sut = Configuration::load($this->filename);
