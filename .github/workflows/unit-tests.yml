@@ -51,8 +51,9 @@ jobs:
 
       # Report coverage
       - name: Upload coverage results to Coveralls
+        if: success() || failure()
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
-          php-coveralls --coverage_clover=test-results/clover.xml -v
+          ~/.composer/vendor/bin/php-coveralls --coverage_clover=test-results/clover.xml -v
