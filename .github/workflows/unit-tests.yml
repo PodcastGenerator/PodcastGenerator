@@ -34,8 +34,12 @@ jobs:
           php_extensions: gettext xdebug 
 
       # For some reason output from the phpunt step doesn't overwrite the
-      # output.log from the composer step?
-      - run: rm -f PodcastGenerator/output.log
+      # output.log from the composer step? Also, for some reason phpunit runs as
+      # root, which leads to unwanted permissions for the test-results dir, so
+      # we need to create it ourselves first
+      - run: |
+          rm -f PodcastGenerator/output.log
+          mkdir test-results
 
       # Run PHPUnit tests
       - name: PHPUnit
