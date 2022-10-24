@@ -56,5 +56,4 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
-          touch test-results/coveralls.json
-          ~/.composer/vendor/bin/php-coveralls --coverage_clover=test-results/clover.xml -o=test-results/coveralls.json -v
+          ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml --json_path=test-results/coveralls.json -v
