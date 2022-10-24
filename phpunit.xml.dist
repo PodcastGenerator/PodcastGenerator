@@ -29,12 +29,12 @@
 
         <report>
             <clover outputFile="test-results/clover.xml"/>
-            <html outputDirectory="test-results/coverage"/>
+            <!--html outputDirectory="test-results/coverage"/-->
         </report>
     </coverage>
 
     <logging>
         <junit outputFile="test-results/junit.xml"/>
-        <testdoxHtml outputFile="test-results/testdox.html"/>
+        <!--testdoxHtml outputFile="test-results/testdox.html"/-->
     </logging>
 </phpunit>
