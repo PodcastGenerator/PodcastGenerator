@@ -1,6 +1,8 @@
 name: Build and package Podcast Generator
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
