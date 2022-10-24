@@ -56,7 +56,7 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
-          ~/.composer/vendor/bin/php-coveralls --coverage_clover=$GITHUB_WORKSPACE/test-results/clover.xml --json_path=$GITHUB_WORKSPACE/test-results/coveralls.json -v
+          ~/.composer/vendor/bin/php-coveralls --coverage_clover=$GITHUB_WORKSPACE/test-results/clover.xml --json_path=$RUNNER_TEMP/coveralls.json -v
 
       # Upload test results
       - name: Upload test results as artifact
