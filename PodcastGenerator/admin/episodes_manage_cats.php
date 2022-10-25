@@ -10,55 +10,56 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
+$categories = new PodcastGenerator\CategoryManager('../categories.xml');
+
 // If episode is deleted
 if (isset($_GET['del'])) {
     checkToken();
-    $cats_xml = simplexml_load_file('../categories.xml');
-    // Get index of item
-    foreach ($cats_xml as $item) {
-        if ($item->id == $_GET['del']) {
-            // Delete the actual node
-            $dom = dom_import_simplexml($item);
-            $dom->parentNode->removeChild($dom);
-        }
+
+    $slug = $_GET['del'];
+    $categories->deleteCategoryBySlug($slug);
+
+    if ($categories->saveChanges()) {
+        header('Location: episodes_manage_cats.php');
+        exit();
     }
-    // Write to file
-    $cats_xml->asXML('../categories.xml');
-    header('Location: episodes_manage_cats.php');
+
+    $error = sprintf(_('Could not delete category "%s".'), $slug);
+    goto error;
 }
 // If episode is added
 if (isset($_GET['add'])) {
     checkToken();
-    $cats_xml = simplexml_load_file('../categories.xml');
+
     $description = $_POST['categoryname'];
-    // These chars should be replaced with an underscore
-    $chars_to_replace = [' ', '&', '"', '\'', '<', '>'];
-    $id = $description;
-    for ($i = 0; $i < count($chars_to_replace); $i++) {
-        $id = strtolower(str_replace($chars_to_replace[$i], '_', $id));
+    $category = PodcastGenerator\Models\Category::newFromDescription($description);
+    if ($category === false) {
+        $error = _('Cannot create a category without a name!');
+        goto error;
     }
-    // Check if this episode already exists
-    foreach ($cats_xml as $item) {
-        if ($item->id == $id) {
-            $error = _("Category already exists");
-        }
+
+    if (!$category->isValid()) {
+        $error = sprintf(_('Cannot create category "%s": %s'), $description, _('Invalid data'));
+        goto error;
     }
-    if (!isset($error)) {
-        $cats_xml->addChild('category');
-        // Check for an empty item (which is the last)
-        foreach ($cats_xml as $item) {
-            if (!isset($item->id) && !isset($item->description)) {
-                $item->addChild('id', $id);
-                $item->addChild('description', htmlspecialchars($description));
-                break;
-            }
-        }
+
+    try {
+        $categories->addCategory($category);
+    } catch (Exception $e) {
+        $error = sprintf(_('Cannot create category "%s": %s'), $description, $e->getMessage());
+        goto error;
     }
-    $cats_xml->asXML('../categories.xml');
-    header('Location: episodes_manage_cats.php');
+
+    if ($categories->saveChanges()) {
+        header('Location: episodes_manage_cats.php');
+        exit();
+    }
+
+    $error = sprintf(_('Cannot create category "%s": %s'), $description, _('Failed to save category data'));
+    goto error;
 }
 
-$cats_xml = simplexml_load_file('../categories.xml');
+error:
 
 $catsPageBaseLink = $config['url'] . 'categories.php?cat=';
 
@@ -90,11 +91,11 @@ $catsPageBaseLink = $config['url'] . 'categories.php?cat=';
             <input type="submit" value="<?= _('Add') ?>" class="btn btn-success"><br><br>
         </form>
         <h3><?= _('Current Categories') ?></h3>
-        <?php foreach ($cats_xml as $item) { ?>
-            <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->id) ?>" method="POST">
+        <?php foreach ($categories->getCategories() as $item) { ?>
+            <form action="episodes_manage_cats.php?del=<?= htmlspecialchars($item->slug) ?>" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
-            <a href="<?= htmlspecialchars($catsPageBaseLink . $item->id) ?>">
-                <?= htmlspecialchars($item->description) ?>
+            <a href="<?= htmlspecialchars($catsPageBaseLink . $item->slug) ?>">
+                <?= htmlspecialchars($item->name) ?>
             </a>
             <input class="btn btn-sm btn-danger" type="submit" value="<?= _('Delete') ?>">
             </form>

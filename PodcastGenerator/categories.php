@@ -26,11 +26,12 @@ if ($config['podcastPassword'] != "") {
     }
 }
 
-$categories_xml = simplexml_load_file('categories.xml');
+$categoryManager = new PodcastGenerator\CategoryManager('categories.xml');
+
 $categories_arr = array();
 
-foreach ($categories_xml as $item) {
-    $categories_arr["$item->id"] = "$item->description";
+foreach ($categoryManager->getCategories() as $cat) {
+    $categories_arr[$cat->slug] = $cat->name;
 }
 ksort($categories_arr);
 
