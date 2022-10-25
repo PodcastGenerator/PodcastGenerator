@@ -61,15 +61,10 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
-          echo GITHUB_WORKSPACE = $GITHUB_WORKSPACE
           sed --regexp-extended 's!(name|path)="/app!\1="'$GITHUB_WORKSPACE'!' test-results/clover.xml >test-results/clover.xml.fixed
           ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml.fixed --json_path=test-results/coveralls.json -v
 
       # Upload test results
-      - name: test-results/clover.xml.fixed
-        if: success() || failure()
-        run: cat $GITHUB_WORKSPACE/test-results/clover.xml.fixed
-
       - name: Upload test results as artifact
         if: success() || failure()
         uses: actions/upload-artifact@v2
