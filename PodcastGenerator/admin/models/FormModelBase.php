@@ -129,7 +129,7 @@ abstract class FormModelBase
             throw new Exception('Cannot apply invalid data');
         }
 
-        return $this->apply($object);
+        $this->apply($object);
     }
 
     /**
