@@ -1,4 +1,4 @@
-name: Unit Tests
+name: CI
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [ master ]
 
 jobs:
-  phpunit-tests:
-    name: PHPUnit tests
+  phpunit:
+    name: PHPUnit
     runs-on: ubuntu-latest
 
     steps:
@@ -71,3 +71,47 @@ jobs:
         with:
           name: Test results
           path: test-results
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install Composer dependencies
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys:
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          working_dir: PodcastGenerator
+          php_version: "8.0"
+          php_extensions: gettext xdebug 
+
+      # For some reason output from the phpunt step doesn't overwrite the
+      # output.log from the composer step? Also, for some reason phpunit runs as
+      # root, which leads to unwanted permissions for the test-results dir, so
+      # we need to create it ourselves first
+      - run: |
+          rm -f PodcastGenerator/output.log
+          mkdir test-results
+
+      # Run PHPStan
+      - name: PHPStan
+        uses: php-actions/phpstan@v2
+        with:
+          php_version: "8.0"
+          php_extensions: gettext xdebug 
+          configuration: phpstan.dist.neon
+          memory_limit: 512M
+          args: --no-progress
