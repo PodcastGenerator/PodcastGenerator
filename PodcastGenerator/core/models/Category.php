@@ -12,7 +12,7 @@
 namespace PodcastGenerator\Models;
 
 // phpcs:disable
-require_once(__DIR__ . '/../misc/functions.php');
+require_once(__DIR__ . '/../misc/functions.php'); // @codeCoverageIgnore
 // phpcs:enable
 
 /**
