@@ -21,7 +21,7 @@ class User implements \JsonSerializable
      *
      * @var string
      */
-    private readonly string $username;
+    private string $username;
 
     /**
      * The hash value of the user's password.
