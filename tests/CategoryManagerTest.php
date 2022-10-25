@@ -3,7 +3,7 @@
 namespace PodcastGenerator\Tests;
 
 // phpcs:disable
-require('../PodcastGenerator/vendor/autoload.php');
+require_once(__DIR__ . '/../PodcastGenerator/vendor/autoload.php');
 // phpcs:enable
 
 use PHPUnit\Framework\TestCase;
@@ -12,6 +12,8 @@ use PodcastGenerator\CategoryManager;
 
 /**
  * @covers PodcastGenerator\CategoryManager
+ * @uses PodcastGenerator\Models\Category
+ * @uses ::str_contains_any
  */
 class CategoryManagerTest extends TestCase
 {
