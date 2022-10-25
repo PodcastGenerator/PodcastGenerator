@@ -66,6 +66,10 @@ jobs:
           ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml.fixed --json_path=test-results/coveralls.json -v
 
       # Upload test results
+      - name: test-results/clover.xml.fixed
+        if: success() || failure()
+        run: cat $GITHUB_WORKSPACE/test-results/clover.xml.fixed
+
       - name: Upload test results as artifact
         if: success() || failure()
         uses: actions/upload-artifact@v2
