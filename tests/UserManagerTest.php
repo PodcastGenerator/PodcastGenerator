@@ -3,7 +3,7 @@
 namespace PodcastGenerator\Tests;
 
 // phpcs:disable
-require('../PodcastGenerator/vendor/autoload.php');
+require_once(__DIR__ . '/../PodcastGenerator/vendor/autoload.php');
 // phpcs:enable
 
 use PHPUnit\Framework\TestCase;
@@ -15,6 +15,7 @@ use stdClass;
 
 /**
  * @covers PodcastGenerator\UserManager
+ * @uses PodcastGenerator\Configuration::offsetGet
  * @uses PodcastGenerator\User
  */
 class UserManagerTest extends TestCase

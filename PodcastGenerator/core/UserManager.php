@@ -12,7 +12,7 @@
 namespace PodcastGenerator;
 
 // phpcs:disable
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php'); // @codeCoverageIgnore
 // phpcs:enable
 
 use PodcastGenerator\Configuration;
