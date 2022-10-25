@@ -3,7 +3,7 @@
 namespace PodcastGenerator\Tests;
 
 // phpcs:disable
-require('../PodcastGenerator/vendor/autoload.php');
+require_once(__DIR__ . '/../PodcastGenerator/vendor/autoload.php');
 // phpcs:enable
 
 use PHPUnit\Framework\TestCase;
@@ -69,6 +69,14 @@ class ConfigurationTest extends TestCase
             Configuration::class,
             Configuration::load($this->filename)
         );
+    }
+
+    public function testCanGetRealPathOfConfigFile()
+    {
+        $sut = Configuration::load($this->filename);
+        $realPath = realpath($this->filename);
+
+        $this->assertEquals($realPath, $sut->getPath());
     }
 
     public function testIgnoresLeadingTabsInConfigFile()

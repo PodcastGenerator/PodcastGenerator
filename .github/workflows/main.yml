@@ -1,6 +1,8 @@
 name: Build and package Podcast Generator
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
@@ -31,7 +33,7 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
-      run: composer run-script test
+      run: composer run-script test-ci
       working-directory: PodcastGenerator
 
     - name: Clear out dev dependencies

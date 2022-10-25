@@ -97,11 +97,11 @@ class Configuration implements \ArrayAccess
     }
 
     /**
-     * Gets the path of the site config.php file.
+     * The absolute path of the site config.php file.
      *
      * @var string
      */
-    public readonly string $path;
+    private string $path;
 
     private static array $protectedKeys = array('podcastgen_version', 'absoluteurl');
 
@@ -111,6 +111,16 @@ class Configuration implements \ArrayAccess
     {
         $this->path = realpath($path);
         $this->map = $map;
+    }
+
+    /**
+     * Gets the path of the site config.php file.
+     *
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
     }
 
     /**

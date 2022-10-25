@@ -1,0 +1,73 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  phpunit-tests:
+    name: PHPUnit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install Composer dependencies
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys:
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          working_dir: PodcastGenerator
+          php_version: "8.0"
+          php_extensions: gettext xdebug 
+
+      # For some reason output from the phpunt step doesn't overwrite the
+      # output.log from the composer step? Also, for some reason phpunit runs as
+      # root, which leads to unwanted permissions for the test-results dir, so
+      # we need to create it ourselves first
+      - run: |
+          rm -f PodcastGenerator/output.log
+          mkdir test-results
+
+      # Run PHPUnit tests
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          php_version: "8.0"
+          php_extensions: gettext xdebug 
+          configuration: phpunit.xml.dist
+          log_junit: test-results/junit.xml
+          memory_limit: 256M
+          args: --no-interaction --testdox
+        env:
+          XDEBUG_MODE: coverage
+
+      # Report coverage
+      - name: Upload coverage results to Coveralls
+        if: success() || failure()
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          composer global require php-coveralls/php-coveralls
+          sed --regexp-extended 's!(name|path)="/app!\1="'$GITHUB_WORKSPACE'!' test-results/clover.xml >test-results/clover.xml.fixed
+          ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml.fixed --json_path=test-results/coveralls.json -v
+
+      # Upload test results
+      - name: Upload test results as artifact
+        if: success() || failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test results
+          path: test-results

@@ -44,7 +44,7 @@
         ]
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=8.0",
         "ext-fileinfo": "*",
         "ext-gettext": "*",
         "ext-simplexml": "*",
@@ -65,9 +65,13 @@
         "allow-plugins": {
             "composer/installers": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "8.0"
         }
     },
     "scripts": {
-        "test": "phpunit --testdox --coverage-clover ../tests/coverage/clover.xml --coverage-filter ./core ../tests"
+        "test": "phpunit --testdox --log-junit ../test-results/junit.xml --coverage-clover ../test-results/clover.xml --coverage-html ../test-results/coverage --coverage-filter ./core ../tests",
+        "test-ci": "phpunit --no-interaction --testdox -c ../phpunit.xml.dist ../tests"
     }
 }
