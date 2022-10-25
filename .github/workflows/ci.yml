@@ -114,4 +114,5 @@ jobs:
           php_extensions: gettext xdebug 
           configuration: phpstan.dist.neon
           memory_limit: 512M
+          error_format: github
           args: --no-progress
