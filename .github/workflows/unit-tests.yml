@@ -62,7 +62,7 @@ jobs:
         run: |
           composer global require php-coveralls/php-coveralls
           echo GITHUB_WORKSPACE = $GITHUB_WORKSPACE
-          sed --regexp-extended 's!(name|path)="/app!\1="$GITHUB_WORKSPACE!' test-results/clover.xml >test-results/clover.xml.fixed
+          sed --regexp-extended 's!(name|path)="/app!\1="'$GITHUB_WORKSPACE'!' test-results/clover.xml >test-results/clover.xml.fixed
           ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml.fixed --json_path=test-results/coveralls.json -v
 
       # Upload test results
