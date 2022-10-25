@@ -15,8 +15,9 @@ if (!file_exists('../config.php')) {
     die();
 }
 
-include 'Configuration.php';
 include 'misc/globs.php';
+
+include_once __DIR__ . '/../vendor/autoload.php';
 
 $config = PodcastGenerator\Configuration::load('../config.php');
 if ($config['podcastgen_version'] != $version) {

@@ -32,6 +32,16 @@ for ($i = 0; $i < count($episode_chunk); $i++) {
         $coverimage = $config["url"] . $config["img_dir"] . $item[$i]["episode"]["fileid"] . '.png';
     } else {
         $coverimage = $config["url"] . $config["img_dir"] . $config['podcast_cover'];
+    }
+    
+    $cats = [];
+    if ($config['categoriesenabled'] == 'yes') {
+        foreach ($item[$i]['episode']['categoriesPG'] as $k => $cat) {
+            $cat = (string) $cat; // it may be SimpleXMLElement, cast it
+            if (!empty($cat) && array_key_exists($cat, $categories_arr)) {
+                $cats[] = $cat;
+            }
+        }
     } ?>
 
     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">
@@ -57,6 +67,14 @@ for ($i = 0; $i < count($episode_chunk); $i++) {
                         <?= $duration ?>: <?= $item[$i]["episode"]["fileInfoPG"]["duration"] ?>m
                         <?= $metadata ?>
                     </small>
+                <?php } ?>
+            </div>
+
+            <div class="card-footer">
+                <?php foreach ($cats as $cat) { ?>
+                    <a href="categories.php?cat=<?= $cat ?>" class="badge badge-pill badge-secondary">
+                        <?= $categories_arr[$cat]->name ?>
+                    </a>
                 <?php } ?>
             </div>
 
