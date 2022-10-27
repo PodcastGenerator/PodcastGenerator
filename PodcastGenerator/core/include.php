@@ -15,7 +15,7 @@ include 'misc/globs.php';
 include_once __DIR__ . '/../vendor/autoload.php';
 
 $config = PodcastGenerator\Configuration::load('config.php');
-if ($config['podcastgen_version'] != $version) {
+if ($config['podcastgen_version'] != PG_VERSION) {
     // Backwards compatibility
     include 'backwards.php';
     backwards_3_1_to_3_3($config['absoluteurl']);

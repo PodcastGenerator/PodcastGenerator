@@ -234,8 +234,6 @@ function write_live_item(\XMLWriter $writer, $liveItem, $feedContext)
 
 function generateRssFeed($_config, $category = null)
 {
-    global $version;
-
     $genTime = new DateTimeImmutable();
 
     // We use the media directory a lot, and possibly also the images directory
@@ -284,7 +282,7 @@ function generateRssFeed($_config, $category = null)
     // Set the feed header with relevant podcast informations
 
     $writer->startDocument('1.0', $_config['feed_encoding']);
-    $writer->writeComment(' generator="Podcast Generator ' . $version . '" ');
+    $writer->writeComment(' generator="Podcast Generator ' . PG_VERSION . '" ');
 
     $writer->startElement('rss');
     $writer->writeAttributeNs('xmlns', 'itunes', null, 'http://www.itunes.com/dtds/podcast-1.0.dtd');
@@ -312,7 +310,7 @@ function generateRssFeed($_config, $category = null)
 
     $writer->writeElement('description', $_config['podcast_description']);
 
-    $writer->writeElement('generator', 'Podcast Generator ' . $version . ' - https://www.podcastgenerator.net/');
+    $writer->writeElement('generator', 'Podcast Generator ' . PG_VERSION . ' - https://www.podcastgenerator.net/');
     $writer->writeElement('lastBuildDate', $genTime->format('r'));
     $writer->writeElement('language', $_config['feed_language']);
 

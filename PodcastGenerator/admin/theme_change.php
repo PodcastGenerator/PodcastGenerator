@@ -20,7 +20,7 @@ $themes = array_map(
 );
 
 // Check if the theme is compatible
-$themes = array_filter($themes, fn ($t) => in_array(strval($version), $t->json->pg_versions));
+$themes = array_filter($themes, fn ($t) => in_array(strval(PG_VERSION), $t->json->pg_versions));
 
 if (isset($_GET['change'])) {
     checkToken();

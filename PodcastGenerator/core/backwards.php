@@ -14,7 +14,6 @@ function backwards_3_1_to_3_3($absoluteurl)
     session_start();
     session_destroy();
     global $config;
-    global $version;
 
     $currentVersion = $config['podcastgen_version'];
 
@@ -118,7 +117,7 @@ function backwards_3_1_to_3_3($absoluteurl)
     }
 
     $config_php = "<?php
-\$podcastgen_version = '" . $version . "'; // Version
+\$podcastgen_version = '" . PG_VERSION . "'; // Version
 
 \$first_installation = " . $config['first_installation'] . ";
 

@@ -40,7 +40,7 @@ function createconf($username, $password)
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     $config = "<?php
-\$podcastgen_version = '$version'; // Version
+\$podcastgen_version = '" . PG_VERSION . "'; // Version
 
 \$first_installation = $installtime;
 

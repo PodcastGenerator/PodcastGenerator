@@ -57,7 +57,7 @@ function pingWebSub()
 function pingPodcastIndex()
 {
     // Get the global config
-    global $config, $version;
+    global $config;
 
     // Exit early if Podcast Index isn't set up
     if (!$config['pi_api_key'] || !$config['pi_api_secret'] || !$config['pi_podcast_id']) {
@@ -67,7 +67,7 @@ function pingPodcastIndex()
     // Set up our client
     require_once(__DIR__ . '/../vendor/autoload.php');
     $client = new PodcastIndex\Client([
-        'app' => 'PodcastIndex/' . $version,
+        'app' => 'PodcastGenerator/' . PG_VERSION,
         'key' => $config['pi_api_key'],
         'secret' => $config['pi_api_secret']
     ]);

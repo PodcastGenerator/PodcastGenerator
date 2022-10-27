@@ -39,7 +39,7 @@ if (isset($_GET['edit'])) {
                 require_once(__DIR__ . '/../vendor/autoload.php');
                 try {
                     $client = new PodcastIndex\Client([
-                        'app' => 'PodcastGenerator/' . $version,
+                        'app' => 'PodcastGenerator/' . PG_VERSION,
                         'key' => $config['pi_api_key'],
                         'secret' => $config['pi_api_secret']
                     ]);
