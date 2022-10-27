@@ -58,7 +58,7 @@ for ($i = 0; $i < count($episode_chunk); $i++) {
                 <?php } ?>
 
                 <a class="btn btn-outline-primary btn-sm" href="<?= $config['indexfile'] . '?' . $link . '=' . $item[$i]["episode"]["filename"] ?>"><?= $more ?></a>
-                <a class="btn btn-outline-success btn-sm" href="media/<?= $item[$i]["episode"]["filename"] ?>"><?= $download ?></a><br>
+                <a class="btn btn-outline-success btn-sm" href="media/<?= $item[$i]["episode"]["filename"] ?>" download><?= $download ?></a><br>
 
                 <?php if ($type != 'invalid') { ?>
                     <small style="font-size:65%" class="text-muted">

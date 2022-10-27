@@ -68,7 +68,7 @@ if ($config['categoriesenabled'] == 'yes') {
                     <?php if (isset($_SESSION["username"])) { ?>
                         <a class="btn btn-dark btn-sm" href="admin/episodes_edit.php?name=<?= $episodes[$i]["episode"]["filename"] ?>"><?= $editdelete ?></a>
                     <?php } ?>
-                    <a class="btn btn-outline-success btn-sm" href="media/<?= $correctepisode["episode"]["filename"] ?>"><?= $download ?></a><br>
+                    <a class="btn btn-outline-success btn-sm" href="media/<?= $correctepisode["episode"]["filename"] ?>" download><?= $download ?></a><br>
 
                     <?php if ($type != 'invalid') { ?>
                         <small style="font-size:65%" class="text-muted">
