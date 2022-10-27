@@ -39,6 +39,14 @@ function sort_episodes_by_timestamp($episodeA, $episodeB)
     return $episodeA['lastModified'] - $episodeB['lastModified'];
 }
 
+function number_or_default(mixed $value, float|int $default = -1): float|int
+{
+    if (empty($value) || !is_numeric($value)) {
+        return $default;
+    }
+    return $value + 0;
+}
+
 /**
  * usort() callback for sorting episodes by season and episode.
  *
@@ -48,22 +56,14 @@ function sort_episodes_by_timestamp($episodeA, $episodeB)
  */
 function sort_episodes_by_season_and_episode($episodeA, $episodeB)
 {
-    function getValueOrDefault($val)
-    {
-        if (empty($val) || !is_numeric($val)) {
-            return -1;
-        }
-        return $val + 0;
-    }
-
-    $seasonA = getValueOrDefault($episodeA['data']->episode->seasonNumPG);
-    $seasonB = getValueOrDefault($episodeB['data']->episode->seasonNumPG);
+    $seasonA = number_or_default($episodeA['data']->episode->seasonNumPG);
+    $seasonB = number_or_default($episodeB['data']->episode->seasonNumPG);
     if ($seasonA != $seasonB) {
         return $seasonA - $seasonB;
     }
 
-    $episodeA = getValueOrDefault($episodeA['data']->episode->episodeNumPG);
-    $episodeB = getValueOrDefault($episodeB['data']->episode->episodeNumPG);
+    $episodeA = number_or_default($episodeA['data']->episode->episodeNumPG);
+    $episodeB = number_or_default($episodeB['data']->episode->episodeNumPG);
     if ($episodeA != $episodeB) {
         return $episodeA - $episodeB;
     }
