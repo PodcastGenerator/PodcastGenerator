@@ -952,7 +952,7 @@ msgstr "Format d'image non supporté"
 
 #: PodcastGenerator/admin/store_cover.php:42
 msgid "Image does not have square dimensions"
-msgstr "L4image n'a pas des dimensions carrées"
+msgstr "L'image n'a pas des dimensions carrées"
 
 #: PodcastGenerator/admin/store_cover.php:54
 msgid "Image was not uploaded successfully"
