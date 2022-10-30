@@ -52,7 +52,7 @@ function backwards_3_1_to_3_2_8($absoluteurl)
     } elseif (property_exists($matchedLanguage, 'alias')) {
         // Change to correct language code when a bad / obsolete code has been
         // used.
-        $config['feed_language'] = $lang->alias;
+        $config['feed_language'] = $matchedLanguage->alias;
     }
 
     // Default sort method for episodes in the RSS feed

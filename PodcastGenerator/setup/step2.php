@@ -86,9 +86,9 @@ function isIsNot($success)
                 <?php if (!$media_write || !$images_write || !$scripts_write) { /* Try to adjust file permissions */ ?>
                     <p>Try to adjust file permissions</p>
                     <?php
-                        chmod("$media_directory", 0777);
-                        chmod("$images_directory", 0777);
-                        chmod("$script_directory", 0777);
+                        chmod($media, 0777);
+                        chmod($images, 0777);
+                        chmod($scripts, 0777);
                     ?>
                     <strong><p style="color: red;">Please <a href="step2.php">reload</a> this page, if you still see this page you need to adjust the permissions manually</p></strong>
                 <?php } else { ?>
