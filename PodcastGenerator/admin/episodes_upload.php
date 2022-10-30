@@ -283,7 +283,7 @@ if (count($_POST) > 0) {
     $episodefeed = '<?xml version="1.0" encoding="utf-8"?>
 <PodcastGenerator>
 	<episode>
-	    <guid>' . htmlspecialchars($config['url'] . "?" . $link . "=" . $targetfile) . '</guid>
+	    <guid>' . htmlspecialchars($config['url'] . "?" . $link . "=" . basename($targetfile)) . '</guid>
 	    <titlePG>' . htmlspecialchars($_POST['title'], ENT_NOQUOTES) . '</titlePG>
 	    <episodeNumPG>' . $_POST['episodenum'] . '</episodeNumPG>
 	    <seasonNumPG>' . $_POST['seasonnum'] . '</seasonNumPG>
