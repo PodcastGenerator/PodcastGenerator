@@ -39,6 +39,15 @@ require '../core/include_admin.php';
         <?php if ($config['enablepgnewsinadmin'] == 'yes') { ?>
             <iframe width="100%" src='<?= $news_url ?>'></iframe>
         <?php } ?>
+
+        <div class="row align-items-end justify-content-end">
+            <div class="col-3">
+                <small class="text-muted">
+                    <?php //# 'Podcast Generator' is a proper name. ?>
+                    <?= sprintf(_('Podcast Generator v%s'), $config['podcastgen_version']) ?>
+                </small>
+            </div>
+        </div>
     </div>
 </body>
 
