@@ -17,6 +17,7 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_GET["create"])) {
+    $success = false;
     $p = $_POST;
 
     if (empty($p["username"]) || empty($p["password"]) || empty($p["password2"])) {

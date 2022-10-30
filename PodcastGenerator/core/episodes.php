@@ -68,6 +68,8 @@ function sort_episodes_by_season_and_episode($episodeA, $episodeB)
 
 function getEpisodeFiles($_config, $includeFuture = false)
 {
+    global $config;
+
     $now = time();
     $supported_extensions = getSupportedExtensions($_config);
     $uploadDir = $_config['absoluteurl'] . $_config['upload_dir'];
