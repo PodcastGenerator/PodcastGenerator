@@ -46,7 +46,7 @@ if (isset($_GET['start'])) {
             <form action="episodes_ftp_feature.php?start=1" method="POST">
             <input type="hidden" name="token" value="<?= $_SESSION['token']  ?>">
             <input class="btn btn-success" type="submit" value="<?= _('Begin') ?>">
-            </form>';
+            </form>
         <?php } ?>
         <?php if (isset($success)) { ?>
             <p><?= htmlspecialchars($success) ?></p>

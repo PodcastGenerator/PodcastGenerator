@@ -12,7 +12,7 @@ function getmime($filename)
     // Analyze file to dtermine mime type
     $getID3 = new getID3();
     $fileinfo = $getID3->analyze($filename);
-    return $fileinfo["mime_type"];
+    return isset($fileinfo["mime_type"]) ? $fileinfo["mime_type"] : null;
 }
 
 function checkLogin($username, $password_plain)
