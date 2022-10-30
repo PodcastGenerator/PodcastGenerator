@@ -21,6 +21,33 @@ Versions prior to 3.2 are documented per their individual release notes.
 
 ### Security
 
+## [3.2.8] - 2022-10-30
+
+### Added
+
+* Translation added for Arabic (Saudi Arabia).
+
+### Changed
+
+* PG version now shown on main admin page. (#676)
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+* File name characters that may cause problems with various file systems are now trimmed and replaced. (#691)
+* Corrected variable names used in setup step 2.
+* Ensured necessary variables are set before use.
+* Fixed missing header on category management page.
+* Fixed missing key error during episoe FTP upload processing.
+* Fixed default theme to force downloading when the download button for an episode is clicked. (#714)
+* Removed full file path from automatically generated episode GUIDs.
+* Fixed filename problems for embedded cover art. (#715)
+
+### Security
+
 ## [3.2.7] - 2022-06-10
 
 ### Changed
