@@ -140,7 +140,8 @@ function makeUniqueFilename($path)
     // make sure that we have a real directory path with filename attached
     // just putting $path into realpath() will fail if the file doesn't exist
     $pathinfo = pathinfo($path);
-    $realpath = realpath($pathinfo['dirname']) . '/' . $pathinfo['basename'];
+    $filename = strtolower(trim(preg_replace('/[^a-zA-Z0-9_-]+/', '_', $pathinfo['filename']), '_'));
+    $realpath = realpath($pathinfo['dirname']) . '/' . $filename . $pathinfo['extension'];
 
     // if the existing path doesn't exist, we're unique!
     if (!file_exists($realpath)) {
