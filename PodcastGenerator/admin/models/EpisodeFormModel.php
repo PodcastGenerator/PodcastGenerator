@@ -461,11 +461,7 @@ class EpisodeFormModel extends FormModelBase
         }
 
         // trim date from filename, since makeEpisodeFilename will throw it on
-        $coverFile = pathinfo($mediaFile, PATHINFO_FILENAME);
-        if (preg_match('/^\d{4}(-\d\d-){2}_/', $coverFile)) {
-            $coverFile = substr($coverFile, 10);
-        }
-
+        $coverFile = preg_replace('/^\d\d\d\d-\d\d-\d\d_(\d+_)?/', '', pathinfo($mediaFile, PATHINFO_FILENAME));
         $coverFile = makeEpisodeFilename(
             $imagesDir,
             $this->date,
