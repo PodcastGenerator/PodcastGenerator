@@ -150,7 +150,7 @@ class EpisodeFormModel extends FormModelBase
 
         $model->itunesKeywords = $POST['itunesKeywords'];
         $model->explicit = $POST['explicit'];
-        $model->itunesBlock = $POST['itunesBlock'];
+        $model->itunesBlock = array_key_exists('itunesBlock', $POST) ? $POST['itunesBlock'] : null;
 
         $model->authorname = $POST['authorname'];
         $model->authoremail = $POST['authoremail'];
