@@ -22,7 +22,7 @@ $config = getConfig('../config.php');
 if ($config['podcastgen_version'] != $version) {
     // Backwards compatibility
     include 'backwards.php';
-    backwards_3_1_to_3_2_8($config['absoluteurl']);
+    backwards_3_1_to_3_2_9($config['absoluteurl']);
     die("Please refresh");
 }
 
