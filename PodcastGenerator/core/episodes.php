@@ -404,7 +404,7 @@ function compare_mtimes($a, $b)
  */
 function makeEpisodeFilename($directory, $date, $filename)
 {
-    $filename = strtolower(trim(preg_replace('/[^a-zA-Z0-9._-]+/', '_', $title), '_'));
+    $filename = strtolower(trim(preg_replace('/[^a-zA-Z0-9._-]+/', '_', $filename), '_'));
     $targetfile = $directory . $date . '_' . $filename;
 
     if (file_exists($targetfile)) {
