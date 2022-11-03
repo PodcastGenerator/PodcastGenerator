@@ -29,7 +29,7 @@ if (isset($_GET['change'])) {
         goto error;
     }
 
-    if (!$config->set('theme_path', $themes[$_GET['change']][0], true)) {
+    if (!$config->set('theme_path', $themes[$_GET['change']]->path, true)) {
         $error = _('Could not set theme');
         goto error;
     }
