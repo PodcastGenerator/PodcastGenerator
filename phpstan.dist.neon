@@ -1,0 +1,14 @@
+parameters:
+  level: 5
+  paths:
+    - PodcastGenerator
+    - tests
+  excludePaths:
+    analyse:
+      - PodcastGenerator/vendor
+  ignoreErrors:
+    - '#Variable \$(config|version) might not be defined.#'
+    -
+      message: '#Variable \$([a-zA-Z0-9\\_]+) might not be defined.#'
+      paths:
+        - PodcastGenerator/themes

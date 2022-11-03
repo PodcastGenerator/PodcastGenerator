@@ -1,8 +1,5 @@
 {
     "composer.workingPath": "PodcastGenerator/composer.json",
-    "cSpell.words": [
-        "phpcs"
-    ],
     "phpCodeSniffer.autoExecutable": true,
     "phpCodeSniffer.exclude": [
         "**/vendor/**",
@@ -10,5 +7,13 @@
     ],
     "phpCodeSniffer.standard": "Default",
     "phpCodeSniffer.executable": "PodcastGenerator/vendor/bin/phpcs",
-    "phpunit.logpanel": true
+    "phpstan.binPath": "PodcastGenerator/vendor/bin/phpstan",
+    "phpstan.configFile": "phpstan.dist.neon",
+    "phpunit.logpanel": true,
+    "spellchecker.ignoreWordsList": [
+        "phpcs",
+        "PodcastGenerator",
+        "analyse",
+        "excludePaths"
+    ]
 }

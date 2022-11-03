@@ -59,7 +59,8 @@
         "phpunit/phpunit": "^9.5",
         "phpunit/php-code-coverage": "^9.2",
         "phpcompatibility/php-compatibility": "^9.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "phpstan/phpstan": "^1.8"
     },
     "config": {
         "allow-plugins": {
