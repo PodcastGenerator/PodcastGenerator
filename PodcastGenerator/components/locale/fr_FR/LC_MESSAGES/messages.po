@@ -4,9 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ned, 2022
+# NedNet29, 2022
 # Gorom <gorom@zaclys.net>, 2022
 # Chris Charabaruk <transifex@chris.charabaruk.net>, 2022
+# Raphaël Colson, 2022
 # 
 #, fuzzy
 msgid ""
@@ -15,13 +16,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
 "POT-Creation-Date: 2022-03-22 17:45-0400\n"
 "PO-Revision-Date: 2022-03-20 18:30+0000\n"
-"Last-Translator: Chris Charabaruk <transifex@chris.charabaruk.net>, 2022\n"
+"Last-Translator: Raphaël Colson, 2022\n"
 "Language-Team: French (France) (https://www.transifex.com/podcast-generator/teams/14574/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: PodcastGenerator/auth.php:14
 msgid "This Podcast has no password"
@@ -952,7 +953,7 @@ msgstr "Format d'image non supporté"
 
 #: PodcastGenerator/admin/store_cover.php:42
 msgid "Image does not have square dimensions"
-msgstr "L4image n'a pas des dimensions carrées"
+msgstr "L'image n'a pas des dimensions carrées"
 
 #: PodcastGenerator/admin/store_cover.php:54
 msgid "Image was not uploaded successfully"
