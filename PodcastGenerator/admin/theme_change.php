@@ -35,7 +35,7 @@ if (isset($_GET['change'])) {
     if ($_GET['change'] > count($themes)) {
         goto error;
     }
-    updateConfig('../config.php', 'theme_path', $themes[$_GET['change']][0]);
+    updateConfig('../config.php', 'theme_path', $themes[$_GET['change']]->path);
     header('Location: theme_change.php');
     die();
 
