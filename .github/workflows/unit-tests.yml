@@ -63,6 +63,12 @@ jobs:
           composer global require php-coveralls/php-coveralls
           sed --regexp-extended 's!(name|path)="/app!\1="'$GITHUB_WORKSPACE'!' test-results/clover.xml >test-results/clover.xml.fixed
           ~/.composer/vendor/bin/php-coveralls -r $GITHUB_WORKSPACE --coverage_clover=test-results/clover.xml.fixed --json_path=test-results/coveralls.json -v
+      - name: Upload coverage to Codacy
+        if: success() || failure()
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: test-results/clover.xml
 
       # Upload test results
       - name: Upload test results as artifact
