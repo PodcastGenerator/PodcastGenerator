@@ -1,3 +1,6 @@
+<?php
+require_once(__DIR__ . '/functions.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -94,12 +97,8 @@
             ?>
         </div>
         <?php if (!isset($_GET[$link]) && !isset($no_episodes) && count($episodes) > intval($config['episodeperpage'])) { ?>
-            <nav>
-                <ul class="pagination">
-                    <?php for ($j = 0; $j < count($splitted_episodes); $j++) { ?>
-                        <li class="page-item"><a class="page-link" href="<?= $config['indexfile'] . '?page=' . ($j + 1) ?>"><?= $j + 1 ?></a></li>
-                    <?php } ?>
-                </ul>
+            <nav aria-label="<?= _('Page navigation') ?>">
+                <?php pagination($config['indexfile'] . '?page=%page%', count($splitted_episodes) - 1, $_GET['page'] ?? 1); ?>
             </nav>
         <?php } ?>
         <hr>
