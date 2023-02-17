@@ -1,30 +1,35 @@
 <?php
 require '../core/Configuration.php';
+require '../core/UserManager.php';
 require '../core/misc/functions.php';
 require '../core/users.php';
 
 $config = PodcastGenerator\Configuration::load('../config.php');
-$users = getUsers();
+$userManager = new PodcastGenerator\UserManager($config);
+$users = $userManager->getUsers();
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+$password2 = $_POST['password'];
 
 if (isset($_GET['reset'])) {
-    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2'])) {
+    if (empty($username) || empty($password) || empty($password2)) {
         $error = 'All fields need to be set';
         goto error;
     }
-    if ($_POST['password'] != $_POST['password2']) {
+    if ($password != $password2) {
         $error = 'Passwords do not match';
         goto error;
     }
-    if (!array_key_exists($_POST['username'], $users)) {
+    if (!$userManager->userExists($username)) {
         $error = 'User does not exist';
         goto error;
     }
 
     // No errors, continue
-    $users[$_POST['username']] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $ret = $config->set('users_json', str_replace('"', '\"', json_encode($users)), true);
+    $ret = $userManager->changeUserPassword($username, $password);
     if (!$ret) {
-        $error = 'Unknown error. Be sure the file the users.php file is writable';
+        $error = 'Unknown error. Be sure the file the config.php file is writable';
         goto error;
     } else {
         header('Location: login.php?deleteReset=1');
