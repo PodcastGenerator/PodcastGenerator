@@ -904,7 +904,7 @@ msgstr "Zárolja a Podcast hírcsatornát"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Prevent other platforms from importing your feed"
-msgstr "Akadályozza meg, hogy más platformok importálják a hírcsatornáját"
+msgstr "Akadályozza meg, hogy más platformok importálják a hírfolyamát"
 
 #: PodcastGenerator/admin/podcast_details.php:158
 msgid "Custom Feed Tags"
