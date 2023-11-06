@@ -360,8 +360,8 @@ msgid ""
 "Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
 "<span style='color:green;'>green</span> have been posted."
 msgstr ""
-"A <span style='color:blue;'>kék </span>dátumok jövőbeliek. A<span "
-"style='color:green;'>zöld</span>dátumokat közzétették."
+"A <span style='color:blue;'>kék</span> dátumok jövőbeliek. A <span "
+"style='color:green;'>zöld</span> dátumokat közzétették."
 
 #: PodcastGenerator/admin/episodes_manage_cats.php:43
 msgid "Category already exists"
