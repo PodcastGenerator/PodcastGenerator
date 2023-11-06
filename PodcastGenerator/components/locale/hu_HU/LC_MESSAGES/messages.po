@@ -932,7 +932,7 @@ msgstr "Kategóriák kiválasztása vagy megváltoztatása (iTunes-hoz)"
 #: PodcastGenerator/admin/store_cat.php:94
 #, php-format
 msgid "Category %d"
-msgstr "Kategória %d"
+msgstr "%d kategória"
 
 #: PodcastGenerator/admin/store_cat.php:116
 #: PodcastGenerator/admin/theme_freebox.php:85
