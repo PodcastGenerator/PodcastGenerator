@@ -900,7 +900,7 @@ msgstr "Explicit tartalmú podcast"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Lock Podcast Feed"
-msgstr "Zárolja a Podcast hírcsatornát"
+msgstr "Zárolja a Podcast hírfolyamot"
 
 #: PodcastGenerator/admin/podcast_details.php:153
 msgid "Prevent other platforms from importing your feed"
