@@ -1026,7 +1026,7 @@ msgstr "Protokoll"
 #: PodcastGenerator/admin/theme_buttons.php:147
 #: PodcastGenerator/admin/theme_buttons.php:181
 msgid "Leave it blank if you don't know what you are doing"
-msgstr "Hagyd üresen, ha nem tudod"
+msgstr "Hagyja üresen, ha nem tudja"
 
 #: PodcastGenerator/admin/theme_buttons.php:159
 msgid "Delete Button"
