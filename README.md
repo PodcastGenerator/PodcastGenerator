@@ -1,40 +1,11 @@
 # Podcast Generator
 
-Podcast Generator (PG) is an open source Content Management System written in
-PHP and specifically designed for podcast publishing.
-It provides the user with the tools to easily manage all of the aspects related
-to the publication of a podcast, from the upload of episodes to its submission
-to [Podcast Index](https://podcastindex.org) and the iTunes store.
+**Podcast Generator (2006–2026)** was an open-source web application for podcast publishing and self-hosting. Upload a media file, fill in a form, and the tool would generate a podcast-ready RSS feed automatically, no database and no technical knowledge required.
 
-Visit the **official website** for more information, documentation, demo and to
-download the latest stable release:
+Created by [Alberto Betella](https://betella.net) in 2005 as a university project at the University of Bergamo (Italy), Podcast Generator was released as free and open-source software on April 5, 2006. Across 20 years and 52 releases, it was downloaded more than 500,000 times, powered an estimated 25,000 podcasts worldwide, and was translated into 59 languages by 269 volunteer contributors.
 
-<http://podcastgenerator.net>
+In 2017, Podcast Generator's codebase became the foundation of [RSS.com](https://rss.com), today one of the world's leading podcast hosting platforms.
 
-## Download the latest release
+**The project is now discontinued.** This repository is archived and read-only.
 
-Download the latest stable release on the official website:
-
-<http://podcastgenerator.net/download>
-
-## Contribute
-
-Everyone is most welcome to contribute code, test, reviews,
-[translations](https://www.transifex.com/podcast-generator/podcast-generator/)
-and other stuff.
-Also feature requests are welcome.
-For this please open an issue on GitHub.
-
-## Demo
-
-A fully-functional live demo of Podcast generator is available at:
-
-<http://podcastgenerator.net/demo>
-
-## Copyright
-
-This repository includes third-party software including
-getID3 by James Heinrich,
-Font Awesome by the Font Awesome Team,
-and
-Bootstrap from Twitter, Inc. and the Bootstrap Authors.
+👉 **[podcastgenerator.net — 20th Anniversary (2006–2026)](https://podcastgenerator.net)**: the complete story, timeline, and memorabilia.
