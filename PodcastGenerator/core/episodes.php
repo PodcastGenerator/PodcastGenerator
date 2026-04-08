@@ -9,12 +9,6 @@
 # This is Free Software released under the GNU/GPL License.
 ############################################################
 
-// phpcs:disable
-require_once(__DIR__ . '/../vendor/autoload.php');
-// phpcs:enable
-
-use PodcastGenerator\Configuration;
-
 function getSupportedExtensions($config)
 {
     $supported_extensions = array();
@@ -36,15 +30,10 @@ function getSupportedExtensions($config)
  */
 function sort_episodes_by_timestamp($episodeA, $episodeB)
 {
+  if($episodeA['lastModified'] == $episodeB['lastModified']) {
+    return 0;
+  }
     return $episodeA['lastModified'] - $episodeB['lastModified'];
-}
-
-function number_or_default(mixed $value, float|int $default = -1): float|int
-{
-    if (empty($value) || !is_numeric($value)) {
-        return $default;
-    }
-    return $value + 0;
 }
 
 /**
@@ -54,16 +43,28 @@ function number_or_default(mixed $value, float|int $default = -1): float|int
  * @param mixed $episodeB
  * @return int
  */
+
+function getValueOrDefault($val)
+{
+    if (empty($val) || !is_numeric($val)) {
+        return -1;
+    }
+    return $val + 0;
+}
+
+
 function sort_episodes_by_season_and_episode($episodeA, $episodeB)
 {
-    $seasonA = number_or_default($episodeA['data']->episode->seasonNumPG);
-    $seasonB = number_or_default($episodeB['data']->episode->seasonNumPG);
+
+
+    $seasonA = getValueOrDefault($episodeA['data']->episode->seasonNumPG);
+    $seasonB = getValueOrDefault($episodeB['data']->episode->seasonNumPG);
     if ($seasonA != $seasonB) {
         return $seasonA - $seasonB;
     }
 
-    $episodeA = number_or_default($episodeA['data']->episode->episodeNumPG);
-    $episodeB = number_or_default($episodeB['data']->episode->episodeNumPG);
+    $episodeA = getValueOrDefault($episodeA['data']->episode->episodeNumPG);
+    $episodeB = getValueOrDefault($episodeB['data']->episode->episodeNumPG);
     if ($episodeA != $episodeB) {
         return $episodeA - $episodeB;
     }
@@ -122,114 +123,6 @@ function getEpisodeFiles($_config, $includeFuture = false)
     return array_reverse($files);
 }
 
-function episode_data_path($episodePath)
-{
-    $p = pathinfo($episodePath);
-    return $p['dirname'] . '/' . $p['filename'] . '.xml';
-}
-
-/**
- * Saves episode data and updates timestamp for episode file.
- *
- * @param array $episode    An array containing the metadata for the episode.
- * @param string $filePath  The path of the episode's media file.
- * @return void
- */
-function saveEpisode($episode, $filePath)
-{
-    global $config;
-
-    if (!empty($episode['episode']['guid'])) {
-        $guid = $episode['episode']['guid'];
-    } else {
-        $link = str_replace(['?', '=', '$url'], '', $config['link']);
-        $guid = $config['url'] . '?' . $link . '=' . basename($filePath);
-    }
-
-    $longDesc = !empty($episode['episode']['longdescPG'])
-        ? $episode['episode']['longdescPG']
-        : $episode['episode']['shortdescPG'];
-
-    // Get audio metadata (duration, bitrate etc)
-    $filesize = filesize($filePath);
-    $fileinfo = getID3Info($filePath);
-    $duration = $fileinfo["playtime_string"];           // Get duration
-    $bitrate = $fileinfo["audio"]["bitrate"];           // Get bitrate
-    $frequency = $fileinfo["audio"]["sample_rate"];     // Frequency
-
-    $writer = new \XMLWriter();
-    $writer->openMemory();
-    $writer->setIndent(true);
-    $writer->setIndentString("\t");
-
-    $writer->startDocument('1.0', 'utf-8');
-    $writer->startElement('PodcastGenerator');
-    $writer->startElement('episode');
-
-    $writer->writeElement('guid', $guid);
-    $writer->writeElement('titlePG', $episode['episode']['titlePG']);
-
-    $writer->writeElement('episodeNumPG', $episode['episode']['episodeNumPG']);
-    $writer->writeElement('seasonNumPG', $episode['episode']['seasonNumPG']);
-
-    $writer->startElement('shortdescPG');
-    $writer->writeCdata($episode['episode']['shortdescPG']);
-    $writer->endElement();
-
-    $writer->startElement('longdescPG');
-    $writer->writeCdata($longDesc);
-    $writer->endElement();
-
-    $writer->startElement('imgPG');
-    $writer->writeAttribute('path', $episode['episode']['imgPath']);
-    $writer->text($episode['episode']['imgPG']);
-    $writer->endElement();
-
-    $writer->startElement('categoriesPG');
-    foreach ($episode['episode']['categoriesPG'] as $el => $val) {
-        $writer->writeElement($el, $val);
-    }
-    $writer->endElement();
-
-    $writer->writeElement('keywordsPG', $episode['episode']['keywordsPG']);
-    $writer->writeElement('explicitPG', $episode['episode']['explicitPG']);
-    $writer->writeElement('itunesBlock', $episode['episode']['itunesBlock']);
-
-    $writer->startElement('authorPG');
-    $writer->writeElement('namePG', $episode['episode']['authorPG']['namePG']);
-    $writer->writeElement('emailPG', $episode['episode']['authorPG']['emailPG']);
-    $writer->endElement();
-
-    $writer->startElement('fileInfoPG');
-    $writer->writeElement('size', strval((int) ($filesize / 1000 / 1000)));
-    $writer->writeElement('duration', $duration);
-    $writer->writeElement('bitrate', substr(strval($bitrate), 0, 3));
-    $writer->writeElement('frequency', $frequency);
-    $writer->endElement();
-
-    $writer->startElement('customTagsPG');
-    $writer->writeCdata($episode['episode']['customTagsPG']);
-    $writer->endElement();
-
-    if (!empty($episode['episode']['previousImgsPG'])) {
-        $writer->startElement('previousImgsPG');
-        foreach ($episode['episode']['previousImgsPG'] as $img) {
-            $writer->writeElement('imgPG', $img);
-        }
-        $writer->endElement();
-    }
-
-    $writer->writeElement('episodeType', $episode['episode']['episodeType']);
-
-    $writer->endElement(); // episode
-    $writer->endElement(); // PodcastGenerator
-    $writer->endDocument();
-    file_put_contents(episode_data_path($filePath), $writer->outputMemory());
-
-    // Set file date
-    touch($filePath, $episode['episode']['filemtime']);
-}
-
 function arrayEpisode($item, $episode, $_config)
 {
     $filemtime = filemtime($_config['absoluteurl'] . $_config['upload_dir'] . $episode);
@@ -242,7 +135,6 @@ function arrayEpisode($item, $episode, $_config)
             'shortdescPG' => $item->shortdescPG,
             'longdescPG' => $item->longdescPG,
             'imgPG' => $item->imgPG,
-            'imgPath' => $item->imgPG->attributes()['path'],
             'categoriesPG' => [
                 'category1PG' => $item->categoriesPG->category1PG,
                 'category2PG' => $item->categoriesPG->category2PG,
@@ -250,7 +142,6 @@ function arrayEpisode($item, $episode, $_config)
             ],
             'keywordsPG' => $item->keywordsPG,
             'explicitPG' => $item->explicitPG,
-            'itunesBlock' => $item->itunesBlock,
             'authorPG' => [
                 'namePG' => $item->authorPG->namePG,
                 'emailPG' => $item->authorPG->emailPG
@@ -262,19 +153,12 @@ function arrayEpisode($item, $episode, $_config)
                 'frequency' => $item->fileInfoPG->frequency
             ],
             'customTagsPG' => $item->customTagsPG,
-            'episodeType' => $item->episodeType,
             'filename' => $episode,
             'fileid' => pathinfo($episode, PATHINFO_FILENAME),
             'filemtime' => $filemtime,
-            'moddate' => date('Y-m-d', $filemtime),
-            'previousImgsPG' => []
+            'moddate' => date('Y-m-d', $filemtime)
         ]
     ];
-    if (isset($item->previousImgsPG)) {
-        foreach ($item->previousImgsPG->children() as $previousImg) {
-            $append_array['episode']['previousImgsPG'][] = $previousImg;
-        }
-    }
     return $append_array;
 }
 
@@ -323,21 +207,15 @@ function findEpisodes($_config, $category = null, $searchTerm = '', $includeFutu
         );
     }
 
-    return array_map(fn ($ep) => arrayEpisode($ep['data']->episode, $ep['filename'], $_config), $episodes);
+    return array_map(
+        function ($ep) use ($_config) {
+            return arrayEpisode($ep['data']->episode, $ep['filename'], $_config);
+        },
+        $episodes
+    );
 }
 
-/**
- * Gets an individual episode by file path.
- *
- * @param string $episodeFile    The path of the episode to load.
- * @param Configuration $config  The configuration object for the website.
- * @return array                 An array containing the episode information.
- */
-function loadEpisode(string $episodeFile, Configuration $config)
-{
-    $xmlData = simplexml_load_file(episode_data_path($episodeFile));
-    return arrayEpisode($xmlData->episode, pathinfo($episodeFile, PATHINFO_BASENAME), $config);
-}
+require_once $config['absoluteurl'] . 'vendor/james-heinrich/getid3/getid3/getid3.php';
 
 /**
  * Get episode audio metadata from getID3.
@@ -351,17 +229,10 @@ function getID3Info($filename)
     return $getID3->analyze($filename);
 }
 
-/**
- * Gets the value of an ID3 tag.
- *
- * @param array  $fileinfo       File info data from getID3.
- * @param string $tagName        The identifier of the tag being retrieved.
- * @param mixed  $defaultValue   The value to return if the tag is not present.
- * @return mixed                 The value of the tag, or $defaultValue if the tag is not present.
- */
+// Fetch ID3 tags. Try ID3V2, then ID3V1, before falling back
+// to the specific default value.
 function getID3Tag($fileinfo, $tagName, $defaultValue = null)
 {
-    // Try ID3v2, then ID3v1, before falling back on $defaultValue.
     if (
         isset($fileinfo['tags']['id3v2'][$tagName][0])
         && $fileinfo['tags']['id3v2'][$tagName][0]
@@ -490,7 +361,6 @@ function indexEpisodes($_config)
             </categoriesPG>
             <keywordsPG></keywordsPG>
             <explicitPG>' . htmlspecialchars($_config['explicit_podcast']) . '</explicitPG>
-            <itunesBlock></itunesBlock>
             <authorPG>
                 <namePG>' . $author_name . '</namePG>
                 <emailPG></emailPG>
@@ -501,7 +371,6 @@ function indexEpisodes($_config)
                 <bitrate>' . substr(strval($bitrate), 0, 3) . '</bitrate>
                 <frequency>' . $frequency . '</frequency>
             </fileInfoPG>
-            <episodeType></episodeType>
         </episode>
 </PodcastGenerator>';
 
