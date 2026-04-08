@@ -18,7 +18,10 @@ if ($_SESSION['password'] == true) {
     die(_('Already signed in'));
 }
 if (isset($_GET['login'])) {
-    if ($config['podcastPassword'] === $_POST['password']) {
+    // Support both hashed (password_hash) and legacy plaintext passwords
+    $storedPassword = $config['podcastPassword'];
+    if (password_verify($_POST['password'], $storedPassword) || 
+        (strlen($storedPassword) < 60 && $storedPassword === $_POST['password'])) {
         $_SESSION['password'] = true;
         header('Location: index.php');
         die(_('Success'));
