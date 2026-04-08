@@ -135,12 +135,12 @@ class Configuration implements \ArrayAccess
         $this->map = Configuration::buildConfigMap($this->path);
     }
 
-    public function offsetExists($offset): bool
+    public final function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->map);
     }
 
-    public function offsetGet($offset): mixed
+    public final function offsetGet($offset): mixed
     {
         return $this->get($offset);
     }
@@ -161,12 +161,12 @@ class Configuration implements \ArrayAccess
         return null;
     }
 
-    public function offsetSet($offset, $value): void
+    public final function offsetSet($offset, $value): void
     {
         $this->set($offset, $value, false);
     }
 
-    public function offsetUnset($offset): void
+    public final function offsetUnset($offset): void
     {
         $this->set($offset, null, false);
     }

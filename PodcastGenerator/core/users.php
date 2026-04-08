@@ -15,17 +15,15 @@
  * @param string $username        The username of the new user.
  * @param string $password_plain  The unencrypted password of the new user.
  * @return bool  Whether the user was successfully saved.
+ * 
+ * @deprecated 3.3      Use `$userManager->addUser()` directly
  */
 function addUser($username, $password_plain)
 {
-    global $config;
-    $users =  json_decode($config['users_json'], true);
-    // Check if user exists
-    if (array_key_exists($username, $users)) {
-        return false;
-    }
-    $users[$username] = password_hash($password_plain, PASSWORD_DEFAULT);
-    return $config->set('users_json', str_replace('"', '\"', json_encode($users)), true);
+    global $userManager;
+    $user = new PodcastGenerator\User($username);
+    $user->setPassword($password_plain);
+    return $userManager->addUser($user);
 }
 
 /**
@@ -33,13 +31,13 @@ function addUser($username, $password_plain)
  *
  * @param string $username  The username of the user to delete.
  * @return bool  Whether the user was successfully deleted.
+ * 
+ * @deprecated 3.3      Use `$userManager->deleteUser()` directly
  */
 function deleteUser($username)
 {
-    global $config;
-    $users =  json_decode($config['users_json'], true);
-    unset($users[$username]);
-    return $config->set('users_json', str_replace('"', '\"', json_encode($users)), true);
+    global $userManager;
+    return $userManager->deleteUser($username);
 }
 
 /**
@@ -48,26 +46,30 @@ function deleteUser($username)
  * @param string $username            The username of the user to update.
  * @param string $new_password_plain  The unencrypted new password of the user.
  * @return bool  Whether the user was successfully updated.
+ * 
+ * @deprecated 3.3      Use `$userManager->changeUserPassword()` directly
  */
 function changeUserPassword($username, $new_password_plain)
 {
-    global $config;
-    $users = json_decode($config['users_json'], true);
-    // Check if user exists
-    if (!array_key_exists($username, $users)) {
-        return false;
-    }
-    $users[$username] = password_hash($new_password_plain, PASSWORD_DEFAULT);
-    return $config->set('users_json', str_replace('"', '\"', json_encode($users)), true);
+    global $userManager;
+    return $userManager->changeUserPassword($username, $new_password_plain);
 }
 
 /**
  * Gets an array of all registered users.
  *
  * @return array  An array of users.
+ * 
+ * @deprecated 3.3      Use `$userManager->getUsers()` directly
  */
 function getUsers()
 {
-    global $config;
-    return json_decode($config['users_json'], true);
+    // not mapped to $userManager->getUsers() because this returns a different
+    // data type (associate array of string to string|object)
+    global $userManager;
+    $users = [];
+    foreach ($userManager->getUsers() as $user) {
+        $users[$user->getUsername()] = $user->getPasswordHash();
+    }
+    return $users;
 }

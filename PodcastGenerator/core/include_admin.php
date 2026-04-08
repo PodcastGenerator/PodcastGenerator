@@ -27,6 +27,8 @@ if ($config['podcastgen_version'] != PG_VERSION) {
     die("Please refresh");
 }
 
+$userManager = new PodcastGenerator\UserManager($config);
+
 include 'episodes.php';
 include 'liveitems.php';
 include 'feed_generator.php';

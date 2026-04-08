@@ -10,14 +10,19 @@
 require 'checkLogin.php';
 require '../core/include_admin.php';
 
-$users = getUsers();
+/**
+ * @var User[]
+ */
+$users = $userManager->getUsers();
 
 if (isset($_GET['change'])) {
     checkToken();
 
     // Change password case
+    $username = $_GET['change'];
+    $password = $_POST['password'];
 
-    if (!changeUserPassword($_GET['change'], $_POST['password'])) {
+    if (!$userManager->changeUserPassword($username, $password)) {
         $error = _('Error while changing password');
         goto error;
     } else {
@@ -28,19 +33,20 @@ if (isset($_GET['change'])) {
     checkToken();
 
     // Delete user case
+    $username = $_GET['delete'];
 
     // Check if the deleted user is the logged in user
     // Don't permit to delete the logged in user
-    if ($_GET['delete'] == $_SESSION['username']) {
+    if ($username == $_SESSION['username']) {
         $error = _('You cannot delete yourself');
         goto error;
     }
     // Check if user exists
-    if (!array_key_exists($_GET['delete'], $users)) {
+    if (!$userManager->userExists($username)) {
         $error = _('User does not exist');
         goto error;
     }
-    if (!deleteUser($_GET['delete'])) {
+    if (!$userManager->deleteUser($username)) {
         $error = _('Unknown error while deleting user');
         goto error;
     } else {
@@ -51,12 +57,17 @@ if (isset($_GET['change'])) {
     checkToken();
 
     // Create user case
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    if (empty($_POST['username']) || empty($_POST['password'])) {
+    if (empty($username) || empty($password)) {
         $error = _('Missing fields');
         goto error;
     }
-    if (!addUser($_POST['username'], $_POST['password'])) {
+
+    $user = new PodcastGenerator\User($username);
+    $user->setPassword($password);
+    if (!$userManager->addUser($user)) {
         $error = _('Error while creating user');
         goto error;
     }
@@ -95,7 +106,7 @@ if (isset($_GET['change'])) {
             <?php if (count($_GET) == 0) { /* If no GETS are set, display all users */ ?>
                 <h3><?= _('List of users') ?></h3>
                 <ul>
-                <?php foreach ($users as $username => $password) { ?>
+                <?php foreach ($users as $username => $user) { ?>
                     <li><a href="pg_users.php?username=<?= $username ?>"><?= $username ?></a></li>
                 <?php } ?>
                 </ul>
