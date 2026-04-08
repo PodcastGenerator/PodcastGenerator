@@ -1,0 +1,1095 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022 The Podcast Generator Translation Team
+# This file is distributed under the same license as the Podcast Generator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Robert B. <bernariusr@gmail.com>, 2022
+# Balazs Radnai <dr.radnai.balazs@gmail.com>, 2022
+# aszi77 <sziami@gmail.com>, 2022
+# Zoltán Boér, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Podcast Generator 3.2\n"
+"Report-Msgid-Bugs-To: https://github.com/PodcastGenerator/PodcastGenerator/issues/new\n"
+"POT-Creation-Date: 2022-03-22 17:45-0400\n"
+"PO-Revision-Date: 2022-03-20 18:30+0000\n"
+"Last-Translator: Zoltán Boér, 2023\n"
+"Language-Team: Hungarian (Hungary) (https://app.transifex.com/podcast-generator/teams/14574/hu_HU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: PodcastGenerator/auth.php:14
+msgid "This Podcast has no password"
+msgstr "A Podcast jelszó nélküli"
+
+#: PodcastGenerator/auth.php:18
+msgid "Already signed in"
+msgstr "Már be van jelentkezve"
+
+#: PodcastGenerator/auth.php:24
+msgid "Success"
+msgstr "Végrehajtva"
+
+#: PodcastGenerator/auth.php:26
+msgid "Invalid password"
+msgstr "Érvénytelen jelszó"
+
+#: PodcastGenerator/auth.php:36 PodcastGenerator/auth.php:42
+msgid "Password required"
+msgstr "Jelszó szükséges"
+
+#: PodcastGenerator/auth.php:47
+msgid "Enter Password"
+msgstr "Jelszó megadása"
+
+#: PodcastGenerator/auth.php:49
+msgid "Login"
+msgstr "Belépés"
+
+#: PodcastGenerator/categories.php:25 PodcastGenerator/feed.php:16
+#: PodcastGenerator/index.php:17
+msgid "Authentication required"
+msgstr "Azonosítás szükséges"
+
+#: PodcastGenerator/categories.php:49 PodcastGenerator/index.php:53
+msgid "More"
+msgstr "Tovább"
+
+#: PodcastGenerator/categories.php:50 PodcastGenerator/index.php:54
+msgid "Download"
+msgstr "Letöltés"
+
+#: PodcastGenerator/categories.php:51 PodcastGenerator/index.php:55
+msgid "Edit/Delete (Admin)"
+msgstr "Szerkesztés / törlés (admin)"
+
+#: PodcastGenerator/categories.php:52 PodcastGenerator/index.php:56
+msgid "Filetype"
+msgstr "Fájl típusa"
+
+#: PodcastGenerator/categories.php:53 PodcastGenerator/index.php:57
+msgid "Size"
+msgstr "Méret"
+
+#: PodcastGenerator/categories.php:54 PodcastGenerator/index.php:58
+msgid "Duration"
+msgstr "Időtartam"
+
+#: PodcastGenerator/categories.php:55 PodcastGenerator/index.php:69
+msgid "Categories"
+msgstr "Kategóriák:"
+
+#: PodcastGenerator/index.php:61
+msgid "No episodes found with that search term"
+msgstr "Nem található epizód a megadott keresési feltételek mellett."
+
+#: PodcastGenerator/index.php:63
+msgid "No episodes uploaded yet"
+msgstr "Még nincs tartalom feltöltve"
+
+#: PodcastGenerator/index.php:68
+msgid "Search"
+msgstr "Keresés"
+
+#: PodcastGenerator/admin/episodes_bulk.php:48
+#: PodcastGenerator/admin/navbar.php:20
+msgid "Bulk download episodes"
+msgstr "Epizódok tömeges letöltése"
+
+#: PodcastGenerator/admin/episodes_bulk.php:51
+msgid ""
+"If you want to bulk download all episodes, you need to have curl installed.\n"
+"        On Windows 10, macOS and most Linux distributions it is already pre-installed. Please\n"
+"        open your Terminal app on macOS and Linux or open the start menu and search for cmd.exe on Windows.\n"
+"        After this paste the following (long) command into the terminal/cmd.exe and press enter."
+msgstr ""
+"Amennyiben együttesen le kívánja tölteni valamennyi epizódot, cURL telepítése szükséges.\n"
+"Windows 10, macOS és a legtöbb Linux disztribúció esetében már előtelepítve rendelkezésre áll. Kérem\n"
+"nyissa meg a Parancssort macOS és Linux esetében, vagy Windows esetébena Start menüben keressen rá a cmd.exe-re.\n"
+"Ezek után illessze be a következő (hosszú) parancsot és nyomjon entert: terminal/cmd.exe"
+
+#: PodcastGenerator/admin/episodes_edit.php:14
+msgid "No name given"
+msgstr "Nincs név megadva"
+
+#: PodcastGenerator/admin/episodes_edit.php:26
+#: PodcastGenerator/themes/default/singleepisode.php:11
+msgid "Episode does not exist"
+msgstr "Az epizód nem létezik"
+
+#: PodcastGenerator/admin/episodes_edit.php:57
+#: PodcastGenerator/admin/episodes_upload.php:26
+#: PodcastGenerator/admin/login.php:29 PodcastGenerator/admin/pg_users.php:55
+msgid "Missing fields"
+msgstr "Hiányzó mezők"
+
+#: PodcastGenerator/admin/episodes_edit.php:69
+#: PodcastGenerator/admin/episodes_upload.php:38
+msgid "Too many categories selected (max: 3)"
+msgstr "Túl sok kategóriát választott (legfeljebb 3 választható)"
+
+#: PodcastGenerator/admin/episodes_edit.php:76
+#: PodcastGenerator/admin/episodes_upload.php:52
+msgid "Invalid Author E-Mail provided"
+msgstr "Szerző email címe érvénytelen"
+
+#: PodcastGenerator/admin/episodes_edit.php:84
+#: PodcastGenerator/admin/episodes_edit.php:89
+#: PodcastGenerator/admin/episodes_upload.php:60
+#: PodcastGenerator/admin/episodes_upload.php:65
+msgid "Invalid Episode Number provided"
+msgstr "Epizód száma érvénytelen"
+
+#: PodcastGenerator/admin/episodes_edit.php:95
+#: PodcastGenerator/admin/episodes_edit.php:100
+#: PodcastGenerator/admin/episodes_upload.php:71
+#: PodcastGenerator/admin/episodes_upload.php:76
+msgid "Invalid Season Number provided"
+msgstr "Évad száma érvénytelen"
+
+#: PodcastGenerator/admin/episodes_edit.php:106
+#: PodcastGenerator/admin/episodes_upload.php:82
+msgid "Size of the 'Short Description' exceeded"
+msgstr "A \"rövid leírás\" mérete túllépve"
+
+#: PodcastGenerator/admin/episodes_edit.php:114
+#: PodcastGenerator/admin/episodes_upload.php:90
+#: PodcastGenerator/admin/podcast_details.php:34
+msgid "Custom tags are not well-formed"
+msgstr "Az egyéni címkék nem szabványosak"
+
+#: PodcastGenerator/admin/episodes_edit.php:176
+#: PodcastGenerator/admin/episodes_upload.php:134
+#: PodcastGenerator/admin/episodes_upload.php:188
+#, php-format
+msgid "%s has invalid file extension"
+msgstr "Érvénytelen filenév-kiterjesztést tartalmaz a %s"
+
+#: PodcastGenerator/admin/episodes_edit.php:181
+#: PodcastGenerator/admin/episodes_upload.php:139
+#: PodcastGenerator/admin/episodes_upload.php:193
+#, php-format
+msgid "%s was not uploaded successfully"
+msgstr "%s feltöltése sikertelen"
+
+#: PodcastGenerator/admin/episodes_edit.php:187
+#: PodcastGenerator/admin/episodes_upload.php:199
+msgid "The uploaded cover art file is not readable (permission error)"
+msgstr "A feltöltött borító fájl nem olvasható (jogosultsági hiba)"
+
+#: PodcastGenerator/admin/episodes_edit.php:202
+#: PodcastGenerator/admin/episodes_upload.php:159
+#: PodcastGenerator/admin/episodes_upload.php:214
+#: PodcastGenerator/admin/episodes_upload.php:239
+#, php-format
+msgid "%s has unsupported MIME content type %s"
+msgstr "%s nem támogatott MIME típust %s tartalmaz"
+
+#: PodcastGenerator/admin/episodes_edit.php:317
+#: PodcastGenerator/admin/episodes_edit.php:334
+msgid "Edit Episode"
+msgstr "Epizód szerkesztése"
+
+#: PodcastGenerator/admin/episodes_edit.php:342
+#: PodcastGenerator/admin/episodes_upload.php:362
+msgid "Main Information"
+msgstr "Főbb adatok"
+
+#: PodcastGenerator/admin/episodes_edit.php:346
+#: PodcastGenerator/admin/episodes_upload.php:369
+msgid "Title"
+msgstr "Cím"
+
+#: PodcastGenerator/admin/episodes_edit.php:351
+#: PodcastGenerator/admin/episodes_upload.php:373
+msgid "Short Description"
+msgstr "Rövid leírás"
+
+#: PodcastGenerator/admin/episodes_edit.php:355
+#: PodcastGenerator/admin/episodes_edit.php:475
+#: PodcastGenerator/admin/episodes_upload.php:376
+#: PodcastGenerator/admin/episodes_upload.php:469
+#, php-format
+msgid "%d characters remaining"
+msgstr "%d karakter van még"
+
+#: PodcastGenerator/admin/episodes_edit.php:358
+#: PodcastGenerator/admin/episodes_upload.php:379
+msgid "Category"
+msgstr "Kategória"
+
+#: PodcastGenerator/admin/episodes_edit.php:359
+#: PodcastGenerator/admin/episodes_upload.php:380
+msgid "You can select up to 3 categories"
+msgstr "Válassz az epizódnak max. 3 kategóriát..."
+
+#: PodcastGenerator/admin/episodes_edit.php:375
+#: PodcastGenerator/admin/episodes_upload.php:390
+msgid "Publication Date"
+msgstr "Közzététel dátuma"
+
+#: PodcastGenerator/admin/episodes_edit.php:376
+#: PodcastGenerator/admin/episodes_upload.php:391
+msgid "If you select a date in the future, it will be published then"
+msgstr "Ha jövőbeli dátumot választasz, az epizód akkor lesz publikálva"
+
+#: PodcastGenerator/admin/episodes_edit.php:377
+#: PodcastGenerator/admin/episodes_upload.php:392
+msgid "Date"
+msgstr "Dátum"
+
+#: PodcastGenerator/admin/episodes_edit.php:380
+#: PodcastGenerator/admin/episodes_upload.php:394
+msgid "Time"
+msgstr "Idő"
+
+#: PodcastGenerator/admin/episodes_edit.php:386
+#: PodcastGenerator/admin/episodes_upload.php:399
+msgid "Extra Information"
+msgstr "További információk"
+
+#: PodcastGenerator/admin/episodes_edit.php:389
+#: PodcastGenerator/admin/store_cover.php:92
+msgid "Current Cover"
+msgstr "Jelenlegi albumborító"
+
+#: PodcastGenerator/admin/episodes_edit.php:393
+#: PodcastGenerator/admin/store_cover.php:97
+msgid "Upload new cover"
+msgstr "Új albumborító feltöltése"
+
+#: PodcastGenerator/admin/episodes_edit.php:397
+#: PodcastGenerator/admin/episodes_upload.php:406
+msgid "Long Description"
+msgstr "Hosszú leírás"
+
+#: PodcastGenerator/admin/episodes_edit.php:403
+#: PodcastGenerator/admin/episodes_upload.php:410
+msgid "Episode Number"
+msgstr "Epizód száma"
+
+#: PodcastGenerator/admin/episodes_edit.php:409
+#: PodcastGenerator/admin/episodes_upload.php:414
+msgid "Season Number"
+msgstr "Évad száma"
+
+#: PodcastGenerator/admin/episodes_edit.php:415
+#: PodcastGenerator/admin/episodes_upload.php:418
+msgid "iTunes Keywords"
+msgstr "iTunes kulcsszavak"
+
+#: PodcastGenerator/admin/episodes_edit.php:422
+msgid "Explicit Content"
+msgstr "Explicit tartalom"
+
+#: PodcastGenerator/admin/episodes_edit.php:426
+#: PodcastGenerator/admin/episodes_upload.php:428
+#: PodcastGenerator/core/html_helpers.php:39
+msgid "Yes"
+msgstr "Igen"
+
+#: PodcastGenerator/admin/episodes_edit.php:431
+#: PodcastGenerator/admin/episodes_upload.php:433
+#: PodcastGenerator/core/html_helpers.php:40
+msgid "No"
+msgstr "Nem"
+
+#: PodcastGenerator/admin/episodes_edit.php:436
+#: PodcastGenerator/admin/episodes_upload.php:438
+msgid "Author"
+msgstr "Szerző"
+
+#: PodcastGenerator/admin/episodes_edit.php:447
+#: PodcastGenerator/admin/episodes_upload.php:447
+msgid "Custom Tags"
+msgstr "Egyéni címkék"
+
+#: PodcastGenerator/admin/episodes_edit.php:457
+msgid "Save Changes"
+msgstr "Változások mentése"
+
+#: PodcastGenerator/admin/episodes_edit.php:462
+msgid "Delete Episode"
+msgstr "Epizód törlése"
+
+#: PodcastGenerator/admin/episodes_edit.php:465
+#: PodcastGenerator/admin/episodes_manage_cats.php:99
+#: PodcastGenerator/admin/pg_users.php:144
+msgid "Delete"
+msgstr "Törlés"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:19
+#, php-format
+msgid "Added %d new episode(s)"
+msgstr "Hozzáadva %d epizód(ok)"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:21
+msgid "No new episodes were found"
+msgstr "Nem található új epizód"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:30
+msgid "FTP Feature"
+msgstr "FTP Feature"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:44
+msgid "FTP Auto Indexing"
+msgstr "FTP automatikus indexelés"
+
+#: PodcastGenerator/admin/episodes_ftp_feature.php:48
+msgid "Begin"
+msgstr "Kezdés"
+
+#: PodcastGenerator/admin/episodes_list.php:44
+#: PodcastGenerator/admin/episodes_list.php:58
+#: PodcastGenerator/admin/navbar.php:13
+msgid "Episodes"
+msgstr "Epizódok"
+
+#: PodcastGenerator/admin/episodes_list.php:59
+msgid "Click on the title of the podcast you want to edit/delete."
+msgstr "Kattintson a szerkesztendő/törlendő podcast címére."
+
+#: PodcastGenerator/admin/episodes_list.php:60
+msgid ""
+"Dates in <span style='color:blue;'>blue</span> are in the future. Dates in "
+"<span style='color:green;'>green</span> have been posted."
+msgstr ""
+"A <span style='color:blue;'>kék</span> dátumok jövőbeliek. A <span "
+"style='color:green;'>zöld</span> dátumokat közzétették."
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:43
+msgid "Category already exists"
+msgstr "A kategória már létezik"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:70
+#: PodcastGenerator/admin/episodes_manage_cats.php:84
+#: PodcastGenerator/admin/navbar.php:18
+msgid "Manage categories"
+msgstr "Kategóriák kezelése"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:85
+msgid "Add category"
+msgstr "Kategória hozzáadása"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:87
+#: PodcastGenerator/admin/episodes_manage_cats.php:88
+msgid "Category Name"
+msgstr "Kategória neve"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:90
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: PodcastGenerator/admin/episodes_manage_cats.php:92
+msgid "Current Categories"
+msgstr "Jelenlegi kategóriák"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:20
+msgid "Regenerate Feed"
+msgstr "Feed újragenerálása"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:34
+msgid "Successfully regenerated RSS feed"
+msgstr "RSS mező sikeresen újragenerálva"
+
+#: PodcastGenerator/admin/episodes_regenerate.php:35
+msgid "Return"
+msgstr "Visszatérés"
+
+#: PodcastGenerator/admin/episodes_upload.php:104
+msgid "Invalid filename, only A-Z, a-z, underscores and dots are permitted"
+msgstr "Érvénytelen filenév, csak A-Z, a-Z, _ és . megengedett"
+
+#: PodcastGenerator/admin/episodes_upload.php:146
+msgid "The uploaded episode file is not readable (permission error)"
+msgstr "A feltöltött epizód fájl nem olvasható (jogosultsági hiba)"
+
+#: PodcastGenerator/admin/episodes_upload.php:239
+msgid "Embedded cover art"
+msgstr "Beágyazott borító"
+
+#: PodcastGenerator/admin/episodes_upload.php:250
+msgid "The embedded cover art file was not saved successfully"
+msgstr "A beágyazott borító fájl mentése nem sikerült"
+
+#: PodcastGenerator/admin/episodes_upload.php:333
+#: PodcastGenerator/admin/episodes_upload.php:350
+msgid "Upload Episode"
+msgstr "Epizód feltöltése"
+
+#: PodcastGenerator/admin/episodes_upload.php:353
+#, php-format
+msgid "\"%s\" uploaded successfully"
+msgstr "\"%s\" sikeresen feltöltve"
+
+#: PodcastGenerator/admin/episodes_upload.php:365
+msgid "File"
+msgstr "Fájl"
+
+#: PodcastGenerator/admin/episodes_upload.php:402
+msgid "Episode Cover"
+msgstr "Epizód borító"
+
+#: PodcastGenerator/admin/episodes_upload.php:424
+msgid "Explicit content"
+msgstr "Explicit tartalom"
+
+#: PodcastGenerator/admin/episodes_upload.php:457
+msgid "Upload episode"
+msgstr "Epizód feltöltése"
+
+#: PodcastGenerator/admin/forgot.php:4
+msgid "Password Reset"
+msgstr "Jelszó visszaállítás"
+
+#: PodcastGenerator/admin/forgot.php:12
+msgid "Reset your password"
+msgstr "Jelszava visszaállítása"
+
+#: PodcastGenerator/admin/forgot.php:13
+msgid "No password, no problem!"
+msgstr "Nincs jelszó, nincs probléma!"
+
+#: PodcastGenerator/admin/forgot.php:15
+msgid ""
+"We offer a tool which allows you to easily recover your password. However, "
+"the danger of this is that as long as this file is online, anyone can reset "
+"this password so this file shouldn't be online that long."
+msgstr ""
+"Olyan eszközt javaslunk, amely lehetővé teszi a jelszó egyszerű "
+"helyreállítását. Ennek a veszélye azonban az, hogy mindaddig, amíg ez a fájl"
+" online állapotban van, bárki visszaállíthatja ezt a jelszót, így ennek a "
+"fájlnak nem szabad hosszú ideig elérhetőnek lennie."
+
+#: PodcastGenerator/admin/forgot.php:17
+#, php-format
+msgid ""
+"In the ZIP file of this version which you downloaded there is a file in the "
+"%s folder called %s. Upload this file to into the admin directory with the "
+"name %s"
+msgstr ""
+"A ZIP fájl Ön által letöltött verziójában a %skönyvtárban taláható a %s "
+"fájl. Töltse fel ezt a fájl az admin könyvtárba %s névvel"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/forgot.php:19
+msgid ""
+"If you no don't have this ZIP file anymore, don't worry! All versions of "
+"Podcast Generator ever released since 2.5 are available on the Podcast "
+"Generator Homepage."
+msgstr ""
+"Ha már nincs meg ez a ZIP fájl, ne aggódjon! A Podcast Generator 2.5 "
+"verziója óta valaha kiadott összes verzió elérhető a Podcast Generator "
+"honlapján."
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/index.php:38
+msgid "Welcome to your Podcast Generator Admin Interface"
+msgstr "Üdv a Podcast Generator adminisztrációs felületén"
+
+#: PodcastGenerator/admin/login.php:24
+msgid "Login disabled for security reasons"
+msgstr "Biztonsági okból a belépés felfüggesztve"
+
+#: PodcastGenerator/admin/login.php:38
+msgid "Invalid username or password"
+msgstr "Érvénytelen felhasználónév vagy jelszó"
+
+#: PodcastGenerator/admin/login.php:64 PodcastGenerator/admin/pg_users.php:104
+#: PodcastGenerator/admin/pg_users.php:121
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: PodcastGenerator/admin/login.php:68 PodcastGenerator/admin/pg_users.php:107
+msgid "Password"
+msgstr "Jelszó"
+
+#: PodcastGenerator/admin/login.php:70
+msgid "Forgot Password?"
+msgstr "Elfelejtette a jelszavát?"
+
+#: PodcastGenerator/admin/login.php:72
+msgid "Sign In"
+msgstr "Bejelentkezés"
+
+#: PodcastGenerator/admin/navbar.php:3
+msgid "Toggle navigation"
+msgstr "Navigáció ki-be"
+
+#: PodcastGenerator/admin/navbar.php:16
+msgid "Upload New Episodes"
+msgstr "Új epizódok feltöltése"
+
+#: PodcastGenerator/admin/navbar.php:17
+msgid "View All Episodes"
+msgstr "Minden epizód megtekintése"
+
+#: PodcastGenerator/admin/navbar.php:19
+msgid "FTP Feature (Auto Indexing)"
+msgstr "FTP lehetőség (automatikus indexelés)"
+
+#: PodcastGenerator/admin/navbar.php:21
+msgid "Manually regenerate RSS feed"
+msgstr "RSS feed kézi újragenerálása"
+
+#: PodcastGenerator/admin/navbar.php:26
+msgid "Themes and aspect"
+msgstr "Sminkek és oldaldoboz"
+
+#: PodcastGenerator/admin/navbar.php:29
+msgid "Change Theme"
+msgstr "Smink megváltoztatása"
+
+#: PodcastGenerator/admin/navbar.php:30
+msgid "Customize your Freebox"
+msgstr "A Freebox szerkesztése"
+
+#: PodcastGenerator/admin/navbar.php:31
+#: PodcastGenerator/admin/theme_buttons.php:115
+msgid "Change Buttons"
+msgstr "Gombok megváltoztatása"
+
+#: PodcastGenerator/admin/navbar.php:36
+msgid "Podcast Platform Settings"
+msgstr "Podcast platform beállításai"
+
+#: PodcastGenerator/admin/navbar.php:39
+msgid "Change Cover Art"
+msgstr "Albumborító megváltoztatása"
+
+#: PodcastGenerator/admin/navbar.php:40
+msgid "Change Podcast Category"
+msgstr "Podcast kategória megváltoztatása"
+
+#: PodcastGenerator/admin/navbar.php:45
+#: PodcastGenerator/admin/podcast_details.php:79
+msgid "Podcast Details"
+msgstr "Podcast részletei"
+
+#: PodcastGenerator/admin/navbar.php:48
+msgid "Change Podcast details"
+msgstr "Podcast részleteinek megváltoztatása"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:54
+msgid "Podcast Generator"
+msgstr "Podcast Generator"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/navbar.php:58
+msgid "Change Podcast Generator Config"
+msgstr "A Podcast Generator konfigurációjának megváltoztatása"
+
+#: PodcastGenerator/admin/navbar.php:59 PodcastGenerator/admin/pg_users.php:71
+#: PodcastGenerator/admin/pg_users.php:85
+msgid "Manage users"
+msgstr "Felhasználók kezelése"
+
+#: PodcastGenerator/admin/navbar.php:60
+#: PodcastGenerator/admin/pg_integrations.php:86
+msgid "Manage integrations"
+msgstr "Integráció kezelése"
+
+#: PodcastGenerator/admin/navbar.php:66
+msgid "View Podcast"
+msgstr "Podcast megtekintése"
+
+#: PodcastGenerator/admin/pg_config.php:60
+msgid "Timestamp"
+msgstr "Időbélyeg"
+
+#: PodcastGenerator/admin/pg_config.php:61
+msgid "Season and episode number"
+msgstr "Évad és epizód száma"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:70
+#: PodcastGenerator/admin/pg_integrations.php:72
+msgid "Podcast Generator Configuration"
+msgstr "A Podcast Generátor konfigurálása"
+
+#. # 'Podcast Generator' is a proper name.
+#: PodcastGenerator/admin/pg_config.php:85
+msgid "Change Podcast Generator Configuration"
+msgstr "A Podcast Generator konfigurációjának megváltoztatása"
+
+#: PodcastGenerator/admin/pg_config.php:87
+msgid "Enable Audio and Video Player"
+msgstr "Audio és videó lejátszó engedélyezése"
+
+#: PodcastGenerator/admin/pg_config.php:88
+msgid "Enable streaming in web browser"
+msgstr "Böngészőben streaming engedélyezése"
+
+#: PodcastGenerator/admin/pg_config.php:93
+#: PodcastGenerator/admin/theme_freebox.php:67
+msgid "Enable Freebox"
+msgstr "Freebox engedélyezése"
+
+#: PodcastGenerator/admin/pg_config.php:95
+msgid ""
+"Freebox allows you to write freely what you wish, add links or text through "
+"a visual editor in the admin section."
+msgstr ""
+"A FreeBoxba bármit be lehet írni, linkeket, szöveget lehet hozzáadni az "
+"admin részben egy szerkesztő segítségével."
+
+#: PodcastGenerator/admin/pg_config.php:101
+msgid "Enable categories"
+msgstr "Kategóriák engedélyezése"
+
+#: PodcastGenerator/admin/pg_config.php:102
+msgid "Enable categories feature to make thematic lists of your podcasts."
+msgstr "A kategóriák segítségével a podcastok tematikus listákba rendezhetők."
+
+#: PodcastGenerator/admin/pg_config.php:107
+msgid "Enable custom tag input"
+msgstr "Egyéni címkék bevitelének engedélyezése"
+
+#: PodcastGenerator/admin/pg_config.php:109
+msgid ""
+"Enable the ability to add custom RSS tags to your podcast feed and "
+"individual episodes."
+msgstr ""
+"Engedélyezze egyéni RSS címkék hozzáadását a podcast hírfolyamához és az "
+"epizódjaihoz egyenként."
+
+#: PodcastGenerator/admin/pg_config.php:115
+msgid "Episode sort order"
+msgstr "Epizódok rendezési sorrendje"
+
+#: PodcastGenerator/admin/pg_config.php:116
+msgid "Choose how episodes are ordered on the website and in the RSS feed."
+msgstr ""
+"Válassza ki az epizódok sorrendjét a webhelyen és az RSS hírfolyamban."
+
+#: PodcastGenerator/admin/pg_config.php:121
+msgid "Time zone"
+msgstr "Időzóna"
+
+#: PodcastGenerator/admin/pg_config.php:122
+msgid ""
+"Select time zone for displaying the time which episodes have been released."
+msgstr "Válassza ki az időzónát az epizódok megjelenési idejének mutatásához."
+
+#: PodcastGenerator/admin/pg_config.php:138
+msgid "Use cron to regenerate the RSS feed"
+msgstr "Cron használata az RSS feed újragenerálásához"
+
+#: PodcastGenerator/admin/pg_config.php:143
+msgid "Password Protection for the web pages"
+msgstr "Jelszóvédelem a honlaphoz"
+
+#: PodcastGenerator/admin/pg_config.php:145
+msgid ""
+"Leave empty for no password, keep in mind that the feed and the audio files "
+"will still be accessible no matter if a password is set or not"
+msgstr ""
+"Hagyja üresen, ha nem kíván jelszót beállítani, ne feledje, hogy a "
+"hírcsatorna és az audiofájlok továbbra is hozzáférhetők lesznek, függetlenül"
+" attól, hogy van-e beállítva jelszó"
+
+#: PodcastGenerator/admin/pg_config.php:152
+#: PodcastGenerator/admin/pg_integrations.php:137
+#: PodcastGenerator/admin/pg_users.php:112
+#: PodcastGenerator/admin/podcast_details.php:164
+#: PodcastGenerator/admin/theme_buttons.php:153
+#: PodcastGenerator/admin/theme_buttons.php:186
+msgid "Submit"
+msgstr "Küldés"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:27
+msgid "Already registered with Podcast Index"
+msgstr "Már regisztrálva van a Podcast Indexben (Podcast tartalomjegyzék)."
+
+#: PodcastGenerator/admin/pg_integrations.php:40
+msgid "API error"
+msgstr "API hiba"
+
+#: PodcastGenerator/admin/pg_integrations.php:55
+msgid "Unsupported service"
+msgstr "Nem támogatott szolgáltatás."
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:94
+msgid "Podcast Index"
+msgstr "Podcast Index (Podcast tartalomjegyzék)"
+
+#: PodcastGenerator/admin/pg_integrations.php:95
+msgid "API key"
+msgstr "API kulcs"
+
+#: PodcastGenerator/admin/pg_integrations.php:100
+msgid "API secret"
+msgstr "API titkos kulcs"
+
+#: PodcastGenerator/admin/pg_integrations.php:105
+msgid "Podcast ID"
+msgstr "Podcast azonosító"
+
+#. # 'Podcast Index' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:108
+msgid ""
+"Enter the ID number for your show in Podcast Index or click \"Add Show\" to "
+"add your show to the index"
+msgstr ""
+"Adja meg műsorának azonosító számát a Podcast Indexhez (tartalomjegyzékhez),"
+" vagy kattintson a \"Műsor hozzáadása\" gombra a felvételéhez az Indexbe."
+
+#: PodcastGenerator/admin/pg_integrations.php:115
+msgid "Add Show"
+msgstr "Műsor hozzáadása"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:123
+msgid "WebSub"
+msgstr "WebSub"
+
+#: PodcastGenerator/admin/pg_integrations.php:125
+msgid "Server address"
+msgstr "Szerver címe"
+
+#. # 'WebSub' is a proper name.
+#: PodcastGenerator/admin/pg_integrations.php:128
+msgid ""
+"This is the full address of the WebSub hub to alert when the podcast is "
+"updated."
+msgstr ""
+"Ez a WebSub elosztó (hub) teljes címe, amely figyelmeztet, ha a podcast "
+"frissül."
+
+#: PodcastGenerator/admin/pg_users.php:24
+msgid "Error while changing password"
+msgstr "Hiba a jelszó módosításakor"
+
+#: PodcastGenerator/admin/pg_users.php:36
+#: PodcastGenerator/admin/pg_users.php:140
+msgid "You cannot delete yourself"
+msgstr "Nem törölheti saját magát"
+
+#: PodcastGenerator/admin/pg_users.php:41
+msgid "User does not exists"
+msgstr "A felhasználó nem létezik"
+
+#: PodcastGenerator/admin/pg_users.php:45
+msgid "Unknown error while deleting user"
+msgstr "Ismeretlen hiba a felhasználó törlése során"
+
+#: PodcastGenerator/admin/pg_users.php:59
+msgid "Error while creating user"
+msgstr "Hiba a felhasználó létrehozása során"
+
+#: PodcastGenerator/admin/pg_users.php:86
+msgid "It may take a few seconds until the changes are visible"
+msgstr "Néhány percig is eltarthat a módosítások érvényre jutása"
+
+#: PodcastGenerator/admin/pg_users.php:88
+msgid "User changed successfully"
+msgstr "Felhasználó sikeresen módosítva"
+
+#: PodcastGenerator/admin/pg_users.php:90
+msgid "User created successfully"
+msgstr "Felhasználó létrehozása megtörtént"
+
+#: PodcastGenerator/admin/pg_users.php:92
+msgid "User deleted successfully"
+msgstr "Felhasználó törlése megtörtént"
+
+#: PodcastGenerator/admin/pg_users.php:95
+msgid "List of users"
+msgstr "Felhasználók listája"
+
+#: PodcastGenerator/admin/pg_users.php:102
+msgid "Create User"
+msgstr "Felhasználó létrehozása"
+
+#: PodcastGenerator/admin/pg_users.php:117
+msgid "User does not exist"
+msgstr "A felhasználó nem létezik"
+
+#: PodcastGenerator/admin/pg_users.php:124
+msgid "You cannot edit usernames"
+msgstr "Nem szerkesztheti a felhasználónevet"
+
+#: PodcastGenerator/admin/pg_users.php:127
+msgid "New Password"
+msgstr "Új jelszó"
+
+#: PodcastGenerator/admin/pg_users.php:129
+msgid "Repeat new password"
+msgstr "Új jelszó ismét"
+
+#: PodcastGenerator/admin/pg_users.php:134
+msgid "Change"
+msgstr "Megváltoztatás"
+
+#: PodcastGenerator/admin/pg_users.php:138
+msgid "Delete user"
+msgstr "Felhasználó törlése"
+
+#: PodcastGenerator/admin/podcast_details.php:21
+msgid "Podcast GUID is malformed"
+msgstr "Podcast GUID-ja nem szabványos"
+
+#: PodcastGenerator/admin/podcast_details.php:63
+msgid "Locked"
+msgstr "Zárt"
+
+#: PodcastGenerator/admin/podcast_details.php:64
+msgid "Unlocked"
+msgstr "Nyitott"
+
+#: PodcastGenerator/admin/podcast_details.php:65
+msgid "Off"
+msgstr "Kikapcsolt"
+
+#: PodcastGenerator/admin/podcast_details.php:98
+msgid "Change Podcast Details"
+msgstr "Podcast részleteinek megváltoztatása"
+
+#: PodcastGenerator/admin/podcast_details.php:100
+msgid "Podcast Title"
+msgstr "Podcast címe"
+
+#: PodcastGenerator/admin/podcast_details.php:105
+msgid "Podcast Subtitle or Slogan"
+msgstr "Podcast alcíme vagy szlogenje"
+
+#: PodcastGenerator/admin/podcast_details.php:110
+msgid "Podcast Description"
+msgstr "Podcast leírása"
+
+#: PodcastGenerator/admin/podcast_details.php:115
+msgid "Copyright Notice"
+msgstr "Copyright szöveg"
+
+#: PodcastGenerator/admin/podcast_details.php:120
+msgid "Author Name"
+msgstr "Szerző neve"
+
+#: PodcastGenerator/admin/podcast_details.php:125
+msgid "Author E-Mail Address"
+msgstr "Szerző email címe"
+
+#: PodcastGenerator/admin/podcast_details.php:130
+msgid "Podcast GUID"
+msgstr "Podcast GUID"
+
+#: PodcastGenerator/admin/podcast_details.php:131
+msgid "Unique ID code for your podcast across the internet"
+msgstr "Az egész interneten egyedi azonosító kód a podcastjához"
+
+#: PodcastGenerator/admin/podcast_details.php:138
+msgid "Feed Language"
+msgstr "A feed nyelve"
+
+#: PodcastGenerator/admin/podcast_details.php:139
+msgid "Main language of your podcast"
+msgstr "Podcastod fő nyelve"
+
+#: PodcastGenerator/admin/podcast_details.php:149
+msgid "Explicit Podcast"
+msgstr "Explicit tartalmú podcast"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Lock Podcast Feed"
+msgstr "Zárolja a Podcast hírfolyamot"
+
+#: PodcastGenerator/admin/podcast_details.php:153
+msgid "Prevent other platforms from importing your feed"
+msgstr "Akadályozza meg, hogy más platformok importálják a hírfolyamát"
+
+#: PodcastGenerator/admin/podcast_details.php:158
+msgid "Custom Feed Tags"
+msgstr "Egyéni hírfolyamcímkék"
+
+#: PodcastGenerator/admin/store_cat.php:18
+msgid "Category 1 needs to be set"
+msgstr "Az 1. kategóriát be kell állítani"
+
+#: PodcastGenerator/admin/store_cat.php:36
+msgid "Select Podcast Category"
+msgstr "Podcast kategória kiválasztása"
+
+#: PodcastGenerator/admin/store_cat.php:50
+msgid "Select Podcast Categories"
+msgstr "Podcast kategóriák kiválasztása"
+
+#: PodcastGenerator/admin/store_cat.php:51
+msgid "Select or change Podcast Categories (for iTunes)"
+msgstr "Kategóriák kiválasztása vagy megváltoztatása (iTunes-hoz)"
+
+#. # %d is 1, 2, or 3
+#: PodcastGenerator/admin/store_cat.php:57
+#: PodcastGenerator/admin/store_cat.php:73
+#: PodcastGenerator/admin/store_cat.php:94
+#, php-format
+msgid "Category %d"
+msgstr "%d kategória"
+
+#: PodcastGenerator/admin/store_cat.php:116
+#: PodcastGenerator/admin/theme_freebox.php:85
+msgid "Save"
+msgstr "Mentés"
+
+#: PodcastGenerator/admin/store_cover.php:35
+msgid "Image format is not supported"
+msgstr "A képformátum nem támogatott"
+
+#: PodcastGenerator/admin/store_cover.php:42
+msgid "Image does not have square dimensions"
+msgstr "A kép nem négyzet alakú"
+
+#: PodcastGenerator/admin/store_cover.php:54
+msgid "Image was not uploaded successfully"
+msgstr "A kép feltöltése sikertelen"
+
+#: PodcastGenerator/admin/store_cover.php:72
+msgid "Store Cover"
+msgstr "Albumborító tárolása"
+
+#: PodcastGenerator/admin/store_cover.php:86
+msgid "Change Cover"
+msgstr "Albumborító megváltoztatása"
+
+#: PodcastGenerator/admin/store_cover.php:87
+msgid "The cover art will be displayed in the podcast readers."
+msgstr "Az albumborítót a podcast olvasók megjelenítik"
+
+#: PodcastGenerator/admin/store_cover.php:99
+msgid "Select file"
+msgstr "File kiválasztása"
+
+#: PodcastGenerator/admin/store_cover.php:103
+msgid "Upload"
+msgstr "Feltöltés"
+
+#: PodcastGenerator/admin/theme_buttons.php:25
+msgid "Item exists"
+msgstr "A tétel már létezik"
+
+#: PodcastGenerator/admin/theme_buttons.php:30
+msgid "Name, Link and CSS Class needs to be set"
+msgstr "A nevet, a linket és a CSS osztályt be kell állítani"
+
+#: PodcastGenerator/admin/theme_buttons.php:101
+msgid "Theme Buttons"
+msgstr "Smink gombjai"
+
+#: PodcastGenerator/admin/theme_buttons.php:116
+msgid "Click on the button you wish to edit"
+msgstr "Kattints a szerkeszteni kívánt gombra"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "Name"
+msgstr "Név"
+
+#: PodcastGenerator/admin/theme_buttons.php:133
+#: PodcastGenerator/admin/theme_buttons.php:167
+msgid "needs to be unique"
+msgstr "egyedinek kell lennie"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "Link"
+msgstr "Link"
+
+#: PodcastGenerator/admin/theme_buttons.php:136
+#: PodcastGenerator/admin/theme_buttons.php:170
+msgid "where it should point to"
+msgstr "ahová mutatnia kell"
+
+#: PodcastGenerator/admin/theme_buttons.php:139
+#: PodcastGenerator/admin/theme_buttons.php:173
+msgid "CSS Classes"
+msgstr "CSS osztályok"
+
+#: PodcastGenerator/admin/theme_buttons.php:141
+#: PodcastGenerator/admin/theme_buttons.php:175
+#, php-format
+msgid "depends on theme, you can use %s in the default theme"
+msgstr "témától függően, használható %s az alapértelmezett témában"
+
+#: PodcastGenerator/admin/theme_buttons.php:146
+#: PodcastGenerator/admin/theme_buttons.php:180
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: PodcastGenerator/admin/theme_buttons.php:147
+#: PodcastGenerator/admin/theme_buttons.php:181
+msgid "Leave it blank if you don't know what you are doing"
+msgstr "Hagyja üresen, ha nem tudja"
+
+#: PodcastGenerator/admin/theme_buttons.php:159
+msgid "Delete Button"
+msgstr "Gomb törlése"
+
+#: PodcastGenerator/admin/theme_buttons.php:165
+msgid "Add Button"
+msgstr "Gomb hozzáadása"
+
+#: PodcastGenerator/admin/theme_change.php:49
+msgid "Theme Change"
+msgstr "Smink megváltoztatása"
+
+#: PodcastGenerator/admin/theme_change.php:63
+msgid "Change theme"
+msgstr "Smink megváltoztatása"
+
+#: PodcastGenerator/admin/theme_change.php:64
+#, php-format
+msgid "You can upload themes to your %s folder"
+msgstr "Témákat tölthet fel a %s könyvtárba"
+
+#: PodcastGenerator/admin/theme_change.php:65
+msgid "Installed themes"
+msgstr "Telepített sminkek"
+
+#: PodcastGenerator/admin/theme_change.php:68
+msgid "No compatible themes installed"
+msgstr "Nincs kompatibilis téma telepítve"
+
+#: PodcastGenerator/admin/theme_change.php:82
+msgid "This theme is currently in use"
+msgstr "Ez a smink jelenleg használatban van"
+
+#: PodcastGenerator/admin/theme_change.php:86
+msgid "Switch theme"
+msgstr "Sminkváltás"
+
+#: PodcastGenerator/admin/theme_freebox.php:40
+#: PodcastGenerator/admin/theme_freebox.php:54
+msgid "Customize Freebox"
+msgstr "A Freebox szerkesztése"
+
+#: PodcastGenerator/admin/theme_freebox.php:56
+msgid "Current Freebox"
+msgstr "Jelenlegi Freebox"
+
+#: PodcastGenerator/admin/theme_freebox.php:63
+msgid "Enable / Disable Freebox"
+msgstr "Freebox engedélyezése / letiltása"
+
+#: PodcastGenerator/admin/theme_freebox.php:72
+msgid "Disable Freebox"
+msgstr "Freebox letiltása"
+
+#: PodcastGenerator/admin/theme_freebox.php:77
+msgid "Change Freebox content"
+msgstr "Freebox tartalmának megváltoztatása"
+
+#: PodcastGenerator/admin/theme_freebox.php:78
+msgid "Content"
+msgstr "Tartalom"
+
+#: PodcastGenerator/themes/default/categories.php:26
+msgid "All Episodes"
+msgstr "Összes epizód"
